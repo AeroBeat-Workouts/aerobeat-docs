@@ -10,7 +10,8 @@ nav:
   - Licensing: licensing/overview.md
   - Game Design:
     - Overview: gdd/concept.md
-      - Art Overview: gdd/art/overview.md
+      - Art : 
+        - Overview: gdd/art/overview.md
       - Gameplay:
         - Boxing: gdd/gameplay/boxing.md
         - Future Plans: gdd/gameplay/future-plans.md
@@ -30,7 +31,6 @@ nav:
         - Overview: gdd/user-content/overview.md
         - Community Creations: gdd/user-content/community-creations.md
         - Policing Content: gdd/user-content/policing-content.md
-    - Mechanics: gdd/mechanics.md
   - Technical:
     - Architecture: architecture/architecture.md
     - Core Contracts: 'https://github.com/aerobeat-fitness/aerobeat-core'
