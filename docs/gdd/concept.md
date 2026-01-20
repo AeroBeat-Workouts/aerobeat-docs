@@ -139,6 +139,32 @@ When choosing any playlist (official or community created), athletes can overrid
 
 ---
 
+## Workout Points & Goals
+
+AeroBeat is planned to include gamification systems to help build healthy workout habits.
+
+* **Workout Points:** - Playlists award points after completing them, you can see your total workout points since you started playing AeroBeat on the main menu near your account icon.
+* **Weekly Goal:** - Set how many times you want to workout per week, and AeroBeat will automatically track this. Shown on our main UI and after a playlist finishes. Provides positive reinforcement each day you complete a playlist, and even more when you finish your weekly goal. Shown as a 7-day timestamp system for easy visual identification.
+* **Avatars:** - Create a customizable avatar seen in multiplayer. Spend workout points to unlock new options.
+* **Leaderboards:** - View how your doing in comparison to other athletes and your online friends.
+
+---
+
+## Funding & Distribution Model
+
+AeroBeat is a free community-driven platform available from our website. To keep things running, there are a few potential options.
+
+* **Supporters:** - The community version of AeroBeat is intended to be funded using a `supporter` model. Account level perks would be available for supporters to fund development and pay for associated expenses (server, legal, ip, song rights, choreography, etc). This is based on the success of the touch rhythm game platform `Osu!`, which uses a similar model.
+
+In addition, we can work with publishers to port AeroBeat. These would require licensing popular music and paying for the choreography charts. Giving them a shelf-life limited by their sales and upkeep costs. These versions cannot use the community features (custom content, multiplayer) due to licensing issues.
+
+* **Arcade Version:** - The `Camera` gameplay of `Boxing` and `Flow` are perfect for arcades.
+* **Switch Version:** - Use the Joycons for `Boxing` and `Flow` gameplay. Focuses on workout habits.
+* **Mobile Stores:** - Similar to the `Arcade` version. Focuses on workout habits.
+* **Steam Version:** - Allows any Input type, including VR gameplay.
+ 
+---
+
 ## 🔮 Future Roadmap
 
 These will likely change as production continues, but they are our best guess based on the current priorities for the project.
