@@ -51,7 +51,7 @@ To fund development, we will use a `supporter` model. Pay a one time fee for eac
 
 ---
 
-## ⭐ Digital Stores & Arcade Editions
+## 📱 Digital Stores & Arcade Editions
 
 Porting AeroBeat to digital storefronts and Arcades requires the following changes to be successful.
 
@@ -102,7 +102,7 @@ The debut gameplay module for AeroBeat is a rhythm-boxing experience.
 
 ---
 
-## Gameplay Agnosticism
+## 🕹️ Gameplay Agnosticism
 
 In time, additional gameplay modules will become available, based on community requests and support.
 
@@ -155,7 +155,7 @@ Atheletes simply select a playlist and the engine takes care of the rest.
 
 ---
 
-## Community Creations
+## 🌐 Community Creations
 
 When athletes navigate our community content portal, they can search and filter through various `playlists`. These are collections of content remixed to work together for a good workout experience by the community.
 
@@ -182,7 +182,7 @@ When choosing any playlist (official or community created), athletes can overrid
 
 ---
 
-## Policing Community Content
+## 🚨 Policing Community Content
 
 The following restrictions will be put in place regarding community created content to prevent bad actors.
 
@@ -196,7 +196,7 @@ The following restrictions will be put in place regarding community created cont
 
 --
 
-## Workout Points & Goals
+## 🏋️ Workout Points & Goals
 
 The following gamification systems will be included in the full release to help build healthy workout habits.
 
