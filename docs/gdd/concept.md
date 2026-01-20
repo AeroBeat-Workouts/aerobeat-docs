@@ -124,6 +124,36 @@ In time, additional gameplay modules will become available, based on community r
 
 ---
 
+## Accessibility Modifiers
+
+Before starting a playlist, athletes can enable accessibility focused modifiers to change their gameplay.
+
+* **No Squats:** Disables `obstacles` that require you to `squat` down to avoid them in `boxing` or `flow` playlists.
+* **No Knee Strikes:** Disables `knee strikes` targets in `boxing` playlists
+* **No Leg Lifts:** Disables `obstacles` that require you to use `leg lifts` in` boxing` playlists
+* **No Arrows:** Disables directionality requirment of targets in `boxing` and `flow` playlists
+* **No Obstacles:** Disables `obstacles` in `boxing` and `flow` playlists
+* **No Bombs:** Disables `bomb` targets in `Flow` playlists
+* **Zen Mode:** Disables `targets` and `obstacles`, just enjoy the sounds and the sights
+* **Hit Streak:** Enables the `hit streak` counter to be visible during gameplay.
+* **Practice Mode:** Enables you to scrub a `timeline` while paused to jump to sections of a song in a playlist. `workout points` are not saved while enabled.
+
+---
+
+## 🕹️ Difficulty Modifiers
+
+These gameplay modifiers make the game easier or harder.
+
+* **One Portal:** Forces choreography while in `portal` view to appear from a single forward facing `portal` in `boxing` and `flow` playlists.
+* **3-Portals:** Condenses choreography while in `portal` view to appear in three portals (left, center, right) ahead of you in `boxing` and `flow` playlists.
+* **Ghost Targets:** `targets` disappear as they get close to you in `boxing`, `flow`, and `step` gameplay.
+* **Speed Up:** `targets` and `obstacles` take less time to travel from `portals` and the bottom of the `track`. Available on `boxing`, `flow`, and `step` gameplay styles.
+* **Slow Down:**: `targets` and `obstacles` take more time to travel from `portals` and the bottom of the `track`. Available on `boxing`, `flow`, and `step` gameplay styles.
+* **Arcade Mode:** Adds a health system that depletes as you miss `targets`. Miss too many and you fail the song. Regain health as you destroy `targets` and dodge `obstacles`.
+* **Hardcore Mode:** Miss a `target`, or hit a `bomb` or `obstacle` to get sent back to the beginning of a song in a playlist.
+
+---
+
 ## 🎮 Input Agnosticism
 
 AeroBeat's "Secret Sauce" is its ability to normalize data from wildly different hardware into a standard viewport space.
@@ -198,7 +228,7 @@ The following restrictions will be put in place regarding community created cont
 * **Marketing:** - All official communication and marketing will feature only legally licensed music and content.
 * **Discussion Bans:** - Discussing unpermitted content on our official channels (Discord) will result in warnings and eventual bans for bad actors. 
 
---
+---
 
 ## 🏋️ Workout Points & Goals
 
