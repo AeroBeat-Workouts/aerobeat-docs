@@ -37,13 +37,14 @@ Our documentation is divided by role. Choose your path below:
 
 ## 📂 Repository Ecosystem
 
-AeroBeat uses a 6-tier repository structure to keep code clean and decoupled.
+AeroBeat uses a 7-tier repository structure to keep code clean and decoupled.
 
 | Repository | Role | License |
 | :--- | :--- | :--- |
 | **[`aerobeat-assembly`](https://github.com/AeroBeat-Fitness/aerobeat-assembly)** | The "App". Builds the executable. (Client/Server) | **GPLv3** |
 | **[`aerobeat-core`](https://github.com/AeroBeat-Fitness/aerobeat-core)** | The "Hub". Interfaces, Enums, Constants, Utils, Signals, and Data Types. | **MPL 2.0** |
 | **[`aerobeat-input-*`](https://github.com/AeroBeat-Fitness/aerobeat-input-mediapipe-python)** | Input managers seperated by their integration method. ex: `areobeat-input-mediapipe-python`. | **MPL 2.0** |
+| **UI** | **[`aerobeat-ui-*`](https://github.com/AeroBeat-Fitness/aerobeat-ui-desktop)** | **Interaction Layer.** Platform-specific Menus (Desktop vs Mobile vs VR). | **GPLv3** |
 | **[`aerobeat-feature-*`](https://github.com/AeroBeat-Fitness/aerobeat-feature-boxing)** | Logic statellites. Pure gameplay mechancics | **GPLv3** |
 | **[`aerobeat-asset-*`](https://github.com/AeroBeat-Fitness/aerobeat-asset-prototypes)** | Content Satellites. Scenes, Models, Audio. | **CC BY-NC 4.0** |
 | **[`aerobeat-docs`](https://github.com/AeroBeat-Fitness/aerobeat-docs/tree/main/docs)** | This documentation site. | **CC BY-NC 4.0** |
