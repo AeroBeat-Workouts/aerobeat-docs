@@ -37,3 +37,13 @@ If you are on Mac/Linux or prefer to run commands manually:
     ```
 
 The site will be available at `http://127.0.0.1:8000`.
+
+## Deployment
+
+This repository uses **GitHub Actions** to automatically build and publish the documentation.
+
+1.  **Make Changes:** Edit the markdown files or configuration in the `main` branch.
+2.  **Push:** Commit and push your changes to GitHub.
+3.  **Auto-Publish:** The "Publish Docs" workflow will automatically run, build the site, and deploy it to the `gh-pages` branch.
+
+The live site is available at: https://aerobeat-fitness.github.io/aerobeat-docs/

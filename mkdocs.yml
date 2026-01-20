@@ -1,6 +1,7 @@
 site_name: AeroBeat Documentation
 site_url: https://aerobeat-fitness.github.io/aerobeat-docs/
 repo_url: https://github.com/AeroBeat-Fitness/aerobeat-docs
+edit_uri: edit/main/docs/
 theme:
   name: material
   palette: 

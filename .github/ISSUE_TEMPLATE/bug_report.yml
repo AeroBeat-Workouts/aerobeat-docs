@@ -1,0 +1,53 @@
+name: Bug Report
+description: Create a report to help us improve AeroBeat
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+      placeholder: I tried to punch the target but...
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Windows
+        - MacOS
+        - Linux
+        - Android
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: AeroBeat Version
+      description: What version of the game are you running? (e.g. v0.0.1)
+      placeholder: v0.0.1
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or Screenshots
+      description: Please copy and paste any relevant logs or drag and drop screenshots here.

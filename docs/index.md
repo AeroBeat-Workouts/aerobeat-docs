@@ -53,7 +53,7 @@ AeroBeat uses a 6-tier repository structure to keep code clean and decoupled.
 
 ## 🤝 Contributing
 
-We welcome contributions of all kinds! Whether you are fixing a bug in the Core, designing a new environment, or writing an iput driver for a new hardware device.
+We welcome contributions of all kinds! Whether you are fixing a bug in the Core, designing a new environment, or writing an input driver for a new hardware device.
 
 1.  **Check the License:** Please review our [Licensing Overview](licensing/overview.md) to understand how your contributions will be protected.
 2.  **Pick a Repo:** Navigate to the specific repository relevant to your skill set.
