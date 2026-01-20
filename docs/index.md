@@ -27,8 +27,8 @@ Our documentation is divided by role. Choose your path below:
 * Dive into the **Session Context** dependency injection system.
 * **Key Tech:** Godot 4.x, GDScript, MediaPipe.
 
-### 🎨 [Asset Pipeline](assets/pipeline.md)
-*For 3D Artists, Animators, and Mappers.*
+### 🎨 [Art Overview](art/overview.md)
+*For Artists looking to add new art assets*
 * How to inherit from `base_target.tscn` to create skins.
 * Understanding the **Single-Dependency Rule** for Asset Packages.
 * Licensing guide for **CC BY-NC 4.0** contributions.
