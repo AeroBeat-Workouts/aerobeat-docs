@@ -1,12 +1,8 @@
 # Welcome to AeroBeat
 
-**AeroBeat** is an open-source, modular rhythm game platform designed to democratize fitness gaming. Think of it as the "YouTube of Workout Games" — a place where hardware inputs, gameplay mechanics, and community content can be mixed and matched freely.
+**AeroBeat** is an open-source, modular rhythm game platform designed to democratize fitness gaming. Think of it as the "YouTube of Workout Games"—a place where hardware inputs, gameplay mechanics, and community content can be mixed and matched freely.
 
-Unlike traditional rhythm games that are locked to specific hardware (VR headsets or consoles), AeroBeat's engine is **Hardware Agnostic** and **Input Agnostic**. It runs on PC's, Mobile Devices, and VR.
-
-AeroBeat is **Gameplay Agnostic**, it can support an unlimited range of other rhythm gameplay '**Cores**'.
-
-Right now, we are working towards version **0.0.1** a focus on our **Boxing** gameplay on **PC** platforms utilizing **Computer Vision** to turn standard webcams into motion controllers.
+Unlike traditional rhythm games that are locked to specific hardware (VR headsets or consoles), AeroBeat is **Input Agnostic**. It runs on PC, Mobile, and VR, utilizing Computer Vision (CV) to turn standard webcams into motion controllers.
 
 ---
 
