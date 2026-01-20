@@ -7,9 +7,43 @@ theme:
 
 nav:
   - Home: index.md
+  - Licensing: licensing/overview.md
   - Game Design:
     - Overview: gdd/concept.md
+      - Art Overview: gdd/art/overview.md
+      - Gameplay:
+        - Boxing: gdd/gameplay/boxing.md
+        - Future Plans: gdd/gameplay/future-plans.md
+      - Gamification:
+        - Overview: gdd/gamification/overview.md
+      - Input System:
+        - Overview: gdd/input-system/agnostic-input.md
+      - Modifiers:
+        - Overview: gdd/modifiers/accessibility.md
+        - Difficulty: gdd/modifiers/difficulty.md
+      - Releases:
+        - Community: gdd/releases/community.md
+        - Stores & Arcades: gdd/releases/digital-stores-and-arcades.md
+      - Roadmap:
+        - Future Roadmap: gdd/roadmap/future-roadmap.md
+      - User Content:
+        - Overview: gdd/user-content/overview.md
+        - Community Creations: gdd/user-content/community-creations.md
+        - Policing Content: gdd/user-content/policing-content.md
     - Mechanics: gdd/mechanics.md
   - Technical:
     - Architecture: architecture/architecture.md
-    - Core Contracts: 'https://github.com/aerobeat-fitness/aerobeat-core' # Link to repo
+    - Core Contracts: 'https://github.com/aerobeat-fitness/aerobeat-core'
+    - Assembly: 'https://github.com/aerobeat-fitness/aerobeat-assembly'
+    - Input Systems:
+      - Camera (PC): 'https://github.com/aerobeat-fitness/aerobeat-input-mediapipe-python'
+      - Camera (Mobile): 'https://github.com/aerobeat-fitness/aerobeat-input-mediapipe-native'
+      - Joycon: 'https://github.com/aerobeat-fitness/aerobeat-input-joycon-hid'
+      - Keyboard: 'https://github.com/aerobeat-fitness/aerobeat-input-keyboard'
+      - Controller: 'https://github.com/aerobeat-fitness/aerobeat-input-controller'
+      - Mouse: 'https://github.com/aerobeat-fitness/aerobeat-input-mouse'
+      - Touch: 'https://github.com/aerobeat-fitness/aerobeat-input-touch'
+    - Features:
+      - Boxing: 'https://github.com/aerobeat-fitness/aerobeat-feature-boxing'
+    - Assets:
+      - Prototypes: 'https://github.com/aerobeat-fitness/aerobeat-asset-prototypes'
