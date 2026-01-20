@@ -11,6 +11,7 @@ Every `playlist` is made up of multiple pieces of community content and is speci
 * **Art Assets:** - Artists can create custom visuals for the `targets`, `obstacles`, `portals`, and `hands` used per song in the playlist. 
 
 When creating a `playlist`, a creator uses our in-game community content browser to pick the following.
+
 * **Gameplay:** - What gameplay style is this playlist made for? (`Boxing`, `Flow`, etc)
 * **Difficulty:** - Choose what difficulty level this playlist is intended for (`easy`, `medium`, `hard`, `pro`).
 * **Songs:** - What songs are in this playlist? Limited to songs with existing choreography that matches your playlist and difficulty.
@@ -20,6 +21,7 @@ When creating a `playlist`, a creator uses our in-game community content browser
 * **Coaching:** - Optional: Add warm up and cool down videos that play before and after the playlist finishes. In addition to an optional audio track to play during each song in the workout for your coaching.
 
 When choosing any playlist (official or community created), athletes can override the following.
+
 * **Environment:** - Disable custom environments from being used, instead using your preferred settings in your profile.
 * **Assets:** - Disable custom assets from being used, instead using your preferred settings in your profile.
 * **Coaching:** - Disable all coaching material from playing.

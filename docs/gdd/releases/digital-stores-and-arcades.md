@@ -8,6 +8,7 @@ Porting AeroBeat to digital storefronts and Arcades requires the following chang
 * **Community Features:** - Generally unaccessible in these ports to prevent bad experiences with casual athletes.
 
 Each version of AeroBeat across storefronts would have a unique selling point.
+
 * **Arcade:** - Quick jump-in and play of individual songs. Use a touch screen to choose your gameplay style, song, and start! Uses the `portal` view with high resolution environments. Allows two players if there's enough physical space.
 * **Mobile:** - Focuses on fitness goals with a stripped down version of our Community edition's user interface. Defaults to `track` view for small screens.
 * **Steam:** - Similar to the mobile release, but defaults to `portal` view and high-resolution environments.
