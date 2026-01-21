@@ -1634,10 +1634,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-ui-kit-aerobeat-ui-kit" class="md-nav__link">
+  <a href="#1-ui-core-aerobeat-ui-core" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The UI Kit (aerobeat-ui-kit)
+        1. UI Core (aerobeat-ui-core)
       
     </span>
   </a>
@@ -1645,10 +1645,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-ui-shells-aerobeat-ui-mobile-aerobeat-ui-vr" class="md-nav__link">
+  <a href="#2-ui-kits-aerobeat-ui-kit-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The UI Shells (aerobeat-ui-mobile, aerobeat-ui-vr)
+        2. UI Kits (aerobeat-ui-kit-*)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ui-shells-aerobeat-ui-shell-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. UI Shells (aerobeat-ui-shell-*)
       
     </span>
   </a>
@@ -1678,10 +1689,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ui-dependency-rules_1" class="md-nav__link">
+  <a href="#theming-reskinning-strategy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        UI Dependency Rules
+        Theming &amp; Reskinning Strategy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui-licensing-assets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UI Licensing &amp; Assets
       
     </span>
   </a>
@@ -2928,10 +2950,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-ui-kit-aerobeat-ui-kit" class="md-nav__link">
+  <a href="#1-ui-core-aerobeat-ui-core" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The UI Kit (aerobeat-ui-kit)
+        1. UI Core (aerobeat-ui-core)
       
     </span>
   </a>
@@ -2939,10 +2961,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-ui-shells-aerobeat-ui-mobile-aerobeat-ui-vr" class="md-nav__link">
+  <a href="#2-ui-kits-aerobeat-ui-kit-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The UI Shells (aerobeat-ui-mobile, aerobeat-ui-vr)
+        2. UI Kits (aerobeat-ui-kit-*)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ui-shells-aerobeat-ui-shell-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. UI Shells (aerobeat-ui-shell-*)
       
     </span>
   </a>
@@ -2972,10 +3005,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ui-dependency-rules_1" class="md-nav__link">
+  <a href="#theming-reskinning-strategy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        UI Dependency Rules
+        Theming &amp; Reskinning Strategy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui-licensing-assets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UI Licensing &amp; Assets
       
     </span>
   </a>
@@ -3003,25 +3047,31 @@
 
 
 <h1 id="ui-architecture-atomic-design">UI Architecture (Atomic Design)<a class="headerlink" href="#ui-architecture-atomic-design" title="Permanent link">&para;</a></h1>
-<p>We utilize the <strong>Atomic Design Methodology</strong> to maximize code reuse across disparate platforms (VR vs. Mobile). UI development is split between a centralized "Kit" and platform-specific "Shells."</p>
-<h3 id="the-ui-kit-aerobeat-ui-kit">The UI Kit (<code>aerobeat-ui-kit</code>)<a class="headerlink" href="#the-ui-kit-aerobeat-ui-kit" title="Permanent link">&para;</a></h3>
+<p>We utilize a <strong>Multi-Kit Ecosystem</strong> to support White Labeling and distinct platform requirements. We separate <strong>Logic</strong> (ViewModel), <strong>Visuals</strong> (View), and <strong>Layout</strong> (Shell).</p>
+<h3 id="1-ui-core-aerobeat-ui-core">1. UI Core (<code>aerobeat-ui-core</code>)<a class="headerlink" href="#1-ui-core-aerobeat-ui-core" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Role:</strong> The Source of Truth. Contains pure, stateless visual components.</li>
-<li><strong>License:</strong> <strong>MPL 2.0</strong> (Treat as a standard library).</li>
+<li><strong>Role:</strong> The Logic Layer (ViewModel). Contains abstract GDScript classes.</li>
+<li><strong>Content:</strong> <code>AeroButtonBase</code>, <code>AeroSliderBase</code>. No <code>.tscn</code> files.</li>
+<li><strong>Goal:</strong> Ensures bug fixes in logic propagate to all visual kits.</li>
+</ul>
+<h3 id="2-ui-kits-aerobeat-ui-kit-">2. UI Kits (<code>aerobeat-ui-kit-*</code>)<a class="headerlink" href="#2-ui-kits-aerobeat-ui-kit-" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Role:</strong> The Visual Layer (View). Contains pure, stateless visual components.</li>
+<li><strong>Variants:</strong> <code>aerobeat-ui-kit-community</code>, <code>aerobeat-ui-kit-linkinpark</code>.</li>
 <li><strong>Structure:</strong><ul>
-<li><strong>Atoms:</strong> Irreducible controls (e.g., <code>AeroButton</code>, <code>AeroLabel</code>, <code>AeroSlider</code>). Styles are driven by Theme Resources.</li>
-<li><strong>Molecules:</strong> Simple functional groups (e.g., <code>SongCard</code> = Cover Art + Title + Difficulty Badge).</li>
-<li><strong>Organisms:</strong> Complex, distinct sections (e.g., <code>SongList</code>, <code>LeaderboardRow</code>, <code>ProfileHeader</code>).</li>
+<li><strong>Atoms:</strong> Scenes inheriting Core logic (e.g., <code>AeroButton.tscn</code> extends <code>AeroButtonBase</code>).</li>
+<li><strong>Molecules:</strong> Functional groups (e.g., <code>SongCard</code>).</li>
+<li><strong>Organisms:</strong> Complex sections (e.g., <code>SongList</code>).</li>
 </ul>
 </li>
-<li><strong>Testing:</strong> Every Atom/Molecule must include a <code>_testbed/</code> scene demonstrating its states (Normal, Hover, Disabled, Focused).</li>
 </ul>
-<h3 id="the-ui-shells-aerobeat-ui-mobile-aerobeat-ui-vr">The UI Shells (<code>aerobeat-ui-mobile</code>, <code>aerobeat-ui-vr</code>)<a class="headerlink" href="#the-ui-shells-aerobeat-ui-mobile-aerobeat-ui-vr" title="Permanent link">&para;</a></h3>
+<h3 id="3-ui-shells-aerobeat-ui-shell-">3. UI Shells (<code>aerobeat-ui-shell-*</code>)<a class="headerlink" href="#3-ui-shells-aerobeat-ui-shell-" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Role:</strong> The Assembler. Defines "Templates" and "Pages."</li>
+<li><strong>Role:</strong> The Assembler. Defines "Layouts" and "Pages."</li>
+<li><strong>Variants:</strong> <code>aerobeat-ui-shell-mobile-community</code>, <code>aerobeat-ui-shell-arcade-linkinpark</code>.</li>
 <li><strong>License:</strong> <strong>GPLv3</strong> (Contains Application Logic).</li>
 <li><strong>Responsibility:</strong><ol>
-<li><strong>Import:</strong> Consumes the <code>aerobeat-ui-kit</code> via the <strong>UI Sync Protocol</strong>.</li>
+<li><strong>Import:</strong> Consumes a specific <code>aerobeat-ui-kit-*</code> via the <strong>UI Sync Protocol</strong>.</li>
 <li><strong>Layout:</strong> Arranges Organisms into usable Screens (<code>MainMenu</code>, <code>GameplayHUD</code>).</li>
 <li><strong>Wiring:</strong> Connects component signals to App Logic (<code>aerobeat-assembly-*</code>).</li>
 </ol>
@@ -3032,13 +3082,13 @@
 <ol>
 <li><strong>The Script:</strong> <code>./sync_ui_kit</code> (Python/Bash).<ul>
 <li>Located in the root of every UI Shell repo.</li>
-<li><strong>Action:</strong> Pulls the specific version of <code>aerobeat-ui-kit</code> defined in <code>.kit_version</code>.</li>
+<li><strong>Action:</strong> Pulls the specific version of the target <code>aerobeat-ui-kit-*</code> defined in <code>.kit_version</code>.</li>
 <li><strong>Validation:</strong> Runs the <code>test_components</code> command to ensure the imported atoms are compatible with the current project settings.</li>
 </ul>
 </li>
 <li><strong>The Workflow:</strong><ul>
-<li>Developers <strong>NEVER</strong> modify <code>addons/aerobeat-ui-kit</code> inside a Shell repo.</li>
-<li>Updates are made in the <code>aerobeat-ui-kit</code> repo, tagged, and then pulled into Shells via the sync script.</li>
+<li>Developers <strong>NEVER</strong> modify <code>addons/aerobeat-ui-kit-*</code> inside a Shell repo.</li>
+<li>Updates are made in the Kit repo, tagged, and then pulled into Shells via the sync script.</li>
 </ul>
 </li>
 </ol>
@@ -3061,8 +3111,14 @@
 <td style="text-align: left;">Needed for <code>AeroMenuProvider</code> interface.</td>
 </tr>
 <tr>
+<td style="text-align: left;"><strong>UI Core</strong></td>
+<td style="text-align: left;"><code>aerobeat-ui-core</code></td>
+<td style="text-align: left;"><strong>Required</strong></td>
+<td style="text-align: left;">Base logic for all components.</td>
+</tr>
+<tr>
 <td style="text-align: left;"><strong>Component Kit</strong></td>
-<td style="text-align: left;"><code>aerobeat-ui-kit</code></td>
+<td style="text-align: left;"><code>aerobeat-ui-kit-*</code></td>
 <td style="text-align: left;"><strong>Required</strong></td>
 <td style="text-align: left;">Source of all buttons, sliders, and standard widgets.</td>
 </tr>
@@ -3086,9 +3142,21 @@
 </tr>
 </tbody>
 </table>
-<h3 id="ui-dependency-rules_1">UI Dependency Rules<a class="headerlink" href="#ui-dependency-rules_1" title="Permanent link">&para;</a></h3>
+<h3 id="theming-reskinning-strategy">Theming &amp; Reskinning Strategy<a class="headerlink" href="#theming-reskinning-strategy" title="Permanent link">&para;</a></h3>
+<p>To support "White Label" partners (e.g., a specific Artist edition or Arcade cabinet), we separate <strong>Structure</strong> from <strong>Style</strong> using the Multi-Kit architecture.</p>
+<ol>
+<li><strong>Multi-Kit Architecture:</strong> We do not force a single visual style.<ul>
+<li><strong>Community Kit:</strong> Standard flat design.</li>
+<li><strong>Partner Kits:</strong> Bespoke designs (e.g., 3D Vinyl Records for buttons) that inherit the same <code>AeroButtonBase</code> logic.</li>
+</ul>
+</li>
+<li><strong>Shared Logic:</strong> All interaction logic lives in <code>aerobeat-ui-core</code>. This ensures that fixing a "double-click bug" in the Core fixes it for every partner kit instantly.</li>
+<li><strong>Shell Swapping:</strong> We create dedicated Shells (e.g., <code>aerobeat-ui-shell-arcade-linkinpark</code>) that consume the specific Partner Kit.</li>
+</ol>
+<h3 id="ui-licensing-assets">UI Licensing &amp; Assets<a class="headerlink" href="#ui-licensing-assets" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>UI Code:</strong> Licensed under <strong>GPLv3</strong> because it contains complex logic (state handling, animation controllers).</li>
+<li><strong>UI Core &amp; Kits:</strong> Licensed under <strong>MPL 2.0</strong> (Libraries).</li>
+<li><strong>UI Shells:</strong> Licensed under <strong>GPLv3</strong> (Application Logic).</li>
 <li><strong>Assets:</strong> Visuals used by the UI (Icons, Fonts) can be stored inside the UI repo if they are specific to that UI, or pulled from <code>aerobeat-asset-common</code> if shared.</li>
 </ul>
 
@@ -3111,7 +3179,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 21, 2026 16:25:45 UTC">January 21, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 21, 2026 21:44:03 UTC">January 21, 2026</span>
   </span>
 
     

@@ -2992,6 +2992,15 @@
 <td style="text-align: left;"><strong>MPL 2.0</strong></td>
 </tr>
 <tr>
+<td style="text-align: left;"><strong>UI Core</strong></td>
+<td style="text-align: left;"><code>aerobeat-ui-core</code></td>
+<td style="text-align: left;"><strong>UI Logic.</strong> Base classes (ViewModel) for components.</td>
+<td style="text-align: left;"><code>aerobeat-core</code></td>
+<td style="text-align: left;"><strong>None</strong></td>
+<td style="text-align: left;">Unit Test Tools</td>
+<td style="text-align: left;"><strong>MPL 2.0</strong></td>
+</tr>
+<tr>
 <td style="text-align: left;"><strong>Input</strong></td>
 <td style="text-align: left;"><code>aerobeat-input-*</code></td>
 <td style="text-align: left;"><strong>Hardware Drivers.</strong> (Camera, VR, Watch).</td>
@@ -3002,18 +3011,18 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>UI Kit</strong></td>
-<td style="text-align: left;"><code>aerobeat-ui-kit</code></td>
-<td style="text-align: left;"><strong>Atomic Library.</strong> Pure, stateless components (Buttons, Cards).</td>
-<td style="text-align: left;"><code>aerobeat-core</code></td>
+<td style="text-align: left;"><code>aerobeat-ui-kit-*</code></td>
+<td style="text-align: left;"><strong>Visual Library.</strong> Themed scenes inheriting UI Core logic.</td>
+<td style="text-align: left;"><code>aerobeat-ui-core</code></td>
 <td style="text-align: left;"><code>aerobeat-asset-common</code></td>
 <td style="text-align: left;">Testbed Scaffolding</td>
 <td style="text-align: left;"><strong>MPL 2.0</strong></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>UI Shell</strong></td>
-<td style="text-align: left;"><code>aerobeat-ui-*</code></td>
-<td style="text-align: left;"><strong>Interaction Layer.</strong> Platform-specific screens (Mobile, VR).</td>
-<td style="text-align: left;"><code>aerobeat-core</code><br><code>aerobeat-ui-kit</code></td>
+<td style="text-align: left;"><code>aerobeat-ui-shell-*</code></td>
+<td style="text-align: left;"><strong>Interaction Layer.</strong> Platform-specific screens.</td>
+<td style="text-align: left;"><code>aerobeat-ui-kit-*</code></td>
 <td style="text-align: left;"><code>aerobeat-asset-common</code><br>(Local Assets)</td>
 <td style="text-align: left;">Vendor Tools (Tweeners)<br>Mock Data</td>
 <td style="text-align: left;"><strong>GPLv3</strong></td>
@@ -3065,9 +3074,9 @@
 <h3 id="the-ui-tier-strategy-mvvm">The UI Tier Strategy (MVVM)<a class="headerlink" href="#the-ui-tier-strategy-mvvm" title="Permanent link">&para;</a></h3>
 <p>We do not have a "Default UI." The Assembly defines <strong>UI Contracts</strong> (<code>AeroMenuProvider</code>), and the UI Tier implements them.</p>
 <ul>
-<li><strong><code>aerobeat-ui-mobile</code></strong>: 2D Touch-based interface (Scrolls, Taps).</li>
-<li><strong><code>aerobeat-ui-desktop</code></strong>: Mouse/Keyboard interface (Hover states, Keybinds).</li>
-<li><strong><code>aerobeat-ui-vr</code></strong>: Spatial interface (Laser pointers, World-Space Canvas).</li>
+<li><strong><code>aerobeat-ui-shell-mobile-community</code></strong>: 2D Touch-based interface (Scrolls, Taps).</li>
+<li><strong><code>aerobeat-ui-shell-pc-community</code></strong>: Mouse/Keyboard interface (Hover states, Keybinds).</li>
+<li><strong><code>aerobeat-ui-shell-vr-community</code></strong>: Spatial interface (Laser pointers, World-Space Canvas).</li>
 </ul>
 <h3 id="repository-list-v001">Repository List (v0.0.1)<a class="headerlink" href="#repository-list-v001" title="Permanent link">&para;</a></h3>
 <ul>
@@ -3097,7 +3106,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 21, 2026 16:25:45 UTC">January 21, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 21, 2026 21:44:03 UTC">January 21, 2026</span>
   </span>
 
     

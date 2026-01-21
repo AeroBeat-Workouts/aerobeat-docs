@@ -1712,10 +1712,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#c-the-ui-kit-project-aerobeat-ui-kit" class="md-nav__link">
+  <a href="#c-the-ui-core-project-aerobeat-ui-core" class="md-nav__link">
     <span class="md-ellipsis">
       
-        C. The UI-Kit Project (aerobeat-ui-kit)
+        C. The UI Core Project (aerobeat-ui-core)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#d-the-ui-kit-project-aerobeat-ui-kit-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. The UI Kit Project (aerobeat-ui-kit-community)
       
     </span>
   </a>
@@ -2928,10 +2939,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#c-the-ui-kit-project-aerobeat-ui-kit" class="md-nav__link">
+  <a href="#c-the-ui-core-project-aerobeat-ui-core" class="md-nav__link">
     <span class="md-ellipsis">
       
-        C. The UI-Kit Project (aerobeat-ui-kit)
+        C. The UI Core Project (aerobeat-ui-core)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#d-the-ui-kit-project-aerobeat-ui-kit-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. The UI Kit Project (aerobeat-ui-kit-community)
       
     </span>
   </a>
@@ -2977,20 +2999,25 @@
 ├── .testbed/           # Ignored Ghost Project
 └── plugin.cfg
 </code></pre></div>
-<h3 id="c-the-ui-kit-project-aerobeat-ui-kit">C. The UI-Kit Project (<code>aerobeat-ui-kit</code>)<a class="headerlink" href="#c-the-ui-kit-project-aerobeat-ui-kit" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>aerobeat-ui-kit/
+<h3 id="c-the-ui-core-project-aerobeat-ui-core">C. The UI Core Project (<code>aerobeat-ui-core</code>)<a class="headerlink" href="#c-the-ui-core-project-aerobeat-ui-core" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>aerobeat-ui-core 
+├── scripts/ 
+│ ├── base/ 
+│ │ ├── aero_button_base.gd 
+│ │ └── aero_view_base.gd 
+│ └── utils/
+</code></pre></div>
+<h3 id="d-the-ui-kit-project-aerobeat-ui-kit-community">D. The UI Kit Project (<code>aerobeat-ui-kit-community</code>)<a class="headerlink" href="#d-the-ui-kit-project-aerobeat-ui-kit-community" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>aerobeat-ui-kit-community/
 ├── atoms/
 │   ├── aero_button/
-│   │   ├── AeroButton.tscn
-│   │   ├── AeroButton.gd
-│   │   └── AeroButton_Test.tscn  &lt;-- The Atomic Test
+│   │   ├── AeroButton.tscn       &lt;-- Extends AeroButtonBase
+│   │   └── AeroButton_Test.tscn
 │   └── aero_slider/ ...
 ├── molecules/
 │   ├── song_card/
 │   │   ├── SongCard.tscn         &lt;-- Uses AeroButton + AeroLabel
 │   │   └── SongCard_Test.tscn
-├── scripts/
-│   └── theme_utils.gd            &lt;-- Shared logic
 └── sync_manifest.json            &lt;-- Defines exports
 </code></pre></div>
 
@@ -3013,7 +3040,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 21, 2026 15:50:21 UTC">January 21, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 21, 2026 21:44:03 UTC">January 21, 2026</span>
   </span>
 
     

@@ -410,6 +410,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#4-the-ui-stack-aerobeat-ui-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. The UI Stack (aerobeat-ui-*)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3043,6 +3054,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#4-the-ui-stack-aerobeat-ui-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. The UI Stack (aerobeat-ui-*)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3170,6 +3192,17 @@
 <li><strong>The Rule:</strong> Input drivers are treated like the Engine Core.</li>
 <li><strong>Why:</strong> We want hardware vendors (e.g., Smart Watch makers, VR Headset companies) to write official drivers for AeroBeat. MPL 2.0 allows them to link their proprietary SDKs (DLLs/Libs) to our Input System without violating the license.</li>
 </ul>
+<h3 id="4-the-ui-stack-aerobeat-ui-">4. The UI Stack (<code>aerobeat-ui-*</code>)<a class="headerlink" href="#4-the-ui-stack-aerobeat-ui-" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>UI Core &amp; Kits (<code>aerobeat-ui-core</code>, <code>aerobeat-ui-kit-*</code>):</strong> <strong>Mozilla Public License 2.0 (MPL 2.0)</strong><ul>
+<li><strong>The Rule:</strong> These are treated as standard libraries. You can link them to proprietary shells if needed, but changes to the files themselves must be shared.</li>
+</ul>
+</li>
+<li><strong>UI Shells (<code>aerobeat-ui-shell-*</code>):</strong> <strong>GNU GPLv3</strong><ul>
+<li><strong>The Rule:</strong> The Shell contains the specific application flow and wiring. It is treated as part of the Game Client and must be open source.</li>
+</ul>
+</li>
+</ul>
 <hr />
 <h2 id="for-artists-audio-designers">🎨 For Artists &amp; Audio Designers<a class="headerlink" href="#for-artists-audio-designers" title="Permanent link">&para;</a></h2>
 <p>Our creative content is protected differently than our code to prevent "Asset Flips."</p>
@@ -3234,6 +3267,21 @@
 <td style="text-align: left;">Only your new files/SDKs.</td>
 </tr>
 <tr>
+<td style="text-align: left;"><code>aerobeat-ui-core</code></td>
+<td style="text-align: left;"><strong>MPL 2.0</strong></td>
+<td style="text-align: left;">Only your new files.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>aerobeat-ui-kit-*</code></td>
+<td style="text-align: left;"><strong>MPL 2.0</strong></td>
+<td style="text-align: left;">Only your new files.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>aerobeat-ui-shell-*</code></td>
+<td style="text-align: left;"><strong>GPLv3</strong></td>
+<td style="text-align: left;"><strong>No.</strong></td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>aerobeat-asset-*</code></td>
 <td style="text-align: left;"><strong>CC BY-NC 4.0</strong></td>
 <td style="text-align: left;"><strong>No</strong> (and no commercial use).</td>
@@ -3265,7 +3313,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 21, 2026 17:38:56 UTC">January 21, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 21, 2026 21:44:03 UTC">January 21, 2026</span>
   </span>
 
     
