@@ -1,0 +1,6 @@
+.import/
+.godot/
+
+# SECURITY: Block scripts in asset packs (RCE Prevention)
+*.gd
+*.cs

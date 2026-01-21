@@ -1,5 +1,13 @@
 # Development Workflow
 
+### Repository Templates
+
+To ensure license compliance and correct file structure, always start new repositories using the templates found in `aerobeat-docs/templates/`.
+
+*   **Assembly/Feature/UI:** GPLv3
+*   **Input/Core:** MPL 2.0
+*   **Assets:** CC BY-NC 4.0
+
 ### Dependency Management
 
 * **Git Submodules:** Managed via a `setup_dev` script in each repo root.
