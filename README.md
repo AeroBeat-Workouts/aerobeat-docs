@@ -47,3 +47,8 @@ This repository uses **GitHub Actions** to automatically build and publish the d
 3.  **Auto-Publish:** The "Publish Docs" workflow will automatically run, build the site, and deploy it to the `gh-pages` branch.
 
 The live site is available at: https://aerobeat-fitness.github.io/aerobeat-docs/
+
+## Repository Templates
+
+This repository serves as the **Source of Truth** for our GitHub Template Repositories.
+If you are looking to create a new repository for the AeroBeat ecosystem (Assembly, Feature, Input, etc.), please refer to the Templates Documentation.

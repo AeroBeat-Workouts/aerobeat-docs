@@ -2,12 +2,21 @@
 
 This directory contains the starter files for new repositories in the AeroBeat ecosystem.
 
-## How to use
+## Architecture
 
-1.  **Create a new Repo:** Go to GitHub and create a new repository (e.g., `aerobeat-feature-dance`).
-2.  **Choose Type:** Identify the architecture tier (Assembly, Feature, Input, etc.).
-3.  **Copy Files:** Copy the contents of the corresponding folder in `templates/` to your new repo.
-4.  **Initialize:** Run `git init`, commit, and push.
+This folder is the **Source of Truth** for our GitHub Template Repositories. We do not edit the template repos directly; we edit them here and sync them.
+
+### How to Update Templates
+
+1.  **Edit:** Make changes to the files in the subfolders below (e.g., `assembly/setup_dev.py`).
+2.  **Sync:** Run the sync script to push changes to the standalone repositories.
+    ```powershell
+    .\scripts\sync_templates.ps1
+    ```
+
+### How to Use (For Developers)
+
+Go to the AeroBeat-Fitness GitHub organization and look for repositories named `aerobeat-template-*`. Click the green **"Use this template"** button to start a new project.
 
 ## Template Types
 
