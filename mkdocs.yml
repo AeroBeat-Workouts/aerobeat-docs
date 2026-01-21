@@ -33,6 +33,7 @@ nav:
   - Licensing:
     - Overview: licensing/overview.md
     - CLA: licensing/CLA.md
+    - Contributing: licensing/CONTRIBUTING.md
   - Release Notes: releases/changelog.md
   - Game Design:
     - Overview: gdd/concept.md
