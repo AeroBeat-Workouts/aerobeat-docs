@@ -77,6 +77,7 @@ jobs:
             mkdir -p docs/api/core
             echo "# Core Contracts" > docs/api/core/index.md
             echo "Coming soon." >> docs/api/core/index.md
+            echo "View Source: [https://github.com/AeroBeat-Fitness/aerobeat-core]
           fi
 
       - name: Generate Assembly API Docs
@@ -88,6 +89,7 @@ jobs:
             mkdir -p docs/api/assembly
             echo "# Assembly" > docs/api/assembly/index.md
             echo "Coming soon." >> docs/api/assembly/index.md
+            echo "View Source: [https://github.com/AeroBeat-Fitness/aerobeat-assembly]
           fi
 
       - name: Generate Boxing API Docs
@@ -99,6 +101,7 @@ jobs:
             mkdir -p docs/api/features/boxing
             echo "# Boxing Feature" > docs/api/features/boxing/index.md
             echo "Coming soon." >> docs/api/features/boxing/index.md
+            echo "View Source: [https://github.com/AeroBeat-Fitness/aerobeat-feature-boxing]
           fi
 
       - name: Generate Input API Docs (Keyboard)
@@ -110,6 +113,7 @@ jobs:
             mkdir -p docs/api/inputs/keyboard
             echo "# Keyboard Input" > docs/api/inputs/keyboard/index.md
             echo "Coming soon." >> docs/api/inputs/keyboard/index.md
+            echo "View Source: [https://github.com/AeroBeat-Fitness/aerobeat-input-keyboard]
           fi
 
       - name: Generate Input API Docs (Mouse)
@@ -121,6 +125,7 @@ jobs:
             mkdir -p docs/api/inputs/mouse
             echo "# Mouse Input" > docs/api/inputs/mouse/index.md
             echo "Coming soon." >> docs/api/inputs/mouse/index.md
+            echo "View Source: [https://github.com/AeroBeat-Fitness/aerobeat-input-mouse]
           fi
 
       - name: Generate Input API Docs (Touch)
@@ -132,6 +137,7 @@ jobs:
             mkdir -p docs/api/inputs/touch
             echo "# Touch Input" > docs/api/inputs/touch/index.md
             echo "Coming soon." >> docs/api/inputs/touch/index.md
+            echo "View Source: [https://github.com/AeroBeat-Fitness/aerobeat-input-touch]
           fi
 
       - name: Generate Input API Docs (Gamepad)
@@ -143,6 +149,7 @@ jobs:
             mkdir -p docs/api/inputs/gamepad
             echo "# Gamepad Input" > docs/api/inputs/gamepad/index.md
             echo "Coming soon." >> docs/api/inputs/gamepad/index.md
+            echo "View Source: [https://github.com/AeroBeat-Fitness/aerobeat-input-gamepad]
           fi
 
       - name: Generate Asset API Docs (Prototypes)
@@ -154,6 +161,7 @@ jobs:
             mkdir -p docs/api/assets/prototypes
             echo "# Prototype Assets" > docs/api/assets/prototypes/index.md
             echo "Coming soon." >> docs/api/assets/prototypes/index.md
+            echo "View Source: [https://github.com/AeroBeat-Fitness/aerobeat-asset-prototypes]
           fi
 
       - name: Generate Release Notes

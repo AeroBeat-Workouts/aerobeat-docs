@@ -4,6 +4,8 @@ repo_url: https://github.com/AeroBeat-Fitness/aerobeat-docs
 edit_uri: edit/main/docs/
 theme:
   name: material
+  features:
+    - navigation.top
   palette: 
     primary: teal
     accent: purple
@@ -11,6 +13,9 @@ plugins:
   - search
   - literate-nav:
       nav_file: SUMMARY.md
+  - git-revision-date-localized:
+      type: date
+      fallback_to_build_date: true
 
 markdown_extensions:
   - toc:
