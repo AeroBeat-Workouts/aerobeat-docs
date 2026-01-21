@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://aerobeat-fitness.github.io/aerobeat-docs/architecture/architecture/">
+        <link rel="canonical" href="https://aerobeat-fitness.github.io/aerobeat-docs/architecture/workflow/">
       
       
-        <link rel="prev" href="../../gdd/user-content/policing-content/">
+        <link rel="prev" href="../ui-ux/">
       
       
-        <link rel="next" href="../../api/core/">
+        <link rel="next" href="../reference/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Architecture - AeroBeat Documentation</title>
+        <title>Workflow & Assets - AeroBeat Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#technical-architecture-document-tad" class="md-skip">
+        <a href="#development-workflow" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Architecture
+              Workflow & Assets
             
           </span>
         </div>
@@ -1247,6 +1247,251 @@
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Repository Topology
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../state-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multiplayer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui-ux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -1262,7 +1507,7 @@
   <span class="md-ellipsis">
     
   
-    Architecture
+    Workflow & Assets
   
 
     
@@ -1280,7 +1525,7 @@
   <span class="md-ellipsis">
     
   
-    Architecture
+    Workflow & Assets
   
 
     
@@ -1306,10 +1551,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-executive-summary" class="md-nav__link">
+  <a href="#dependency-management" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Executive Summary
+        Dependency Management
       
     </span>
   </a>
@@ -1317,321 +1562,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-repository-topology" class="md-nav__link">
+  <a href="#the-testbed-pattern" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Repository Topology
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Repository Topology">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-dependency-definitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.1 Dependency Definitions
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-the-ui-tier-strategy-mvvm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2 The UI Tier Strategy (MVVM)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-repository-list-v001" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3 Repository List (v0.0.1)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-core-systems-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Core Systems Architecture
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Core Systems Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-input-pipeline-provider-pattern" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.1 Input Pipeline (Provider Pattern)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#311-strategy-grouping-rationale" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.1.1 Strategy Grouping Rationale
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-state-management-multiplayer-strategy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2 State Management &amp; Multiplayer Strategy
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3.2 State Management &amp; Multiplayer Strategy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#321-the-session-context-immutable" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2.1 The Session Context (Immutable)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#322-the-user-state-mutable-replicated" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2.2 The User State (Mutable / Replicated)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#323-the-remote-athlete-pattern" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2.3 The "Remote Athlete" Pattern
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-audio-conductor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.3 Audio Conductor
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#34-headless-safety-multiplayer-prep" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.4 Headless Safety (Multiplayer Prep)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#35-ui-architecture-atomic-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.5 UI Architecture (Atomic Design)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3.5 UI Architecture (Atomic Design)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#351-the-ui-kit-aerobeat-ui-kit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.5.1 The UI Kit (aerobeat-ui-kit)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#352-the-ui-shells-aerobeat-ui-mobile-aerobeat-ui-vr" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.5.2 The UI Shells (aerobeat-ui-mobile, aerobeat-ui-vr)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#353-the-ui-sync-protocol-tooling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.5.3 The UI Sync Protocol (Tooling)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#344-ui-dependency-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.4.4 UI Dependency Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-development-workflow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Development Workflow
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Development Workflow">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-dependency-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.1 Dependency Management
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-the-testbed-pattern" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.2 The .testbed Pattern
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#43-asset-pipeline" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.3 Asset Pipeline
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-internal-assets-ugc-strategy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Internal Assets &amp; UGC Strategy
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Internal Assets &amp; UGC Strategy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51-internal-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.1 Internal Policy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52-community-content-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.2 Community Content Policy
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-security-licensing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. Security &amp; Licensing
+        The .testbed Pattern
       
     </span>
   </a>
@@ -1639,22 +1573,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-directory-structure-reference" class="md-nav__link">
+  <a href="#asset-pipeline" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Directory Structure Reference
+        Asset Pipeline
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6. Directory Structure Reference">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#internal-assets-ugc-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal Assets &amp; UGC Strategy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Internal Assets &amp; UGC Strategy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#a-the-core-project-aerobeat-core" class="md-nav__link">
+  <a href="#internal-policy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        A. The Core Project (aerobeat-core)
+        Internal Policy
       
     </span>
   </a>
@@ -1662,21 +1607,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#b-a-feature-project-aerobeat-feat-input" class="md-nav__link">
+  <a href="#community-content-policy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        B. A Feature Project (aerobeat-feat-input)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c-the-ui-kit-project-aerobeat-ui-kit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        C. The UI-Kit Project (aerobeat-ui-kit)
+        Community Content Policy
       
     </span>
   </a>
@@ -1691,6 +1625,42 @@
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -2809,10 +2779,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-executive-summary" class="md-nav__link">
+  <a href="#dependency-management" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Executive Summary
+        Dependency Management
       
     </span>
   </a>
@@ -2820,321 +2790,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-repository-topology" class="md-nav__link">
+  <a href="#the-testbed-pattern" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Repository Topology
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Repository Topology">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-dependency-definitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.1 Dependency Definitions
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-the-ui-tier-strategy-mvvm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2 The UI Tier Strategy (MVVM)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-repository-list-v001" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3 Repository List (v0.0.1)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-core-systems-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Core Systems Architecture
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Core Systems Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-input-pipeline-provider-pattern" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.1 Input Pipeline (Provider Pattern)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#311-strategy-grouping-rationale" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.1.1 Strategy Grouping Rationale
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-state-management-multiplayer-strategy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2 State Management &amp; Multiplayer Strategy
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3.2 State Management &amp; Multiplayer Strategy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#321-the-session-context-immutable" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2.1 The Session Context (Immutable)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#322-the-user-state-mutable-replicated" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2.2 The User State (Mutable / Replicated)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#323-the-remote-athlete-pattern" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2.3 The "Remote Athlete" Pattern
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-audio-conductor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.3 Audio Conductor
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#34-headless-safety-multiplayer-prep" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.4 Headless Safety (Multiplayer Prep)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#35-ui-architecture-atomic-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.5 UI Architecture (Atomic Design)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3.5 UI Architecture (Atomic Design)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#351-the-ui-kit-aerobeat-ui-kit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.5.1 The UI Kit (aerobeat-ui-kit)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#352-the-ui-shells-aerobeat-ui-mobile-aerobeat-ui-vr" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.5.2 The UI Shells (aerobeat-ui-mobile, aerobeat-ui-vr)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#353-the-ui-sync-protocol-tooling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.5.3 The UI Sync Protocol (Tooling)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#344-ui-dependency-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.4.4 UI Dependency Rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-development-workflow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Development Workflow
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Development Workflow">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-dependency-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.1 Dependency Management
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-the-testbed-pattern" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.2 The .testbed Pattern
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#43-asset-pipeline" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.3 Asset Pipeline
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-internal-assets-ugc-strategy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Internal Assets &amp; UGC Strategy
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Internal Assets &amp; UGC Strategy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51-internal-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.1 Internal Policy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52-community-content-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.2 Community Content Policy
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-security-licensing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. Security &amp; Licensing
+        The .testbed Pattern
       
     </span>
   </a>
@@ -3142,22 +2801,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-directory-structure-reference" class="md-nav__link">
+  <a href="#asset-pipeline" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Directory Structure Reference
+        Asset Pipeline
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6. Directory Structure Reference">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#internal-assets-ugc-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal Assets &amp; UGC Strategy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Internal Assets &amp; UGC Strategy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#a-the-core-project-aerobeat-core" class="md-nav__link">
+  <a href="#internal-policy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        A. The Core Project (aerobeat-core)
+        Internal Policy
       
     </span>
   </a>
@@ -3165,21 +2835,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#b-a-feature-project-aerobeat-feat-input" class="md-nav__link">
+  <a href="#community-content-policy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        B. A Feature Project (aerobeat-feat-input)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c-the-ui-kit-project-aerobeat-ui-kit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        C. The UI-Kit Project (aerobeat-ui-kit)
+        Community Content Policy
       
     </span>
   </a>
@@ -3211,418 +2870,35 @@
   
 
 
-<h1 id="technical-architecture-document-tad">Technical Architecture Document (TAD)<a class="headerlink" href="#technical-architecture-document-tad" title="Permanent link">&para;</a></h1>
-<p><strong>Project:</strong> AeroBeat Platform</p>
-<p><strong>Target Version:</strong> 0.0.1 (Prototype)</p>
-<p><strong>Date:</strong> 2026-01-19</p>
-<p><strong>Engine:</strong> Godot 4.x</p>
-<p><strong>Language:</strong> GDScript (Primary), Python (CV Sidecar)</p>
-<p><strong>Organization:</strong> AeroBeat-Fitness</p>
-<h2 id="1-executive-summary">1. Executive Summary<a class="headerlink" href="#1-executive-summary" title="Permanent link">&para;</a></h2>
-<p>AeroBeat is a <strong>Modular Rhythm Platform</strong>. We strictly decouple <strong>Input</strong> (Hardware), <strong>UI</strong> (Platform Interaction), <strong>Logic</strong> (Gameplay), and <strong>Content</strong> (Assets).</p>
-<h2 id="2-repository-topology">2. Repository Topology<a class="headerlink" href="#2-repository-topology" title="Permanent link">&para;</a></h2>
-<p>We adhere to a strict <strong>7-Tier</strong> repository structure. Dependencies are categorized to ensure modularity and prevent circular references.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Tier</th>
-<th style="text-align: left;">Repo Name</th>
-<th style="text-align: left;">Role</th>
-<th style="text-align: left;">Required Deps</th>
-<th style="text-align: left;">Allowed Deps</th>
-<th style="text-align: left;">Dev-Only / Peer Deps</th>
-<th style="text-align: left;">License</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Assembly</strong></td>
-<td style="text-align: left;"><code>aerobeat-assembly</code></td>
-<td style="text-align: left;"><strong>The Router.</strong> Manages App State &amp; Dependency Injection.</td>
-<td style="text-align: left;">All Active Packages</td>
-<td style="text-align: left;">All Assets</td>
-<td style="text-align: left;">Test Frameworks (Gut)</td>
-<td style="text-align: left;"><strong>GPLv3</strong></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Core</strong></td>
-<td style="text-align: left;"><code>aerobeat-core</code></td>
-<td style="text-align: left;"><strong>The Hub.</strong> Interfaces, Data Types, Global Constants.</td>
-<td style="text-align: left;"><strong>None</strong></td>
-<td style="text-align: left;"><strong>None</strong></td>
-<td style="text-align: left;">Unit Test Tools</td>
-<td style="text-align: left;"><strong>MPL 2.0</strong></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Input</strong></td>
-<td style="text-align: left;"><code>aerobeat-input-*</code></td>
-<td style="text-align: left;"><strong>Hardware Drivers.</strong> (Camera, VR, Watch).</td>
-<td style="text-align: left;"><code>aerobeat-core</code></td>
-<td style="text-align: left;">Vendor SDKs</td>
-<td style="text-align: left;">Testbed Scaffolding</td>
-<td style="text-align: left;"><strong>MPL 2.0</strong></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>UI Kit</strong></td>
-<td style="text-align: left;"><code>aerobeat-ui-kit</code></td>
-<td style="text-align: left;"><strong>Atomic Library.</strong> Pure, stateless components (Buttons, Cards).</td>
-<td style="text-align: left;"><code>aerobeat-core</code></td>
-<td style="text-align: left;"><code>aerobeat-asset-common</code></td>
-<td style="text-align: left;">Testbed Scaffolding</td>
-<td style="text-align: left;"><strong>MPL 2.0</strong></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>UI Shell</strong></td>
-<td style="text-align: left;"><code>aerobeat-ui-*</code></td>
-<td style="text-align: left;"><strong>Interaction Layer.</strong> Platform-specific screens (Mobile, VR).</td>
-<td style="text-align: left;"><code>aerobeat-core</code><br><code>aerobeat-ui-kit</code></td>
-<td style="text-align: left;"><code>aerobeat-asset-common</code><br>(Local Assets)</td>
-<td style="text-align: left;">Vendor Tools (Tweeners)<br>Mock Data</td>
-<td style="text-align: left;"><strong>GPLv3</strong></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Feature</strong></td>
-<td style="text-align: left;"><code>aerobeat-feature-*</code></td>
-<td style="text-align: left;"><strong>Gameplay Logic.</strong> Pure mechanics (Boxing, Flow).</td>
-<td style="text-align: left;"><code>aerobeat-core</code></td>
-<td style="text-align: left;">Vendor Utils</td>
-<td style="text-align: left;">Testbed Scaffolding</td>
-<td style="text-align: left;"><strong>GPLv3</strong></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Asset</strong></td>
-<td style="text-align: left;"><code>aerobeat-asset-*</code></td>
-<td style="text-align: left;"><strong>Content.</strong> Skins, Songs, Environments.</td>
-<td style="text-align: left;"><code>aerobeat-core</code></td>
-<td style="text-align: left;"><strong>One</strong> Feature (Inheritance)</td>
-<td style="text-align: left;"><strong>None</strong></td>
-<td style="text-align: left;"><strong>CC BY-NC 4.0</strong></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Docs</strong></td>
-<td style="text-align: left;"><code>aerobeat-docs</code></td>
-<td style="text-align: left;"><strong>Manual.</strong> Documentation Website.</td>
-<td style="text-align: left;"><strong>None</strong></td>
-<td style="text-align: left;"><strong>None</strong></td>
-<td style="text-align: left;">MkDocs Plugins</td>
-<td style="text-align: left;"><strong>CC BY-NC 4.0</strong></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Vendor</strong></td>
-<td style="text-align: left;"><code>aerobeat-vendor</code></td>
-<td style="text-align: left;"><strong>3rd Party Tools.</strong> Utilities and Helpers.</td>
-<td style="text-align: left;"><strong>None</strong></td>
-<td style="text-align: left;"><strong>None</strong></td>
-<td style="text-align: left;"><em>(As Upstream)</em></td>
-<td style="text-align: left;"><em>(As Upstream)</em></td>
-</tr>
-</tbody>
-</table>
-<h3 id="21-dependency-definitions">2.1 Dependency Definitions<a class="headerlink" href="#21-dependency-definitions" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Required Dependencies:</strong> The code will not compile without these. They must be present in <code>addons/</code>.</li>
-<li><strong>Allowed Dependencies:</strong> You may link to these if needed (e.g., using the Official Font from <code>asset-common</code>), but they are not strictly mandatory for logic.</li>
-<li><strong>Dev-Only / Peer Dependencies:</strong> Tools used for testing (like <code>Gut</code> or <code>Tween</code> libraries). In Production, these are provided by the Host Assembly. In Development, they are cloned via <code>setup_dev</code>.</li>
-</ul>
-<h3 id="22-the-ui-tier-strategy-mvvm">2.2 The UI Tier Strategy (MVVM)<a class="headerlink" href="#22-the-ui-tier-strategy-mvvm" title="Permanent link">&para;</a></h3>
-<p>We do not have a "Default UI." The Assembly defines <strong>UI Contracts</strong> (<code>AeroMenuProvider</code>), and the UI Tier implements them.</p>
-<ul>
-<li><strong><code>aerobeat-ui-mobile</code></strong>: 2D Touch-based interface (Scrolls, Taps).</li>
-<li><strong><code>aerobeat-ui-desktop</code></strong>: Mouse/Keyboard interface (Hover states, Keybinds).</li>
-<li><strong><code>aerobeat-ui-vr</code></strong>: Spatial interface (Laser pointers, World-Space Canvas).</li>
-</ul>
-<h3 id="23-repository-list-v001">2.3 Repository List (v0.0.1)<a class="headerlink" href="#23-repository-list-v001" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong><code>aerobeat-assembly</code></strong>: The main Godot project. Contains <code>project.godot</code>, Export Presets, and Main Menu logic.</li>
-<li><strong><code>aerobeat-core</code></strong>: The unified hub for Contracts (<code>AeroInputStrategy</code>), Signals (<code>AeroEvents</code>), Constants (<code>AeroConst</code>), and Data Types.</li>
-<li><strong><code>aerobeat-input-mediapipe-python</code></strong>: Tracks body movement using MediaPipe camera events, then passes them via UDP listeners.</li>
-<li><strong><code>aerobeat-feature-boxing</code></strong>: The Boxing gameplay loop, hit detection, and choreography parser.</li>
-<li><strong><code>aerobeat-asset-prototypes</code></strong>: Grey-box environments and dummy targets.</li>
-</ul>
-<hr />
-<h2 id="3-core-systems-architecture">3. Core Systems Architecture<a class="headerlink" href="#3-core-systems-architecture" title="Permanent link">&para;</a></h2>
-<h3 id="31-input-pipeline-provider-pattern">3.1 Input Pipeline (Provider Pattern)<a class="headerlink" href="#31-input-pipeline-provider-pattern" title="Permanent link">&para;</a></h3>
-<p>Input is abstracted via a Strategy Pattern to allow hot-swapping between CV, VR, and Debug modes. The game logic never talks to hardware directly; it asks the <strong>Input Provider</strong> for normalized data.</p>
-<ul>
-<li><strong>Interface:</strong> <code>AeroInputProvider</code> (Defined in <code>aerobeat-core</code>).</li>
-<li><strong>Contract:</strong> Must return normalized <code>0.0 - 1.0</code> Viewport Coordinates for <code>LeftHand</code>, <code>RightHand</code>, and <code>Head</code>.</li>
-</ul>
-<p><strong>Supported Strategies:</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Strategy Name</th>
-<th style="text-align: left;">Repository</th>
-<th style="text-align: left;">Technology</th>
-<th style="text-align: left;">Target Platform</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong><code>StrategyMediaPipePython</code></strong></td>
-<td style="text-align: left;"><code>aerobeat-input-mediapipe-python</code></td>
-<td style="text-align: left;"><strong>Sidecar Process.</strong> Launches a Python subprocess that pipes landmark data via UDP <code>localhost:8100</code>.</td>
-<td style="text-align: left;">Windows, Linux, Mac</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong><code>StrategyMediaPipeNative</code></strong></td>
-<td style="text-align: left;"><code>aerobeat-input-mediapipe-native</code></td>
-<td style="text-align: left;"><strong>GDExtension / Plugin.</strong> Runs MediaPipe directly in the application memory.</td>
-<td style="text-align: left;">Android, iOS</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong><code>StrategyJoyconHID</code></strong></td>
-<td style="text-align: left;"><code>aerobeat-input-joycon-hid</code></td>
-<td style="text-align: left;"><strong>Raw Bluetooth.</strong> Connects directly to JoyCons to read high-speed Gyro/Accel data.</td>
-<td style="text-align: left;">Windows, Linux, Android</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong><code>StrategyKeyboard</code></strong></td>
-<td style="text-align: left;"><code>aerobeat-input-keyboard</code></td>
-<td style="text-align: left;"><strong>Godot Native.</strong> Maps WASD/Arrow keys to specific lanes (Virtual Presence).</td>
-<td style="text-align: left;">All</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong><code>StrategyMouse</code></strong></td>
-<td style="text-align: left;"><code>aerobeat-input-mouse</code></td>
-<td style="text-align: left;"><strong>Godot Native.</strong> Maps cursor X/Y to viewport coordinates.</td>
-<td style="text-align: left;">Desktop / Web</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong><code>StrategyTouch</code></strong></td>
-<td style="text-align: left;"><code>aerobeat-input-touch</code></td>
-<td style="text-align: left;"><strong>Godot Native.</strong> Maps touchscreen taps to viewport coordinates.</td>
-<td style="text-align: left;">Mobile / Tablet</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong><code>StrategyGamepad</code></strong></td>
-<td style="text-align: left;"><code>aerobeat-input-gamepad</code></td>
-<td style="text-align: left;"><strong>Godot Native.</strong> Standard XInput (Xbox/PS5) stick mapping.</td>
-<td style="text-align: left;">All</td>
-</tr>
-</tbody>
-</table>
-<h3 id="311-strategy-grouping-rationale">3.1.1 Strategy Grouping Rationale<a class="headerlink" href="#311-strategy-grouping-rationale" title="Permanent link">&para;</a></h3>
-<p>We enforce a <strong>One-Repo-Per-Device-Type</strong> policy, even for standard Godot inputs.</p>
-<p><strong>The Logic: Granularity &amp; Quirks.</strong></p>
-<ol>
-<li>
-<p><strong>Isolation of Quirks:</strong></p>
-<ul>
-<li>While Godot handles generic Gamepads well, specific controllers (like DDR Dance Pads or Flight Sticks) often report as generic gamepads but require specific axis remapping or deadzone logic.</li>
-<li>By isolating <code>aerobeat-input-gamepad</code>, we can implement complex remapping strategies without polluting the clean logic of <code>aerobeat-input-keyboard</code>.</li>
-</ul>
-</li>
-<li>
-<p><strong>The "Driver" Tier (<code>input-mediapipe-*</code>, <code>input-joycon</code>):</strong></p>
-<ul>
-<li>These inputs require <strong>Heavy External Dependencies</strong> (Python Environments, Android .aar Libraries, GDExtensions).</li>
-<li><strong>Isolation is Safety:</strong> By keeping the Python CV stack in its own repo, we ensure that a Mobile developer never has to download a 200MB Python environment they can't use. Likewise, a PC developer doesn't need to compile Android Java code just to fix a keyboard bug.</li>
-</ul>
-</li>
-</ol>
-<p><strong>Normalization Flow:</strong></p>
-<ol>
-<li><strong>Raw Data:</strong> Strategy receives device-specific data (e.g., MediaPipe Landmark <code>x: 0.54, y: 0.21, z: -0.1</code>).</li>
-<li><strong>Adaptation:</strong> Strategy applies technology-specific offsets (e.g., flipping Y axis for OpenCV).</li>
-<li><strong>Delivery:</strong> Strategy exposes <code>get_left_hand_transform()</code> to the Game Loop.</li>
-</ol>
-<h3 id="32-state-management-multiplayer-strategy">3.2 State Management &amp; Multiplayer Strategy<a class="headerlink" href="#32-state-management-multiplayer-strategy" title="Permanent link">&para;</a></h3>
-<p>To support multiplayer without refactoring core logic, we strictly separate <strong>Immutable Context</strong> from <strong>Mutable State</strong>.</p>
-<h4 id="321-the-session-context-immutable">3.2.1 The Session Context (Immutable)<a class="headerlink" href="#321-the-session-context-immutable" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Class:</strong> <code>AeroSessionContext</code> (Core).</li>
-<li><strong>Role:</strong> Defines the "Rules of the Round" (Song ID, Difficulty, Modifiers, Random Seed).</li>
-<li><strong>Sync:</strong> Sent <strong>Once</strong> by the Host before the round starts.</li>
-<li><strong>Rule:</strong> Features <strong>READ</strong> this to configure themselves. They <strong>NEVER</strong> modify it.</li>
-</ul>
-<h4 id="322-the-user-state-mutable-replicated">3.2.2 The User State (Mutable / Replicated)<a class="headerlink" href="#322-the-user-state-mutable-replicated" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Class:</strong> <code>AeroUserState</code> (Core).</li>
-<li><strong>Role:</strong> Holds real-time player data (Score, Combo, Health, Current Input Pose).</li>
-<li><strong>Authority:</strong> The <strong>Local Client</strong> is the authority on their own score/hits (Client-Side Prediction).</li>
-<li><strong>Replication:</strong><ul>
-<li><strong>High Frequency (Unreliable):</strong> Avatar Pose (Head/Hands) for visual representation.</li>
-<li><strong>Event Based (Reliable):</strong> Score updates, Combo breaks, Health changes.</li>
-</ul>
-</li>
-<li><strong>Rule:</strong> Features write to their Local <code>AeroUserState</code>. The Assembly handles replicating this object to other peers.</li>
-</ul>
-<h4 id="323-the-remote-athlete-pattern">3.2.3 The "Remote Athlete" Pattern<a class="headerlink" href="#323-the-remote-athlete-pattern" title="Permanent link">&para;</a></h4>
-<p>Multiplayer opponents are visualized as "Remote Athletes" (Avatars).</p>
-<ol>
-<li><strong>Local Athlete:</strong> Input -&gt; Logic -&gt; <code>AeroUserState</code> (Local).</li>
-<li><strong>Remote Athlete:</strong> Network -&gt; <code>AeroUserState</code> (Remote) -&gt; Avatar Visualizer.</li>
-<li><strong>Constraint:</strong> Gameplay Logic (<code>aerobeat-feature-*</code>) must accept a <code>target_user_state</code> in its setup. It does not assume it is always driving the main UI.</li>
-</ol>
-<h3 id="33-audio-conductor">3.3 Audio Conductor<a class="headerlink" href="#33-audio-conductor" title="Permanent link">&para;</a></h3>
-<p>We do not use <code>_process(delta)</code> for rhythm timing.</p>
-<ul>
-<li><strong>Time Source:</strong> <code>AudioServer.get_dsp_time()</code> + <code>AudioServer.get_time_since_last_mix()</code>.</li>
-<li><strong>Latency:</strong> Visual spawn times are offset by a user-calibrated <code>latency_ms</code>.</li>
-<li><strong>Signals:</strong> The Conductor emits <code>beat_hit(beat_index)</code>. Spawners listen to signals; they do not count time themselves.</li>
-</ul>
-<h3 id="34-headless-safety-multiplayer-prep">3.4 Headless Safety (Multiplayer Prep)<a class="headerlink" href="#34-headless-safety-multiplayer-prep" title="Permanent link">&para;</a></h3>
-<p>Feature Logic must be safe to run on a Linux Headless Server (No GPU/Audio).</p>
-<ul>
-<li><strong>Forbidden:</strong> Logic scripts calling <code>$Audio.play()</code> or <code>$Particles.emit()</code>.</li>
-<li><strong>Required:</strong> Logic emits <code>signal hit_confirmed</code>. A separate <code>_view_connector.gd</code> (Client Only) listens and plays FX.</li>
-</ul>
-<h2 id="35-ui-architecture-atomic-design">3.5 UI Architecture (Atomic Design)<a class="headerlink" href="#35-ui-architecture-atomic-design" title="Permanent link">&para;</a></h2>
-<p>We utilize the <strong>Atomic Design Methodology</strong> to maximize code reuse across disparate platforms (VR vs. Mobile). UI development is split between a centralized "Kit" and platform-specific "Shells."</p>
-<h3 id="351-the-ui-kit-aerobeat-ui-kit">3.5.1 The UI Kit (<code>aerobeat-ui-kit</code>)<a class="headerlink" href="#351-the-ui-kit-aerobeat-ui-kit" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Role:</strong> The Source of Truth. Contains pure, stateless visual components.</li>
-<li><strong>License:</strong> <strong>MPL 2.0</strong> (Treat as a standard library).</li>
-<li><strong>Structure:</strong><ul>
-<li><strong>Atoms:</strong> Irreducible controls (e.g., <code>AeroButton</code>, <code>AeroLabel</code>, <code>AeroSlider</code>). Styles are driven by Theme Resources.</li>
-<li><strong>Molecules:</strong> Simple functional groups (e.g., <code>SongCard</code> = Cover Art + Title + Difficulty Badge).</li>
-<li><strong>Organisms:</strong> Complex, distinct sections (e.g., <code>SongList</code>, <code>LeaderboardRow</code>, <code>ProfileHeader</code>).</li>
-</ul>
-</li>
-<li><strong>Testing:</strong> Every Atom/Molecule must include a <code>_testbed/</code> scene demonstrating its states (Normal, Hover, Disabled, Focused).</li>
-</ul>
-<h3 id="352-the-ui-shells-aerobeat-ui-mobile-aerobeat-ui-vr">3.5.2 The UI Shells (<code>aerobeat-ui-mobile</code>, <code>aerobeat-ui-vr</code>)<a class="headerlink" href="#352-the-ui-shells-aerobeat-ui-mobile-aerobeat-ui-vr" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Role:</strong> The Assembler. Defines "Templates" and "Pages."</li>
-<li><strong>License:</strong> <strong>GPLv3</strong> (Contains Application Logic).</li>
-<li><strong>Responsibility:</strong><ol>
-<li><strong>Import:</strong> Consumes the <code>aerobeat-ui-kit</code> via the <strong>UI Sync Protocol</strong>.</li>
-<li><strong>Layout:</strong> Arranges Organisms into usable Screens (<code>MainMenu</code>, <code>GameplayHUD</code>).</li>
-<li><strong>Wiring:</strong> Connects component signals to App Logic (<code>aerobeat-assembly</code>).</li>
-</ol>
-</li>
-</ul>
-<h3 id="353-the-ui-sync-protocol-tooling">3.5.3 The UI Sync Protocol (Tooling)<a class="headerlink" href="#353-the-ui-sync-protocol-tooling" title="Permanent link">&para;</a></h3>
-<p>Since Godot lacks a native package manager for assets, we enforce consistency via custom tooling.</p>
-<ol>
-<li><strong>The Script:</strong> <code>./sync_ui_kit</code> (Python/Bash).<ul>
-<li>Located in the root of every UI Shell repo.</li>
-<li><strong>Action:</strong> Pulls the specific version of <code>aerobeat-ui-kit</code> defined in <code>.kit_version</code>.</li>
-<li><strong>Validation:</strong> Runs the <code>test_components</code> command to ensure the imported atoms are compatible with the current project settings.</li>
-</ul>
-</li>
-<li><strong>The Workflow:</strong><ul>
-<li>Developers <strong>NEVER</strong> modify <code>addons/aerobeat-ui-kit</code> inside a Shell repo.</li>
-<li>Updates are made in the <code>aerobeat-ui-kit</code> repo, tagged, and then pulled into Shells via the sync script.</li>
-</ul>
-</li>
-</ol>
-<h3 id="344-ui-dependency-rules">3.4.4 UI Dependency Rules<a class="headerlink" href="#344-ui-dependency-rules" title="Permanent link">&para;</a></h3>
-<p>To ensure UI repositories remain lightweight and fast to test, we enforce the following dependency limits:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Dependency Type</th>
-<th style="text-align: left;">Repository</th>
-<th style="text-align: left;">Status</th>
-<th style="text-align: left;">Logic</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Contract Hub</strong></td>
-<td style="text-align: left;"><code>aerobeat-core</code></td>
-<td style="text-align: left;"><strong>Required</strong></td>
-<td style="text-align: left;">Needed for <code>AeroMenuProvider</code> interface.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Component Kit</strong></td>
-<td style="text-align: left;"><code>aerobeat-ui-kit</code></td>
-<td style="text-align: left;"><strong>Required</strong></td>
-<td style="text-align: left;">Source of all buttons, sliders, and standard widgets.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Shared Assets</strong></td>
-<td style="text-align: left;"><code>aerobeat-asset-common</code></td>
-<td style="text-align: left;"><strong>Allowed</strong></td>
-<td style="text-align: left;">Fonts, Logos, and Global Icons only.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Vendor Tools</strong></td>
-<td style="text-align: left;"><code>aerobeat-vendor</code></td>
-<td style="text-align: left;"><strong>Dev-Only</strong></td>
-<td style="text-align: left;">Tween libs or UI helpers. In Prod, these are Peer Dependencies provided by Assembly.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Game Content</strong></td>
-<td style="text-align: left;"><code>aerobeat-asset-*</code></td>
-<td style="text-align: left;"><strong>FORBIDDEN</strong></td>
-<td style="text-align: left;">UI must never depend on specific Level/Env packs. Use Mock Data for testing.</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="4-development-workflow">4. Development Workflow<a class="headerlink" href="#4-development-workflow" title="Permanent link">&para;</a></h2>
-<h3 id="41-dependency-management">4.1 Dependency Management<a class="headerlink" href="#41-dependency-management" title="Permanent link">&para;</a></h3>
+<h1 id="development-workflow">Development Workflow<a class="headerlink" href="#development-workflow" title="Permanent link">&para;</a></h1>
+<h3 id="dependency-management">Dependency Management<a class="headerlink" href="#dependency-management" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Git Submodules:</strong> Managed via a <code>setup_dev</code> script in each repo root.</li>
 <li><strong>Peer Dependencies:</strong> 3rd Party Plugins (e.g., PhantomCamera) are installed in the <code>aerobeat-assembly</code> root. Feature packages access them via <code>class_name</code> availability (Duck Typing).</li>
 </ul>
-<h3 id="42-the-testbed-pattern">4.2 The <code>.testbed</code> Pattern<a class="headerlink" href="#42-the-testbed-pattern" title="Permanent link">&para;</a></h3>
+<h3 id="the-testbed-pattern">The <code>.testbed</code> Pattern<a class="headerlink" href="#the-testbed-pattern" title="Permanent link">&para;</a></h3>
 <p>To develop Features in isolation:</p>
 <ol>
 <li>Feature Repos contain an ignored <code>.testbed/</code> folder.</li>
 <li>Developers run <code>./setup_dev</code> to clone dependencies (<code>aerobeat-core</code>) into <code>.testbed/addons/</code>.</li>
 <li>Developers work inside <code>.testbed/project.godot</code>.</li>
 </ol>
-<h3 id="43-asset-pipeline">4.3 Asset Pipeline<a class="headerlink" href="#43-asset-pipeline" title="Permanent link">&para;</a></h3>
+<h3 id="asset-pipeline">Asset Pipeline<a class="headerlink" href="#asset-pipeline" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Inheritance:</strong> Artists inherit <code>res://templates/base_target.tscn</code> (from Feature) to create skins.</li>
 <li><strong>Single Dependency:</strong> An Asset Package may only depend on <strong>one</strong> Feature. Shared assets must move to <code>aerobeat-asset-*-common</code>.</li>
 </ul>
 <hr />
-<h2 id="5-internal-assets-ugc-strategy">5. Internal Assets &amp; UGC Strategy<a class="headerlink" href="#5-internal-assets-ugc-strategy" title="Permanent link">&para;</a></h2>
-<h3 id="51-internal-policy">5.1 Internal Policy<a class="headerlink" href="#51-internal-policy" title="Permanent link">&para;</a></h3>
+<h2 id="internal-assets-ugc-strategy">Internal Assets &amp; UGC Strategy<a class="headerlink" href="#internal-assets-ugc-strategy" title="Permanent link">&para;</a></h2>
+<h3 id="internal-policy">Internal Policy<a class="headerlink" href="#internal-policy" title="Permanent link">&para;</a></h3>
 <p>Scripts (<code>.gd</code>) and Shaders (<code>.gdshader</code>) are <strong>PERMITTED</strong> in Internally developed Asset Repos (Visual Polish).</p>
-<h3 id="52-community-content-policy">5.2 Community Content Policy<a class="headerlink" href="#52-community-content-policy" title="Permanent link">&para;</a></h3>
+<h3 id="community-content-policy">Community Content Policy<a class="headerlink" href="#community-content-policy" title="Permanent link">&para;</a></h3>
 <p>Scripts are <strong>STRICTLY BANNED</strong> in Community Packages to prevent RCE.</p>
 <ul>
 <li><strong>Method:</strong> <strong>Data-Driven Injection</strong>.</li>
 <li><strong>Flow:</strong> The Game spawns the Logic Entity (Feature Repo). The Loader reads a <code>SkinConfig</code> resource (UGC) and swaps the Mesh/Material at runtime.</li>
 <li><strong>Validation:</strong> The Asset Loader rejects any imported package containing text resources with <code>script/source</code> references.</li>
 </ul>
-<h2 id="6-security-licensing">6. Security &amp; Licensing<a class="headerlink" href="#6-security-licensing" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>UI Code:</strong> Licensed under <strong>GPLv3</strong> because it contains complex logic (state handling, animation controllers).</li>
-<li><strong>Assets:</strong> Visuals used by the UI (Icons, Fonts) can be stored inside the UI repo if they are specific to that UI, or pulled from <code>aerobeat-asset-common</code> if shared.</li>
-</ul>
-<hr />
-<h2 id="6-directory-structure-reference">6. Directory Structure Reference<a class="headerlink" href="#6-directory-structure-reference" title="Permanent link">&para;</a></h2>
-<h3 id="a-the-core-project-aerobeat-core">A. The Core Project (<code>aerobeat-core</code>)<a class="headerlink" href="#a-the-core-project-aerobeat-core" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>aerobeat-core/
-├── contracts/          # Interfaces (AeroInputStrategy)
-├── data_types/         # Resources (AeroSessionContext, BeatData)
-├── globals/            # Static Consts (AeroConst, AeroEvents)
-└── utils/              # Math Helpers (KalmanFilter)
-</code></pre></div>
-<h3 id="b-a-feature-project-aerobeat-feat-input">B. A Feature Project (<code>aerobeat-feat-input</code>)<a class="headerlink" href="#b-a-feature-project-aerobeat-feat-input" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>aerobeat-input-mediapipe-python/
-├── python_mediapipe/       # CV Sidecar Code
-├── scripts/
-│   ├── strategies/     # Logic Implementation
-│   │   ├── strategy_mediapipe.gd
-│   │   └── strategy_debug.gd
-│   └── input_manager.gd
-├── .testbed/           # Ignored Ghost Project
-└── plugin.cfg
-</code></pre></div>
-<h3 id="c-the-ui-kit-project-aerobeat-ui-kit">C. The UI-Kit Project (<code>aerobeat-ui-kit</code>)<a class="headerlink" href="#c-the-ui-kit-project-aerobeat-ui-kit" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>aerobeat-ui-kit/
-├── atoms/
-│   ├── aero_button/
-│   │   ├── AeroButton.tscn
-│   │   ├── AeroButton.gd
-│   │   └── AeroButton_Test.tscn  &lt;-- The Atomic Test
-│   └── aero_slider/ ...
-├── molecules/
-│   ├── song_card/
-│   │   ├── SongCard.tscn         &lt;-- Uses AeroButton + AeroLabel
-│   │   └── SongCard_Test.tscn
-├── scripts/
-│   └── theme_utils.gd            &lt;-- Shared logic
-└── sync_manifest.json            &lt;-- Defines exports
-</code></pre></div>
 
 
 
@@ -3643,7 +2919,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 21, 2026 14:24:58 UTC">January 21, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 21, 2026 15:50:21 UTC">January 21, 2026</span>
   </span>
 
     
