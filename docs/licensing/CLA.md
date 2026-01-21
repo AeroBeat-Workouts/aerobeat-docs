@@ -17,7 +17,9 @@ This license is for your protection as a Contributor as well as for the protecti
 Subject to the terms and conditions of this Agreement, You hereby grant to AeroBeat-Fitness and to recipients of software distributed by AeroBeat-Fitness a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright license to reproduce, prepare derivative works of, publicly display, publicly perform, sublicense, and distribute Your Contributions and such derivative works.
 
 **Why do we need this?**
+
 This grant allows us to:
+
 1.  Distribute the Community Edition under **GPLv3**.
 2.  Distribute Commercial/Arcade Editions under **Proprietary Licenses** (Dual Licensing).
 3.  Defend the project against copyright infringement.
