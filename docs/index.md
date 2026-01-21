@@ -21,26 +21,34 @@ We are building a platform, not just a game. Our architecture separates **Input*
 Our documentation is divided by role. Choose your path below:
 
 ### 🥊 [Game Design (GDD)](gdd/concept.md)
+
 *For Designers and Visionaries.*
+
 * Read the about **Core Loop** and Scoring Logic.
 * Understand the "Fitness-First" approach to difficulty.
 * Explore the roadmap for Multiplayer and Workshop features.
 
-### 🛠️ Technical Architecture
+### 🛠️ [Technical Architecture](architecture/overview.md)
+
 *For Software Engineers and System Architects.*
+
 * Understand the **Hub-and-Spoke Polyrepo** topology.
 * Learn how `aerobeat-core` manages contracts between modules.
 * Dive into the **Session Context** dependency injection system.
 * **Key Tech:** Godot 4.x, GDScript, MediaPipe.
 
 ### 🤖 [AI-Assisted Workflow](guides/ai_prompting.md)
+
 *For Developers using LLMs.*
+
 * **New to the team? Start here.**
 * Learn how to use our **Context Anchors** (`AI_MANIFEST`, `STYLE_GUIDE`) to get high-quality code from AI agents.
 * Copy our standard **System Prompt** for consistency.
 
 ### 🎨 [Art Overview](gdd/art/overview.md)
+
 *For Artists looking to add new art assets*
+
 * How to inherit from `base_target.tscn` to create skins.
 * Understanding the **Single-Dependency Rule** for Asset Packages.
 * Licensing guide for **CC BY-NC 4.0** contributions.
@@ -69,7 +77,7 @@ AeroBeat uses a 7-tier repository structure to keep code clean and decoupled.
 
 We welcome contributions of all kinds! Whether you are fixing a bug in the Core, designing a new environment, or writing an input driver for a new hardware device.
 
-1.  **Check the License:** Please review our [Licensing Overview](licensing/overview.md) to understand how your contributions will be protected.
+1.  **Check the License:** Please review our Licensing Overview to understand how your contributions will be protected.
 2.  **Pick a Repo:** Navigate to the specific repository relevant to your skill set.
 3.  **Run Setup:** Use the included `./setup_dev` script to initialize your local environment.
 

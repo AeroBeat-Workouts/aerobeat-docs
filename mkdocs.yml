@@ -6,6 +6,7 @@ theme:
   name: material
   features:
     - navigation.top
+    - content.code.copy
   palette: 
     primary: teal
     accent: purple
@@ -31,10 +32,17 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Licensing:
-    - Overview: licensing/overview.md
+    - Overview: licensing/index.md
+    - For Engineers: licensing/engineers.md
+    - For Creatives: licensing/creative.md
+    - For Commercial Partners: licensing/commercial.md
+    - For Hardware Vendors: licensing/hardware.md
+    - Attribution Guide: licensing/attribution.md
     - CLA: licensing/CLA.md
     - Contributing: licensing/CONTRIBUTING.md
   - Release Notes: releases/changelog.md
+  - Guides:
+    - AI Prompting: guides/ai_prompting.md
   - Game Design:
     - Overview: gdd/concept.md
     - Art: 
