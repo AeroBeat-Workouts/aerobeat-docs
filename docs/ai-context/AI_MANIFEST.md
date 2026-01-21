@@ -10,9 +10,13 @@
   * `contracts/`: Interfaces only. No game logic.
   * `data_types/`: `Resource` definitions only.
   * `globals/`: Singletons (SignalBus).
-* `aerobeat-ui-kit/`
-  * `atoms/`: Single logic components (Buttons).
-  * `molecules/`: Composite components (Cards).
+* `aerobeat-ui-core/`
+  * `scripts/`: Base logic classes (`AeroButtonBase`). No scenes.
+* `aerobeat-ui-kit-*/`
+  * `atoms/`: Themed components inheriting Core logic.
+  * `molecules/`: Composite components.
+* `aerobeat-ui-shell-*/`
+  * `screens/`: Full page layouts (MainMenu, HUD).
 * `aerobeat-feature-*/`
   * `scripts/`: Implementation logic.
   * `.testbed/`: Isolated testing scenes (Ignore in production builds).

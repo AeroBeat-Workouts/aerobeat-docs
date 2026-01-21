@@ -2,7 +2,7 @@ import os
 import subprocess
 
 # Defined in architecture/ui-ux.md
-KIT_REPO = "https://github.com/AeroBeat-Fitness/aerobeat-ui-kit.git"
+KIT_REPO = "https://github.com/AeroBeat-Fitness/aerobeat-ui-kit-community.git"
 
 def main():
     print("🎨 Syncing UI Kit...")

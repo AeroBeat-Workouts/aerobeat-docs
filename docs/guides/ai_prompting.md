@@ -39,7 +39,7 @@ When starting a new session (e.g., opening a new Chat in Cursor), copy and paste
 
 ### 1. Reference Tiers Explicitly
 Don't say: *"Make a button for the menu."*
-**Do say:** *"Create a new Atom in `aerobeat-ui-kit` called `AeroToggle`. Then implement it in the `aerobeat-ui-mobile` shell."*
+**Do say:** *"Create a new Atom in `aerobeat-ui-kit-community` called `AeroToggle`. Then implement it in the `aerobeat-ui-shell-mobile-community` shell."*
 
 ### 2. The "One File" Rule
 AI struggles with massive refactors. Ask for one file at a time.

@@ -56,7 +56,9 @@ AeroBeat uses a 7-tier repository structure to keep code clean and decoupled.
 | **[`aerobeat-assembly-community`](https://github.com/AeroBeat-Fitness/aerobeat-assembly-community)** | The Game Client for the Community Edition of AeroBeat. Builds the executable for the Client and Server. | **GPLv3** |
 | **[`aerobeat-core`](https://github.com/AeroBeat-Fitness/aerobeat-core)** | The Engine Hub. Contracts, Signals, and Data Types. | **MPL 2.0** |
 | **[`aerobeat-input-*`](https://github.com/AeroBeat-Fitness/aerobeat-input-mediapipe-python)** | Hardware Drivers (Webcam, VR). | **MPL 2.0** |
-| **[`aerobeat-ui-*`](https://github.com/AeroBeat-Fitness/aerobeat-ui-desktop)** | Interaction Shells (Mobile vs VR). | **GPLv3** |
+| **`aerobeat-ui-core`** | UI Logic Layer (ViewModel). Base classes. | **MPL 2.0** |
+| **`aerobeat-ui-kit-*`** | Visual Component Libraries (Themed Atoms/Molecules). | **MPL 2.0** |
+| **`aerobeat-ui-shell-*`** | Interaction Shells (Mobile vs VR). | **GPLv3** |
 | **[`aerobeat-feature-*`](https://github.com/AeroBeat-Fitness/aerobeat-feature-boxing)** | Gameplay Logic (e.g., Boxing, Flow). | **GPLv3** |
 | **[`aerobeat-asset-*`](https://github.com/AeroBeat-Fitness/aerobeat-asset-prototypes)** | Content Packs (Skins, Environments). | **CC BY-NC 4.0** |
 | **[`aerobeat-docs`](https://github.com/AeroBeat-Fitness/aerobeat-docs/tree/main/docs)** | This documentation site. | **CC BY-NC 4.0** |

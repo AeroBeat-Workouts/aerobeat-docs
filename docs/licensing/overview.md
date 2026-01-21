@@ -25,6 +25,12 @@ Our codebase is split into three categories. The license depends on which reposi
 * **The Rule:** Input drivers are treated like the Engine Core.
 * **Why:** We want hardware vendors (e.g., Smart Watch makers, VR Headset companies) to write official drivers for AeroBeat. MPL 2.0 allows them to link their proprietary SDKs (DLLs/Libs) to our Input System without violating the license.
 
+### 4. The UI Stack (`aerobeat-ui-*`)
+* **UI Core & Kits (`aerobeat-ui-core`, `aerobeat-ui-kit-*`):** **Mozilla Public License 2.0 (MPL 2.0)**
+    * **The Rule:** These are treated as standard libraries. You can link them to proprietary shells if needed, but changes to the files themselves must be shared.
+* **UI Shells (`aerobeat-ui-shell-*`):** **GNU GPLv3**
+    * **The Rule:** The Shell contains the specific application flow and wiring. It is treated as part of the Game Client and must be open source.
+
 ---
 
 ## 🎨 For Artists & Audio Designers
@@ -74,5 +80,8 @@ If you are a hardware vendor looking to integrate your device (Smart Glove, Hapt
 | `aerobeat-assembly-*` | **GPLv3** | **No.** |
 | `aerobeat-feature-*`| **GPLv3** | **No.** |
 | `aerobeat-input-*` | **MPL 2.0** | Only your new files/SDKs. |
+| `aerobeat-ui-core` | **MPL 2.0** | Only your new files. |
+| `aerobeat-ui-kit-*` | **MPL 2.0** | Only your new files. |
+| `aerobeat-ui-shell-*`| **GPLv3** | **No.** |
 | `aerobeat-asset-*` | **CC BY-NC 4.0** | **No** (and no commercial use). |
 | `aerobeat-docs` | **CC BY-NC 4.0** | **No.** (and no commercial use). |

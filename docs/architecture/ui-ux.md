@@ -1,23 +1,29 @@
 # UI Architecture (Atomic Design)
 
-We utilize the **Atomic Design Methodology** to maximize code reuse across disparate platforms (VR vs. Mobile). UI development is split between a centralized "Kit" and platform-specific "Shells."
+We utilize a **Multi-Kit Ecosystem** to support White Labeling and distinct platform requirements. We separate **Logic** (ViewModel), **Visuals** (View), and **Layout** (Shell).
 
-### The UI Kit (`aerobeat-ui-kit`)
+### 1. UI Core (`aerobeat-ui-core`)
 
-* **Role:** The Source of Truth. Contains pure, stateless visual components.
-* **License:** **MPL 2.0** (Treat as a standard library).
+* **Role:** The Logic Layer (ViewModel). Contains abstract GDScript classes.
+* **Content:** `AeroButtonBase`, `AeroSliderBase`. No `.tscn` files.
+* **Goal:** Ensures bug fixes in logic propagate to all visual kits.
+
+### 2. UI Kits (`aerobeat-ui-kit-*`)
+
+* **Role:** The Visual Layer (View). Contains pure, stateless visual components.
+* **Variants:** `aerobeat-ui-kit-community`, `aerobeat-ui-kit-linkinpark`.
 * **Structure:**
-    * **Atoms:** Irreducible controls (e.g., `AeroButton`, `AeroLabel`, `AeroSlider`). Styles are driven by Theme Resources.
-    * **Molecules:** Simple functional groups (e.g., `SongCard` = Cover Art + Title + Difficulty Badge).
-    * **Organisms:** Complex, distinct sections (e.g., `SongList`, `LeaderboardRow`, `ProfileHeader`).
-* **Testing:** Every Atom/Molecule must include a `_testbed/` scene demonstrating its states (Normal, Hover, Disabled, Focused).
+    * **Atoms:** Scenes inheriting Core logic (e.g., `AeroButton.tscn` extends `AeroButtonBase`).
+    * **Molecules:** Functional groups (e.g., `SongCard`).
+    * **Organisms:** Complex sections (e.g., `SongList`).
 
-### The UI Shells (`aerobeat-ui-mobile`, `aerobeat-ui-vr`)
+### 3. UI Shells (`aerobeat-ui-shell-*`)
 
-* **Role:** The Assembler. Defines "Templates" and "Pages."
+* **Role:** The Assembler. Defines "Layouts" and "Pages."
+* **Variants:** `aerobeat-ui-shell-mobile-community`, `aerobeat-ui-shell-arcade-linkinpark`.
 * **License:** **GPLv3** (Contains Application Logic).
 * **Responsibility:**
-    1.  **Import:** Consumes the `aerobeat-ui-kit` via the **UI Sync Protocol**.
+    1.  **Import:** Consumes a specific `aerobeat-ui-kit-*` via the **UI Sync Protocol**.
     2.  **Layout:** Arranges Organisms into usable Screens (`MainMenu`, `GameplayHUD`).
     3.  **Wiring:** Connects component signals to App Logic (`aerobeat-assembly-*`).
 
@@ -27,11 +33,11 @@ Since Godot lacks a native package manager for assets, we enforce consistency vi
 
 1.  **The Script:** `./sync_ui_kit` (Python/Bash).
     * Located in the root of every UI Shell repo.
-    * **Action:** Pulls the specific version of `aerobeat-ui-kit` defined in `.kit_version`.
+    * **Action:** Pulls the specific version of the target `aerobeat-ui-kit-*` defined in `.kit_version`.
     * **Validation:** Runs the `test_components` command to ensure the imported atoms are compatible with the current project settings.
 2.  **The Workflow:**
-    * Developers **NEVER** modify `addons/aerobeat-ui-kit` inside a Shell repo.
-    * Updates are made in the `aerobeat-ui-kit` repo, tagged, and then pulled into Shells via the sync script.
+    * Developers **NEVER** modify `addons/aerobeat-ui-kit-*` inside a Shell repo.
+    * Updates are made in the Kit repo, tagged, and then pulled into Shells via the sync script.
 
 ### UI Dependency Rules
 
@@ -40,12 +46,24 @@ To ensure UI repositories remain lightweight and fast to test, we enforce the fo
 | Dependency Type | Repository | Status | Logic |
 | :--- | :--- | :--- | :--- |
 | **Contract Hub** | `aerobeat-core` | **Required** | Needed for `AeroMenuProvider` interface. |
-| **Component Kit** | `aerobeat-ui-kit` | **Required** | Source of all buttons, sliders, and standard widgets. |
+| **UI Core** | `aerobeat-ui-core` | **Required** | Base logic for all components. |
+| **Component Kit** | `aerobeat-ui-kit-*` | **Required** | Source of all buttons, sliders, and standard widgets. |
 | **Shared Assets** | `aerobeat-asset-common` | **Allowed** | Fonts, Logos, and Global Icons only. |
 | **Vendor Tools** | `aerobeat-vendor-*` | **Dev-Only** | Tween libs or UI helpers. In Prod, these are Peer Dependencies provided by Assembly. |
 | **Game Content** | `aerobeat-asset-*` | **FORBIDDEN** | UI must never depend on specific Level/Env packs. Use Mock Data for testing. |
 
-### UI Dependency Rules
+### Theming & Reskinning Strategy
 
-* **UI Code:** Licensed under **GPLv3** because it contains complex logic (state handling, animation controllers).
-* **Assets:** Visuals used by the UI (Icons, Fonts) can be stored inside the UI repo if they are specific to that UI, or pulled from `aerobeat-asset-common` if shared.
+To support "White Label" partners (e.g., a specific Artist edition or Arcade cabinet), we separate **Structure** from **Style** using the Multi-Kit architecture.
+
+1.  **Multi-Kit Architecture:** We do not force a single visual style.
+    *   **Community Kit:** Standard flat design.
+    *   **Partner Kits:** Bespoke designs (e.g., 3D Vinyl Records for buttons) that inherit the same `AeroButtonBase` logic.
+2.  **Shared Logic:** All interaction logic lives in `aerobeat-ui-core`. This ensures that fixing a "double-click bug" in the Core fixes it for every partner kit instantly.
+3.  **Shell Swapping:** We create dedicated Shells (e.g., `aerobeat-ui-shell-arcade-linkinpark`) that consume the specific Partner Kit.
+
+### UI Licensing & Assets
+
+*   **UI Core & Kits:** Licensed under **MPL 2.0** (Libraries).
+*   **UI Shells:** Licensed under **GPLv3** (Application Logic).
+*   **Assets:** Visuals used by the UI (Icons, Fonts) can be stored inside the UI repo if they are specific to that UI, or pulled from `aerobeat-asset-common` if shared.

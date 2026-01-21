@@ -22,20 +22,27 @@ aerobeat-input-mediapipe-python/
 └── plugin.cfg
 ```
 
-### C. The UI-Kit Project (`aerobeat-ui-kit`)
+### C. The UI Core Project (`aerobeat-ui-core`)
 ```
-aerobeat-ui-kit/
+aerobeat-ui-core 
+├── scripts/ 
+│ ├── base/ 
+│ │ ├── aero_button_base.gd 
+│ │ └── aero_view_base.gd 
+│ └── utils/
+```
+
+### D. The UI Kit Project (`aerobeat-ui-kit-community`)
+```
+aerobeat-ui-kit-community/
 ├── atoms/
 │   ├── aero_button/
-│   │   ├── AeroButton.tscn
-│   │   ├── AeroButton.gd
-│   │   └── AeroButton_Test.tscn  <-- The Atomic Test
+│   │   ├── AeroButton.tscn       <-- Extends AeroButtonBase
+│   │   └── AeroButton_Test.tscn
 │   └── aero_slider/ ...
 ├── molecules/
 │   ├── song_card/
 │   │   ├── SongCard.tscn         <-- Uses AeroButton + AeroLabel
 │   │   └── SongCard_Test.tscn
-├── scripts/
-│   └── theme_utils.gd            <-- Shared logic
 └── sync_manifest.json            <-- Defines exports
 ```

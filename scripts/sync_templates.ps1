@@ -8,7 +8,8 @@ $TemplateMap = @{
     "assembly" = "https://github.com/AeroBeat-Fitness/aerobeat-template-assembly.git"
     "feature"  = "https://github.com/AeroBeat-Fitness/aerobeat-template-feature.git"
     "input"    = "https://github.com/AeroBeat-Fitness/aerobeat-template-input.git"
-    "ui"       = "https://github.com/AeroBeat-Fitness/aerobeat-template-ui.git"
+    "ui-kit"   = "https://github.com/AeroBeat-Fitness/aerobeat-template-ui-kit.git"
+    "ui-shell" = "https://github.com/AeroBeat-Fitness/aerobeat-template-ui-shell.git"
     "asset"    = "https://github.com/AeroBeat-Fitness/aerobeat-template-asset.git"
 }
 
