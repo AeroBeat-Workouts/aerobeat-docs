@@ -637,6 +637,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../guides/contributing_workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../guides/calibration/" class="md-nav__link">
         
   
@@ -701,10 +729,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
         
           
-          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
             
   
   
@@ -722,8 +750,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2570,6 +2598,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#versioning-plugincfg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versioning (plugin.cfg)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#internal-assets-ugc-strategy" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3976,6 +4015,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#versioning-plugincfg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versioning (plugin.cfg)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#internal-assets-ugc-strategy" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4059,6 +4109,13 @@
 <li><strong>Inheritance:</strong> Artists inherit <code>res://templates/base_target.tscn</code> (from Feature) to create skins.</li>
 <li><strong>Single Dependency:</strong> An Asset Package may only depend on <strong>one</strong> Feature. Shared assets must move to <code>aerobeat-asset-*-common</code>.</li>
 </ul>
+<h3 id="versioning-plugincfg">Versioning (plugin.cfg)<a class="headerlink" href="#versioning-plugincfg" title="Permanent link">&para;</a></h3>
+<p>All modular repositories (Features, Assets, UI Kits, Input Drivers) must contain a <code>plugin.cfg</code> manifest. When releasing updates:</p>
+<ol>
+<li><strong>Open <code>plugin.cfg</code>:</strong> Located at the repository root.</li>
+<li><strong>Update Version:</strong> Increment the <code>version="x.y.z"</code> field following Semantic Versioning.</li>
+<li><strong>Git Tag:</strong> Create a git tag matching this version (e.g., <code>v1.2.0</code>). This allows the Assembly and UI Shells to lock dependencies to stable releases.</li>
+</ol>
 <hr />
 <h2 id="internal-assets-ugc-strategy">Internal Assets &amp; UGC Strategy<a class="headerlink" href="#internal-assets-ugc-strategy" title="Permanent link">&para;</a></h2>
 <h3 id="internal-policy">Internal Policy<a class="headerlink" href="#internal-policy" title="Permanent link">&para;</a></h3>
@@ -4090,7 +4147,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 21, 2026 18:50:07 UTC">January 21, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 22, 2026 20:11:00 UTC">January 22, 2026</span>
   </span>
 
     
