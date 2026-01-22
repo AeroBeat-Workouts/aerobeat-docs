@@ -26,7 +26,7 @@ A Coaching Pack is a collection of media files designed to wrap around a specifi
 *   **Audio Format:** `.ogg` (Vorbis).
 *   **Tools:**
     *   **Recording:** OBS Studio (Video), Audacity/Reaper (Audio).
-    *   **SDK:** `aerobeat-sdk-coaching` (Godot Project).
+    *   **Tool:** **Coaching Studio** (Web App).
 
 ## 🚀 Step-by-Step Workflow
 
@@ -51,9 +51,9 @@ A Coaching Pack is a collection of media files designed to wrap around a specifi
 *   **Action:** Perform the workout while recording. Speak to the athlete as if they are next to you.
 *   **Export:** Save the vocal track *only* (do not include the music) as `.ogg`. Ensure the start time aligns with the song start (or note the offset).
 
-### Phase 3: The SDK
+### Phase 3: The Coaching Studio
 
-1.  **Download & Open:** Launch the `aerobeat-sdk-coaching` project in Godot.
+1.  **Open:** Navigate to the **Coaching Studio** web portal.
 2.  **Import Files:** Drag your `.webm` and `.ogg` files into the project.
 3.  **Create the Pack:**
     *   Create a new Resource: `AeroCoachingPack`.

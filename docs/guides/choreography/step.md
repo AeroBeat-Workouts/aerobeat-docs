@@ -4,9 +4,9 @@ Welcome to the world of "Step" mapping. Unlike Boxing or Flow, Step gameplay is 
 
 If you are coming from *StepMania* or *Dance Dance Revolution*, you will feel right at home. The `aerobeat-sdk-choreography-step` is built to support standard 4-panel charting.
 
-## 🛠️ The Step SDK
+## 🛠️ The Step Studio
 
-*   **SDK:** `aerobeat-sdk-choreography-step`
+*   **Tool:** **Step Choreography Studio**
 *   **Grid:** 4 Lanes (Left, Down, Up, Right).
 *   **Perspective:** The editor defaults to a top-down "Receptor" view, similar to standard VSRGs (Vertical Scrolling Rhythm Games).
 

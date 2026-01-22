@@ -2,31 +2,35 @@
 
 "Flow" is the art of continuous motion. Unlike the explosive, staccato rhythm of Boxing, Flow is about momentum, arcs, and slicing through the beat. Think of it as a mix of drumming and swordplay.
 
-## 🛠️ The Flow SDK
+## 🛠️ The Flow Studio
 
-*   **SDK:** `aerobeat-sdk-choreography-flow`
-*   **Grid:** 4 Lanes (Standard), expandable to 360.
+*   **Tool:** **Flow Choreography Studio**
+*   **Grid:** 360-degree Ring with **Inner** and **Outer** zones.
 *   **Perspective:** 3D Portal View.
 
 ## ⚔️ Mechanics & Objects
 
-### Targets (Cuts)
+### Targets (Swings)
 *   **Color Coding:**
-    *   **Black:** Left Hand (Bat/Saber).
-    *   **White:** Right Hand (Bat/Saber).
-*   **Direction:** The arrow dictates the **Cut Direction**.
-    *   *Down Arrow:* Swing from Top to Bottom.
-    *   *Up Arrow:* Swing from Bottom to Top.
-    *   *Dot:* Stab (Thrust forward).
+    *   **Black:** Left Bat.
+    *   **White:** Right Bat.
+*   **Positioning:**
+    *   **Outer Ring:** Intended for full body movements and arm extensions.
+    *   **Inner Ring:** Intended for half-movements (drumming, rope swings). Typically used in Hard/Pro charts.
+*   **Direction:** The arrow dictates the **Swing Direction**.
+    *   *Directional Arrow:* Swing through the target in the arrow's direction.
+    *   *Note:* There are no "Guard" or "Block" targets in Flow.
 
 ### Arcs (The Guide)
 Arcs are visual trails that connect two targets or extend from a target into empty space.
-*   **Purpose:** They force the player to keep their arm moving in a specific path between hits.
+*   **Purpose:** They force the player to keep their arm moving in a specific path. Use them without targets to create "Zen-like" movement or to guide the bat to the correct position for the next sequence.
 *   **Scoring:** Players must keep the tip of their bat inside the arc to maintain combo.
 
-### Obstacles (Walls)
-*   **Dodging:** Walls force the player to lean or squat.
-*   **Blade Avoidance:** Unlike Boxing, in Flow, your "Saber" can cut through walls (usually penalizing score). Map walls to force the player to pull their arms in or reach wide.
+### Obstacles (Movement)
+Obstacles work similarly to Boxing (forcing squats and leans), but Flow includes specialized fitness prefabs:
+*   **Leg Lifts:** Triangular shapes that force the player to lift a leg (Left or Right) horizontally while balancing.
+*   **Run In Place:** A rapid sequence of obstacles requiring a running motion.
+*   **Blade Avoidance:** Your bats can pass through obstacles (penalizing score), so map them to guide arm position.
 
 ## 🌊 Mapping Best Practices
 
@@ -36,12 +40,17 @@ Flow relies on physics. If you swing **Down**, your arm is now at the bottom. Th
 *   **Bad Flow (Reset):** Down -> Down. (This forces the player to awkwardly reset their hand position instantly).
 *   **Forehand/Backhand:** Use horizontal cuts to transition between forehand and backhand swings.
 
-### 2. Large Movements
+### 2. Telegraphing & Callouts
+When using advanced fitness prefabs (Leg Lifts, Run In Place), the athlete needs time to shift their weight.
+*   **Lower Difficulties:** Leave a gap before these moves so the Coach has time to call it out ("Get ready to run!").
+*   **Pro Difficulty:** Athletes expect rapid transitions, so you can chain squats into leg lifts for maximum intensity.
+
+### 3. Large Movements
 AeroBeat Flow is a fitness mode, not just a wrist-flick game.
 *   **Use Arcs:** Force the player to swing wide.
 *   **Cross-Body:** Map targets on the opposite side (e.g., Right Hand hitting a target in the Left Lane) to engage the core.
 
-### 3. 360 Portal Usage
+### 4. 360 Portal Usage
 *   **Rotation:** Use directional cuts to guide the player's body rotation towards a new portal.
 *   **Example:** A Right-Hand "Right Swipe" naturally turns the body to the right. Open the next portal on the Right side immediately after.
 

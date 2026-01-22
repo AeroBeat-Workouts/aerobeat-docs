@@ -10,6 +10,10 @@ The debut gameplay module for AeroBeat is a rhythm-boxing experience.
 
 ### v0.0.1 Mechanics
 * **Directional Punches:** Actions such as Jabs, Crosses, Hooks, and Uppercuts are used to hit targets based on the their income direction.
+* **Target Zones:** Targets spawn in 5 distinct zones relative to the active portal:
+    *   **Arm Height (Left/Right):** Standard punches.
+    *   **Crouch Height (Left/Right):** Forces the athlete to punch low or squat-punch.
+    *   **Center:** Reserved for **Guard/Block** targets.
 * **Left Targets:** Black targets come from portals toward the athlete. They must be hit with the athletes left hand.
 * **Right Targets:** White targets come from portals toward the athlete. They must be hit with the ahtletes right hand.
 * **Boxing Gloves:** Your left hand has a visible black glove, and your right hand has a white glove. This helps you know what targets to hit with each hand.
@@ -28,5 +32,8 @@ The debut gameplay module for AeroBeat is a rhythm-boxing experience.
 * **Leg Lifts:** Lift your left or right leg horizontally at the right time to match the shape of the obstacles flying at you. Counts as if a `obstacle` hit you if your `head` touches the side of the `obstacle` shape. (ex: a triangle that extends far to the left, signifying a left leg lift).
 * **Run In Place:** Rings of obstacles fly at the athlete rapidly. Signifies an an optional run-in-place segment for the athlete.
 * **360-Portal-View:** Portals can appear within a full 360 ring around you. New portals open up requiring VR players to face them by rotating their body and head. Controller players use L1/R1, DPAD, or Control Sticks to snap to portal positions. Camera players are automatically rotated to face them. If too many portals appear too quickly, the 2D players see targets and obstacles appear from the same portal to avoid snap-fatique and visual problems reading the choreography.
+    *   **Active Portal:** The portal currently spawning targets is highlighted. In Pro modes, side portals may also become active simultaneously, requiring rapid focus shifts.
+    *   **Portal Trails:** A visual particle stream flows from the bottom of every active portal towards the player. This helps the athlete center themselves relative to the portal and catches the eye when a new portal opens.
+    *   **The Anchor:** The athlete's position is fixed at the center. Gameplay relies on rotation (swivel), not locomotion.
 * **3-Portal-View:** Only left, center, and right Portals appear in front of you, keeping you forward facing but adding more strategy to your workouts. For Camera users, all portals are visible at all times without moving your head and targets and obstacles fly towards you, without the need for you to 'rotate', because you can't as a Camera player.
-* **Simultaneous-Portals:** Targets and obstacles can appear from multiple simultaneous portals. Used typically on Pro level difficulty. In VR you have to move to quickly face these new portals to hit targets with high accuracy and dodge obstacles while switching positions rapidly (left, center, right). In 2D the targets and obstacles appear from portals on the left and the right side of the center portal, but fly towards the player in the center without requiring the user adjust their body or head rotation.
+* **Simultaneous-Portals:** Targets and obstacles can appear from multiple simultaneous portals. Used typically on Pro level difficulty. In VR you have to move to quickly face these new portals to hit targets with high accuracy and dodge obstacles while switching positions rapidly (left, center, right). In 2D the targets and obstacles appear from portals on the left and the right side of the center portal, but fly towards the player in the center without requiring the user adjust their body or head rotation. **Note:** This mechanic is discouraged for standard fitness flows as it breaks the rotation rhythm.

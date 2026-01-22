@@ -66,6 +66,7 @@ nav:
       - Overview: gdd/art/overview.md
     - Gameplay:
       - Boxing: gdd/gameplay/boxing.md
+      - Flow: gdd/gameplay/flow.md
       - Step: gdd/gameplay/step.md
       - Dance: gdd/gameplay/dance.md
       - View Modes: gdd/gameplay/view-modes.md

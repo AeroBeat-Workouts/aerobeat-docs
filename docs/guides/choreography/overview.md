@@ -28,7 +28,7 @@ Your chart will be played on VR headsets (Portal View) and Mobile Phones (Track 
 
 You cannot map silence. You need a base audio track.
 
-1.  **Open the SDK:** Launch `aerobeat-sdk-choreography-*` in Godot.
+1.  **Open the Studio:** Launch the **Choreography Studio** app (Web or Desktop).
 2.  **Content Browser:** Open the "Server Assets" tab.
 3.  **Select a Song:**
     *   **Remix:** Pick an existing song uploaded by a musician.

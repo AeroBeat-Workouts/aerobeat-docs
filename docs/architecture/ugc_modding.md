@@ -10,18 +10,26 @@ This document outlines the architecture for the **Modding SDK** and the **Runtim
 *   **Community Creators:** Download a specialized SDK, validate assets, and **Upload directly to AeroBeat Servers**.
 *   **Athletes:** Browse the **In-Game Content Browser**, download content, and play. (Power users can still manually drop `.pck` files into `user://mods/`).
 
-## 🛠️ The Modding SDKs
+## 🛠️ Creator Tooling Strategy
 
-To ensure quality and ease of use, we provide **Specialized SDKs** tailored to specific asset types.
+We utilize a **Hybrid Tooling Strategy** to match the technical comfort of different creator personas.
 
-*   **Type:** Godot Project.
-*   **Variants:**
-    *   `aerobeat-sdk-environment`: Tools for lighting baking and skyboxes.
-    *   `aerobeat-sdk-choreography`: Charting tools and audio analysis.
-    *   `aerobeat-sdk-cosmetics`: Import tools for Gloves, Targets, and Avatars.
-    *   `aerobeat-sdk-coaching`: Import tools for Warm-up/Cool-down videos (`.webm`) and Audio Overlays.
-*   **Integrated Browser:** All SDKs connect to the AeroBeat API. This allows creators to search, preview, and "Remix" existing server-side assets (e.g., selecting a Song to chart, or a Playlist to coach) without manually downloading files.
-*   **Validation:** Each SDK includes a **Quality Gate** plugin. It checks poly-counts, texture sizes, and file formats locally. The "Upload" button is disabled until validation passes.
+### 1. Native SDKs (Godot Editor)
+For **3D Artists** who need full control over materials, import settings, and baking.
+*   **SDKs:** `environment`, `cosmetics`.
+*   **Workflow:** Download Godot -> Open SDK -> Import Assets -> Upload.
+
+### 2. Standalone Apps (Web / Desktop)
+For **Musicians, Coaches, and Choreographers** who need a streamlined, focused interface without the complexity of a game engine. These are Godot projects exported as standalone applications.
+
+*   **Musician Portal (Web):**
+    *   **Features:** Audio upload, Cloud conversion (WAV -> OGG), BPM detection.
+    *   **Preview:** Visualizer that plays the song against a selected "Test Chart" from the server.
+*   **Choreography Studio (Desktop/Web):** Specialized timeline editor for mapping.
+*   **Coaching Studio (Web):** Wizard for syncing voice-overs and video.
+
+### 3. Shared Core
+All tools (Native and Web) share the same `aerobeat-core` logic. This ensures that a song validated in the Web Portal is guaranteed to work in the Game Client.
 
 ## 🛡️ Security: The Double Verification Strategy
 

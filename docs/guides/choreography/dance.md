@@ -4,9 +4,9 @@ Dance mode is unique in AeroBeat. Instead of placing abstract targets, you are c
 
 The `aerobeat-sdk-choreography-dance` allows you to be the choreographer, the motion capture actor, and the level designer all at once.
 
-## 🛠️ The Dance SDK
+## 🛠️ The Dance Studio
 
-*   **SDK:** `aerobeat-sdk-choreography-dance`
+*   **Tool:** **Dance Choreography Studio**
 *   **Input:** Requires a Webcam (MediaPipe) or VR Headset for recording.
 *   **Output:** A timeline of `AeroDanceMove` resources and a Coach Animation track.
 

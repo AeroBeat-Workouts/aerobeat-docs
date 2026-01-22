@@ -2,10 +2,10 @@
 
 Boxing is the core gameplay of AeroBeat. A good boxing chart is a conversation between the music and the athlete's body. It uses punches to express rhythm and obstacles to force body movement (squats and leans).
 
-## 🛠️ The Boxing SDK
+## 🛠️ The Boxing Studio
 
-*   **SDK:** `aerobeat-sdk-choreography-boxing`
-*   **Grid:** 4 Lanes (Left Outer, Left Inner, Right Inner, Right Outer).
+*   **Tool:** **Boxing Choreography Studio**
+*   **Grid:** 5 Zones (Left, Right, Low-Left, Low-Right, Center).
 *   **Perspective:** 3D Portal View (Targets fly towards you).
 
 ## 🥊 Mechanics & Objects
@@ -15,6 +15,10 @@ Boxing is the core gameplay of AeroBeat. A good boxing chart is a conversation b
 *   **Color Coding:**
     *   **Black:** Left Hand.
     *   **White:** Right Hand.
+*   **Positioning:** Targets spawn at specific heights relative to the user's calibration.
+    *   **Standard:** Arm height (Left/Right).
+    *   **Low:** Crouch height (Left/Right).
+    *   **Center:** Reserved for **Guard/Block** targets.
 *   **Direction:** The arrow on the target dictates the punch type.
     *   *Up Arrow:* Uppercut.
     *   *Down/Side Arrow:* Hook or Cross.
@@ -22,7 +26,7 @@ Boxing is the core gameplay of AeroBeat. A good boxing chart is a conversation b
 
 ### Obstacles (Movement)
 
-Don't just use obstacles to punish the player. Use them to **choreograph movement**.
+Obstacles spawn within a specific radius around the active portal, using a separate positioning system to force body movement.
 
 *   **Vertical Wall:** Forces a lean (engages core).
 *   **Horizontal Bar:** Forces a squat (engages legs).
@@ -50,7 +54,15 @@ When mapping in the Boxing SDK, you can place targets in a 360-degree ring.
 
 *   **VR Players:** Will physically rotate to face the new portal.
 *   **2D Players:** The engine automatically "folds" these targets to the front.
-*   **Tip:** Use the "Portal Marker" tool to explicitly open a new portal. Add a 1-measure gap before the first target appears in the new portal to give the player time to react.
+*   **Relative Lanes:** The 5-Zone Grid is always **relative to the Active Portal**. If the player turns 90 degrees right, "Left Arm" is still their physical left hand.
+
+#### Rotation Cues (The Fitness Flow)
+Instead of random portal jumps, use the choreography to guide the turn.
+*   **The Guide:** Use obstacles and directional punches (Hooks) to force body rotation towards the next target zone. Sequential portals in a single direction also create a strong guiding flow.
+*   **Example:** If the next portal is to the **Right**, end the current phrase with a **Left Hook** or **Right Cross**. This naturally rotates the athlete's torso to the right, setting them up for the new portal.
+*   **Visuals:** Every active portal emits a particle trail flowing towards the player to help them center their stance.
+
+> **Note:** **Simultaneous Portals** (targets coming from multiple directions) are a valid mechanic for high-intensity "Pro" charts, but use them sparingly to maintain flow.
 
 ## 🚀 Workflow Tips
 
