@@ -1268,6 +1268,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../gdd/gameplay/flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../gdd/gameplay/step/" class="md-nav__link">
         
   
@@ -2593,13 +2621,52 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-modding-sdks" class="md-nav__link">
+  <a href="#creator-tooling-strategy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ The Modding SDKs
+        🛠️ Creator Tooling Strategy
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Creator Tooling Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-native-sdks-godot-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Native SDKs (Godot Editor)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-standalone-apps-web-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Standalone Apps (Web / Desktop)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-shared-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Shared Core
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3999,13 +4066,52 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-modding-sdks" class="md-nav__link">
+  <a href="#creator-tooling-strategy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ The Modding SDKs
+        🛠️ Creator Tooling Strategy
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Creator Tooling Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-native-sdks-godot-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Native SDKs (Godot Editor)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-standalone-apps-web-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Standalone Apps (Web / Desktop)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-shared-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Shared Core
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4127,20 +4233,25 @@
 <li><strong>Community Creators:</strong> Download a specialized SDK, validate assets, and <strong>Upload directly to AeroBeat Servers</strong>.</li>
 <li><strong>Athletes:</strong> Browse the <strong>In-Game Content Browser</strong>, download content, and play. (Power users can still manually drop <code>.pck</code> files into <code>user://mods/</code>).</li>
 </ul>
-<h2 id="the-modding-sdks">🛠️ The Modding SDKs<a class="headerlink" href="#the-modding-sdks" title="Permanent link">&para;</a></h2>
-<p>To ensure quality and ease of use, we provide <strong>Specialized SDKs</strong> tailored to specific asset types.</p>
+<h2 id="creator-tooling-strategy">🛠️ Creator Tooling Strategy<a class="headerlink" href="#creator-tooling-strategy" title="Permanent link">&para;</a></h2>
+<p>We utilize a <strong>Hybrid Tooling Strategy</strong> to match the technical comfort of different creator personas.</p>
+<h3 id="1-native-sdks-godot-editor">1. Native SDKs (Godot Editor)<a class="headerlink" href="#1-native-sdks-godot-editor" title="Permanent link">&para;</a></h3>
+<p>For <strong>3D Artists</strong> who need full control over materials, import settings, and baking.
+*   <strong>SDKs:</strong> <code>environment</code>, <code>cosmetics</code>.
+*   <strong>Workflow:</strong> Download Godot -&gt; Open SDK -&gt; Import Assets -&gt; Upload.</p>
+<h3 id="2-standalone-apps-web-desktop">2. Standalone Apps (Web / Desktop)<a class="headerlink" href="#2-standalone-apps-web-desktop" title="Permanent link">&para;</a></h3>
+<p>For <strong>Musicians, Coaches, and Choreographers</strong> who need a streamlined, focused interface without the complexity of a game engine. These are Godot projects exported as standalone applications.</p>
 <ul>
-<li><strong>Type:</strong> Godot Project.</li>
-<li><strong>Variants:</strong><ul>
-<li><code>aerobeat-sdk-environment</code>: Tools for lighting baking and skyboxes.</li>
-<li><code>aerobeat-sdk-choreography</code>: Charting tools and audio analysis.</li>
-<li><code>aerobeat-sdk-cosmetics</code>: Import tools for Gloves, Targets, and Avatars.</li>
-<li><code>aerobeat-sdk-coaching</code>: Import tools for Warm-up/Cool-down videos (<code>.webm</code>) and Audio Overlays.</li>
+<li><strong>Musician Portal (Web):</strong><ul>
+<li><strong>Features:</strong> Audio upload, Cloud conversion (WAV -&gt; OGG), BPM detection.</li>
+<li><strong>Preview:</strong> Visualizer that plays the song against a selected "Test Chart" from the server.</li>
 </ul>
 </li>
-<li><strong>Integrated Browser:</strong> All SDKs connect to the AeroBeat API. This allows creators to search, preview, and "Remix" existing server-side assets (e.g., selecting a Song to chart, or a Playlist to coach) without manually downloading files.</li>
-<li><strong>Validation:</strong> Each SDK includes a <strong>Quality Gate</strong> plugin. It checks poly-counts, texture sizes, and file formats locally. The "Upload" button is disabled until validation passes.</li>
+<li><strong>Choreography Studio (Desktop/Web):</strong> Specialized timeline editor for mapping.</li>
+<li><strong>Coaching Studio (Web):</strong> Wizard for syncing voice-overs and video.</li>
 </ul>
+<h3 id="3-shared-core">3. Shared Core<a class="headerlink" href="#3-shared-core" title="Permanent link">&para;</a></h3>
+<p>All tools (Native and Web) share the same <code>aerobeat-core</code> logic. This ensures that a song validated in the Web Portal is guaranteed to work in the Game Client.</p>
 <h2 id="security-the-double-verification-strategy">🛡️ Security: The Double Verification Strategy<a class="headerlink" href="#security-the-double-verification-strategy" title="Permanent link">&para;</a></h2>
 <p>To prevent malicious code execution (RCE) and ensure performance, every asset undergoes two layers of validation.</p>
 <h3 id="1-client-side-sdk">1. Client-Side (SDK)<a class="headerlink" href="#1-client-side-sdk" title="Permanent link">&para;</a></h3>
@@ -4221,7 +4332,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 22, 2026 17:27:51 UTC">January 22, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 22, 2026 23:06:16 UTC">January 22, 2026</span>
   </span>
 
     

@@ -14,7 +14,7 @@
         <link rel="prev" href="../../art/overview/">
       
       
-        <link rel="next" href="../step/">
+        <link rel="next" href="../flow/">
       
       
         
@@ -1340,6 +1340,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -3974,6 +4002,12 @@
 <h3 id="v001-mechanics">v0.0.1 Mechanics<a class="headerlink" href="#v001-mechanics" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Directional Punches:</strong> Actions such as Jabs, Crosses, Hooks, and Uppercuts are used to hit targets based on the their income direction.</li>
+<li><strong>Target Zones:</strong> Targets spawn in 5 distinct zones relative to the active portal:<ul>
+<li><strong>Arm Height (Left/Right):</strong> Standard punches.</li>
+<li><strong>Crouch Height (Left/Right):</strong> Forces the athlete to punch low or squat-punch.</li>
+<li><strong>Center:</strong> Reserved for <strong>Guard/Block</strong> targets.</li>
+</ul>
+</li>
 <li><strong>Left Targets:</strong> Black targets come from portals toward the athlete. They must be hit with the athletes left hand.</li>
 <li><strong>Right Targets:</strong> White targets come from portals toward the athlete. They must be hit with the ahtletes right hand.</li>
 <li><strong>Boxing Gloves:</strong> Your left hand has a visible black glove, and your right hand has a white glove. This helps you know what targets to hit with each hand.</li>
@@ -3992,9 +4026,14 @@
 <li><strong>Knee Strikes:</strong> Lift your left or right knee at the right time to hit the black or white knee strike target. Always appears physically low in the portal.</li>
 <li><strong>Leg Lifts:</strong> Lift your left or right leg horizontally at the right time to match the shape of the obstacles flying at you. Counts as if a <code>obstacle</code> hit you if your <code>head</code> touches the side of the <code>obstacle</code> shape. (ex: a triangle that extends far to the left, signifying a left leg lift).</li>
 <li><strong>Run In Place:</strong> Rings of obstacles fly at the athlete rapidly. Signifies an an optional run-in-place segment for the athlete.</li>
-<li><strong>360-Portal-View:</strong> Portals can appear within a full 360 ring around you. New portals open up requiring VR players to face them by rotating their body and head. Controller players use L1/R1, DPAD, or Control Sticks to snap to portal positions. Camera players are automatically rotated to face them. If too many portals appear too quickly, the 2D players see targets and obstacles appear from the same portal to avoid snap-fatique and visual problems reading the choreography.</li>
+<li><strong>360-Portal-View:</strong> Portals can appear within a full 360 ring around you. New portals open up requiring VR players to face them by rotating their body and head. Controller players use L1/R1, DPAD, or Control Sticks to snap to portal positions. Camera players are automatically rotated to face them. If too many portals appear too quickly, the 2D players see targets and obstacles appear from the same portal to avoid snap-fatique and visual problems reading the choreography.<ul>
+<li><strong>Active Portal:</strong> The portal currently spawning targets is highlighted. In Pro modes, side portals may also become active simultaneously, requiring rapid focus shifts.</li>
+<li><strong>Portal Trails:</strong> A visual particle stream flows from the bottom of every active portal towards the player. This helps the athlete center themselves relative to the portal and catches the eye when a new portal opens.</li>
+<li><strong>The Anchor:</strong> The athlete's position is fixed at the center. Gameplay relies on rotation (swivel), not locomotion.</li>
+</ul>
+</li>
 <li><strong>3-Portal-View:</strong> Only left, center, and right Portals appear in front of you, keeping you forward facing but adding more strategy to your workouts. For Camera users, all portals are visible at all times without moving your head and targets and obstacles fly towards you, without the need for you to 'rotate', because you can't as a Camera player.</li>
-<li><strong>Simultaneous-Portals:</strong> Targets and obstacles can appear from multiple simultaneous portals. Used typically on Pro level difficulty. In VR you have to move to quickly face these new portals to hit targets with high accuracy and dodge obstacles while switching positions rapidly (left, center, right). In 2D the targets and obstacles appear from portals on the left and the right side of the center portal, but fly towards the player in the center without requiring the user adjust their body or head rotation.</li>
+<li><strong>Simultaneous-Portals:</strong> Targets and obstacles can appear from multiple simultaneous portals. Used typically on Pro level difficulty. In VR you have to move to quickly face these new portals to hit targets with high accuracy and dodge obstacles while switching positions rapidly (left, center, right). In 2D the targets and obstacles appear from portals on the left and the right side of the center portal, but fly towards the player in the center without requiring the user adjust their body or head rotation. <strong>Note:</strong> This mechanic is discouraged for standard fitness flows as it breaks the rotation rhythm.</li>
 </ul>
 
 
@@ -4016,7 +4055,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 20, 2026 18:53:50 UTC">January 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 22, 2026 23:06:16 UTC">January 22, 2026</span>
   </span>
 
     
