@@ -36,11 +36,13 @@ To maintain consistency, we enforce a strict file layout using Godot 4's `#regio
 
 ## 5. Documentation & Formatting
 *   **Docstrings:** Use `##` for all classes and public functions. The Godot editor automatically parses these to create rich tooltips when you hover over your code, similar to IntelliSense in other IDEs.
-*   **Separators:** Use `# ------------------------------------------------------------------------------` to separate major logic blocks if Regions are not enough.
+*   **Separators:** Use `# ---------------------------------------------` to separate major logic blocks if Regions are not enough.
 *   **Spacing:** Two empty lines between functions.
 
 ## 6. External Documentation
+
 We use automated tools to generate the API Reference on the website from these docstrings.
+
 *   **Tool:** `gdscript-docs-maker` (or similar).
 *   **Requirement:** Every `public` function and variable MUST have a `##` docstring to appear in the online documentation.
 *   **Private Members:** Functions starting with `_` are automatically excluded from the web docs.

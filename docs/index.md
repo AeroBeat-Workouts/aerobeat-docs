@@ -37,7 +37,7 @@ Our documentation is divided by role. Choose your path below:
 * Dive into the **Session Context** dependency injection system.
 * **Key Tech:** Godot 4.x, GDScript, MediaPipe.
 
-### 🤖 [AI-Assisted Workflow](guides/ai_prompting.md)
+### 🤖 [AI-Assisted Workflow](ai-prompting/overview.md)
 
 *For Developers using LLMs.*
 

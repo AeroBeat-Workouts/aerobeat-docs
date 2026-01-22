@@ -23,7 +23,11 @@ markdown_extensions:
       permalink: true
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - attr_list
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
@@ -40,15 +44,30 @@ nav:
     - Attribution Guide: licensing/attribution.md
     - CLA: licensing/CLA.md
     - Contributing: licensing/CONTRIBUTING.md
+    - Code of Conduct: CODE_OF_CONDUCT.md
   - Release Notes: releases/changelog.md
   - Guides:
-    - AI Prompting: guides/ai_prompting.md
+    - Calibration Wizard: guides/calibration.md
+    - Modding Quickstart: guides/modding_quickstart.md
+    - Choreography:
+      - Overview: guides/choreography/overview.md
+      - Boxing: guides/choreography/boxing.md
+      - Flow: guides/choreography/flow.md
+      - Step: guides/choreography/step.md
+      - Dance: guides/choreography/dance.md
+    - Environment Creation: guides/environment_creation.md
+    - Cosmetic Creation: guides/cosmetics.md
+    - Avatar Creation: guides/avatar_creation.md
+    - Coaching Guide: guides/coaching.md
   - Game Design:
     - Overview: gdd/concept.md
     - Art: 
       - Overview: gdd/art/overview.md
     - Gameplay:
       - Boxing: gdd/gameplay/boxing.md
+      - Step: gdd/gameplay/step.md
+      - Dance: gdd/gameplay/dance.md
+      - View Modes: gdd/gameplay/view-modes.md
       - Future Plans: gdd/gameplay/future-plans.md
     - Gamification:
       - Overview: gdd/gamification/overview.md
@@ -67,15 +86,25 @@ nav:
       - Community Creations: gdd/user-content/community-creations.md
       - Policing Content: gdd/user-content/policing-content.md
   - Technical:
+    - AI Prompting:
+      - Overview: ai-prompting/overview.md
+      - AI Manifest: ai-prompting/AI_MANIFEST.md
+      - Glossary: ai-prompting/GLOSSARY.md
+      - Style Guide: ai-prompting/STYLE_GUIDE.md
     - Architecture:
       - Overview: architecture/overview.md
       - Repository Topology: architecture/topology.md
+      - Testing Strategy: architecture/testing.md
       - Input: architecture/input.md
       - State Management: architecture/state-management.md
       - Multiplayer: architecture/multiplayer.md
       - Audio: architecture/audio.md
       - UI Architecture: architecture/ui-ux.md
       - Workflow & Assets: architecture/workflow.md
+      - UGC & Modding: architecture/ugc_modding.md
+      - Backend API: architecture/backend_api.md
+      - Telemetry & Privacy: architecture/telemetry.md
+      - Security Strategy: architecture/security.md
       - Reference: architecture/reference.md
     - Core Contracts: api/core/
     - Assembly:

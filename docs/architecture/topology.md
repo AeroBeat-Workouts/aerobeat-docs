@@ -11,7 +11,7 @@ We adhere to a strict **7-Tier** repository structure. Dependencies are categori
 | **UI Kit** | `aerobeat-ui-kit-*` | **Visual Library.** Themed scenes inheriting UI Core logic. | `aerobeat-ui-core` | `aerobeat-asset-common` | Testbed Scaffolding | **MPL 2.0** |
 | **UI Shell** | `aerobeat-ui-shell-*` | **Interaction Layer.** Platform-specific screens. | `aerobeat-ui-kit-*` | `aerobeat-asset-common`<br>(Local Assets) | Vendor Tools (Tweeners)<br>Mock Data | **GPLv3** |
 | **Feature** | `aerobeat-feature-*` | **Gameplay Logic.** Pure mechanics (Boxing, Flow). | `aerobeat-core` | Vendor Utils | Testbed Scaffolding | **GPLv3** |
-| **Asset** | `aerobeat-asset-*` | **Content.** Skins, Songs, Environments. | `aerobeat-core` | **One** Feature (Inheritance) | **None** | **CC BY-NC 4.0** |
+| **Asset** | `aerobeat-asset-*` | **Content.** Skins, Songs, Environments. | `aerobeat-core` | **Max 1** Feature (Inheritance) | **None** | **CC BY-NC 4.0** |
 | **Docs** | `aerobeat-docs` | **Manual.** Documentation Website. | **None** | **None** | MkDocs Plugins | **CC BY-NC 4.0** |
 | **Vendor** | `aerobeat-vendor` | **3rd Party Tools.** Utilities and Helpers. | **None** | **None** | *(As Upstream)* | *(As Upstream)* |
 
@@ -36,3 +36,10 @@ We do not have a "Default UI." The Assembly defines **UI Contracts** (`AeroMenuP
 * **`aerobeat-input-mediapipe-python`**: Tracks body movement using MediaPipe camera events, then passes them via UDP listeners.
 * **`aerobeat-feature-boxing`**: The Boxing gameplay loop, hit detection, and choreography parser.
 * **`aerobeat-asset-prototypes`**: Grey-box environments and dummy targets.
+
+### Asset Repository Strategy
+
+To prevent "Dependency Hell," Asset repositories must be scoped strictly:
+
+1.  **Feature-Specific Assets (Skins):** If an asset pack contains skins for a specific gameplay mode (e.g., Boxing Gloves), it must depend on **that specific Feature repo** (`aerobeat-feature-boxing`) and no others.
+2.  **Generic Assets (Environments/Music):** If an asset pack contains content usable by *any* mode (e.g., a Gym Environment or Song Pack), it must depend **only on Core**.

@@ -27,6 +27,6 @@ Go to the AeroBeat-Fitness GitHub organization and look for repositories named `
 | **Input** | `input/` | MPL 2.0 | `setup_dev.py` |
 | **UI Kit** | `ui-kit/` | MPL 2.0 | `setup_dev.py` |
 | **UI Shell** | `ui-shell/` | GPLv3 | `sync_ui_kit.py`, `setup_dev.py` |
-| **Asset** | `asset/` | CC BY-NC 4.0 | `LICENSE` |
+| **Asset** | `asset/` | CC BY-NC 4.0 | `setup_dev.py`, `LICENSE` |
 
 > **Note:** All templates include the `.github/workflows/cla.yml` workflow automatically.

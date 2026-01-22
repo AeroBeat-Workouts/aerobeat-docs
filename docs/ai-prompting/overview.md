@@ -12,9 +12,9 @@ We have established three static files in `docs/ai-context/` that define our uni
 
 | File | Purpose | When to use |
 | :--- | :--- | :--- |
-| **`AI_MANIFEST.md`** | **The Map.** Defines folder structure and file locations. | Use when creating new files or refactoring. |
-| **`STYLE_GUIDE.md`** | **The Rules.** Enforces GDScript typing and naming conventions. | Use for **ALL** code generation. |
-| **`GLOSSARY.md`** | **The Dictionary.** Defines terms like "Beat" vs "Measure". | Use when discussing game logic. |
+| **[`AI_MANIFEST`](AI_MANIFEST.md)** | **The Map.** Defines folder structure and file locations. | Use when creating new files or refactoring. |
+| **[`STYLE_GUIDE`](STYLE_GUIDE.md)** | **The Rules.** Enforces GDScript typing and naming conventions. | Use for **ALL** code generation. |
+| **[`GLOSSARY`](GLOSSARY.md)** | **The Dictionary.** Defines terms like "Beat" vs "Measure". | Use when discussing game logic. |
 
 Download Context Bundle (.zip){ .md-button .md-button--primary }
 
