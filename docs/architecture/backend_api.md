@@ -14,6 +14,24 @@ To protect the platform from abuse, we implement strict security measures for al
 | **RCE (Remote Code Execution)** | **Sandboxing.** Validation runs in ephemeral, network-isolated containers. |
 | **Scraping / Leeching** | **Guest Rate Limits.** Unverified users have strict download caps (e.g., 20 items/day). |
 
+## 📦 Data Integrity & Versioning
+
+To prevent **Dependency Rot** (where a Playlist breaks because a referenced Song or Skin was deleted or changed), the API enforces strict immutability rules.
+
+### 1. Immutable Versioning
+*   **Policy:** Once an asset (Skin, Song, Environment) is published, its binary content (`.pck`) is **Immutable**. It can never be overwritten.
+*   **Updates:** When a creator updates a mod, the API generates a new version (e.g., `v2`).
+*   **References:** Playlists and other dependent assets reference specific versions (e.g., `mod_id@v1`). This ensures that even if `v2` changes the art style completely, the original playlist using `v1` remains visually consistent.
+
+### 2. Soft Delete Policy
+*   **Risk:** If a creator deletes a popular Song, every Playlist using that song would break.
+*   **Policy:** The API does not support "Hard Deletes" for public content.
+*   **Action:** When a creator "deletes" a mod:
+    1.  **Unlisted:** It is removed from Search and the "New Releases" feed.
+    2.  **Archived:** It remains on the CDN.
+    3.  **Available:** Existing playlists referencing the ID can still download and play it.
+*   **Exception:** DMCA Takedowns or Illegal Content result in a "Hard Delete" (or replacement with a placeholder), which *will* break dependencies. This is unavoidable for legal compliance.
+
 ## 🔐 Authentication & Guest Access
 
 We support two tiers of access to balance friction vs. security.
@@ -32,7 +50,7 @@ To access the API as a guest, the client must first request a temporary session.
 
 ## 📤 Creator Endpoints (Modding SDK)
 
-These endpoints are used by the specialized SDKs (`aerobeat-sdk-*`) to publish content.
+These endpoints are used by the specialized SDKs (`aerobeat-skins-*`, `aerobeat-avatars-*`, etc.) to publish content.
 
 ### 1. Check Quota
 
@@ -49,7 +67,7 @@ These endpoints are used by the specialized SDKs (`aerobeat-sdk-*`) to publish c
     *   `filename`: "my_skin.pck"
     *   `size_bytes`: 10485760
     *   `checksum`: SHA256 hash of the file.
-    *   `type`: `SKIN` (or `SONG`, `COACHING`, `PLAYLIST`)
+    *   `type`: `SKIN` (or `SONG`, `COACHING`, `PLAYLIST`, `AVATAR`, `COSMETIC`, `ENVIRONMENT`)
 *   **Response:**
     *   `upload_url`: The S3 Pre-Signed URL (PUT).
     *   `upload_id`: Temporary transaction ID.
@@ -94,7 +112,7 @@ These endpoints are used by the Game Client (`aerobeat-assembly-*`) to discover 
 
 *   **Endpoint:** `GET /api/v1/mods`
 *   **Query Params:**
-    *   `type`: `SKIN`, `SONG`, `ENVIRONMENT`, `COACHING`, `PLAYLIST`
+    *   `type`: `SKIN`, `SONG`, `ENVIRONMENT`, `COACHING`, `PLAYLIST`, `AVATAR`, `COSMETIC`
     *   `feature`: `boxing`, `flow` (Filter by gameplay mode)
     *   `sort`: `popular`, `newest`, `rating`
     *   `page`: Pagination cursor.

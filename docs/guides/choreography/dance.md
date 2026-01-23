@@ -2,7 +2,7 @@
 
 Dance mode is unique in AeroBeat. Instead of placing abstract targets, you are creating a **Performance**. The athlete's goal is to mimic your movements as if looking in a mirror.
 
-The `aerobeat-sdk-choreography-dance` allows you to be the choreographer, the motion capture actor, and the level designer all at once.
+The **Dance Choreography Studio** allows you to be the choreographer, the motion capture actor, and the level designer all at once.
 
 ## 🛠️ The Dance Studio
 

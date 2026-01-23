@@ -5,18 +5,23 @@
 # Map the local folder name (inside /templates/) to the destination GitHub Repo URL.
 # YOU MUST CREATE THESE REPOS ON GITHUB FIRST.
 $TemplateMap = @{
-    "assembly" = "https://github.com/AeroBeat-Workouts/aerobeat-template-assembly.git"
-    "feature"  = "https://github.com/AeroBeat-Workouts/aerobeat-template-feature.git"
-    "input"    = "https://github.com/AeroBeat-Workouts/aerobeat-template-input.git"
-    "ui-kit"   = "https://github.com/AeroBeat-Workouts/aerobeat-template-ui-kit.git"
-    "ui-shell" = "https://github.com/AeroBeat-Workouts/aerobeat-template-ui-shell.git"
-    "asset"    = "https://github.com/AeroBeat-Workouts/aerobeat-template-asset.git"
+    "assembly" = "https://github.com/AeroBeat-Fitness/aerobeat-template-assembly.git"
+    "feature"  = "https://github.com/AeroBeat-Fitness/aerobeat-template-feature.git"
+    "input"    = "https://github.com/AeroBeat-Fitness/aerobeat-template-input.git"
+    "ui-kit"   = "https://github.com/AeroBeat-Fitness/aerobeat-template-ui-kit.git"
+    "ui-shell" = "https://github.com/AeroBeat-Fitness/aerobeat-template-ui-shell.git"
+    "asset"    = "https://github.com/AeroBeat-Fitness/aerobeat-template-asset.git"
+    "skins"    = "https://github.com/AeroBeat-Workouts/aerobeat-template-skin.git"
+    "avatars"  = "https://github.com/AeroBeat-Workouts/aerobeat-template-avatar.git"
+    "cosmetics"= "https://github.com/AeroBeat-Workouts/aerobeat-template-cosmetic.git"
+    "environments" = "https://github.com/AeroBeat-Workouts/aerobeat-template-environment.git"
 }
 
 # 2. EXECUTION
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $RootDir = Split-Path -Parent $ScriptDir
 $TemplatesDir = Join-Path $RootDir "templates"
+$CommonDir = Join-Path $TemplatesDir "_common"
 
 foreach ($key in $TemplateMap.Keys) {
     $folderName = $key
@@ -35,7 +40,13 @@ foreach ($key in $TemplateMap.Keys) {
     if (Test-Path $tempDir) { Remove-Item $tempDir -Recurse -Force }
     New-Item -ItemType Directory -Path $tempDir | Out-Null
 
-    # Copy files (Use Get-ChildItem -Force to ensure dotfiles like .gitignore/.github are included)
+    # 1. Inject Common Files (LICENSE, CLA)
+    if (Test-Path $CommonDir) {
+        Write-Host "  + Injecting _common files..." -ForegroundColor Gray
+        Copy-Item -Path "$CommonDir\*" -Destination $tempDir -Recurse -Force
+    }
+
+    # 2. Copy Template Files (Overwrites common if specific overrides exist)
     Get-ChildItem -Path $sourcePath -Force | ForEach-Object {
         $name = $_.Name
         
@@ -44,6 +55,11 @@ foreach ($key in $TemplateMap.Keys) {
 
         # Copy everything else recursively
         Copy-Item -Path $_.FullName -Destination $tempDir -Recurse -Force
+    }
+
+    # 3. Cleanup Duplicates (e.g. LICENSE vs LICENSE.md)
+    if ((Test-Path (Join-Path $tempDir "LICENSE.md")) -and (Test-Path (Join-Path $tempDir "LICENSE"))) {
+        Remove-Item (Join-Path $tempDir "LICENSE") -Force
     }
 
     # Initialize temporary git repo and push

@@ -20,3 +20,14 @@
 * `aerobeat-feature-*/`
   * `scripts/`: Implementation logic.
   * `.testbed/`: Isolated testing scenes (Ignore in production builds).
+* `aerobeat-skins-*/`
+  * `assets/`: Gloves, Targets, Obstacles.
+  * `.testbed/`: Visualization scene.
+* `aerobeat-avatars-*/`
+  * `assets/`: Character meshes.
+* `aerobeat-cosmetics-*/`
+  * `assets/`: Accessories (Hats, Glasses).
+* `aerobeat-environments-*/`
+  * `assets/`: Level geometry and lightmaps.
+* `aerobeat-asset-*/`
+  * `assets/`: Internal system files (UI, Fonts).

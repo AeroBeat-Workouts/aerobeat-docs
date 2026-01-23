@@ -11,11 +11,12 @@ We provide specialized Godot projects for different types of content. Download t
 | **Musician Portal (Web)** | Uploading Songs, converting audio, and setting BPM. |
 | **Coaching Studio (Web)** | Creating immersive [Coaching](coaching.md) content (Warmups, Overlays). |
 | **Choreography Studio** | Mapping songs. Specialized Apps for [Boxing](choreography/boxing.md), [Flow](choreography/flow.md), etc. |
-| **Cosmetics SDK** | (Godot Editor) Creating Gameplay Props: Gloves, Targets, and Obstacles. |
-| **Avatar SDK** | (Godot Editor) Rigging and importing custom 3D characters. |
-| **Environment SDK** | (Godot Editor) Building 3D scenes, Lighting setups, and Skyboxes. |
+| **Skins SDK** | (Godot Editor) Creating Gloves, Bats, Targets, and Obstacles. |
+| **Avatars SDK** | (Godot Editor) Rigging and importing 3D Characters. |
+| **Cosmetics SDK** | (Godot Editor) Creating Accessories (Hats, Glasses). |
+| **Environments SDK** | (Godot Editor) Building 3D scenes, Lighting setups, and Skyboxes. |
 
-> **Note:** The **Cosmetics**, **Avatar**, and **Environment** SDKs require you to download the **Godot 4.x Editor**. The others run directly in your browser or as standalone apps.
+> **Note:** The **Skins**, **Avatars**, **Cosmetics**, and **Environments** SDKs require you to download the **Godot 4.x Editor**. The others run directly in your browser or as standalone apps built with Godot.
 
 ## 2. Project Setup
 

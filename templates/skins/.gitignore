@@ -1,0 +1,9 @@
+.import/
+.godot/
+
+# AeroBeat Dependencies (Managed by setup_dev.py)
+.testbed/addons/
+
+# SECURITY: Block scripts in asset packs (RCE Prevention)
+*.gd
+*.cs

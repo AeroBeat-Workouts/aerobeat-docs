@@ -53,6 +53,7 @@ AI struggles with massive refactors. Ask for one file at a time.
 
 * ❌ *"Refactor the entire Input System."*
 * ✅ *"Create the `StrategyJoycon` script based on the `AeroInputStrategy` interface."*
+* ✅ *"Create a new Glove resource in `aerobeat-skins-boxing-community` inheriting from `AeroGlove`."*
 
 ### 3. Review Against the Style Guide
 

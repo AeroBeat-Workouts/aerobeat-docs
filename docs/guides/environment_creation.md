@@ -4,7 +4,7 @@ Environments in AeroBeat are more than just backgrounds; they are reactive light
 
 ## 🛠️ The Environment SDK
 
-*   **SDK:** `aerobeat-sdk-environment`
+*   **SDK:** `aerobeat-environments-*` (Template: `environments`)
 *   **Tools:** Godot 4.x Editor with AeroBeat plugins.
 *   **Output:** An `AeroEnvironment` resource packed into a `.pck`.
 

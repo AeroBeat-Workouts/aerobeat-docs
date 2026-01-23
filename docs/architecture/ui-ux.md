@@ -67,3 +67,23 @@ To support "White Label" partners (e.g., a specific Artist edition or Arcade cab
 *   **UI Core & Kits:** Licensed under **MPL 2.0** (Libraries).
 *   **UI Shells:** Licensed under **GPLv3** (Application Logic).
 *   **Assets:** Visuals used by the UI (Icons, Fonts) can be stored inside the UI repo if they are specific to that UI, or pulled from `aerobeat-asset-common` if shared.
+
+## 🛡️ Risk Mitigation Features
+
+To address specific risks identified in our strategic plan, the UI must support the following specialized interfaces.
+
+### 1. The Locker Room (Runtime Gizmos)
+
+*   **Risk:** **Avatar Clipping.** Since UGC Avatars vary wildly in shape (e.g., a Skeleton vs. a Sumo Wrestler), standard attachment points for cosmetics (like Hats or Glasses) may clip or float.
+*   **Solution:** The "Locker Room" UI must provide a **Runtime Gizmo** overlay.
+    *   **Functionality:** When equipping an accessory, the user can enter "Adjust Mode" to translate, rotate, and scale the item relative to the socket.
+    *   **Storage:** These offsets are saved in the User Profile against the specific `(AvatarID, CosmeticID)` pair.
+
+### 2. Streamer Mode
+
+*   **Risk:** **Copyright Strikes (DMCA).** Streamers broadcasting gameplay may accidentally play copyrighted UGC music, risking their channels.
+*   **Solution:** A global **"Streamer Mode"** toggle in the Settings menu.
+    *   **UI Behavior:**
+        *   **Audio:** Mutes all UGC audio tracks, replacing them with safe, licensed "Streamer Friendly" silence.
+        *   **Visuals:** Hides potentially offensive UGC album art or usernames, replacing them with generic placeholders.
+    *   **Implementation:** The UI Shell must bind this toggle to the global `AeroSettings` singleton, which the Audio Engine listens to.

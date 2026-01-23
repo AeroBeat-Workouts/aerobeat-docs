@@ -16,7 +16,7 @@ We utilize a **Hybrid Tooling Strategy** to match the technical comfort of diffe
 
 ### 1. Native SDKs (Godot Editor)
 For **3D Artists** who need full control over materials, import settings, and baking.
-*   **SDKs:** `environment`, `cosmetics`.
+*   **SDKs:** `skins`, `avatars`, `cosmetics`, `environments`.
 *   **Workflow:** Download Godot -> Open SDK -> Import Assets -> Upload.
 
 ### 2. Standalone Apps (Web / Desktop)
@@ -78,7 +78,7 @@ The game scans `res://mods/*/manifest.tres` on startup.
 class_name AeroModManifest
 extends Resource
 
-enum ModType { SKIN, SONG, ENVIRONMENT, GAMEPLAY_TWEAK, COACHING, PLAYLIST }
+enum ModType { SKIN, SONG, ENVIRONMENT, GAMEPLAY_TWEAK, COACHING, PLAYLIST, AVATAR, COSMETIC }
 
 @export var id: String = "my_cool_skin" # Unique ID
 @export var display_name: String = "Cyberpunk Gloves"
@@ -97,3 +97,7 @@ enum ModType { SKIN, SONG, ENVIRONMENT, GAMEPLAY_TWEAK, COACHING, PLAYLIST }
 2.  **Discovery:** On startup (or after download), the `ModLoader` scans `user://mods/` and mounts valid packs using `ProjectSettings.load_resource_pack()`.
 3.  **Registration:** The loader reads the `manifest.tres` from the mounted path and registers it in the `ContentRegistry`.
 4.  **Offline Support:** Since files are saved locally, downloaded content remains available without an internet connection.
+
+
+
+

@@ -7,9 +7,9 @@ Avatars in AeroBeat serve two critical roles:
 
 This guide covers how to rig, import, and configure custom 3D characters that look great in both scenarios.
 
-## 🛠️ The Cosmetics SDK
+## 🛠️ The Avatars SDK
 
-*   **SDK:** `aerobeat-sdk-avatars`
+*   **SDK:** `aerobeat-avatars-*` (Template: `avatars`)
 *   **Tools:** Blender, Godot 4.x.
 *   **Output:** An `AeroAvatar` resource packed into a `.pck`.
 
@@ -49,7 +49,7 @@ AeroBeat uses a standard **Humanoid Skeleton**.
 
 ### Phase 2: Import to SDK
 
-1.  Open `aerobeat-sdk-avatars`.
+1.  Open the `aerobeat-avatars-*` project.
 2.  Drag your `.glb` into the `assets/avatars/` folder.
 3.  Double-click the file to open the **Advanced Import Settings**.
 4.  **Skeleton Map:** Select the "Skeleton" profile (Godot Humanoid) to ensure bones are mapped correctly.
@@ -62,7 +62,7 @@ AeroBeat uses a standard **Humanoid Skeleton**.
 
 ### Phase 4: Validation & Upload
 
-1.  Create `AeroModManifest` (Type: `SKIN`).
+1.  Create `AeroModManifest` (Type: `AVATAR`).
 2.  Open **AeroBeat Uploader**.
 3.  **Validate:** The tool will check bone hierarchy and polycounts.
 4.  **Upload:** Publish to the server.

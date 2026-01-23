@@ -38,7 +38,7 @@ Because all contributors sign a **Contributor License Agreement (CLA)**, AeroBea
 
 **Q: Can I use the default songs and skins in my commercial game?**
 
-**A:** **No.** The content in `aerobeat-asset-*` is licensed under **CC BY-NC 4.0** (Non-Commercial). You must replace these assets with your own art and music, or contact us to license specific assets.
+**A:** **No.** The content in our Art repositories (`aerobeat-skins-*`, `aerobeat-avatars-*`, etc.) is licensed under **CC BY-NC 4.0** (Non-Commercial). You must replace these assets with your own art and music, or contact us to license specific assets.
 
 **Q: Does AeroBeat take a revenue cut?**
 

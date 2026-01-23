@@ -11,6 +11,13 @@ Because a Boxing workout is biomechanically different from a Step workout, we pr
 *   **[Step Guide](step.md):** Optimized for foot placement and balance (4-lane grid).
 *   **[Dance Guide](dance.md):** Timeline-based gesture matching.
 
+### ⚠️ Web vs. Desktop: Audio Latency
+
+While the Web Studio is convenient for quick edits, **Web Browsers introduce variable audio latency** that makes precise rhythm mapping difficult.
+
+*   **Risk:** Charts mapped entirely in the web browser may feel "off-beat" when played in the game engine due to the browser's audio buffer drift.
+*   **Recommendation:** Use the **Desktop App** version of the Choreography Studio for final synchronization and timing checks. The Desktop App uses the same low-latency audio driver as the game client.
+
 ## 👁️ Designing for Multiple Views
 
 Your chart will be played on VR headsets (Portal View) and Mobile Phones (Track View).

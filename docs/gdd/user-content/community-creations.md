@@ -8,7 +8,7 @@ Every `playlist` is made up of multiple pieces of community content and is speci
 * **Songs:** - Musicians can add their songs to the platform for others to use.
 * **Choreography:** - Custom choreography written for songs using our in-game charting software. The choreographer uploads their work under a specific difficulty level (`easy`, `medium`, `hard`, `pro`). Limited to one chart per difficulty per song.
 * **Environments:** - Environments change up the background visuals and looping sound effects during a song. One environment is paired with one song in the playlist.
-* **Art Assets:** - Artists can create custom visuals for the `targets`, `obstacles`, `portals`, and `hands` used per song in the playlist. 
+* **Skins:** - Artists can create custom visuals for the `targets`, `obstacles`, `portals`, and `gloves/bats` used per song in the playlist.
 * **Coaching:** - Trainers can upload motivational content to guide athletes through a workout.
     *   **Warm Up:** A video playing before the first song.
     *   **Audio Overlays:** Voice-over tracks that play on top of specific songs (e.g., "Punch harder!").
@@ -21,12 +21,12 @@ When creating a `playlist`, a creator uses our in-game community content browser
 * **Songs:** - What songs are in this playlist? Limited to songs with existing choreography that matches your playlist and difficulty.
 * **Choreography:** - Optional: By default we use the most popular choreography chart per gameplay and difficulty, however you can override this to choose another match.
 * **Environments:** - Optional: Change the recommended environment. Once selection per song in the playlist.
-* **Assets:** - Optional: Change the recommended visuals such as `targets`, `obstacles`, `portals`, and `hands`.
+* **Skins:** - Optional: Change the recommended visuals such as `targets`, `obstacles`, `portals`, and `gloves`.
 * **Coaching:** - Optional: Select a **Coaching Pack** to apply warm-up/cool-down videos and per-song audio overlays.
 
 When choosing any playlist (official or community created), athletes can override the suggestions using their **Profile Preferences**.
 
 * **Avatars:** - Your avatar is your identity. It is set in your profile and persists across all playlists.
 * **Environment:** - Playlists often suggest immersive environments. You can override this to always use your "Preferred Environment" (e.g., a simple dark void) if the suggested one is distracting.
-* **Cosmetics:** - Playlists may suggest themed gloves or targets. You can override this to stick with your "Preferred Cosmetics" (e.g., high-contrast targets) for visibility or comfort.
+* **Skins:** - Playlists may suggest themed gloves or targets. You can override this to stick with your "Preferred Skins" (e.g., high-contrast targets) for visibility or comfort.
 * **Coaching:** - Disable all coaching material from playing.

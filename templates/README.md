@@ -27,9 +27,10 @@ Go to the AeroBeat-Workouts GitHub organization and look for repositories named 
 | **Input** | `input/` | MPL 2.0 | `.testbed/` | `plugin.cfg`, `.gitignore`, `setup_dev.py` |
 | **UI Kit** | `ui-kit/` | MPL 2.0 | `.testbed/` | `plugin.cfg`, `.gitignore`, `setup_dev.py` |
 | **UI Shell** | `ui-shell/` | GPLv3 | `.testbed/` | `plugin.cfg`, `.gitignore`, `sync_ui_kit.py`, `setup_dev.py` |
-| **Asset** | `asset/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `.gitignore`, `setup_dev.py`, `LICENSE` |
-| **SDK: Cosmetics** | `sdk-cosmetics/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `setup_dev.py`, `AeroGlove.gd` |
-| **SDK: Avatars** | `sdk-avatars/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `setup_dev.py`, `AeroAvatar.gd` |
-| **SDK: Environment** | `sdk-environment/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `setup_dev.py`, `AeroEnvironment.gd` |
+| **Skins** | `skins/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `setup_dev.py`, `AeroSkin.gd` |
+| **Avatars** | `avatars/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `setup_dev.py`, `AeroAvatar.gd` |
+| **Cosmetics** | `cosmetics/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `setup_dev.py`, `AeroAccessory.gd` |
+| **Environments** | `environments/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `setup_dev.py`, `AeroEnvironment.gd` |
+| **Asset (Internal)** | `asset/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `.gitignore`, `setup_dev.py`, `LICENSE` |
 
 > **Note:** All templates include the `.github/workflows/cla.yml` workflow automatically.

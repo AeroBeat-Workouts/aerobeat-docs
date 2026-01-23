@@ -4,7 +4,7 @@ Our creative content is protected differently than our code to prevent "Asset Fl
 
 ## Artists & Audio Designers
 
-### Content Packs (`aerobeat-asset-*`)
+### Content Packs (Skins, Avatars, Environments)
 * **License:** **CC BY-NC 4.0 (Attribution-NonCommercial)**
 * **Can I use these assets for fun?** Yes! You can remix them, mod them, and share them.
 * **Can I use them in a commercial game?** **No.** You cannot take our 3D models, textures, or music and sell them in your own product.

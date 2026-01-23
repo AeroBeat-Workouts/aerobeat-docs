@@ -7,6 +7,7 @@ AeroBeat is committed to a "Privacy-First" approach. However, to maintain the se
 Guest access is designed to be low-friction (no email required), but high-security (anti-abuse).
 
 ### 1. Device Fingerprinting
+
 To enforce bans and prevent quota evasion, we generate a unique hash based on the user's hardware.
 
 *   **Data Point:** `device_id` (SHA-256 Hash).
@@ -17,6 +18,7 @@ To enforce bans and prevent quota evasion, we generate a unique hash based on th
 *   **Retention:** Stored permanently in the `BannedDevices` table if banned; otherwise stored in `GuestSessions` with a TTL (Time To Live).
 
 ### 2. Network Data
+
 *   **Data Point:** IP Address.
 *   **Purpose:**
     *   **DDoS Protection:** Used by our WAF (Web Application Firewall) to block botnets.
@@ -24,10 +26,11 @@ To enforce bans and prevent quota evasion, we generate a unique hash based on th
 *   **Retention:** 7-day rolling log for security auditing. Not linked to a persistent user profile.
 
 ### 3. Usage Metrics
+
 *   **Data Point:** Download History.
 *   **Purpose:**
     *   **Rate Limiting:** We track `downloads_last_24h` to enforce the Guest Quota.
-    *   **Popularity Sorting:** Anonymous download counts contribute to the "Most Popular" sort order in the browser.
+    *   **Popularity Sorting:** Anonymous download counts contribute to the "Most Popular" sort order in the content browser.
 
 ## 👤 Verified Athlete Telemetry
 

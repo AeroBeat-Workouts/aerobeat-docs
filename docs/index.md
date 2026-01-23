@@ -68,7 +68,11 @@ AeroBeat uses a 7-tier repository structure to keep code clean and decoupled.
 | **`aerobeat-ui-kit-*`** | Visual Component Libraries (Themed Atoms/Molecules). | **MPL 2.0** |
 | **`aerobeat-ui-shell-*`** | Interaction Shells (Mobile vs VR). | **GPLv3** |
 | **`aerobeat-feature-*`** | Gameplay Logic (e.g., Boxing, Flow). | **GPLv3** |
-| **`aerobeat-asset-*`** | Content Packs (Skins, Environments). | **CC BY-NC 4.0** |
+| **`aerobeat-skins-*`** | Gameplay Visuals (Gloves, Targets). | **CC BY-NC 4.0** |
+| **`aerobeat-avatars-*`** | Characters (Player/Coach). | **CC BY-NC 4.0** |
+| **`aerobeat-cosmetics-*`** | Accessories (Hats, Glasses). | **CC BY-NC 4.0** |
+| **`aerobeat-environments-*`** | Levels and Lighting. | **CC BY-NC 4.0** |
+| **`aerobeat-asset-*`** | **Internal System Assets.** | **CC BY-NC 4.0** |
 | **`aerobeat-docs`** | This documentation site. | **CC BY-NC 4.0** |
 
 ---
@@ -94,7 +98,7 @@ We welcome contributions of all kinds! To ensure you have the best experience, p
 ### 🖌️ For Modders (UGC)
 *Looking to create custom Boxing Gloves, Targets, or Environments for yourself and the community?*
 
-1.  Download the **Cosmetics SDK** or **Environment SDK**.
+1.  Download the **Skins SDK**, **Avatars SDK**, or **Environment SDK**.
 2.  Learn how to pack your assets into `.pck` files.
 3.  Upload your creations to the community hub.
 

@@ -15,3 +15,7 @@
 | **Authority** | The peer responsible for calculating specific logic (e.g., Local Client for Hits). |
 | **Track View** | 2D visualization where targets rise from bottom to top (DDR style). |
 | **Portal View** | 3D visualization where targets fly towards the player from the portals origin (VR style). |
+| **Skin** | A visual replacement for a gameplay object (Gloves, Bats, Targets, Obstacles). |
+| **Avatar** | A 3D character model representing the player or coach. |
+| **Cosmetic** | An accessory attachment for an Avatar (Hat, Glasses). |
+| **Environment** | The 3D level geometry and lighting surrounding the gameplay. |

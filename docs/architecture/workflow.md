@@ -6,7 +6,7 @@ To ensure license compliance and correct file structure, always start new reposi
 
 *   **Assembly/Feature/UI:** GPLv3
 *   **Input/Core:** MPL 2.0
-*   **Assets:** CC BY-NC 4.0
+*   **Skins/Avatars/Cosmetics/Environments:** CC BY-NC 4.0
 
 ### Dependency Management
 
@@ -23,12 +23,13 @@ To develop Features in isolation:
 
 ### Asset Pipeline
 
-* **Inheritance:** Artists inherit `res://templates/base_target.tscn` (from Feature) to create skins.
-* **Single Dependency:** An Asset Package may only depend on **one** Feature. Shared assets must move to `aerobeat-asset-*-common`.
+* **Inheritance:** Artists inherit `res://templates/base_target.tscn` (from Feature) to create Skins.
+* **Skins:** Must depend on **one** Feature.
+* **Avatars/Cosmetics/Environments:** Must depend only on **Core**.
 
 ### Versioning (plugin.cfg)
 
-All modular repositories (Features, Assets, UI Kits, Input Drivers) must contain a `plugin.cfg` manifest. When releasing updates:
+All modular repositories (Features, Skins, Avatars, UI Kits, etc.) must contain a `plugin.cfg` manifest. When releasing updates:
 
 1.  **Open `plugin.cfg`:** Located at the repository root.
 2.  **Update Version:** Increment the `version="x.y.z"` field following Semantic Versioning.

@@ -15,5 +15,9 @@ We use a **Hybrid Licensing Strategy** to balance these needs. This section expl
 | `aerobeat-ui-core` | **MPL 2.0** | Only your new files. | **Link / Import** |
 | `aerobeat-ui-kit-*` | **MPL 2.0** | Only your new files. | **Link / Import** |
 | `aerobeat-ui-shell-*`| **GPLv3** | **No.** | **Rewrite** or Dual License |
-| `aerobeat-asset-*` | **CC BY-NC 4.0** | **No** (and no commercial use). | **Replace Assets** |
+| `aerobeat-skins-*` | **CC BY-NC 4.0** | **No** (and no commercial use). | **Replace Assets** |
+| `aerobeat-avatars-*` | **CC BY-NC 4.0** | **No** (and no commercial use). | **Replace Assets** |
+| `aerobeat-cosmetics-*`| **CC BY-NC 4.0** | **No** (and no commercial use). | **Replace Assets** |
+| `aerobeat-environments-*`| **CC BY-NC 4.0** | **No** (and no commercial use). | **Replace Assets** |
+| `aerobeat-asset-*` | **CC BY-NC 4.0** | **No** (and no commercial use). | **Internal / System** |
 | `aerobeat-docs` | **CC BY-NC 4.0** | **No.** (and no commercial use). | N/A |

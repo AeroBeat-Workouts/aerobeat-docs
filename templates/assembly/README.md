@@ -15,6 +15,7 @@ An **Assembly** is the "Game Client." It is the top-level Godot project that tie
     *   `aerobeat-ui-shell-*` (As needed)
     *   `aerobeat-ui-kit-*` (As needed / Transitive)
     *   `aerobeat-feature-*` (As needed)
+    *   `aerobeat-asset-*` (Internal Assets / As needed)
 
 ## 🚀 Getting Started
 

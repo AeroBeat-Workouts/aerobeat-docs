@@ -1,11 +1,28 @@
-# 🚨 Policing Community Content
+# Policing Content
 
-The following restrictions will be put in place regarding community created content to prevent bad actors.
+AeroBeat is an open platform, but it is not a lawless one. We employ a mix of **Automated AI** and **Human Moderation** to keep the ecosystem safe and legal.
 
-* **Opt-In:** - Athletes must create an account and agree to our terms and conditions before accessing community content.
-* **DMCA Blocking:** - If AeroBeat recieves a DMCA takedown notice, the offending content will be unaccessible for new athletes.
-* **DMCA Bans:** - DMCA content takedowns will result in account warnings and bans for creators.
-* **Prevention:** - Offending content will be blocked from re-upload to our servers.
-* **Pre-Banned Lists:** - If a pre-banned list exists, AeroBeat will adhere to it.
-* **Marketing:** - All official communication and marketing will feature only legally licensed music and content.
-* **Discussion Bans:** - Discussing unpermitted content on our official channels (Discord) will result in warnings and eventual bans for bad actors. 
+## 🤖 Automated Moderation (The First Line)
+
+Before any content appears in the "New Releases" feed, it passes through our AI filters.
+
+*   **Text Analysis:** Titles, Descriptions, and Author Names are scanned for hate speech, slurs, and toxic language.
+*   **Image Analysis:** Thumbnails and texture maps are scanned (using tools like AWS Rekognition) for NSFW content or gore.
+*   **Action:** Flagged content is held in a "Pending Review" state and hidden from the public until a human moderator approves it.
+
+## ⚖️ DMCA & Copyright
+
+We respect intellectual property rights.
+
+*   **The Rule:** If you upload a song or character you do not own, you must have permission.
+*   **Takedown Process:** Rights holders can submit a DMCA Takedown Request via our web portal.
+*   **Action:** Valid requests result in the immediate removal of the content.
+*   **Strikes:** Repeat offenders will have their Creator privileges revoked.
+
+### Streamer Mode
+To protect content creators on Twitch/YouTube, the game includes a **"Streamer Mode"** toggle.
+*   **Effect:** Mutes all UGC audio and replaces UGC skins with default assets, ensuring the broadcast is safe from copyright strikes.
+
+## Reporting Content
+
+Athletes can report content directly from the in-game browser.

@@ -1,17 +1,16 @@
-# AeroBeat Asset Pack Template
+# AeroBeat Internal Asset Template
 
-This is the official template for creating an **Asset Pack** repository within the AeroBeat ecosystem.
+This is the official template for creating an **Internal Asset** repository within the AeroBeat ecosystem.
 
-**Asset Packs** contain the creative content for the game: 3D Models, Textures, Audio, and Level Data. They are strictly separated from code to allow for different licensing terms.
+**Internal Assets** contain system-critical content: UI Icons, Default Fonts, Mock Data, and Fallback Meshes. These are **NOT** for User Generated Content (UGC).
 
 ## 📋 Repository Details
 
-*   **Type:** Asset Pack (Content)
+*   **Type:** Internal Asset (System)
 *   **License:** **CC BY-NC 4.0** (Attribution-NonCommercial)
 *   **Constraints:**
-    *   **NO CODE ALLOWED:** You cannot include `.gd` scripts or compiled binaries in this repository.
-    *   **Attribution Required:** You must credit AeroBeat-Workouts if you modify existing assets.
-    *   **Scope:** An asset pack should target **Core** (Generic) or **One Feature** (Specific). Do not mix assets for different gameplay features in one repo.
+    *   **Internal Use Only:** These assets are required by the Assembly or UI Shells and are not swappable via the Modding API.
+    *   **Scripts Allowed:** Unlike UGC, internal asset repos **MAY** contain helper scripts (`.gd`) or shaders (`.gdshader`) for visual polish.
 
 ## 🚀 Getting Started
 
@@ -25,18 +24,17 @@ This is the official template for creating an **Asset Pack** repository within t
     python setup_dev.py
     ```
 3.  **Add Content:**
-    Place your `.glb`, `.png`, `.ogg`, `.webm`, or `.tres` files into the `assets/` directory.
+    Place your system files into the `assets/` directory.
 4.  **Import:**
     This repository is intended to be used as a submodule or direct download into an `aerobeat-assembly-*` project.
 
 ## 📂 Structure
 
 *   `assets/` - The root folder for all content.
-    *   `models/` - 3D meshes (GLTF/GLB).
-    *   `textures/` - 2D images.
-    *   `audio/` - Sound effects and music.
-    *   `video/` - Coaching videos (.webm).
-    *   `materials/` - Godot StandardMaterials.
+    *   `ui/` - Icons and Themes.
+    *   `fonts/` - TTF/OTF files.
+    *   `mock/` - JSON/Resource data for testing.
+    *   `prototypes/` - Greybox meshes.
 *   `LICENSE` - The CC BY-NC 4.0 legal text.
 
 ## 📝 Licensing & Commercial Use

@@ -10,8 +10,12 @@ We adhere to a strict **7-Tier** repository structure. Dependencies are categori
 | **Input** | `aerobeat-input-*` | **Hardware Drivers.** (Camera, VR, Watch). | `aerobeat-core` | Vendor SDKs | Testbed Scaffolding | **MPL 2.0** |
 | **UI Kit** | `aerobeat-ui-kit-*` | **Visual Library.** Themed scenes inheriting UI Core logic. | `aerobeat-ui-core` | `aerobeat-asset-common` | Testbed Scaffolding | **MPL 2.0** |
 | **UI Shell** | `aerobeat-ui-shell-*` | **Interaction Layer.** Platform-specific screens. | `aerobeat-ui-kit-*` | `aerobeat-asset-common`<br>(Local Assets) | Vendor Tools (Tweeners)<br>Mock Data | **GPLv3** |
-| **Feature** | `aerobeat-feature-*` | **Gameplay Logic.** Pure mechanics (Boxing, Flow). | `aerobeat-core` | Vendor Utils | Testbed Scaffolding | **GPLv3** |
-| **Asset** | `aerobeat-asset-*` | **Content.** Skins, Songs, Environments. | `aerobeat-core` | **Max 1** Feature (Inheritance) | **None** | **CC BY-NC 4.0** |
+| **Feature** | `aerobeat-feature-*` | **Gameplay Logic.** Mechanics & Base Scenes (Boxing, Flow). | `aerobeat-core` | Vendor Utils | Testbed Scaffolding | **GPLv3** |
+| **Skins** | `aerobeat-skins-*` | **Gameplay Visuals.** Gloves, Targets, Obstacles. | `aerobeat-feature-*` | `aerobeat-core` | Testbed Scaffolding | **CC BY-NC 4.0** |
+| **Avatars** | `aerobeat-avatars-*` | **Characters.** Player/Coach models. | `aerobeat-core` | **None** | Testbed Scaffolding | **CC BY-NC 4.0** |
+| **Cosmetics** | `aerobeat-cosmetics-*` | **Accessories.** Hats, Glasses. | `aerobeat-core` | **None** | Testbed Scaffolding | **CC BY-NC 4.0** |
+| **Environments** | `aerobeat-environments-*` | **Levels.** Lighting, Skyboxes. | `aerobeat-core` | **None** | Testbed Scaffolding | **CC BY-NC 4.0** |
+| **Asset** | `aerobeat-asset-*` | **System Assets.** UI Icons, Mock Data. | `aerobeat-core` | **None** | **None** | **CC BY-NC 4.0** |
 | **Docs** | `aerobeat-docs` | **Manual.** Documentation Website. | **None** | **None** | MkDocs Plugins | **CC BY-NC 4.0** |
 | **Vendor** | `aerobeat-vendor` | **3rd Party Tools.** Utilities and Helpers. | **None** | **None** | *(As Upstream)* | *(As Upstream)* |
 
@@ -37,9 +41,10 @@ We do not have a "Default UI." The Assembly defines **UI Contracts** (`AeroMenuP
 * **`aerobeat-feature-boxing`**: The Boxing gameplay loop, hit detection, and choreography parser.
 * **`aerobeat-asset-prototypes`**: Grey-box environments and dummy targets.
 
-### Asset Repository Strategy
+### Content Repository Strategy
 
-To prevent "Dependency Hell," Asset repositories must be scoped strictly:
+To prevent "Dependency Hell," Content repositories must be scoped strictly:
 
-1.  **Feature-Specific Assets (Skins):** If an asset pack contains skins for a specific gameplay mode (e.g., Boxing Gloves), it must depend on **that specific Feature repo** (`aerobeat-feature-boxing`) and no others.
-2.  **Generic Assets (Environments/Music):** If an asset pack contains content usable by *any* mode (e.g., a Gym Environment or Song Pack), it must depend **only on Core**.
+1.  **Skins (Feature-Specific):** Repositories containing Gloves, Targets, or Obstacles (`aerobeat-skins-*`) must depend on **one specific Feature repo** (e.g., `aerobeat-feature-boxing`) to inherit base scenes.
+2.  **Universal Content:** Repositories for Avatars, Cosmetics, and Environments must depend **only on Core**.
+3.  **System Assets:** The `aerobeat-asset-*` tier is for internal use only (UI icons, default fonts) and is not part of the UGC system.
