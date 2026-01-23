@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/guides/avatar_creation/">
       
       
-        <link rel="prev" href="../cosmetics/">
+        <link rel="prev" href="../skins/">
       
       
         <link rel="next" href="../coaching/">
@@ -974,14 +974,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../cosmetics/" class="md-nav__link">
+      <a href="../skins/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Cosmetic Creation
+    Skin Creation
   
 
     
@@ -1062,10 +1062,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-cosmetics-sdk" class="md-nav__link">
+  <a href="#the-avatars-sdk" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ The Cosmetics SDK
+        🛠️ The Avatars SDK
       
     </span>
   </a>
@@ -4064,10 +4064,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-cosmetics-sdk" class="md-nav__link">
+  <a href="#the-avatars-sdk" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ The Cosmetics SDK
+        🛠️ The Avatars SDK
       
     </span>
   </a>
@@ -4223,9 +4223,9 @@
 <li><strong>The Athlete:</strong> In Multiplayer, this is how other players see <strong>You</strong>.</li>
 </ol>
 <p>This guide covers how to rig, import, and configure custom 3D characters that look great in both scenarios.</p>
-<h2 id="the-cosmetics-sdk">🛠️ The Cosmetics SDK<a class="headerlink" href="#the-cosmetics-sdk" title="Permanent link">&para;</a></h2>
+<h2 id="the-avatars-sdk">🛠️ The Avatars SDK<a class="headerlink" href="#the-avatars-sdk" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>SDK:</strong> <code>aerobeat-sdk-avatars</code></li>
+<li><strong>SDK:</strong> <code>aerobeat-avatars-*</code> (Template: <code>avatars</code>)</li>
 <li><strong>Tools:</strong> Blender, Godot 4.x.</li>
 <li><strong>Output:</strong> An <code>AeroAvatar</code> resource packed into a <code>.pck</code>.</li>
 </ul>
@@ -4262,7 +4262,7 @@
 </ol>
 <h3 id="phase-2-import-to-sdk">Phase 2: Import to SDK<a class="headerlink" href="#phase-2-import-to-sdk" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Open <code>aerobeat-sdk-avatars</code>.</li>
+<li>Open the <code>aerobeat-avatars-*</code> project.</li>
 <li>Drag your <code>.glb</code> into the <code>assets/avatars/</code> folder.</li>
 <li>Double-click the file to open the <strong>Advanced Import Settings</strong>.</li>
 <li><strong>Skeleton Map:</strong> Select the "Skeleton" profile (Godot Humanoid) to ensure bones are mapped correctly.</li>
@@ -4275,7 +4275,7 @@
 </ol>
 <h3 id="phase-4-validation-upload">Phase 4: Validation &amp; Upload<a class="headerlink" href="#phase-4-validation-upload" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Create <code>AeroModManifest</code> (Type: <code>SKIN</code>).</li>
+<li>Create <code>AeroModManifest</code> (Type: <code>AVATAR</code>).</li>
 <li>Open <strong>AeroBeat Uploader</strong>.</li>
 <li><strong>Validate:</strong> The tool will check bone hierarchy and polycounts.</li>
 <li><strong>Upload:</strong> Publish to the server.</li>
@@ -4307,7 +4307,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 23, 2026 03:19:55 UTC">January 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 23, 2026 22:13:14 UTC">January 23, 2026</span>
   </span>
 
     
