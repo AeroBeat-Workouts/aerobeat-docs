@@ -10,7 +10,7 @@ To run this documentation site locally, you will need [Python](https://www.pytho
 We have included a helper script that automatically sets up the virtual environment, installs dependencies, and launches the server.
 
 ```powershell
-.\serve.ps1
+./serve.ps1
 ```
 
 ### Manual Setup
@@ -46,7 +46,7 @@ This repository uses **GitHub Actions** to automatically build and publish the d
 2.  **Push:** Commit and push your changes to GitHub.
 3.  **Auto-Publish:** The "Publish Docs" workflow will automatically run, build the site, and deploy it to the `gh-pages` branch.
 
-The live site is available at: https://aerobeat-fitness.github.io/aerobeat-docs/
+The live site is available at: https://aerobeat-workouts.github.io/aerobeat-docs/
 
 ## Repository Templates
 

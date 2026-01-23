@@ -1,5 +1,9 @@
 # Contributing Workflow
 
+!!! info "Not a Programmer?"
+    If you are an Artist, Musician, or Choreographer, this workflow might be too technical.
+    Check out the **Contributing Section** on the homepage to find the right guide for you.
+
 This guide outlines the lifecycle of a code contribution to the AeroBeat platform. Follow these steps to ensure your Pull Request (PR) is accepted quickly.
 
 ## 1. Fork & Clone
@@ -56,7 +60,7 @@ Once your PR is open, our automated bots will check your code.
 
 *   **Check:** Verifies you have signed the Contributor License Agreement.
 *   **Action:** If this is your first time, a bot will comment on your PR. You must reply with:
-    > "I have read and agree to the terms of the AeroBeat-Fitness CLA."
+    > "I have read and agree to the terms of the AeroBeat-Workouts CLA."
 
 ### 🧪 CI/CD (Technical)
 
