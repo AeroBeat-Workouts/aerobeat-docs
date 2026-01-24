@@ -2821,6 +2821,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#5-economy-integrity-online-only-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Economy Integrity (Online-Only Policy)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-gamification-integrity-online-only-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Gamification Integrity (Online-Only Policy)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-health-data-privacy-gdpr-hipaa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Health Data Privacy (GDPR &amp; HIPAA)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4132,6 +4165,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#5-economy-integrity-online-only-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Economy Integrity (Online-Only Policy)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-gamification-integrity-online-only-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Gamification Integrity (Online-Only Policy)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-health-data-privacy-gdpr-hipaa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Health Data Privacy (GDPR &amp; HIPAA)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4191,9 +4257,33 @@
 <li><strong>Device Fingerprinting:</strong> We generate a unique hardware hash (<code>device_id</code>) to enforce bans. If a user is banned for cheating, reinstalling the game will not reset their status.</li>
 <li><strong>Replay Analysis:</strong> (Future Roadmap) For high-stakes leaderboards, the client uploads a lightweight input replay. The server re-simulates the session to verify the score matches the inputs.</li>
 </ul>
+<h2 id="5-economy-integrity-online-only-policy">5. Economy Integrity (Online-Only Policy)<a class="headerlink" href="#5-economy-integrity-online-only-policy" title="Permanent link">&para;</a></h2>
+<p>To prevent local save editing and ensure the integrity of the "Workout Points" (WP) economy, the system is <strong>Server-Authoritative</strong>.</p>
+<ul>
+<li><strong>No Offline Earning:</strong> If an athlete plays offline, they do not earn WP. The client cannot reliably cryptographically sign a workout result without a server handshake.</li>
+<li><strong>No Offline Spending:</strong> The Locker Room requires an active connection to validate the wallet balance and process transactions.</li>
+<li><strong>Truth:</strong> The <code>AeroUserProfile</code> on the client is a <em>cache</em>. The Server Database is the source of truth.</li>
+</ul>
+<h2 id="6-gamification-integrity-online-only-policy">6. Gamification Integrity (Online-Only Policy)<a class="headerlink" href="#6-gamification-integrity-online-only-policy" title="Permanent link">&para;</a></h2>
+<p>Similar to the Economy, the Gamification system (Streaks, Quests, Weekly Goals) relies on <strong>Server Authority</strong> to prevent date manipulation (e.g., changing the system clock to maintain a streak).</p>
+<ul>
+<li><strong>Server Time:</strong> All time-based calculations rely exclusively on Server Time.</li>
+<li><strong>Offline Limitations:</strong> Workouts completed offline do not count towards Quests, Streaks, or Weekly Goals.</li>
+</ul>
+<h2 id="7-health-data-privacy-gdpr-hipaa">7. Health Data Privacy (GDPR &amp; HIPAA)<a class="headerlink" href="#7-health-data-privacy-gdpr-hipaa" title="Permanent link">&para;</a></h2>
+<p>The "Connected Athlete" feature allows Supporters to sync workout data to external platforms (Strava, Apple Health). Because health data is highly sensitive, we enforce a <strong>Zero-Persistence Policy</strong>.</p>
+<ul>
+<li><strong>Client-Side Sync (Preferred):</strong> Where possible (e.g., Apple HealthKit on iOS, Health Connect on Android), synchronization happens directly from the Client Device to the OS API. This data never touches AeroBeat servers.</li>
+<li><strong>Server-Side Sync (Transient):</strong> For web-based APIs (e.g., Strava), the client sends a signed workout summary to our backend.<ul>
+<li><strong>Transient Processing:</strong> The server immediately forwards the payload to the external provider.</li>
+<li><strong>No Storage:</strong> We do <strong>not</strong> store heart rate, weight, or biometric data in our database. We only store the "Result" (Calories Burned, Duration) required for the Leaderboard.</li>
+</ul>
+</li>
+<li><strong>Consent:</strong> Explicit, granular consent is required to enable any health integration. This consent can be revoked at any time via the Profile settings.</li>
+</ul>
 <hr />
 <blockquote>
-<p><strong>Note:</strong> Security is an ongoing process. Vulnerabilities should be reported privately to <code>security@aerobeat.fitness</code>.</p>
+<p><strong>Note:</strong> Security is an ongoing process. Vulnerabilities should be reported privately to <code>aerobeat-workouts@gmail.com</code>.</p>
 </blockquote>
 
 
@@ -4215,7 +4305,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 22, 2026 17:27:51 UTC">January 22, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 24, 2026 19:27:08 UTC">January 24, 2026</span>
   </span>
 
     

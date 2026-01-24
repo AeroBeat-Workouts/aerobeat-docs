@@ -2765,6 +2765,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#4-data-retention-policies-advanced-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Data Retention Policies (Advanced Analytics)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Data Retention Policies (Advanced Analytics)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-workout-history-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Workout History (Logs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-granular-hit-data-heatmaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Granular Hit Data (Heatmaps)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4076,6 +4115,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#4-data-retention-policies-advanced-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Data Retention Policies (Advanced Analytics)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Data Retention Policies (Advanced Analytics)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-workout-history-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Workout History (Logs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-granular-hit-data-heatmaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Granular Hit Data (Heatmaps)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4147,6 +4225,25 @@
 </li>
 <li><strong>Data Minimization:</strong> We do not collect microphone audio or camera feeds. All Computer Vision processing happens <strong>locally</strong> on the device; only the resulting "Input Events" (e.g., "Punch Detected") are processed by the game logic.</li>
 </ul>
+<h2 id="4-data-retention-policies-advanced-analytics">4. Data Retention Policies (Advanced Analytics)<a class="headerlink" href="#4-data-retention-policies-advanced-analytics" title="Permanent link">&para;</a></h2>
+<p>To support the "Advanced Analytics" features for Supporters while managing storage costs, we enforce tiered retention policies.</p>
+<h3 id="a-workout-history-logs">A. Workout History (Logs)<a class="headerlink" href="#a-workout-history-logs" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Free Athletes:</strong> We retain a rolling window of the last <strong>50 sessions</strong>. Older logs are soft-deleted.<ul>
+<li><em>Note:</em> The client UI only displays the last 10 sessions to free users. The extra 40 are kept to provide immediate value if the user upgrades to Supporter status.</li>
+</ul>
+</li>
+<li><strong>Supporters:</strong> We retain <strong>Unlimited</strong> workout history while the Supporter status is active.<ul>
+<li><em>Lapse Policy:</em> If a Supporter status lapses, data is not immediately deleted. It enters a "Frozen" state for 1 year before reverting to the Free Tier retention policy.</li>
+</ul>
+</li>
+</ul>
+<h3 id="b-granular-hit-data-heatmaps">B. Granular Hit Data (Heatmaps)<a class="headerlink" href="#b-granular-hit-data-heatmaps" title="Permanent link">&para;</a></h3>
+<p>To generate "Accuracy Heatmaps" (e.g., "You miss low-left targets"), we collect granular hit data <code>( view_type, lane_id, hit_offset_ms, hit_position_xy)</code>.</p>
+<ul>
+<li><strong>Raw Data:</strong> Stored transiently and deleted after <strong>7 days</strong>.</li>
+<li><strong>Aggregates:</strong> Raw data is processed into <strong>Monthly Aggregates</strong> (e.g., "Lane 1 Accuracy: 85%") nightly. These aggregates are retained indefinitely for Supporters to visualize long-term trends.</li>
+</ul>
 
 
 
@@ -4167,7 +4264,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 23, 2026 22:13:14 UTC">January 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 24, 2026 19:27:08 UTC">January 24, 2026</span>
   </span>
 
     

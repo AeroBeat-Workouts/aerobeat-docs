@@ -2697,6 +2697,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#9-meta-game-ui-flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Meta-Game UI Flows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Meta-Game UI Flows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-the-profile-hub-overlay-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. The Profile Hub (Overlay Pattern)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-the-locker-room-scene-transition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. The Locker Room (Scene Transition)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4164,6 +4203,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#9-meta-game-ui-flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Meta-Game UI Flows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Meta-Game UI Flows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-the-profile-hub-overlay-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. The Profile Hub (Overlay Pattern)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-the-locker-room-scene-transition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. The Locker Room (Scene Transition)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4321,6 +4399,31 @@
 </ul>
 </li>
 </ul>
+<h2 id="9-meta-game-ui-flows">9. Meta-Game UI Flows<a class="headerlink" href="#9-meta-game-ui-flows" title="Permanent link">&para;</a></h2>
+<p>To ensure a seamless experience between the "Game Loop" (Workout) and the "Meta Loop" (Progression), we define specific interaction patterns for the Profile and Locker Room.</p>
+<h3 id="a-the-profile-hub-overlay-pattern">A. The Profile Hub (Overlay Pattern)<a class="headerlink" href="#a-the-profile-hub-overlay-pattern" title="Permanent link">&para;</a></h3>
+<p>The Profile is not a separate "Scene" but a <strong>Modal Overlay</strong> accessible from anywhere in the Main Menu.</p>
+<ul>
+<li><strong>Trigger:</strong> Clicking the "Profile Badge" (Top-Right HUD).</li>
+<li><strong>State:</strong> Pauses the underlying menu interaction but keeps the background visible (dimmed).</li>
+<li><strong>Components:</strong><ul>
+<li><code>ProfileBadge</code> (Atom): Displays mini-avatar and level.</li>
+<li><code>ProfileHub</code> (Organism): The modal window containing stats and settings.</li>
+</ul>
+</li>
+</ul>
+<h3 id="b-the-locker-room-scene-transition">B. The Locker Room (Scene Transition)<a class="headerlink" href="#b-the-locker-room-scene-transition" title="Permanent link">&para;</a></h3>
+<p>Unlike the Profile, the Locker Room requires a full scene transition to load the high-fidelity 3D environment for the Avatar.</p>
+<ul>
+<li><strong>Trigger:</strong> "Edit Avatar" button in Profile Hub or Main Menu.</li>
+<li><strong>Transition:</strong> Fade to Black -&gt; Load <code>LockerRoom.tscn</code>.</li>
+<li><strong>Interaction Model:</strong><ul>
+<li><strong>Preview First:</strong> Clicking an item equips it <em>visually</em> but not <em>logically</em>.</li>
+<li><strong>Hold-to-Buy:</strong> Purchasing requires a 1.0s hold interaction to prevent accidental WP spending.</li>
+<li><strong>Gizmo Mode:</strong> A dedicated sub-state for adjusting accessory offsets.</li>
+</ul>
+</li>
+</ul>
 
 
 
@@ -4341,7 +4444,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 23, 2026 22:13:14 UTC">January 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 24, 2026 19:27:08 UTC">January 24, 2026</span>
   </span>
 
     

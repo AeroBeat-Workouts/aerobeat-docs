@@ -2597,6 +2597,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#4-supporter-enhancements-visuals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Supporter Enhancements (Visuals)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Supporter Enhancements (Visuals)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-lobby-environment-host-authority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Lobby Environment (Host Authority)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-entrance-fx-personal-flair" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Entrance FX (Personal Flair)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4076,6 +4115,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#4-supporter-enhancements-visuals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Supporter Enhancements (Visuals)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Supporter Enhancements (Visuals)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-lobby-environment-host-authority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Lobby Environment (Host Authority)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-entrance-fx-personal-flair" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Entrance FX (Personal Flair)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4130,6 +4208,23 @@
 <li><strong>Forbidden:</strong> Logic scripts calling <code>$Audio.play()</code> or <code>$Particles.emit()</code>.</li>
 <li><strong>Required:</strong> Logic emits <code>signal hit_confirmed</code>. A separate <code>_view_connector.gd</code> (Client Only) listens and plays FX.</li>
 </ul>
+<h2 id="4-supporter-enhancements-visuals">4. Supporter Enhancements (Visuals)<a class="headerlink" href="#4-supporter-enhancements-visuals" title="Permanent link">&para;</a></h2>
+<p>To reward Supporters without affecting gameplay balance, we allow visual customization of the multiplayer experience.</p>
+<h3 id="a-lobby-environment-host-authority">A. Lobby Environment (Host Authority)<a class="headerlink" href="#a-lobby-environment-host-authority" title="Permanent link">&para;</a></h3>
+<p>When a player hosts a lobby, they define the visual "Vibe" of the waiting room.</p>
+<ul>
+<li><strong>Mechanism:</strong> The Host sends an <code>RPC_UpdateLobbyEnvironment(environment_id)</code> upon creation.</li>
+<li><strong>Replication:</strong> All joining clients load the specified <code>AeroEnvironment</code> resource (Skybox/Lighting) locally.</li>
+<li><strong>Constraint:</strong> Only "Official" or "Verified" environments can be used to prevent griefing with broken assets.</li>
+</ul>
+<h3 id="b-entrance-fx-personal-flair">B. Entrance FX (Personal Flair)<a class="headerlink" href="#b-entrance-fx-personal-flair" title="Permanent link">&para;</a></h3>
+<p>When a Supporter joins a session or respawns, a unique visual effect plays.</p>
+<ul>
+<li><strong>Data:</strong> <code>AeroUserState</code> includes <code>entrance_fx_id</code> (String).</li>
+<li><strong>Trigger:</strong> When a new <code>RemoteAthlete</code> is instantiated, the client checks this ID.</li>
+<li><strong>Execution:</strong> The client spawns the corresponding particle system from <code>aerobeat-asset-common</code> at the avatar's root location.</li>
+<li><strong>Safety:</strong> Clients have a "Disable Remote FX" toggle in settings to prevent performance degradation on low-end devices.</li>
+</ul>
 
 
 
@@ -4150,7 +4245,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 22, 2026 17:27:51 UTC">January 22, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 24, 2026 19:27:08 UTC">January 24, 2026</span>
   </span>
 
     
