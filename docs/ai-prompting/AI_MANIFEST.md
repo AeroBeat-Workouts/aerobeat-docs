@@ -5,6 +5,12 @@
 2. **Extensions:** Use `.gd` for logic, `.tscn` for scenes, `.tres` for data.
 3. **Strict Typing:** All GDScript must be static typed (e.g., `func get_name() -> String:`).
 
+## Architecture Constraints (Strict)
+1. **Dependency Flow:** `Assembly` -> `Feature` -> `Core`. Dependencies must flow DOWN.
+2. **UI Isolation:** `Feature` logic must NEVER depend on `UI` classes. Use Signals to communicate state changes.
+3. **Tool Isolation:** `aerobeat-tool-*` (Services) must NEVER depend on `aerobeat-feature-*` (Gameplay).
+4. **Headless Safety:** Logic scripts in `aerobeat-feature-*` must NOT access `AudioStreamPlayer` or `VisualInstance3D` directly. Use Signals.
+
 ## Directory Map
 * `aerobeat-core/`
   * `contracts/`: Interfaces only. No game logic.

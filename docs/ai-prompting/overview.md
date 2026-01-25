@@ -55,13 +55,34 @@ AI struggles with massive refactors. Ask for one file at a time.
 * ✅ *"Create the `StrategyJoycon` script based on the `AeroInputStrategy` interface."*
 * ✅ *"Create a new Glove resource in `aerobeat-skins-boxing-community` inheriting from `AeroGlove`."*
 
-### 3. Review Against the Style Guide
+### 3. Prompting for Tools
+Tools are singletons. When asking for a new tool, specify its scope.
+* ✅ *"Create `aerobeat-tool-settings` to handle `AeroUserPreferences` persistence."*
+
+### 4. Review Against the Style Guide
 
 Before committing AI-generated code, verify these common "AI lazy" habits:
 
 * Did it use `var x` instead of `var x: float`? (Reject it).
 * Did it use `Input.is_action_pressed`? (Reject it—must use `AeroInputProvider`).
 * Did it put a script on a Node that should be a Resource? (Reject it).
+
+### 5. Agentic Workflow (The "Ralph" Method)
+
+For complex features, we use a **Plan → Build** loop to prevent the AI from getting lost.
+
+#### Phase 1: Planning Mode
+*   **Goal:** Create a prioritized TODO list (`IMPLEMENTATION_PLAN.md`).
+*   **Input:** `docs/gdd/*.md` (Specs) + `src/` (Current Code).
+*   **Prompt:** *"Compare the GDD against the codebase. Identify missing features. Write a step-by-step implementation plan. Do NOT write code yet."*
+
+#### Phase 2: Building Mode
+*   **Goal:** Execute **ONE** task from the plan.
+*   **Input:** `IMPLEMENTATION_PLAN.md` + `STYLE_GUIDE.md`.
+*   **Prompt:** *"Read the plan. Pick the highest priority task. Implement it. Run tests. If tests pass, commit and mark the task as done."*
+*   **Loop:** Clear context and repeat for the next task.
+
+> **Why?** Clearing context between tasks prevents "Context Drift," where the AI forgets the Style Guide after 20 messages.
 
 ---
 
