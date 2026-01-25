@@ -104,4 +104,5 @@ Certain cosmetic items are tagged as **Supporter Exclusive**.
 
 *   **Data Source:** `AeroCosmeticResource` (Price, Slot, Model).
 *   **State:** `AeroUserProfile` (Inventory, Wallet).
+*   **Transaction:** **`aerobeat-tool-api`** (Handles purchase requests).
 *   **Scene:** `LockerRoom.tscn` (3D Environment).

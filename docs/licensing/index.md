@@ -12,6 +12,7 @@ We use a **Hybrid Licensing Strategy** to balance these needs. This section expl
 | `aerobeat-assembly-*` | **GPLv3** | **No.** | **Rewrite** or Dual License |
 | `aerobeat-feature-*`| **GPLv3** | **No.** | **Rewrite** or Dual License |
 | `aerobeat-input-*` | **MPL 2.0** | Only your new files/SDKs. | **Link / Wrapper** |
+| `aerobeat-tool-*` | **MPL 2.0** | Only your new files. | **Link / Import** |
 | `aerobeat-ui-core` | **MPL 2.0** | Only your new files. | **Link / Import** |
 | `aerobeat-ui-kit-*` | **MPL 2.0** | Only your new files. | **Link / Import** |
 | `aerobeat-ui-shell-*`| **GPLv3** | **No.** | **Rewrite** or Dual License |

@@ -12,6 +12,9 @@
   * `globals/`: Singletons (SignalBus).
 * `aerobeat-ui-core/`
   * `scripts/`: Base logic classes (`AeroButtonBase`). No scenes.
+* `aerobeat-tool-*/`
+  * `src/`: Service logic and Autoloads the Singleton manager(ex: `AeroToolManager`).
+  * `.testbed/`: Isolated testing scenes.
 * `aerobeat-ui-kit-*/`
   * `atoms/`: Themed components inheriting Core logic.
   * `molecules/`: Composite components.

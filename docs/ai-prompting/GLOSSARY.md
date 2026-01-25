@@ -8,6 +8,7 @@
 | **Hit Window** | The timeframe (±ms) where a hit counts as valid. |
 | **Provider** | A script that bridges Hardware Input to Game Logic. |
 | **Strategy** | A script that swaps logic implementations (e.g., Portal vs Track view). |
+| **Tool** | A reusable service or singleton manager (e.g., API, Analytics) independent of gameplay logic. |
 | **Atom** | A base UI element (Button) in the UI Kit. |
 | **Session Context** | Immutable rules of the round (Song, Difficulty). Synced once. |
 | **User State** | Mutable player data (Score, Health). Replicated frequently. |

@@ -24,6 +24,7 @@ Go to the AeroBeat-Workouts GitHub organization and look for repositories named 
 | :--- | :--- | :--- | :--- | :--- |
 | **Assembly** | `assembly/` | GPLv3 | **Root** | `project.godot`, `.gitignore`, `setup_dev.py` |
 | **Feature** | `feature/` | GPLv3 | `.testbed/` | `plugin.cfg`, `.gitignore`, `.testbed/`, `setup_dev.py` |
+| **Tool** | `tool/` | MPL 2.0 | `.testbed/` | `plugin.cfg`, `.gitignore`, `setup_dev.py` |
 | **Input** | `input/` | MPL 2.0 | `.testbed/` | `plugin.cfg`, `.gitignore`, `setup_dev.py` |
 | **UI Kit** | `ui-kit/` | MPL 2.0 | `.testbed/` | `plugin.cfg`, `.gitignore`, `setup_dev.py` |
 | **UI Shell** | `ui-shell/` | GPLv3 | `.testbed/` | `plugin.cfg`, `.gitignore`, `sync_ui_kit.py`, `setup_dev.py` |

@@ -43,19 +43,28 @@ Focuses on "What I've Done".
 *   **Play Time:** Total hours spent in active gameplay.
 
 #### Supporter Enhancements (Pro Stats)
+
 Active Supporters gain access to deeper analytics in this panel:
+
 *   **Heatmaps:** A visual overlay showing accuracy per lane (e.g., "Weakness: Low-Left").
 *   **Trend Graphs:** Toggle between Weekly, Monthly, and Yearly progress (Free users are limited to Weekly).
 
-### C. Goal Control Center (Settings Tab)
+### C. Settings & Preferences (Center Panel)
 
-Allows athletes to adjust their targets.
+Allows athletes to adjust their targets and customize their experience.
 
 *   **Frequency Slider:** "I want to workout [X] days a week." (Range: 1-7).
-*   **Difficulty Preference:** "Preferred Difficulty: [Hard]."
-    *   *Usage:* Used by the "Quick Play" button to auto-select difficulty.
+*   **Difficulty Preference:** "Preferred Difficulty: [Pro]."
+    *   *Usage:* Used by the "Playlist Browser" to auto-filter difficulty.
+
+#### Preferences & Overrides
+
+*   **Visuals:** Force specific Environments or Skins (e.g., for accessibility or comfort).
+*   **Gameplay:** Set default Mode (Boxing/Flow) and View Type (Portal/Track).
+*   **Menu:** Customize the Main Menu background (Supporter Feature).
 
 #### Connected Athlete (Supporter Only)
+
 *   **Health Sync:** Toggle to enable auto-upload to Strava, Apple Health, or Google Fit.
 *   **Data Export:** Button to download full CSV history.
 
@@ -80,7 +89,7 @@ A scrollable list of recent activity.
 ### Changing Goals
 
 1.  **User** opens `ProfileHub`.
-2.  **User** clicks the "Goals" tab.
+2.  **User** clicks the "Settings" tab.
 3.  **User** adjusts the "Days per Week" slider from 3 to 5.
 4.  **User** clicks "Save".
 5.  **System** updates the local `AeroUserProfile` and syncs with the server.
@@ -88,4 +97,6 @@ A scrollable list of recent activity.
 ## 5. Technical Integration
 
 *   **Data Source:** `AeroUserProfile` (Resource).
+*   **Persistence:** **`aerobeat-tool-settings`** (Saves profile to disk).
+*   **Sync:** **`aerobeat-tool-api`** (Syncs profile to cloud).
 *   **3D Avatar:** The Hub instantiates a `SubViewport` to render the 3D Avatar scene separately from the UI, ensuring high fidelity.

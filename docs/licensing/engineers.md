@@ -23,3 +23,8 @@ Our codebase is split into three categories. The license depends on which reposi
 * **UI Shells (`aerobeat-ui-shell-*`):** **GNU GPLv3**
     * **The Rule:** The Shell contains the specific application flow and wiring. It is treated as part of the Game Client and must be open source.
     * **Why:** This prevents bad actors from taking the community-built interface, rebranding it as their own, and closing the source.
+
+### 5. Shared Tools (`aerobeat-tool-*`)
+* **License:** **Mozilla Public License 2.0 (MPL 2.0)**
+* **The Rule:** Treated as libraries.
+* **Why:** These are generic services (API clients, Analytics) that can be used in proprietary forks without infecting the application logic, provided file-level changes are shared.

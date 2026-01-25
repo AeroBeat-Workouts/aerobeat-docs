@@ -11,6 +11,7 @@ An **Assembly** is the "Game Client." It is the top-level Godot project that tie
 *   **Dependencies:**
     *   `aerobeat-core` (Required)
     *   `aerobeat-ui-core` (Required)
+    *   `aerobeat-tool-*` (Services / As needed)
     *   `aerobeat-input-*` (As needed)
     *   `aerobeat-ui-shell-*` (As needed)
     *   `aerobeat-ui-kit-*` (As needed / Transitive)

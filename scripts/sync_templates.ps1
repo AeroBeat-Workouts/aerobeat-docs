@@ -15,6 +15,7 @@ $TemplateMap = @{
     "avatars"  = "https://github.com/AeroBeat-Workouts/aerobeat-template-avatar.git"
     "cosmetics"= "https://github.com/AeroBeat-Workouts/aerobeat-template-cosmetic.git"
     "environments" = "https://github.com/AeroBeat-Workouts/aerobeat-template-environment.git"
+    "tool"     = "https://github.com/AeroBeat-Fitness/aerobeat-template-tool.git"
 }
 
 # 2. EXECUTION

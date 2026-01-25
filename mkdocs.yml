@@ -45,9 +45,11 @@ nav:
     - CLA: licensing/CLA.md
     - Contributing: licensing/CONTRIBUTING.md
     - Code of Conduct: CODE_OF_CONDUCT.md
+    - Refund Policy: legal/refund_policy.md
   - Release Notes: releases/changelog.md
   - Guides:
     - Contributing Workflow: guides/contributing_workflow.md
+    - Feature Development: guides/feature_development.md
     - Calibration Wizard: guides/calibration.md
     - Accessibility Guide: guides/accessibility.md
     - Modding Quickstart: guides/modding_quickstart.md
@@ -60,11 +62,15 @@ nav:
     - Environment Creation: guides/environment_creation.md
     - Skin Creation: guides/skins.md
     - Avatar Creation: guides/avatar_creation.md
+    - Cosmetics Creation: guides/cosmetics.md
     - Coaching Guide: guides/coaching.md
   - Game Design:
     - Overview: gdd/concept.md
     - Art: 
       - Overview: gdd/art/overview.md
+    - Economy:
+      - Currency: gdd/economy/currency.md
+      - Supporter Perks: gdd/economy/supporter_perks.md
     - Gameplay:
       - Boxing: gdd/gameplay/boxing.md
       - Flow: gdd/gameplay/flow.md
@@ -74,8 +80,13 @@ nav:
       - Future Plans: gdd/gameplay/future-plans.md
     - Gamification:
       - Overview: gdd/gamification/overview.md
+      - Quests: gdd/gamification/quests.md
     - Input System:
       - Overview: gdd/input-system/agnostic-input.md
+    - Meta:
+      - Profile Hub: gdd/meta/profile.md
+      - Preferences: gdd/meta/preferences.md
+      - Locker Room: gdd/meta/locker_room.md
     - Modifiers:
       - Overview: gdd/modifiers/accessibility.md
       - Difficulty: gdd/modifiers/difficulty.md
@@ -84,6 +95,8 @@ nav:
       - Stores & Arcades: gdd/releases/digital-stores-and-arcades.md
     - Roadmap:
       - Future Roadmap: gdd/roadmap/future-roadmap.md
+    - Social:
+      - Crews: gdd/social/crews.md
     - User Content:
       - Overview: gdd/user-content/overview.md
       - Community Creations: gdd/user-content/community-creations.md
@@ -104,12 +117,15 @@ nav:
       - Audio: architecture/audio.md
       - UI Architecture: architecture/ui-ux.md
       - Workflow & Assets: architecture/workflow.md
+      - Cloud Baker: architecture/cloud_baker.md
       - UGC & Modding: architecture/ugc_modding.md
       - Backend API: architecture/backend_api.md
       - Telemetry & Privacy: architecture/telemetry.md
+      - Performance: architecture/performance.md
       - Security Strategy: architecture/security.md
       - Reference: architecture/reference.md
     - Core Contracts: api/core/
+    - Tools: api/tools/tool.md
     - Assembly:
       - Community Edition: api/assembly/
     - Input Systems:

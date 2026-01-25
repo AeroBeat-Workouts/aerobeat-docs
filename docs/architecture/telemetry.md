@@ -62,3 +62,11 @@ To generate "Accuracy Heatmaps" (e.g., "You miss low-left targets"), we collect 
 
 *   **Raw Data:** Stored transiently and deleted after **7 days**.
 *   **Aggregates:** Raw data is processed into **Monthly Aggregates** (e.g., "Lane 1 Accuracy: 85%") nightly. These aggregates are retained indefinitely for Supporters to visualize long-term trends.
+
+## 5. Client Implementation
+
+Telemetry collection is handled by the **`aerobeat-tool-analytics`** service.
+
+*   **Batching:** Events are queued locally and sent in batches (every 60s or on app exit) to reduce network overhead.
+*   **Offline Support:** If the device is offline, events are persisted to disk and retried on the next session.
+*   **Opt-Out:** The service checks `AeroUserPreferences` before initializing. If the user has opted out of analytics, the service enters a "No-Op" mode.

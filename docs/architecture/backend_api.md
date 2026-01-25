@@ -196,3 +196,12 @@ sequenceDiagram
         CDN-->>Client: Download Stream
     end
 ```
+
+## 🛠️ Client Implementation
+
+The Game Client interacts with these endpoints via the **`aerobeat-tool-api`** service. This tool handles:
+
+*   **Authentication:** Automatically injects the Bearer Token into headers.
+*   **Resilience:** Implements exponential backoff for failed requests (429/5xx).
+*   **Type Safety:** Parses JSON responses into strict GDScript Dictionary or Resource objects.
+```

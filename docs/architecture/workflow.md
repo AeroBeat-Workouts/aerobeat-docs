@@ -4,8 +4,10 @@
 
 To ensure license compliance and correct file structure, always start new repositories using the templates found in `aerobeat-docs/templates/`.
 
+Examples:
+
 *   **Assembly/Feature/UI:** GPLv3
-*   **Input/Core:** MPL 2.0
+*   **Input/Core/Tool:** MPL 2.0
 *   **Skins/Avatars/Cosmetics/Environments:** CC BY-NC 4.0
 
 ### Dependency Management

@@ -8,7 +8,7 @@ However, to prevent "Code Drift" and hallucinations, you must strictly follow th
 
 ## 🏗️ The "Context Trinity"
 
-We have established three static files in `docs/ai-context/` that define our universe. You must **always** provide these to the AI before asking it to write code.
+We have established three static files in `docs/ai-prompting/` that define our universe. You must **always** provide these to the AI before asking it to write code.
 
 | File | Purpose | When to use |
 | :--- | :--- | :--- |
@@ -86,6 +86,6 @@ AI context windows are limited. You cannot paste the entire repository into a pr
 
 ### For Gemini / ChatGPT / Claude (Web)
 
-1.  Zip the `docs/ai-context/` folder.
+1.  Zip the `docs/ai-prompting/` folder.
 2.  Upload it at the start of the conversation.
 3.  Tell it: *"Read these context files. Do not generate code until I ask."*

@@ -1,7 +1,7 @@
 # scripts/audit_references.ps1
 # Scans the repository for legacy topology keywords and outputs a markdown-friendly list.
 
-$Keywords = @("asset", "cosmetics", "avatar", "environment", "UGC", "topology", "architecture")
+$Keywords = @("topology", "core", "feature", "features", "singleton", "autoload", "manager", "service", "api", "telemetry", "discord", "settings")
 $TargetDirs = @("docs", "templates", "scripts")
 
 # Get the root directory of the repo (parent of the scripts folder)

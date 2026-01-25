@@ -86,7 +86,7 @@ To address specific risks identified in our strategic plan, the UI must support 
     *   **UI Behavior:**
         *   **Audio:** Mutes all UGC audio tracks, replacing them with safe, licensed "Streamer Friendly" silence.
         *   **Visuals:** Hides potentially offensive UGC album art or usernames, replacing them with generic placeholders.
-    *   **Implementation:** The UI Shell must bind this toggle to the global `AeroSettings` singleton, which the Audio Engine listens to.
+    *   **Implementation:** The UI Shell must bind this toggle to the **`aerobeat-tool-settings`** service, which the Audio Engine listens to.
 
 ## 9. Meta-Game UI Flows
 

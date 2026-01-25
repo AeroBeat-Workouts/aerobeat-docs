@@ -23,7 +23,7 @@ To support multiplayer without refactoring core logic, we strictly separate **Im
 
 * **Class:** `AeroUserProfile` (Core).
 * **Role:** Long-term persistence of player progress, economy, and settings.
-* **Storage:** Saved to disk (`user://profile.res`).
+* **Storage:** Managed by **`aerobeat-tool-settings`** (Serializes to `user://profile.res`).
 * **Schema:**
 
 ```gdscript
@@ -43,4 +43,32 @@ extends Resource
 @export var streak_freezes: int = 0
 @export var last_quest_generation: int = 0 # Unix Timestamp
 @export var active_quests: Array[Resource] = []
+
+# Settings
+@export var preferences: AeroUserPreferences = AeroUserPreferences.new()
+```
+
+### The User Preferences (Persistent)
+
+* **Class:** `AeroUserPreferences` (Core).
+* **Role:** Long-term persistence of player preferences.
+* **Storage:** Managed by **`aerobeat-tool-settings`** (Serializes to `user://preferences.res`).
+* **Schema:**
+
+```gdscript
+class_name AeroUserPreferences
+extends Resource
+
+# Visuals
+@export var override_environment_id: String = "" # Empty = Use Playlist
+@export var override_skin_id: String = ""        # Empty = Use Playlist
+@export var show_coach: bool = true
+
+# Menu
+@export var menu_background_id: String = "default"
+
+# Gameplay
+@export var default_mode: String = "boxing"
+@export var default_view_type: String = "portal" # "portal" or "track"
+@export var default_difficulty: String = "hard"
 ```

@@ -27,6 +27,10 @@ Our documentation is divided by role. Choose your path below:
 * Read the about **Core Loop** and Scoring Logic.
 * Understand the "Fitness-First" approach to difficulty.
 * Explore the roadmap for Multiplayer and Workshop features.
+* **Meta:** [Profile](gdd/meta/profile.md), [Preferences](gdd/meta/preferences.md), [Locker Room](gdd/meta/locker_room.md).
+* **Economy:** [Currency](gdd/economy/currency.md), [Supporter Perks](gdd/economy/supporter_perks.md).
+* **Social:** [Crews](gdd/social/crews.md).
+* **Gamification:** [Quests](gdd/gamification/quests.md).
 
 ### 🛠️ [Technical Architecture](architecture/overview.md)
 
@@ -35,6 +39,7 @@ Our documentation is divided by role. Choose your path below:
 * Understand the **Hub-and-Spoke Polyrepo** topology.
 * Learn how `aerobeat-core` manages contracts between modules.
 * Dive into the **Session Context** dependency injection system.
+* **Deep Dives:** Cloud Baker, Performance.
 * **Key Tech:** Godot 4.x, GDScript, MediaPipe.
 
 ### 🤖 [AI-Assisted Workflow](ai-prompting/overview.md)
@@ -53,6 +58,12 @@ Our documentation is divided by role. Choose your path below:
 * Understanding the **Single-Dependency Rule** for Asset Packages.
 * Licensing guide for **CC BY-NC 4.0** contributions.
 
+### 📘 Guides & Legal
+
+* **Development:** Feature Development.
+* **Creation:** Cosmetics Guide.
+* **Legal:** Refund Policy.
+
 ---
 
 ## 📂 Repository Ecosystem
@@ -65,6 +76,7 @@ AeroBeat uses a 7-tier repository structure to keep code clean and decoupled.
 | **`aerobeat-core`** | The Engine Hub. Contracts, Signals, and Data Types. | **MPL 2.0** |
 | **`aerobeat-input-*`** | Hardware Drivers (Webcam, VR). | **MPL 2.0** |
 | **`aerobeat-ui-core`** | UI Logic Layer (ViewModel). Base classes. | **MPL 2.0** |
+| **`aerobeat-tool-*`** | **Services.** Singleton Managers (ex: APIs, Analytics). | **MPL 2.0** |
 | **`aerobeat-ui-kit-*`** | Visual Component Libraries (Themed Atoms/Molecules). | **MPL 2.0** |
 | **`aerobeat-ui-shell-*`** | Interaction Shells (Mobile vs VR). | **GPLv3** |
 | **`aerobeat-feature-*`** | Gameplay Logic (e.g., Boxing, Flow). | **GPLv3** |
