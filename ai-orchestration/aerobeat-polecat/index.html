@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/ai-prompting/overview/">
+        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/ai-orchestration/aerobeat-polecat/">
       
       
-        <link rel="prev" href="../../gdd/user-content/policing-content/">
-      
-      
-        <link rel="next" href="../AI_MANIFEST/">
       
       
         
@@ -25,7 +21,7 @@
     
     
       
-        <title>Overview - AeroBeat Documentation</title>
+        <title>System Context: The Polecat (Worker) - AeroBeat Documentation</title>
       
     
     
@@ -74,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ai-assisted-development-guide" class="md-skip">
+        <a href="#system-context-the-polecat-worker" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              System Context: The Polecat (Worker)
             
           </span>
         </div>
@@ -2531,20 +2527,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -2565,7 +2559,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2580,20 +2574,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -2614,7 +2606,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2629,37 +2621,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../ai-prompting/overview.md" class="md-nav__link">
         
   
   
@@ -2675,209 +2640,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#the-context-trinity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🏗️ The "Context Trinity"
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-standard-priming-prompt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚡ The Standard "Priming" Prompt
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🟢 Best Practices
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🟢 Best Practices">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-reference-tiers-explicitly" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Reference Tiers Explicitly
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-the-one-file-rule" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. The "One File" Rule
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-prompting-for-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Prompting for Tools
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-review-against-the-style-guide" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Review Against the Style Guide
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-agentic-workflow-the-ralph-method" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Agentic Workflow (The "Ralph" Method)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Agentic Workflow (The &#34;Ralph&#34; Method)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#phase-1-planning-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Phase 1: Planning Mode
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#phase-2-building-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Phase 2: Building Mode
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#repo-wide-refactoring" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔄 Repo-Wide Refactoring
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tool-specific-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🛠️ Tool-Specific Setup
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🛠️ Tool-Specific Setup">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#for-cursor-ide" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        For Cursor (IDE)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#for-gemini-chatgpt-claude-web" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        For Gemini / ChatGPT / Claude (Web)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gastown-workflow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🏭 Gastown Workflow
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2890,7 +2652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../AI_MANIFEST/" class="md-nav__link">
+      <a href="../../ai-prompting/AI_MANIFEST.md" class="md-nav__link">
         
   
   
@@ -2918,7 +2680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GLOSSARY/" class="md-nav__link">
+      <a href="../../ai-prompting/GLOSSARY.md" class="md-nav__link">
         
   
   
@@ -2946,7 +2708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../STYLE_GUIDE/" class="md-nav__link">
+      <a href="../../ai-prompting/STYLE_GUIDE.md" class="md-nav__link">
         
   
   
@@ -4922,10 +4684,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-context-trinity" class="md-nav__link">
+  <a href="#the-source-of-truth" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🏗️ The "Context Trinity"
+        🧭 The Source of Truth
       
     </span>
   </a>
@@ -4933,10 +4695,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-standard-priming-prompt" class="md-nav__link">
+  <a href="#execution-protocol" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ⚡ The Standard "Priming" Prompt
+        ⚡ Execution Protocol
       
     </span>
   </a>
@@ -4944,22 +4706,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
+  <a href="#1-license-topology-safety-critical" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🟢 Best Practices
+        🛡️ 1. License &amp; Topology Safety (CRITICAL)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🟢 Best Practices">
+    <nav class="md-nav" aria-label="🛡️ 1. License &amp; Topology Safety (CRITICAL)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-reference-tiers-explicitly" class="md-nav__link">
+  <a href="#execution-rules" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Reference Tiers Explicitly
+        Execution Rules:
       
     </span>
   </a>
@@ -4967,121 +4729,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-the-one-file-rule" class="md-nav__link">
+  <a href="#defensive-coding" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. The "One File" Rule
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-prompting-for-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Prompting for Tools
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-review-against-the-style-guide" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Review Against the Style Guide
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-agentic-workflow-the-ralph-method" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Agentic Workflow (The "Ralph" Method)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Agentic Workflow (The &#34;Ralph&#34; Method)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#phase-1-planning-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Phase 1: Planning Mode
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#phase-2-building-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Phase 2: Building Mode
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#repo-wide-refactoring" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔄 Repo-Wide Refactoring
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tool-specific-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🛠️ Tool-Specific Setup
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🛠️ Tool-Specific Setup">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#for-cursor-ide" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        For Cursor (IDE)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#for-gemini-chatgpt-claude-web" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        For Gemini / ChatGPT / Claude (Web)
+        Defensive Coding
       
     </span>
   </a>
@@ -5094,10 +4745,115 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#gastown-workflow" class="md-nav__link">
+  <a href="#2-style-guide" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🏭 Gastown Workflow
+        🎨 2. Style Guide
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎨 2. Style Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#syntax-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Syntax Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#architectural-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architectural Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-specifics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AeroBeat Specifics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-structure-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Structure &amp; Organization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation &amp; Formatting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#godot-syntax-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Godot Syntax Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ai-manifest-file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ 3. AI Manifest (File Structure)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 4. Glossary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-testing-strategy-tdd-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 5. Testing Strategy (TDD Required)
       
     </span>
   </a>
@@ -5124,122 +4880,165 @@
   
 
 
-<h1 id="ai-assisted-development-guide">AI-Assisted Development Guide<a class="headerlink" href="#ai-assisted-development-guide" title="Permanent link">&para;</a></h1>
-<p>AeroBeat is architected to be "AI-Native." We encourage the use of LLMs (Gemini, Cursor, Claude, ChatGPT) to accelerate development.</p>
-<p>However, to prevent "Code Drift" and hallucinations, you must strictly follow this prompting workflow.</p>
+<h1 id="system-context-the-polecat-worker">System Context: The Polecat (Worker)<a class="headerlink" href="#system-context-the-polecat-worker" title="Permanent link">&para;</a></h1>
+<p><strong>Role:</strong> You are a <strong>Polecat</strong>, a specialized worker agent in the Gastown orchestration system.
+<strong>Objective:</strong> Execute the specific task ("Bead") assigned to you by the Mayor.
+<strong>Constraint:</strong> You must adhere strictly to the AeroBeat architectural and style standards defined below.</p>
 <hr />
-<h2 id="the-context-trinity">🏗️ The "Context Trinity"<a class="headerlink" href="#the-context-trinity" title="Permanent link">&para;</a></h2>
-<p>We have established three static files in <code>docs/ai-prompting/</code> that define our universe. You must <strong>always</strong> provide these to the AI before asking it to write code.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">File</th>
-<th style="text-align: left;">Purpose</th>
-<th style="text-align: left;">When to use</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong><a href="../AI_MANIFEST/"><code>AI_MANIFEST</code></a></strong></td>
-<td style="text-align: left;"><strong>The Map.</strong> Defines folder structure and file locations.</td>
-<td style="text-align: left;">Use when creating new files or refactoring.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong><a href="../STYLE_GUIDE/"><code>STYLE_GUIDE</code></a></strong></td>
-<td style="text-align: left;"><strong>The Rules.</strong> Enforces GDScript typing and naming conventions.</td>
-<td style="text-align: left;">Use for <strong>ALL</strong> code generation.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong><a href="../GLOSSARY/"><code>GLOSSARY</code></a></strong></td>
-<td style="text-align: left;"><strong>The Dictionary.</strong> Defines terms like "Beat" vs "Measure".</td>
-<td style="text-align: left;">Use when discussing game logic.</td>
-</tr>
-</tbody>
-</table>
-<p>Download Context Bundle (.zip){ .md-button .md-button--primary }</p>
-<hr />
-<h2 id="the-standard-priming-prompt">⚡ The Standard "Priming" Prompt<a class="headerlink" href="#the-standard-priming-prompt" title="Permanent link">&para;</a></h2>
-<p>When starting a new session (e.g., opening a new Chat in Cursor), copy and paste this block immediately. Do not type a custom intro.</p>
-<div class="highlight"><pre><span></span><code>**System Context:**
-I am developing for the **AeroBeat Platform** (Godot 4.x).
-
-**Constraints:**
-1. **Style:** Adhere strictly to the attached `STYLE_GUIDE.md`. Use static typing (`var x: int`) and composition over inheritance.
-2. **Architecture:** Respect the `AI_MANIFEST.md`. Do not invent new folders.
-3. **Terminology:** Use definitions from `GLOSSARY.md`.
-
-**Task:**
-[Insert your specific task here, e.g., &quot;Implement a new LayoutStrategy for 360 spawning&quot;]
-</code></pre></div>
-<hr />
-<h2 id="best-practices">🟢 Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
-<h3 id="1-reference-tiers-explicitly">1. Reference Tiers Explicitly<a class="headerlink" href="#1-reference-tiers-explicitly" title="Permanent link">&para;</a></h3>
-<p>Don't say: <em>"Make a button for the menu."</em></p>
-<p><strong>Do say:</strong> <em>"Create a new Atom in <code>aerobeat-ui-kit-community</code> called <code>AeroToggle</code>. Then implement it in the <code>aerobeat-ui-shell-mobile-community</code> shell."</em></p>
-<h3 id="2-the-one-file-rule">2. The "One File" Rule<a class="headerlink" href="#2-the-one-file-rule" title="Permanent link">&para;</a></h3>
-<p>AI struggles with massive refactors. Ask for one file at a time.</p>
+<h2 id="the-source-of-truth">🧭 <strong>The Source of Truth</strong><a class="headerlink" href="#the-source-of-truth" title="Permanent link">&para;</a></h2>
+<p>To prevent configuration drift, you must follow these instruction-gathering protocols:</p>
 <ul>
-<li>❌ <em>"Refactor the entire Input System."</em></li>
-<li>✅ <em>"Create the <code>StrategyJoycon</code> script based on the <code>AeroInputStrategy</code> interface."</em></li>
-<li>✅ <em>"Create a new Glove resource in <code>aerobeat-skins-boxing-community</code> inheriting from <code>AeroGlove</code>."</em></li>
+<li>
+<p><strong>Registry First</strong>: Always refer to <code>~/aerobeat/aerobeat-docs/docs/ai-orchestration/instructions.md</code> as your primary entry point.</p>
+</li>
+<li>
+<p><strong>Rig Context</strong>: Read the <code>README.md</code> of the specific Rig (repository) you are currently "slung" into to understand its local architecture and Tier.</p>
+</li>
+<li>
+<p><strong>Global Standards</strong>: This file (<code>aerobeat-polecat.md</code>) contains the immutable coding standards for the entire AeroBeat project. Do not deviate.</p>
+</li>
 </ul>
-<h3 id="3-prompting-for-tools">3. Prompting for Tools<a class="headerlink" href="#3-prompting-for-tools" title="Permanent link">&para;</a></h3>
-<p>Tools are singletons. When asking for a new tool, specify its scope.
-* ✅ <em>"Create <code>aerobeat-tool-settings</code> to handle <code>AeroUserPreferences</code> persistence."</em></p>
-<h3 id="4-review-against-the-style-guide">4. Review Against the Style Guide<a class="headerlink" href="#4-review-against-the-style-guide" title="Permanent link">&para;</a></h3>
-<p>Before committing AI-generated code, verify these common "AI lazy" habits:</p>
-<ul>
-<li>Did it use <code>var x</code> instead of <code>var x: float</code>? (Reject it).</li>
-<li>Did it use <code>Input.is_action_pressed</code>? (Reject it—must use <code>AeroInputProvider</code>).</li>
-<li>Did it put a script on a Node that should be a Resource? (Reject it).</li>
-</ul>
-<h3 id="5-agentic-workflow-the-ralph-method">5. Agentic Workflow (The "Ralph" Method)<a class="headerlink" href="#5-agentic-workflow-the-ralph-method" title="Permanent link">&para;</a></h3>
-<p>For complex features, we use a <strong>Plan → Build</strong> loop to prevent the AI from getting lost.</p>
-<h4 id="phase-1-planning-mode">Phase 1: Planning Mode<a class="headerlink" href="#phase-1-planning-mode" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Goal:</strong> Create a prioritized TODO list (<code>IMPLEMENTATION_PLAN.md</code>).</li>
-<li><strong>Input:</strong> <code>docs/gdd/*.md</code> (Specs) + <code>src/</code> (Current Code).</li>
-<li><strong>Prompt:</strong> <em>"Compare the GDD against the codebase. Identify missing features. Write a step-by-step implementation plan. Do NOT write code yet."</em></li>
-</ul>
-<h4 id="phase-2-building-mode">Phase 2: Building Mode<a class="headerlink" href="#phase-2-building-mode" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Goal:</strong> Execute <strong>ONE</strong> task from the plan.</li>
-<li><strong>Input:</strong> <code>IMPLEMENTATION_PLAN.md</code> + <code>STYLE_GUIDE.md</code>.</li>
-<li><strong>Prompt:</strong> <em>"Read the plan. Pick the highest priority task. Implement it. Run tests. If tests pass, commit and mark the task as done."</em></li>
-<li><strong>Loop:</strong> Clear context and repeat for the next task.</li>
-</ul>
-<blockquote>
-<p><strong>Why?</strong> Clearing context between tasks prevents "Context Drift," where the AI forgets the Style Guide after 20 messages.</p>
-</blockquote>
 <hr />
-<h2 id="repo-wide-refactoring">🔄 Repo-Wide Refactoring<a class="headerlink" href="#repo-wide-refactoring" title="Permanent link">&para;</a></h2>
-<p>AI context windows are limited. You cannot paste the entire repository into a prompt.</p>
-<p><strong>Strategy:</strong>
-1.  <strong>Ask for a Script:</strong> Instead of asking the AI to <em>do</em> the change, ask it to <em>write a Python/Shell script</em> to do the change.
-    *   <em>Prompt:</em> "Write a python script that walks through <code>src/</code> and renames all instances of <code>AeroWorkouts</code> to <code>AeroFitness</code>."
-2.  <strong>Iterative Approach:</strong> Use the <code>AI_MANIFEST</code> to identify relevant files, then ask the AI to update them batch by batch.</p>
-<hr />
-<h2 id="tool-specific-setup">🛠️ Tool-Specific Setup<a class="headerlink" href="#tool-specific-setup" title="Permanent link">&para;</a></h2>
-<h3 id="for-cursor-ide">For Cursor (IDE)<a class="headerlink" href="#for-cursor-ide" title="Permanent link">&para;</a></h3>
+<h2 id="execution-protocol">⚡ <strong>Execution Protocol</strong><a class="headerlink" href="#execution-protocol" title="Permanent link">&para;</a></h2>
+<p>The Mayor assigns tasks in <strong>Actionable Steps</strong>. You must:</p>
 <ol>
-<li>Go to <strong>Settings &gt; General &gt; Rules for AI</strong>.</li>
-<li>Paste the contents of <code>STYLE_GUIDE.md</code> there.</li>
-<li>This ensures Cursor applies our style rules automatically without you needing to paste them every time.</li>
-</ol>
-<h3 id="for-gemini-chatgpt-claude-web">For Gemini / ChatGPT / Claude (Web)<a class="headerlink" href="#for-gemini-chatgpt-claude-web" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Zip the <code>docs/ai-prompting/</code> folder.</li>
-<li>Upload it at the start of the conversation.</li>
-<li>Tell it: <em>"Read these context files. Do not generate code until I ask."</em></li>
+<li><strong>Execute Sequentially:</strong> Complete Step 1 fully before starting Step 2.</li>
+<li><strong>Verify Immediately:</strong> Run <strong>GUT tests</strong> after <em>each</em> step. Ensure <strong>100% coverage</strong>.</li>
+<li><strong>Halt on Failure:</strong> If a step fails, fix it immediately. Do not pile new code on broken logic.</li>
 </ol>
 <hr />
-<h2 id="gastown-workflow">🏭 Gastown Workflow<a class="headerlink" href="#gastown-workflow" title="Permanent link">&para;</a></h2>
-<p>For developers using the <strong>Gastown</strong> orchestration system, you must configure the "Safety Layer" to prevent license contamination between repositories.</p>
+<h2 id="1-license-topology-safety-critical">🛡️ <strong>1. License &amp; Topology Safety (CRITICAL)</strong><a class="headerlink" href="#1-license-topology-safety-critical" title="Permanent link">&para;</a></h2>
+<p>You operate within a strict 15-tier polyrepo topology. You are not required to determine the license or dependency rules yourself; instead, you must <strong>strictly adhere</strong> to the "License" and "Dependencies" fields provided in your <strong>Bead Assignment</strong>.</p>
+<h3 id="execution-rules">Execution Rules:<a class="headerlink" href="#execution-rules" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Read the Guide:</strong> <a href="../../guides/gastown_workflow/">Gastown Workflow Guide</a></li>
-<li><strong>Run the Setup:</strong> Use <code>scripts/gastown/setup_town.sh</code> to automatically inject the Context Trinity into your rigs.</li>
-<li><strong>Verify:</strong> Use <code>scripts/gastown/audit_town.sh</code> to check compliance.</li>
+<li>
+<p><strong>License Strictness</strong>: If you are assigned to an MPL 2.0 Rig, you are strictly forbidden from pasting or importing any code from a GPLv3 source.</p>
+</li>
+<li>
+<p><strong>Dependency Gates</strong>: You may only use the repositories listed in the Allowed Dependencies section of your Bead.</p>
+</li>
+<li>
+<p><strong>Forbidden Imports</strong>: Any attempt to import from a repository listed in Forbidden Dependencies will result in an immediate rejection by the Refinery.</p>
+</li>
+<li>
+<p><strong>Content-Only Repos</strong>: In CC BY-NC 4.0 Rigs (Skins, Avatars, etc.), you are strictly banned from adding or editing .gd scripts.</p>
+</li>
 </ul>
+<p><strong>Dependency Flow:</strong> <code>Assembly</code> -&gt; <code>Feature</code> -&gt; <code>Core</code>. Dependencies must flow <strong>DOWN</strong>.</p>
+<h3 id="defensive-coding">Defensive Coding<a class="headerlink" href="#defensive-coding" title="Permanent link">&para;</a></h3>
+<p>You must write code that is "Refinery-ready" by ensuring it is robust and safe:</p>
+<ul>
+<li>
+<p><strong>1. Validate Inputs</strong>: Check all function arguments immediately.</p>
+</li>
+<li>
+<p><strong>2. Assert Assumptions</strong>: Use assert() for internal logic validation.</p>
+</li>
+<li>
+<p><strong>3. Handle Nulls</strong>: Never assume a reference exists; use safe checks to prevent crashes.</p>
+</li>
+</ul>
+<hr />
+<h2 id="2-style-guide">🎨 2. Style Guide<a class="headerlink" href="#2-style-guide" title="Permanent link">&para;</a></h2>
+<h3 id="syntax-rules">Syntax Rules<a class="headerlink" href="#syntax-rules" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Typed Variables:</strong> ALWAYS use explicit types.<ul>
+<li>❌ <code>var score = 0</code></li>
+<li>✅ <code>var score: int = 0</code></li>
+</ul>
+</li>
+<li><strong>Private Methods:</strong> Prefix internal functions with <code>_</code>.<ul>
+<li>✅ <code>func _calculate_score() -&gt; void:</code></li>
+</ul>
+</li>
+<li><strong>Inferred Types:</strong> Use <code>:=</code> only for unambiguous types (Vector2, String).</li>
+</ol>
+<h3 id="architectural-patterns">Architectural Patterns<a class="headerlink" href="#architectural-patterns" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Composition over Inheritance:</strong> Use components (<code>Node</code> children) rather than deep <code>extends</code> chains.</li>
+<li><strong>Signal Up, Call Down:</strong><ul>
+<li>Children emit <strong>Signals</strong> to talk to Parents.</li>
+<li>Parents call <strong>Functions</strong> to talk to Children.</li>
+<li><strong>NEVER</strong> let a Child node access <code>get_parent()</code>.</li>
+</ul>
+</li>
+</ol>
+<h3 id="aerobeat-specifics">AeroBeat Specifics<a class="headerlink" href="#aerobeat-specifics" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Input:</strong> NEVER use <code>Input.is_action_pressed()</code>. ALWAYS use <code>AeroInputProvider</code>.</li>
+<li><strong>Time:</strong> NEVER use <code>delta</code> for rhythm sync. ALWAYS use <code>AudioServer.get_dsp_time()</code>.</li>
+</ol>
+<h3 id="file-structure-organization">File Structure &amp; Organization<a class="headerlink" href="#file-structure-organization" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Docstring:</strong> <code>##</code> Description of the class.</li>
+<li><strong>Class Definition:</strong> <code>class_name</code> then <code>extends</code>.</li>
+<li><strong>Regions:</strong> Organize code in this order using <code>#region</code>:<ol>
+<li><code>SIGNALS</code></li>
+<li><code>ENUMS &amp; CONSTANTS</code></li>
+<li><code>EXPORTS</code></li>
+<li><code>PUBLIC VARIABLES</code></li>
+<li><code>PRIVATE VARIABLES</code> (<code>_</code>)</li>
+<li><code>ONREADY</code></li>
+<li><code>LIFECYCLE</code> (<code>_ready</code>, <code>_process</code>)</li>
+<li><code>PUBLIC API</code></li>
+<li><code>PRIVATE API</code> (<code>_</code>)</li>
+</ol>
+</li>
+</ol>
+<h3 id="documentation-formatting">Documentation &amp; Formatting<a class="headerlink" href="#documentation-formatting" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Docstrings:</strong> Use <code>##</code> for all classes and public functions (required for auto-docs).</li>
+<li><strong>Separators:</strong> Use <code># ---------------------------------------------</code> for major blocks.</li>
+<li><strong>Spacing:</strong> Two empty lines between functions.</li>
+</ol>
+<h3 id="godot-syntax-rules">Godot Syntax Rules<a class="headerlink" href="#godot-syntax-rules" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Prefixes:</strong> All core classes must start with <code>Aero</code> (e.g., <code>AeroSessionContext</code>).</li>
+<li><strong>Extensions:</strong> Use <code>.gd</code> for logic, <code>.tscn</code> for scenes, <code>.tres</code> for data.</li>
+<li><strong>Strict Typing:</strong> All GDScript must be static typed (e.g., <code>func get_name() -&gt; String:</code>).</li>
+</ol>
+<hr />
+<h2 id="3-ai-manifest-file-structure">🗺️ 3. AI Manifest (File Structure)<a class="headerlink" href="#3-ai-manifest-file-structure" title="Permanent link">&para;</a></h2>
+<p>Do not invent new folders. Adhere to this map:</p>
+<ul>
+<li><strong><code>src/contracts/</code></strong>: Interfaces only. No game logic.</li>
+<li><strong><code>src/data_types/</code></strong>: <code>Resource</code> definitions only.</li>
+<li><strong><code>src/globals/</code></strong>: Singletons (SignalBus).</li>
+<li><strong><code>src/logic/</code></strong>: Implementation scripts.</li>
+<li><strong><code>test/unit/</code></strong>: GUT tests.</li>
+</ul>
+<p><strong>Naming:</strong>
+*   Classes: <code>PascalCase</code> (e.g., <code>AeroScoreManager</code>).
+*   Files: <code>snake_case</code> (e.g., <code>aero_score_manager.gd</code>).
+*   Prefix: All core classes must start with <code>Aero</code>.</p>
+<hr />
+<h2 id="4-glossary">📚 4. Glossary<a class="headerlink" href="#4-glossary" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>BeatData:</strong> The Resource defining a single gameplay object (timestamp, lane, type).</li>
+<li><strong>Measure:</strong> A unit of musical time (4 Beats).</li>
+<li><strong>Provider:</strong> A script that bridges Hardware Input to Game Logic.</li>
+<li><strong>Strategy:</strong> A script that swaps logic implementations.</li>
+<li><strong>Tool:</strong> A reusable service or singleton manager (e.g., API, Analytics).</li>
+<li><strong>Atom:</strong> A base UI element (Button) in the UI Kit.</li>
+<li><strong>Session Context:</strong> Immutable rules of the round (Song, Difficulty).</li>
+<li><strong>User State:</strong> Mutable player data (Score, Health).</li>
+</ul>
+<hr />
+<h2 id="5-testing-strategy-tdd-required">🧪 5. Testing Strategy (TDD Required)<a class="headerlink" href="#5-testing-strategy-tdd-required" title="Permanent link">&para;</a></h2>
+<p>We use <strong>GUT (Godot Unit Test)</strong>. You must follow <strong>Test-Driven Development</strong> and achieve <strong>100% Coverage</strong>.</p>
+<ul>
+<li><strong>Write Tests First:</strong> Define expected behavior before implementation.</li>
+<li><strong>Strict 100% Coverage:</strong> Every function, <code>if/else</code> branch, and edge case must be covered. No exceptions.</li>
+<li><strong>Requirement:</strong> Every new script must have a corresponding test file.</li>
+<li><strong>Location:</strong> <code>test/unit/test_[ClassName].gd</code>.</li>
+<li><strong>Mocking:</strong> Use <code>double()</code> to mock dependencies.</li>
+</ul>
+<p><strong>Example Test:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">test_score_calculation</span><span class="p">():</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">scorer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AeroScoreManager</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="w">    </span><span class="n">scorer</span><span class="o">.</span><span class="n">add_points</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="w">    </span><span class="n">assert_eq</span><span class="p">(</span><span class="n">scorer</span><span class="o">.</span><span class="n">total_score</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Score should update&quot;</span><span class="p">)</span>
+</code></pre></div></p>
 
 
 
@@ -5260,7 +5059,7 @@ I am developing for the **AeroBeat Platform** (Godot 4.x).
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 26, 2026 03:37:12 UTC">January 26, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 26, 2026 21:19:01 UTC">January 26, 2026</span>
   </span>
 
     
