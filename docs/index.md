@@ -68,24 +68,25 @@ Our documentation is divided by role. Choose your path below:
 
 ## 📂 Repository Ecosystem
 
-AeroBeat uses a 7-tier repository structure to keep code clean and decoupled.
+AeroBeat uses a 15-tier repository structure to keep code clean and decoupled.
 
-| Repository | Role | License |
-| :--- | :--- | :--- |
-| **`aerobeat-assembly-community`** | The Game Client for the Community Edition of AeroBeat. Builds the executable for the Client and Server. | **GPLv3** |
-| **`aerobeat-core`** | The Engine Hub. Contracts, Signals, and Data Types. | **MPL 2.0** |
-| **`aerobeat-input-*`** | Hardware Drivers (Webcam, VR). | **MPL 2.0** |
-| **`aerobeat-ui-core`** | UI Logic Layer (ViewModel). Base classes. | **MPL 2.0** |
-| **`aerobeat-tool-*`** | **Services.** Singleton Managers (ex: APIs, Analytics). | **MPL 2.0** |
-| **`aerobeat-ui-kit-*`** | Visual Component Libraries (Themed Atoms/Molecules). | **MPL 2.0** |
-| **`aerobeat-ui-shell-*`** | Interaction Shells (Mobile vs VR). | **GPLv3** |
-| **`aerobeat-feature-*`** | Gameplay Logic (e.g., Boxing, Flow). | **GPLv3** |
-| **`aerobeat-skins-*`** | Gameplay Visuals (Gloves, Targets). | **CC BY-NC 4.0** |
-| **`aerobeat-avatars-*`** | Characters (Player/Coach). | **CC BY-NC 4.0** |
-| **`aerobeat-cosmetics-*`** | Accessories (Hats, Glasses). | **CC BY-NC 4.0** |
-| **`aerobeat-environments-*`** | Levels and Lighting. | **CC BY-NC 4.0** |
-| **`aerobeat-asset-*`** | **Internal System Assets.** | **CC BY-NC 4.0** |
-| **`aerobeat-docs`** | This documentation site. | **CC BY-NC 4.0** |
+| Tier | Repo Name | Role | Required Deps | Allowed Deps | Dev-Only / Peer Deps | License |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Assembly** | `aerobeat-assembly-*` | **The Product.** Specific editions (Community, Arcade). | All Active Packages | All Assets | Test Frameworks (Gut) | **GPLv3** |
+| **Core** | `aerobeat-core` | **The Hub.** Interfaces, Data Types, Global Constants. | **None** | **None** | Unit Test Tools | **MPL 2.0** |
+| **UI Core** | `aerobeat-ui-core` | **UI Logic.** Base classes (ViewModel) for components. | `aerobeat-core` | **None** | Unit Test Tools | **MPL 2.0** |
+| **Tool** | `aerobeat-tool-*` | **Services.** Singleton Managers (ex: APIs, Analytics). | `aerobeat-core` | Vendor Utils | Testbed Scaffolding | **MPL 2.0** |
+| **Input** | `aerobeat-input-*` | **Hardware Drivers.** (Camera, VR, Watch). | `aerobeat-core` | Vendor SDKs | Testbed Scaffolding | **MPL 2.0** |
+| **UI Kit** | `aerobeat-ui-kit-*` | **Visual Library.** Themed scenes inheriting UI Core logic. | `aerobeat-ui-core` | `aerobeat-asset-common` | Testbed Scaffolding | **MPL 2.0** |
+| **UI Shell** | `aerobeat-ui-shell-*` | **Interaction Layer.** Platform-specific screens. | `aerobeat-ui-kit-*` | `aerobeat-asset-common`<br>(Local Assets) | Vendor Tools (Tweeners)<br>Mock Data | **GPLv3** |
+| **Feature** | `aerobeat-feature-*` | **Gameplay Logic.** Mechanics & Base Scenes (Boxing, Flow). | `aerobeat-core` | Vendor Utils | Testbed Scaffolding | **GPLv3** |
+| **Skins** | `aerobeat-skins-*` | **Gameplay Visuals.** Gloves, Targets, Obstacles. | `aerobeat-feature-*` | `aerobeat-core` | Testbed Scaffolding | **CC BY-NC 4.0** |
+| **Avatars** | `aerobeat-avatars-*` | **Characters.** Player/Coach models. | `aerobeat-core` | **None** | Testbed Scaffolding | **CC BY-NC 4.0** |
+| **Cosmetics** | `aerobeat-cosmetics-*` | **Accessories.** Hats, Glasses. | `aerobeat-core` | **None** | Testbed Scaffolding | **CC BY-NC 4.0** |
+| **Environments** | `aerobeat-environments-*` | **Levels.** Lighting, Skyboxes. | `aerobeat-core` | **None** | Testbed Scaffolding | **CC BY-NC 4.0** |
+| **Asset** | `aerobeat-asset-*` | **System Assets.** UI Icons, Mock Data. | `aerobeat-core` | **None** | **None** | **CC BY-NC 4.0** |
+| **Docs** | `aerobeat-docs` | **Manual.** Documentation Website. | **None** | **None** | MkDocs Plugins | **CC BY-NC 4.0** |
+| **Vendor** | `aerobeat-vendor` | **3rd Party Tools.** Utilities and Helpers. | **None** | **None** | *(As Upstream)* | *(As Upstream)* |
 
 ---
 

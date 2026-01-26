@@ -1,6 +1,6 @@
 # Repository Topology
 
-We adhere to a strict **7-Tier** repository structure. Dependencies are categorized to ensure modularity and prevent circular references.
+We adhere to a strict **15-Tier** repository structure. Dependencies are categorized to ensure modularity and prevent circular references.
 
 | Tier | Repo Name | Role | Required Deps | Allowed Deps | Dev-Only / Peer Deps | License |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
