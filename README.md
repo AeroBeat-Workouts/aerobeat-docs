@@ -1,5 +1,5 @@
 # aerobeat-docs
-Documentation for the AeroBeat platform
+Public design and technical documentation in `mkdocs` format for the AeroBeat platform.
 
 ## Local Development
 
