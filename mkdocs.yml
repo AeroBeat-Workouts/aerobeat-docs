@@ -51,6 +51,8 @@ nav:
     - Contributing Workflow: guides/contributing_workflow.md
     - Feature Development: guides/feature_development.md
     - Calibration Wizard: guides/calibration.md
+    - Agentic Onboarding: guides/agentic_onboarding.md
+    - Gastown Workflow: guides/gastown_workflow.md
     - Accessibility Guide: guides/accessibility.md
     - Modding Quickstart: guides/modding_quickstart.md
     - Choreography:

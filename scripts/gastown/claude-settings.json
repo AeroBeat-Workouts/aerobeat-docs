@@ -1,0 +1,9 @@
+{
+  "//": "This file configures the Claude Code CLI runtime for use within Gastown.",
+  "//": "It should be copied to the .claude/ directory within a specific Gastown rig (project).",
+  "//": "The 'startup_inject_files' key is a setting that instructs the Claude runtime to load the specified files into the agent's context upon session startup.",
+  "//": "This ensures that every 'Polecat' agent receives the full 'Context Trinity' to prevent license contamination and architectural drift.",
+  "startup_inject_files": [
+    "../CONTEXT_INJECTION.md"
+  ]
+}

@@ -110,3 +110,13 @@ AI context windows are limited. You cannot paste the entire repository into a pr
 1.  Zip the `docs/ai-prompting/` folder.
 2.  Upload it at the start of the conversation.
 3.  Tell it: *"Read these context files. Do not generate code until I ask."*
+
+---
+
+## 🏭 Gastown Workflow
+
+For developers using the **Gastown** orchestration system, you must configure the "Safety Layer" to prevent license contamination between repositories.
+
+*   **Read the Guide:** [Gastown Workflow Guide](../guides/gastown_workflow.md)
+*   **Run the Setup:** Use `scripts/gastown/setup_town.sh` to automatically inject the Context Trinity into your rigs.
+*   **Verify:** Use `scripts/gastown/audit_town.sh` to check compliance.
