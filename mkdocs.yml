@@ -123,6 +123,7 @@ nav:
       - State Management: architecture/state-management.md
       - Telemetry & Privacy: architecture/telemetry.md
       - Testing Strategy: architecture/testing.md
+      - Tools: architecture/tools.md
       - Repository Topology: architecture/topology.md
       - UGC Modding: architecture/ugc_modding.md
       - UI-UX Architecture: architecture/ui-ux.md
