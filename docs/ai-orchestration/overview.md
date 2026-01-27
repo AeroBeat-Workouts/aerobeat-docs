@@ -10,23 +10,31 @@ You can read more about Gastown at the public [Github repo](https://github.com/s
 
 ## 🏗️ Core Architecture & Terminology
 
-In Gastown, a **Town** acts as the workspace root containing various **Rigs** (git repositories). 
+Gastown is an opinionated system, it has its own lingo and terminology to learn.
 
-Specialized agents—primarily Claude Code instances—take up specific roles to execute work tracked via **Convoys** and **Beads**.
-
-*   **The Mayor**: The central AI coordinator and "Chief of Staff" for the Town.
-
-*   **Town**: The AeroBeat polyrepo root (e.g., `~/aerobeat/`).
+*   **Town**: The AeroBeat polyrepo root (e.g., `~/aerobeat/`), which contains the various `rigs` (repositories).
 
 *   **Rigs**: Individual project containers that wrap each git repository in the topology.
+
+*   **Beads**: Atomic units of work (issues) that track specific task states.
+
+*   **Convoys**: Units that bundle multiple beads for tracking and assignment.
+
+In Gastown, a **Town** acts as the workspace root containing various **Rigs** (git repositories). 
+
+Specialized agent instances take up specific roles to execute work tracked via **Convoys** and **Beads**.
+
+*   **The Mayor**: The central AI coordinator and "Chief of Staff" for the Town. This is who you send commands to most of the time.
 
 *   **Polecats**: Ephemeral worker agents spawned to execute specific GDScript tasks.
 
 *   **Refinery**: The release engineer agent responsible for merge-queue management and quality gates.
 
-*   **Beads**: Atomic units of work (issues) that track specific task states.
+In addition to our user-defined Agent roles, Gastown includes some predefined Agent roles baked in.
 
-*   **Convoys**: Units that bundle multiple beads for tracking and assignment.
+*   **Deacon**: The Watchdog. This is a background process (a daemon) that monitors the entire "Town". Its primary job is to watch for stalled tasks or "Beads" and alert the human operator if a system-level failure occurs.
+
+*   **Witness**: The Patrol. This agent operates at the Rig level. It acts as a lightweight patrol that can verify local state and ensure that the "Hook" (the persistent work state) is being respected by the active worker agents.
 
 ---
 
@@ -39,6 +47,10 @@ To prevent configuration drift across our 15+ repositories, AeroBeat uses a **So
 Every agent entering the Town is directed to the **Global Orchestration Registry**: `~/aerobeat/aerobeat-docs/docs/ai-orchestration/instructions.md`
 
 This file acts as a directory, pointing agents to their specific operating manuals (Mayor, Polecat, Refinery, etc.) based on their assigned role.
+
+---
+
+Below are more details on each Agent role in the AeroBeat Gastown ecosystem.
 
 ---
 
@@ -72,13 +84,15 @@ Polecats are the "proletariat" worker agents. They operate within a specific Rig
 
 *   **Quality**: They are required to use Test-Driven Development (TDD) with GUT, aiming for 100% logic coverage.
 
-*   **Context**: Each Rig contains a `CLAUDE.md` that points the Polecat to the global `instructions.md` and the local `README.md`.
+*   **Context**: Each Rig contains a `AGENTS.md` and `CLAUDE.md` that points the Polecat to the global `instructions.md` and the local `README.md`.
 
 ---
 
 ## 🛡️ The Refinery
 
 The Refinery is a specialized role that serves as the automated quality gatekeeper. It reviews code produced by Polecats before it is permitted to enter the `main` branch.
+
+*   **Context**: Each Rig contains a `AGENTS.md` and `CLAUDE.md` that points the Refinery to the global `instructions.md` and the local `README.md`.
 
 ### 1. Create the Refinery Alias
 
@@ -97,18 +111,7 @@ The Mayor remains the "Chief of Staff" and "slings" the completed work to a Refi
 gt sling <bead-id> <rig-name> --agent aerobeat-refinery
 ```
 
-### 3. Rig-Level Integration
-
-Every Rig's `CLAUDE.md` must include this pointer to ensure compliance:
-
-```text
-## 🛡️ Quality Gate: The Refinery
-All code in this Rig is subject to automated review by the **AeroBeat Refinery**.
-* **Instructions**: Refer to `~/aerobeat/aerobeat-docs/docs/ai-orchestration/instructions.md`.
-* **Requirement**: No PR will be merged without 100% GUT coverage and license verification.
-```
-
-### 4. Automated Gates
+### 3. Automated Gates
 
 The Refinery automatically rejects PRs that fail:
 
@@ -117,3 +120,54 @@ The Refinery automatically rejects PRs that fail:
 *   **Topology Check**: Dependencies must flow DOWN (Assembly -> Feature -> Core).
 
 *   **Style/Coverage**: Strict adherence to the GDScript style guide and 100% test coverage.
+
+---
+
+## 👨‍💼 The Deacon (The Watchdog)
+
+The Deacon is the persistent background daemon that oversees the entire Town. It acts as a health monitor for the orchestration system, ensuring that work state remains consistent across all Rigs and that the "GUPP" (Gastown Universal Persistence Protocol) is functioning correctly.
+
+*   **Role**: System-level watchdog and health monitor.
+
+*   **Primary Objective**: To detect stalled Beads or "zombie" agents and alert the human overseer if the persistent state becomes corrupted.
+
+*   **Context Awareness**: It monitors the "Hook" (the work state) to ensure the Mayor and Polecats are in sync.
+
+### Common Commands
+
+```bash
+# Start the Deacon to monitor the current Town
+gt deacon start
+
+# Check the health of the Deacon and the status of system-level hooks
+gt deacon status
+
+# Restart the Deacon if monitoring has stalled
+gt deacon restart
+```
+
+---
+
+### 🐕 The Witness (The Patrol)
+
+The Witness is a rig-level agent that acts as a "lightweight patrol". While the Deacon watches the whole Town, the Witness focuses on specific Rigs to verify that the local repository state matches the global orchestration instructions.
+
+*   **Role**: Local state validator.
+
+*   **Primary Objective**: To ensure that any worker agent (Polecat) operating in the Rig is respecting the local CLAUDE.md and AGENTS.md constraints.
+
+*   **Integrity Check**: It serves as a secondary check to prevent "instruction drift" within a specific repository.
+
+### Common Commands
+
+```bash
+# Invoke the Witness to verify the current Rig's state
+gt witness check
+
+# List all active Witnesses patrolling your Rigs
+gt witness list
+
+# Force a Witness to refresh its local context from the documentation Rig
+gt witness refresh
+```
+
