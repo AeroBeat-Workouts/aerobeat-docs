@@ -89,10 +89,6 @@
          <lastmod>2026-01-27</lastmod>
     </url>
     <url>
-         <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/tools/tool/</loc>
-         <lastmod>2026-01-27</lastmod>
-    </url>
-    <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/tools/api/</loc>
          <lastmod>2026-01-27</lastmod>
     </url>
@@ -178,6 +174,10 @@
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/testing/</loc>
+         <lastmod>2026-01-27</lastmod>
+    </url>
+    <url>
+         <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/tool/</loc>
          <lastmod>2026-01-27</lastmod>
     </url>
     <url>
