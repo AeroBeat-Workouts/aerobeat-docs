@@ -1,4 +1,4 @@
-# Community Edition
+# Assembly (Community)
 
 🚧 **Work In Progress**
 

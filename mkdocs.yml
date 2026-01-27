@@ -51,8 +51,6 @@ nav:
     - Contributing Workflow: guides/contributing_workflow.md
     - Feature Development: guides/feature_development.md
     - Calibration Wizard: guides/calibration.md
-    - Agentic Onboarding: guides/agentic_onboarding.md
-    - Gastown Workflow: guides/gastown_workflow.md
     - Accessibility Guide: guides/accessibility.md
     - Modding Quickstart: guides/modding_quickstart.md
     - Choreography:
@@ -73,6 +71,7 @@ nav:
     - Economy:
       - Currency: gdd/economy/currency.md
       - Supporter Perks: gdd/economy/supporter_perks.md
+    - Glossary: gdd/glossary/terms.md
     - Gameplay:
       - Boxing: gdd/gameplay/boxing.md
       - Flow: gdd/gameplay/flow.md
@@ -102,45 +101,63 @@ nav:
       - Overview: gdd/user-content/overview.md
       - Community Creations: gdd/user-content/community-creations.md
       - Policing Content: gdd/user-content/policing-content.md
-  - Technical:
-    - AI Prompting:
-      - Overview: ai-prompting/overview.md
-      - AI Manifest: ai-prompting/AI_MANIFEST.md
-      - Glossary: ai-prompting/GLOSSARY.md
-      - Style Guide: ai-prompting/STYLE_GUIDE.md
+  - Architecture:
+    - AI Orchestration:
+      - Overview: ai-orchestration/overview.md
+      - Instructions For Agents: ai-orchestration/instructions.md
+      - Mayor Role: ai-orchestration/aerobeat-mayor.md
+      - Polecat Role: ai-orchestration/aerobeat-polecat.md
+      - Refinery Role: ai-orchestration/aerobeat-refinery.md
     - Architecture:
       - Overview: architecture/overview.md
-      - Repository Topology: architecture/topology.md
-      - Testing Strategy: architecture/testing.md
-      - Input: architecture/input.md
-      - State Management: architecture/state-management.md
-      - Multiplayer: architecture/multiplayer.md
       - Audio: architecture/audio.md
-      - UI Architecture: architecture/ui-ux.md
-      - Workflow & Assets: architecture/workflow.md
-      - Cloud Baker: architecture/cloud_baker.md
-      - UGC & Modding: architecture/ugc_modding.md
       - Backend API: architecture/backend_api.md
-      - Telemetry & Privacy: architecture/telemetry.md
+      - Cloud Baker: architecture/cloud_baker.md
+      - Coding Style: architecture/coding-style.md
+      - Input: architecture/input.md
+      - Multiplayer: architecture/multiplayer.md
       - Performance: architecture/performance.md
-      - Security Strategy: architecture/security.md
-      - Reference: architecture/reference.md
-    - Core Contracts: api/core/
-    - Tools: api/tools/tool.md
-    - Assembly:
-      - Community Edition: api/assembly/
-    - Input Systems:
-      - Camera (PC): api/inputs/mediapipe_python/
-      - Camera (Mobile): api/inputs/mediapipe_native/
-      - Joycon: api/inputs/joycon/
-      - Keyboard: api/inputs/keyboard/
-      - Controller: api/inputs/gamepad/
-      - Mouse: api/inputs/mouse/
-      - Touch: api/inputs/touch/
-    - Features:
-      - Boxing: api/features/boxing/
-      - Flow: api/features/flow/
-      - Dance: api/features/dance/
-      - Step: api/features/step/
-    - Assets:
-      - Prototypes: api/assets/prototypes/
+      - Repo Structure Reference: architecture/repo-structure-reference.md
+      - Repository Map: architecture/repository-map.md
+      - Security: architecture/security.md
+      - State Management: architecture/state-management.md
+      - Telemetry & Privacy: architecture/telemetry.md
+      - Testing Strategy: architecture/testing.md
+      - Repository Topology: architecture/topology.md
+      - UGC Modding: architecture/ugc_modding.md
+      - UI-UX Architecture: architecture/ui-ux.md
+      - Workflow & Assets: architecture/workflow.md
+    - API:
+      - Assembly:
+        - Community Edition: api/assembly/
+      - Assets:
+        - Prototypes: api/assets/prototypes/
+      - Core Contracts: api/core/
+      - Features:
+        - Boxing: api/features/boxing/
+        - Flow: api/features/flow/
+        - Dance: api/features/dance/
+        - Step: api/features/step/
+      - Input Systems:
+        - Camera (PC): api/inputs/mediapipe_python/
+        - Camera (Mobile): api/inputs/mediapipe_native/
+        - Joycon: api/inputs/joycon-hid/
+        - Keyboard: api/inputs/keyboard/
+        - Controller: api/inputs/gamepad/
+        - Mouse: api/inputs/mouse/
+        - Touch: api/inputs/touch/
+        - XR: api/inputs/xr/
+      - Tools: api/tools/
+      - UI:
+        - Core: api/ui/core/index.md
+        - Community:
+          - Kit: api/ui/kit-community/index.md
+          - Shells:
+            - Desktop: api/ui/shell-desktop-community/index.md
+            - Mobile: api/ui/shell-mobile-community/index.md
+            - Web: api/ui/shell-web-community/index.md
+            - XR: api/ui/shell-xr-community/index.md
+      
+      
+      
+      

@@ -5,17 +5,17 @@
 # Map the local folder name (inside /templates/) to the destination GitHub Repo URL.
 # YOU MUST CREATE THESE REPOS ON GITHUB FIRST.
 $TemplateMap = @{
-    "assembly" = "https://github.com/AeroBeat-Fitness/aerobeat-template-assembly.git"
-    "feature"  = "https://github.com/AeroBeat-Fitness/aerobeat-template-feature.git"
-    "input"    = "https://github.com/AeroBeat-Fitness/aerobeat-template-input.git"
-    "ui-kit"   = "https://github.com/AeroBeat-Fitness/aerobeat-template-ui-kit.git"
-    "ui-shell" = "https://github.com/AeroBeat-Fitness/aerobeat-template-ui-shell.git"
-    "asset"    = "https://github.com/AeroBeat-Fitness/aerobeat-template-asset.git"
-    "skins"    = "https://github.com/AeroBeat-Workouts/aerobeat-template-skin.git"
-    "avatars"  = "https://github.com/AeroBeat-Workouts/aerobeat-template-avatar.git"
-    "cosmetics"= "https://github.com/AeroBeat-Workouts/aerobeat-template-cosmetic.git"
-    "environments" = "https://github.com/AeroBeat-Workouts/aerobeat-template-environment.git"
-    "tool"     = "https://github.com/AeroBeat-Fitness/aerobeat-template-tool.git"
+    "assembly"      = "https://github.com/AeroBeat-Workouts/aerobeat-template-assembly.git"
+    "feature"       = "https://github.com/AeroBeat-Workouts/aerobeat-template-feature.git"
+    "input"         = "https://github.com/AeroBeat-Workouts/aerobeat-template-input.git"
+    "ui-kit"        = "https://github.com/AeroBeat-Workouts/aerobeat-template-ui-kit.git"
+    "ui-shell"      = "https://github.com/AeroBeat-Workouts/aerobeat-template-ui-shell.git"
+    "asset"         = "https://github.com/AeroBeat-Workouts/aerobeat-template-asset.git"
+    "skins"         = "https://github.com/AeroBeat-Workouts/aerobeat-template-skin.git"
+    "avatars"       = "https://github.com/AeroBeat-Workouts/aerobeat-template-avatar.git"
+    "cosmetics"     = "https://github.com/AeroBeat-Workouts/aerobeat-template-cosmetic.git"
+    "environments"  = "https://github.com/AeroBeat-Workouts/aerobeat-template-environment.git"
+    "tool"          = "https://github.com/AeroBeat-Workouts/aerobeat-template-tool.git"
 }
 
 # 2. EXECUTION

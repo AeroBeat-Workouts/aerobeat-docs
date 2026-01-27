@@ -1,8 +1,8 @@
 # 🌍 AeroBeat Global Orchestration Registry
 
-**Project:** AeroBeat (Godot 4.x Rhythm Platform)
-**Orchestration System:** Gastown (Multi-Agent Multi-Rig)
-**Source of Truth:** `aerobeat-docs` Repository
+*   **Project:** AeroBeat (Godot 4.x Rhythm Platform)
+*   **Orchestration System:** Gastown (Multi-Agent Multi-Rig)
+*   **Source of Truth:** `aerobeat-docs` Repository
 
 ---
 
@@ -40,9 +40,10 @@ Identify your assigned role (Mayor, Polecat, or Refinery) and follow the link to
 ## 🛠️ Global Project Standards
 
 These standards are embedded within the manuals above:
-* **Topology Map**: (In Mayor Manual) Defines the 15-tier repository structure.
-* **Style Guide**: (In Polecat Manual) Defines static typing and architectural patterns (Signal Up/Call Down).
-* **Quality Gate**: (In Refinery Manual) Defines the "No-Merge" conditions for license violations.
+
+*   **Topology Map**: (In Mayor Manual) Defines the 15-tier repository structure.
+*   **Style Guide**: (In Polecat Manual) Defines static typing and architectural patterns (Signal Up/Call Down).
+*   **Quality Gate**: (In Refinery Manual) Defines the "No-Merge" conditions for license violations.
 
 ---
 

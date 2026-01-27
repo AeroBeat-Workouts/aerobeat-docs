@@ -68,6 +68,15 @@ To support "White Label" partners (e.g., a specific Artist edition or Arcade cab
 *   **UI Shells:** Licensed under **GPLv3** (Application Logic).
 *   **Assets:** Visuals used by the UI (Icons, Fonts) can be stored inside the UI repo if they are specific to that UI, or pulled from `aerobeat-asset-common` if shared.
 
+
+### The UI Tier Strategy (MVVM)
+
+We do not have a "Default UI." The Assembly defines **UI Contracts** (`AeroMenuProvider`), and the UI Tier implements them.
+
+* **`aerobeat-ui-shell-mobile-community`**: 2D Touch-based interface (Scrolls, Taps).
+* **`aerobeat-ui-shell-pc-community`**: Mouse/Keyboard interface (Hover states, Keybinds).
+* **`aerobeat-ui-shell-vr-community`**: Spatial interface (Laser pointers, World-Space Canvas).
+
 ## 🛡️ Risk Mitigation Features
 
 To address specific risks identified in our strategic plan, the UI must support the following specialized interfaces.
