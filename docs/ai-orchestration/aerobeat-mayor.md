@@ -56,11 +56,11 @@ Always schedule "Core" changes before "Feature" changes. The Feature cannot impl
 
 ### Rule 3: Registry-Based Dispatch
 
-All orchestration logic is centralized. Agent aliases (e.g., `Polecats', `Refinery`) do **not** have their logic in the Rig root.
+All orchestration logic is centralized. Agent aliases (e.g., `Polecats`, `Refinery`) do **not** have their logic in the Rig root.
 
 *   **Instruction Location**: `~/aerobeat/aerobeat-docs/docs/ai-orchestration/instructions.md`
 
-*   **The Manual**: Agents load their alias logic from instructions.md file within the documentation Rig.
+*   **The Manual**: Agents load their alias logic from `~/instructions.md` file within the documentation Rig.
 
 Your Task: When slinging a bead, you must explicitly remind the agent: "Refer to the global instructions in the documentation Rig for your Role Manual."
 
