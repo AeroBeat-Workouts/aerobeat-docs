@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """
-AeroBeat Gastown Setup Script
+AeroBeat Gastown Sync Script
 -----------------------------
 This script bootstraps the entire AeroBeat Polyrepo ecosystem into a Gastown Town.
+
+On future runs, it runs 'git pull' inside every rig folder, ensuring our rigs stay up to date with the Github organization.
 
 What it does:
     1. Fetches all public repositories from the 'AeroBeat-Workouts' GitHub organization.
@@ -103,11 +105,17 @@ def sanitize_rig_name(repo_name):
     return repo_name.replace("-", "_").replace(".", "_").replace(" ", "_")
 
 def add_rig(repo, town_root):
-    """Adds a single repository as a Gastown Rig."""
+    """Adds a single repository as a Gastown Rig, or updates it if it exists."""
     repo_name = repo["name"]
     clone_url = repo["clone_url"]
     rig_name = sanitize_rig_name(repo_name)
     
+    # Special Handling: Skip or Warn for .github repo
+    # Gastown doesn't need the .github config repo as a rig
+    if rig_name == ".github" or rig_name == "_github":
+        print(f"⚠️  Skipping .github repository: {repo_name} (Not required for Gastown)")
+        return True
+
     print(f"\n🏗️  Processing: {repo_name} -> Rig: {rig_name}")
 
     if not GT_BINARY:
@@ -118,6 +126,10 @@ def add_rig(repo, town_root):
         print("❌ Error: Could not locate Gastown root (tried GT_ROOT, ~/gt).")
         return False
 
+    rig_path = os.path.join(town_root, rig_name)
+    rig_exists = os.path.isdir(rig_path)
+
+    # Step 1: Add Rig via Gastown CLI
     try:
         # We run the command from the Town Root so 'gt' knows where it is.
         result = subprocess.run(
@@ -127,21 +139,43 @@ def add_rig(repo, town_root):
             cwd=town_root # Execute inside the town
         )
         
+        added_new = False
         if result.returncode == 0:
             print(f"✅ Successfully added rig: {rig_name}")
-            return True
+            added_new = True
         else:
             if "already exists" in result.stderr or "already exists" in result.stdout:
-                print(f"ℹ️  Rig {rig_name} already exists. Skipping.")
-                return True # Treat as success
+                print(f"ℹ️  Rig {rig_name} already exists.")
             else:
                 print(f"❌ Failed to add rig {rig_name}")
                 print(f"   Error: {result.stderr.strip()}")
                 return False
 
     except Exception as e:
-        print(f"❌ Execution error: {e}")
+        print(f"❌ Execution error adding rig: {e}")
         return False
+
+    # Step 2: Update Rig (Git Pull)
+    # If we just added it, it's fresh. If it existed, we need to sync.
+    # We do this for all valid rigs to ensure latest state.
+    if os.path.isdir(rig_path) and os.path.isdir(os.path.join(rig_path, ".git")):
+        print(f"🔄 Syncing {rig_name}...")
+        try:
+            pull_result = subprocess.run(
+                ["git", "pull"],
+                capture_output=True,
+                text=True,
+                cwd=rig_path
+            )
+            if pull_result.returncode == 0:
+                print(f"   ✅ Up to date: {pull_result.stdout.strip().splitlines()[-1] if pull_result.stdout else 'OK'}")
+            else:
+                print(f"   ⚠️  Git pull failed: {pull_result.stderr.strip()}")
+                # We don't fail the whole setup for a failed pull, just warn
+        except Exception as e:
+             print(f"   ⚠️  Sync error: {e}")
+    
+    return True
 
 def main():
     print("--- AeroBeat Gastown Setup ---")
