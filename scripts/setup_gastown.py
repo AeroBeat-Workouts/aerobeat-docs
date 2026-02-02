@@ -30,6 +30,35 @@ import shutil
 ORG_NAME = "AeroBeat-Workouts"
 GT_BINARY = shutil.which("gt") # Auto-detect 'gt' in PATH
 
+def get_gastown_root():
+    """
+    Attempts to locate the Gastown Town root directory.
+    Priority:
+    1. GT_ROOT environment variable.
+    2. '~/gt' (User default).
+    3. Current directory (if valid).
+    """
+    # 1. Check Env Var
+    env_root = os.environ.get("GT_ROOT")
+    if env_root and os.path.isdir(env_root):
+        return env_root
+
+    # 2. Check Default Path (~/gt)
+    default_path = os.path.expanduser("~/gt")
+    if os.path.isdir(default_path):
+        # Verify it's actually a town (has .beads or AGENTS.md)
+        if os.path.exists(os.path.join(default_path, ".beads")) or \
+           os.path.exists(os.path.join(default_path, "AGENTS.md")):
+            return default_path
+
+    # 3. Check Current Directory (or parents) - Fallback logic if needed
+    # (Simple check for now)
+    cwd = os.getcwd()
+    if os.path.exists(os.path.join(cwd, ".beads")):
+        return cwd
+
+    return None
+
 def get_repos():
     """Fetches all public repositories for the organization (Pagination support)."""
     repos = []
@@ -73,7 +102,7 @@ def sanitize_rig_name(repo_name):
     """
     return repo_name.replace("-", "_").replace(".", "_").replace(" ", "_")
 
-def add_rig(repo):
+def add_rig(repo, town_root):
     """Adds a single repository as a Gastown Rig."""
     repo_name = repo["name"]
     clone_url = repo["clone_url"]
@@ -85,21 +114,17 @@ def add_rig(repo):
         print("❌ Error: 'gt' binary not found. Please install Gastown first.")
         return False
 
-    # Check if rig directory likely exists to avoid unnecessary calls
-    # Note: This assumes standard ~/gt layout. A more robust way would be `gt rig list`.
-    # But since we are running inside the rig scripts folder, we might not know the town root easily.
-    # We'll rely on `gt` to fail gracefully if it exists.
+    if not town_root:
+        print("❌ Error: Could not locate Gastown root (tried GT_ROOT, ~/gt).")
+        return False
 
     try:
-        # We assume the user is running this from within a valid Town context or has GT_ROOT set.
-        # If not, they might need to cd ~/gt first, but let's try invoking it.
-        
-        # We use subprocess to call `gt rig add`
-        # We capture output to check for "already exists" messages without crashing.
+        # We run the command from the Town Root so 'gt' knows where it is.
         result = subprocess.run(
             [GT_BINARY, "rig", "add", rig_name, clone_url],
             capture_output=True,
-            text=True
+            text=True,
+            cwd=town_root # Execute inside the town
         )
         
         if result.returncode == 0:
@@ -126,6 +151,15 @@ def main():
         print("   Please install Gastown: go install github.com/steveyegge/gastown/cmd/gt@latest")
         return
 
+    # Locate Gastown
+    town_root = get_gastown_root()
+    if town_root:
+        print(f"📍 Found Gastown at: {town_root}")
+    else:
+        print("❌ Critical: Could not find Gastown root directory.")
+        print("   Expected '~/gt' or set GT_ROOT environment variable.")
+        return
+
     # 1. Get the list of repos
     repos = get_repos()
     
@@ -138,7 +172,7 @@ def main():
     failed_repos = []
 
     for repo in repos:
-        if add_rig(repo):
+        if add_rig(repo, town_root):
             success_count += 1
         else:
             failed_repos.append(repo["name"])
