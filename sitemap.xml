@@ -2,398 +2,402 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/CODE_OF_CONDUCT/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/ai-orchestration/aerobeat-mayor/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/ai-orchestration/aerobeat-polecat/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/ai-orchestration/aerobeat-refinery/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
+    </url>
+    <url>
+         <loc>https://aerobeat-workouts.github.io/aerobeat-docs/ai-orchestration/aerobeat-workflow/</loc>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/ai-orchestration/instructions/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/ai-orchestration/overview/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/assembly/community/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/assets/prototypes/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/core/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/features/boxing/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/features/dance/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/features/flow/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/features/step/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/inputs/gamepad/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/inputs/joycon-hid/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/inputs/keyboard/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/inputs/mediapipe_native/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/inputs/mediapipe_python/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/inputs/mouse/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/inputs/touch/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/inputs/xr/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/tools/api/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/tools/settings/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/ui/core/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/ui/kit-community/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/ui/shell-desktop-community/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/ui/shell-mobile-community/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/ui/shell-web-community/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/api/ui/shell-xr-community/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/audio/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/backend_api/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/cloud_baker/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/coding-style/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/input/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/multiplayer/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/overview/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/performance/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/repo-structure-reference/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/repository-map/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/security/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/state-management/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/telemetry/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/testing/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/tool/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/topology/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/ugc_modding/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/ui-ux/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/architecture/workflow/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/concept/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/art/overview/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/economy/currency/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/economy/supporter_perks/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/gameplay/boxing/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/gameplay/dance/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/gameplay/flow/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/gameplay/step/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/gameplay/view-modes/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/gamification/overview/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/gamification/quests/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/glossary/terms/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/input-system/agnostic-input/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/meta/locker_room/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/meta/preferences/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/meta/profile/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/modifiers/accessibility/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/modifiers/difficulty/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/releases/community/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/releases/digital-stores-and-arcades/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/roadmap/future-roadmap/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/social/crews/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/user-content/community-creations/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/user-content/overview/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/gdd/user-content/policing-content/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/guides/accessibility/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/guides/avatar_creation/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/guides/calibration/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/guides/coaching/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/guides/contributing_workflow/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/guides/cosmetics/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/guides/environment_creation/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/guides/feature_development/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/guides/modding_quickstart/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/guides/skins/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/guides/choreography/boxing/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/guides/choreography/dance/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/guides/choreography/flow/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/guides/choreography/overview/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/guides/choreography/step/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/legal/refund_policy/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/licensing/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/licensing/CLA/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/licensing/CONTRIBUTING/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/licensing/attribution/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/licensing/commercial/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/licensing/creative/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/licensing/engineers/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/licensing/hardware/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://aerobeat-workouts.github.io/aerobeat-docs/releases/changelog/</loc>
-         <lastmod>2026-02-02</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
 </urlset>
