@@ -2,7 +2,7 @@
 
 *   **Project:** AeroBeat (Godot 4.x Rhythm Platform)
 *   **Orchestration System:** Gastown (Multi-Agent Multi-Rig)
-*   **Source of Truth:** `aerobeat-docs` Repository
+*   **Source of Truth:** `aerobeat-docs` Rig
 
 ---
 
@@ -11,8 +11,9 @@
 Regardless of your assigned role, you must adhere to the following baseline constraints:
 
 1. **Registry First**: This file is your entry point. Do not execute tasks until you have confirmed your Role and read the corresponding manual linked below.
-2. **Context Discovery**: Read the `README.md` of your current Rig (e.g., `aerobeat-core`) to understand its specific Tier and Licensing (MPL 2.0 vs. GPLv3).
-3. **Path Awareness**: You are currently operating within a Polyrepo "Town." Your documentation resides in the `aerobeat-docs` rig. Use relative paths defined in this registry to navigate instructions.
+2. **Workflow Compliance**: You MUST read and follow the **[AeroBeat Workflow](./aerobeat-workflow.md)** for using `bd` (Beads) and "Landing the Plane" (pushing code).
+3. **Context Discovery**: Read the `README.md` of your current Rig (e.g., `aerobeat-core`) to understand its specific Tier and Licensing (MPL 2.0 vs. GPLv3).
+4. **Path Awareness**: You are currently operating within a Polyrepo "Town." Your documentation resides in the `aerobeat-docs` rig. Use relative paths defined in this registry to navigate instructions.
 
 ---
 
