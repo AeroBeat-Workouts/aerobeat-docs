@@ -1,42 +1,12 @@
-"""
-AeroBeat Polyrepo Sync Script
+"""Synchronize AeroBeat sibling repositories into the local polyrepo root.
 
-What this script does:
-    - Fetches all public repositories from the 'AeroBeat-Workouts' GitHub organization.
-    - Iterates through each repository.
-    - If the repository does not exist locally in the parent directory, it clones it.
-    - If the repository already exists locally, it pulls the latest changes using rebase and autostash.
+The script lists public repositories in the ``AeroBeat-Workouts`` GitHub
+organization, then ensures each one exists as a sibling checkout next to
+``aerobeat-docs``. Existing repositories are updated with
+``git fetch --all --prune`` followed by ``git pull --rebase --autostash``;
+missing repositories are cloned.
 
-How it works:
-    - Uses the GitHub API to list repositories (handles pagination).
-    - Determines the root directory relative to this script's location.
-    - Uses `subprocess` to execute `git` commands.
-    - Runs `git fetch --all --prune` to ensure remote tracking branches are up to date.
-    - Can use a GITHUB_TOKEN environment variable to avoid API rate limits.
-
-Where it should be run from:
-    - This script is located in `aerobeat-docs/scripts/`.
-    - It calculates the 'Town Root' (parent of aerobeat-docs) automatically.
-    - It syncs sibling repositories into that root folder.
-
-Conflict Resolution:
-    - This script uses `git pull --rebase --autostash` to minimize failures.
-    - `--autostash`: Automatically stashes uncommitted local changes, pulls, and then unstashes.
-      This prevents failures due to a "dirty" working directory.
-    - `--rebase`: Re-applies your local commits on top of the latest remote changes, keeping history clean.
-    - If a rebase conflict occurs (e.g., your local commit conflicts with a remote one), the script
-      will fail for that repo and list it at the end.
-    - To fix a conflict:
-        1. `cd` into the failed repository.
-        2. Run `git status` to see the conflicted files.
-        3. Resolve the conflicts in your editor (look for `<<<`, `===`, `>>>`).
-        4. Run `git add .` to stage the resolved files.
-        5. Run `git rebase --continue` to finish.
-        6. If you get stuck, you can always run `git rebase --abort` to cancel.
-    - LLM Assistance:
-        If you need help, run `git diff` on the conflicted file and ask an LLM (include the context so the AI knows what your talking about!):
-        "I am resolving a git rebase conflict. Here is the file content with conflict markers.
-        Please explain the difference between the upstream changes (HEAD) and my local changes, and suggest how to resolve it."
+Set ``GITHUB_TOKEN`` to raise GitHub API rate limits when needed.
 """
 
 import json
@@ -115,10 +85,9 @@ def sync_repo(repo, root_dir):
     return success
 
 def main():
-    # Determine the 'Town' root directory (parent of aerobeat-docs)
     # Script location: aerobeat-docs/scripts/sync_polyrepo.py
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    # Go up two levels: scripts -> aerobeat-docs -> Town Root
+    # Go up two levels: scripts -> aerobeat-docs -> polyrepo root
     root_dir = os.path.abspath(os.path.join(script_dir, "..", ".."))
     
     print(f"--- AeroBeat Polyrepo Sync ---")
