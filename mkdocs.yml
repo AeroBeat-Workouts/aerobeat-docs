@@ -123,14 +123,15 @@ nav:
       - State Management: architecture/state-management.md
       - Telemetry & Privacy: architecture/telemetry.md
       - Testing Strategy: architecture/testing.md
-      - Tools: architecture/tools.md
+      - Tools: architecture/tool.md
       - Repository Topology: architecture/topology.md
       - UGC Modding: architecture/ugc_modding.md
       - UI-UX Architecture: architecture/ui-ux.md
       - Workflow & Assets: architecture/workflow.md
     - API:
       - Assembly:
-        - Community Edition: api/assembly/
+        - Overview: api/assembly/index.md
+        - Community Edition: api/assembly/community/index.md
       - Assets:
         - Prototypes: api/assets/prototypes/
       - Core Contracts: api/core/
@@ -148,7 +149,10 @@ nav:
         - Mouse: api/inputs/mouse/
         - Touch: api/inputs/touch/
         - XR: api/inputs/xr/
-      - Tools: api/tools/
+      - Tools:
+        - Overview: api/tools/index.md
+        - Backend API: api/tools/api/index.md
+        - Athlete Settings: api/tools/settings/index.md
       - UI:
         - Core: api/ui/core/index.md
         - Community:

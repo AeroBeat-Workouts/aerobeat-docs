@@ -7,19 +7,28 @@ To run this documentation site locally, you will need [Python](https://www.pytho
 
 ### Quick Start (Windows)
 
-We have included a helper script that automatically sets up the virtual environment, installs dependencies, and launches the server.
+We have included a helper script that automatically sets up the virtual environment, installs dependencies, creates any missing placeholder docs, and launches the server.
 
 ```powershell
 ./serve.ps1
 ```
 
+### Quick Start (Linux/macOS)
+
+Use the shell helper for the same repo-local setup flow on Unix-like systems:
+
+```bash
+chmod +x serve.sh
+./serve.sh
+```
+
 ### Manual Setup
 
-If you are on Mac/Linux or prefer to run commands manually:
+If you prefer to run commands manually:
 
 1.  **Create a virtual environment:**
     ```bash
-    python -m venv venv
+    python3 -m venv venv
     ```
 
 2.  **Activate the environment:**
@@ -31,7 +40,12 @@ If you are on Mac/Linux or prefer to run commands manually:
     pip install -r requirements.txt
     ```
 
-4.  **Run the server:**
+4.  **Ensure placeholder API docs exist:**
+    ```bash
+    python scripts/create_placeholders.py
+    ```
+
+5.  **Run the server:**
     ```bash
     mkdocs serve
     ```
