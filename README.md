@@ -13,13 +13,26 @@ We have included a helper script that automatically sets up the virtual environm
 ./serve.ps1
 ```
 
-### Quick Start (Linux/macOS)
+### Verified Quick Start (Linux)
 
-Use the shell helper for the same repo-local setup flow on Unix-like systems:
+From the repo root, run:
 
 ```bash
-chmod +x serve.sh
 ./serve.sh
+```
+
+Then open `http://127.0.0.1:8000/aerobeat-docs/`.
+
+What `serve.sh` does for you:
+- reuses or creates `venv`
+- installs `requirements.txt`
+- generates any missing placeholder docs
+- starts the local MkDocs server
+
+To use a different port:
+
+```bash
+./serve.sh --dev-addr 127.0.0.1:8001
 ```
 
 ### Manual Setup
@@ -50,7 +63,7 @@ If you prefer to run commands manually:
     mkdocs serve
     ```
 
-The site will be available at `http://127.0.0.1:8000`.
+The site will be available at `http://127.0.0.1:8000/aerobeat-docs/`.
 
 ## Deployment
 
