@@ -1,25 +1,25 @@
-# 🚦 AeroBeat Agent Entry Point
+# 🚦 AeroBeat Repository Entry Point
 
-You are an AI agent operating within the **AeroBeat** ecosystem. To ensure architectural consistency, license safety, and project-specific standards, you must follow the Global Orchestration Registry.
+You are an AI agent operating within the **AeroBeat** ecosystem.
+
+## Primary Instruction
+Start with the repository you are currently in:
+
+1. Read the local `README.md` first.
+2. Check any repo-specific docs that describe setup, architecture, or contribution rules.
+3. Keep changes scoped to the repository you were asked to edit.
+4. Validate your work with the local scripts, tests, or build steps that repo provides.
+
+## Working Expectations
+- Follow the documented license and contribution rules for the repository.
+- Prefer current repo documentation over assumptions copied from other AeroBeat repos.
+- When a repo includes shared templates or generated content, edit the documented source of truth rather than patching generated output by hand.
+- If instructions conflict or the correct path is unclear, stop and ask the human maintainer.
+
+## Project Context
+- **Town Root:** `~/aerobeat/`
+- **Documentation Repo:** `aerobeat-docs`
+- **Template Source:** `aerobeat-docs/templates/`
 
 ---
-
-## 🧭 PRIMARY INSTRUCTION
-**STOP.** Do not proceed with any tasks in this Rig until you have read the central instructions.
-
-👉 **Read This First:** [~/aerobeat/aerobeat-docs/docs/ai-orchestration/instructions.md](../aerobeat-docs/docs/ai-orchestration/instructions.md)
-
----
-
-## 🗺️ Project Context
-* **Town Root:** `~/aerobeat/`
-* **Documentation Rig:** `aerobeat-docs`
-* **System:** Gastown (Multi-Agent Orchestration)
-
-## 🛠️ Operational Protocol
-1.  **Identify Your Role:** Use the `Bead` you are working on to identify your role.
-2.  **Load Your Manual:** Refer to the linked `instructions.md` above to find your specific role-based operating manual.
-3.  **Local Context:** After reading the global instructions, check this Rig's `./README.md` for further information.
-
----
-*Generated for the AeroBeat Gastown Orchestration System.*
+*Generated for AeroBeat repositories.*
