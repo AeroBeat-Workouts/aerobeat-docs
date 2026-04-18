@@ -19,3 +19,9 @@ This is an **Interaction Shell** for the AeroBeat platform.
     ```bash
     python sync_ui_kit.py
     ```
+
+## 📂 Structure
+
+*   `.testbed/tests/` - Repo-local unit tests run by the hidden testbed.
+*   `.testbed/scenes/` - Optional manual/workbench scenes when the shell needs them.
+*   `.testbed/` - The local-only Godot workbench used to run/debug the shell.

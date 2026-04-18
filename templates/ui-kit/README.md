@@ -13,3 +13,9 @@ Run the setup script to clone the required logic layer (`aerobeat-ui-core`) into
 ```bash
 python setup_dev.py
 ```
+
+## 📂 Structure
+
+*   `.testbed/tests/` - Repo-local unit tests run by the hidden testbed.
+*   `.testbed/scenes/` - Optional manual/workbench scenes when the UI kit needs them.
+*   `.testbed/` - The local-only Godot workbench used to run/debug the kit.

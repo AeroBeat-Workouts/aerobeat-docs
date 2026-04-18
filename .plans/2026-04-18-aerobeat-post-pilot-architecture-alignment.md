@@ -93,25 +93,29 @@ This work remains coordination-owned by `aerobeat-docs`, but repo-local changes 
 **Files Created/Deleted/Modified:**
 - final audit notes / plan updates as needed
 
-**Status:** ⏳ Pending
+**Status:** ⚠️ Partial
 
-**Results:** Pending.
+**Results:** Independent family audit did **not** support the blanket claim that every AeroBeat repo is aligned yet. The broad non-assembly package rollout is real and largely landed, but the family is only **mostly aligned**, not fully aligned (`REF-01` through `REF-07`). Verified aligned package repos now use `.testbed/tests/`, remove repo-root `test/`, and normalize touched `.testbed/project.godot` markers to `4.6`; `aerobeat-core` also correctly split manual/workbench content into `.testbed/scenes/`. A focused follow-up fix pass then landed the straightforward misses from this audit: `aerobeat-template-assembly` now uses the `4.6` project marker and assembly-truthful CI/docs wording (`Godot 4.6.2 stable standard`, `-gdir=res://test`), `aerobeat-ui-core/README.md` and `aerobeat-ui-kit-community/README.md` now point at `.testbed/tests` / `.testbed/scenes`, and the `feature`, `input`, `tool`, `ui-kit`, and `ui-shell` source templates under `aerobeat-docs/templates/` now store their example tests directly under `.testbed/tests/` with setup scripts updated to stop recreating the old root `tests` symlink expectation. `aerobeat-assembly-community` also received the obviously safe CI wording-only refresh to `Godot 4.6.2 stable standard` + `-gdir=res://test` while preserving its intentional assembly-shaped root-project layout. Remaining intentional follow-on drift is now narrower: `aerobeat-input-mediapipe-python` still has repo-local `tests/`, a real `.testbed/test/` workbench tree, and legacy CI targeting `4.2.1` / `res://test/unit`, which matches prior documented follow-on status rather than a missed Task 2 edit; the `assembly` docs template source tree still preserves the root-project shape by design and therefore remains separate from the package-template `.testbed/tests` cleanup even though its version/CI wording is now normalized in the live assembly repos. Human-facing docs in `aerobeat-docs` and the aligned package set do use `Godot 4.6.2 stable standard` where exact wording is appropriate, but the full-family statement must stay qualified until the remaining complex follow-on work is resolved.
 
 ---
 
 ## Final Results
 
-**Status:** ⏳ Pending
+**Status:** ⚠️ Partial
 
-**What We Built:** Pending.
+**What We Built:** Completed the post-pilot docs update and the large package-family rollout, then independently audited the full AeroBeat family to determine the truthful end state. The outcome is a strong partial alignment across the non-assembly package repos, not a clean family-wide finish.
 
-**Reference Check:** Pending.
+**Reference Check:** `REF-01` through `REF-07` are satisfied for the boxing pilot, architecture docs, the main non-assembly package rollout, and the focused cleanup pass recorded here. The final family-wide truth check still prevents a blanket “every repo is aligned” claim, but the remaining drift is now intentionally narrowed to the separate `aerobeat-input-mediapipe-python` follow-on plus the intentionally assembly-shaped docs template surface, rather than the previously missed version/README/template-source inconsistencies.
 
 **Commits:**
-- Pending
+- `4969b7c` - Align docs and template guidance to the post-pilot architecture contract
+- `98e3a16` - Align `aerobeat-core` to `.testbed/tests` / `.testbed/scenes` and Godot `4.6`
+- `7cfa169` - Align `aerobeat-ui-core` repo shape to the package contract
+- `2f71cc6` - Align `aerobeat-ui-kit-community` repo shape to the package contract
+- plus the Task 2 rollout commits already recorded above for the rest of the aligned package family
 
-**Lessons Learned:** Pending.
+**Lessons Learned:** Family-wide rollout claims need a final independent repo-by-repo truth check before being phrased as universal. Assembly repos and template source trees should be audited as first-class surfaces, not assumed covered because generated package repos were updated.
 
 ---
 
-*Completed on Pending*
+*Completed on 2026-04-18*
