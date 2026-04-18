@@ -1,7 +1,7 @@
 # AeroBeat Phase 1 — UID Hygiene Retry
 
 **Date:** 2026-04-17
-**Status:** In Progress
+**Status:** Complete
 **Agent:** Pico 🐱‍🏍
 
 ---
@@ -74,9 +74,9 @@ This retry phase therefore has three jobs: update the contract/docs to reflect t
 - required tracked `.uid` files in affected first-party repos
 - tag metadata as needed
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**Results:** Pending.
+**Results:** `aerobeat-ui-core` was the affected first-party Phase 1 repo. It now commits `plugin.gd.uid`, remains clean after repeated GodotEnv restore plus headless import, and the corrected release was cut as `v0.1.1` on commit `143852f`.
 
 ---
 
@@ -93,25 +93,26 @@ This retry phase therefore has three jobs: update the contract/docs to reflect t
 **Files Created/Deleted/Modified:**
 - this plan and relevant notes/docs as needed
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**Results:** Pending.
+**Results:** Re-audited `aerobeat-ui-kit-community` on the clarified repo-root import rule and validated it against tagged `aerobeat-core v0.1.0` and `aerobeat-ui-core v0.1.1`. Repeated restore/import plus GUT checks stayed clean, so the blocking concern is resolved and Phase 1 may advance to the cross-repo audit/closeout.
 
 ---
 
 ## Final Results
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**What We Built:** Pending docs clarification, `.uid` hygiene fix, and re-audit.
+**What We Built:** Clarified the Phase 0/1 contract around repo-root imports and immutable installs, fixed the missing first-party `.uid` hygiene in `aerobeat-ui-core`, and cleared the downstream UI-kit retry audit.
 
-**Reference Check:** Pending.
+**Reference Check:** `REF-01`, `REF-02`, `REF-03`, and `REF-07` now align with the observed repo state in `REF-05` and `REF-06`.
 
 **Commits:**
-- Pending
+- `143852f` - Commit plugin UID for GodotEnv installs (`aerobeat-ui-core v0.1.1`)
+- `de6b933` - Retry Phase 1 UI kit against aerobeat-ui-core v0.1.1
 
-**Lessons Learned:** Pending.
+**Lessons Learned:** Missing committed first-party `.uid` files are enough to break GodotEnv immutability expectations, so release hygiene has to include post-import cleanliness, not just successful acquisition.
 
 ---
 
-*Completed on Pending*
+*Completed on 2026-04-17*
