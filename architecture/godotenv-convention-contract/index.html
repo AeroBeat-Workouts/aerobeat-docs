@@ -6068,13 +6068,16 @@
 <li><code>.testbed/addons.jsonc</code></li>
 <li><code>.testbed/addons/</code> (ignored, installed)</li>
 <li><code>.testbed/.addons/</code> (ignored cache)</li>
-<li><code>.testbed</code>-local scenes, fixtures, mock data, and test harness files used only for package development</li>
+<li><code>.testbed/tests/</code> for repo-local unit tests used by package development</li>
+<li><code>.testbed/scenes/</code> for manual workbench scenes or interactive scratch content</li>
+<li>other <code>.testbed</code>-local fixtures, mock data, and test harness files used only for package development</li>
 </ul>
 <h2 id="43-what-does-not-belong-in-testbed">4.3 What does not belong in <code>.testbed</code><a class="headerlink" href="#43-what-does-not-belong-in-testbed" title="Permanent link">&para;</a></h2>
 <p>Do not place the package's canonical runtime addon content under <code>.testbed</code>.</p>
 <p>The reusable package content belongs in the repo's actual addon/runtime folders, not in the hidden workbench.</p>
 <h2 id="44-symlink-expectations-inside-package-repos">4.4 Symlink expectations inside package repos<a class="headerlink" href="#44-symlink-expectations-inside-package-repos" title="Permanent link">&para;</a></h2>
 <p>The old pattern used ad hoc symlinks from root <code>src/</code> or <code>test/</code> into <code>.testbed/</code>.</p>
+<p>Package repos should no longer treat a root <code>test/</code> directory as canonical. Repo-local unit tests belong in <code>.testbed/tests/</code>, while any manual or workbench scenes belong in <code>.testbed/scenes/</code>. Keep those two concerns distinct.</p>
 <p>Phase 0 does <strong>not</strong> preserve those symlink scripts as architecture. Package repos may still need local scene references or test harness arrangements, but the dependency contract is the manifest, not a bespoke symlink bootstrap script.</p>
 <p>If a package repo requires root runtime content to appear inside <code>.testbed</code> for Godot project layout reasons, that relationship must be implemented by the repo's tracked structure, not by a repo-local dependency manager script.</p>
 <h2 id="45-export-expectation">4.5 Export expectation<a class="headerlink" href="#45-export-expectation" title="Permanent link">&para;</a></h2>
@@ -6349,7 +6352,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 17, 2026 21:06:56 UTC">April 17, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 18, 2026 18:15:20 UTC">April 18, 2026</span>
   </span>
 
     
