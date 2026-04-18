@@ -24,7 +24,7 @@ Input Drivers bridge hardware (Webcams, VR Controllers, Smart Watches) to the Ae
     python setup_dev.py
     ```
 3.  **Open in Godot:**
-    Import the `project.godot` file located inside the `.testbed/` folder.
+    Import the `project.godot` file located inside the `.testbed/` folder into **Godot 4.6.2 stable standard**.
 
 ## 🧪 Testing
 
@@ -36,5 +36,5 @@ This template comes pre-configured with **GUT (Godot Unit Test)** workflows.
 ## 📂 Structure
 
 *   `src/` - The driver logic (GDScript).
-*   `test/` - Unit tests.
+*   `.testbed/tests/` - Repo-local unit tests run by the testbed.
 *   `.testbed/` - A local-only Godot project used to run/debug the driver.

@@ -24,7 +24,7 @@ A **Tool** is a reusable service or singleton manager (e.g., API Client, Analyti
     python setup_dev.py
     ```
 3.  **Open in Godot:**
-    Import the `project.godot` file located inside the `.testbed/` folder.
+    Import the `project.godot` file located inside the `.testbed/` folder into **Godot 4.6.2 stable standard**.
 
 > **Note:** Tools are libraries, not standalone games. We use a "Testbed" project (a minimal Godot project in a hidden folder) to run and debug the tool in isolation.
 
@@ -39,5 +39,5 @@ This template comes pre-configured with **GUT (Godot Unit Test)** workflows.
 ## 📂 Structure
 
 *   `src/` - The actual tool logic (GDScript). This is what gets distributed.
-*   `test/` - Unit tests.
+*   `.testbed/tests/` - Repo-local unit tests run by the testbed.
 *   `.testbed/` - A local-only Godot project used to run/debug the tool.

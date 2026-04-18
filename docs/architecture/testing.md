@@ -46,14 +46,14 @@ When you finish a script (e.g., `ScoreCalculator.gd`), open your AI assistant an
 
 ## 📂 Test Structure
 
-Tests live in a `test/` folder at the root of the repository, mirroring the structure of `src/`.
+Package-repo unit tests live in `.testbed/tests/` so the hidden testbed remains the canonical development/test surface while repo root stays closer to the published runtime boundary. Assembly repos may still keep root-level application tests where appropriate, but package templates should not treat root `test/` as canonical.
 
 ```text
-aerobeat-core/
+aerobeat-feature-boxing/
 ├── src/
 │   └── logic/
 │       └── ScoreManager.gd
-└── test/
-    └── unit/
-        └── test_ScoreManager.gd
+└── .testbed/
+    └── tests/
+        └── test_score_manager.gd
 ```

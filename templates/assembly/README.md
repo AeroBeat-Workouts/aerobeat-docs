@@ -30,7 +30,7 @@ An **Assembly** is the "Game Client." It is the top-level Godot project that tie
     python setup_dev.py
     ```
 3.  **Open in Godot:**
-    Import the `project.godot` file into Godot 4.x.
+    Import the `project.godot` file into **Godot 4.6.2 stable standard**.
 
 ## 🧪 Testing & CI/CD
 
@@ -44,5 +44,5 @@ This template comes pre-configured with **GUT (Godot Unit Test)** workflows.
 
 *   `addons/` - Submodules (Core, UI, Input). Managed by `setup_dev.py`.
 *   `src/` - Application-specific logic (Main Loop, Scene Switching).
-*   `test/` - Unit tests mirroring the `src/` structure.
+*   `tests/` - Unit tests mirroring the `src/` structure.
 *   `assets/` - Local assets (Splash screens, icons).

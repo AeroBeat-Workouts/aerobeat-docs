@@ -42,7 +42,7 @@ def main():
 
     # Symlink Source & Tests
     create_symlink("src", ".testbed/src")
-    create_symlink("test", ".testbed/test")
+    create_symlink("tests", ".testbed/tests")
 
 if __name__ == "__main__":
     main()

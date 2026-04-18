@@ -321,7 +321,9 @@ Allowed examples:
 - `.testbed/addons.jsonc`
 - `.testbed/addons/` (ignored, installed)
 - `.testbed/.addons/` (ignored cache)
-- `.testbed`-local scenes, fixtures, mock data, and test harness files used only for package development
+- `.testbed/tests/` for repo-local unit tests used by package development
+- `.testbed/scenes/` for manual workbench scenes or interactive scratch content
+- other `.testbed`-local fixtures, mock data, and test harness files used only for package development
 
 ## 4.3 What does not belong in `.testbed`
 
@@ -332,6 +334,8 @@ The reusable package content belongs in the repo's actual addon/runtime folders,
 ## 4.4 Symlink expectations inside package repos
 
 The old pattern used ad hoc symlinks from root `src/` or `test/` into `.testbed/`.
+
+Package repos should no longer treat a root `test/` directory as canonical. Repo-local unit tests belong in `.testbed/tests/`, while any manual or workbench scenes belong in `.testbed/scenes/`. Keep those two concerns distinct.
 
 Phase 0 does **not** preserve those symlink scripts as architecture. Package repos may still need local scene references or test harness arrangements, but the dependency contract is the manifest, not a bespoke symlink bootstrap script.
 
