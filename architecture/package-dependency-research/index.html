@@ -1,0 +1,6102 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/architecture/package-dependency-research/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>AeroBeat Package Dependency Research - AeroBeat Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aerobeat-package-dependency-research" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AeroBeat Documentation" class="md-header__button md-logo" aria-label="AeroBeat Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AeroBeat Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AeroBeat Package Dependency Research
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/AeroBeat-Workouts/aerobeat-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AeroBeat Documentation" class="md-nav__button md-logo" aria-label="AeroBeat Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AeroBeat Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/AeroBeat-Workouts/aerobeat-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Licensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../licensing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../licensing/engineers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    For Engineers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../licensing/creative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    For Creatives
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../licensing/commercial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    For Commercial Partners
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../licensing/hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    For Hardware Vendors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../licensing/attribution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attribution Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../licensing/CLA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../licensing/CONTRIBUTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CODE_OF_CONDUCT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code of Conduct
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/refund_policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Refund Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/contributing_workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/feature_development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feature Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/calibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calibration Wizard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/accessibility/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accessibility Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/modding_quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modding Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Choreography
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Choreography
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/choreography/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/choreography/boxing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boxing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/choreography/flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/choreography/step/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Step
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/choreography/dance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/environment_creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Environment Creation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/skins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skin Creation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/avatar_creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avatar Creation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/cosmetics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cosmetics Creation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/coaching/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coaching Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Game Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Game Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/concept/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Art
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Art
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/art/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Economy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Economy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/economy/currency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Currency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/economy/supporter_perks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Supporter Perks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/glossary/terms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gameplay
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Gameplay
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/gameplay/boxing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boxing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/gameplay/flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/gameplay/step/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Step
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/gameplay/dance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/gameplay/view-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gamification
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Gamification
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/gamification/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/gamification/quests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input System
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Input System
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/input-system/agnostic-input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meta
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Meta
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/meta/profile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profile Hub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/meta/preferences/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preferences
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/meta/locker_room/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Locker Room
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modifiers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modifiers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/modifiers/accessibility/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/modifiers/difficulty/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Difficulty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Releases
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Releases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/releases/community/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/releases/digital-stores-and-arcades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stores & Arcades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_11" id="__nav_5_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Roadmap
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/roadmap/future-roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Future Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_12" id="__nav_5_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Social
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Social
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/social/crews/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crews
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_13" id="__nav_5_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Content
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Content
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/user-content/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/user-content/community-creations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community Creations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gdd/user-content/policing-content/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Policing Content
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backend_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud_baker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloud Baker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../coding-style/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coding Style
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multiplayer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multiplayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../performance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../repo-structure-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Repo Structure Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../repository-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Repository Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../state-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telemetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telemetry & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing Strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Repository Topology
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ugc_modding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UGC Modding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui-ux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI-UX Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow & Assets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_1" id="__nav_6_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Assembly
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Assembly
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/assembly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/assembly/community/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community Edition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_2" id="__nav_6_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Assets
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Assets
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_2_1" id="__nav_6_2_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prototypes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prototypes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/assets/prototypes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prototype Assets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_3" id="__nav_6_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Contracts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Contracts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_4" id="__nav_6_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_4_1" id="__nav_6_2_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boxing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_2_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Boxing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/features/boxing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boxing Feature
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_4_2" id="__nav_6_2_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flow
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_2_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Flow
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/features/flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flow Feature
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_4_3" id="__nav_6_2_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dance
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_2_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dance
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/features/dance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dance Feature
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_4_4" id="__nav_6_2_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Step
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_2_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Step
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/features/step/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Step Feature
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_5" id="__nav_6_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Input Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_5_1" id="__nav_6_2_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Camera (PC)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_2_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Camera (PC)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/inputs/mediapipe_python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MediaPipe Python Input
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_5_2" id="__nav_6_2_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Camera (Mobile)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_2_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Camera (Mobile)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/inputs/mediapipe_native/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MediaPipe Native Input
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_5_3" id="__nav_6_2_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Joycon
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_2_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Joycon
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/inputs/joycon-hid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Joycon Input
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_5_4" id="__nav_6_2_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keyboard
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_2_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Keyboard
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/inputs/keyboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keyboard Input
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_5_5" id="__nav_6_2_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Controller
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_2_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Controller
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/inputs/gamepad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gamepad Input
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_5_6" id="__nav_6_2_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mouse
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_2_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mouse
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/inputs/mouse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mouse Input
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_5_7" id="__nav_6_2_5_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Touch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_2_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Touch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/inputs/touch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Touch Input
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_5_8" id="__nav_6_2_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XR
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_2_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    XR
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/inputs/xr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XR Input
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_6" id="__nav_6_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/tools/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/tools/settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Athlete Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_7" id="__nav_6_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/ui/core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_7_2" id="__nav_6_2_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_2_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Community
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/ui/kit-community/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_7_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_7_2_2" id="__nav_6_2_7_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shells
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_6_2_7_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_7_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Shells
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/ui/shell-desktop-community/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desktop
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/ui/shell-mobile-community/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mobile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/ui/shell-web-community/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/ui/shell-xr-community/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Executive summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verdict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verdict
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verdict">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requested-architecture-vs-current-tooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requested architecture vs current tooling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-aerobeat-is-doing-today" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What AeroBeat is doing today
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What AeroBeat is doing today">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#current-assembly-consumer-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current assembly consumer behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-featureui-package-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current feature/UI package behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-hard-evidence-from-the-repo-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current hard evidence from the repo set
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-chickensoft-officially-supports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Chickensoft officially supports
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-reusable-c-packages-via-nuget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Reusable C# packages via NuGet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1) Reusable C# packages via NuGet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chickensoft-godotpackage-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chickensoft GodotPackage template
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-reusable-addons-via-godotenv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Reusable addons via GodotEnv
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2) Reusable addons via GodotEnv">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-it-matches-npm-style-expectations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where it matches npm-style expectations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-it-does-not-match-npm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where it does not match npm
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#godot-constraints-that-matter-for-aerobeat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Godot constraints that matter for AeroBeat
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-asset-bearing-packages-are-folder-based-not-nuget-native" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Asset-bearing packages are folder-based, not NuGet-native
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-hidden-dev-folders-are-safe-for-testbed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Hidden dev folders are safe for .testbed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-export-inclusion-is-explicit-not-automatic-tree-shaking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Export inclusion is explicit, not automatic tree shaking
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-optional-content-is-best-handled-with-separate-packs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Optional content is best handled with separate packs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-feature-tags-are-runtimebuild-environment-signals-not-asset-stripping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Feature tags are runtime/build-environment signals, not asset stripping
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-c-define-symbols-only-solve-code-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) C# define symbols only solve code paths
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fit-analysis-against-aerobeats-requested-package-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fit analysis against AeroBeat's requested package graph
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aerobeat-assembly-community-as-the-consumer-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aerobeat-assembly-community as the consumer app
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#community-game-modes-boxing-dance-flow-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Community game modes: boxing, dance, flow, step
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-dependencies-including-mediapipe-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input dependencies including mediapipe-python
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui-dependencies-including-ui-shell-and-ui-kit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UI dependencies including ui-shell and ui-kit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pinned-tagged-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pinned tagged releases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-variants-that-should-not-ship-every-dependency-assetcode-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build variants that should not ship every dependency asset/code path
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#major-mismatches-and-hard-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Major mismatches and hard constraints
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-chickensoft-c-packaging-does-not-map-directly-onto-todays-aerobeat-repos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Chickensoft C# packaging does not map directly onto today's AeroBeat repos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-c-is-a-poor-fit-if-web-export-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) C# is a poor fit if web export matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-flat-addon-graphs-are-not-node_modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Flat addon graphs are not node_modules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-godot-asset-paths-remain-real-project-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Godot asset paths remain real project paths
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-target-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended target architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommendation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommendation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-this-is-the-best-fit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this is the best fit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suggested-migration-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suggested migration experiments
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Suggested migration experiments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#experiment-1-replace-one-assembly-submodule-with-a-manifest-managed-addon-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment 1: Replace one assembly submodule with a manifest-managed addon install
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experiment-2-add-release-tags-to-2-3-foundational-repos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment 2: Add release tags to 2-3 foundational repos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experiment-3-prove-testbed-stays-dev-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment 3: Prove .testbed stays dev-only
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experiment-4-package-one-optional-mode-as-a-separate-pck" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment 4: Package one optional mode as a separate PCK
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experiment-5-isolate-the-mediapipe-python-release-story" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment 5: Isolate the mediapipe-python release story
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final answer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sources
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#external-official" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        External / official
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-aerobeat-evidence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local AeroBeat evidence
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="aerobeat-package-dependency-research">AeroBeat Package Dependency Research<a class="headerlink" href="#aerobeat-package-dependency-research" title="Permanent link">&para;</a></h1>
+<p><em>Date: 2026-04-17</em></p>
+<h2 id="executive-summary">Executive summary<a class="headerlink" href="#executive-summary" title="Permanent link">&para;</a></h2>
+<p><strong>Short answer:</strong> AeroBeat can get <strong>part of the way</strong> to an npm-style dependency workflow, but <strong>not as a single universal package system in the Chickensoft sense</strong>.</p>
+<ul>
+<li><strong>Chickensoft's strongest packaging story is for Godot C# code distributed as NuGet packages.</strong> That works well for <strong>compiled C# libraries</strong>, not for Godot scenes, GDScript assets, textures, audio, or whole addon folders.[^S1][^S2][^S3]</li>
+<li><strong>Godot's native/addon workflow for asset-bearing packages is still folder-based</strong>: packages are copied into <code>addons/</code> (or otherwise into the project tree), then optionally enabled if they are true editor plugins.[^S5][^S6]</li>
+<li><strong>Chickensoft GodotEnv is the closest official tool to an npm-like addon workflow</strong> for Godot assets. It gives AeroBeat a manifest-driven install flow (<code>addons.json</code> / <code>addons.jsonc</code>), supports installs from remote git repos, local repos, or symlinks, supports <code>checkout</code> values that can be branches or tags, and allows addons to declare dependencies in a <strong>flat dependency graph</strong>.[^S4]</li>
+<li>For AeroBeat's current repos, which are overwhelmingly <strong>GDScript/addon-oriented</strong> and contain <strong>scenes + assets + hidden <code>.testbed</code> projects</strong>, the best fit is a <strong>Godot addon package model with version-pinned git tags</strong>, not NuGet-first packaging.<a href="`aerobeat-assembly-community/.gitmodules`">^L1</a><a href="`aerobeat-ui-kit-community/setup_dev.py`">^L3</a><a href="`docs/architecture/topology.md`">^L5</a></li>
+<li>If AeroBeat wants production builds that <strong>do not always ship every feature's assets/code</strong>, that is <strong>not solved by package installation alone</strong>. Godot handles shipping through <strong>export presets, resource include/exclude rules, hidden-folder exclusion, and optional PCK/ZIP packs</strong>, not through npm-style tree shaking.[^S7][^S8][^S9][^S10]</li>
+</ul>
+<h2 id="verdict">Verdict<a class="headerlink" href="#verdict" title="Permanent link">&para;</a></h2>
+<h3 id="requested-architecture-vs-current-tooling">Requested architecture vs current tooling<a class="headerlink" href="#requested-architecture-vs-current-tooling" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Can <code>aerobeat-assembly-community</code> consume reusable versioned dependencies?</td>
+<td><strong>Yes, partially.</strong> Best fit is addon packages installed into <code>addons/</code> from tagged git releases, optionally mixed with NuGet for pure C# libraries.</td>
+</tr>
+<tr>
+<td>Can AeroBeat get true <code>node_modules</code> semantics for Godot packages?</td>
+<td><strong>No, not natively.</strong> GodotEnv uses a <strong>flat addon dependency graph</strong>, and Godot assets live in project paths like <code>res://addons/...</code>, not isolated nested package directories.[^S4][^S5]</td>
+</tr>
+<tr>
+<td>Does Chickensoft support versioned reusable dependencies?</td>
+<td><strong>Yes, but split by package type.</strong> NuGet for reusable C# code; GodotEnv-managed addons for scenes/assets/addons.[^S1][^S2][^S3][^S4]</td>
+</tr>
+<tr>
+<td>Is Chickensoft alone a full answer for AeroBeat's current GDScript-heavy package graph?</td>
+<td><strong>No.</strong> It is a <strong>partial fit</strong>. Chickensoft helps most with C# packages and addon installation, but not with asset-aware versioned dependency isolation or build-time asset stripping.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-aerobeat-is-doing-today">What AeroBeat is doing today<a class="headerlink" href="#what-aerobeat-is-doing-today" title="Permanent link">&para;</a></h2>
+<p>AeroBeat's current workflow is already package-like in intent, but not in release/install mechanics.</p>
+<h3 id="current-assembly-consumer-behavior">Current assembly consumer behavior<a class="headerlink" href="#current-assembly-consumer-behavior" title="Permanent link">&para;</a></h3>
+<p><code>aerobeat-assembly-community/setup_dev.py</code> currently wires dependencies in through <strong>git submodules from sibling local paths</strong>, specifically <code>../aerobeat-core</code> and <code>../aerobeat-input-mediapipe-python</code>, then updates <code>project.godot</code> plugin configuration.<a href="`aerobeat-assembly-community/setup_dev.py`">^L1</a> The repo's <code>.gitmodules</code> pins those sources as local <code>file://</code> URLs on <code>main</code>, not release tags.<a href="`aerobeat-assembly-community/.gitmodules`">^L2</a></p>
+<h3 id="current-featureui-package-behavior">Current feature/UI package behavior<a class="headerlink" href="#current-featureui-package-behavior" title="Permanent link">&para;</a></h3>
+<p>Feature and UI repos are structured like reusable packages already:</p>
+<ul>
+<li><code>aerobeat-feature-boxing/setup_dev.py</code> clones <code>aerobeat-core</code> and GUT into <code>.testbed/addons</code>, then symlinks <code>src/</code> and <code>test/</code> into the hidden <code>.testbed/</code> project.<a href="`aerobeat-feature-boxing/setup_dev.py`">^L3</a></li>
+<li><code>aerobeat-ui-kit-community/setup_dev.py</code> clones <code>aerobeat-core</code>, <code>aerobeat-ui-core</code>, and GUT into <code>.testbed/addons</code>, then symlinks <code>src/</code> and <code>test/</code>.<a href="`aerobeat-ui-kit-community/setup_dev.py`">^L4</a></li>
+<li><code>aerobeat-ui-shell-desktop-community/setup_dev.py</code> does the same for <code>aerobeat-core</code>, <code>aerobeat-ui-core</code>, and GUT.<a href="`aerobeat-ui-shell-desktop-community/setup_dev.py`">^L5</a></li>
+</ul>
+<p>The topology docs already describe this as a layered dependency system where assemblies consume active packages and dev-only dependencies are cloned into local testbeds.<a href="`docs/architecture/topology.md`">^L6</a></p>
+<h3 id="current-hard-evidence-from-the-repo-set">Current hard evidence from the repo set<a class="headerlink" href="#current-hard-evidence-from-the-repo-set" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The sampled AeroBeat repos currently have <strong>no local git tags</strong> and <code>ls-remote --tags origin</code> returned no remote tags for the sampled package repos during this research. That means a tag-pinned workflow is <strong>possible</strong>, but <strong>not yet established</strong>.</li>
+<li>A scan of the AeroBeat repo set found <strong>no <code>.csproj</code>, <code>.sln</code>, or <code>global.json</code> files</strong>, which means the current architecture is <strong>not presently using Chickensoft's C#/NuGet project model</strong>.</li>
+<li>The package repos commonly contain hidden <code>.testbed/</code> projects, plugin metadata, tests, and runtime source folders, which strongly matches a <strong>Godot addon/package</strong> model rather than a NuGet library model.<a href="`aerobeat-ui-kit-community/setup_dev.py`">^L3</a><a href="`aerobeat-ui-shell-desktop-community/setup_dev.py`">^L5</a></li>
+</ul>
+<h2 id="what-chickensoft-officially-supports">What Chickensoft officially supports<a class="headerlink" href="#what-chickensoft-officially-supports" title="Permanent link">&para;</a></h2>
+<h2 id="1-reusable-c-packages-via-nuget">1) Reusable C# packages via NuGet<a class="headerlink" href="#1-reusable-c-packages-via-nuget" title="Permanent link">&para;</a></h2>
+<p>Chickensoft's setup docs explicitly separate two reuse modes:</p>
+<ul>
+<li><strong>NuGet packages</strong> for sharing <strong>compiled source code</strong> between Godot C# projects.[^S1]</li>
+<li><strong>Godot Asset Library/addon packages</strong> for sharing <strong>code plus resource files</strong> like scenes, textures, music, and other non-C# assets.[^S1]</li>
+</ul>
+<p>Chickensoft's "How C# Works in Godot" doc makes the limitation sharper:</p>
+<ul>
+<li>Godot C# projects are standard <code>.sln</code>/<code>.csproj</code> projects.</li>
+<li>External packages can be referenced like any normal .NET project.</li>
+<li>But only <strong>plain C# code files</strong> modularize cleanly into packages.</li>
+<li><strong>Script assets</strong> attached to Godot scenes/resources are different from loose code files and are path-sensitive inside the engine.[^S2]</li>
+</ul>
+<p>That distinction matters a lot for AeroBeat. A repo like <code>aerobeat-feature-boxing</code> is not just loose code; it is meant to carry Godot-facing gameplay logic and probably scenes/resources over time. That means it does <strong>not</strong> naturally become a NuGet package without narrowing it down to code-only logic.</p>
+<h3 id="chickensoft-godotpackage-template">Chickensoft GodotPackage template<a class="headerlink" href="#chickensoft-godotpackage-template" title="Permanent link">&para;</a></h3>
+<p>The official <code>GodotPackage</code> template is for creating a <strong>C# NuGet package</strong> for Godot 4.[^S3]</p>
+<p>It provides:</p>
+<ul>
+<li>CI/testing scaffolding</li>
+<li>a Godot-based test project via GoDotTest</li>
+<li>release automation that can publish to <strong>GitHub and NuGet</strong></li>
+<li>versioning around the Godot/.NET SDK ecosystem[^S3]</li>
+</ul>
+<p>That is strong evidence that Chickensoft supports <strong>reusable, versioned Godot-adjacent C# libraries</strong>. But it is still a <strong>code library workflow</strong>, not a whole-Godot-addon workflow.</p>
+<h2 id="2-reusable-addons-via-godotenv">2) Reusable addons via GodotEnv<a class="headerlink" href="#2-reusable-addons-via-godotenv" title="Permanent link">&para;</a></h2>
+<p>Chickensoft's <code>GodotEnv</code> README describes it as both a Godot version manager and an <strong>addon manager</strong>.[^S4]</p>
+<p>Important capabilities:</p>
+<ul>
+<li>installs addons from <strong>remote git repositories</strong>, <strong>local git repositories</strong>, or <strong>symlinks</strong>[^S4]</li>
+<li>uses an <code>addons.json</code>/<code>addons.jsonc</code> manifest[^S4]</li>
+<li>supports a <code>checkout</code> field that can point to a <strong>branch or tag</strong>[^S4]</li>
+<li>allows addons to declare dependencies in a <strong>flat dependency graph</strong>[^S4]</li>
+<li>intentionally avoids git submodule pain by reinstalling addons from the manifest[^S4]</li>
+</ul>
+<p>This is the Chickensoft tool that most closely matches AeroBeat's desired consumer-app workflow.</p>
+<h3 id="where-it-matches-npm-style-expectations">Where it matches npm-style expectations<a class="headerlink" href="#where-it-matches-npm-style-expectations" title="Permanent link">&para;</a></h3>
+<ul>
+<li>consumer repo keeps a <strong>dependency manifest</strong></li>
+<li>dependencies can be <strong>pinned to tags</strong></li>
+<li>local development can use <strong>symlinks</strong></li>
+<li>switching branches/reinstalling is cleaner than submodules</li>
+<li>package repos can remain independent git repos</li>
+</ul>
+<h3 id="where-it-does-not-match-npm">Where it does not match npm<a class="headerlink" href="#where-it-does-not-match-npm" title="Permanent link">&para;</a></h3>
+<ul>
+<li>dependencies install into the Godot project's <strong><code>addons/</code> path</strong>, not an isolated nested dependency tree</li>
+<li>the dependency graph is explicitly <strong>flat</strong>, so multiple versions of the same addon are not a normal supported pattern[^S4]</li>
+<li>asset/resource paths remain Godot project paths (<code>res://...</code>), so package isolation is much weaker than <code>node_modules</code></li>
+</ul>
+<h2 id="godot-constraints-that-matter-for-aerobeat">Godot constraints that matter for AeroBeat<a class="headerlink" href="#godot-constraints-that-matter-for-aerobeat" title="Permanent link">&para;</a></h2>
+<h2 id="1-asset-bearing-packages-are-folder-based-not-nuget-native">1) Asset-bearing packages are folder-based, not NuGet-native<a class="headerlink" href="#1-asset-bearing-packages-are-folder-based-not-nuget-native" title="Permanent link">&para;</a></h2>
+<p>Godot's official plugin docs say installation is fundamentally: download the package, extract it, and move its <code>addons/</code> folder into the project.[^S6]</p>
+<p>This is a strong sign that <strong>asset-bearing reuse in Godot is still filesystem/project-tree oriented</strong>. Godot can consume packaged assets, but they must end up in project paths the engine can import and resolve.</p>
+<h2 id="2-hidden-dev-folders-are-safe-for-testbed">2) Hidden dev folders are safe for <code>.testbed</code><a class="headerlink" href="#2-hidden-dev-folders-are-safe-for-testbed" title="Permanent link">&para;</a></h2>
+<p>Godot's export docs explicitly state that <strong>files and folders whose name begin with a period are never included in exported projects</strong>.[^S7]</p>
+<p>That means AeroBeat's current <code>.testbed/</code> pattern is actually a good fit for package repos:</p>
+<ul>
+<li>keep dev/test scaffolding in <code>.testbed/</code></li>
+<li>keep package runtime assets in visible runtime folders (<code>src/</code>, <code>addons/...</code>, scenes/assets folders)</li>
+<li>exports naturally omit <code>.testbed/</code> without special stripping logic[^S7]</li>
+</ul>
+<p>So the desired requirement that package repos may still contain <code>.testbed</code> assets for unit/E2E/dev work is <strong>supported today</strong>.</p>
+<h2 id="3-export-inclusion-is-explicit-not-automatic-tree-shaking">3) Export inclusion is explicit, not automatic tree shaking<a class="headerlink" href="#3-export-inclusion-is-explicit-not-automatic-tree-shaking" title="Permanent link">&para;</a></h2>
+<p>Godot export works by choosing resource modes and filters:</p>
+<ul>
+<li>export all resources</li>
+<li>export selected scenes/resources and dependencies</li>
+<li>export all except selected resources</li>
+<li>include/exclude additional file patterns[^S7]</li>
+</ul>
+<p>This is useful, but it is <strong>not npm-style dead-code elimination</strong>. If a feature package has scenes, textures, or sidecar files present in the project, whether they ship depends on export configuration and dependency reachability, not package manager semantics alone.</p>
+<h2 id="4-optional-content-is-best-handled-with-separate-packs">4) Optional content is best handled with separate packs<a class="headerlink" href="#4-optional-content-is-best-handled-with-separate-packs" title="Permanent link">&para;</a></h2>
+<p>Godot officially supports <strong>PCK/ZIP resource packs</strong> for DLC, patches, and mods, and can load them at runtime with <code>ProjectSettings.load_resource_pack(...)</code>.[^S8]</p>
+<p>That is relevant because AeroBeat's desire to avoid shipping every game mode or asset in every production build is often better served by:</p>
+<ul>
+<li>separate export presets, and/or</li>
+<li>separate feature PCK packs loaded on demand</li>
+</ul>
+<p>rather than trying to make one monolithic installed dependency tree behave like a tree-shaken web bundle.</p>
+<h2 id="5-feature-tags-are-runtimebuild-environment-signals-not-asset-stripping">5) Feature tags are runtime/build-environment signals, not asset stripping<a class="headerlink" href="#5-feature-tags-are-runtimebuild-environment-signals-not-asset-stripping" title="Permanent link">&para;</a></h2>
+<p>Godot feature tags let code check platform/build conditions at runtime (<code>OS.has_feature()</code> / <code>OS.HasFeature()</code>), and they are used by GDExtension to pick the right native library for a platform/build combination.[^S9]</p>
+<p>That helps with <strong>conditional behavior</strong> and platform-specific native binaries. It does <strong>not</strong> by itself remove unwanted scenes/textures/scripts from the export. For that, export configuration or separate packs still matter.[^S7][^S8][^S9]</p>
+<h2 id="6-c-define-symbols-only-solve-code-paths">6) C# define symbols only solve code paths<a class="headerlink" href="#6-c-define-symbols-only-solve-code-paths" title="Permanent link">&para;</a></h2>
+<p>Standard .NET projects can use <code>DefineConstants</code> for conditional compilation across the whole project.[^S10]</p>
+<p>So if AeroBeat later creates C# libraries for some systems, it can use compilation symbols to include/exclude code paths. But that only helps for <strong>compiled C# code</strong>. It does <strong>not</strong> automatically strip Godot scenes/resources/addons from the exported game.[^S7][^S10]</p>
+<h2 id="fit-analysis-against-aerobeats-requested-package-graph">Fit analysis against AeroBeat's requested package graph<a class="headerlink" href="#fit-analysis-against-aerobeats-requested-package-graph" title="Permanent link">&para;</a></h2>
+<h2 id="aerobeat-assembly-community-as-the-consumer-app"><code>aerobeat-assembly-community</code> as the consumer app<a class="headerlink" href="#aerobeat-assembly-community-as-the-consumer-app" title="Permanent link">&para;</a></h2>
+<p><strong>Supported, with caveats.</strong> The assembly repo can absolutely become the consumer app that declares dependency versions. The cleanest path is:</p>
+<ul>
+<li>assembly owns the dependency manifest</li>
+<li>package repos publish git tags/releases</li>
+<li>assembly installs them into <code>addons/</code> via GodotEnv or a thin wrapper around it</li>
+<li>local development uses symlink mode for active package work</li>
+</ul>
+<p>That gets close to the desired "consumer app installs packages" model.</p>
+<h2 id="community-game-modes-boxing-dance-flow-step">Community game modes: boxing, dance, flow, step<a class="headerlink" href="#community-game-modes-boxing-dance-flow-step" title="Permanent link">&para;</a></h2>
+<p><strong>Supported best as addon packages, not NuGet packages.</strong></p>
+<p>These repos are gameplay packages that will likely include Godot-facing scripts/scenes/assets. They should be treated as <strong>versioned addons</strong> installed into <code>addons/feature-*</code> (or similarly namespaced folders), pinned to git tags.</p>
+<p>If some internal logic later becomes pure C# with no scene/resource coupling, that logic could be split into separate NuGet libraries. But the feature package as a whole is more naturally a Godot addon package.</p>
+<h2 id="input-dependencies-including-mediapipe-python">Input dependencies including <code>mediapipe-python</code><a class="headerlink" href="#input-dependencies-including-mediapipe-python" title="Permanent link">&para;</a></h2>
+<p><strong>Partially supported; repo install is easy, runtime packaging is harder.</strong></p>
+<p>The Godot-facing part of <code>aerobeat-input-mediapipe-python</code> fits the addon model. But the Python sidecar brings extra concerns:</p>
+<ul>
+<li>Python runtime/dependencies are outside normal Godot addon semantics</li>
+<li>export may need explicit inclusion/exclusion for non-resource files[^S7]</li>
+<li>desktop packaging of the Python runtime/venv remains a custom release engineering problem</li>
+<li>mobile/web targets are a separate problem entirely</li>
+</ul>
+<p>So the repo can be consumed as a versioned dependency, but a fully polished production package flow for this dependency still needs <strong>custom process/tooling</strong>.</p>
+<h2 id="ui-dependencies-including-ui-shell-and-ui-kit">UI dependencies including <code>ui-shell</code> and <code>ui-kit</code><a class="headerlink" href="#ui-dependencies-including-ui-shell-and-ui-kit" title="Permanent link">&para;</a></h2>
+<p><strong>Supported best as addon packages.</strong></p>
+<p><code>ui-kit</code> is a strong match for a versioned addon package. <code>ui-shell</code> can also be versioned this way if the assembly chooses among shells or consumes one shell package per target platform.</p>
+<p>A practical caution: if the shell is effectively the app's top-level scene and navigation layer, it may be simpler for the assembly to own shell selection and include only the chosen shell package in a given export.</p>
+<h2 id="pinned-tagged-releases">Pinned tagged releases<a class="headerlink" href="#pinned-tagged-releases" title="Permanent link">&para;</a></h2>
+<p><strong>Supported in principle, not yet practiced in the sampled AeroBeat repos.</strong></p>
+<p>GodotEnv supports <code>checkout</code> values for tags/branches, GitHub releases work fine for addon zips, and Godot's plugin docs explicitly recommend downloading stable tagged releases when available.[^S4][^S6]</p>
+<p>But the sampled AeroBeat repos currently show <strong>no tags</strong>, so a release discipline would need to be introduced before this becomes real.</p>
+<h2 id="build-variants-that-should-not-ship-every-dependency-assetcode-path">Build variants that should not ship every dependency asset/code path<a class="headerlink" href="#build-variants-that-should-not-ship-every-dependency-assetcode-path" title="Permanent link">&para;</a></h2>
+<p><strong>Only partially supported.</strong></p>
+<p>What works today:</p>
+<ul>
+<li>hidden <code>.testbed/</code> folders stay out of exports automatically[^S7]</li>
+<li>C# code can use compilation symbols via <code>DefineConstants</code> if AeroBeat adopts C# projects for some modules[^S10]</li>
+<li>export presets can explicitly include/exclude resources[^S7]</li>
+<li>optional modes/assets can be split into PCK/ZIP packs[^S8]</li>
+</ul>
+<p>What still needs custom process/tooling:</p>
+<ul>
+<li>deciding which package folders/resources are present for each SKU/build</li>
+<li>keeping export preset resource lists synchronized with package manifests</li>
+<li>bundling non-Godot sidecars like Python cleanly per platform</li>
+<li>creating a single lockfile-like experience across addons, sidecars, and any future NuGet packages</li>
+</ul>
+<h2 id="major-mismatches-and-hard-constraints">Major mismatches and hard constraints<a class="headerlink" href="#major-mismatches-and-hard-constraints" title="Permanent link">&para;</a></h2>
+<h2 id="1-chickensoft-c-packaging-does-not-map-directly-onto-todays-aerobeat-repos">1) Chickensoft C# packaging does not map directly onto today's AeroBeat repos<a class="headerlink" href="#1-chickensoft-c-packaging-does-not-map-directly-onto-todays-aerobeat-repos" title="Permanent link">&para;</a></h2>
+<p>AeroBeat is currently structured as addon repos with GDScript/testbeds, not as C# solution/package repos. Chickensoft's NuGet story is excellent for C# libraries, but <strong>AeroBeat would have to rewrite or split large parts of the system</strong> to benefit from it directly.</p>
+<h2 id="2-c-is-a-poor-fit-if-web-export-matters">2) C# is a poor fit if web export matters<a class="headerlink" href="#2-c-is-a-poor-fit-if-web-export-matters" title="Permanent link">&para;</a></h2>
+<p>Godot's official C# docs state that <strong>Godot 4 C# projects currently cannot be exported to the web platform</strong>.[^S5]</p>
+<p>That matters because AeroBeat's repo map includes a <code>aerobeat-ui-shell-web-community</code> target.<a href="`docs/architecture/repository-map.md`">^L7</a> If web remains in scope, a C#-first Chickensoft package architecture is not a universal answer.</p>
+<h2 id="3-flat-addon-graphs-are-not-node_modules">3) Flat addon graphs are not <code>node_modules</code><a class="headerlink" href="#3-flat-addon-graphs-are-not-node_modules" title="Permanent link">&para;</a></h2>
+<p>GodotEnv explicitly uses a <strong>flat dependency graph</strong> for addons.[^S4]</p>
+<p>That means:</p>
+<ul>
+<li>no natural support for nested multiple versions of the same package</li>
+<li>package authors must coordinate on shared addon versions</li>
+<li>dependency conflicts are closer to Unity/Godot addon management than npm's nested install model</li>
+</ul>
+<h2 id="4-godot-asset-paths-remain-real-project-paths">4) Godot asset paths remain real project paths<a class="headerlink" href="#4-godot-asset-paths-remain-real-project-paths" title="Permanent link">&para;</a></h2>
+<p>Godot resources are imported and resolved by project path. This is why addon installation ultimately lands inside the project tree and why script assets are treated differently from loose C# code files.[^S2][^S6]</p>
+<p>That limits how far AeroBeat can push fully isolated package semantics without building a lot of custom tooling on top.</p>
+<h2 id="recommended-target-architecture">Recommended target architecture<a class="headerlink" href="#recommended-target-architecture" title="Permanent link">&para;</a></h2>
+<h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">&para;</a></h2>
+<p>Adopt a <strong>hybrid addon-first architecture</strong>:</p>
+<ol>
+<li><strong>Keep asset-bearing AeroBeat repos as Godot addon packages</strong>.</li>
+<li>features</li>
+<li>input drivers</li>
+<li>UI kit</li>
+<li>
+<p>UI shells</p>
+</li>
+<li>
+<p><strong>Use a manifest-driven installer for the assembly repo</strong>.</p>
+</li>
+<li>Prefer <code>GodotEnv</code> directly, or a thin AeroBeat wrapper around it.</li>
+<li>Pin packages to <strong>git tags</strong> rather than branches.</li>
+<li>
+<p>Use symlink/local modes for active package development.</p>
+</li>
+<li>
+<p><strong>Reserve NuGet/Chickensoft GodotPackage for pure C# libraries only</strong>.</p>
+</li>
+<li>internal logic libs</li>
+<li>tooling helpers</li>
+<li>
+<p>serialization/state-machine/util layers that do not need scenes/resources</p>
+</li>
+<li>
+<p><strong>Handle optional shipping with export presets and/or PCK packs</strong>.</p>
+</li>
+<li>do not rely on package install mechanics alone to keep final builds lean</li>
+</ol>
+<h3 id="why-this-is-the-best-fit">Why this is the best fit<a class="headerlink" href="#why-this-is-the-best-fit" title="Permanent link">&para;</a></h3>
+<p>It gives AeroBeat most of the desired ergonomics:</p>
+<ul>
+<li>versioned dependencies</li>
+<li>consumer-app-owned dependency manifest</li>
+<li>independent package repos</li>
+<li>tagged release pinning</li>
+<li>local dev linking</li>
+<li><code>.testbed</code> dev scaffolding in package repos</li>
+</ul>
+<p>while staying aligned with how Godot actually handles assets and exports.</p>
+<h2 id="suggested-migration-experiments">Suggested migration experiments<a class="headerlink" href="#suggested-migration-experiments" title="Permanent link">&para;</a></h2>
+<h3 id="experiment-1-replace-one-assembly-submodule-with-a-manifest-managed-addon-install">Experiment 1: Replace one assembly submodule with a manifest-managed addon install<a class="headerlink" href="#experiment-1-replace-one-assembly-submodule-with-a-manifest-managed-addon-install" title="Permanent link">&para;</a></h3>
+<p>Use <code>aerobeat-core</code> as the first target.</p>
+<p>Success criteria:</p>
+<ul>
+<li><code>aerobeat-assembly-community</code> installs <code>aerobeat-core</code> into <code>addons/</code> from a git tag</li>
+<li>local dev can swap to symlink mode cleanly</li>
+<li>branch switching is easier than the current submodule setup</li>
+</ul>
+<h3 id="experiment-2-add-release-tags-to-2-3-foundational-repos">Experiment 2: Add release tags to 2-3 foundational repos<a class="headerlink" href="#experiment-2-add-release-tags-to-2-3-foundational-repos" title="Permanent link">&para;</a></h3>
+<p>Start with:</p>
+<ul>
+<li><code>aerobeat-core</code></li>
+<li><code>aerobeat-ui-core</code></li>
+<li><code>aerobeat-ui-kit-community</code></li>
+</ul>
+<p>Success criteria:</p>
+<ul>
+<li>semantic version tags exist</li>
+<li>install manifest pins exact versions</li>
+<li>upgrade/downgrade flow is documented and repeatable</li>
+</ul>
+<h3 id="experiment-3-prove-testbed-stays-dev-only">Experiment 3: Prove <code>.testbed</code> stays dev-only<a class="headerlink" href="#experiment-3-prove-testbed-stays-dev-only" title="Permanent link">&para;</a></h3>
+<p>Export a package-consuming assembly build and confirm:</p>
+<ul>
+<li><code>.testbed/</code> content is omitted from exports</li>
+<li>tests and GUT scaffolding do not leak into shipping artifacts</li>
+<li>only the intended runtime addon content is included</li>
+</ul>
+<h3 id="experiment-4-package-one-optional-mode-as-a-separate-pck">Experiment 4: Package one optional mode as a separate PCK<a class="headerlink" href="#experiment-4-package-one-optional-mode-as-a-separate-pck" title="Permanent link">&para;</a></h3>
+<p>Use one feature package, likely <code>boxing</code>, as the first optional content pack.</p>
+<p>Success criteria:</p>
+<ul>
+<li>base assembly exports without the boxing feature assets</li>
+<li>boxing content can be delivered as a PCK and loaded intentionally</li>
+<li>startup/content discovery flow remains sane</li>
+</ul>
+<h3 id="experiment-5-isolate-the-mediapipe-python-release-story">Experiment 5: Isolate the <code>mediapipe-python</code> release story<a class="headerlink" href="#experiment-5-isolate-the-mediapipe-python-release-story" title="Permanent link">&para;</a></h3>
+<p>Decide whether the Python sidecar is:</p>
+<ul>
+<li>vendored into the assembly build,</li>
+<li>packaged as a separate downloadable runtime dependency, or</li>
+<li>replaced over time by a native/mobile-specific input package.</li>
+</ul>
+<p>Success criteria:</p>
+<ul>
+<li>one documented release/install path per supported platform</li>
+<li>no ambiguity about what the addon provides vs what the sidecar provides</li>
+</ul>
+<h2 id="final-answer">Final answer<a class="headerlink" href="#final-answer" title="Permanent link">&para;</a></h2>
+<p>If Derrick's question is:</p>
+<blockquote>
+<p>"Can AeroBeat move to a versioned dependency model where <code>aerobeat-assembly-community</code> consumes tagged packages like an app consumes npm dependencies?"</p>
+</blockquote>
+<p><strong>Answer: yes, partially.</strong></p>
+<p>If the question is:</p>
+<blockquote>
+<p>"Can Chickensoft give AeroBeat a single npm-equivalent package manager for Godot code + scenes + assets + sidecars + build stripping?"</p>
+</blockquote>
+<p><strong>Answer: no, that is a mismatch.</strong></p>
+<p>The realistic, credible architecture is:</p>
+<ul>
+<li><strong>Godot addon packages + manifest-driven installs</strong> for feature/input/UI repos</li>
+<li><strong>NuGet packages</strong> only for pure C# reusable libraries</li>
+<li><strong>export presets and/or PCK packs</strong> for keeping production builds lean</li>
+<li><strong>custom wrapper/process</strong> only where AeroBeat needs stronger lockfile/release ergonomics or sidecar packaging</li>
+</ul>
+<p>That gets AeroBeat close to the requested model without fighting Godot's core assumptions.</p>
+<h2 id="sources">Sources<a class="headerlink" href="#sources" title="Permanent link">&para;</a></h2>
+<h3 id="external-official">External / official<a class="headerlink" href="#external-official" title="Permanent link">&para;</a></h3>
+<p>[^S1]: Chickensoft, "Godot 4 C# Setup Guide" — https://chickensoft.games/docs/setup
+[^S2]: Chickensoft, "How C# Works in Godot" — https://chickensoft.games/docs/how_csharp_works
+[^S3]: Chickensoft <code>GodotPackage</code> template — https://github.com/chickensoft-games/GodotPackage
+[^S4]: Chickensoft <code>GodotEnv</code> README — https://github.com/chickensoft-games/GodotEnv
+[^S5]: Godot docs, "C# basics" — https://docs.godotengine.org/en/stable/tutorials/scripting/c_sharp/c_sharp_basics.html
+[^S6]: Godot docs, "Installing plugins" — https://docs.godotengine.org/en/stable/tutorials/plugins/editor/installing_plugins.html
+[^S7]: Godot docs, "Exporting projects" — https://docs.godotengine.org/en/stable/tutorials/export/exporting_projects.html
+[^S8]: Godot docs, "Exporting packs, patches, and mods" — https://docs.godotengine.org/en/stable/tutorials/export/exporting_pcks.html
+[^S9]: Godot docs, "Feature tags" — https://docs.godotengine.org/en/stable/tutorials/export/feature_tags.html
+[^S10]: Microsoft Learn, "Compiler Options - language feature rules" (<code>DefineConstants</code>) — https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/language</p>
+<h3 id="local-aerobeat-evidence">Local AeroBeat evidence<a class="headerlink" href="#local-aerobeat-evidence" title="Permanent link">&para;</a></h3>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 18, 2026 03:07:54 UTC">April 18, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
