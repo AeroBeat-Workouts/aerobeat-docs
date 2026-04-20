@@ -60,8 +60,8 @@ class_name AeroUserPreferences
 extends Resource
 
 # Visuals
-@export var override_environment_id: String = "" # Empty = Use Playlist
-@export var override_skin_id: String = ""        # Empty = Use Playlist
+@export var override_environment_id: String = "" # Empty = Use Workout
+@export var override_skin_id: String = ""        # Empty = Use Workout
 @export var show_coach: bool = true
 
 # Menu

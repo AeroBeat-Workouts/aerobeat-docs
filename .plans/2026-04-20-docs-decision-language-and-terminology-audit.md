@@ -171,17 +171,18 @@ Examples of likely target concepts:
 
 **Status:** ❌ Blocked by audit gap
 
-**What We Built:** The rewrite and follow-up cleanup passes established the core canon across the docs set: **Input Provider** / **Provider Pattern** for input architecture, **Track View** as the broader linear 2D presentation family, and **Song -> Routine -> Chart Variant -> Workout** as the content-model hierarchy. The targeted cleanup batches also removed the previously identified `playlist` leaks from the main public product, guide, glossary, community, economy, preferences, and backend API pages.
+**What We Built:** The rewrite and follow-up cleanup passes established the core canon across the docs set: **Input Provider** / **Provider Pattern** for input architecture, **Track View** as the broader linear 2D presentation family, and **Song -> Routine -> Chart Variant -> Workout** as the content-model hierarchy. The targeted cleanup batches also removed the previously identified `playlist` leaks from the main public product, guide, glossary, community, economy, preferences, backend API, and roadmap pages.
 
-**Reference Check:** `REF-02`, `REF-03`, `REF-04`, and the related gameplay/choreography canon pages still agree on the primary architecture and terminology decisions: `Workout` remains the correct public/model term, `Track View` remains the broader family term, and `Input Provider` / `Provider Pattern` remain intact. The only remaining blocker found in this final audit is a single raw `playlist` occurrence at `docs/gdd/roadmap/future-roadmap.md:7`, so the repo still does not fully satisfy Derrick's absolute no-`playlist` rule.
+**Reference Check:** `REF-02`, `REF-03`, `REF-04`, and the related gameplay/choreography canon pages still agree on the primary architecture and terminology decisions: `Workout` remains the correct public/model term, `Track View` remains the broader family term, and `Input Provider` / `Provider Pattern` remain intact. The final independent re-audit after the roadmap fix found that the roadmap leak is gone and there are no remaining `AeroPlaylist` or exact `PLAYLIST` hits under `docs/`, but the repo still does not fully satisfy Derrick's absolute no-`playlist` rule because `playlist` remains visible in `docs/gdd/meta/profile.md:58,78` and `docs/architecture/state-management.md:63-64`.
 
 **Commits:**
 - Implementation commit already landed before this audit: `0619892`
 - Targeted cleanup commit already landed before this re-audit: `fd47fae`
 - Latest cleanup commit already landed before this final re-audit: `efe399a`
 - Latest strict cleanup commit referenced for this audit: `86187c9`
+- Final roadmap leak fix referenced for this closing audit: `fa7c342`
 
-**Lessons Learned:** For an absolute terminology ban, the acceptance check must be a literal full-tree string audit plus canon spot checks. Even after the major product and architecture pages are clean, a single roadmap/reference line is enough to keep the audit open.
+**Lessons Learned:** For an absolute terminology ban, the acceptance check must be a literal case-insensitive full-tree string audit plus canon spot checks. Case-sensitive greps are not enough; they can miss title-case leaks such as `Playlist Browser` or inline code comments like `Use Playlist`.
 
 ---
 
@@ -354,6 +355,46 @@ Examples of likely target concepts:
 **SubAgent:** `auditor`  
 **References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-08`  
 **Prompt:** Independently verify that the roadmap fix removes the last remaining `playlist` leak from public docs and close the terminology audit if clean.
+
+**Folders Created/Deleted/Modified:**
+- `docs/`
+
+**Files Created/Deleted/Modified:**
+- None expected from audit beyond plan updates
+
+**Status:** ❌ Failed
+
+**Results:** Independent repo-wide re-audit completed after the roadmap fix using fresh full-tree string scans across `docs/` plus canon spot checks in the main reference surfaces. **Passes:** (1) the previous roadmap leak in `docs/gdd/roadmap/future-roadmap.md` is gone; (2) no remaining `AeroPlaylist` or exact `PLAYLIST` hits were found anywhere under `docs/`; (3) the canon reference surfaces still agree on the intended terminology and architecture direction — `docs/architecture/content-model.md`, `docs/gdd/glossary/terms.md`, and `docs/architecture/overview.md` still use **Workout** as the public/model term; `docs/gdd/gameplay/view-modes.md` still preserves **Track View** as the broader linear 2D family; and `docs/architecture/input.md` plus `docs/architecture/overview.md` still preserve **Input Provider** / **Provider Pattern** canon. **Audit fail reasons / exact remaining gaps:** two remaining public-doc `playlist` leaks are still visible outside the roadmap file and keep the audit open: `docs/gdd/meta/profile.md:58` (`Playlist Browser`) and `docs/gdd/meta/profile.md:78` (`Song or Playlist Name`), plus two code-comment/string leaks in `docs/architecture/state-management.md:63-64` (`# Empty = Use Playlist`). Because Derrick's rule is absolute that players should never see `playlist` in AeroBeat docs, and these strings are still present in the public docs tree, the terminology audit cannot yet be closed.
+
+---
+
+### Follow-up: Remove final title-case Playlist leaks
+
+**Bead ID:** `aerobeat-docs-doq`  
+**SubAgent:** `primary`  
+**References:** `REF-01`, `REF-04`, `REF-08`  
+**Prompt:** Replace the final four title-case `Playlist` string leaks identified by the closing audit in `docs/gdd/meta/profile.md` and `docs/architecture/state-management.md`. Preserve the established canon and make no unrelated edits.
+
+**Folders Created/Deleted/Modified:**
+- `docs/gdd/meta/`
+- `docs/architecture/`
+
+**Files Created/Deleted/Modified:**
+- `docs/gdd/meta/profile.md`
+- `docs/architecture/state-management.md`
+
+**Status:** ✅ Complete
+
+**Results:** Replaced the four final title-case `Playlist` leaks exactly where the closing audit identified them: `docs/gdd/meta/profile.md` now says `Workout Browser` and `Song or Workout Name`, and `docs/architecture/state-management.md` now says `# Empty = Use Workout` in both preference comments. Files changed: `docs/gdd/meta/profile.md`, `docs/architecture/state-management.md`. Verification: `grep -nEi 'playlist' docs/gdd/meta/profile.md docs/architecture/state-management.md` returned no matches.
+
+---
+
+### Follow-up: Case-insensitive final docs terminology audit
+
+**Bead ID:** `aerobeat-docs-e32`  
+**SubAgent:** `auditor`  
+**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-08`  
+**Prompt:** Independently verify that no `playlist` string leaks remain anywhere under `docs/` using case-insensitive checks, and close the terminology audit if clean.
 
 **Folders Created/Deleted/Modified:**
 - `docs/`

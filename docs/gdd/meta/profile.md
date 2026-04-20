@@ -55,7 +55,7 @@ Allows athletes to adjust their targets and customize their experience.
 
 *   **Frequency Slider:** "I want to workout [X] days a week." (Range: 1-7).
 *   **Difficulty Preference:** "Preferred Difficulty: [Pro]."
-    *   *Usage:* Used by the "Playlist Browser" to auto-filter difficulty.
+    *   *Usage:* Used by the "Workout Browser" to auto-filter difficulty.
 
 #### Preferences & Overrides
 
@@ -75,7 +75,7 @@ A scrollable list of recent activity.
 *   **Capacity:** Last 10 sessions (Unlimited for Supporters).
 *   **Columns:**
     *   *Date:* (e.g., "Today", "Yesterday").
-    *   *Content:* Song or Playlist Name.
+    *   *Content:* Song or Workout Name.
     *   *Stats:* Duration, WP Earned, Accuracy %.
 
 ## 4. UI Flows
