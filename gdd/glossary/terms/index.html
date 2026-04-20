@@ -5184,7 +5184,7 @@
 
 
 <h1 id="project-glossary">Project Glossary<a class="headerlink" href="#project-glossary" title="Permanent link">&para;</a></h1>
-<p>Use this glossary of AeroBeat specific terms to help align our work.</p>
+<p>Use this glossary of AeroBeat specific terms to keep the docs set aligned.</p>
 <table>
 <thead>
 <tr>
@@ -5195,11 +5195,11 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Song</strong></td>
-<td style="text-align: left;">The reusable audio/timing asset and metadata source for gameplay content.</td>
+<td style="text-align: left;">The reusable audio / timing asset and metadata source for gameplay content.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Routine</strong></td>
-<td style="text-align: left;">The gameplay-mode-specific package for one Song, such as the boxing choreography for that song.</td>
+<td style="text-align: left;">The gameplay-mode-specific package for one Song, such as the boxing routine for that song.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Chart Variant</strong></td>
@@ -5207,7 +5207,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Workout</strong></td>
-<td style="text-align: left;">An ordered training program that assembles routines or chart variants into a session.</td>
+<td style="text-align: left;">An ordered training program that assembles routines or chart variants into a session. Player-facing UI may still describe a Workout as a playlist.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Chart Envelope</strong></td>
@@ -5215,31 +5215,39 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Interaction Family</strong></td>
-<td style="text-align: left;">A durable movement-target abstraction such as <code>gesture_2d</code> or <code>tracked_6dof</code>, used instead of binding content directly to a raw device.</td>
+<td style="text-align: left;">A durable movement-target abstraction such as <code>gesture_2d</code>, <code>tracked_6dof</code>, or <code>hybrid</code>, used instead of binding content directly to a raw device.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Input Provider</strong></td>
+<td style="text-align: left;">The top-level runtime/gameplay abstraction that bridges hardware input systems to gameplay logic.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Provider Pattern</strong></td>
+<td style="text-align: left;">The architectural pattern where gameplay consumes normalized data through an Input Provider instead of talking to hardware directly.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Input Profile</strong></td>
+<td style="text-align: left;">A concrete runtime or device compatibility target, such as <code>mediapipe_camera</code> or <code>keyboard_debug</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Strategy</strong></td>
+<td style="text-align: left;">An implementation-detail logic-swapping pattern used inside a system or provider. It is not the public docs term for AeroBeat's overall input abstraction.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Measure</strong></td>
-<td style="text-align: left;">A unit of musical time (4 Beats).</td>
+<td style="text-align: left;">A unit of musical time (4 beats).</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Lane Index</strong></td>
-<td style="text-align: left;">Integer representing horizontal position when playing in <code>Track View</code>. Range depends on Gameplay (e.g., 2 for Boxing, 4 for Step).</td>
+<td style="text-align: left;">Integer representing position when playing in Track View. Range and orientation depend on gameplay and renderer (for example, 2 for Boxing, 4 for Step).</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Hit Window</strong></td>
 <td style="text-align: left;">The timeframe (±ms) where a hit counts as valid.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Provider</strong></td>
-<td style="text-align: left;">A script that bridges Hardware Input to Game Logic.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Strategy</strong></td>
-<td style="text-align: left;">A script that swaps logic implementations (e.g., Portal vs Track view).</td>
-</tr>
-<tr>
 <td style="text-align: left;"><strong>Tool</strong></td>
-<td style="text-align: left;">A reusable service or singleton manager (e.g., API, Analytics) independent of gameplay logic.</td>
+<td style="text-align: left;">A reusable service or singleton manager (for example API or Analytics) independent of gameplay logic.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Atom</strong></td>
@@ -5259,15 +5267,15 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Authority</strong></td>
-<td style="text-align: left;">The peer responsible for calculating specific logic (e.g., Local Client for Hits).</td>
+<td style="text-align: left;">The peer responsible for calculating specific logic (for example, local client for hits).</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Track View</strong></td>
-<td style="text-align: left;">2D visualization where targets rise from bottom to top (DDR style).</td>
+<td style="text-align: left;">The broader family of linear 2D runtime presentation modes. Bottom-to-top upward scrolling is a common subtype, especially for Step, but not the only valid Track View form.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Portal View</strong></td>
-<td style="text-align: left;">3D visualization where targets fly towards the player from the portals origin (VR style).</td>
+<td style="text-align: left;">3D visualization where targets travel toward the athlete from portal-driven spatial presentation.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Skin</strong></td>
@@ -5307,7 +5315,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 13:56:33 UTC">April 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 14:21:20 UTC">April 20, 2026</span>
   </span>
 
     

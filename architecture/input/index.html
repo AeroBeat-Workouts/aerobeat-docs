@@ -2832,10 +2832,60 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#strategy-grouping-rationale" class="md-nav__link">
+  <a href="#supported-input-providers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Strategy Grouping Rationale
+        Supported Input Providers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interaction-family-vs-input-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interaction Family vs Input Profile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provider-grouping-rationale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provider Grouping Rationale
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Provider Grouping Rationale">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-logic-granularity-quirks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Logic: Granularity &amp; Quirks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normalization-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Normalization Flow
       
     </span>
   </a>
@@ -5222,10 +5272,60 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#strategy-grouping-rationale" class="md-nav__link">
+  <a href="#supported-input-providers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Strategy Grouping Rationale
+        Supported Input Providers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interaction-family-vs-input-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interaction Family vs Input Profile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provider-grouping-rationale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provider Grouping Rationale
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Provider Grouping Rationale">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-logic-granularity-quirks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Logic: Granularity &amp; Quirks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normalization-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Normalization Flow
       
     </span>
   </a>
@@ -5253,91 +5353,103 @@
 
 
 <h1 id="input-pipeline-provider-pattern">Input Pipeline (Provider Pattern)<a class="headerlink" href="#input-pipeline-provider-pattern" title="Permanent link">&para;</a></h1>
-<p>Input is abstracted via a Strategy Pattern to allow hot-swapping between CV, VR, and Debug modes. The game logic never talks to hardware directly; it asks the <strong>Input Provider</strong> for normalized data.</p>
+<p>AeroBeat uses the <strong>Provider Pattern</strong> for runtime input.</p>
+<p>The public-facing abstraction is the <strong>Input Provider</strong>: a runtime bridge that turns hardware-specific signals into normalized gameplay data. Game logic never talks to a webcam, controller, keyboard, or tracker directly; it asks the <strong>Input Provider</strong> for normalized data.</p>
+<p><code>Strategy</code> remains an implementation-detail term for how a concrete provider internally performs adaptation or switching. It is <strong>not</strong> the main public name for the overall input abstraction.</p>
 <ul>
-<li><strong>Interface:</strong> <code>AeroInputProvider</code> (Defined in <code>aerobeat-core</code>).</li>
-<li><strong>Contract:</strong> Must return normalized <code>0.0 - 1.0</code> Viewport Coordinates for <code>LeftHand</code>, <code>RightHand</code>, and <code>Head</code>.</li>
+<li><strong>Interface:</strong> <code>AeroInputProvider</code> (defined in <code>aerobeat-core</code>).</li>
+<li><strong>Contract:</strong> Must return normalized <code>0.0 - 1.0</code> viewport coordinates or equivalent gameplay-space data for <code>LeftHand</code>, <code>RightHand</code>, and <code>Head</code>.</li>
 </ul>
-<p><strong>Supported Strategies:</strong></p>
+<h2 id="supported-input-providers">Supported Input Providers<a class="headerlink" href="#supported-input-providers" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Strategy Name</th>
+<th style="text-align: left;">Input Provider</th>
 <th style="text-align: left;">Repository</th>
 <th style="text-align: left;">Technology</th>
-<th style="text-align: left;">Target Platform</th>
+<th style="text-align: left;">Typical Target Platform</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong><code>StrategyMediaPipePython</code></strong></td>
+<td style="text-align: left;"><strong>MediaPipe Python Provider</strong></td>
 <td style="text-align: left;"><code>aerobeat-input-mediapipe-python</code></td>
 <td style="text-align: left;"><strong>Sidecar Process.</strong> Launches a Python subprocess that pipes landmark data via UDP <code>localhost:8100</code>.</td>
 <td style="text-align: left;">Windows, Linux, Mac</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong><code>StrategyMediaPipeNative</code></strong></td>
+<td style="text-align: left;"><strong>MediaPipe Native Provider</strong></td>
 <td style="text-align: left;"><code>aerobeat-input-mediapipe-native</code></td>
 <td style="text-align: left;"><strong>GDExtension / Plugin.</strong> Runs MediaPipe directly in the application memory.</td>
 <td style="text-align: left;">Android, iOS</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong><code>StrategyJoyconHID</code></strong></td>
+<td style="text-align: left;"><strong>JoyCon HID Provider</strong></td>
 <td style="text-align: left;"><code>aerobeat-input-joycon-hid</code></td>
-<td style="text-align: left;"><strong>Raw Bluetooth.</strong> Connects directly to JoyCons to read high-speed Gyro/Accel data.</td>
+<td style="text-align: left;"><strong>Raw Bluetooth.</strong> Connects directly to JoyCons to read high-speed gyro / accel data.</td>
 <td style="text-align: left;">Windows, Linux, Android</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong><code>StrategyKeyboard</code></strong></td>
+<td style="text-align: left;"><strong>Keyboard Provider</strong></td>
 <td style="text-align: left;"><code>aerobeat-input-keyboard</code></td>
-<td style="text-align: left;"><strong>Godot Native.</strong> Maps WASD/Arrow keys to specific lanes (Virtual Presence).</td>
+<td style="text-align: left;"><strong>Godot Native.</strong> Maps WASD / Arrow keys to gameplay lanes or fallback gestures.</td>
 <td style="text-align: left;">All</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong><code>StrategyMouse</code></strong></td>
+<td style="text-align: left;"><strong>Mouse Provider</strong></td>
 <td style="text-align: left;"><code>aerobeat-input-mouse</code></td>
 <td style="text-align: left;"><strong>Godot Native.</strong> Maps cursor X/Y to viewport coordinates.</td>
 <td style="text-align: left;">Desktop / Web</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong><code>StrategyTouch</code></strong></td>
+<td style="text-align: left;"><strong>Touch Provider</strong></td>
 <td style="text-align: left;"><code>aerobeat-input-touch</code></td>
 <td style="text-align: left;"><strong>Godot Native.</strong> Maps touchscreen taps to viewport coordinates.</td>
 <td style="text-align: left;">Mobile / Tablet</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong><code>StrategyGamepad</code></strong></td>
+<td style="text-align: left;"><strong>Gamepad Provider</strong></td>
 <td style="text-align: left;"><code>aerobeat-input-gamepad</code></td>
-<td style="text-align: left;"><strong>Godot Native.</strong> Standard XInput (Xbox/PS5) stick mapping.</td>
+<td style="text-align: left;"><strong>Godot Native.</strong> Standard XInput / controller stick mapping.</td>
 <td style="text-align: left;">All</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>XR Provider</strong></td>
+<td style="text-align: left;"><code>aerobeat-input-xr</code></td>
+<td style="text-align: left;"><strong>Tracked 6DOF controllers / hands.</strong> Uses XR runtime pose data.</td>
+<td style="text-align: left;">XR</td>
 </tr>
 </tbody>
 </table>
-<h3 id="strategy-grouping-rationale">Strategy Grouping Rationale<a class="headerlink" href="#strategy-grouping-rationale" title="Permanent link">&para;</a></h3>
-<p>We enforce a <strong>One-Repo-Per-Device-Type</strong> policy, even for standard Godot inputs.</p>
-<p><strong>The Logic: Granularity &amp; Quirks.</strong></p>
-<ol>
-<li>
-<p><strong>Isolation of Quirks:</strong></p>
+<h2 id="interaction-family-vs-input-profile">Interaction Family vs Input Profile<a class="headerlink" href="#interaction-family-vs-input-profile" title="Permanent link">&para;</a></h2>
+<p>AeroBeat docs distinguish between authored-content compatibility and concrete runtime/device targets.</p>
 <ul>
-<li>While Godot handles generic Gamepads well, specific controllers (like DDR Dance Pads or Flight Sticks) often report as generic gamepads but require specific axis remapping or deadzone logic.</li>
-<li>By isolating <code>aerobeat-input-gamepad</code>, we can implement complex remapping strategies without polluting the clean logic of <code>aerobeat-input-keyboard</code>.</li>
+<li><strong>Interaction Family:</strong> The authored-content compatibility group, such as <code>gesture_2d</code>, <code>tracked_6dof</code>, or <code>hybrid</code>.</li>
+<li><strong>Input Profile:</strong> A concrete runtime/device compatibility target or validated profile, such as <code>mediapipe_camera</code>, <code>keyboard_debug</code>, or <code>gamepad_virtual_presence</code>.</li>
 </ul>
+<p>Charts target <strong>interaction families</strong> first. They record <strong>input profiles</strong> as supported or validated compatibility notes.</p>
+<h2 id="provider-grouping-rationale">Provider Grouping Rationale<a class="headerlink" href="#provider-grouping-rationale" title="Permanent link">&para;</a></h2>
+<p>We enforce a <strong>one-repo-per-provider</strong> policy, even for standard Godot inputs.</p>
+<h3 id="the-logic-granularity-quirks">The Logic: Granularity &amp; Quirks<a class="headerlink" href="#the-logic-granularity-quirks" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Isolation of quirks</strong></li>
+<li>While Godot handles generic gamepads well, specific controllers such as dance pads or flight sticks often report as generic devices but still require custom axis remapping, deadzone tuning, or timing logic.</li>
+<li>
+<p>By isolating <code>aerobeat-input-gamepad</code>, AeroBeat can implement provider-specific adaptation without polluting keyboard or touch input code.</p>
 </li>
 <li>
-<p><strong>The "Driver" Tier (<code>input-mediapipe-*</code>, <code>input-joycon</code>):</strong></p>
-<ul>
-<li>These inputs require <strong>Heavy External Dependencies</strong> (Python Environments, Android .aar Libraries, GDExtensions).</li>
-<li><strong>Isolation is Safety:</strong> By keeping the Python CV stack in its own repo, we ensure that a Mobile developer never has to download a 200MB Python environment they can't use. Likewise, a PC developer doesn't need to compile Android Java code just to fix a keyboard bug.</li>
-</ul>
+<p><strong>The driver tier (<code>input-mediapipe-*</code>, <code>input-joycon</code>, <code>input-xr</code>)</strong></p>
 </li>
+<li>These providers require <strong>heavy external dependencies</strong> such as Python environments, Android <code>.aar</code> libraries, GDExtensions, vendor SDKs, or XR runtimes.</li>
+<li><strong>Isolation is safety:</strong> keeping those providers in separate repos prevents unrelated contributors from needing every dependency stack just to fix a gameplay or UI issue.</li>
 </ol>
-<p><strong>Normalization Flow:</strong></p>
+<h2 id="normalization-flow">Normalization Flow<a class="headerlink" href="#normalization-flow" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>Raw Data:</strong> Strategy receives device-specific data (e.g., MediaPipe Landmark <code>x: 0.54, y: 0.21, z: -0.1</code>).</li>
-<li><strong>Adaptation:</strong> Strategy applies technology-specific offsets (e.g., flipping Y axis for OpenCV).</li>
-<li><strong>Delivery:</strong> Strategy exposes <code>get_left_hand_transform()</code> to the Game Loop.</li>
+<li><strong>Raw data:</strong> The concrete provider receives device-specific data (for example, MediaPipe landmarks such as <code>x: 0.54, y: 0.21, z: -0.1</code>).</li>
+<li><strong>Adaptation:</strong> The provider applies technology-specific normalization, offsets, handedness correction, filtering, and coordinate transforms.</li>
+<li><strong>Delivery:</strong> The provider exposes a stable gameplay contract such as <code>get_left_hand_transform()</code> to the game loop.</li>
 </ol>
+<p>Implementation details may still use strategy objects internally, but the public architectural contract remains the <strong>Input Provider</strong>.</p>
 
 
 
@@ -5358,7 +5470,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 21, 2026 15:50:21 UTC">January 21, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 14:21:20 UTC">April 20, 2026</span>
   </span>
 
     

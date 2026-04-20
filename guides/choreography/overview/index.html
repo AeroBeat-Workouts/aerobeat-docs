@@ -5487,9 +5487,14 @@
 
 
 <h1 id="choreography-overview">Choreography Overview<a class="headerlink" href="#choreography-overview" title="Permanent link">&para;</a></h1>
-<p>In AeroBeat, "Choreography" (or Charting) is the art of translating music into movement. A good chart doesn't just match the beat; it makes the athlete feel like they are dancing (or fighting) to the music.</p>
+<p>In AeroBeat, charting is the art of translating music into movement. A good chart does not just match the beat; it makes the athlete feel like they are dancing, boxing, stepping, or flowing with the song.</p>
+<p>AeroBeat's content model is:</p>
+<ul>
+<li><strong>Song → Routine → Chart Variant → Workout</strong></li>
+</ul>
+<p>When you author gameplay, you are usually creating or editing a <strong>Routine</strong> for one Song and one or more <strong>Chart Variants</strong> inside that routine.</p>
 <h2 id="the-choreography-sdks">🛠️ The Choreography SDKs<a class="headerlink" href="#the-choreography-sdks" title="Permanent link">&para;</a></h2>
-<p>Because a Boxing workout is biomechanically different from a Step workout, we provide specialized SDKs for each gameplay style.</p>
+<p>Because a Boxing workout is biomechanically different from a Step workout, AeroBeat provides specialized SDKs for each gameplay style.</p>
 <ul>
 <li><strong><a href="../boxing/">Boxing Guide</a>:</strong> Optimized for arm reach, punches, and 360-degree spatial mapping.</li>
 <li><strong><a href="../flow/">Flow Guide</a>:</strong> Optimized for continuous arm arcs and bat swing mechanics.</li>
@@ -5497,70 +5502,68 @@
 <li><strong><a href="../dance/">Dance Guide</a>:</strong> Timeline-based gesture matching.</li>
 </ul>
 <h3 id="web-vs-desktop-audio-latency">⚠️ Web vs. Desktop: Audio Latency<a class="headerlink" href="#web-vs-desktop-audio-latency" title="Permanent link">&para;</a></h3>
-<p>While the Web Studio is convenient for quick edits, <strong>Web Browsers introduce variable audio latency</strong> that makes precise rhythm mapping difficult.</p>
+<p>While the web studio is convenient for quick edits, <strong>web browsers introduce variable audio latency</strong> that makes precise rhythm mapping difficult.</p>
 <ul>
-<li><strong>Risk:</strong> Charts mapped entirely in the web browser may feel "off-beat" when played in the game engine due to the browser's audio buffer drift.</li>
-<li><strong>Recommendation:</strong> Use the <strong>Desktop App</strong> version of the Choreography Studio for final synchronization and timing checks. The Desktop App uses the same low-latency audio driver as the game client.</li>
+<li><strong>Risk:</strong> Charts mapped entirely in the web browser may feel off-beat when played in the game engine because of browser audio-buffer drift.</li>
+<li><strong>Recommendation:</strong> Use the <strong>desktop app</strong> version of the choreography studio for final synchronization and timing checks. The desktop app uses the same low-latency audio driver as the game client.</li>
 </ul>
 <h2 id="designing-for-multiple-views">👁️ Designing for Multiple Views<a class="headerlink" href="#designing-for-multiple-views" title="Permanent link">&para;</a></h2>
-<p>Your chart will be played on VR headsets (Portal View) and Mobile Phones (Track View).</p>
+<p>Your chart may be played on VR headsets (Portal View) and phones, tablets, or laptops (Track View).</p>
 <ul>
-<li><strong>Portal View:</strong> Targets fly at the player from 3D space.<ul>
-<li><strong>Automatic Portals:</strong> Creators do not manually place portals, only targets and obstacles. The engine automatically opens and closes portals based on your placement.</li>
-<li><strong>Visual Cues:</strong> When a new portal opens, a subtle particle trail guides the athlete's eye. In VR, this signifies they should rotate to face the new portal to expect incoming targets.</li>
+<li><strong>Portal View:</strong> Targets fly at the athlete through 3D space.<ul>
+<li><strong>Automatic Portals:</strong> Creators do not manually place portals, only targets and obstacles. The engine automatically opens and closes portals based on authored placement.</li>
+<li><strong>Visual Cues:</strong> When a new portal opens, a subtle particle trail guides the athlete's eye. In VR, this signals that they should rotate to face the new portal.</li>
 </ul>
 </li>
-<li><strong>Track View:</strong> Targets move from one side of the screen to the other in lanes.</li>
+<li><strong>Track View:</strong> Targets render in a linear 2D presentation.<ul>
+<li>Depending on the gameplay mode, this may appear as upward-scrolling lanes, horizontally arranged tracks, or another compact lane-based rendering.</li>
+</ul>
+</li>
 </ul>
 <blockquote>
-<p><strong>Note:</strong> The engine handles <strong>Auto-Optimizations</strong> for you. If you map a 360-degree VR chart, the engine will automatically "fold" the rear targets to the front for mobile players. You do not need to make two separate charts!</p>
+<p><strong>Note:</strong> The engine handles auto-optimizations for you. If you author a 360-degree Portal View chart, the runtime automatically folds rear targets to the front for Track View devices. You do not need to make separate portal and track charts by default.</p>
 </blockquote>
 <h2 id="step-by-step-workflow">🚀 Step-by-Step Workflow<a class="headerlink" href="#step-by-step-workflow" title="Permanent link">&para;</a></h2>
 <h3 id="phase-1-song-selection">Phase 1: Song Selection<a class="headerlink" href="#phase-1-song-selection" title="Permanent link">&para;</a></h3>
 <p>You cannot map silence. You need a base audio track.</p>
 <ol>
-<li><strong>Open the Studio:</strong> Launch the <strong>Choreography Studio</strong> app (Web or Desktop).</li>
-<li><strong>Content Browser:</strong> Open the "Server Assets" tab.</li>
-<li><strong>Select a Song:</strong><ul>
+<li><strong>Open the Studio:</strong> Launch the <strong>Choreography Studio</strong> app (web or desktop).</li>
+<li><strong>Content Browser:</strong> Open the server-assets tab.</li>
+<li><strong>Select a Song:</strong></li>
 <li><strong>Remix:</strong> Pick an existing song uploaded by a musician.</li>
 <li><strong>Upload:</strong> If you are the musician, upload your <code>.ogg</code> file first as a <code>SONG</code> mod before using it here.</li>
-</ul>
-</li>
 </ol>
 <h3 id="phase-2-setup-analysis">Phase 2: Setup &amp; Analysis<a class="headerlink" href="#phase-2-setup-analysis" title="Permanent link">&para;</a></h3>
-<p>Before placing a single note, you must sync the grid.</p>
+<p>Before placing a single note, you must sync the grid and establish the routine / chart structure.</p>
 <ol>
-<li><strong>Create Resource:</strong> Create a new <code>AeroChoreography</code> resource.</li>
-<li><strong>Assign Song:</strong> Link it to the Song ID you selected.</li>
-<li><strong>BPM &amp; Offset:</strong><ul>
-<li><strong>Auto-Detect:</strong> The SDK automatically scans the audio file to calculate BPM and Offset when assigned.</li>
-<li><strong>Manual Override:</strong> If the detection is slightly off, you can type in the correct value or use the <strong>"Tap Tempo"</strong> button.</li>
+<li><strong>Create or open a Routine:</strong> Choose the gameplay mode for the selected Song.</li>
+<li><strong>Create or open a Chart Variant:</strong> Work inside one concrete playable difficulty / compatibility slice.</li>
+<li><strong>Link the Song:</strong> Ensure the routine points at the selected Song ID.</li>
+<li><strong>BPM &amp; Offset:</strong></li>
+<li><strong>Auto-detect:</strong> The SDK automatically scans the audio file to calculate BPM and offset when assigned.</li>
+<li><strong>Manual Override:</strong> If detection is slightly off, type in the correct value or use the <strong>Tap Tempo</strong> button.</li>
 <li><em>Tip:</em> The metronome click should align perfectly with the song's kick drum.</li>
-</ul>
-</li>
 </ol>
 <h3 id="phase-3-mapping">Phase 3: Mapping<a class="headerlink" href="#phase-3-mapping" title="Permanent link">&para;</a></h3>
-<p>Open the <strong>Editor View</strong>. You will see a timeline and a 3D representation of the "Hit Zone."</p>
+<p>Open the <strong>Editor View</strong>. You will see a timeline and a gameplay-specific representation of the hit space.</p>
 <h4 id="accelerators-work-smarter">Accelerators (Work Smarter)<a class="headerlink" href="#accelerators-work-smarter" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Automapper:</strong> Don't start from zero. Use the "Generate from Audio" button to create a rhythmic skeleton based on the song's BPM and intensity. It won't be perfect, but it saves hours of setup.</li>
-<li><strong>Pattern Prefabs:</strong> Use our predefined Pattern Libraries included with each SDK. Drag and drop common flows like "Left-Right-Duck" or "3-Hit Combo" directly onto the timeline.</li>
+<li><strong>Automapper:</strong> Do not start from zero. Use the Generate from Audio button to create a rhythmic skeleton based on the song's BPM and intensity. It will not be perfect, but it saves hours of setup.</li>
+<li><strong>Pattern Prefabs:</strong> Use the predefined pattern libraries included with each SDK. Drag and drop common flows like Left-Right-Duck or 3-Hit Combo directly onto the timeline.</li>
 </ul>
 <h4 id="the-editor-interface">The Editor Interface<a class="headerlink" href="#the-editor-interface" title="Permanent link">&para;</a></h4>
-<p>While the specific objects (Targets vs Arrows) differ by SDK, the core interface remains consistent:
-1.  <strong>Timeline:</strong> The vertical scrolling grid representing time.
-2.  <strong>Object Library:</strong> The palette of available moves/notes.
-3.  <strong>Properties Panel:</strong> Fine-tune rotation, lane position, and width.</p>
+<p>While the specific objects (targets vs arrows) differ by SDK, the core interface remains consistent:
+1. <strong>Timeline:</strong> The vertical scrolling grid representing time.
+2. <strong>Object Library:</strong> The palette of available moves / notes.
+3. <strong>Properties Panel:</strong> Fine-tune rotation, lane position, width, and presentation hints.</p>
 <h3 id="phase-4-validation-publish">Phase 4: Validation &amp; Publish<a class="headerlink" href="#phase-4-validation-publish" title="Permanent link">&para;</a></h3>
-<p>The SDK includes a <strong>"Flow Validator"</strong>. Run this before uploading.</p>
+<p>The SDK includes a <strong>Flow Validator</strong>. Run this before uploading.</p>
 <ol>
 <li><strong>Check Parity:</strong> Ensure no hand tangles or vision blocks.</li>
-<li><strong>Create Manifest:</strong><ul>
-<li>Type: <code>GAMEPLAY_TWEAK</code> (Select "Chart" subtype in inspector).</li>
-<li>Target Feature: (e.g., <code>boxing</code>).</li>
-</ul>
-</li>
-<li><strong>Upload:</strong> Use the Uploader tab to publish your chart to the server.</li>
+<li><strong>Prepare the Publishable Content:</strong></li>
+<li>Finalize the routine metadata.</li>
+<li>Finalize the chart-variant metadata for difficulty, interaction family, and any supported / validated input profiles.</li>
+<li><strong>Upload:</strong> Use the uploader tab to publish your authored gameplay content.</li>
 </ol>
 
 
@@ -5582,7 +5585,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 23, 2026 22:13:14 UTC">January 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 14:21:20 UTC">April 20, 2026</span>
   </span>
 
     

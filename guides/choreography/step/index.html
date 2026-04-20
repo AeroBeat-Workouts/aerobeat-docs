@@ -5453,46 +5453,40 @@
 
 
 <h1 id="creating-step-charts-stepmania-style">Creating Step Charts (StepMania Style)<a class="headerlink" href="#creating-step-charts-stepmania-style" title="Permanent link">&para;</a></h1>
-<p>Welcome to the world of "Step" mapping. Unlike Boxing or Flow, Step gameplay is entirely about <strong>Foot Placement</strong> and <strong>Weight Transfer</strong>.</p>
-<p>If you are coming from <em>StepMania</em> or <em>Dance Dance Revolution</em>, you will feel right at home. The <code>aerobeat-sdk-choreography-step</code> is built to support standard 4-panel charting.</p>
+<p>Welcome to the world of Step mapping. Unlike Boxing or Flow, Step gameplay is entirely about <strong>foot placement</strong> and <strong>weight transfer</strong>.</p>
+<p>If you are coming from <em>StepMania</em> or <em>Dance Dance Revolution</em>, you will feel right at home. The <code>aerobeat-sdk-choreography-step</code> tooling is built to support standard 4-panel charting.</p>
+<p>In AeroBeat's content model, a Step chart is a <strong>Chart Variant</strong> inside a Step <strong>Routine</strong> for one <strong>Song</strong>.</p>
 <h2 id="the-step-studio">🛠️ The Step Studio<a class="headerlink" href="#the-step-studio" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Tool:</strong> <strong>Step Choreography Studio</strong></li>
-<li><strong>Grid:</strong> 4 Lanes (Left, Down, Up, Right).</li>
-<li><strong>Perspective:</strong> The editor defaults to a top-down "Receptor" view, similar to standard VSRGs (Vertical Scrolling Rhythm Games).</li>
+<li><strong>Grid:</strong> 4 lanes (Left, Down, Up, Right).</li>
+<li><strong>Perspective:</strong> The editor defaults to a top-down receptor view, similar to standard VSRGs (Vertical Scrolling Rhythm Games).</li>
 </ul>
 <h2 id="the-golden-rule-alternation">🦶 The Golden Rule: Alternation<a class="headerlink" href="#the-golden-rule-alternation" title="Permanent link">&para;</a></h2>
-<p>The most fundamental rule of Step mapping is <strong>Flow</strong>.
-Unless you are creating a specific "Jack" (repeated tap) pattern, players should naturally alternate feet:
+<p>The most fundamental rule of Step mapping is <strong>flow</strong>.
+Unless you are creating a specific jack (repeated tap) pattern, players should naturally alternate feet:
 <strong>Left -&gt; Right -&gt; Left -&gt; Right</strong></p>
 <h3 id="common-patterns">Common Patterns<a class="headerlink" href="#common-patterns" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>The Stream:</strong> A continuous run of notes (1/4, 1/8, or 1/16).<ul>
-<li><em>Good:</em> L-D-U-R (Alternates feet naturally).</li>
-<li><em>Bad:</em> L-D-L-D (Forces the player to twist awkwardly or double-step).</li>
-</ul>
-</li>
-<li><strong>The Crossover (Candle):</strong> A pattern that forces the player to turn their body sideways.<ul>
-<li><em>Example:</em> Left Foot on Left -&gt; Right Foot on Up -&gt; Left Foot on Right.</li>
-<li><em>Result:</em> The player is now facing Right.</li>
-</ul>
-</li>
-<li><strong>The Gallop:</strong> A rhythm pattern (1/16th triplet) that feels like a skip.<ul>
+<li><strong>The Stream:</strong> A continuous run of notes (1/4, 1/8, or 1/16).</li>
+<li><em>Good:</em> L-D-U-R (alternates feet naturally).</li>
+<li><em>Bad:</em> L-D-L-D (forces the player to twist awkwardly or double-step).</li>
+<li><strong>The Crossover (Candle):</strong> A pattern that forces the player to turn their body sideways.</li>
+<li><em>Example:</em> Left foot on Left -&gt; Right foot on Up -&gt; Left foot on Right.</li>
+<li><em>Result:</em> The player is now facing right.</li>
+<li><strong>The Gallop:</strong> A rhythm pattern (1/16th triplet) that feels like a skip.</li>
 <li><em>Timing:</em> <code>1... a2... a3</code></li>
-</ul>
-</li>
-<li><strong>Jumps:</strong> Two arrows at once.<ul>
-<li><em>Constraint:</em> Humans only have two feet. Never place 3 arrows at once (unless you intend for a "Hand" bracket, which is advanced tech).</li>
-<li><em>Flow:</em> Avoid placing a Jump immediately after a fast stream without a break.</li>
-</ul>
-</li>
+<li><strong>Jumps:</strong> Two arrows at once.</li>
+<li><em>Constraint:</em> Humans only have two feet. Never place 3 arrows at once unless you intentionally want advanced hand or bracket tech.</li>
+<li><em>Flow:</em> Avoid placing a jump immediately after a fast stream without a break.</li>
 </ol>
 <h2 id="mapping-workflow">🚀 Mapping Workflow<a class="headerlink" href="#mapping-workflow" title="Permanent link">&para;</a></h2>
 <h3 id="1-setup">1. Setup<a class="headerlink" href="#1-setup" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Open <code>aerobeat-sdk-choreography-step</code>.</li>
-<li>Create an <code>AeroChoreography</code> resource.</li>
-<li>Load your song using our content-browser and sync the BPM (Use the <strong>Auto-Detect</strong> feature).</li>
+<li>Create or open the Step <strong>Routine</strong> for the selected Song.</li>
+<li>Create or open the <strong>Chart Variant</strong> for the intended difficulty.</li>
+<li>Load your Song using the content browser and sync the BPM with the <strong>Auto-Detect</strong> feature.</li>
 </ol>
 <h3 id="2-the-editor-grid">2. The Editor Grid<a class="headerlink" href="#2-the-editor-grid" title="Permanent link">&para;</a></h3>
 <ul>
@@ -5504,11 +5498,11 @@ Unless you are creating a specific "Jack" (repeated tap) pattern, players should
 <h3 id="3-placing-notes">3. Placing Notes<a class="headerlink" href="#3-placing-notes" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Tap (Arrow):</strong> Standard step.</li>
-<li><strong>Hold (Freeze):</strong> Click and drag to extend. Player must keep weight on the panel.</li>
-<li><strong>Mine (Shock):</strong> Player must <em>avoid</em> the panel. Use these to force foot placement (e.g., putting a mine on the Down arrow forces the player to keep their foot on Up).</li>
+<li><strong>Hold (Freeze):</strong> Click and drag to extend. The athlete must keep weight on the panel.</li>
+<li><strong>Mine (Shock):</strong> The athlete must <em>avoid</em> the panel. Use these to force foot placement (for example, putting a mine on the Down arrow forces the athlete to keep their foot on Up).</li>
 </ul>
 <h2 id="difficulty-guidelines">📉 Difficulty Guidelines<a class="headerlink" href="#difficulty-guidelines" title="Permanent link">&para;</a></h2>
-<p>Step charts are rated by "Feet" (Intensity).</p>
+<p>Step charts are rated by feet (intensity).</p>
 <table>
 <thead>
 <tr>
@@ -5520,12 +5514,12 @@ Unless you are creating a specific "Jack" (repeated tap) pattern, players should
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Easy (1-3)</strong></td>
-<td style="text-align: left;">On-beat (1/4) only. No Jumps. No Crossovers.</td>
+<td style="text-align: left;">On-beat (1/4) only. No jumps. No crossovers.</td>
 <td style="text-align: left;">Low</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Medium (4-6)</strong></td>
-<td style="text-align: left;">Introduces 1/8th notes. Simple Jumps. Basic voltage.</td>
+<td style="text-align: left;">Introduces 1/8th notes. Simple jumps. Basic voltage.</td>
 <td style="text-align: left;">Moderate</td>
 </tr>
 <tr>
@@ -5542,10 +5536,10 @@ Unless you are creating a specific "Jack" (repeated tap) pattern, players should
 </table>
 <h2 id="best-practices-from-the-community">💡 Best Practices (From the Community)<a class="headerlink" href="#best-practices-from-the-community" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Avoid "Double Stepping":</strong> Don't force a player to hit the same arrow twice in rapid succession with the same foot unless it matches a specific drum roll sound.</li>
+<li><strong>Avoid Double Stepping:</strong> Do not force a player to hit the same arrow twice in rapid succession with the same foot unless it matches a specific drum-roll sound.</li>
 <li><strong>Respect the Center:</strong> Players naturally return to the center of the pad.</li>
-<li><strong>Facing Matters:</strong> If you use a Crossover to turn the player, give them a beat to untwist before the next pattern.</li>
-<li><strong>Mines are Spice:</strong> Use Mines sparingly. They should clarify the intended footing, not just annoy the player.</li>
+<li><strong>Facing Matters:</strong> If you use a crossover to turn the player, give them a beat to untwist before the next pattern.</li>
+<li><strong>Mines are Spice:</strong> Use mines sparingly. They should clarify the intended footing, not just annoy the player.</li>
 </ul>
 
 
@@ -5567,7 +5561,7 @@ Unless you are creating a specific "Jack" (repeated tap) pattern, players should
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 22, 2026 23:06:16 UTC">January 22, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 14:21:20 UTC">April 20, 2026</span>
   </span>
 
     
