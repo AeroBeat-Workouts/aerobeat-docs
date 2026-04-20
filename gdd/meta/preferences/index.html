@@ -5487,23 +5487,23 @@
 
 
 <h1 id="athlete-preferences-overrides">Athlete Preferences &amp; Overrides<a class="headerlink" href="#athlete-preferences-overrides" title="Permanent link">&para;</a></h1>
-<p>This document details the "Preferences" system, which allows athletes to customize their visual and gameplay experience, overriding default playlist settings.</p>
+<p>This document details the "Preferences" system, which allows athletes to customize their visual and gameplay experience, overriding default Workout presentation suggestions. In player-facing UI, a Workout may still be surfaced as a playlist.</p>
 <h2 id="1-philosophy">1. Philosophy<a class="headerlink" href="#1-philosophy" title="Permanent link">&para;</a></h2>
 <p><strong>"My Game, My Way."</strong></p>
-<p>While Playlists suggest specific Environments and Skins to create a mood, athletes often have strong preferences for visibility, comfort, or accessibility. The system must allow global overrides that persist across sessions.</p>
+<p>While Workouts suggest specific Environments and Skins to create a mood, athletes often have strong preferences for visibility, comfort, or accessibility. The system must allow global overrides that persist across sessions. If the frontend calls the selected Workout a playlist, that is only a UX label.</p>
 <h2 id="2-preference-categories">2. Preference Categories<a class="headerlink" href="#2-preference-categories" title="Permanent link">&para;</a></h2>
 <p>Preferences are divided into three layers based on their impact.</p>
 <h3 id="a-visual-overrides-the-comfort-layer">A. Visual Overrides (The "Comfort" Layer)<a class="headerlink" href="#a-visual-overrides-the-comfort-layer" title="Permanent link">&para;</a></h3>
-<p>These settings override the content defined in a Playlist.</p>
+<p>These settings override the presentation suggestions defined in a Workout.</p>
 <ul>
 <li><strong>Preferred Environment:</strong><ul>
-<li><em>Default:</em> "Use Playlist Suggestion".</li>
+<li><em>Default:</em> "Use Workout Suggestion" (player-facing UI may phrase this as "Use Playlist Suggestion").</li>
 <li><em>Override:</em> Force a specific Environment (e.g., "The Void") for all songs.</li>
 <li><em>Use Case:</em> Critical for players prone to motion sickness or distraction who need a consistent background.</li>
 </ul>
 </li>
 <li><strong>Preferred Skins:</strong><ul>
-<li><em>Default:</em> "Use Playlist Suggestion".</li>
+<li><em>Default:</em> "Use Workout Suggestion" (player-facing UI may phrase this as "Use Playlist Suggestion").</li>
 <li><em>Override:</em> Force specific Gloves/Targets.</li>
 <li><em>Use Case:</em> Critical for players with color blindness or visibility issues who need high-contrast assets.</li>
 </ul>
@@ -5553,8 +5553,8 @@
 <span class="k">extends</span><span class="w"> </span><span class="n">Resource</span>
 
 <span class="c1"># Visuals</span>
-<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">override_environment_id</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="c1"># Empty = Use Playlist</span>
-<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">override_skin_id</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">        </span><span class="c1"># Empty = Use Playlist</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">override_environment_id</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="c1"># Empty = Use Workout Suggestion</span>
+<span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">override_skin_id</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">        </span><span class="c1"># Empty = Use Workout Suggestion</span>
 <span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">show_coach</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
 
 <span class="c1"># Menu</span>
@@ -5566,18 +5566,18 @@
 <span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">default_difficulty</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hard&quot;</span>
 </code></pre></div>
 <h3 id="the-override-logic-aerosessionbuilder">The Override Logic (<code>AeroSessionBuilder</code>)<a class="headerlink" href="#the-override-logic-aerosessionbuilder" title="Permanent link">&para;</a></h3>
-<p>When a session is started, the <code>AeroSessionBuilder</code> resolves conflicts between Playlist suggestions and User Preferences.</p>
+<p>When a session is started, the <code>AeroSessionBuilder</code> resolves conflicts between Workout suggestions and User Preferences.</p>
 <p><strong>Priority Order:</strong></p>
 <ol>
 <li><strong>User Override:</strong> If the user has explicitly set "Force Void Environment", this wins.</li>
-<li><strong>Playlist Suggestion:</strong> If no override, use the Environment defined by the Playlist.</li>
-<li><strong>System Default:</strong> If the Playlist has no suggestion, use the default fallback.</li>
+<li><strong>Workout Suggestion:</strong> If no override, use the Environment defined by the Workout.</li>
+<li><strong>System Default:</strong> If the Workout has no suggestion, use the default fallback.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">get_environment_id</span><span class="p">(</span><span class="n">playlist</span><span class="p">:</span><span class="w"> </span><span class="n">AeroPlaylist</span><span class="p">,</span><span class="w"> </span><span class="n">prefs</span><span class="p">:</span><span class="w"> </span><span class="n">AeroUserPreferences</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">get_environment_id</span><span class="p">(</span><span class="n">workout</span><span class="p">:</span><span class="w"> </span><span class="n">AeroWorkout</span><span class="p">,</span><span class="w"> </span><span class="n">prefs</span><span class="p">:</span><span class="w"> </span><span class="n">AeroUserPreferences</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">:</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">prefs</span><span class="o">.</span><span class="n">override_environment_id</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">prefs</span><span class="o">.</span><span class="n">override_environment_id</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">playlist</span><span class="o">.</span><span class="n">suggested_environment_id</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">:</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">playlist</span><span class="o">.</span><span class="n">suggested_environment_id</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">workout</span><span class="o">.</span><span class="n">suggested_environment_id</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">workout</span><span class="o">.</span><span class="n">suggested_environment_id</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;env_default_hangar&quot;</span>
 </code></pre></div>
 
@@ -5600,7 +5600,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 25, 2026 01:55:18 UTC">January 25, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 15:20:51 UTC">April 20, 2026</span>
   </span>
 
     
