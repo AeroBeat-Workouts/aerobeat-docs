@@ -2687,10 +2687,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-hub-and-spoke-topology" class="md-nav__link">
+  <a href="#1-lane-based-polyrepo-topology" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Hub-and-Spoke Topology
+        1. Lane-based polyrepo topology
       
     </span>
   </a>
@@ -2701,7 +2701,7 @@
   <a href="#2-input-agnosticism-the-provider-pattern" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Input Agnosticism (The Provider Pattern)
+        2. Input agnosticism (the provider pattern)
       
     </span>
   </a>
@@ -2709,10 +2709,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-atomic-ui-design" class="md-nav__link">
+  <a href="#3-feature-consumes-content-it-does-not-own-content" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Atomic UI Design
+        3. Feature consumes content; it does not own content
       
     </span>
   </a>
@@ -2720,10 +2720,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-data-driven-content" class="md-nav__link">
+  <a href="#4-data-driven-content-and-asset-safety" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Data-Driven Content
+        4. Data-driven content and asset safety
       
     </span>
   </a>
@@ -5306,10 +5306,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-hub-and-spoke-topology" class="md-nav__link">
+  <a href="#1-lane-based-polyrepo-topology" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Hub-and-Spoke Topology
+        1. Lane-based polyrepo topology
       
     </span>
   </a>
@@ -5320,7 +5320,7 @@
   <a href="#2-input-agnosticism-the-provider-pattern" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Input Agnosticism (The Provider Pattern)
+        2. Input agnosticism (the provider pattern)
       
     </span>
   </a>
@@ -5328,10 +5328,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-atomic-ui-design" class="md-nav__link">
+  <a href="#3-feature-consumes-content-it-does-not-own-content" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Atomic UI Design
+        3. Feature consumes content; it does not own content
       
     </span>
   </a>
@@ -5339,10 +5339,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-data-driven-content" class="md-nav__link">
+  <a href="#4-data-driven-content-and-asset-safety" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Data-Driven Content
+        4. Data-driven content and asset safety
       
     </span>
   </a>
@@ -5381,21 +5381,35 @@
 <p><strong>Language:</strong> GDScript (Primary), Python (CV Sidecar)</p>
 <p><strong>Organization:</strong> AeroBeat-Workouts</p>
 <h2 id="executive-summary">Executive Summary<a class="headerlink" href="#executive-summary" title="Permanent link">&para;</a></h2>
-<p>AeroBeat is a <strong>Modular Rhythm Platform</strong>. We strictly decouple <strong>Input</strong> (Hardware), <strong>UI</strong> (Platform Interaction), <strong>Logic</strong> (Gameplay), and <strong>Content</strong> (Assets).</p>
+<p>AeroBeat is a modular rhythm platform. We strictly decouple <strong>Input</strong>, <strong>Feature Runtime</strong>, <strong>Content</strong>, <strong>Assets</strong>, <strong>UI</strong>, and <strong>Tools</strong>.</p>
+<p>The platform is documented as a lane-based polyrepo architecture with six domain-specific core repos:</p>
+<ol>
+<li><a href="https://github.com/AeroBeat-Workouts/aerobeat-input-core"><code>aerobeat-input-core</code></a></li>
+<li><a href="https://github.com/AeroBeat-Workouts/aerobeat-feature-core"><code>aerobeat-feature-core</code></a></li>
+<li><a href="https://github.com/AeroBeat-Workouts/aerobeat-content-core"><code>aerobeat-content-core</code></a></li>
+<li><a href="https://github.com/AeroBeat-Workouts/aerobeat-asset-core"><code>aerobeat-asset-core</code></a></li>
+<li><a href="https://github.com/AeroBeat-Workouts/aerobeat-ui-core"><code>aerobeat-ui-core</code></a></li>
+<li><a href="https://github.com/AeroBeat-Workouts/aerobeat-tool-core"><code>aerobeat-tool-core</code></a></li>
+</ol>
+<p>AeroBeat no longer treats <code>aerobeat-core</code> as the long-term universal hub. Each lane owns its own shared contracts, and concrete repos depend only on the lanes they actually consume.</p>
 <h2 id="technical-structure-overview">Technical Structure Overview<a class="headerlink" href="#technical-structure-overview" title="Permanent link">&para;</a></h2>
 <p>Our architecture is built on four key pillars designed to maximize modularity and contributor safety.</p>
-<h3 id="1-hub-and-spoke-topology">1. Hub-and-Spoke Topology<a class="headerlink" href="#1-hub-and-spoke-topology" title="Permanent link">&para;</a></h3>
-<p>We do not use a monolithic repository. Instead, we use a <strong>Polyrepo</strong> approach where <code>aerobeat-core</code> acts as the central hub containing shared Interfaces (Contracts) and Data Types. Feature repositories (like Boxing or Flow) depend on Core, but never on each other.</p>
-<h3 id="2-input-agnosticism-the-provider-pattern">2. Input Agnosticism (The Provider Pattern)<a class="headerlink" href="#2-input-agnosticism-the-provider-pattern" title="Permanent link">&para;</a></h3>
-<p>The game logic never communicates directly with hardware. Instead, it requests normalized data (0.0 - 1.0) from an <strong>Input Provider</strong>. This allows us to hot-swap between a Webcam, VR Controllers, or a Keyboard without changing a single line of gameplay code.</p>
-<h3 id="3-atomic-ui-design">3. Atomic UI Design<a class="headerlink" href="#3-atomic-ui-design" title="Permanent link">&para;</a></h3>
-<p>We separate visual components (Buttons, Cards) from application logic.</p>
+<h3 id="1-lane-based-polyrepo-topology">1. Lane-based polyrepo topology<a class="headerlink" href="#1-lane-based-polyrepo-topology" title="Permanent link">&para;</a></h3>
+<p>AeroBeat does not use a monolithic repository or a universal shared hub. Instead, each domain has one explicit core repo that owns that lane's stable contracts.</p>
 <ul>
-<li><strong>UI Kit:</strong> A library of pure, stateless components.</li>
-<li><strong>UI Shells:</strong> Platform-specific applications (Mobile, VR) that assemble these components into screens.</li>
+<li><strong>Input core</strong> owns provider abstractions and normalized input-facing contracts.</li>
+<li><strong>Feature core</strong> owns gameplay-mode/runtime rules that interpret athlete actions against authored content over time.</li>
+<li><strong>Content core</strong> owns durable authored-content contracts.</li>
+<li><strong>Asset core</strong> owns avatars, cosmetics, environments, and other asset-side definitions.</li>
+<li><strong>UI core</strong> owns shared UI abstractions.</li>
+<li><strong>Tool core</strong> owns shared tool-side contracts.</li>
 </ul>
-<h3 id="4-data-driven-content">4. Data-Driven Content<a class="headerlink" href="#4-data-driven-content" title="Permanent link">&para;</a></h3>
-<p>To support community modding safely, we ban scripts in asset packs. All content (Skins, Avatars, Cosmetics, Environments, Songs) are loaded via strict Resource definitions, preventing Remote Code Execution (RCE) from malicious mods.</p>
+<p>Assembly repos such as <code>aerobeat-assembly-community</code> compose only the core repos and concrete packages they need through GodotEnv.</p>
+<h3 id="2-input-agnosticism-the-provider-pattern">2. Input agnosticism (the provider pattern)<a class="headerlink" href="#2-input-agnosticism-the-provider-pattern" title="Permanent link">&para;</a></h3>
+<p>Gameplay code never talks directly to hardware. It depends on normalized input contracts from <code>aerobeat-input-core</code>, allowing AeroBeat to swap between webcam tracking, XR controllers, JoyCons, keyboard, touch, or other providers without rewriting feature logic.</p>
+<h3 id="3-feature-consumes-content-it-does-not-own-content">3. Feature consumes content; it does not own content<a class="headerlink" href="#3-feature-consumes-content-it-does-not-own-content" title="Permanent link">&para;</a></h3>
+<p>Feature means gameplay-mode/runtime rules that interpret authored content against athlete actions over time. That work belongs in <code>aerobeat-feature-core</code> and concrete <code>aerobeat-feature-*</code> repos.</p>
+<p>The durable content model belongs in <code>aerobeat-content-core</code>.</p>
 <p>For playable fitness content, AeroBeat uses a layered model:</p>
 <ul>
 <li><strong>Song:</strong> Reusable audio and timing source.</li>
@@ -5404,6 +5418,9 @@
 <li><strong>Workout:</strong> A program that assembles selections into a session.</li>
 </ul>
 <p>Charts share a common envelope for ids, timing, scoring, presentation hints, and metadata, while the event payload remains mode-specific. This preserves input agnosticism without forcing Boxing, Dance, Step, and Flow into a fake one-size-fits-all event schema.</p>
+<h3 id="4-data-driven-content-and-asset-safety">4. Data-driven content and asset safety<a class="headerlink" href="#4-data-driven-content-and-asset-safety" title="Permanent link">&para;</a></h3>
+<p>To support community modding safely, AeroBeat bans executable scripts in community asset packs. All content and assets load through strict resource definitions and validation contracts.</p>
+<p>Asset-side contracts such as avatars, cosmetics, environments, and related reusable asset definitions belong in <code>aerobeat-asset-core</code>. Feature repos may consume those definitions, but they do not own them.</p>
 
 
 
@@ -5424,7 +5441,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 15:52:22 UTC">April 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 18:09:29 UTC">April 20, 2026</span>
   </span>
 
     
