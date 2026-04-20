@@ -89,10 +89,14 @@ aerobeat-tool-core/
 ```text
 aerobeat-input-mediapipe-python/
 ├── python_mediapipe/   # CV sidecar code
-├── scripts/
-│   ├── strategies/     # Technology-specific provider logic
-│   └── input_manager.gd
+├── src/
+│   ├── config/         # Provider/configuration resources
+│   ├── process/        # Sidecar process integration
+│   ├── providers/      # Concrete input-provider implementations
+│   ├── server/         # Local transport / bridge server code
+│   └── strategies/     # Technology-specific interpretation logic
 ├── .testbed/           # Ignored local dev project
+├── tests/
 └── plugin.cfg
 ```
 
