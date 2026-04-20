@@ -13,11 +13,11 @@ Our scoring system is designed to be permissive.
 
 ## ⚙️ Gameplay Modifiers
 
-Before starting a playlist, you can enable specific modifiers to tailor the workout to your needs.
+Before starting a Workout, you can enable specific modifiers to tailor the session to your needs. If the menu labels that Workout as a playlist, that wording is purely player-facing UX.
 
 *   **No Squats:** Disables obstacles (Walls/Bars) that force you to squat or duck.
-*   **No Knee Strikes:** Removes Knee Strike targets from Boxing playlists.
-*   **No Leg Lifts:** Removes balancing obstacles from Flow playlists.
+*   **No Knee Strikes:** Removes Knee Strike targets from Boxing Workouts.
+*   **No Leg Lifts:** Removes balancing obstacles from Flow Workouts.
 *   **No Obstacles:** Removes all walls and barriers entirely.
 *   **No Arrows:** Removes the directional requirement. You can hit targets from any angle (great for limited wrist mobility).
 *   **No Bombs:** Removes explosive targets in Flow mode that penalize accidental hits.

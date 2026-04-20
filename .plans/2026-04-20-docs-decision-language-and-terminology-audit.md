@@ -158,25 +158,72 @@ Examples of likely target concepts:
 **Files Created/Deleted/Modified:**
 - None expected from audit unless documenting findings in the plan
 
+**Status:** ❌ Failed
+
+**Results:** Independent audit completed against the rewritten public docs set. **Passes:** (1) input vocabulary is now internally consistent in the core canon and reference docs checked — `docs/architecture/input.md`, `docs/architecture/overview.md`, and `docs/gdd/glossary/terms.md` agree on **Input Provider** as the public abstraction, **Provider Pattern** as the architectural term, `Strategy` as implementation-detail language, and `Interaction Family` vs `Input Profile` as separate concepts; (2) Track View semantics are no longer conflicting in the main architecture/gameplay/glossary/guides surfaces checked — `docs/architecture/content-model.md`, `docs/gdd/glossary/terms.md`, `docs/gdd/gameplay/view-modes.md`, `docs/gdd/gameplay/boxing.md`, `docs/gdd/gameplay/step.md`, `docs/guides/choreography/overview.md`, and `docs/guides/choreography/boxing.md` all treat **Track View** as the broader linear 2D presentation family, with upward scrolling documented as a common/default subtype rather than the only meaning; (3) the **Song -> Routine -> Chart Variant -> Workout** hierarchy is propagated coherently in the newly rewritten canon pages and contributor-facing choreography/community docs. **Audit fail reasons / exact remaining gaps:** several public docs still use **playlist** as an architectural/data-model term rather than clearly UX-facing language, so the repo is not yet fully coherent on the content model or decision voice. Most important remaining conflicts: `docs/architecture/backend_api.md:19-31` still describes dependency integrity in terms of a `Playlist` as the durable dependent asset, and `docs/architecture/backend_api.md:71`, `docs/architecture/backend_api.md:99`, and `docs/architecture/backend_api.md:112` still expose `PLAYLIST` as a top-level asset/mod type with no clarification that Workout is the canonical underlying content-model term; `docs/gdd/meta/preferences.md:3-18` and `docs/gdd/meta/preferences.md:63-82` still frame **Playlist** as the underlying session/content object (`AeroPlaylist`, `Use Playlist Suggestion`, playlist-driven overrides) rather than as player-facing UI language over a Workout; `docs/gdd/economy/currency.md:9-16` and `docs/gdd/gamification/overview.md:8-18,50-62,75` still use `playlist` as the session-completion unit with no UX-language clarification; `docs/guides/accessibility.md:13-17` still says `Before starting a playlist` and refers to Boxing / Flow playlists without clarifying that the player-facing UI label is playlist but the canonical content-model term is Workout; `docs/gdd/releases/community.md:5-17,25` still uses playlist as the primary product/content term and also reintroduces the old narrower Track View definition (`track` = targets rising from bottom-to-top like DDR), which conflicts with the broader Track View canon established elsewhere. Because of those remaining files, the docs set does **not** yet fully satisfy the requirement that remaining uses of `playlist` be clearly UX-facing rather than architecture-conflicting, and the public decision voice is still mixed between the rewritten canon pages and older legacy pages.
+
+---
+
+## Final Results
+
+**Status:** ❌ Blocked by audit gaps
+
+**What We Built:** The rewrite pass successfully established the new canon in the core docs: **Input Provider** / **Provider Pattern** for input architecture, **Track View** as the broader linear 2D presentation family, and **Song -> Routine -> Chart Variant -> Workout** as the content-model hierarchy. Those decisions are now reflected in the main architecture, glossary, gameplay, and choreography docs.
+
+**Reference Check:** `REF-02`, `REF-03`, `REF-04`, `REF-05`, `REF-06`, and `REF-07` now agree on the primary canon for input terminology, Track View semantics, and the layered content model. However, the repo does **not** yet fully satisfy the broader audit goal because older public docs outside that canon set still use `playlist` as an architectural/session term instead of clearly UX-facing language, and `docs/gdd/releases/community.md` still reintroduces the old narrow bottom-to-top Track View framing.
+
+**Commits:**
+- Implementation commit already landed before this audit: `0619892`
+
+**Lessons Learned:** The hardest part was not the core canon rewrite — it was finding the legacy outer-ring docs that still speak the old model. A docs-set audit has to include product, meta, API, economy, accessibility, and release-marketing pages, not just architecture + glossary + gameplay.
+
+---
+
+### Follow-up: Clean remaining outer-ring terminology drift
+
+**Bead ID:** `aerobeat-docs-89n`  
+**SubAgent:** `primary`  
+**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-06`, `REF-08`  
+**Prompt:** Fix the remaining legacy terminology conflicts identified by the failed audit in these docs: `docs/architecture/backend_api.md`, `docs/gdd/meta/preferences.md`, `docs/gdd/economy/currency.md`, `docs/gdd/gamification/overview.md`, `docs/guides/accessibility.md`, and `docs/gdd/releases/community.md`. Normalize `Workout` as the canonical model term, keep `playlist` only where clearly UX-facing, and correct any remaining old narrow `Track View` framing.
+
+**Folders Created/Deleted/Modified:**
+- `docs/architecture/`
+- `docs/gdd/`
+- `docs/guides/`
+
+**Files Created/Deleted/Modified:**
+- `docs/architecture/backend_api.md`
+- `docs/gdd/meta/preferences.md`
+- `docs/gdd/economy/currency.md`
+- `docs/gdd/gamification/overview.md`
+- `docs/guides/accessibility.md`
+- `docs/gdd/releases/community.md`
+
+**Status:** ✅ Complete
+
+**Results:** Cleaned the six targeted outer-ring docs without broadening scope. `docs/architecture/backend_api.md` now uses **Workout / WORKOUT** as the canonical dependency and API asset term, while allowing playlist wording only as athlete-facing UI. `docs/gdd/meta/preferences.md` now treats Workout as the underlying session object, updates override labels / comments to Workout suggestion language, and swaps the sample type from `AeroPlaylist` to `AeroWorkout`. `docs/gdd/economy/currency.md` and `docs/gdd/gamification/overview.md` now describe rewards, stamps, quests, and anti-cheat in terms of completed Workouts instead of playlists. `docs/guides/accessibility.md` now clarifies that playlist wording is only UI copy while the canonical session/content term is Workout. `docs/gdd/releases/community.md` now centers Workouts as the product/content model and corrects Track View to the broader linear 2D family instead of a bottom-to-top-only definition. Cleanup committed and pushed for re-audit.
+
+---
+
+### Follow-up: Re-audit remaining outer-ring docs terminology cleanup
+
+**Bead ID:** `aerobeat-docs-tz0`  
+**SubAgent:** `auditor`  
+**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-06`, `REF-08`  
+**Prompt:** Independently verify that the targeted cleanup resolved the remaining `playlist`-as-model conflicts and the old narrow `Track View` framing in the outer-ring docs. If the cleanup passes, update Final Results to complete and close the remaining audit thread.
+
+**Folders Created/Deleted/Modified:**
+- `docs/architecture/`
+- `docs/gdd/`
+- `docs/guides/`
+
+**Files Created/Deleted/Modified:**
+- None expected from audit beyond plan updates
+
 **Status:** ⏳ Pending
 
 **Results:** Not started.
 
 ---
 
-## Final Results
-
-**Status:** ✅ Complete
-
-**What We Built:** Canonical terminology and decision-language rules are now encoded in the docs set, with the main conflicts resolved. The docs now consistently use **Input Provider** / **Provider Pattern** for the runtime input abstraction, clarify that **Track View** is the broader family of linear 2D presentations rather than only bottom-to-top scrolling, and propagate the content-model hierarchy **Song -> Routine -> Chart Variant -> Workout** through glossary, gameplay, choreography, coaching, and community-content pages.
-
-**Reference Check:** `REF-02`, `REF-03`, and `REF-04` now act in agreement for input, content-model, and glossary canon. `REF-05`, `REF-06`, and `REF-07` were normalized so Boxing / view-mode / choreography wording no longer conflicts on Track View semantics or content-model terms. `REF-01` and `REF-08` did not require substantive terminology rewrites beyond consistency with the updated canon.
-
-**Commits:**
-- Final implementation commit created in this execution pass and pushed to `main`
-
-**Lessons Learned:** The inventory was correct that the real work was not a broad soft-language scrub. The important pass was to define canon in glossary + architecture first, then propagate those decisions into the mode-specific and creator-facing docs that had accumulated older playlist/choreography assumptions.
-
----
-
-*Completed on 2026-04-20*
+*Audit updated on 2026-04-20*

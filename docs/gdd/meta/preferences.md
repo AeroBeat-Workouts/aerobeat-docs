@@ -1,12 +1,12 @@
 # Athlete Preferences & Overrides
 
-This document details the "Preferences" system, which allows athletes to customize their visual and gameplay experience, overriding default playlist settings.
+This document details the "Preferences" system, which allows athletes to customize their visual and gameplay experience, overriding default Workout presentation suggestions. In player-facing UI, a Workout may still be surfaced as a playlist.
 
 ## 1. Philosophy
 
 **"My Game, My Way."**
 
-While Playlists suggest specific Environments and Skins to create a mood, athletes often have strong preferences for visibility, comfort, or accessibility. The system must allow global overrides that persist across sessions.
+While Workouts suggest specific Environments and Skins to create a mood, athletes often have strong preferences for visibility, comfort, or accessibility. The system must allow global overrides that persist across sessions. If the frontend calls the selected Workout a playlist, that is only a UX label.
 
 ## 2. Preference Categories
 
@@ -14,14 +14,14 @@ Preferences are divided into three layers based on their impact.
 
 ### A. Visual Overrides (The "Comfort" Layer)
 
-These settings override the content defined in a Playlist.
+These settings override the presentation suggestions defined in a Workout.
 
 *   **Preferred Environment:**
-    *   *Default:* "Use Playlist Suggestion".
+    *   *Default:* "Use Workout Suggestion" (player-facing UI may phrase this as "Use Playlist Suggestion").
     *   *Override:* Force a specific Environment (e.g., "The Void") for all songs.
     *   *Use Case:* Critical for players prone to motion sickness or distraction who need a consistent background.
 *   **Preferred Skins:**
-    *   *Default:* "Use Playlist Suggestion".
+    *   *Default:* "Use Workout Suggestion" (player-facing UI may phrase this as "Use Playlist Suggestion").
     *   *Override:* Force specific Gloves/Targets.
     *   *Use Case:* Critical for players with color blindness or visibility issues who need high-contrast assets.
 *   **Avatar Visibility:**
@@ -67,8 +67,8 @@ class_name AeroUserPreferences
 extends Resource
 
 # Visuals
-@export var override_environment_id: String = "" # Empty = Use Playlist
-@export var override_skin_id: String = ""        # Empty = Use Playlist
+@export var override_environment_id: String = "" # Empty = Use Workout Suggestion
+@export var override_skin_id: String = ""        # Empty = Use Workout Suggestion
 @export var show_coach: bool = true
 
 # Menu
@@ -82,19 +82,19 @@ extends Resource
 
 ### The Override Logic (`AeroSessionBuilder`)
 
-When a session is started, the `AeroSessionBuilder` resolves conflicts between Playlist suggestions and User Preferences.
+When a session is started, the `AeroSessionBuilder` resolves conflicts between Workout suggestions and User Preferences.
 
 **Priority Order:**
 
 1.  **User Override:** If the user has explicitly set "Force Void Environment", this wins.
-2.  **Playlist Suggestion:** If no override, use the Environment defined by the Playlist.
-3.  **System Default:** If the Playlist has no suggestion, use the default fallback.
+2.  **Workout Suggestion:** If no override, use the Environment defined by the Workout.
+3.  **System Default:** If the Workout has no suggestion, use the default fallback.
 
 ```gdscript
-func get_environment_id(playlist: AeroPlaylist, prefs: AeroUserPreferences) -> String:
+func get_environment_id(workout: AeroWorkout, prefs: AeroUserPreferences) -> String:
     if prefs.override_environment_id != "":
         return prefs.override_environment_id
-    if playlist.suggested_environment_id != "":
-        return playlist.suggested_environment_id
+    if workout.suggested_environment_id != "":
+        return workout.suggested_environment_id
     return "env_default_hangar"
 ```

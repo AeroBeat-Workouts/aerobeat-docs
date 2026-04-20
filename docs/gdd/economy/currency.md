@@ -8,7 +8,7 @@ The goal of the WP economy is to incentivize consistency. We reward effort (Time
 
 ## 2. Earning WP (The Faucet)
 
-WP is calculated at the end of every completed playlist.
+WP is calculated at the end of every completed Workout. If the athlete started that Workout from a playlist-style browser, the underlying rewarded unit is still the Workout session.
 
 ### The Formula
 
@@ -17,7 +17,7 @@ WP is calculated at the end of every completed playlist.
 ### Variables
 
 *   **Base Rate:** `10 WP` per minute of active gameplay.
-*   **Duration:** The total length of the playlist in minutes (rounded down).
+*   **Duration:** The total length of the completed Workout in minutes (rounded down).
 *   **Difficulty Multiplier:**
     *   **Easy:** 1.0x
     *   **Normal:** 1.2x
