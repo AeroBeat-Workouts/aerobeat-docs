@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/architecture/content-model/">
+        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/architecture/content-lane-implementation-phases/">
       
       
-        <link rel="prev" href="../coding-style/">
-      
-      
-        <link rel="next" href="../input/">
       
       
         
@@ -25,7 +21,7 @@
     
     
       
-        <title>Content Model - AeroBeat Documentation</title>
+        <title>Content Lane Implementation Phases - AeroBeat Documentation</title>
       
     
     
@@ -74,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#content-model-songs-routines-chart-variants-and-workouts" class="md-skip">
+        <a href="#content-lane-implementation-phases" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Content Model
+              Content Lane Implementation Phases
             
           </span>
         </div>
@@ -2503,20 +2499,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -2537,7 +2531,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2552,20 +2546,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -2586,7 +2578,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2741,37 +2733,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Content Model
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../content-model/" class="md-nav__link">
         
   
   
@@ -2787,615 +2752,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#canonical-ownership" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Canonical ownership
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-aerobeat-needs-routine" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why AeroBeat needs Routine
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#core-primitives" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Core primitives
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Core primitives">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-song" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Song
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-routine" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Routine
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-chart-variant" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Chart Variant
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Chart Variant">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#why-difficulty-belongs-here" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why difficulty belongs here
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-workout" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Workout
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#shared-chart-envelope" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Shared chart envelope
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Shared chart envelope">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#shared-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Shared fields
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mode-specific-payloads" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mode-specific payloads
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#interaction-families-not-raw-devices" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Interaction families, not raw devices
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Interaction families, not raw devices">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#recommended-interaction-families" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recommended interaction families
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-this-matters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this matters
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#input-profile-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Input profile fields
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#view-modes-belong-mostly-to-runtime-presentation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        View modes belong mostly to runtime presentation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="View modes belong mostly to runtime presentation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#authoring-rule" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Authoring rule
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommended-file-package-relationship" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recommended file / package relationship
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#content-package-boundary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Content package boundary
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Content package boundary">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#package-responsibilities" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Package responsibilities
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#package-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Package rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#authored-data-contract-boundaries" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Authored data contract boundaries
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Authored data contract boundaries">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#song-contract" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Song contract
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#routine-contract" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Routine contract
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#chart-variant-contract" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Chart Variant contract
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#workout-contract" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Workout contract
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#registry-and-discovery-responsibilities" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Registry and discovery responsibilities
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Registry and discovery responsibilities">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aerobeat-content-core-owns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        aerobeat-content-core owns
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#concrete-toolsruntime-own" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        concrete tools/runtime own
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#schema-versioning-and-migration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Schema versioning and migration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Schema versioning and migration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#versioning-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Versioning rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#migration-ownership" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Migration ownership
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#validation-layering" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Validation layering
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Validation layering">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#layer-1-packagereference-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Layer 1: package/reference validation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#layer-2-mode-specific-content-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Layer 2: mode-specific content validation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#layer-3-toolruntime-compatibility-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Layer 3: tool/runtime compatibility validation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#import-export-and-ingestion-boundaries" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Import, export, and ingestion boundaries
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#workout-sequencing-and-playback-handoff" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Workout sequencing and playback handoff
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Workout sequencing and playback handoff">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aerobeat-content-core-owns_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        aerobeat-content-core owns
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#featureruntime-owns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        feature/runtime owns
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#explicit-split-content-core-vs-tool-core" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Explicit split: content-core vs tool-core
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Explicit split: content-core vs tool-core">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aerobeat-content-core" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        aerobeat-content-core
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aerobeat-tool-core" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        aerobeat-tool-core
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#non-goals" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        non-goals
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#minimal-shared-chart-envelope-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Minimal shared chart envelope example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#opinionated-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Opinionated rules
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#first-shipping-recommendation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        First shipping recommendation
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -5800,10 +5156,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#canonical-ownership" class="md-nav__link">
+  <a href="#planning-rules" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Canonical ownership
+        Planning rules
       
     </span>
   </a>
@@ -5811,33 +5167,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-aerobeat-needs-routine" class="md-nav__link">
+  <a href="#phase-1-docs-and-contract-decisions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why AeroBeat needs Routine
+        Phase 1 — Docs and contract decisions
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#core-primitives" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Core primitives
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Core primitives">
+    <nav class="md-nav" aria-label="Phase 1 — Docs and contract decisions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-song" class="md-nav__link">
+  <a href="#goal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Song
+        Goal
       
     </span>
   </a>
@@ -5845,10 +5190,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-routine" class="md-nav__link">
+  <a href="#deliverables" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Routine
+        Deliverables
       
     </span>
   </a>
@@ -5856,38 +5201,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-chart-variant" class="md-nav__link">
+  <a href="#required-decisions-before-code-starts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Chart Variant
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Chart Variant">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#why-difficulty-belongs-here" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why difficulty belongs here
+        Required decisions before code starts
       
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#4-workout" class="md-nav__link">
+  <a href="#exit-criteria" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Workout
+        Exit criteria
       
     </span>
   </a>
@@ -5900,22 +5228,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#shared-chart-envelope" class="md-nav__link">
+  <a href="#phase-2-shared-aerobeat-content-core-contract-implementation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Shared chart envelope
+        Phase 2 — Shared aerobeat-content-core contract implementation
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Shared chart envelope">
+    <nav class="md-nav" aria-label="Phase 2 — Shared aerobeat-content-core contract implementation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#shared-fields" class="md-nav__link">
+  <a href="#goal_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Shared fields
+        Goal
       
     </span>
   </a>
@@ -5923,10 +5251,43 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mode-specific-payloads" class="md-nav__link">
+  <a href="#aerobeat-content-core-should-contain" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mode-specific payloads
+        aerobeat-content-core should contain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-content-core-should-not-contain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aerobeat-content-core should not contain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-repository-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended repository action
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit-criteria_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit criteria
       
     </span>
   </a>
@@ -5939,22 +5300,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#interaction-families-not-raw-devices" class="md-nav__link">
+  <a href="#phase-3-validation-registry-and-schema-version-foundations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Interaction families, not raw devices
+        Phase 3 — Validation, registry, and schema-version foundations
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Interaction families, not raw devices">
+    <nav class="md-nav" aria-label="Phase 3 — Validation, registry, and schema-version foundations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#recommended-interaction-families" class="md-nav__link">
+  <a href="#goal_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recommended interaction families
+        Goal
       
     </span>
   </a>
@@ -5962,10 +5323,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#why-this-matters" class="md-nav__link">
+  <a href="#shared-responsibilities-that-still-belong-in-the-content-lane" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why this matters
+        Shared responsibilities that still belong in the content lane
       
     </span>
   </a>
@@ -5973,10 +5334,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#input-profile-fields" class="md-nav__link">
+  <a href="#split-of-responsibility" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Input profile fields
+        Split of responsibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-repository-action_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended repository action
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit-criteria_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit criteria
       
     </span>
   </a>
@@ -5989,22 +5372,77 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#view-modes-belong-mostly-to-runtime-presentation" class="md-nav__link">
+  <a href="#phase-4-tool-core-authoring-and-ingestion-implementation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        View modes belong mostly to runtime presentation
+        Phase 4 — Tool-core, authoring, and ingestion implementation
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="View modes belong mostly to runtime presentation">
+    <nav class="md-nav" aria-label="Phase 4 — Tool-core, authoring, and ingestion implementation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#authoring-rule" class="md-nav__link">
+  <a href="#goal_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Authoring rule
+        Goal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-tool-core-responsibilities-in-this-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aerobeat-tool-core responsibilities in this phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concrete-tool-work-expected-after-content-core-stabilizes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concrete tool work expected after content-core stabilizes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-repository-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended repository actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-yet-justified" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Not yet justified
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit-criteria_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit criteria
       
     </span>
   </a>
@@ -6017,33 +5455,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#recommended-file-package-relationship" class="md-nav__link">
+  <a href="#phase-5-playback-and-runtime-integration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recommended file / package relationship
+        Phase 5 — Playback and runtime integration
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#content-package-boundary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Content package boundary
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Content package boundary">
+    <nav class="md-nav" aria-label="Phase 5 — Playback and runtime integration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#package-responsibilities" class="md-nav__link">
+  <a href="#goal_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Package responsibilities
+        Goal
       
     </span>
   </a>
@@ -6051,10 +5478,43 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#package-rules" class="md-nav__link">
+  <a href="#runtime-integration-responsibilities" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Package rules
+        Runtime integration responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#important-constraint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important constraint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-repository-action_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended repository action
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit-criteria_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit criteria
       
     </span>
   </a>
@@ -6067,199 +5527,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#authored-data-contract-boundaries" class="md-nav__link">
+  <a href="#recommended-repo-creation-order" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Authored data contract boundaries
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Authored data contract boundaries">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#song-contract" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Song contract
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#routine-contract" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Routine contract
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#chart-variant-contract" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Chart Variant contract
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#workout-contract" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Workout contract
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#registry-and-discovery-responsibilities" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Registry and discovery responsibilities
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Registry and discovery responsibilities">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aerobeat-content-core-owns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        aerobeat-content-core owns
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#concrete-toolsruntime-own" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        concrete tools/runtime own
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#schema-versioning-and-migration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Schema versioning and migration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Schema versioning and migration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#versioning-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Versioning rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#migration-ownership" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Migration ownership
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#validation-layering" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Validation layering
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Validation layering">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#layer-1-packagereference-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Layer 1: package/reference validation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#layer-2-mode-specific-content-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Layer 2: mode-specific content validation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#layer-3-toolruntime-compatibility-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Layer 3: tool/runtime compatibility validation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#import-export-and-ingestion-boundaries" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Import, export, and ingestion boundaries
+        Recommended repo creation order
       
     </span>
   </a>
@@ -6267,121 +5538,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#workout-sequencing-and-playback-handoff" class="md-nav__link">
+  <a href="#recommended-implementation-sequence-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Workout sequencing and playback handoff
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Workout sequencing and playback handoff">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aerobeat-content-core-owns_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        aerobeat-content-core owns
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#featureruntime-owns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        feature/runtime owns
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#explicit-split-content-core-vs-tool-core" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Explicit split: content-core vs tool-core
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Explicit split: content-core vs tool-core">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aerobeat-content-core" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        aerobeat-content-core
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aerobeat-tool-core" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        aerobeat-tool-core
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#non-goals" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        non-goals
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#minimal-shared-chart-envelope-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Minimal shared chart envelope example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#opinionated-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Opinionated rules
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#first-shipping-recommendation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        First shipping recommendation
+        Recommended implementation sequence summary
       
     </span>
   </a>
@@ -6408,432 +5568,187 @@
   
 
 
-<h1 id="content-model-songs-routines-chart-variants-and-workouts">Content Model: Songs, Routines, Chart Variants, and Workouts<a class="headerlink" href="#content-model-songs-routines-chart-variants-and-workouts" title="Permanent link">&para;</a></h1>
-<p>AeroBeat content is authored as a layered model rather than a single flat chart blob or a set of unrelated per-mode file formats.</p>
-<p>The durable hierarchy is:</p>
+<h1 id="content-lane-implementation-phases">Content Lane Implementation Phases<a class="headerlink" href="#content-lane-implementation-phases" title="Permanent link">&para;</a></h1>
+<p>This document turns the approved Content lane architecture into a practical delivery sequence.</p>
+<p>It assumes the six-core lane model already decided in the architecture docs:</p>
 <ul>
-<li><strong>Song</strong></li>
-<li><strong>Routine</strong><ul>
-<li><strong>Chart Variant</strong></li>
+<li><code>aerobeat-content-core</code> owns durable authored-content contracts</li>
+<li><code>aerobeat-feature-core</code> and concrete feature repos consume those contracts at runtime</li>
+<li><code>aerobeat-tool-core</code> and concrete tool repos consume the same contracts for authoring, validation, and ingestion flows</li>
 </ul>
-</li>
-<li><strong>Workout</strong></li>
-<li>ordered selections of routines or chart variants</li>
-</ul>
-<p>This structure keeps audio and licensing metadata reusable at the song layer, keeps gameplay-mode semantics at the routine layer, keeps difficulty-specific authored event streams at the chart variant layer, and keeps coaching / workout programming at the workout layer.</p>
-<h2 id="canonical-ownership">Canonical ownership<a class="headerlink" href="#canonical-ownership" title="Permanent link">&para;</a></h2>
-<p>The canonical contracts for <code>Song</code>, <code>Routine</code>, <code>Chart Variant</code>, <code>Workout</code>, the shared chart envelope, and shared content loading / validation interfaces live in <a href="https://github.com/AeroBeat-Workouts/aerobeat-content-core"><code>aerobeat-content-core</code></a>.</p>
-<p><a href="https://github.com/AeroBeat-Workouts/aerobeat-feature-core"><code>aerobeat-feature-core</code></a> consumes those contracts to define gameplay-mode/runtime rules. It does not own the durable content primitives.</p>
-<p><a href="https://github.com/AeroBeat-Workouts/aerobeat-tool-core"><code>aerobeat-tool-core</code></a> and tool repos consume the same content contracts so authoring, validation, ingestion, and runtime all speak the same content language.</p>
-<h2 id="why-aerobeat-needs-routine">Why AeroBeat needs <code>Routine</code><a class="headerlink" href="#why-aerobeat-needs-routine" title="Permanent link">&para;</a></h2>
-<p><code>Routine</code> is the missing primitive between <code>Song</code> and <code>Workout</code>.</p>
-<p>A <code>Song</code> alone is too low-level. It knows about the audio timeline, credits, and metadata, but it does not know whether the athlete is boxing, stepping, dancing, or flowing.</p>
-<p>A <code>Workout</code> is too high-level. It is a program that assembles multiple playable items into a training session, possibly with warmup, cooldown, coaching cues, and non-song media.</p>
-<p><code>Routine</code> is the correct place for:</p>
-<ul>
-<li>the gameplay mode for a song</li>
-<li>the mode-specific authored vocabulary</li>
-<li>validation rules for that mode</li>
-<li>presentation defaults</li>
-<li>a grouped set of difficulty variants for the same song + mode</li>
-</ul>
-<p>Examples:</p>
-<ul>
-<li>one song can have a <strong>Boxing Routine</strong> and a <strong>Dance Routine</strong></li>
-<li>a Boxing Routine can have <strong>Easy</strong>, <strong>Medium</strong>, <strong>Hard</strong>, and <strong>Pro</strong> chart variants</li>
-<li>a Workout can pick the Medium Boxing chart from one song and the Hard Dance chart from another</li>
-</ul>
-<h2 id="core-primitives">Core primitives<a class="headerlink" href="#core-primitives" title="Permanent link">&para;</a></h2>
-<h3 id="1-song">1. Song<a class="headerlink" href="#1-song" title="Permanent link">&para;</a></h3>
-<p>A <code>Song</code> is the reusable music and timing source.</p>
-<p>It owns:</p>
-<ul>
-<li>song id</li>
-<li>title / artist / credits / licensing metadata</li>
-<li>audio asset references</li>
-<li>duration</li>
-<li>tempo map / beat grid / conductor alignment data</li>
-<li>global tags and descriptive metadata</li>
-</ul>
-<p>It does <strong>not</strong> own gameplay-mode-specific note data.</p>
-<h3 id="2-routine">2. Routine<a class="headerlink" href="#2-routine" title="Permanent link">&para;</a></h3>
-<p>A <code>Routine</code> is the authored gameplay package for one <code>Song</code> interpreted through one gameplay mode.</p>
-<p>It owns:</p>
-<ul>
-<li>routine id</li>
-<li>song reference</li>
-<li>gameplay mode reference, such as <code>boxing</code>, <code>dance</code>, <code>step</code>, or <code>flow</code></li>
-<li>routine-level metadata such as intensity, training focus, and authoring notes</li>
-<li>presentation defaults</li>
-<li>validation profile for the mode</li>
-<li>one or more chart variants</li>
-</ul>
-<p>A routine is where AeroBeat says, “this is the boxing choreography for this song,” not just “this song exists.”</p>
-<h3 id="3-chart-variant">3. Chart Variant<a class="headerlink" href="#3-chart-variant" title="Permanent link">&para;</a></h3>
-<p>A <code>Chart Variant</code> is one concrete playable authored sequence.</p>
-<p>It owns:</p>
-<ul>
-<li>chart id</li>
-<li>routine reference</li>
-<li>difficulty</li>
-<li>interaction family target</li>
-<li>optional supported / validated input profiles</li>
-<li>timing-aligned event stream</li>
-<li>scoring metadata and hit windows</li>
-<li>optional presentation hints needed to render the chart well</li>
-</ul>
-<p>A chart variant represents <strong>one playable difficulty / compatibility slice</strong>, not an all-difficulties megafile.</p>
-<h4 id="why-difficulty-belongs-here">Why difficulty belongs here<a class="headerlink" href="#why-difficulty-belongs-here" title="Permanent link">&para;</a></h4>
-<p>AeroBeat does not store all difficulties as peer event arrays inside one giant chart by default.</p>
-<p>Separate chart variants give us:</p>
-<ul>
-<li>cleaner diffs and version control</li>
-<li>easier validation</li>
-<li>easier tooling</li>
-<li>fewer edit collisions between contributors</li>
-<li>room for alternate device-compatible variants later without forking the whole routine</li>
-</ul>
-<h3 id="4-workout">4. Workout<a class="headerlink" href="#4-workout" title="Permanent link">&para;</a></h3>
-<p>A <code>Workout</code> is a training program.</p>
-<p>It owns:</p>
-<ul>
-<li>workout id</li>
-<li>title / coach / goal / target duration / intensity metadata</li>
-<li>ordered list of routine selections or chart selections</li>
-<li>pre-roll / warmup / cooldown / post-roll content</li>
-<li>transitions, coaching cues, and workout-level presentation notes</li>
-</ul>
-<p>A workout references either a full routine plus difficulty preference, or an exact chart variant directly when the sequence must be locked.</p>
-<h2 id="shared-chart-envelope">Shared chart envelope<a class="headerlink" href="#shared-chart-envelope" title="Permanent link">&para;</a></h2>
-<p>AeroBeat uses <strong>one shared chart envelope</strong> across gameplay modes, with <strong>mode-specific payloads</strong> inside it.</p>
-<p>This keeps tooling, loading, validation, and runtime contracts coherent without pretending that Boxing and Step are authored with the exact same event vocabulary.</p>
-<p>The shared chart envelope is owned by <code>aerobeat-content-core</code> because it is part of the durable authored-content contract. Feature repos consume it and interpret it.</p>
-<h3 id="shared-fields">Shared fields<a class="headerlink" href="#shared-fields" title="Permanent link">&para;</a></h3>
-<p>All chart variants expose a common envelope containing fields such as:</p>
-<ul>
-<li><code>schema</code></li>
-<li><code>chartId</code></li>
-<li><code>songId</code></li>
-<li><code>routineId</code></li>
-<li><code>mode</code></li>
-<li><code>difficulty</code></li>
-<li><code>interactionFamily</code></li>
-<li><code>supportedInputProfiles</code></li>
-<li><code>validatedInputProfiles</code></li>
-<li><code>timing</code></li>
-<li><code>presentation</code></li>
-<li><code>scoring</code></li>
-<li><code>events</code></li>
-<li><code>metadata</code></li>
-</ul>
-<h3 id="mode-specific-payloads">Mode-specific payloads<a class="headerlink" href="#mode-specific-payloads" title="Permanent link">&para;</a></h3>
-<p>The meaning of <code>events</code> depends on the routine mode.</p>
-<p>Examples:</p>
-<ul>
-<li><strong>Boxing:</strong> strike, guard, obstacle, stance, knee, rotation cue</li>
-<li><strong>Dance:</strong> limb pose, direction, hold, travel, formation cue</li>
-<li><strong>Step:</strong> pad lane, hold, jump, mine, modifier</li>
-<li><strong>Flow:</strong> saber-style cut direction, lane, obstacle, path, gesture hold</li>
-</ul>
-<p>The loader contract is shared. The event schema is not identical across all modes.</p>
-<p>That is the correct compromise.</p>
-<h2 id="interaction-families-not-raw-devices">Interaction families, not raw devices<a class="headerlink" href="#interaction-families-not-raw-devices" title="Permanent link">&para;</a></h2>
-<p>Charts target <strong>interaction semantics</strong>, not raw hardware bindings.</p>
-<p>Do <strong>not</strong> author charts directly against devices such as webcam, JoyCon, headset, or keyboard. Those are runtime input strategies and profiles, not durable content primitives.</p>
-<h3 id="recommended-interaction-families">Recommended interaction families<a class="headerlink" href="#recommended-interaction-families" title="Permanent link">&para;</a></h3>
-<ul>
-<li><code>gesture_2d</code></li>
-<li>camera tracking</li>
-<li>mouse / touch</li>
-<li>keyboard / gamepad fallback mappings</li>
-<li>some JoyCon mappings</li>
-<li><code>tracked_6dof</code></li>
-<li>XR controllers</li>
-<li>tracked hands in world space</li>
-<li><code>hybrid</code></li>
-<li>content deliberately authored to adapt across both families with explicit runtime rules</li>
-</ul>
-<h3 id="why-this-matters">Why this matters<a class="headerlink" href="#why-this-matters" title="Permanent link">&para;</a></h3>
-<p>This preserves AeroBeat's input-agnostic architecture:</p>
-<ul>
-<li>content stays reusable longer</li>
-<li>runtime adapters can map the same authored semantics to multiple devices</li>
-<li>validated compatibility can be recorded without pretending every device behaves identically</li>
-<li>device-specific extensions can be added later without forking the entire content model</li>
-</ul>
-<h3 id="input-profile-fields">Input profile fields<a class="headerlink" href="#input-profile-fields" title="Permanent link">&para;</a></h3>
-<p>Use profile fields to express compatibility without making the profile the primary content target.</p>
-<ul>
-<li><code>interactionFamily</code> = what movement semantics the chart expects</li>
-<li><code>supportedInputProfiles</code> = profiles the chart is intended to run on</li>
-<li><code>validatedInputProfiles</code> = profiles that have actually been tested and approved</li>
-</ul>
-<p>For example, a Boxing chart targets <code>gesture_2d</code>, supports <code>mediapipe_camera</code>, <code>keyboard_debug</code>, and <code>gamepad_virtual_presence</code>, but only marks <code>mediapipe_camera</code> as validated initially.</p>
-<h2 id="view-modes-belong-mostly-to-runtime-presentation">View modes belong mostly to runtime presentation<a class="headerlink" href="#view-modes-belong-mostly-to-runtime-presentation" title="Permanent link">&para;</a></h2>
-<p>View modes such as Portal View, Track View, 3-Portal View, and 360-Portal View are treated primarily as <strong>presentation and runtime interpretation concerns</strong>, not as separate chart families.</p>
-<p>Charts include presentation hints such as:</p>
-<ul>
-<li>preferred views</li>
-<li>preferred portal layout</li>
-<li>mirror-camera mode preference</li>
-<li>travel-time or approach hints where authoring truly depends on them</li>
-</ul>
-<p>The same authored event stream remains portable across views by default.</p>
-<h3 id="authoring-rule">Authoring rule<a class="headerlink" href="#authoring-rule" title="Permanent link">&para;</a></h3>
-<p>Author the athlete interaction first.</p>
-<p>Then let the runtime render that interaction as:</p>
-<ul>
-<li>3D incoming portal targets</li>
-<li>2D track lanes</li>
-<li>folded 360-to-front fallback layouts</li>
-<li>multi-portal or simplified mobile representations</li>
-</ul>
-<p>If a future mode truly requires view-specific authored data that cannot be derived, add that as an extension field rather than replacing the content hierarchy.</p>
-<h2 id="recommended-file-package-relationship">Recommended file / package relationship<a class="headerlink" href="#recommended-file-package-relationship" title="Permanent link">&para;</a></h2>
-<p>At the docs level, AeroBeat treats these as distinct assets even if implementation details evolve later:</p>
-<ul>
-<li>one <code>Song</code> record</li>
-<li>one or more <code>Routine</code> records under that song</li>
-<li>one chart file or record per <code>Chart Variant</code></li>
-<li>one <code>Workout</code> file or record assembling selections</li>
-</ul>
-<p>That yields small, reviewable, reusable units.</p>
-<h2 id="content-package-boundary">Content package boundary<a class="headerlink" href="#content-package-boundary" title="Permanent link">&para;</a></h2>
-<p>AeroBeat packages authored content as a <strong>content package</strong> with one manifest and one or more typed records/resources inside it.</p>
-<p>The package boundary is the unit of distribution, import, indexing, and compatibility review.
-The individual <code>Song</code>, <code>Routine</code>, <code>Chart Variant</code>, and <code>Workout</code> records inside that package remain the unit of authoring, validation, and runtime selection.</p>
-<h3 id="package-responsibilities">Package responsibilities<a class="headerlink" href="#package-responsibilities" title="Permanent link">&para;</a></h3>
-<p>A content package owns:</p>
-<ul>
-<li>package id</li>
-<li>package version</li>
-<li>package-level author / attribution / licensing metadata</li>
-<li>package manifest entries for contained songs, routines, chart variants, workouts, and media resources</li>
-<li>references to the binary resources required by those records, such as audio, thumbnails, coaching clips, and preview art</li>
-<li>package-level compatibility declarations, such as minimum supported schema family or required feature lanes</li>
-</ul>
-<h3 id="package-rules">Package rules<a class="headerlink" href="#package-rules" title="Permanent link">&para;</a></h3>
+<p>The goal is to avoid collapsing contracts, authoring tools, importers, registries, and gameplay runtime into one repo or one implementation pass.</p>
+<h2 id="planning-rules">Planning rules<a class="headerlink" href="#planning-rules" title="Permanent link">&para;</a></h2>
 <ol>
-<li>A package may contain one or more songs.</li>
-<li>A routine must reference a song that exists in the same package or in a separately declared dependency package.</li>
-<li>A chart variant must reference exactly one routine.</li>
-<li>A workout may reference routines or exact chart variants, but a workout step must declare which resolution rule it is using.</li>
-<li>Binary media stays as referenced resources; the canonical authored contracts stay in structured content records.</li>
+<li><strong>Contracts first, tooling second, runtime integration third.</strong></li>
+<li><strong><code>aerobeat-content-core</code> owns canonical shapes; tool repos do not redefine them.</strong></li>
+<li><strong>Mode-specific validation may extend the system, but cross-mode content validation starts in the shared content lane.</strong></li>
+<li><strong>Do not create a new repo until one repo would otherwise hold two distinct ownership domains or release cadences.</strong></li>
+<li><strong>Runtime repos consume validated content contracts; they should not become the source of truth for package structure or schema rules.</strong></li>
 </ol>
-<h2 id="authored-data-contract-boundaries">Authored data contract boundaries<a class="headerlink" href="#authored-data-contract-boundaries" title="Permanent link">&para;</a></h2>
-<p>The durable authored contract is split across four levels:</p>
-<h3 id="song-contract">Song contract<a class="headerlink" href="#song-contract" title="Permanent link">&para;</a></h3>
-<p>The <code>Song</code> contract is responsible for reusable music identity and timing authority.
-It must remain free of mode-specific gameplay data.</p>
-<h3 id="routine-contract">Routine contract<a class="headerlink" href="#routine-contract" title="Permanent link">&para;</a></h3>
-<p>The <code>Routine</code> contract is responsible for the mode-specific authored package for one song.
-It is the boundary where AeroBeat commits to the gameplay family, authoring vocabulary, validation profile, and default presentation intent.</p>
-<h3 id="chart-variant-contract">Chart Variant contract<a class="headerlink" href="#chart-variant-contract" title="Permanent link">&para;</a></h3>
-<p>The <code>Chart Variant</code> contract is responsible for one exact playable authored sequence.
-It is the boundary for difficulty, interaction family, validated compatibility, scoring envelope, and the timed event stream.</p>
-<h3 id="workout-contract">Workout contract<a class="headerlink" href="#workout-contract" title="Permanent link">&para;</a></h3>
-<p>The <code>Workout</code> contract is responsible for session composition.
-It sequences playable selections, transition timing, and coaching/program flow, but it does not redefine the underlying chart semantics.</p>
-<h2 id="registry-and-discovery-responsibilities">Registry and discovery responsibilities<a class="headerlink" href="#registry-and-discovery-responsibilities" title="Permanent link">&para;</a></h2>
-<p>AeroBeat separates <strong>registry contracts</strong> from <strong>registry implementations</strong>.</p>
-<h3 id="aerobeat-content-core-owns"><code>aerobeat-content-core</code> owns<a class="headerlink" href="#aerobeat-content-core-owns" title="Permanent link">&para;</a></h3>
+<h2 id="phase-1-docs-and-contract-decisions">Phase 1 — Docs and contract decisions<a class="headerlink" href="#phase-1-docs-and-contract-decisions" title="Permanent link">&para;</a></h2>
+<h3 id="goal">Goal<a class="headerlink" href="#goal" title="Permanent link">&para;</a></h3>
+<p>Freeze the architecture and vocabulary well enough that implementation repos can be created without re-litigating the model.</p>
+<h3 id="deliverables">Deliverables<a class="headerlink" href="#deliverables" title="Permanent link">&para;</a></h3>
 <ul>
-<li>content identity fields and reference rules</li>
-<li>package-manifest contract shape</li>
-<li>registry query/result interfaces</li>
-<li>lookup semantics for songs, routines, chart variants, workouts, and resource references</li>
-<li>stable rules for duplicate ids, missing references, package precedence, and disabled/hidden content states</li>
+<li>canonical docs for <code>Song</code>, <code>Routine</code>, <code>Chart Variant</code>, and <code>Workout</code></li>
+<li>explicit ownership language for <code>aerobeat-content-core</code>, <code>aerobeat-feature-core</code>, and <code>aerobeat-tool-core</code></li>
+<li>documented shared chart envelope and interaction-family targeting rules</li>
+<li>documented package/file relationship for song, routine, chart-variant, and workout artifacts</li>
+<li>documented decision on what belongs to content contracts vs tool workflows vs runtime interpretation</li>
 </ul>
-<h3 id="concrete-toolsruntime-own">concrete tools/runtime own<a class="headerlink" href="#concrete-toolsruntime-own" title="Permanent link">&para;</a></h3>
+<h3 id="required-decisions-before-code-starts">Required decisions before code starts<a class="headerlink" href="#required-decisions-before-code-starts" title="Permanent link">&para;</a></h3>
 <ul>
-<li>filesystem scanning</li>
-<li>remote catalog fetches</li>
-<li>cache persistence</li>
-<li>user-library indexing</li>
-<li>install/uninstall state</li>
-<li>download/update policy</li>
+<li>canonical ids/references for song, routine, chart variant, and workout</li>
+<li>minimum chart envelope fields</li>
+<li>which presentation hints are durable content fields versus runtime-only concerns</li>
+<li>whether workouts default to routine+difficulty selection or exact chart ids</li>
+<li>which validation responsibilities are shared across all content versus delegated to feature repos</li>
 </ul>
-<p>The important split is simple: <code>aerobeat-content-core</code> defines <strong>what a registry means</strong>; tools and app/runtime code decide <strong>how a registry is populated and persisted</strong>.</p>
-<h2 id="schema-versioning-and-migration">Schema versioning and migration<a class="headerlink" href="#schema-versioning-and-migration" title="Permanent link">&para;</a></h2>
-<p>AeroBeat versioning is explicit at both the package and record levels.</p>
-<h3 id="versioning-rules">Versioning rules<a class="headerlink" href="#versioning-rules" title="Permanent link">&para;</a></h3>
+<h3 id="exit-criteria">Exit criteria<a class="headerlink" href="#exit-criteria" title="Permanent link">&para;</a></h3>
 <ul>
-<li>every package declares a package version</li>
-<li>every structured content record declares its schema id/version</li>
-<li>schema evolution is append-only until a deliberate breaking revision is published</li>
-<li>breaking schema changes require a new schema version rather than silent reinterpretation</li>
-<li>loaders must reject unknown breaking schema versions unless a registered migration path exists</li>
+<li>docs no longer describe a universal core hub</li>
+<li>content ownership is consistent across overview, topology, repo-map, workflow, and content-model docs</li>
+<li>the content package boundary is clear enough to generate fixtures and tests in <code>aerobeat-content-core</code></li>
 </ul>
-<h3 id="migration-ownership">Migration ownership<a class="headerlink" href="#migration-ownership" title="Permanent link">&para;</a></h3>
-<p><code>aerobeat-content-core</code> owns:</p>
+<h2 id="phase-2-shared-aerobeat-content-core-contract-implementation">Phase 2 — Shared <code>aerobeat-content-core</code> contract implementation<a class="headerlink" href="#phase-2-shared-aerobeat-content-core-contract-implementation" title="Permanent link">&para;</a></h2>
+<h3 id="goal_1">Goal<a class="headerlink" href="#goal_1" title="Permanent link">&para;</a></h3>
+<p>Stand up the dependency-light shared repo that owns the content model and loader-facing contracts.</p>
+<h3 id="aerobeat-content-core-should-contain"><code>aerobeat-content-core</code> should contain<a class="headerlink" href="#aerobeat-content-core-should-contain" title="Permanent link">&para;</a></h3>
 <ul>
-<li>schema identifiers</li>
-<li>compatibility classification</li>
-<li>migration interface contracts</li>
-<li>canonical migration result/report types</li>
-<li>the rule that migrations must be explicit, traceable, and loss-aware</li>
+<li>data/resource contracts for <code>Song</code>, <code>Routine</code>, <code>Chart Variant</code>, and <code>Workout</code></li>
+<li>shared chart-envelope types</li>
+<li>content references, ids, metadata, and manifest primitives</li>
+<li>loader/registry interfaces used by both runtime and tools</li>
+<li>shared content validation result types</li>
+<li>workout selection/sequencing contracts that are mode-agnostic</li>
+<li>fixtures and contract tests for canonical example content</li>
 </ul>
-<p><code>aerobeat-tool-core</code> and concrete tooling own:</p>
+<h3 id="aerobeat-content-core-should-not-contain"><code>aerobeat-content-core</code> should not contain<a class="headerlink" href="#aerobeat-content-core-should-not-contain" title="Permanent link">&para;</a></h3>
 <ul>
-<li>author-facing migration workflows</li>
-<li>upgrade preview UX</li>
-<li>batch migration commands</li>
-<li>import-time auto-upgrade policies where approved</li>
+<li>gameplay scoring rules</li>
+<li>device/provider implementation details</li>
+<li>editor UI</li>
+<li>ingestion-side API clients or service orchestration</li>
+<li>mode-specific runtime systems that belong in feature repos</li>
 </ul>
-<p>Feature repos may provide mode-specific event-schema migrations for their own payload families, but they do so through the shared migration interfaces rather than inventing a parallel migration system.</p>
-<h2 id="validation-layering">Validation layering<a class="headerlink" href="#validation-layering" title="Permanent link">&para;</a></h2>
-<p>AeroBeat uses layered validation instead of one giant validator.</p>
-<h3 id="layer-1-packagereference-validation">Layer 1: package/reference validation<a class="headerlink" href="#layer-1-packagereference-validation" title="Permanent link">&para;</a></h3>
-<p>Shared validation in <code>aerobeat-content-core</code> checks:</p>
+<h3 id="recommended-repository-action">Recommended repository action<a class="headerlink" href="#recommended-repository-action" title="Permanent link">&para;</a></h3>
 <ul>
-<li>schema presence and version legality</li>
-<li>id uniqueness and reference integrity</li>
-<li>required field presence</li>
-<li>timing-envelope shape</li>
-<li>package/resource reference existence</li>
-<li>workout step reference legality</li>
-<li>interaction-family field validity</li>
+<li><strong>Create <code>aerobeat-content-core</code> immediately</strong> if it does not already exist. This repo is justified by the six-core model and is the canonical owner of the lane.</li>
 </ul>
-<h3 id="layer-2-mode-specific-content-validation">Layer 2: mode-specific content validation<a class="headerlink" href="#layer-2-mode-specific-content-validation" title="Permanent link">&para;</a></h3>
-<p>Feature repos validate the mode-specific payload semantics, for example:</p>
+<h3 id="exit-criteria_1">Exit criteria<a class="headerlink" href="#exit-criteria_1" title="Permanent link">&para;</a></h3>
 <ul>
-<li>boxing event vocabulary legality</li>
-<li>dance formation constraints</li>
-<li>step lane/rule constraints</li>
-<li>flow cut/path constraints</li>
+<li>a consumer can load the shared contract layer without depending on a specific feature repo</li>
+<li>content fixtures exist for at least one routine and one workout path</li>
+<li>feature and tool repos can import the same content contracts without duplicating types</li>
 </ul>
-<h3 id="layer-3-toolruntime-compatibility-validation">Layer 3: tool/runtime compatibility validation<a class="headerlink" href="#layer-3-toolruntime-compatibility-validation" title="Permanent link">&para;</a></h3>
-<p>Tool and runtime layers validate environment-specific concerns, for example:</p>
+<h2 id="phase-3-validation-registry-and-schema-version-foundations">Phase 3 — Validation, registry, and schema-version foundations<a class="headerlink" href="#phase-3-validation-registry-and-schema-version-foundations" title="Permanent link">&para;</a></h2>
+<h3 id="goal_2">Goal<a class="headerlink" href="#goal_2" title="Permanent link">&para;</a></h3>
+<p>Add the machinery that makes content safe to evolve and safe to consume.</p>
+<h3 id="shared-responsibilities-that-still-belong-in-the-content-lane">Shared responsibilities that still belong in the content lane<a class="headerlink" href="#shared-responsibilities-that-still-belong-in-the-content-lane" title="Permanent link">&para;</a></h3>
 <ul>
-<li>missing imported files on disk</li>
-<li>unsupported codecs or oversized assets</li>
-<li>target-platform packaging rules</li>
-<li>publish/upload policy checks</li>
+<li>schema-version fields and compatibility policy</li>
+<li>manifest/package primitives</li>
+<li>content registry interfaces and lookup keys</li>
+<li>shared validation categories such as missing references, malformed timing blocks, invalid metadata, and unsupported interaction-family declarations</li>
+<li>migration surface definitions for forward/backward compatibility where feasible</li>
 </ul>
-<p>A chart is not considered fully valid just because one layer passed. The shared layer proves the content contract is structurally coherent. The feature layer proves the gameplay payload is meaningful. The tool/runtime layer proves the content is usable in the current environment.</p>
-<h2 id="import-export-and-ingestion-boundaries">Import, export, and ingestion boundaries<a class="headerlink" href="#import-export-and-ingestion-boundaries" title="Permanent link">&para;</a></h2>
-<p>AeroBeat keeps canonical content contracts separate from ingestion mechanics.</p>
-<p><code>aerobeat-content-core</code> owns:</p>
+<h3 id="split-of-responsibility">Split of responsibility<a class="headerlink" href="#split-of-responsibility" title="Permanent link">&para;</a></h3>
 <ul>
-<li>canonical import/export DTO contracts where shared interchange is required</li>
-<li>normalized validation/migration reports</li>
-<li>package manifest and content record shapes</li>
-<li>stable ids/reference rules that ingestion must preserve</li>
+<li><strong><code>aerobeat-content-core</code> owns</strong> validation result models, manifest/registry contracts, schema/version identifiers, and shared validators for cross-mode structural integrity.</li>
+<li><strong><code>aerobeat-feature-core</code> / feature repos own</strong> mode-specific semantic validation, such as whether Boxing events are legal for Boxing rules.</li>
+<li><strong><code>aerobeat-tool-core</code> / tool repos own</strong> validator orchestration UX, batch import flows, editor diagnostics presentation, and external system hooks.</li>
 </ul>
-<p><code>aerobeat-tool-core</code> and concrete tool repos own:</p>
+<h3 id="recommended-repository-action_1">Recommended repository action<a class="headerlink" href="#recommended-repository-action_1" title="Permanent link">&para;</a></h3>
 <ul>
-<li>external file format adapters</li>
-<li>authoring-tool importers/exporters</li>
-<li>batch ingest jobs</li>
-<li>backend upload/download workflows</li>
-<li>moderation/publishing workflow state</li>
+<li><strong>Do not create a separate validation repo yet.</strong> Keep validation contracts and cross-mode structural validators in <code>aerobeat-content-core</code> until there is real pressure for a separately deployable validator service.</li>
+<li><strong>Do not create a separate registry service repo yet.</strong> First define registry interfaces and local/package-backed lookup behavior in shared contracts.</li>
 </ul>
-<p>That means CSV import, editor project conversion, web upload, and cloud catalog ingestion are all tool responsibilities. The resulting durable records still have to land on the same <code>Song</code> / <code>Routine</code> / <code>Chart Variant</code> / <code>Workout</code> contracts owned by <code>aerobeat-content-core</code>.</p>
-<h2 id="workout-sequencing-and-playback-handoff">Workout sequencing and playback handoff<a class="headerlink" href="#workout-sequencing-and-playback-handoff" title="Permanent link">&para;</a></h2>
-<p>The workout contract ends at <strong>session sequencing intent</strong>.
-The feature/runtime contract begins at <strong>playback execution and athlete interpretation</strong>.</p>
-<h3 id="aerobeat-content-core-owns_1"><code>aerobeat-content-core</code> owns<a class="headerlink" href="#aerobeat-content-core-owns_1" title="Permanent link">&para;</a></h3>
+<h3 id="exit-criteria_2">Exit criteria<a class="headerlink" href="#exit-criteria_2" title="Permanent link">&para;</a></h3>
 <ul>
-<li>workout step ordering</li>
-<li>routine/chart selection references</li>
-<li>optional difficulty-resolution rules when the workout references a routine rather than an exact chart variant</li>
-<li>transition metadata</li>
-<li>workout-level timing and coaching-sequence metadata</li>
-<li>the handoff contract that resolves a workout step into a concrete playable chart selection plus any attached session metadata</li>
+<li>every content artifact declares a schema/version path</li>
+<li>registry lookup rules are documented and testable</li>
+<li>contract tests can distinguish shared structural failures from feature-specific semantic failures</li>
 </ul>
-<h3 id="featureruntime-owns">feature/runtime owns<a class="headerlink" href="#featureruntime-owns" title="Permanent link">&para;</a></h3>
+<h2 id="phase-4-tool-core-authoring-and-ingestion-implementation">Phase 4 — Tool-core, authoring, and ingestion implementation<a class="headerlink" href="#phase-4-tool-core-authoring-and-ingestion-implementation" title="Permanent link">&para;</a></h2>
+<h3 id="goal_3">Goal<a class="headerlink" href="#goal_3" title="Permanent link">&para;</a></h3>
+<p>Build tooling against the stabilized content contracts instead of inventing tool-local schemas.</p>
+<h3 id="aerobeat-tool-core-responsibilities-in-this-phase"><code>aerobeat-tool-core</code> responsibilities in this phase<a class="headerlink" href="#aerobeat-tool-core-responsibilities-in-this-phase" title="Permanent link">&para;</a></h3>
 <ul>
-<li>spawning gameplay objects from the resolved chart</li>
-<li>hit/scoring interpretation during play</li>
-<li>dynamic difficulty or assist behavior at runtime</li>
-<li>view rendering and presentation realization</li>
-<li>pause/retry/fail/recovery behavior</li>
+<li>tool-side models for import jobs, validation sessions, persistence/settings needed by tools</li>
+<li>stable interfaces for tool workflows that operate on content-core contracts</li>
+<li>shared diagnostics/result plumbing used by authoring or ingestion apps</li>
 </ul>
-<p>In other words, Content decides <strong>what should be played next</strong> and resolves the authored selection boundary. Feature/runtime decides <strong>how that resolved selection is actually performed on-screen and scored in motion</strong>.</p>
-<h2 id="explicit-split-content-core-vs-tool-core">Explicit split: <code>content-core</code> vs <code>tool-core</code><a class="headerlink" href="#explicit-split-content-core-vs-tool-core" title="Permanent link">&para;</a></h2>
-<h3 id="aerobeat-content-core"><code>aerobeat-content-core</code><a class="headerlink" href="#aerobeat-content-core" title="Permanent link">&para;</a></h3>
-<p>Owns the durable shared language of authored content:</p>
+<h3 id="concrete-tool-work-expected-after-content-core-stabilizes">Concrete tool work expected after <code>content-core</code> stabilizes<a class="headerlink" href="#concrete-tool-work-expected-after-content-core-stabilizes" title="Permanent link">&para;</a></h3>
 <ul>
-<li>canonical content records</li>
-<li>shared chart envelope</li>
-<li>package-manifest contract</li>
-<li>registry/loader/query interfaces</li>
-<li>schema ids/version rules</li>
-<li>shared validation contracts and result types</li>
-<li>workout sequencing contracts</li>
-<li>migration interface contracts</li>
+<li>chart/routine authoring flows</li>
+<li>workout authoring flows</li>
+<li>import/ingestion flows from source audio/metadata/chart sources</li>
+<li>validation runners used by CLI/editor tooling</li>
 </ul>
-<h3 id="aerobeat-tool-core"><code>aerobeat-tool-core</code><a class="headerlink" href="#aerobeat-tool-core" title="Permanent link">&para;</a></h3>
-<p>Owns shared tool-side operational models around that content:</p>
-<ul>
-<li>editor/backend/settings-facing DTOs that are not themselves durable authored content</li>
-<li>import/export job/result models</li>
-<li>publishing/moderation workflow models</li>
-<li>batch validation/migration job models</li>
-<li>tool-side status/progress/error surfaces</li>
-</ul>
-<h3 id="non-goals">non-goals<a class="headerlink" href="#non-goals" title="Permanent link">&para;</a></h3>
-<ul>
-<li><code>aerobeat-content-core</code> does not own editor UX, upload workflows, or backend queue state.</li>
-<li><code>aerobeat-tool-core</code> does not redefine <code>Song</code>, <code>Routine</code>, <code>Chart Variant</code>, <code>Workout</code>, or the shared chart envelope.</li>
-<li>feature repos do not replace the shared content contracts with mode-local durable content roots.</li>
-</ul>
-<h2 id="minimal-shared-chart-envelope-example">Minimal shared chart envelope example<a class="headerlink" href="#minimal-shared-chart-envelope-example" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aerobeat.chart.boxing.v1&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;chartId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;boxing-song123-medium-gesture&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;songId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;song123&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;routineId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;song123-boxing&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;boxing&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;difficulty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;medium&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;interactionFamily&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gesture_2d&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;supportedInputProfiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;mediapipe_camera&quot;</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;validatedInputProfiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;mediapipe_camera&quot;</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;timing&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;offsetMs&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;resolution&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;presentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;preferredViews&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;portal&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;track&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;portalMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;front_3_portal&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;mirrorCamera&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;scoring&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;hitWindowMs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;perfect&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;good&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;ok&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">140</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;comboModel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;standard&quot;</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;cardio&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;boxing&quot;</span><span class="p">]</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="opinionated-rules">Opinionated rules<a class="headerlink" href="#opinionated-rules" title="Permanent link">&para;</a></h2>
-<p>To keep the ecosystem coherent, AeroBeat follows these rules:</p>
+<h3 id="recommended-repository-actions">Recommended repository actions<a class="headerlink" href="#recommended-repository-actions" title="Permanent link">&para;</a></h3>
+<p>Create concrete tool repos only when ownership or release cadence becomes distinct:</p>
 <ol>
-<li><strong>One song can power many routines.</strong> Do not duplicate song metadata per mode.</li>
-<li><strong>One routine equals one song interpreted through one mode.</strong> Do not mix Boxing and Dance inside a single routine.</li>
-<li><strong>One chart variant equals one playable sequence.</strong> Keep each difficulty / compatibility slice distinct.</li>
-<li><strong>Charts target interaction families first.</strong> Devices are compatibility notes, not the root abstraction.</li>
-<li><strong>View modes are render strategies first.</strong> Do not create separate content silos for portal vs track unless a future mode proves it is necessary.</li>
-<li><strong>Mode-specific event vocabularies are allowed.</strong> The chart envelope is shared; the authored payload is not forced into fake universality.</li>
-<li><strong>Content ownership stays in <code>aerobeat-content-core</code>.</strong> Feature, tool, UI, and assembly repos consume these contracts; they do not redefine them.</li>
+<li><strong>Likely next repo:</strong> <code>aerobeat-tool-content-authoring</code></li>
+<li>justified once there is enough editing workflow to warrant its own release surface</li>
+<li>should consume <code>aerobeat-content-core</code> and <code>aerobeat-tool-core</code></li>
+<li><strong>Likely later repo:</strong> <code>aerobeat-tool-content-ingestion</code></li>
+<li>justified only when import/conversion pipelines become substantial enough to stand apart from authoring</li>
+<li>should not become the canonical owner of schema definitions</li>
+<li><strong>Optional later split:</strong> dedicated workout/choreography editor repo</li>
+<li>only justified if workout programming diverges materially from chart authoring</li>
 </ol>
-<h2 id="first-shipping-recommendation">First shipping recommendation<a class="headerlink" href="#first-shipping-recommendation" title="Permanent link">&para;</a></h2>
-<p>For the first shipping slice, AeroBeat standardizes on:</p>
+<h3 id="not-yet-justified">Not yet justified<a class="headerlink" href="#not-yet-justified" title="Permanent link">&para;</a></h3>
 <ul>
-<li><code>Song</code> as the reusable music source</li>
-<li><code>Routine</code> as the missing gameplay package primitive</li>
-<li><code>Chart Variant</code> as the single playable difficulty artifact</li>
-<li><code>Workout</code> as the session/program container</li>
-<li>a shared chart envelope with mode-specific event payloads</li>
-<li><code>gesture_2d</code> as the first target interaction family for Boxing + MediaPipe</li>
+<li>separate validator SaaS/service repo</li>
+<li>separate registry backend repo</li>
+<li>separate workout-only repo before there is clear workflow divergence</li>
 </ul>
-<p>That gives Boxing + Camera Tracking a practical v1 format now while preserving room for XR, JoyCons, keyboard fallback, and future gameplay families later.</p>
+<h3 id="exit-criteria_3">Exit criteria<a class="headerlink" href="#exit-criteria_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>at least one tool path can author or edit a routine/chart using only shared contracts</li>
+<li>ingestion can emit canonical content artifacts without hand-written post-fixups in runtime repos</li>
+<li>tool diagnostics map cleanly back to shared schema/validator results</li>
+</ul>
+<h2 id="phase-5-playback-and-runtime-integration">Phase 5 — Playback and runtime integration<a class="headerlink" href="#phase-5-playback-and-runtime-integration" title="Permanent link">&para;</a></h2>
+<h3 id="goal_4">Goal<a class="headerlink" href="#goal_4" title="Permanent link">&para;</a></h3>
+<p>Connect the approved content contracts to live feature/runtime behavior without moving ownership out of the content lane.</p>
+<h3 id="runtime-integration-responsibilities">Runtime integration responsibilities<a class="headerlink" href="#runtime-integration-responsibilities" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>aerobeat-feature-core</code> defines how gameplay systems consume chart events, scoring windows, and runtime interpretation rules</li>
+<li>concrete <code>aerobeat-feature-*</code> repos implement mode-specific loaders/adapters on top of shared chart envelopes and mode payloads</li>
+<li>assemblies compose the necessary cores and concrete repos through GodotEnv</li>
+<li>runtime selection logic resolves workout → routine/chart selection using content-core references and validated manifests</li>
+</ul>
+<h3 id="important-constraint">Important constraint<a class="headerlink" href="#important-constraint" title="Permanent link">&para;</a></h3>
+<p>Playback integration should consume the schema/version and registry contracts from the content lane. Runtime repos may cache, adapt, or optimize content, but they should not quietly fork the canonical content model.</p>
+<h3 id="recommended-repository-action_2">Recommended repository action<a class="headerlink" href="#recommended-repository-action_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>No new content repo is required for playback integration.</strong> This work belongs in <code>aerobeat-feature-core</code>, concrete feature repos, and assembly repos already documented.</li>
+</ul>
+<h3 id="exit-criteria_4">Exit criteria<a class="headerlink" href="#exit-criteria_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>one end-to-end path can load validated content artifacts into a feature runtime</li>
+<li>workout selection can resolve into a concrete playable chart path</li>
+<li>runtime errors can be traced back to shared content ids/manifests rather than ad hoc feature-local assumptions</li>
+</ul>
+<h2 id="recommended-repo-creation-order">Recommended repo creation order<a class="headerlink" href="#recommended-repo-creation-order" title="Permanent link">&para;</a></h2>
+<p>Create repos only when their ownership is already clear from the phase plan:</p>
+<ol>
+<li><strong><code>aerobeat-content-core</code></strong> — required now; canonical lane owner</li>
+<li><strong><code>aerobeat-tool-content-authoring</code></strong> — next likely concrete tool repo once contract implementation exists</li>
+<li><strong><code>aerobeat-tool-content-ingestion</code></strong> — only after import/conversion workflows become distinct enough</li>
+<li><strong>Optional dedicated workout/choreography tool repo</strong> — only if authoring workflows diverge enough to justify the split</li>
+</ol>
+<h2 id="recommended-implementation-sequence-summary">Recommended implementation sequence summary<a class="headerlink" href="#recommended-implementation-sequence-summary" title="Permanent link">&para;</a></h2>
+<ol>
+<li>finish docs and contract decisions in <code>aerobeat-docs</code></li>
+<li>create/stand up <code>aerobeat-content-core</code></li>
+<li>add shared schema-version, manifest, registry, and structural validation foundations there</li>
+<li>wire <code>aerobeat-tool-core</code> and the first concrete authoring workflow against those shared contracts</li>
+<li>add ingestion only when it is materially different from authoring</li>
+<li>integrate playback/runtime in <code>aerobeat-feature-core</code> and feature repos using the same validated content contracts</li>
+</ol>
+<p>That sequence keeps ownership aligned with the six-core architecture and avoids the common failure mode where tools or feature runtimes become the accidental source of truth for authored content.</p>
 
 
 
@@ -6854,7 +5769,7 @@ The feature/runtime contract begins at <strong>playback execution and athlete in
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 21:22:58 UTC">April 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 21:23:01 UTC">April 20, 2026</span>
   </span>
 
     
