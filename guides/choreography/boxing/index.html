@@ -1016,6 +1016,89 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#boxing-mediapipe-v1-chart-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 Boxing + MediaPipe v1 Chart Shape
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 Boxing + MediaPipe v1 Chart Shape">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shared-boxing-chart-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared boxing chart fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-vocabulary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event vocabulary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatial-targeting-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spatial targeting rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timing-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timing rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concrete-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concrete example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boxing-authoring-guidance-for-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boxing authoring guidance for v1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mapping-best-practices" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5444,6 +5527,89 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#boxing-mediapipe-v1-chart-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 Boxing + MediaPipe v1 Chart Shape
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 Boxing + MediaPipe v1 Chart Shape">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shared-boxing-chart-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared boxing chart fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-vocabulary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event vocabulary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatial-targeting-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spatial targeting rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timing-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timing rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concrete-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concrete example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boxing-authoring-guidance-for-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boxing authoring guidance for v1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mapping-best-practices" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5587,6 +5753,8 @@
 <li><strong>Tool:</strong> <strong>Boxing Choreography Studio</strong></li>
 <li><strong>Grid:</strong> 5 Zones (Left, Right, Low-Left, Low-Right, Center).</li>
 <li><strong>Perspective:</strong> 3D Portal View (Targets fly towards you).</li>
+<li><strong>Content Model:</strong> A boxing chart is a <strong>Chart Variant</strong> inside a song's <strong>Boxing Routine</strong>. The song owns audio/timing, the routine owns boxing-specific packaging, and the chart variant owns one concrete playable difficulty.</li>
+<li><strong>Targeting Rule:</strong> Author against <strong>interaction semantics</strong> (<code>gesture_2d</code>) rather than hard-binding the chart to a raw device. MediaPipe camera tracking is the first validated input profile, not the core content abstraction.</li>
 </ul>
 <h2 id="mechanics-objects">🥊 Mechanics &amp; Objects<a class="headerlink" href="#mechanics-objects" title="Permanent link">&para;</a></h2>
 <h3 id="targets-punches">Targets (Punches)<a class="headerlink" href="#targets-punches" title="Permanent link">&para;</a></h3>
@@ -5635,6 +5803,160 @@
 <li><strong>Action:</strong> Lift the corresponding knee (Left=Black, Right=White) to intercept the target.</li>
 <li><strong>Placement:</strong> These should always be placed on the <strong>Bottom Row</strong> of the grid to align with the knee lift height.</li>
 <li><strong>Tracking:</strong> The engine does not track legs in Boxing mode. Instead, it checks if the player's <strong>Head</strong> is horizontally aligned with the target lane. This allows for accessibility modifications (like substituting a Knee Strike for a Block/Crunch).</li>
+</ul>
+<h2 id="boxing-mediapipe-v1-chart-shape">📦 Boxing + MediaPipe v1 Chart Shape<a class="headerlink" href="#boxing-mediapipe-v1-chart-shape" title="Permanent link">&para;</a></h2>
+<p>The first shipping boxing chart format should use a shared chart envelope with a boxing-specific event payload.</p>
+<h3 id="shared-boxing-chart-fields">Shared boxing chart fields<a class="headerlink" href="#shared-boxing-chart-fields" title="Permanent link">&para;</a></h3>
+<p>A Boxing chart variant should include:</p>
+<ul>
+<li><code>schema</code>: <code>aerobeat.chart.boxing.v1</code></li>
+<li><code>chartId</code>, <code>songId</code>, <code>routineId</code></li>
+<li><code>mode</code>: <code>boxing</code></li>
+<li><code>difficulty</code></li>
+<li><code>interactionFamily</code>: usually <code>gesture_2d</code> for camera-first boxing</li>
+<li><code>supportedInputProfiles</code> and <code>validatedInputProfiles</code></li>
+<li><code>timing</code>: aligned to song/conductor time</li>
+<li><code>presentation</code>: view preferences and portal-layout hints</li>
+<li><code>scoring</code>: hit windows and combo model</li>
+<li><code>events</code>: timed boxing actions</li>
+<li><code>metadata</code>: author, tags, notes</li>
+</ul>
+<h3 id="event-vocabulary">Event vocabulary<a class="headerlink" href="#event-vocabulary" title="Permanent link">&para;</a></h3>
+<p>For Boxing + MediaPipe v1, the authoring vocabulary should focus on athlete intent rather than device details:</p>
+<ul>
+<li><code>strike</code><ul>
+<li><code>hand</code>: <code>left</code> or <code>right</code></li>
+<li><code>strike</code>: <code>jab</code>, <code>cross</code>, <code>hook</code>, <code>uppercut</code></li>
+<li><code>zone</code>: <code>left_high</code>, <code>right_high</code>, <code>left_low</code>, <code>right_low</code>, <code>center</code></li>
+</ul>
+</li>
+<li><code>guard</code><ul>
+<li><code>zone</code>: typically <code>center</code></li>
+<li><code>holdMs</code></li>
+</ul>
+</li>
+<li><code>obstacle</code><ul>
+<li><code>avoid</code>: <code>squat</code>, <code>lean_left</code>, <code>lean_right</code>, <code>rotate_left</code>, <code>rotate_right</code></li>
+<li><code>shape</code></li>
+<li><code>durationMs</code></li>
+</ul>
+</li>
+<li><code>stance</code><ul>
+<li><code>stance</code>: <code>orthodox</code> or <code>southpaw</code></li>
+<li><code>scored</code>: usually <code>false</code></li>
+</ul>
+</li>
+<li><code>knee</code><ul>
+<li><code>side</code>: <code>left</code> or <code>right</code></li>
+<li><code>zone</code>: usually low</li>
+</ul>
+</li>
+</ul>
+<h3 id="spatial-targeting-rule">Spatial targeting rule<a class="headerlink" href="#spatial-targeting-rule" title="Permanent link">&para;</a></h3>
+<p>Use <code>zone</code> and <code>portal</code> as symbolic, athlete-relative fields.</p>
+<ul>
+<li><code>zone</code> expresses where the action lands relative to the active portal and the athlete.</li>
+<li><code>portal</code> expresses which portal context is active, such as <code>center</code>, <code>left</code>, or <code>right</code>.</li>
+</ul>
+<p>Do not author Boxing + MediaPipe v1 against raw camera coordinates. The runtime maps authored boxing semantics onto MediaPipe landmarks.</p>
+<h3 id="timing-rule">Timing rule<a class="headerlink" href="#timing-rule" title="Permanent link">&para;</a></h3>
+<p>Event times should align to conductor/song time, not render frames.</p>
+<p>Use one of these consistently per toolchain:</p>
+<ul>
+<li>beat-relative timing with measure/beat subdivision, or</li>
+<li>precise absolute song time such as seconds or milliseconds</li>
+</ul>
+<p>Whichever representation is used in authoring tools, runtime judgment should resolve against the same conductor timeline.</p>
+<h3 id="concrete-example">Concrete example<a class="headerlink" href="#concrete-example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aerobeat.chart.boxing.v1&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;chartId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;boxing-song123-medium-gesture&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;songId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;song123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;routineId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;song123-boxing&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;boxing&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;difficulty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;medium&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;interactionFamily&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gesture_2d&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;supportedInputProfiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;mediapipe_camera&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;keyboard_debug&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;validatedInputProfiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;mediapipe_camera&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;timing&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;offsetMs&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;resolution&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;presentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;preferredViews&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;portal&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;track&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;portalMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;front_3_portal&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mirrorCamera&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;scoring&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;hitWindowMs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;perfect&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;good&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;ok&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">140</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;comboModel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;standard&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;t&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.875</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;strike&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;e1&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hand&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;strike&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jab&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;zone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;left_high&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;portal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;travelBeats&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;intensity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;t&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.344</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;strike&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;e2&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hand&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;right&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;strike&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cross&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;zone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;right_high&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;portal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;travelBeats&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;intensity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;t&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.750</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;guard&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;e3&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;zone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;holdMs&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;portal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;t&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.625</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;obstacle&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;e4&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;avoid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;squat&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;shape&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bar_horizontal&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;portal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;durationMs&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;t&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">7.500</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stance&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;e5&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;stance&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;southpaw&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;portal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;scored&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tbd&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;cardio&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;boxing&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;camera-first&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="boxing-authoring-guidance-for-v1">Boxing authoring guidance for v1<a class="headerlink" href="#boxing-authoring-guidance-for-v1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Author for the movement the athlete should perform, not the device they happen to be using.</li>
+<li>Prefer interaction-family compatibility over raw device branching.</li>
+<li>Keep portal and zone symbolic so the same chart can render in Portal View or Track View.</li>
+<li>Treat <code>travelBeats</code> and similar fields as presentation hints, not the core scoring semantics.</li>
+<li>Use <code>validatedInputProfiles</code> to record what has actually been tested.</li>
 </ul>
 <h2 id="mapping-best-practices">📐 Mapping Best Practices<a class="headerlink" href="#mapping-best-practices" title="Permanent link">&para;</a></h2>
 <h3 id="1-flow-parity">1. Flow &amp; Parity<a class="headerlink" href="#1-flow-parity" title="Permanent link">&para;</a></h3>
@@ -5729,7 +6051,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 23, 2026 03:19:55 UTC">January 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 13:33:40 UTC">April 20, 2026</span>
   </span>
 
     
