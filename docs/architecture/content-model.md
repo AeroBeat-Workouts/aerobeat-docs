@@ -1,6 +1,6 @@
 # Content Model: Songs, Routines, Chart Variants, and Workouts
 
-AeroBeat content should be authored as a layered model rather than a single flat chart blob or a set of unrelated per-mode file formats.
+AeroBeat content is authored as a layered model rather than a single flat chart blob or a set of unrelated per-mode file formats.
 
 The durable hierarchy is:
 
@@ -25,14 +25,14 @@ A `Workout` is too high-level. It is a program that assembles multiple playable 
 - the gameplay mode for a song
 - the mode-specific authored vocabulary
 - validation rules for that mode
-- recommended presentation defaults
+- presentation defaults
 - a grouped set of difficulty variants for the same song + mode
 
 Examples:
 
-- one song may have a **Boxing Routine** and a **Dance Routine**
-- a Boxing Routine may have **Easy**, **Medium**, **Hard**, and **Pro** chart variants
-- a Workout may pick the Medium Boxing chart from one song and the Hard Dance chart from another
+- one song can have a **Boxing Routine** and a **Dance Routine**
+- a Boxing Routine can have **Easy**, **Medium**, **Hard**, and **Pro** chart variants
+- a Workout can pick the Medium Boxing chart from one song and the Hard Dance chart from another
 
 ## Core Primitives
 
@@ -61,7 +61,7 @@ It owns:
 - song reference
 - gameplay mode reference, such as `boxing`, `dance`, `step`, or `flow`
 - routine-level metadata such as intensity, training focus, and authoring notes
-- recommended presentation defaults
+- presentation defaults
 - validation profile for the mode
 - one or more chart variants
 
@@ -82,11 +82,11 @@ It owns:
 - scoring metadata and hit windows
 - optional presentation hints needed to render the chart well
 
-A chart variant should represent **one playable difficulty / compatibility slice**, not an all-difficulties megafile.
+A chart variant represents **one playable difficulty / compatibility slice**, not an all-difficulties megafile.
 
 #### Why difficulty belongs here
 
-AeroBeat should not store all difficulties as peer event arrays inside one giant chart by default.
+AeroBeat does not store all difficulties as peer event arrays inside one giant chart by default.
 
 Separate chart variants give us:
 
@@ -108,17 +108,17 @@ It owns:
 - pre-roll / warmup / cooldown / post-roll content
 - transitions, coaching cues, and workout-level presentation notes
 
-A workout may reference a full routine plus difficulty preference, or reference an exact chart variant directly when the sequence must be locked.
+A workout references either a full routine plus difficulty preference, or an exact chart variant directly when the sequence must be locked.
 
 ## Shared Chart Envelope
 
-AeroBeat should use **one shared chart envelope** across gameplay modes, with **mode-specific payloads** inside it.
+AeroBeat uses **one shared chart envelope** across gameplay modes, with **mode-specific payloads** inside it.
 
 This keeps tooling, loading, validation, and runtime contracts coherent without pretending that Boxing and Step are authored with the exact same event vocabulary.
 
 ### Shared fields
 
-All chart variants should expose a common envelope containing fields such as:
+All chart variants expose a common envelope containing fields such as:
 
 - `schema`
 - `chartId`
@@ -152,7 +152,7 @@ That is the correct compromise.
 
 ## Interaction Families, Not Raw Devices
 
-Charts should target **interaction semantics**, not raw hardware bindings.
+Charts target **interaction semantics**, not raw hardware bindings.
 
 Do **not** author charts directly against devices such as webcam, JoyCon, headset, or keyboard. Those are runtime input strategies and profiles, not durable content primitives.
 
@@ -176,7 +176,7 @@ This preserves AeroBeat's input-agnostic architecture:
 - content stays reusable longer
 - runtime adapters can map the same authored semantics to multiple devices
 - validated compatibility can be recorded without pretending every device behaves identically
-- we can add device-specific extensions later without forking the entire content model
+- device-specific extensions can be added later without forking the entire content model
 
 ### Input profile fields
 
@@ -186,20 +186,20 @@ Use profile fields to express compatibility without making the profile the prima
 - `supportedInputProfiles` = profiles the chart is intended to run on
 - `validatedInputProfiles` = profiles that have actually been tested and approved
 
-For example, a Boxing chart may target `gesture_2d`, support `mediapipe_camera`, `keyboard_debug`, and `gamepad_virtual_presence`, but only mark `mediapipe_camera` as validated initially.
+For example, a Boxing chart targets `gesture_2d`, supports `mediapipe_camera`, `keyboard_debug`, and `gamepad_virtual_presence`, but only marks `mediapipe_camera` as validated initially.
 
 ## View Modes Belong Mostly To Runtime Presentation
 
-View modes such as Portal View, Track View, 3-Portal View, and 360-Portal View should be treated primarily as **presentation and runtime interpretation concerns**, not as separate chart families.
+View modes such as Portal View, Track View, 3-Portal View, and 360-Portal View are treated primarily as **presentation and runtime interpretation concerns**, not as separate chart families.
 
-Charts may include presentation hints, such as:
+Charts include presentation hints such as:
 
 - preferred views
 - preferred portal layout
-- whether mirror-camera mode is recommended
+- mirror-camera mode preference
 - travel-time or approach hints where authoring truly depends on them
 
-But the same authored event stream should remain portable across views whenever possible.
+The same authored event stream remains portable across views by default.
 
 ### Authoring rule
 
@@ -216,7 +216,7 @@ If a future mode truly requires view-specific authored data that cannot be deriv
 
 ## Recommended File / Package Relationship
 
-At the docs level, AeroBeat should think about these as distinct assets even if implementation details evolve later:
+At the docs level, AeroBeat treats these as distinct assets even if implementation details evolve later:
 
 - one `Song` record
 - one or more `Routine` records under that song
@@ -264,7 +264,7 @@ That yields small, reviewable, reusable units.
 
 ## Opinionated Rules
 
-To keep the ecosystem coherent, AeroBeat should follow these rules:
+To keep the ecosystem coherent, AeroBeat follows these rules:
 
 1. **One song can power many routines.** Do not duplicate song metadata per mode.
 2. **One routine equals one song interpreted through one mode.** Do not mix Boxing and Dance inside a single routine.
@@ -275,7 +275,7 @@ To keep the ecosystem coherent, AeroBeat should follow these rules:
 
 ## First Shipping Recommendation
 
-For the first shipping slice, AeroBeat should standardize on:
+For the first shipping slice, AeroBeat standardizes on:
 
 - `Song` as the reusable music source
 - `Routine` as the missing gameplay package primitive

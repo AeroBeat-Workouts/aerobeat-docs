@@ -389,7 +389,7 @@ That first version should assume:
 **Reference Check:** `REF-01` through `REF-06` satisfied. The final docs are coherent with the existing architecture overview, provider-pattern input model, DSP/conductor timing guidance, input-agnostic gameplay framing, boxing gameplay semantics, and boxing choreography guidance. `REF-07` satisfied by placing the durable architecture writeup in `docs/architecture/content-model.md` and wiring it into `docs/index.md`.
 
 **Commits:**
-- None in this audit pass (no commits or pushes performed)
+- docs: affirm beat chart architecture wording
 
 **Lessons Learned:** Centralizing the content architecture in a dedicated `content-model.md` doc made the hierarchy and portability rules easier to verify than scattering the decisions across gameplay-specific pages.
 
@@ -411,6 +411,30 @@ That first version should assume:
 **Status:** ✅ Complete
 
 **Results:** Added `docs/architecture/content-model.md` to the public MkDocs navigation under `Architecture` in `mkdocs.yml` as `Content Model`. Verified that the site navigation change only exposes the intended architecture page and does not add any `.plans/` content to public docs navigation.
+
+---
+
+### Follow-up: Tighten public docs language from soft recommendations to affirmed decisions
+
+**Bead ID:** `aerobeat-docs-c1v`  
+**SubAgent:** `primary`  
+**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-05`, `REF-06`, `REF-07`  
+**Prompt:** Audit the public docs changed in this plan for soft, advisory, or discussion-phase wording and rewrite them in firm declarative language where the architecture is already decided. Preserve softer language only where uncertainty is truly intentional. Commit and push the wording fix to `main`.
+
+**Folders Created/Deleted/Modified:**
+- `docs/architecture/`
+- `docs/gdd/`
+- `docs/guides/`
+
+**Files Created/Deleted/Modified:**
+- `docs/architecture/content-model.md`
+- `docs/gdd/gameplay/view-modes.md`
+- `docs/gdd/glossary/terms.md`
+- `docs/guides/choreography/boxing.md`
+
+**Status:** ✅ Complete
+
+**Results:** Rewrote remaining discussion-phase public wording into affirmed architecture language in the touched docs. `docs/architecture/content-model.md` now states the layered model, shared chart envelope, interaction-family targeting, and runtime-view portability as declared AeroBeat decisions instead of recommendations. `docs/gdd/gameplay/view-modes.md` now frames view portability as the default authored-content expectation. `docs/guides/choreography/boxing.md` now states Boxing + MediaPipe v1 schema rules declaratively, and `docs/gdd/glossary/terms.md` now defines `Chart Variant` without hedge language.
 
 ---
 

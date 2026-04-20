@@ -4,7 +4,7 @@ AeroBeat is designed to run on everything from a high-end VR headset to a budget
 
 ## The Two Core Views
 
-Creators should understand that their charts will be experienced in two very different ways depending on the athlete's device. These view modes are primarily runtime presentation strategies, not separate chart families. The same authored chart should remain portable across views whenever possible.
+Creators need to understand that their charts are experienced in two very different ways depending on the athlete's device. These view modes are primarily runtime presentation strategies, not separate chart families. The same authored chart remains portable across views by default.
 
 ### 1. Portal View (Immersive)
 

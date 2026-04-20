@@ -51,22 +51,22 @@ Knee strikes add lower-body intensity to the workout.
 
 *   **Target:** A specific "Knee Target" (Black or White) that appears low in the portal.
 *   **Action:** Lift the corresponding knee (Left=Black, Right=White) to intercept the target.
-*   **Placement:** These should always be placed on the **Bottom Row** of the grid to align with the knee lift height.
+*   **Placement:** These are always placed on the **Bottom Row** of the grid to align with the knee lift height.
 *   **Tracking:** The engine does not track legs in Boxing mode. Instead, it checks if the player's **Head** is horizontally aligned with the target lane. This allows for accessibility modifications (like substituting a Knee Strike for a Block/Crunch).
 
 ## 📦 Boxing + MediaPipe v1 Chart Shape
 
-The first shipping boxing chart format should use a shared chart envelope with a boxing-specific event payload.
+The first shipping boxing chart format uses a shared chart envelope with a boxing-specific event payload.
 
 ### Shared boxing chart fields
 
-A Boxing chart variant should include:
+A Boxing chart variant includes:
 
 *   `schema`: `aerobeat.chart.boxing.v1`
 *   `chartId`, `songId`, `routineId`
 *   `mode`: `boxing`
 *   `difficulty`
-*   `interactionFamily`: usually `gesture_2d` for camera-first boxing
+*   `interactionFamily`: `gesture_2d` for camera-first boxing
 *   `supportedInputProfiles` and `validatedInputProfiles`
 *   `timing`: aligned to song/conductor time
 *   `presentation`: view preferences and portal-layout hints
@@ -76,14 +76,14 @@ A Boxing chart variant should include:
 
 ### Event vocabulary
 
-For Boxing + MediaPipe v1, the authoring vocabulary should focus on athlete intent rather than device details:
+For Boxing + MediaPipe v1, the authoring vocabulary focuses on athlete intent rather than device details:
 
 *   `strike`
     *   `hand`: `left` or `right`
     *   `strike`: `jab`, `cross`, `hook`, `uppercut`
     *   `zone`: `left_high`, `right_high`, `left_low`, `right_low`, `center`
 *   `guard`
-    *   `zone`: typically `center`
+    *   `zone`: `center`
     *   `holdMs`
 *   `obstacle`
     *   `avoid`: `squat`, `lean_left`, `lean_right`, `rotate_left`, `rotate_right`
@@ -107,14 +107,14 @@ Do not author Boxing + MediaPipe v1 against raw camera coordinates. The runtime 
 
 ### Timing rule
 
-Event times should align to conductor/song time, not render frames.
+Event times align to conductor/song time, not render frames.
 
 Use one of these consistently per toolchain:
 
 *   beat-relative timing with measure/beat subdivision, or
 *   precise absolute song time such as seconds or milliseconds
 
-Whichever representation is used in authoring tools, runtime judgment should resolve against the same conductor timeline.
+Whichever representation is used in authoring tools, runtime judgment resolves against the same conductor timeline.
 
 ### Concrete example
 
@@ -204,7 +204,7 @@ Whichever representation is used in authoring tools, runtime judgment should res
 
 ### Boxing authoring guidance for v1
 
-*   Author for the movement the athlete should perform, not the device they happen to be using.
+*   Author for the movement the athlete performs, not the device they happen to be using.
 *   Prefer interaction-family compatibility over raw device branching.
 *   Keep portal and zone symbolic so the same chart can render in Portal View or Track View.
 *   Treat `travelBeats` and similar fields as presentation hints, not the core scoring semantics.
