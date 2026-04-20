@@ -2,10 +2,10 @@
 
 Our codebase is split into three categories. The license depends on which repository you are touching.
 
-### 1. The Engine Hub (`aerobeat-core`)
+### 1. The Shared Core Lanes (`aerobeat-input-core`, `aerobeat-feature-core`, `aerobeat-content-core`, `aerobeat-asset-core`, `aerobeat-ui-core`, `aerobeat-tool-core`)
 * **License:** **Mozilla Public License 2.0 (MPL 2.0)**
 * **The Rule:** If you modify these files, you **must** share your changes.
-* **The Nuance:** This is "File-Level Copyleft." You can link proprietary modules to the Core (e.g., a closed-source Leaderboard SDK) as long as the Core files themselves remain open.
+* **The Nuance:** This is "File-Level Copyleft." You can link proprietary modules to these shared cores (for example a closed-source SDK wrapped behind an input or tool integration) as long as the core files themselves remain open.
 
 ### 2. The Game Client (`aerobeat-assembly-*` & `aerobeat-feature-*`)
 * **License:** **GNU GPLv3**

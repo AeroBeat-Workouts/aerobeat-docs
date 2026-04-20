@@ -45,8 +45,8 @@ To ensure UI repositories remain lightweight and fast to test, we enforce the fo
 
 | Dependency Type | Repository | Status | Logic |
 | :--- | :--- | :--- | :--- |
-| **Contract Hub** | `aerobeat-core` | **Required** | Needed for `AeroMenuProvider` interface. |
-| **UI Core** | `aerobeat-ui-core` | **Required** | Base logic for all components. |
+| **UI Core** | `aerobeat-ui-core` | **Required** | Needed for `AeroMenuProvider` and other UI-facing interfaces. |
+| **Asset Core** | `aerobeat-asset-core` | **Allowed** | Shared UI-facing asset definitions when a shell or kit needs them. |
 | **Component Kit** | `aerobeat-ui-kit-*` | **Required** | Source of all buttons, sliders, and standard widgets. |
 | **Shared Assets** | `aerobeat-asset-common` | **Allowed** | Fonts, Logos, and Global Icons only. |
 | **Vendor Tools** | `aerobeat-vendor-*` | **Dev-Only** | Tween libs or UI helpers. In Prod, these are Peer Dependencies provided by Assembly. |

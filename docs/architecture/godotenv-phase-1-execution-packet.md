@@ -1,5 +1,8 @@
 # AeroBeat GodotEnv Phase 1 Execution Packet
 
+!!! note "Transition note"
+    This execution packet was authored during the rename and topology split. Where it still says `aerobeat-core`, read that as the transition-era name for today's `aerobeat-input-core`; the current live architecture is the six-core model documented elsewhere in this repo.
+
 _Date: 2026-04-17_
 _Status: Phase 0 implementation packet for Phase 1_
 

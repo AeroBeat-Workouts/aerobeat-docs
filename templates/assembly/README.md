@@ -2,15 +2,14 @@
 
 This is the official template for creating an **Assembly** repository within the AeroBeat ecosystem.
 
-An **Assembly** is the "Game Client." It is the top-level Godot project that ties together the Core, Input Drivers, UI Shells, and Feature modules into a playable executable.
+An **Assembly** is the "Game Client." It is the top-level Godot project that ties together the exact core repos, input drivers, UI shells, features, tools, and asset packages it needs into a playable executable.
 
 ## 📋 Repository Details
 
 *   **Type:** Assembly (Game Client)
 *   **License:** **GNU GPLv3** (Strict Copyleft)
 *   **Dependencies:**
-    *   `aerobeat-core` (Required)
-    *   `aerobeat-ui-core` (Required)
+    *   One or more of the six core repos, only as needed by the assembly (`aerobeat-input-core`, `aerobeat-feature-core`, `aerobeat-content-core`, `aerobeat-asset-core`, `aerobeat-ui-core`, `aerobeat-tool-core`)
     *   `aerobeat-tool-*` (Services / As needed)
     *   `aerobeat-input-*` (As needed)
     *   `aerobeat-ui-shell-*` (As needed)
@@ -42,7 +41,7 @@ This template comes pre-configured with **GUT (Godot Unit Test)** workflows.
 
 ## 📂 Structure
 
-*   `addons/` - Submodules (Core, UI, Input). Managed by `setup_dev.py`.
+*   `addons/` - Exact runtime dependencies managed by `setup_dev.py` or a manifest-driven flow.
 *   `src/` - Application-specific logic (Main Loop, Scene Switching).
 *   `tests/` - Unit tests mirroring the `src/` structure.
 *   `assets/` - Local assets (Splash screens, icons).

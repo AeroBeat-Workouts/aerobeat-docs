@@ -8,7 +8,10 @@ We use a **Hybrid Licensing Strategy** to balance these needs. This section expl
 
 | Repository Prefix | License | Can I Close Source? | Proprietary Strategy |
 | :--- | :--- | :--- | :--- |
-| `aerobeat-core` | **MPL 2.0** | Only your new files. | **Link / Import** |
+| `aerobeat-input-core` | **MPL 2.0** | Only your new files. | **Link / Import** |
+| `aerobeat-feature-core` | **MPL 2.0** | Only your new files. | **Link / Import** |
+| `aerobeat-content-core` | **MPL 2.0** | Only your new files. | **Link / Import** |
+| `aerobeat-asset-core` | **MPL 2.0** | Only your new files. | **Link / Import** |
 | `aerobeat-assembly-*` | **GPLv3** | **No.** | **Rewrite** or Dual License |
 | `aerobeat-feature-*`| **GPLv3** | **No.** | **Rewrite** or Dual License |
 | `aerobeat-input-*` | **MPL 2.0** | Only your new files/SDKs. | **Link / Wrapper** |

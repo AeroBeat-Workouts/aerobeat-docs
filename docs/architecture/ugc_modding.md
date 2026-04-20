@@ -29,7 +29,7 @@ For **Musicians, Coaches, and Choreographers** who need a streamlined, focused i
 *   **Coaching Studio (Web):** Wizard for syncing voice-overs and video.
 
 ### 3. Shared Core
-All tools (Native and Web) share the same `aerobeat-core` logic. This ensures that a song validated in the Web Portal is guaranteed to work in the Game Client.
+All tools (Native and Web) should share the same `aerobeat-tool-core` validation contracts and any matching `aerobeat-content-core` data rules. This keeps a song validated in the Web Portal aligned with what the Game Client consumes.
 
 ## 🛡️ Security: The Double Verification Strategy
 

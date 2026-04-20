@@ -36,8 +36,8 @@ Our documentation is divided by role. Choose your path below:
 
 *For software engineers and system architects.*
 
-* Understand the **Hub-and-Spoke Polyrepo** topology.
-* Learn how `aerobeat-core` manages contracts between modules.
+* Understand the **lane-based six-core** topology.
+* Learn how the six core repos divide contracts by lane, starting with `aerobeat-input-core`, `aerobeat-feature-core`, `aerobeat-content-core`, `aerobeat-asset-core`, `aerobeat-ui-core`, and `aerobeat-tool-core`.
 * Dive into platform concerns such as Cloud Baker, testing strategy, security, and performance.
 * Read the new [**Content Model**](architecture/content-model.md) doc for how Songs, Routines, Chart Variants, and Workouts fit together.
 * **Key Tech:** Godot 4.x, GDScript, Python sidecars, and modular package boundaries.
@@ -84,7 +84,7 @@ We welcome contributions of all kinds. To ensure you have the best experience, c
 
 1. Read the **Contributing Workflow** guide.
 2. Check the **Architecture Overview** to understand the system.
-3. Pick a repository (for example `aerobeat-core` or `aerobeat-feature-boxing`) and start coding.
+3. Pick a repository (for example `aerobeat-input-core` or `aerobeat-feature-boxing`) and start coding.
 
 ### 🎨 For Engine Artists
 *Looking to contribute official UI themes, icons, or core 3D assets to the open-source project?*
@@ -109,7 +109,7 @@ We provide specialized web-based tools for you:
 * **Choreographers:** Use the **Choreography Studio** to map songs.
 * **Coaches:** Create workouts and voice-overs in the **Coaching Studio**.
 
-> **Current Status:** AeroBeat is currently in **Prototype (v0.0.1)**. We are actively building the core contracts and the initial Boxing feature.
+> **Current Status:** AeroBeat is currently in **Prototype (v0.0.1)**. We are actively building the six shared core lanes and the initial Boxing feature.
 
 ---
 

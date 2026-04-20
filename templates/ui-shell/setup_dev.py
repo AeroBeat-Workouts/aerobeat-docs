@@ -25,11 +25,6 @@ def main():
     if not os.path.exists(target_dir):
         os.makedirs(target_dir)
         
-    # Clone Core
-    if not os.path.exists(f"{target_dir}/aerobeat-core"):
-        print("  + Cloning Core...")
-        subprocess.run(["git", "clone", "https://github.com/AeroBeat-Workouts/aerobeat-core.git", f"{target_dir}/aerobeat-core"])
-
     # Clone UI Core
     if not os.path.exists(f"{target_dir}/aerobeat-ui-core"):
         print("  + Cloning UI Core...")

@@ -19,10 +19,10 @@ def main():
     if not os.path.exists(target_dir):
         os.makedirs(target_dir)
         
-    # Clone Core
-    if not os.path.exists(f"{target_dir}/aerobeat-core"):
-        print("  + Cloning Core...")
-        subprocess.run(["git", "clone", "https://github.com/AeroBeat-Workouts/aerobeat-core.git", f"{target_dir}/aerobeat-core"])
+    # Clone Asset Core
+    if not os.path.exists(f"{target_dir}/aerobeat-asset-core"):
+        print("  + Cloning Asset Core...")
+        subprocess.run(["git", "clone", "https://github.com/AeroBeat-Workouts/aerobeat-asset-core.git", f"{target_dir}/aerobeat-asset-core"])
 
     print("\n⚠️  ACTION REQUIRED: You must manually clone the Feature you are skinning!")
     print(f"    cd {target_dir}")

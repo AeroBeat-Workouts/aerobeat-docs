@@ -8,10 +8,10 @@ def main():
     if not os.path.exists("addons"):
         os.makedirs("addons")
         
-    # Clone Core (Required for everything)
-    if not os.path.exists("addons/aerobeat-core"):
-        print("  + Cloning Core...")
-        subprocess.run(["git", "clone", "https://github.com/AeroBeat-Workouts/aerobeat-core.git", "addons/aerobeat-core"])
+    # Clone Input Core (common input contracts)
+    if not os.path.exists("addons/aerobeat-input-core"):
+        print("  + Cloning Input Core...")
+        subprocess.run(["git", "clone", "https://github.com/AeroBeat-Workouts/aerobeat-input-core.git", "addons/aerobeat-input-core"])
 
     # Clone UI Core (Required for UI Logic)
     if not os.path.exists("addons/aerobeat-ui-core"):

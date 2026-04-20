@@ -58,7 +58,7 @@ You might wonder why `base_glove.tscn` is here and not in an Art repository.
 Use `class_name` to define your public interface.
 
 *   ✅ `class_name AeroBoxingFeature`
-*   ❌ `extends "res://addons/aerobeat-core/feature.gd"`
+*   ❌ `extends "res://addons/aerobeat-feature-core/feature.gd"`
 
 ### Signals over Direct Calls
 
@@ -69,7 +69,7 @@ Your feature does not know about the UI. Never try to `get_node("/root/HUD")`.
 
 ### The `setup()` Function
 
-Every Feature must implement the `AeroFeature` interface from Core.
+Every Feature must implement the `AeroFeature` interface from `aerobeat-feature-core`.
 
 ```gdscript
 func setup(session: AeroSessionContext, user_state: AeroUserState) -> void:

@@ -47,7 +47,7 @@ Package repos are producers of reusable addons. Their own dependency-management 
 
 ## 1.2 Foundational repos
 
-This specifically includes `aerobeat-core` and `aerobeat-ui-core`.
+This specifically includes the lane-owned core repos such as `aerobeat-input-core` and `aerobeat-ui-core`.
 
 They follow the same placement convention as package repos:
 
@@ -117,7 +117,7 @@ Inside `addons.jsonc`, the key under `addons` must match the installed addon dir
 
 For first-party AeroBeat repos, the installed addon directory name is the **repo name by default**:
 
-- `aerobeat-core`
+- `aerobeat-input-core`
 - `aerobeat-ui-core`
 - `aerobeat-ui-kit-community`
 - `aerobeat-feature-boxing`
@@ -131,8 +131,8 @@ That means this is correct:
 ```jsonc
 {
   "addons": {
-    "aerobeat-core": {
-      "url": "git@github.com:AeroBeat-Workouts/aerobeat-core.git",
+    "aerobeat-input-core": {
+      "url": "git@github.com:AeroBeat-Workouts/aerobeat-input-core.git",
       "checkout": "v0.1.0",
       "subfolder": "/"
     }
@@ -146,7 +146,7 @@ And this is not:
 {
   "addons": {
     "core": {
-      "url": "git@github.com:AeroBeat-Workouts/aerobeat-core.git"
+      "url": "git@github.com:AeroBeat-Workouts/aerobeat-input-core.git"
     }
   }
 }
@@ -351,7 +351,7 @@ If a package repo requires root runtime content to appear inside `.testbed` for 
 
 ## 5.1 Foundational repos
 
-### `aerobeat-core`
+### `aerobeat-input-core`
 
 **Role**
 
@@ -380,7 +380,7 @@ If a package repo requires root runtime content to appear inside `.testbed` for 
 
 **Dependency boundary**
 
-- may depend on `aerobeat-core`
+- may depend on `aerobeat-asset-core` when shared asset definitions are part of the UI contract chain
 - must not depend on a concrete UI kit
 - must not depend on a concrete UI shell
 - must not absorb shell-specific layout logic
@@ -403,7 +403,7 @@ If a package repo requires root runtime content to appear inside `.testbed` for 
 **Dependency boundary**
 
 - may depend on `aerobeat-ui-core`
-- may depend on `aerobeat-core` if needed by the contract chain
+- may depend on `aerobeat-asset-core` if shared asset definitions are part of the contract chain
 - must not absorb shell-specific page wiring or assembly logic
 
 **Manifest convention**
@@ -422,7 +422,7 @@ If a package repo requires root runtime content to appear inside `.testbed` for 
 
 **Dependency convention**
 
-- consume `aerobeat-core`, `aerobeat-ui-core`, and a specific `aerobeat-ui-kit-*` through `.testbed/addons.jsonc`
+- consume `aerobeat-ui-core`, a specific `aerobeat-ui-kit-*`, and only the adjacent cores the shell actually needs (commonly `aerobeat-asset-core` or `aerobeat-tool-core`) through `.testbed/addons.jsonc`
 - use `tag` mode for stable kit consumption
 - use `branch` mode only for deliberate coordinated integration
 - never use `.kit_version` as a parallel source of truth
@@ -538,7 +538,7 @@ GodotEnv-installed addons are expected to be immutable/disposable. First-party r
 
 ## 7.3 Change classification rule
 
-### `aerobeat-core`
+### `aerobeat-input-core`
 
 Create a new tag whenever it changes any shared contract or behavior other repos are meant to consume, including:
 
@@ -568,7 +568,7 @@ Create a new tag whenever it changes any shipped component surface meant for she
 
 ## 7.4 Release responsibility by repo
 
-### `aerobeat-core`
+### `aerobeat-input-core`
 
 Must provide the stable lowest-level contract the rest of the family builds on.
 
@@ -598,8 +598,8 @@ Stored at `.testbed/addons.jsonc`.
 {
   "$schema": "https://chickensoft.games/schemas/addons.schema.json",
   "addons": {
-    "aerobeat-core": {
-      "url": "git@github.com:AeroBeat-Workouts/aerobeat-core.git",
+    "aerobeat-input-core": {
+      "url": "git@github.com:AeroBeat-Workouts/aerobeat-input-core.git",
       "checkout": "v0.1.0",
       "subfolder": "/"
     },
@@ -620,8 +620,8 @@ Stored at `addons.jsonc` in repo root.
 {
   "$schema": "https://chickensoft.games/schemas/addons.schema.json",
   "addons": {
-    "aerobeat-core": {
-      "url": "git@github.com:AeroBeat-Workouts/aerobeat-core.git",
+    "aerobeat-input-core": {
+      "url": "git@github.com:AeroBeat-Workouts/aerobeat-input-core.git",
       "checkout": "v0.1.0",
       "subfolder": "/"
     },
@@ -653,5 +653,5 @@ Stored at `addons.jsonc` in repo root.
 - Assembly repos commit root `addons.jsonc`.
 - `tag` is the default stable mode, `branch` is the temporary coordination mode, and `symlink` is local-only and uncommitted.
 - `.testbed` stays as the package workbench.
-- `aerobeat-core`, `aerobeat-ui-core`, and `aerobeat-ui-kit-community` are the first foundational repos that must establish tag discipline.
+- `aerobeat-input-core`, `aerobeat-ui-core`, and `aerobeat-ui-kit-community` are the first foundational repos that must establish tag discipline.
 - Old setup flows do not coexist with the new contract long-term.

@@ -25,10 +25,10 @@ def main():
     if not os.path.exists(target_dir):
         os.makedirs(target_dir)
         
-    # Clone Core into the testbed
-    if not os.path.exists(f"{target_dir}/aerobeat-core"):
-        print("  + Cloning Core into Testbed...")
-        subprocess.run(["git", "clone", "https://github.com/AeroBeat-Workouts/aerobeat-core.git", f"{target_dir}/aerobeat-core"])
+    # Clone Input Core into the testbed
+    if not os.path.exists(f"{target_dir}/aerobeat-input-core"):
+        print("  + Cloning Input Core into Testbed...")
+        subprocess.run(["git", "clone", "https://github.com/AeroBeat-Workouts/aerobeat-input-core.git", f"{target_dir}/aerobeat-input-core"])
 
     # Clone GUT (Required for Testing)
     if not os.path.exists(f"{target_dir}/gut"):

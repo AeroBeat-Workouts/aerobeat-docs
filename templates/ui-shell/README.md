@@ -4,12 +4,12 @@ This is an **Interaction Shell** for the AeroBeat platform.
 
 *   **License:** GPLv3
 *   **Role:** Defines the layout and flow of the application (Mobile, VR, Arcade).
-*   **Dependencies:** `aerobeat-core` (Contracts), `aerobeat-ui-kit-*` (Visuals).
+*   **Dependencies:** `aerobeat-ui-core` (Required logic), `aerobeat-ui-kit-*` (Required visuals), with `aerobeat-asset-core` and `aerobeat-tool-core` only when the shell consumes those contracts.
 
 ## Setup
 
-1.  **Initialize Core:**
-    Clones the engine contracts required for the shell to compile.
+1.  **Initialize the local testbed:**
+    Clones the required UI-layer contracts for the shell to compile.
     ```bash
     python setup_dev.py
     ```

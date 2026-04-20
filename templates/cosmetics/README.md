@@ -6,7 +6,7 @@ This repository contains **Cosmetics** (Accessories like Hats, Glasses) for Aero
 *   **Type:** Cosmetics (Art)
 *   **License:** **CC BY-NC 4.0**
 *   **Dependencies:**
-    *   `aerobeat-core` (Required for Socket definitions)
+    *   `aerobeat-asset-core` (Required for shared attachment/socket definitions)
 
 ## 📂 Structure
 *   `assets/accessories/`

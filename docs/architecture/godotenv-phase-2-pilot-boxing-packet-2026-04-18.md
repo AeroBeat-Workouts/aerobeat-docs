@@ -1,5 +1,8 @@
 # AeroBeat Phase 2 Pilot Packet — `aerobeat-feature-boxing`
 
+!!! note "Historical naming note"
+    This packet documents a pilot cut from before the input-core rename finished landing everywhere. Historical `aerobeat-core` mentions refer to what is now `aerobeat-input-core`.
+
 _Date: 2026-04-18_
 _Status: Execution-ready research packet_
 

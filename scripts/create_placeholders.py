@@ -11,8 +11,8 @@ PLACEHOLDERS = {
         "repo": "https://github.com/AeroBeat-Workouts/aerobeat-asset-prototypes"
     },
     "docs/api/core": {
-        "title": "Core Contracts",
-        "repo": "https://github.com/AeroBeat-Workouts/aerobeat-core"
+        "title": "Input Core Contracts",
+        "repo": "https://github.com/AeroBeat-Workouts/aerobeat-input-core"
     },
     "docs/api/features/boxing": {
         "title": "Boxing Feature",

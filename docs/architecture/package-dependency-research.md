@@ -1,5 +1,8 @@
 # AeroBeat Package Dependency Research
 
+!!! note "Historical naming note"
+    This research captured the repo family before the shared input lane was renamed. References to `aerobeat-core` in quoted current-state observations should be read as the historical predecessor of today's `aerobeat-input-core`, unless the text is explicitly comparing broader multi-core architecture decisions.
+
 _Date: 2026-04-17_
 
 ## Executive summary

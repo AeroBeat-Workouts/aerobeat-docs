@@ -7,7 +7,7 @@ To ensure stability across our modular architecture, we enforce a strict **Test-
 We use **[GUT (Godot Unit Test)](https://github.com/bitwes/Gut)** as our unified testing framework.
 
 *   **Why?** It runs natively inside the Godot Editor (for rapid dev) and via Command Line (for CI/CD).
-*   **Installation:** GUT is included as a submodule in `aerobeat-core` and available in all derived projects.
+*   **Installation:** GUT is a dev dependency installed into each repo's local testbed or workspace; it is no longer documented as a submodule inherited from a universal `aerobeat-core` repo.
 
 ## 🚦 The Rules
 
@@ -15,7 +15,7 @@ We use **[GUT (Godot Unit Test)](https://github.com/bitwes/Gut)** as our unified
 
 We require **100% Unit Test Coverage** for all logic paths.
 
-*   **Required:** `aerobeat-core`, `aerobeat-input-*`, `aerobeat-ui-core`, `aerobeat-feature-*`, `aerobeat-assembly-*`.
+*   **Required:** the six core repos (`aerobeat-input-core`, `aerobeat-feature-core`, `aerobeat-content-core`, `aerobeat-asset-core`, `aerobeat-ui-core`, `aerobeat-tool-core`) plus logic-bearing `aerobeat-input-*`, `aerobeat-feature-*`, `aerobeat-tool-*`, `aerobeat-ui-*`, and `aerobeat-assembly-*` repos.
 *   **Exempt:** `aerobeat-asset-*` (These contain only Art/Music/Models and no logic).
 
 ### 2. CI/CD & Branch Protection

@@ -23,12 +23,12 @@ def main():
     if not os.path.exists(target_dir):
         os.makedirs(target_dir)
         
-    # Clone Core (Required for Resource definitions like AeroSkin, AeroSong)
-    if not os.path.exists(f"{target_dir}/aerobeat-core"):
-        print("  + Cloning Core...")
-        subprocess.run(["git", "clone", "https://github.com/AeroBeat-Workouts/aerobeat-core.git", f"{target_dir}/aerobeat-core"])
+    # Clone Asset Core (Required for shared asset-side resource definitions)
+    if not os.path.exists(f"{target_dir}/aerobeat-asset-core"):
+        print("  + Cloning Asset Core...")
+        subprocess.run(["git", "clone", "https://github.com/AeroBeat-Workouts/aerobeat-asset-core.git", f"{target_dir}/aerobeat-asset-core"])
     else:
-        print("  + Core already exists.")
+        print("  + Asset Core already exists.")
 
     print("\n✅ Setup Complete!")
     print("Note: If this asset pack depends on a specific Feature (e.g. Boxing),")

@@ -2,14 +2,14 @@
 
 This is the official template for creating an **Input Driver** repository within the AeroBeat ecosystem.
 
-Input Drivers bridge hardware (Webcams, VR Controllers, Smart Watches) to the AeroBeat Core contracts.
+Input Drivers bridge hardware (Webcams, VR Controllers, Smart Watches) to the AeroBeat input contracts.
 
 ## 📋 Repository Details
 
 *   **Type:** Input Driver
 *   **License:** **Mozilla Public License 2.0 (MPL 2.0)**
 *   **Dependencies:**
-    *   `aerobeat-core` (Required)
+    *   `aerobeat-input-core` (Required)
     *   `aerobeat-vendor-*` (Allowed)
 
 ## 🚀 Getting Started

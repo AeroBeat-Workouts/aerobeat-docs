@@ -16,7 +16,7 @@ AeroBeat uses **GodotEnv** as the dependency composition contract.
 
 * **Core rule:** every repo declares only the core repos and concrete packages it actually needs.
 * **Assembly rule:** `aerobeat-assembly-community` and other `aerobeat-assembly-*` repos compose only the required cores and concrete repos through GodotEnv.
-* **No universal hub rule:** do not model the platform around one catch-all `aerobeat-core` dependency.
+* **No universal hub rule:** do not model the platform around one catch-all `aerobeat-core` dependency; use the lane-specific cores instead, starting with `aerobeat-input-core` for shared input contracts.
 
 ### Typical dependency shape
 

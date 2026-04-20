@@ -6,7 +6,7 @@ This repository contains **Environments** (Levels, Lighting, Skyboxes) for AeroB
 *   **Type:** Environments (Art)
 *   **License:** **CC BY-NC 4.0**
 *   **Dependencies:**
-    *   `aerobeat-core` (Required for Reactive Lights)
+    *   `aerobeat-asset-core` (Required for shared environment and reactive-light definitions)
 
 ## 📂 Structure
 *   `assets/levels/`

@@ -20,11 +20,11 @@ jobs:
           node-version: 20
       - run: npm install -g gdscript-docs-maker
 
-      - name: Checkout Core
+      - name: Checkout Input Core
         uses: actions/checkout@v4
         with:
-          repository: AeroBeat-Workouts/aerobeat-core
-          path: external/aerobeat-core
+          repository: AeroBeat-Workouts/aerobeat-input-core
+          path: external/aerobeat-input-core
 
       - name: Checkout Assembly (Community)
         uses: actions/checkout@v4
@@ -68,16 +68,16 @@ jobs:
           repository: AeroBeat-Workouts/aerobeat-asset-prototypes
           path: external/aerobeat-asset-prototypes
 
-      - name: Generate Core API Docs
+      - name: Generate Input Core API Docs
         run: |
-          if [ -d "external/aerobeat-core/contracts" ]; then
-            gdscript-docs-maker external/aerobeat-core/contracts -o docs/api/core --format markdown
+          if [ -d "external/aerobeat-input-core/contracts" ]; then
+            gdscript-docs-maker external/aerobeat-input-core/contracts -o docs/api/core --format markdown
           else
             echo "⚠️ Core contracts not found. Creating placeholder."
             mkdir -p docs/api/core
-            echo "# Core Contracts" > docs/api/core/index.md
+            echo "# Input Core Contracts" > docs/api/core/index.md
             echo "Coming soon." >> docs/api/core/index.md
-            echo "View Source: [https://github.com/AeroBeat-Workouts/aerobeat-core](https://github.com/AeroBeat-Workouts/aerobeat-core)" >> docs/api/core/index.md
+            echo "View Source: [https://github.com/AeroBeat-Workouts/aerobeat-input-core](https://github.com/AeroBeat-Workouts/aerobeat-input-core)" >> docs/api/core/index.md
           fi
 
       - name: Generate Assembly API Docs

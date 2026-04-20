@@ -23,7 +23,7 @@ The platform is documented as a lane-based polyrepo architecture with six domain
 5. [`aerobeat-ui-core`](https://github.com/AeroBeat-Workouts/aerobeat-ui-core)
 6. [`aerobeat-tool-core`](https://github.com/AeroBeat-Workouts/aerobeat-tool-core)
 
-AeroBeat no longer treats `aerobeat-core` as the long-term universal hub. Each lane owns its own shared contracts, and concrete repos depend only on the lanes they actually consume.
+AeroBeat no longer treats `aerobeat-core` as the long-term universal hub. The former shared input-facing core now lives at `aerobeat-input-core`, and each lane owns its own shared contracts so concrete repos depend only on the lanes they actually consume.
 
 ## Technical Structure Overview
 

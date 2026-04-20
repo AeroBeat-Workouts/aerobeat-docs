@@ -22,7 +22,7 @@ Before writing code, you must initialize the dependencies.
     ```bash
     python setup_dev.py
     ```
-    This downloads `aerobeat-core` and other dependencies into the `.testbed/addons/` folder (or `addons/` for Assembly).
+    This downloads the lane-appropriate core repos (for example `aerobeat-input-core`, `aerobeat-feature-core`, `aerobeat-content-core`, `aerobeat-ui-core`, `aerobeat-tool-core`, or `aerobeat-asset-core`) and other dev dependencies into the `.testbed/addons/` folder (or `addons/` for Assembly).
 
 2.  **Open in Godot:**
 

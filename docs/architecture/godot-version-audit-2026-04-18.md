@@ -1,5 +1,8 @@
 # AeroBeat Godot Version Audit
 
+!!! note "Historical naming note"
+    This audit records filesystem paths exactly as they existed on 2026-04-18. Any `aerobeat-core` path in the findings refers to the repo that is now named `aerobeat-input-core`.
+
 _Date: 2026-04-18_
 
 ## Scope

@@ -9,7 +9,9 @@ A **Tool** is a reusable service or singleton manager (e.g., API Client, Analyti
 *   **Type:** Tool (Service/Module)
 *   **License:** **MPL 2.0** (Weak Copyleft / Library)
 *   **Dependencies:**
-    *   `aerobeat-core` (Required)
+    *   `aerobeat-tool-core` (Required)
+    *   `aerobeat-content-core` (Allowed as needed)
+    *   `aerobeat-asset-core` (Allowed as needed)
     *   `aerobeat-vendor-*` (Allowed)
 
 ## 🚀 Getting Started

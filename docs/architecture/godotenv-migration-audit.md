@@ -1,5 +1,8 @@
 # GodotEnv Migration Audit and Cleanup Plan
 
+!!! note "Transition note"
+    This migration audit was written during the rename away from `aerobeat-core` as a universal hub. Treat `aerobeat-core` references here as transition-era wording: the current architecture uses six lane-specific core repos, and the old input-facing core is now `aerobeat-input-core`.
+
 _Date: 2026-04-17_
 
 ## Executive summary

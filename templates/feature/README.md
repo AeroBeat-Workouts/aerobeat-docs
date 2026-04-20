@@ -9,7 +9,8 @@ A **Feature** contains the pure gameplay logic for a specific mode (e.g., Boxing
 *   **Type:** Feature (Gameplay Logic)
 *   **License:** **GNU GPLv3** (Strict Copyleft)
 *   **Dependencies:**
-    *   `aerobeat-core` (Required)
+    *   `aerobeat-feature-core` (Required)
+    *   `aerobeat-content-core` (Required)
     *   `aerobeat-vendor-*` (Allowed)
 
 ## 🚀 Getting Started
