@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/architecture/content-model/">
       
       
+        <link rel="prev" href="../coding-style/">
+      
+      
+        <link rel="next" href="../input/">
       
       
         
@@ -21,7 +25,7 @@
     
     
       
-        <title>Content Model: Songs, Routines, Chart Variants, and Workouts - AeroBeat Documentation</title>
+        <title>Content Model - AeroBeat Documentation</title>
       
     
     
@@ -106,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Content Model: Songs, Routines, Chart Variants, and Workouts
+              Content Model
             
           </span>
         </div>
@@ -2499,18 +2503,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -2531,7 +2537,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2546,18 +2552,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -2578,7 +2586,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2724,6 +2732,331 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Content Model
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Content Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-aerobeat-needs-routine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why AeroBeat Needs Routine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Primitives
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Primitives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-song" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Song
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-routine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Routine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-chart-variant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Chart Variant
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Chart Variant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-difficulty-belongs-here" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why difficulty belongs here
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-workout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Workout
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared-chart-envelope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared Chart Envelope
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shared Chart Envelope">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shared-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mode-specific-payloads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mode-specific payloads
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interaction-families-not-raw-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interaction Families, Not Raw Devices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interaction Families, Not Raw Devices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommended-interaction-families" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended interaction families
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-profile-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input profile fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view-modes-belong-mostly-to-runtime-presentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        View Modes Belong Mostly To Runtime Presentation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="View Modes Belong Mostly To Runtime Presentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authoring-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authoring rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-file-package-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended File / Package Relationship
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minimal-shared-chart-envelope-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimal Shared Chart Envelope Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opinionated-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opinionated Rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-shipping-recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First Shipping Recommendation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
