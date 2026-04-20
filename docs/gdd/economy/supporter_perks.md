@@ -41,7 +41,7 @@ Exclusive customization options.
 Help shape the future of AeroBeat.
 
 *   **Weighted Voting:** Supporter votes count double on "Feature Roadmap" polls.
-*   **Playlist Nominations:** Ability to nominate playlists for the "Playlist of the Day" featured slot.
+*   **Workout Nominations:** Ability to nominate workouts for the "Workout of the Day" featured slot.
 
 ### E. Multiplayer Enhancements
 Express yourself in online lobbies.

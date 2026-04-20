@@ -78,7 +78,7 @@ The game scans `res://mods/*/manifest.tres` on startup.
 class_name AeroModManifest
 extends Resource
 
-enum ModType { SKIN, SONG, ENVIRONMENT, GAMEPLAY_TWEAK, COACHING, PLAYLIST, AVATAR, COSMETIC }
+enum ModType { SKIN, SONG, ENVIRONMENT, GAMEPLAY_TWEAK, COACHING, WORKOUT, AVATAR, COSMETIC }
 
 @export var id: String = "my_cool_skin" # Unique ID
 @export var display_name: String = "Cyberpunk Gloves"

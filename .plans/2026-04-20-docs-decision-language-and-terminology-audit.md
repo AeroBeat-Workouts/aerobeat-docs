@@ -18,6 +18,8 @@ The immediate trigger for this plan is a real docs-quality issue Derrick spotted
 
 This plan treats the repo-wide doc set as a consistency system, not just a bag of pages. The first pass should build a terminology and tone inventory across the docs tree, especially architecture, gameplay, guides, glossary, and index/navigation surfaces. The second pass should identify actual conflicts and escalate only where the docs genuinely disagree or where the correct term is unclear. The third pass should normalize the docs to a firm public-decision voice and resolve the terminology map consistently across the site.
 
+Clarification from Derrick during execution: **players should never see the term `playlist` in AeroBeat**. Public docs should therefore use **`Workout`** as the player-facing and model-facing term, not just the canonical architecture term. Any surviving `playlist` wording in docs should be treated as legacy drift to remove rather than acceptable UX language.
+
 Because this repo already has active architecture docs, glossary docs, and recently updated content-model docs, the safest approach is: map -> decide -> rewrite -> audit. We should avoid a blind global replace pass. If we find a conflict such as two different names for the same concept, or one page still describing a now-rejected model, we should explicitly choose the correct term and update all affected docs accordingly.
 
 ---
@@ -67,6 +69,7 @@ Examples of likely target concepts:
 - Public docs describe settled architecture in firm declarative language.
 - Discussion-phase wording belongs in plans, PRs, and chat — not the public docs site.
 - Glossary and architecture docs are the canon when terminology conflicts arise.
+- `Workout` is the correct public and architectural term; remove `playlist` from docs wording rather than preserving it as acceptable UX language.
 - If a true conflict exists and the correct term is not obvious from current approved docs, escalate the exact conflict instead of guessing.
 - Prefer targeted, concept-aware rewrites over blind bulk replacement.
 
@@ -168,14 +171,15 @@ Examples of likely target concepts:
 
 **Status:** ❌ Blocked by audit gaps
 
-**What We Built:** The rewrite pass successfully established the new canon in the core docs: **Input Provider** / **Provider Pattern** for input architecture, **Track View** as the broader linear 2D presentation family, and **Song -> Routine -> Chart Variant -> Workout** as the content-model hierarchy. Those decisions are now reflected in the main architecture, glossary, gameplay, and choreography docs.
+**What We Built:** The rewrite pass successfully established the new canon in the core docs: **Input Provider** / **Provider Pattern** for input architecture, **Track View** as the broader linear 2D presentation family, and **Song -> Routine -> Chart Variant -> Workout** as the content-model hierarchy. Those decisions are now reflected in the main architecture, glossary, gameplay, and choreography docs. The targeted outer-ring cleanup also fixed the originally identified six failing files.
 
-**Reference Check:** `REF-02`, `REF-03`, `REF-04`, `REF-05`, `REF-06`, and `REF-07` now agree on the primary canon for input terminology, Track View semantics, and the layered content model. However, the repo does **not** yet fully satisfy the broader audit goal because older public docs outside that canon set still use `playlist` as an architectural/session term instead of clearly UX-facing language, and `docs/gdd/releases/community.md` still reintroduces the old narrow bottom-to-top Track View framing.
+**Reference Check:** `REF-02`, `REF-03`, `REF-04`, `REF-05`, `REF-06`, and `REF-07` still agree on the primary canon for input terminology, Track View semantics, and the layered content model, and the targeted follow-up fixes resolved the previously cited issues in `docs/architecture/backend_api.md`, `docs/gdd/meta/preferences.md`, `docs/gdd/economy/currency.md`, `docs/gdd/gamification/overview.md`, `docs/guides/accessibility.md`, and `docs/gdd/releases/community.md`. However, the repo does **not** yet fully satisfy the broader audit goal because additional docs outside that six-file follow-up still use `playlist` as an architectural/session/content term instead of clearly UX-facing language.
 
 **Commits:**
 - Implementation commit already landed before this audit: `0619892`
+- Targeted cleanup commit already landed before this re-audit: `fd47fae`
 
-**Lessons Learned:** The hardest part was not the core canon rewrite — it was finding the legacy outer-ring docs that still speak the old model. A docs-set audit has to include product, meta, API, economy, accessibility, and release-marketing pages, not just architecture + glossary + gameplay.
+**Lessons Learned:** The hardest part was not the core canon rewrite — it was finding the legacy outer-ring docs that still speak the old model. A docs-set audit has to include product, meta, API, economy, accessibility, release-marketing, modifiers, social, modding, and landing-page docs, not just architecture + glossary + gameplay.
 
 ---
 
@@ -184,7 +188,7 @@ Examples of likely target concepts:
 **Bead ID:** `aerobeat-docs-89n`  
 **SubAgent:** `primary`  
 **References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-06`, `REF-08`  
-**Prompt:** Fix the remaining legacy terminology conflicts identified by the failed audit in these docs: `docs/architecture/backend_api.md`, `docs/gdd/meta/preferences.md`, `docs/gdd/economy/currency.md`, `docs/gdd/gamification/overview.md`, `docs/guides/accessibility.md`, and `docs/gdd/releases/community.md`. Normalize `Workout` as the canonical model term, keep `playlist` only where clearly UX-facing, and correct any remaining old narrow `Track View` framing.
+**Prompt:** Fix the remaining legacy terminology conflicts identified by the failed audit in these docs: `docs/architecture/backend_api.md`, `docs/gdd/meta/preferences.md`, `docs/gdd/economy/currency.md`, `docs/gdd/gamification/overview.md`, `docs/guides/accessibility.md`, and `docs/gdd/releases/community.md`. Normalize `Workout` as the canonical and player-facing term, remove `playlist` wording from docs, and correct any remaining old narrow `Track View` framing.
 
 **Folders Created/Deleted/Modified:**
 - `docs/architecture/`
@@ -216,6 +220,54 @@ Examples of likely target concepts:
 - `docs/architecture/`
 - `docs/gdd/`
 - `docs/guides/`
+
+**Files Created/Deleted/Modified:**
+- None expected from audit beyond plan updates
+
+**Status:** ❌ Failed
+
+**Results:** Re-audit completed independently. The six targeted cleanup files now pass the previously reported checks: `docs/architecture/backend_api.md`, `docs/gdd/meta/preferences.md`, `docs/gdd/economy/currency.md`, `docs/gdd/gamification/overview.md`, `docs/guides/accessibility.md`, and `docs/gdd/releases/community.md` all now use **Workout** as the canonical underlying model term, keep `playlist` explicitly framed as athlete/player-facing UI language when it appears, and `docs/gdd/releases/community.md` now describes **Track View** as the broader linear 2D presentation family rather than a bottom-to-top-only mode. However, the broader repo-wide audit still cannot be considered complete because additional docs outside the targeted six-file cleanup still violate the canon that `playlist` should remain only explicit UX language. Remaining gaps found during this re-audit include: `docs/architecture/ugc_modding.md:81` still exposes `PLAYLIST` as a manifest `ModType`; `docs/gdd/modifiers/accessibility.md:3-13` still frames modifiers around starting and modifying `playlists`; `docs/gdd/modifiers/difficulty.md:5-11` still uses `playlists` as the underlying gameplay/session object; `docs/gdd/concept.md:19` still lists community-created `playlists` as a core content layer term; `docs/gdd/social/crews.md:8,40` still describes sharing/specifying `playlists`; `docs/gdd/economy/supporter_perks.md:44` still offers `Playlist Nominations` for `Playlist of the Day`; `docs/index.md:110` still says coaches create workout playlists; `docs/architecture/overview.md:45` and `docs/architecture/content-model.md:101` still define a Workout as `a playlist or program` rather than keeping playlist strictly as UI wording. No new Track View framing regression was found in this pass; the remaining blockers are terminology drift around `playlist` outside the targeted six files.
+
+---
+
+### Follow-up: Remove remaining playlist terminology leaks repo-wide
+
+**Bead ID:** `aerobeat-docs-wmv`  
+**SubAgent:** `primary`  
+**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-08`  
+**Prompt:** Remove the remaining `playlist` terminology leaks identified by the failed re-audit in these docs: `docs/architecture/ugc_modding.md`, `docs/gdd/modifiers/accessibility.md`, `docs/gdd/modifiers/difficulty.md`, `docs/gdd/concept.md`, `docs/gdd/social/crews.md`, `docs/gdd/economy/supporter_perks.md`, `docs/index.md`, `docs/architecture/overview.md`, and `docs/architecture/content-model.md`. Use `Workout` as the correct player-facing and model-facing term, and remove `playlist` wording instead of preserving it as acceptable UX language.
+
+**Folders Created/Deleted/Modified:**
+- `docs/architecture/`
+- `docs/gdd/`
+- `docs/`
+
+**Files Created/Deleted/Modified:**
+- `docs/architecture/ugc_modding.md`
+- `docs/gdd/modifiers/accessibility.md`
+- `docs/gdd/modifiers/difficulty.md`
+- `docs/gdd/concept.md`
+- `docs/gdd/social/crews.md`
+- `docs/gdd/economy/supporter_perks.md`
+- `docs/index.md`
+- `docs/architecture/overview.md`
+- `docs/architecture/content-model.md`
+
+**Status:** ✅ Complete
+
+**Results:** Removed the remaining `playlist` leaks from the listed docs and normalized the affected wording to the current canon. `docs/architecture/ugc_modding.md` now uses `WORKOUT` in the manifest `ModType` enum; the accessibility and difficulty modifier docs now describe workouts instead of playlists; `docs/gdd/concept.md`, `docs/gdd/social/crews.md`, `docs/gdd/economy/supporter_perks.md`, and `docs/index.md` now consistently use workout language for public content/programming; and `docs/architecture/overview.md` plus `docs/architecture/content-model.md` now define `Workout` without preserving `playlist` as acceptable architectural or player-facing terminology. A direct grep re-check of the targeted files returned no remaining `playlist` / `playlists` hits.
+
+---
+
+### Follow-up: Final re-audit after removing playlist terminology
+
+**Bead ID:** `aerobeat-docs-aio`  
+**SubAgent:** `auditor`  
+**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-08`  
+**Prompt:** Independently verify that `Workout` is now the consistent public term across docs, that `playlist` no longer appears as public-doc product/content wording, and that the repo-wide terminology audit can be marked complete.
+
+**Folders Created/Deleted/Modified:**
+- `docs/`
 
 **Files Created/Deleted/Modified:**
 - None expected from audit beyond plan updates

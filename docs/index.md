@@ -107,7 +107,7 @@ We provide specialized web-based tools for you:
 
 * **Musicians:** Upload tracks and get verified at **www.aerobeat-workouts.com/creators**.
 * **Choreographers:** Use the **Choreography Studio** to map songs.
-* **Coaches:** Create workout playlists and voice-overs in the **Coaching Studio**.
+* **Coaches:** Create workouts and voice-overs in the **Coaching Studio**.
 
 > **Current Status:** AeroBeat is currently in **Prototype (v0.0.1)**. We are actively building the core contracts and the initial Boxing feature.
 

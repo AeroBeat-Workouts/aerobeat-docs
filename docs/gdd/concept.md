@@ -16,7 +16,7 @@ AeroBeat is not just a game; it is a **Platform** consisting of three decoupled 
 
 1.  **The Inputs:** How you move (Webcam, VR, Joycons, Keyboard, Mouse, Controller). Extensible with open and closed hardware API's.
 2.  **The Engine:** The core rhythm logic, audio synchronization, and scoring.
-3.  **The Content:** Community-created playlists, songs, assets, environments, and even entirely new gameplay mechanics (ex: **Flow**, **Step**, and **Dance**).
+3.  **The Content:** Community-created workouts, songs, assets, environments, and even entirely new gameplay mechanics (ex: **Flow**, **Step**, and **Dance**).
 
 ### Key Pillars
 

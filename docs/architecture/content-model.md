@@ -10,7 +10,7 @@ The durable hierarchy is:
 - **Workout**
   - ordered selections of routines or chart variants
 
-This structure keeps audio and licensing metadata reusable at the song layer, keeps gameplay-mode semantics at the routine layer, keeps difficulty-specific authored event streams at the chart variant layer, and keeps coaching / playlist programming at the workout layer.
+This structure keeps audio and licensing metadata reusable at the song layer, keeps gameplay-mode semantics at the routine layer, keeps difficulty-specific authored event streams at the chart variant layer, and keeps coaching / workout programming at the workout layer.
 
 ## Why AeroBeat Needs `Routine`
 
@@ -98,7 +98,7 @@ Separate chart variants give us:
 
 ### 4. Workout
 
-A `Workout` is a training program or playlist.
+A `Workout` is a training program.
 
 It owns:
 

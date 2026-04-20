@@ -5,7 +5,7 @@ Crews are the social backbone of AeroBeat. They allow athletes to form communiti
 ## 1. Philosophy
 
 *   **Community First:** Crews are about belonging, not just competition.
-*   **Accountability:** Crews provide a structure for athletes to motivate each other, share playlists, and celebrate milestones together.
+*   **Accountability:** Crews provide a structure for athletes to motivate each other, share workouts, and celebrate milestones together.
 *   **Open Access:** While creating a Crew is a Supporter perk, *joining* one is free for everyone. This prevents the community from fracturing into "Paid vs Free" groups.
 
 ## 2. Structure & Roles
@@ -37,7 +37,7 @@ Every song in the game gets a "Crew Filter" on the leaderboard. This allows memb
 
 A dedicated UI page for the Crew.
 
-*   **Message of the Day (MOTD):** Pinned announcement from the Captain. This is the primary way to **specify playlists** for the group to focus on for the week.
+*   **Message of the Day (MOTD):** Pinned announcement from the Captain. This is the primary way to **specify workouts** for the group to focus on for the week.
 *   **Roster:** List of members and their online status.
 *   **Activity Feed:** "UserX just set a new PB on SongY!" Members can click a **"Kudos"** button to congratulate each other, fostering accountability.
 
