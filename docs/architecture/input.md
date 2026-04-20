@@ -6,7 +6,7 @@ The public-facing abstraction is the **Input Provider**: a runtime bridge that t
 
 `Strategy` remains an implementation-detail term for how a concrete provider internally performs adaptation or switching. It is **not** the main public name for the overall input abstraction.
 
-* **Interface:** `AeroInputProvider` (defined in `aerobeat-core`).
+* **Interface:** `AeroInputProvider` (defined in [`aerobeat-input-core`](https://github.com/AeroBeat-Workouts/aerobeat-input-core)).
 * **Contract:** Must return normalized `0.0 - 1.0` viewport coordinates or equivalent gameplay-space data for `LeftHand`, `RightHand`, and `Head`.
 
 ## Supported Input Providers
@@ -22,7 +22,7 @@ The public-facing abstraction is the **Input Provider**: a runtime bridge that t
 | **Gamepad Provider** | `aerobeat-input-gamepad` | **Godot Native.** Standard XInput / controller stick mapping. | All |
 | **XR Provider** | `aerobeat-input-xr` | **Tracked 6DOF controllers / hands.** Uses XR runtime pose data. | XR |
 
-## Interaction Family vs Input Profile
+## Interaction family vs input profile
 
 AeroBeat docs distinguish between authored-content compatibility and concrete runtime/device targets.
 
@@ -31,11 +31,11 @@ AeroBeat docs distinguish between authored-content compatibility and concrete ru
 
 Charts target **interaction families** first. They record **input profiles** as supported or validated compatibility notes.
 
-## Provider Grouping Rationale
+## Provider grouping rationale
 
 We enforce a **one-repo-per-provider** policy, even for standard Godot inputs.
 
-### The Logic: Granularity & Quirks
+### The logic: granularity & quirks
 
 1. **Isolation of quirks**
    * While Godot handles generic gamepads well, specific controllers such as dance pads or flight sticks often report as generic devices but still require custom axis remapping, deadzone tuning, or timing logic.
@@ -45,7 +45,7 @@ We enforce a **one-repo-per-provider** policy, even for standard Godot inputs.
    * These providers require **heavy external dependencies** such as Python environments, Android `.aar` libraries, GDExtensions, vendor SDKs, or XR runtimes.
    * **Isolation is safety:** keeping those providers in separate repos prevents unrelated contributors from needing every dependency stack just to fix a gameplay or UI issue.
 
-## Normalization Flow
+## Normalization flow
 
 1. **Raw data:** The concrete provider receives device-specific data (for example, MediaPipe landmarks such as `x: 0.54, y: 0.21, z: -0.1`).
 2. **Adaptation:** The provider applies technology-specific normalization, offsets, handedness correction, filtering, and coordinate transforms.

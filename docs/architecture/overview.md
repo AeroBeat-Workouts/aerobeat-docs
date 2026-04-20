@@ -12,36 +12,57 @@
 
 ## Executive Summary
 
-AeroBeat is a **Modular Rhythm Platform**. We strictly decouple **Input** (Hardware), **UI** (Platform Interaction), **Logic** (Gameplay), and **Content** (Assets).
+AeroBeat is a modular rhythm platform. We strictly decouple **Input**, **Feature Runtime**, **Content**, **Assets**, **UI**, and **Tools**.
+
+The platform is documented as a lane-based polyrepo architecture with six domain-specific core repos:
+
+1. [`aerobeat-input-core`](https://github.com/AeroBeat-Workouts/aerobeat-input-core)
+2. [`aerobeat-feature-core`](https://github.com/AeroBeat-Workouts/aerobeat-feature-core)
+3. [`aerobeat-content-core`](https://github.com/AeroBeat-Workouts/aerobeat-content-core)
+4. [`aerobeat-asset-core`](https://github.com/AeroBeat-Workouts/aerobeat-asset-core)
+5. [`aerobeat-ui-core`](https://github.com/AeroBeat-Workouts/aerobeat-ui-core)
+6. [`aerobeat-tool-core`](https://github.com/AeroBeat-Workouts/aerobeat-tool-core)
+
+AeroBeat no longer treats `aerobeat-core` as the long-term universal hub. Each lane owns its own shared contracts, and concrete repos depend only on the lanes they actually consume.
 
 ## Technical Structure Overview
 
 Our architecture is built on four key pillars designed to maximize modularity and contributor safety.
 
-### 1. Hub-and-Spoke Topology
+### 1. Lane-based polyrepo topology
 
-We do not use a monolithic repository. Instead, we use a **Polyrepo** approach where `aerobeat-core` acts as the central hub containing shared Interfaces (Contracts) and Data Types. Feature repositories (like Boxing or Flow) depend on Core, but never on each other.
+AeroBeat does not use a monolithic repository or a universal shared hub. Instead, each domain has one explicit core repo that owns that lane's stable contracts.
 
-### 2. Input Agnosticism (The Provider Pattern)
+- **Input core** owns provider abstractions and normalized input-facing contracts.
+- **Feature core** owns gameplay-mode/runtime rules that interpret athlete actions against authored content over time.
+- **Content core** owns durable authored-content contracts.
+- **Asset core** owns avatars, cosmetics, environments, and other asset-side definitions.
+- **UI core** owns shared UI abstractions.
+- **Tool core** owns shared tool-side contracts.
 
-The game logic never communicates directly with hardware. Instead, it requests normalized data (0.0 - 1.0) from an **Input Provider**. This allows us to hot-swap between a Webcam, VR Controllers, or a Keyboard without changing a single line of gameplay code.
+Assembly repos such as `aerobeat-assembly-community` compose only the core repos and concrete packages they need through GodotEnv.
 
-### 3. Atomic UI Design
+### 2. Input agnosticism (the provider pattern)
 
-We separate visual components (Buttons, Cards) from application logic.
+Gameplay code never talks directly to hardware. It depends on normalized input contracts from `aerobeat-input-core`, allowing AeroBeat to swap between webcam tracking, XR controllers, JoyCons, keyboard, touch, or other providers without rewriting feature logic.
 
-*   **UI Kit:** A library of pure, stateless components.
-*   **UI Shells:** Platform-specific applications (Mobile, VR) that assemble these components into screens.
+### 3. Feature consumes content; it does not own content
 
-### 4. Data-Driven Content
+Feature means gameplay-mode/runtime rules that interpret authored content against athlete actions over time. That work belongs in `aerobeat-feature-core` and concrete `aerobeat-feature-*` repos.
 
-To support community modding safely, we ban scripts in asset packs. All content (Skins, Avatars, Cosmetics, Environments, Songs) are loaded via strict Resource definitions, preventing Remote Code Execution (RCE) from malicious mods.
+The durable content model belongs in `aerobeat-content-core`.
 
 For playable fitness content, AeroBeat uses a layered model:
 
-*   **Song:** Reusable audio and timing source.
-*   **Routine:** Gameplay-mode-specific package for one song.
-*   **Chart Variant:** One concrete playable difficulty / compatibility slice.
-*   **Workout:** A program that assembles selections into a session.
+- **Song:** Reusable audio and timing source.
+- **Routine:** Gameplay-mode-specific package for one song.
+- **Chart Variant:** One concrete playable difficulty / compatibility slice.
+- **Workout:** A program that assembles selections into a session.
 
 Charts share a common envelope for ids, timing, scoring, presentation hints, and metadata, while the event payload remains mode-specific. This preserves input agnosticism without forcing Boxing, Dance, Step, and Flow into a fake one-size-fits-all event schema.
+
+### 4. Data-driven content and asset safety
+
+To support community modding safely, AeroBeat bans executable scripts in community asset packs. All content and assets load through strict resource definitions and validation contracts.
+
+Asset-side contracts such as avatars, cosmetics, environments, and related reusable asset definitions belong in `aerobeat-asset-core`. Feature repos may consume those definitions, but they do not own them.

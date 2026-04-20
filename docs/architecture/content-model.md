@@ -12,7 +12,15 @@ The durable hierarchy is:
 
 This structure keeps audio and licensing metadata reusable at the song layer, keeps gameplay-mode semantics at the routine layer, keeps difficulty-specific authored event streams at the chart variant layer, and keeps coaching / workout programming at the workout layer.
 
-## Why AeroBeat Needs `Routine`
+## Canonical ownership
+
+The canonical contracts for `Song`, `Routine`, `Chart Variant`, `Workout`, the shared chart envelope, and shared content loading / validation interfaces live in [`aerobeat-content-core`](https://github.com/AeroBeat-Workouts/aerobeat-content-core).
+
+[`aerobeat-feature-core`](https://github.com/AeroBeat-Workouts/aerobeat-feature-core) consumes those contracts to define gameplay-mode/runtime rules. It does not own the durable content primitives.
+
+[`aerobeat-tool-core`](https://github.com/AeroBeat-Workouts/aerobeat-tool-core) and tool repos consume the same content contracts so authoring, validation, ingestion, and runtime all speak the same content language.
+
+## Why AeroBeat needs `Routine`
 
 `Routine` is the missing primitive between `Song` and `Workout`.
 
@@ -34,7 +42,7 @@ Examples:
 - a Boxing Routine can have **Easy**, **Medium**, **Hard**, and **Pro** chart variants
 - a Workout can pick the Medium Boxing chart from one song and the Hard Dance chart from another
 
-## Core Primitives
+## Core primitives
 
 ### 1. Song
 
@@ -110,11 +118,13 @@ It owns:
 
 A workout references either a full routine plus difficulty preference, or an exact chart variant directly when the sequence must be locked.
 
-## Shared Chart Envelope
+## Shared chart envelope
 
 AeroBeat uses **one shared chart envelope** across gameplay modes, with **mode-specific payloads** inside it.
 
 This keeps tooling, loading, validation, and runtime contracts coherent without pretending that Boxing and Step are authored with the exact same event vocabulary.
+
+The shared chart envelope is owned by `aerobeat-content-core` because it is part of the durable authored-content contract. Feature repos consume it and interpret it.
 
 ### Shared fields
 
@@ -150,7 +160,7 @@ The loader contract is shared. The event schema is not identical across all mode
 
 That is the correct compromise.
 
-## Interaction Families, Not Raw Devices
+## Interaction families, not raw devices
 
 Charts target **interaction semantics**, not raw hardware bindings.
 
@@ -188,7 +198,7 @@ Use profile fields to express compatibility without making the profile the prima
 
 For example, a Boxing chart targets `gesture_2d`, supports `mediapipe_camera`, `keyboard_debug`, and `gamepad_virtual_presence`, but only marks `mediapipe_camera` as validated initially.
 
-## View Modes Belong Mostly To Runtime Presentation
+## View modes belong mostly to runtime presentation
 
 View modes such as Portal View, Track View, 3-Portal View, and 360-Portal View are treated primarily as **presentation and runtime interpretation concerns**, not as separate chart families.
 
@@ -214,7 +224,7 @@ Then let the runtime render that interaction as:
 
 If a future mode truly requires view-specific authored data that cannot be derived, add that as an extension field rather than replacing the content hierarchy.
 
-## Recommended File / Package Relationship
+## Recommended file / package relationship
 
 At the docs level, AeroBeat treats these as distinct assets even if implementation details evolve later:
 
@@ -225,7 +235,7 @@ At the docs level, AeroBeat treats these as distinct assets even if implementati
 
 That yields small, reviewable, reusable units.
 
-## Minimal Shared Chart Envelope Example
+## Minimal shared chart envelope example
 
 ```json
 {
@@ -262,7 +272,7 @@ That yields small, reviewable, reusable units.
 }
 ```
 
-## Opinionated Rules
+## Opinionated rules
 
 To keep the ecosystem coherent, AeroBeat follows these rules:
 
@@ -272,8 +282,9 @@ To keep the ecosystem coherent, AeroBeat follows these rules:
 4. **Charts target interaction families first.** Devices are compatibility notes, not the root abstraction.
 5. **View modes are render strategies first.** Do not create separate content silos for portal vs track unless a future mode proves it is necessary.
 6. **Mode-specific event vocabularies are allowed.** The chart envelope is shared; the authored payload is not forced into fake universality.
+7. **Content ownership stays in `aerobeat-content-core`.** Feature, tool, UI, and assembly repos consume these contracts; they do not redefine them.
 
-## First Shipping Recommendation
+## First shipping recommendation
 
 For the first shipping slice, AeroBeat standardizes on:
 
