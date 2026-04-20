@@ -381,7 +381,7 @@ AeroBeat keeps canonical content contracts separate from ingestion mechanics.
 
 `aerobeat-content-core` owns:
 
-- canonical import/export DTO contracts where shared interchange is required
+- canonical import/export DTO (Data Transfer Object) contracts where shared interchange is required
 - normalized validation/migration reports
 - package manifest and content record shapes
 - stable ids/reference rules that ingestion must preserve
@@ -439,7 +439,7 @@ Owns the durable shared language of authored content:
 
 Owns shared tool-side operational models around that content:
 
-- editor/backend/settings-facing DTOs that are not themselves durable authored content
+- editor/backend/settings-facing DTOs (Data Transfer Objects) that are not themselves durable authored content
 - import/export job/result models
 - publishing/moderation workflow models
 - batch validation/migration job models
