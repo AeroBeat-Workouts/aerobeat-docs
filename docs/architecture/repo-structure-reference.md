@@ -31,20 +31,22 @@ aerobeat-content-core/
 ├── interfaces/
 │   ├── chart_loader.gd
 │   ├── content_registry.gd
-│   └── workout_player.gd
+│   ├── content_migration.gd
+│   └── workout_resolution.gd
 ├── data_types/
 │   ├── song.gd
 │   ├── routine.gd
 │   ├── chart_variant.gd
 │   ├── workout.gd
-│   └── chart_envelope.gd
+│   ├── chart_envelope.gd
+│   └── content_package_manifest.gd
 ├── validators/
 │   └── content_validation_result.gd
 └── globals/
     └── aero_content_schema.gd
 ```
 
-`Song`, `Routine`, `Chart Variant`, and `Workout` live in `aerobeat-content-core`. Shared chart-envelope fields, content ids, loading contracts, and cross-tool/runtime validation types also live there.
+`Song`, `Routine`, `Chart Variant`, and `Workout` live in `aerobeat-content-core`. Shared chart-envelope fields, content-package manifest contracts, registry/query interfaces, workout-resolution contracts, schema-version rules, migration interfaces, and cross-tool/runtime validation types also live there.
 
 ## D. Asset Core (`aerobeat-asset-core`)
 

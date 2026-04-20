@@ -235,6 +235,222 @@ At the docs level, AeroBeat treats these as distinct assets even if implementati
 
 That yields small, reviewable, reusable units.
 
+## Content package boundary
+
+AeroBeat packages authored content as a **content package** with one manifest and one or more typed records/resources inside it.
+
+The package boundary is the unit of distribution, import, indexing, and compatibility review.
+The individual `Song`, `Routine`, `Chart Variant`, and `Workout` records inside that package remain the unit of authoring, validation, and runtime selection.
+
+### Package responsibilities
+
+A content package owns:
+
+- package id
+- package version
+- package-level author / attribution / licensing metadata
+- package manifest entries for contained songs, routines, chart variants, workouts, and media resources
+- references to the binary resources required by those records, such as audio, thumbnails, coaching clips, and preview art
+- package-level compatibility declarations, such as minimum supported schema family or required feature lanes
+
+### Package rules
+
+1. A package may contain one or more songs.
+2. A routine must reference a song that exists in the same package or in a separately declared dependency package.
+3. A chart variant must reference exactly one routine.
+4. A workout may reference routines or exact chart variants, but a workout step must declare which resolution rule it is using.
+5. Binary media stays as referenced resources; the canonical authored contracts stay in structured content records.
+
+## Authored data contract boundaries
+
+The durable authored contract is split across four levels:
+
+### Song contract
+
+The `Song` contract is responsible for reusable music identity and timing authority.
+It must remain free of mode-specific gameplay data.
+
+### Routine contract
+
+The `Routine` contract is responsible for the mode-specific authored package for one song.
+It is the boundary where AeroBeat commits to the gameplay family, authoring vocabulary, validation profile, and default presentation intent.
+
+### Chart Variant contract
+
+The `Chart Variant` contract is responsible for one exact playable authored sequence.
+It is the boundary for difficulty, interaction family, validated compatibility, scoring envelope, and the timed event stream.
+
+### Workout contract
+
+The `Workout` contract is responsible for session composition.
+It sequences playable selections, transition timing, and coaching/program flow, but it does not redefine the underlying chart semantics.
+
+## Registry and discovery responsibilities
+
+AeroBeat separates **registry contracts** from **registry implementations**.
+
+### `aerobeat-content-core` owns
+
+- content identity fields and reference rules
+- package-manifest contract shape
+- registry query/result interfaces
+- lookup semantics for songs, routines, chart variants, workouts, and resource references
+- stable rules for duplicate ids, missing references, package precedence, and disabled/hidden content states
+
+### concrete tools/runtime own
+
+- filesystem scanning
+- remote catalog fetches
+- cache persistence
+- user-library indexing
+- install/uninstall state
+- download/update policy
+
+The important split is simple: `aerobeat-content-core` defines **what a registry means**; tools and app/runtime code decide **how a registry is populated and persisted**.
+
+## Schema versioning and migration
+
+AeroBeat versioning is explicit at both the package and record levels.
+
+### Versioning rules
+
+- every package declares a package version
+- every structured content record declares its schema id/version
+- schema evolution is append-only until a deliberate breaking revision is published
+- breaking schema changes require a new schema version rather than silent reinterpretation
+- loaders must reject unknown breaking schema versions unless a registered migration path exists
+
+### Migration ownership
+
+`aerobeat-content-core` owns:
+
+- schema identifiers
+- compatibility classification
+- migration interface contracts
+- canonical migration result/report types
+- the rule that migrations must be explicit, traceable, and loss-aware
+
+`aerobeat-tool-core` and concrete tooling own:
+
+- author-facing migration workflows
+- upgrade preview UX
+- batch migration commands
+- import-time auto-upgrade policies where approved
+
+Feature repos may provide mode-specific event-schema migrations for their own payload families, but they do so through the shared migration interfaces rather than inventing a parallel migration system.
+
+## Validation layering
+
+AeroBeat uses layered validation instead of one giant validator.
+
+### Layer 1: package/reference validation
+
+Shared validation in `aerobeat-content-core` checks:
+
+- schema presence and version legality
+- id uniqueness and reference integrity
+- required field presence
+- timing-envelope shape
+- package/resource reference existence
+- workout step reference legality
+- interaction-family field validity
+
+### Layer 2: mode-specific content validation
+
+Feature repos validate the mode-specific payload semantics, for example:
+
+- boxing event vocabulary legality
+- dance formation constraints
+- step lane/rule constraints
+- flow cut/path constraints
+
+### Layer 3: tool/runtime compatibility validation
+
+Tool and runtime layers validate environment-specific concerns, for example:
+
+- missing imported files on disk
+- unsupported codecs or oversized assets
+- target-platform packaging rules
+- publish/upload policy checks
+
+A chart is not considered fully valid just because one layer passed. The shared layer proves the content contract is structurally coherent. The feature layer proves the gameplay payload is meaningful. The tool/runtime layer proves the content is usable in the current environment.
+
+## Import, export, and ingestion boundaries
+
+AeroBeat keeps canonical content contracts separate from ingestion mechanics.
+
+`aerobeat-content-core` owns:
+
+- canonical import/export DTO contracts where shared interchange is required
+- normalized validation/migration reports
+- package manifest and content record shapes
+- stable ids/reference rules that ingestion must preserve
+
+`aerobeat-tool-core` and concrete tool repos own:
+
+- external file format adapters
+- authoring-tool importers/exporters
+- batch ingest jobs
+- backend upload/download workflows
+- moderation/publishing workflow state
+
+That means CSV import, editor project conversion, web upload, and cloud catalog ingestion are all tool responsibilities. The resulting durable records still have to land on the same `Song` / `Routine` / `Chart Variant` / `Workout` contracts owned by `aerobeat-content-core`.
+
+## Workout sequencing and playback handoff
+
+The workout contract ends at **session sequencing intent**.
+The feature/runtime contract begins at **playback execution and athlete interpretation**.
+
+### `aerobeat-content-core` owns
+
+- workout step ordering
+- routine/chart selection references
+- optional difficulty-resolution rules when the workout references a routine rather than an exact chart variant
+- transition metadata
+- workout-level timing and coaching-sequence metadata
+- the handoff contract that resolves a workout step into a concrete playable chart selection plus any attached session metadata
+
+### feature/runtime owns
+
+- spawning gameplay objects from the resolved chart
+- hit/scoring interpretation during play
+- dynamic difficulty or assist behavior at runtime
+- view rendering and presentation realization
+- pause/retry/fail/recovery behavior
+
+In other words, Content decides **what should be played next** and resolves the authored selection boundary. Feature/runtime decides **how that resolved selection is actually performed on-screen and scored in motion**.
+
+## Explicit split: `content-core` vs `tool-core`
+
+### `aerobeat-content-core`
+
+Owns the durable shared language of authored content:
+
+- canonical content records
+- shared chart envelope
+- package-manifest contract
+- registry/loader/query interfaces
+- schema ids/version rules
+- shared validation contracts and result types
+- workout sequencing contracts
+- migration interface contracts
+
+### `aerobeat-tool-core`
+
+Owns shared tool-side operational models around that content:
+
+- editor/backend/settings-facing DTOs that are not themselves durable authored content
+- import/export job/result models
+- publishing/moderation workflow models
+- batch validation/migration job models
+- tool-side status/progress/error surfaces
+
+### non-goals
+
+- `aerobeat-content-core` does not own editor UX, upload workflows, or backend queue state.
+- `aerobeat-tool-core` does not redefine `Song`, `Routine`, `Chart Variant`, `Workout`, or the shared chart envelope.
+- feature repos do not replace the shared content contracts with mode-local durable content roots.
+
 ## Minimal shared chart envelope example
 
 ```json
