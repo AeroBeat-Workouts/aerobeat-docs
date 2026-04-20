@@ -1,7 +1,7 @@
 # AeroBeat Phase 2 — Pilot Package Family (`aerobeat-feature-boxing`)
 
 **Date:** 2026-04-18  
-**Status:** In Progress  
+**Status:** Complete  
 **Agent:** Pico 🐱‍🏍
 
 **Pinned Godot Version:** `4.6.2` (from `/home/derrick/.openclaw/.env`)
@@ -120,9 +120,9 @@ This is still coordination work owned by `aerobeat-docs`, while implementation a
 **Files Created/Deleted/Modified:**
 - validation notes as needed
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**Results:** Pending.
+**Results:** Independent QA re-ran the pilot from a clean generated state in `aerobeat-feature-boxing` at commit `67630b4`. Validation started by deleting generated `.testbed/addons/`, `.testbed/.addons/`, and `.testbed/.godot/`, then restoring solely from `.testbed/addons.jsonc` with `godotenv addons install`; restore completed successfully and `git status --short` stayed clean before and after install. A fresh `godot --headless --path .testbed --import` succeeded on Godot `4.6.2 stable standard`, followed by `godot --headless --path .testbed --script addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gexit`, which discovered `res://tests/test_example.gd` and passed `2/2` tests. Repo-shape checks confirmed the migrated package now exposes `.testbed/tests/` as the only canonical local test location, no root `test/` directory remains, and no `.testbed/scenes/` folder exists yet (acceptable because no workbench scene content is currently tracked). README, `.gitignore`, `.testbed/project.godot`, and `.github/workflows/gut_ci.yml` match the approved `.testbed` GodotEnv flow. One follow-on note: the restored upstream dependency `aerobeat-core` still contains its own legacy `test/` / `.testbed/test` references internally, but that did not dirty the boxing repo or block the pilot’s clean restore/import/test cycle.
 
 ---
 
@@ -139,25 +139,26 @@ This is still coordination work owned by `aerobeat-docs`, while implementation a
 **Files Created/Deleted/Modified:**
 - pilot audit / follow-up notes as needed
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**Results:** Pending.
+**Results:** Independent audit passed against the actual repo state at `aerobeat-feature-boxing` commit `67630b4` and docs commit `27df97e`. Verified `.testbed/addons.jsonc` matches the approved two-addon SSH contract (`aerobeat-core@v0.1.0`, `gut@main` with `subfolder: "/addons/gut"`), `setup_dev.py` is removed, root `test/` is gone, repo-local tests now live under `.testbed/tests/`, `.testbed/project.godot` uses the approved `4.6` feature marker, and touched human-facing docs/tooling use `Godot 4.6.2 stable standard` where applicable. Re-ran the clean restore/import/GUT path directly during audit by deleting generated `.testbed/addons/`, `.testbed/.addons/`, and `.testbed/.godot/`, then running `godotenv addons install`, `godot --headless --path .testbed --import`, and `godot --headless --path .testbed --script addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gexit`; restore stayed clean in git status and GUT passed `2/2` tests from `res://tests/test_example.gd` on Godot `4.6.2 stable standard`. No stale `.testbed/test` expectation remains in the touched boxing repo/docs. Follow-on stale `.testbed/test` references still exist in template sources and inside restored upstream dependencies (notably `aerobeat-core`), but those are separate follow-on consistency work and do not invalidate this boxing pilot.
 
 ---
 
 ## Final Results
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**What We Built:** Pending.
+**What We Built:** Completed the Phase 2 pilot migration for `aerobeat-feature-boxing` and recorded the approved repeatable package-repo pattern: canonical `.testbed/addons.jsonc`, hidden `.testbed/` workbench as the direct development/debugging surface, repo-local unit tests under `.testbed/tests/`, optional workbench scenes under `.testbed/scenes/`, no `setup_dev.py`, and validation through direct `.testbed` restore/import/GUT commands.
 
-**Reference Check:** Pending.
+**Reference Check:** `REF-02`, `REF-03`, `REF-05`, `REF-06`, and `REF-07` were satisfied by direct audit of repo state plus an independent rerun of restore/import/test from `.testbed/`. `REF-01` and the pilot packet remain truthful about this pilot repo and also correctly preserve follow-on work that still belongs elsewhere (notably template cleanup and upstream package-family consistency work).
 
 **Commits:**
-- Pending
+- `67630b4` - Migrate boxing pilot to GodotEnv testbed flow
+- `27df97e` - Record boxing pilot migration packet and results
 
-**Lessons Learned:** Pending.
+**Lessons Learned:** The boxing pilot is a valid reusable package pattern, but template sources and some upstream dependency repos still carry old `test/` / `.testbed/test` assumptions. Those should be tracked as separate follow-on migration beads instead of reopening the completed boxing pilot.
 
 ---
 
-*Completed on Pending*
+*Completed on 2026-04-18*
