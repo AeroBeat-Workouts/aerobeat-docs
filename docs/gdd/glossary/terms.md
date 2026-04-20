@@ -1,28 +1,30 @@
 # Project Glossary
 
-Use this glossary of AeroBeat specific terms to help align our work.
+Use this glossary of AeroBeat specific terms to keep the docs set aligned.
 
 | Term | Definition |
 | :--- | :--- |
-| **Song** | The reusable audio/timing asset and metadata source for gameplay content. |
-| **Routine** | The gameplay-mode-specific package for one Song, such as the boxing choreography for that song. |
+| **Song** | The reusable audio / timing asset and metadata source for gameplay content. |
+| **Routine** | The gameplay-mode-specific package for one Song, such as the boxing routine for that song. |
 | **Chart Variant** | One concrete playable chart inside a Routine representing a single difficulty and compatibility slice. |
-| **Workout** | An ordered training program that assembles routines or chart variants into a session. |
+| **Workout** | An ordered training program that assembles routines or chart variants into a session. Player-facing UI may still describe a Workout as a playlist. |
 | **Chart Envelope** | The shared chart-level contract that carries ids, timing, scoring, presentation hints, and a mode-specific event payload. |
-| **Interaction Family** | A durable movement-target abstraction such as `gesture_2d` or `tracked_6dof`, used instead of binding content directly to a raw device. |
-| **Measure** | A unit of musical time (4 Beats). |
-| **Lane Index** | Integer representing horizontal position when playing in `Track View`. Range depends on Gameplay (e.g., 2 for Boxing, 4 for Step). |
+| **Interaction Family** | A durable movement-target abstraction such as `gesture_2d`, `tracked_6dof`, or `hybrid`, used instead of binding content directly to a raw device. |
+| **Input Provider** | The top-level runtime/gameplay abstraction that bridges hardware input systems to gameplay logic. |
+| **Provider Pattern** | The architectural pattern where gameplay consumes normalized data through an Input Provider instead of talking to hardware directly. |
+| **Input Profile** | A concrete runtime or device compatibility target, such as `mediapipe_camera` or `keyboard_debug`. |
+| **Strategy** | An implementation-detail logic-swapping pattern used inside a system or provider. It is not the public docs term for AeroBeat's overall input abstraction. |
+| **Measure** | A unit of musical time (4 beats). |
+| **Lane Index** | Integer representing position when playing in Track View. Range and orientation depend on gameplay and renderer (for example, 2 for Boxing, 4 for Step). |
 | **Hit Window** | The timeframe (±ms) where a hit counts as valid. |
-| **Provider** | A script that bridges Hardware Input to Game Logic. |
-| **Strategy** | A script that swaps logic implementations (e.g., Portal vs Track view). |
-| **Tool** | A reusable service or singleton manager (e.g., API, Analytics) independent of gameplay logic. |
+| **Tool** | A reusable service or singleton manager (for example API or Analytics) independent of gameplay logic. |
 | **Atom** | A base UI element (Button) in the UI Kit. |
 | **Session Context** | Immutable rules of the round (Song, Difficulty). Synced once. |
 | **User State** | Mutable player data (Score, Health). Replicated frequently. |
 | **Remote Athlete** | A networked opponent visualized via a customizable Avatar. |
-| **Authority** | The peer responsible for calculating specific logic (e.g., Local Client for Hits). |
-| **Track View** | 2D visualization where targets rise from bottom to top (DDR style). |
-| **Portal View** | 3D visualization where targets fly towards the player from the portals origin (VR style). |
+| **Authority** | The peer responsible for calculating specific logic (for example, local client for hits). |
+| **Track View** | The broader family of linear 2D runtime presentation modes. Bottom-to-top upward scrolling is a common subtype, especially for Step, but not the only valid Track View form. |
+| **Portal View** | 3D visualization where targets travel toward the athlete from portal-driven spatial presentation. |
 | **Skin** | A visual replacement for a gameplay object (Gloves, Bats, Targets, Obstacles). |
 | **Avatar** | A 3D character model representing the player or coach. |
 | **Cosmetic** | An accessory attachment for an Avatar (Hat, Glasses). |

@@ -1,37 +1,54 @@
 # Input Pipeline (Provider Pattern)
 
-Input is abstracted via a Strategy Pattern to allow hot-swapping between CV, VR, and Debug modes. The game logic never talks to hardware directly; it asks the **Input Provider** for normalized data.
+AeroBeat uses the **Provider Pattern** for runtime input.
 
-* **Interface:** `AeroInputProvider` (Defined in `aerobeat-core`).
-* **Contract:** Must return normalized `0.0 - 1.0` Viewport Coordinates for `LeftHand`, `RightHand`, and `Head`.
+The public-facing abstraction is the **Input Provider**: a runtime bridge that turns hardware-specific signals into normalized gameplay data. Game logic never talks to a webcam, controller, keyboard, or tracker directly; it asks the **Input Provider** for normalized data.
 
-**Supported Strategies:**
+`Strategy` remains an implementation-detail term for how a concrete provider internally performs adaptation or switching. It is **not** the main public name for the overall input abstraction.
 
-| Strategy Name | Repository | Technology | Target Platform |
+* **Interface:** `AeroInputProvider` (defined in `aerobeat-core`).
+* **Contract:** Must return normalized `0.0 - 1.0` viewport coordinates or equivalent gameplay-space data for `LeftHand`, `RightHand`, and `Head`.
+
+## Supported Input Providers
+
+| Input Provider | Repository | Technology | Typical Target Platform |
 | :--- | :--- | :--- | :--- |
-| **`StrategyMediaPipePython`** | `aerobeat-input-mediapipe-python` | **Sidecar Process.** Launches a Python subprocess that pipes landmark data via UDP `localhost:8100`. | Windows, Linux, Mac |
-| **`StrategyMediaPipeNative`** | `aerobeat-input-mediapipe-native` | **GDExtension / Plugin.** Runs MediaPipe directly in the application memory. | Android, iOS |
-| **`StrategyJoyconHID`** | `aerobeat-input-joycon-hid` | **Raw Bluetooth.** Connects directly to JoyCons to read high-speed Gyro/Accel data. | Windows, Linux, Android |
-| **`StrategyKeyboard`** | `aerobeat-input-keyboard` | **Godot Native.** Maps WASD/Arrow keys to specific lanes (Virtual Presence). | All |
-| **`StrategyMouse`** | `aerobeat-input-mouse` | **Godot Native.** Maps cursor X/Y to viewport coordinates. | Desktop / Web |
-| **`StrategyTouch`** | `aerobeat-input-touch` | **Godot Native.** Maps touchscreen taps to viewport coordinates. | Mobile / Tablet |
-| **`StrategyGamepad`** | `aerobeat-input-gamepad` | **Godot Native.** Standard XInput (Xbox/PS5) stick mapping. | All |
+| **MediaPipe Python Provider** | `aerobeat-input-mediapipe-python` | **Sidecar Process.** Launches a Python subprocess that pipes landmark data via UDP `localhost:8100`. | Windows, Linux, Mac |
+| **MediaPipe Native Provider** | `aerobeat-input-mediapipe-native` | **GDExtension / Plugin.** Runs MediaPipe directly in the application memory. | Android, iOS |
+| **JoyCon HID Provider** | `aerobeat-input-joycon-hid` | **Raw Bluetooth.** Connects directly to JoyCons to read high-speed gyro / accel data. | Windows, Linux, Android |
+| **Keyboard Provider** | `aerobeat-input-keyboard` | **Godot Native.** Maps WASD / Arrow keys to gameplay lanes or fallback gestures. | All |
+| **Mouse Provider** | `aerobeat-input-mouse` | **Godot Native.** Maps cursor X/Y to viewport coordinates. | Desktop / Web |
+| **Touch Provider** | `aerobeat-input-touch` | **Godot Native.** Maps touchscreen taps to viewport coordinates. | Mobile / Tablet |
+| **Gamepad Provider** | `aerobeat-input-gamepad` | **Godot Native.** Standard XInput / controller stick mapping. | All |
+| **XR Provider** | `aerobeat-input-xr` | **Tracked 6DOF controllers / hands.** Uses XR runtime pose data. | XR |
 
-### Strategy Grouping Rationale
-We enforce a **One-Repo-Per-Device-Type** policy, even for standard Godot inputs.
+## Interaction Family vs Input Profile
 
-**The Logic: Granularity & Quirks.**
+AeroBeat docs distinguish between authored-content compatibility and concrete runtime/device targets.
 
-1.  **Isolation of Quirks:**
-    * While Godot handles generic Gamepads well, specific controllers (like DDR Dance Pads or Flight Sticks) often report as generic gamepads but require specific axis remapping or deadzone logic.
-    * By isolating `aerobeat-input-gamepad`, we can implement complex remapping strategies without polluting the clean logic of `aerobeat-input-keyboard`.
+* **Interaction Family:** The authored-content compatibility group, such as `gesture_2d`, `tracked_6dof`, or `hybrid`.
+* **Input Profile:** A concrete runtime/device compatibility target or validated profile, such as `mediapipe_camera`, `keyboard_debug`, or `gamepad_virtual_presence`.
 
-2.  **The "Driver" Tier (`input-mediapipe-*`, `input-joycon`):**
-    * These inputs require **Heavy External Dependencies** (Python Environments, Android .aar Libraries, GDExtensions).
-    * **Isolation is Safety:** By keeping the Python CV stack in its own repo, we ensure that a Mobile developer never has to download a 200MB Python environment they can't use. Likewise, a PC developer doesn't need to compile Android Java code just to fix a keyboard bug.
+Charts target **interaction families** first. They record **input profiles** as supported or validated compatibility notes.
 
-**Normalization Flow:**
+## Provider Grouping Rationale
 
-1.  **Raw Data:** Strategy receives device-specific data (e.g., MediaPipe Landmark `x: 0.54, y: 0.21, z: -0.1`).
-2.  **Adaptation:** Strategy applies technology-specific offsets (e.g., flipping Y axis for OpenCV).
-3.  **Delivery:** Strategy exposes `get_left_hand_transform()` to the Game Loop.
+We enforce a **one-repo-per-provider** policy, even for standard Godot inputs.
+
+### The Logic: Granularity & Quirks
+
+1. **Isolation of quirks**
+   * While Godot handles generic gamepads well, specific controllers such as dance pads or flight sticks often report as generic devices but still require custom axis remapping, deadzone tuning, or timing logic.
+   * By isolating `aerobeat-input-gamepad`, AeroBeat can implement provider-specific adaptation without polluting keyboard or touch input code.
+
+2. **The driver tier (`input-mediapipe-*`, `input-joycon`, `input-xr`)**
+   * These providers require **heavy external dependencies** such as Python environments, Android `.aar` libraries, GDExtensions, vendor SDKs, or XR runtimes.
+   * **Isolation is safety:** keeping those providers in separate repos prevents unrelated contributors from needing every dependency stack just to fix a gameplay or UI issue.
+
+## Normalization Flow
+
+1. **Raw data:** The concrete provider receives device-specific data (for example, MediaPipe landmarks such as `x: 0.54, y: 0.21, z: -0.1`).
+2. **Adaptation:** The provider applies technology-specific normalization, offsets, handedness correction, filtering, and coordinate transforms.
+3. **Delivery:** The provider exposes a stable gameplay contract such as `get_left_hand_transform()` to the game loop.
+
+Implementation details may still use strategy objects internally, but the public architectural contract remains the **Input Provider**.
