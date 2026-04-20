@@ -169,18 +169,19 @@ Examples of likely target concepts:
 
 ## Final Results
 
-**Status:** ❌ Blocked by audit gaps
+**Status:** ❌ Blocked by audit gap
 
-**What We Built:** The rewrite pass successfully established the core canon in the main architecture, glossary, gameplay, and choreography docs: **Input Provider** / **Provider Pattern** for input architecture, **Track View** as the broader linear 2D presentation family, and **Song -> Routine -> Chart Variant -> Workout** as the content-model hierarchy. The targeted cleanup passes also removed the specific `playlist` leaks previously identified in the nine-file follow-up batch.
+**What We Built:** The rewrite and follow-up cleanup passes established the core canon across the docs set: **Input Provider** / **Provider Pattern** for input architecture, **Track View** as the broader linear 2D presentation family, and **Song -> Routine -> Chart Variant -> Workout** as the content-model hierarchy. The targeted cleanup batches also removed the previously identified `playlist` leaks from the main public product, guide, glossary, community, economy, preferences, and backend API pages.
 
-**Reference Check:** `REF-02`, `REF-03`, `REF-04`, and the related gameplay/choreography canon pages still agree on the primary architecture and terminology decisions: `Workout` remains the correct public/model term, `Track View` remains the broader family term, and `Input Provider` / `Provider Pattern` remain intact. However, the repo still fails Derrick's final rule because `playlist` is still visible in additional public docs outside the last targeted cleanup batch, including accessibility, coaching, release, preferences, glossary, economy, user-content, gamification, and backend API pages.
+**Reference Check:** `REF-02`, `REF-03`, `REF-04`, and the related gameplay/choreography canon pages still agree on the primary architecture and terminology decisions: `Workout` remains the correct public/model term, `Track View` remains the broader family term, and `Input Provider` / `Provider Pattern` remain intact. The only remaining blocker found in this final audit is a single raw `playlist` occurrence at `docs/gdd/roadmap/future-roadmap.md:7`, so the repo still does not fully satisfy Derrick's absolute no-`playlist` rule.
 
 **Commits:**
 - Implementation commit already landed before this audit: `0619892`
 - Targeted cleanup commit already landed before this re-audit: `fd47fae`
 - Latest cleanup commit already landed before this final re-audit: `efe399a`
+- Latest strict cleanup commit referenced for this audit: `86187c9`
 
-**Lessons Learned:** Narrow follow-up sweeps are not enough when the acceptance rule is absolute. For a docs-wide ban like `playlist should never appear`, the only reliable finish line is a repo-wide search plus canon spot checks, because small UX-note remnants and FAQ wording can survive even after the main architecture pages are corrected.
+**Lessons Learned:** For an absolute terminology ban, the acceptance check must be a literal full-tree string audit plus canon spot checks. Even after the major product and architecture pages are clean, a single roadmap/reference line is enough to keep the audit open.
 
 ---
 
@@ -315,6 +316,44 @@ Examples of likely target concepts:
 **SubAgent:** `auditor`  
 **References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-08`  
 **Prompt:** Independently verify that the remaining public docs no longer contain `playlist` as product/content/session wording, and close the terminology audit if clean.
+
+**Folders Created/Deleted/Modified:**
+- `docs/`
+
+**Files Created/Deleted/Modified:**
+- None expected from audit beyond plan updates
+
+**Status:** ❌ Failed
+
+**Results:** Final independent re-audit completed via repo-wide `grep` across `docs/` plus canon spot checks. **Canon still passes:** the core reference surfaces continue to agree on `Workout` as the public/model term, `Track View` as the broader linear 2D family, and `Input Provider` / `Provider Pattern` as unchanged canon (`docs/architecture/input.md`, `docs/architecture/overview.md`, `docs/architecture/content-model.md`, `docs/gdd/glossary/terms.md`, `docs/gdd/gameplay/view-modes.md`, `docs/gdd/gameplay/boxing.md`, `docs/gdd/gameplay/step.md`, `docs/guides/choreography/overview.md`). **Audit still fails:** one remaining raw `playlist` leak remains in the public docs tree at `docs/gdd/roadmap/future-roadmap.md:7` (`Support for downloading community playlists and creations`). Additional spot checks found no remaining `playlist` / `playlists`, `AeroPlaylist`, or `PLAYLIST` hits elsewhere under `docs/`, including no remaining hits in `docs/api/**`. Because Derrick's rule is absolute that players should never see `playlist` in AeroBeat docs, the terminology audit cannot yet be closed.
+
+---
+
+### Follow-up: Remove final roadmap playlist wording leak
+
+**Bead ID:** `aerobeat-docs-j4p`  
+**SubAgent:** `primary`  
+**References:** `REF-01`, `REF-04`, `REF-08`  
+**Prompt:** Replace the final remaining `playlist` wording leak in `docs/gdd/roadmap/future-roadmap.md` with `Workout` terminology, preserving the current canon and making no unrelated edits.
+
+**Folders Created/Deleted/Modified:**
+- `docs/gdd/roadmap/`
+
+**Files Created/Deleted/Modified:**
+- `docs/gdd/roadmap/future-roadmap.md`
+
+**Status:** ✅ Complete
+
+**Results:** Replaced the final roadmap wording leak in `docs/gdd/roadmap/future-roadmap.md`, changing `community playlists and creations` to `community Workouts and creations` to preserve the established public canon. Verification: `grep -nEi '\\bplaylists?\\b' docs/gdd/roadmap/future-roadmap.md` exited with code 1 / no matches, confirming the roadmap file no longer contains `playlist` or `playlists`.
+
+---
+
+### Follow-up: Close final docs terminology audit after roadmap fix
+
+**Bead ID:** `aerobeat-docs-1kx`  
+**SubAgent:** `auditor`  
+**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-08`  
+**Prompt:** Independently verify that the roadmap fix removes the last remaining `playlist` leak from public docs and close the terminology audit if clean.
 
 **Folders Created/Deleted/Modified:**
 - `docs/`
