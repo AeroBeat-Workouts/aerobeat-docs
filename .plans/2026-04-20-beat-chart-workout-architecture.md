@@ -395,4 +395,23 @@ That first version should assume:
 
 ---
 
+### Follow-up: Expose content model in site navigation
+
+**Bead ID:** `aerobeat-docs-xvr`  
+**SubAgent:** `primary`  
+**References:** `REF-07`  
+**Prompt:** Add `docs/architecture/content-model.md` to the public MkDocs navigation under Architecture. Do not expose `.plans/` content in docs navigation. Commit and push the nav update to `main`.
+
+**Folders Created/Deleted/Modified:**
+- `docs/architecture/`
+
+**Files Created/Deleted/Modified:**
+- `mkdocs.yml`
+
+**Status:** ✅ Complete
+
+**Results:** Added `docs/architecture/content-model.md` to the public MkDocs navigation under `Architecture` in `mkdocs.yml` as `Content Model`. Verified that the site navigation change only exposes the intended architecture page and does not add any `.plans/` content to public docs navigation.
+
+---
+
 *Completed on 2026-04-20*
