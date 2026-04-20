@@ -4,7 +4,12 @@ Use this glossary of AeroBeat specific terms to help align our work.
 
 | Term | Definition |
 | :--- | :--- |
-| **BeatData** | The Resource defining a single gameplay object (timestamp, lane, type). |
+| **Song** | The reusable audio/timing asset and metadata source for gameplay content. |
+| **Routine** | The gameplay-mode-specific package for one Song, such as the boxing choreography for that song. |
+| **Chart Variant** | One concrete playable chart inside a Routine, typically representing a single difficulty and compatibility slice. |
+| **Workout** | An ordered training program that assembles routines or chart variants into a session. |
+| **Chart Envelope** | The shared chart-level contract that carries ids, timing, scoring, presentation hints, and a mode-specific event payload. |
+| **Interaction Family** | A durable movement-target abstraction such as `gesture_2d` or `tracked_6dof`, used instead of binding content directly to a raw device. |
 | **Measure** | A unit of musical time (4 Beats). |
 | **Lane Index** | Integer representing horizontal position when playing in `Track View`. Range depends on Gameplay (e.g., 2 for Boxing, 4 for Step). |
 | **Hit Window** | The timeframe (±ms) where a hit counts as valid. |

@@ -7,6 +7,8 @@ Boxing is the core gameplay of AeroBeat. A good boxing chart is a conversation b
 *   **Tool:** **Boxing Choreography Studio**
 *   **Grid:** 5 Zones (Left, Right, Low-Left, Low-Right, Center).
 *   **Perspective:** 3D Portal View (Targets fly towards you).
+*   **Content Model:** A boxing chart is a **Chart Variant** inside a song's **Boxing Routine**. The song owns audio/timing, the routine owns boxing-specific packaging, and the chart variant owns one concrete playable difficulty.
+*   **Targeting Rule:** Author against **interaction semantics** (`gesture_2d`) rather than hard-binding the chart to a raw device. MediaPipe camera tracking is the first validated input profile, not the core content abstraction.
 
 ## 🥊 Mechanics & Objects
 
@@ -51,6 +53,162 @@ Knee strikes add lower-body intensity to the workout.
 *   **Action:** Lift the corresponding knee (Left=Black, Right=White) to intercept the target.
 *   **Placement:** These should always be placed on the **Bottom Row** of the grid to align with the knee lift height.
 *   **Tracking:** The engine does not track legs in Boxing mode. Instead, it checks if the player's **Head** is horizontally aligned with the target lane. This allows for accessibility modifications (like substituting a Knee Strike for a Block/Crunch).
+
+## 📦 Boxing + MediaPipe v1 Chart Shape
+
+The first shipping boxing chart format should use a shared chart envelope with a boxing-specific event payload.
+
+### Shared boxing chart fields
+
+A Boxing chart variant should include:
+
+*   `schema`: `aerobeat.chart.boxing.v1`
+*   `chartId`, `songId`, `routineId`
+*   `mode`: `boxing`
+*   `difficulty`
+*   `interactionFamily`: usually `gesture_2d` for camera-first boxing
+*   `supportedInputProfiles` and `validatedInputProfiles`
+*   `timing`: aligned to song/conductor time
+*   `presentation`: view preferences and portal-layout hints
+*   `scoring`: hit windows and combo model
+*   `events`: timed boxing actions
+*   `metadata`: author, tags, notes
+
+### Event vocabulary
+
+For Boxing + MediaPipe v1, the authoring vocabulary should focus on athlete intent rather than device details:
+
+*   `strike`
+    *   `hand`: `left` or `right`
+    *   `strike`: `jab`, `cross`, `hook`, `uppercut`
+    *   `zone`: `left_high`, `right_high`, `left_low`, `right_low`, `center`
+*   `guard`
+    *   `zone`: typically `center`
+    *   `holdMs`
+*   `obstacle`
+    *   `avoid`: `squat`, `lean_left`, `lean_right`, `rotate_left`, `rotate_right`
+    *   `shape`
+    *   `durationMs`
+*   `stance`
+    *   `stance`: `orthodox` or `southpaw`
+    *   `scored`: usually `false`
+*   `knee`
+    *   `side`: `left` or `right`
+    *   `zone`: usually low
+
+### Spatial targeting rule
+
+Use `zone` and `portal` as symbolic, athlete-relative fields.
+
+*   `zone` expresses where the action lands relative to the active portal and the athlete.
+*   `portal` expresses which portal context is active, such as `center`, `left`, or `right`.
+
+Do not author Boxing + MediaPipe v1 against raw camera coordinates. The runtime maps authored boxing semantics onto MediaPipe landmarks.
+
+### Timing rule
+
+Event times should align to conductor/song time, not render frames.
+
+Use one of these consistently per toolchain:
+
+*   beat-relative timing with measure/beat subdivision, or
+*   precise absolute song time such as seconds or milliseconds
+
+Whichever representation is used in authoring tools, runtime judgment should resolve against the same conductor timeline.
+
+### Concrete example
+
+```json
+{
+  "schema": "aerobeat.chart.boxing.v1",
+  "chartId": "boxing-song123-medium-gesture",
+  "songId": "song123",
+  "routineId": "song123-boxing",
+  "mode": "boxing",
+  "difficulty": "medium",
+  "interactionFamily": "gesture_2d",
+  "supportedInputProfiles": ["mediapipe_camera", "keyboard_debug"],
+  "validatedInputProfiles": ["mediapipe_camera"],
+  "timing": {
+    "offsetMs": 0,
+    "resolution": 16
+  },
+  "presentation": {
+    "preferredViews": ["portal", "track"],
+    "portalMode": "front_3_portal",
+    "mirrorCamera": true
+  },
+  "scoring": {
+    "hitWindowMs": {
+      "perfect": 45,
+      "good": 90,
+      "ok": 140
+    },
+    "comboModel": "standard"
+  },
+  "events": [
+    {
+      "t": 1.875,
+      "type": "strike",
+      "id": "e1",
+      "hand": "left",
+      "strike": "jab",
+      "zone": "left_high",
+      "portal": "center",
+      "travelBeats": 2,
+      "intensity": 0.4
+    },
+    {
+      "t": 2.344,
+      "type": "strike",
+      "id": "e2",
+      "hand": "right",
+      "strike": "cross",
+      "zone": "right_high",
+      "portal": "center",
+      "travelBeats": 2,
+      "intensity": 0.6
+    },
+    {
+      "t": 3.750,
+      "type": "guard",
+      "id": "e3",
+      "zone": "center",
+      "holdMs": 250,
+      "portal": "center"
+    },
+    {
+      "t": 5.625,
+      "type": "obstacle",
+      "id": "e4",
+      "avoid": "squat",
+      "shape": "bar_horizontal",
+      "portal": "center",
+      "durationMs": 500
+    },
+    {
+      "t": 7.500,
+      "type": "stance",
+      "id": "e5",
+      "stance": "southpaw",
+      "portal": "center",
+      "scored": false
+    }
+  ],
+  "metadata": {
+    "author": "tbd",
+    "tags": ["cardio", "boxing", "camera-first"]
+  }
+}
+```
+
+### Boxing authoring guidance for v1
+
+*   Author for the movement the athlete should perform, not the device they happen to be using.
+*   Prefer interaction-family compatibility over raw device branching.
+*   Keep portal and zone symbolic so the same chart can render in Portal View or Track View.
+*   Treat `travelBeats` and similar fields as presentation hints, not the core scoring semantics.
+*   Use `validatedInputProfiles` to record what has actually been tested.
 
 ## 📐 Mapping Best Practices
 

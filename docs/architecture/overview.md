@@ -36,3 +36,12 @@ We separate visual components (Buttons, Cards) from application logic.
 ### 4. Data-Driven Content
 
 To support community modding safely, we ban scripts in asset packs. All content (Skins, Avatars, Cosmetics, Environments, Songs) are loaded via strict Resource definitions, preventing Remote Code Execution (RCE) from malicious mods.
+
+For playable fitness content, AeroBeat uses a layered model:
+
+*   **Song:** Reusable audio and timing source.
+*   **Routine:** Gameplay-mode-specific package for one song.
+*   **Chart Variant:** One concrete playable difficulty / compatibility slice.
+*   **Workout:** A playlist or program that assembles selections into a session.
+
+Charts share a common envelope for ids, timing, scoring, presentation hints, and metadata, while the event payload remains mode-specific. This preserves input agnosticism without forcing Boxing, Dance, Step, and Flow into a fake one-size-fits-all event schema.

@@ -39,6 +39,7 @@ Our documentation is divided by role. Choose your path below:
 * Understand the **Hub-and-Spoke Polyrepo** topology.
 * Learn how `aerobeat-core` manages contracts between modules.
 * Dive into platform concerns such as Cloud Baker, testing strategy, security, and performance.
+* Read the new [**Content Model**](architecture/content-model.md) doc for how Songs, Routines, Chart Variants, and Workouts fit together.
 * **Key Tech:** Godot 4.x, GDScript, Python sidecars, and modular package boundaries.
 
 ### 🧰 [Guides for Contributors](guides/contributing_workflow.md)
