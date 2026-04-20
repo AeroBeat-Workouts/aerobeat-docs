@@ -256,11 +256,17 @@ This is probably the most realistic implementation path even if Option A is the 
 - `docs/architecture/`
 
 **Files Created/Deleted/Modified:**
-- TBD from the chosen direction
+- `docs/architecture/content-model.md`
+- `docs/architecture/input.md`
+- `docs/architecture/overview.md`
+- `docs/architecture/repo-structure-reference.md`
+- `docs/architecture/repository-map.md`
+- `docs/architecture/topology.md`
+- `docs/architecture/workflow.md`
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**Results:** Pending discussion confirmation.
+**Results:** Independent audit passed against commit `44b977a`. Checked all seven touched architecture docs and verified the six-core lane model is described consistently across them. `aerobeat-content-core` is explicitly documented as the owner of `Song`, `Routine`, `Chart Variant`, `Workout`, and the shared chart envelope (`content-model.md`, `repo-structure-reference.md`, `repository-map.md`, `topology.md`, `workflow.md`). `aerobeat-feature-core` is consistently framed as consuming/interpreting content contracts rather than owning the durable authored-content primitives (`content-model.md`, `overview.md`, `repo-structure-reference.md`, `repository-map.md`, `topology.md`, `workflow.md`). `aerobeat-asset-core` is explicitly documented as owning avatars, cosmetics, environments, and shared asset-side definitions (`overview.md`, `repo-structure-reference.md`, `repository-map.md`, `topology.md`, `workflow.md`). Assembly composition is consistently described as depending only on the required cores/concrete repos via GodotEnv (`overview.md`, `repo-structure-reference.md`, `repository-map.md`, `topology.md`, `workflow.md`). All six documented core repos have explicit GitHub org/repo links present in the touched docs. No remaining positive `aerobeat-core` hub framing was found in the touched architecture docs; the remaining mentions are transition/negation wording explaining that AeroBeat no longer uses a universal `aerobeat-core` hub. No issues found.
 
 ---
 
@@ -287,17 +293,17 @@ This is probably the most realistic implementation path even if Option A is the 
 
 ## Final Results
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**What We Built:** Pending discussion and execution.
+**What We Built:** Updated the AeroBeat architecture docs to document the six-core lane model as the canonical repo boundary system, explicitly placed `Song`, `Routine`, `Chart Variant`, `Workout`, and the shared chart envelope in `aerobeat-content-core`, documented `aerobeat-feature-core` as the runtime/gameplay interpreter that consumes those content contracts, documented `aerobeat-asset-core` as the owner of avatars/cosmetics/environments/shared asset-side definitions, and updated the dependency/composition guidance so assemblies compose only the cores and concrete repos they need via GodotEnv. The independent audit of the touched docs passed with no issues found.
 
-**Reference Check:** Pending.
+**Reference Check:** `REF-01`, `REF-02`, `REF-03`, and `REF-04` were updated coherently and now agree on the six-core ownership model. The old universal `aerobeat-core` hub framing was removed from the touched architecture docs except for explicit transition/negation language stating that it is no longer the long-term model.
 
 **Commits:**
-- Pending
+- `44b977a` - docs: document six-core architecture ownership
 
-**Lessons Learned:** Pending.
+**Lessons Learned:** The repo map, topology, content model, and workflow docs all need explicit ownership language at the same time; otherwise old hub assumptions linger even when the primary architecture page changes first.
 
 ---
 
-*Completed on Pending*
+*Completed on 2026-04-20*
