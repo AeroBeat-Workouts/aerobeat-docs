@@ -3658,7 +3658,7 @@
   <span class="md-ellipsis">
     
   
-    Core Contracts
+    Input Core Contracts
   
 
     
@@ -5414,13 +5414,13 @@
 <p>We use <strong><a href="https://github.com/bitwes/Gut">GUT (Godot Unit Test)</a></strong> as our unified testing framework.</p>
 <ul>
 <li><strong>Why?</strong> It runs natively inside the Godot Editor (for rapid dev) and via Command Line (for CI/CD).</li>
-<li><strong>Installation:</strong> GUT is included as a submodule in <code>aerobeat-core</code> and available in all derived projects.</li>
+<li><strong>Installation:</strong> GUT is a dev dependency installed into each repo's local testbed or workspace; it is no longer documented as a submodule inherited from a universal <code>aerobeat-core</code> repo.</li>
 </ul>
 <h2 id="the-rules">🚦 The Rules<a class="headerlink" href="#the-rules" title="Permanent link">&para;</a></h2>
 <h3 id="1-coverage-requirements">1. Coverage Requirements<a class="headerlink" href="#1-coverage-requirements" title="Permanent link">&para;</a></h3>
 <p>We require <strong>100% Unit Test Coverage</strong> for all logic paths.</p>
 <ul>
-<li><strong>Required:</strong> <code>aerobeat-core</code>, <code>aerobeat-input-*</code>, <code>aerobeat-ui-core</code>, <code>aerobeat-feature-*</code>, <code>aerobeat-assembly-*</code>.</li>
+<li><strong>Required:</strong> the six core repos (<code>aerobeat-input-core</code>, <code>aerobeat-feature-core</code>, <code>aerobeat-content-core</code>, <code>aerobeat-asset-core</code>, <code>aerobeat-ui-core</code>, <code>aerobeat-tool-core</code>) plus logic-bearing <code>aerobeat-input-*</code>, <code>aerobeat-feature-*</code>, <code>aerobeat-tool-*</code>, <code>aerobeat-ui-*</code>, and <code>aerobeat-assembly-*</code> repos.</li>
 <li><strong>Exempt:</strong> <code>aerobeat-asset-*</code> (These contain only Art/Music/Models and no logic).</li>
 </ul>
 <h3 id="2-cicd-branch-protection">2. CI/CD &amp; Branch Protection<a class="headerlink" href="#2-cicd-branch-protection" title="Permanent link">&para;</a></h3>
@@ -5473,7 +5473,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 18, 2026 18:15:20 UTC">April 18, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 20:21:21 UTC">April 20, 2026</span>
   </span>
 
     

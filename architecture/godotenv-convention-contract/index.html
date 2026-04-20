@@ -3514,7 +3514,7 @@
   <span class="md-ellipsis">
     
   
-    Core Contracts
+    Input Core Contracts
   
 
     
@@ -5465,10 +5465,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aerobeat-core" class="md-nav__link">
+  <a href="#aerobeat-input-core" class="md-nav__link">
     <span class="md-ellipsis">
       
-        aerobeat-core
+        aerobeat-input-core
       
     </span>
   </a>
@@ -5670,10 +5670,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aerobeat-core_1" class="md-nav__link">
+  <a href="#aerobeat-input-core_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        aerobeat-core
+        aerobeat-input-core
       
     </span>
   </a>
@@ -5720,10 +5720,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aerobeat-core_2" class="md-nav__link">
+  <a href="#aerobeat-input-core_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        aerobeat-core
+        aerobeat-input-core
       
     </span>
   </a>
@@ -5879,7 +5879,7 @@
 <p><strong>Rationale</strong></p>
 <p>Package repos are producers of reusable addons. Their own dependency-management need is a local workbench for development, tests, and previewing runtime content. That is exactly what <code>.testbed</code> is for.</p>
 <h2 id="12-foundational-repos">1.2 Foundational repos<a class="headerlink" href="#12-foundational-repos" title="Permanent link">&para;</a></h2>
-<p>This specifically includes <code>aerobeat-core</code> and <code>aerobeat-ui-core</code>.</p>
+<p>This specifically includes the lane-owned core repos such as <code>aerobeat-input-core</code> and <code>aerobeat-ui-core</code>.</p>
 <p>They follow the same placement convention as package repos:</p>
 <ul>
 <li>Committed manifest: <code>.testbed/addons.jsonc</code></li>
@@ -5932,7 +5932,7 @@
 <p>Inside <code>addons.jsonc</code>, the key under <code>addons</code> must match the installed addon directory name exactly.</p>
 <p>For first-party AeroBeat repos, the installed addon directory name is the <strong>repo name by default</strong>:</p>
 <ul>
-<li><code>aerobeat-core</code></li>
+<li><code>aerobeat-input-core</code></li>
 <li><code>aerobeat-ui-core</code></li>
 <li><code>aerobeat-ui-kit-community</code></li>
 <li><code>aerobeat-feature-boxing</code></li>
@@ -5943,8 +5943,8 @@
 <p>That means this is correct:</p>
 <div class="highlight"><pre><span></span><code>{
   &quot;addons&quot;: {
-    &quot;aerobeat-core&quot;: {
-      &quot;url&quot;: &quot;git@github.com:AeroBeat-Workouts/aerobeat-core.git&quot;,
+    &quot;aerobeat-input-core&quot;: {
+      &quot;url&quot;: &quot;git@github.com:AeroBeat-Workouts/aerobeat-input-core.git&quot;,
       &quot;checkout&quot;: &quot;v0.1.0&quot;,
       &quot;subfolder&quot;: &quot;/&quot;
     }
@@ -5955,7 +5955,7 @@
 <div class="highlight"><pre><span></span><code>{
   &quot;addons&quot;: {
     &quot;core&quot;: {
-      &quot;url&quot;: &quot;git@github.com:AeroBeat-Workouts/aerobeat-core.git&quot;
+      &quot;url&quot;: &quot;git@github.com:AeroBeat-Workouts/aerobeat-input-core.git&quot;
     }
   }
 }
@@ -6113,7 +6113,7 @@
 <hr />
 <h2 id="5-repo-type-conventions">5. Repo-type conventions<a class="headerlink" href="#5-repo-type-conventions" title="Permanent link">&para;</a></h2>
 <h2 id="51-foundational-repos">5.1 Foundational repos<a class="headerlink" href="#51-foundational-repos" title="Permanent link">&para;</a></h2>
-<h3 id="aerobeat-core"><code>aerobeat-core</code><a class="headerlink" href="#aerobeat-core" title="Permanent link">&para;</a></h3>
+<h3 id="aerobeat-input-core"><code>aerobeat-input-core</code><a class="headerlink" href="#aerobeat-input-core" title="Permanent link">&para;</a></h3>
 <p><strong>Role</strong></p>
 <ul>
 <li>lowest-level shared contract hub</li>
@@ -6140,7 +6140,7 @@
 </ul>
 <p><strong>Dependency boundary</strong></p>
 <ul>
-<li>may depend on <code>aerobeat-core</code></li>
+<li>may depend on <code>aerobeat-asset-core</code> when shared asset definitions are part of the UI contract chain</li>
 <li>must not depend on a concrete UI kit</li>
 <li>must not depend on a concrete UI shell</li>
 <li>must not absorb shell-specific layout logic</li>
@@ -6161,7 +6161,7 @@
 <p><strong>Dependency boundary</strong></p>
 <ul>
 <li>may depend on <code>aerobeat-ui-core</code></li>
-<li>may depend on <code>aerobeat-core</code> if needed by the contract chain</li>
+<li>may depend on <code>aerobeat-asset-core</code> if shared asset definitions are part of the contract chain</li>
 <li>must not absorb shell-specific page wiring or assembly logic</li>
 </ul>
 <p><strong>Manifest convention</strong></p>
@@ -6179,7 +6179,7 @@
 </ul>
 <p><strong>Dependency convention</strong></p>
 <ul>
-<li>consume <code>aerobeat-core</code>, <code>aerobeat-ui-core</code>, and a specific <code>aerobeat-ui-kit-*</code> through <code>.testbed/addons.jsonc</code></li>
+<li>consume <code>aerobeat-ui-core</code>, a specific <code>aerobeat-ui-kit-*</code>, and only the adjacent cores the shell actually needs (commonly <code>aerobeat-asset-core</code> or <code>aerobeat-tool-core</code>) through <code>.testbed/addons.jsonc</code></li>
 <li>use <code>tag</code> mode for stable kit consumption</li>
 <li>use <code>branch</code> mode only for deliberate coordinated integration</li>
 <li>never use <code>.kit_version</code> as a parallel source of truth</li>
@@ -6266,7 +6266,7 @@
 </ol>
 <p>GodotEnv-installed addons are expected to be immutable/disposable. First-party release tags must therefore ship the files Godot needs, rather than relying on downstream consumers to generate missing <code>.uid</code> files after install.</p>
 <h2 id="73-change-classification-rule">7.3 Change classification rule<a class="headerlink" href="#73-change-classification-rule" title="Permanent link">&para;</a></h2>
-<h3 id="aerobeat-core_1"><code>aerobeat-core</code><a class="headerlink" href="#aerobeat-core_1" title="Permanent link">&para;</a></h3>
+<h3 id="aerobeat-input-core_1"><code>aerobeat-input-core</code><a class="headerlink" href="#aerobeat-input-core_1" title="Permanent link">&para;</a></h3>
 <p>Create a new tag whenever it changes any shared contract or behavior other repos are meant to consume, including:</p>
 <ul>
 <li>interfaces</li>
@@ -6292,7 +6292,7 @@
 <li>component behavior changes that affect shell integration</li>
 </ul>
 <h2 id="74-release-responsibility-by-repo">7.4 Release responsibility by repo<a class="headerlink" href="#74-release-responsibility-by-repo" title="Permanent link">&para;</a></h2>
-<h3 id="aerobeat-core_2"><code>aerobeat-core</code><a class="headerlink" href="#aerobeat-core_2" title="Permanent link">&para;</a></h3>
+<h3 id="aerobeat-input-core_2"><code>aerobeat-input-core</code><a class="headerlink" href="#aerobeat-input-core_2" title="Permanent link">&para;</a></h3>
 <p>Must provide the stable lowest-level contract the rest of the family builds on.</p>
 <h3 id="aerobeat-ui-core_2"><code>aerobeat-ui-core</code><a class="headerlink" href="#aerobeat-ui-core_2" title="Permanent link">&para;</a></h3>
 <p>Must provide the stable UI logic contract that kits and shells build on without importing kit visuals.</p>
@@ -6308,8 +6308,8 @@
 <div class="highlight"><pre><span></span><code>{
   &quot;$schema&quot;: &quot;https://chickensoft.games/schemas/addons.schema.json&quot;,
   &quot;addons&quot;: {
-    &quot;aerobeat-core&quot;: {
-      &quot;url&quot;: &quot;git@github.com:AeroBeat-Workouts/aerobeat-core.git&quot;,
+    &quot;aerobeat-input-core&quot;: {
+      &quot;url&quot;: &quot;git@github.com:AeroBeat-Workouts/aerobeat-input-core.git&quot;,
       &quot;checkout&quot;: &quot;v0.1.0&quot;,
       &quot;subfolder&quot;: &quot;/&quot;
     },
@@ -6326,8 +6326,8 @@
 <div class="highlight"><pre><span></span><code>{
   &quot;$schema&quot;: &quot;https://chickensoft.games/schemas/addons.schema.json&quot;,
   &quot;addons&quot;: {
-    &quot;aerobeat-core&quot;: {
-      &quot;url&quot;: &quot;git@github.com:AeroBeat-Workouts/aerobeat-core.git&quot;,
+    &quot;aerobeat-input-core&quot;: {
+      &quot;url&quot;: &quot;git@github.com:AeroBeat-Workouts/aerobeat-input-core.git&quot;,
       &quot;checkout&quot;: &quot;v0.1.0&quot;,
       &quot;subfolder&quot;: &quot;/&quot;
     },
@@ -6357,7 +6357,7 @@
 <li>Assembly repos commit root <code>addons.jsonc</code>.</li>
 <li><code>tag</code> is the default stable mode, <code>branch</code> is the temporary coordination mode, and <code>symlink</code> is local-only and uncommitted.</li>
 <li><code>.testbed</code> stays as the package workbench.</li>
-<li><code>aerobeat-core</code>, <code>aerobeat-ui-core</code>, and <code>aerobeat-ui-kit-community</code> are the first foundational repos that must establish tag discipline.</li>
+<li><code>aerobeat-input-core</code>, <code>aerobeat-ui-core</code>, and <code>aerobeat-ui-kit-community</code> are the first foundational repos that must establish tag discipline.</li>
 <li>Old setup flows do not coexist with the new contract long-term.</li>
 </ul>
 
@@ -6380,7 +6380,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 18, 2026 18:15:20 UTC">April 18, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 20:21:21 UTC">April 20, 2026</span>
   </span>
 
     
