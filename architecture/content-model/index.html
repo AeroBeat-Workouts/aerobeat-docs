@@ -5731,7 +5731,7 @@
 
 
 <h1 id="content-model-songs-routines-chart-variants-and-workouts">Content Model: Songs, Routines, Chart Variants, and Workouts<a class="headerlink" href="#content-model-songs-routines-chart-variants-and-workouts" title="Permanent link">&para;</a></h1>
-<p>AeroBeat content should be authored as a layered model rather than a single flat chart blob or a set of unrelated per-mode file formats.</p>
+<p>AeroBeat content is authored as a layered model rather than a single flat chart blob or a set of unrelated per-mode file formats.</p>
 <p>The durable hierarchy is:</p>
 <ul>
 <li><strong>Song</strong></li>
@@ -5752,14 +5752,14 @@
 <li>the gameplay mode for a song</li>
 <li>the mode-specific authored vocabulary</li>
 <li>validation rules for that mode</li>
-<li>recommended presentation defaults</li>
+<li>presentation defaults</li>
 <li>a grouped set of difficulty variants for the same song + mode</li>
 </ul>
 <p>Examples:</p>
 <ul>
-<li>one song may have a <strong>Boxing Routine</strong> and a <strong>Dance Routine</strong></li>
-<li>a Boxing Routine may have <strong>Easy</strong>, <strong>Medium</strong>, <strong>Hard</strong>, and <strong>Pro</strong> chart variants</li>
-<li>a Workout may pick the Medium Boxing chart from one song and the Hard Dance chart from another</li>
+<li>one song can have a <strong>Boxing Routine</strong> and a <strong>Dance Routine</strong></li>
+<li>a Boxing Routine can have <strong>Easy</strong>, <strong>Medium</strong>, <strong>Hard</strong>, and <strong>Pro</strong> chart variants</li>
+<li>a Workout can pick the Medium Boxing chart from one song and the Hard Dance chart from another</li>
 </ul>
 <h2 id="core-primitives">Core Primitives<a class="headerlink" href="#core-primitives" title="Permanent link">&para;</a></h2>
 <h3 id="1-song">1. Song<a class="headerlink" href="#1-song" title="Permanent link">&para;</a></h3>
@@ -5782,7 +5782,7 @@
 <li>song reference</li>
 <li>gameplay mode reference, such as <code>boxing</code>, <code>dance</code>, <code>step</code>, or <code>flow</code></li>
 <li>routine-level metadata such as intensity, training focus, and authoring notes</li>
-<li>recommended presentation defaults</li>
+<li>presentation defaults</li>
 <li>validation profile for the mode</li>
 <li>one or more chart variants</li>
 </ul>
@@ -5800,9 +5800,9 @@
 <li>scoring metadata and hit windows</li>
 <li>optional presentation hints needed to render the chart well</li>
 </ul>
-<p>A chart variant should represent <strong>one playable difficulty / compatibility slice</strong>, not an all-difficulties megafile.</p>
+<p>A chart variant represents <strong>one playable difficulty / compatibility slice</strong>, not an all-difficulties megafile.</p>
 <h4 id="why-difficulty-belongs-here">Why difficulty belongs here<a class="headerlink" href="#why-difficulty-belongs-here" title="Permanent link">&para;</a></h4>
-<p>AeroBeat should not store all difficulties as peer event arrays inside one giant chart by default.</p>
+<p>AeroBeat does not store all difficulties as peer event arrays inside one giant chart by default.</p>
 <p>Separate chart variants give us:</p>
 <ul>
 <li>cleaner diffs and version control</li>
@@ -5821,12 +5821,12 @@
 <li>pre-roll / warmup / cooldown / post-roll content</li>
 <li>transitions, coaching cues, and workout-level presentation notes</li>
 </ul>
-<p>A workout may reference a full routine plus difficulty preference, or reference an exact chart variant directly when the sequence must be locked.</p>
+<p>A workout references either a full routine plus difficulty preference, or an exact chart variant directly when the sequence must be locked.</p>
 <h2 id="shared-chart-envelope">Shared Chart Envelope<a class="headerlink" href="#shared-chart-envelope" title="Permanent link">&para;</a></h2>
-<p>AeroBeat should use <strong>one shared chart envelope</strong> across gameplay modes, with <strong>mode-specific payloads</strong> inside it.</p>
+<p>AeroBeat uses <strong>one shared chart envelope</strong> across gameplay modes, with <strong>mode-specific payloads</strong> inside it.</p>
 <p>This keeps tooling, loading, validation, and runtime contracts coherent without pretending that Boxing and Step are authored with the exact same event vocabulary.</p>
 <h3 id="shared-fields">Shared fields<a class="headerlink" href="#shared-fields" title="Permanent link">&para;</a></h3>
-<p>All chart variants should expose a common envelope containing fields such as:</p>
+<p>All chart variants expose a common envelope containing fields such as:</p>
 <ul>
 <li><code>schema</code></li>
 <li><code>chartId</code></li>
@@ -5855,7 +5855,7 @@
 <p>The loader contract is shared. The event schema is not identical across all modes.</p>
 <p>That is the correct compromise.</p>
 <h2 id="interaction-families-not-raw-devices">Interaction Families, Not Raw Devices<a class="headerlink" href="#interaction-families-not-raw-devices" title="Permanent link">&para;</a></h2>
-<p>Charts should target <strong>interaction semantics</strong>, not raw hardware bindings.</p>
+<p>Charts target <strong>interaction semantics</strong>, not raw hardware bindings.</p>
 <p>Do <strong>not</strong> author charts directly against devices such as webcam, JoyCon, headset, or keyboard. Those are runtime input strategies and profiles, not durable content primitives.</p>
 <h3 id="recommended-interaction-families">Recommended interaction families<a class="headerlink" href="#recommended-interaction-families" title="Permanent link">&para;</a></h3>
 <ul>
@@ -5876,7 +5876,7 @@
 <li>content stays reusable longer</li>
 <li>runtime adapters can map the same authored semantics to multiple devices</li>
 <li>validated compatibility can be recorded without pretending every device behaves identically</li>
-<li>we can add device-specific extensions later without forking the entire content model</li>
+<li>device-specific extensions can be added later without forking the entire content model</li>
 </ul>
 <h3 id="input-profile-fields">Input profile fields<a class="headerlink" href="#input-profile-fields" title="Permanent link">&para;</a></h3>
 <p>Use profile fields to express compatibility without making the profile the primary content target.</p>
@@ -5885,17 +5885,17 @@
 <li><code>supportedInputProfiles</code> = profiles the chart is intended to run on</li>
 <li><code>validatedInputProfiles</code> = profiles that have actually been tested and approved</li>
 </ul>
-<p>For example, a Boxing chart may target <code>gesture_2d</code>, support <code>mediapipe_camera</code>, <code>keyboard_debug</code>, and <code>gamepad_virtual_presence</code>, but only mark <code>mediapipe_camera</code> as validated initially.</p>
+<p>For example, a Boxing chart targets <code>gesture_2d</code>, supports <code>mediapipe_camera</code>, <code>keyboard_debug</code>, and <code>gamepad_virtual_presence</code>, but only marks <code>mediapipe_camera</code> as validated initially.</p>
 <h2 id="view-modes-belong-mostly-to-runtime-presentation">View Modes Belong Mostly To Runtime Presentation<a class="headerlink" href="#view-modes-belong-mostly-to-runtime-presentation" title="Permanent link">&para;</a></h2>
-<p>View modes such as Portal View, Track View, 3-Portal View, and 360-Portal View should be treated primarily as <strong>presentation and runtime interpretation concerns</strong>, not as separate chart families.</p>
-<p>Charts may include presentation hints, such as:</p>
+<p>View modes such as Portal View, Track View, 3-Portal View, and 360-Portal View are treated primarily as <strong>presentation and runtime interpretation concerns</strong>, not as separate chart families.</p>
+<p>Charts include presentation hints such as:</p>
 <ul>
 <li>preferred views</li>
 <li>preferred portal layout</li>
-<li>whether mirror-camera mode is recommended</li>
+<li>mirror-camera mode preference</li>
 <li>travel-time or approach hints where authoring truly depends on them</li>
 </ul>
-<p>But the same authored event stream should remain portable across views whenever possible.</p>
+<p>The same authored event stream remains portable across views by default.</p>
 <h3 id="authoring-rule">Authoring rule<a class="headerlink" href="#authoring-rule" title="Permanent link">&para;</a></h3>
 <p>Author the athlete interaction first.</p>
 <p>Then let the runtime render that interaction as:</p>
@@ -5907,7 +5907,7 @@
 </ul>
 <p>If a future mode truly requires view-specific authored data that cannot be derived, add that as an extension field rather than replacing the content hierarchy.</p>
 <h2 id="recommended-file-package-relationship">Recommended File / Package Relationship<a class="headerlink" href="#recommended-file-package-relationship" title="Permanent link">&para;</a></h2>
-<p>At the docs level, AeroBeat should think about these as distinct assets even if implementation details evolve later:</p>
+<p>At the docs level, AeroBeat treats these as distinct assets even if implementation details evolve later:</p>
 <ul>
 <li>one <code>Song</code> record</li>
 <li>one or more <code>Routine</code> records under that song</li>
@@ -5950,7 +5950,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="opinionated-rules">Opinionated Rules<a class="headerlink" href="#opinionated-rules" title="Permanent link">&para;</a></h2>
-<p>To keep the ecosystem coherent, AeroBeat should follow these rules:</p>
+<p>To keep the ecosystem coherent, AeroBeat follows these rules:</p>
 <ol>
 <li><strong>One song can power many routines.</strong> Do not duplicate song metadata per mode.</li>
 <li><strong>One routine equals one song interpreted through one mode.</strong> Do not mix Boxing and Dance inside a single routine.</li>
@@ -5960,7 +5960,7 @@
 <li><strong>Mode-specific event vocabularies are allowed.</strong> The chart envelope is shared; the authored payload is not forced into fake universality.</li>
 </ol>
 <h2 id="first-shipping-recommendation">First Shipping Recommendation<a class="headerlink" href="#first-shipping-recommendation" title="Permanent link">&para;</a></h2>
-<p>For the first shipping slice, AeroBeat should standardize on:</p>
+<p>For the first shipping slice, AeroBeat standardizes on:</p>
 <ul>
 <li><code>Song</code> as the reusable music source</li>
 <li><code>Routine</code> as the missing gameplay package primitive</li>
@@ -5990,7 +5990,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 13:33:40 UTC">April 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 13:56:33 UTC">April 20, 2026</span>
   </span>
 
     

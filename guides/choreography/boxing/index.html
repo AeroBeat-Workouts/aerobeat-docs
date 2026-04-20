@@ -5829,19 +5829,19 @@
 <ul>
 <li><strong>Target:</strong> A specific "Knee Target" (Black or White) that appears low in the portal.</li>
 <li><strong>Action:</strong> Lift the corresponding knee (Left=Black, Right=White) to intercept the target.</li>
-<li><strong>Placement:</strong> These should always be placed on the <strong>Bottom Row</strong> of the grid to align with the knee lift height.</li>
+<li><strong>Placement:</strong> These are always placed on the <strong>Bottom Row</strong> of the grid to align with the knee lift height.</li>
 <li><strong>Tracking:</strong> The engine does not track legs in Boxing mode. Instead, it checks if the player's <strong>Head</strong> is horizontally aligned with the target lane. This allows for accessibility modifications (like substituting a Knee Strike for a Block/Crunch).</li>
 </ul>
 <h2 id="boxing-mediapipe-v1-chart-shape">📦 Boxing + MediaPipe v1 Chart Shape<a class="headerlink" href="#boxing-mediapipe-v1-chart-shape" title="Permanent link">&para;</a></h2>
-<p>The first shipping boxing chart format should use a shared chart envelope with a boxing-specific event payload.</p>
+<p>The first shipping boxing chart format uses a shared chart envelope with a boxing-specific event payload.</p>
 <h3 id="shared-boxing-chart-fields">Shared boxing chart fields<a class="headerlink" href="#shared-boxing-chart-fields" title="Permanent link">&para;</a></h3>
-<p>A Boxing chart variant should include:</p>
+<p>A Boxing chart variant includes:</p>
 <ul>
 <li><code>schema</code>: <code>aerobeat.chart.boxing.v1</code></li>
 <li><code>chartId</code>, <code>songId</code>, <code>routineId</code></li>
 <li><code>mode</code>: <code>boxing</code></li>
 <li><code>difficulty</code></li>
-<li><code>interactionFamily</code>: usually <code>gesture_2d</code> for camera-first boxing</li>
+<li><code>interactionFamily</code>: <code>gesture_2d</code> for camera-first boxing</li>
 <li><code>supportedInputProfiles</code> and <code>validatedInputProfiles</code></li>
 <li><code>timing</code>: aligned to song/conductor time</li>
 <li><code>presentation</code>: view preferences and portal-layout hints</li>
@@ -5850,7 +5850,7 @@
 <li><code>metadata</code>: author, tags, notes</li>
 </ul>
 <h3 id="event-vocabulary">Event vocabulary<a class="headerlink" href="#event-vocabulary" title="Permanent link">&para;</a></h3>
-<p>For Boxing + MediaPipe v1, the authoring vocabulary should focus on athlete intent rather than device details:</p>
+<p>For Boxing + MediaPipe v1, the authoring vocabulary focuses on athlete intent rather than device details:</p>
 <ul>
 <li><code>strike</code><ul>
 <li><code>hand</code>: <code>left</code> or <code>right</code></li>
@@ -5859,7 +5859,7 @@
 </ul>
 </li>
 <li><code>guard</code><ul>
-<li><code>zone</code>: typically <code>center</code></li>
+<li><code>zone</code>: <code>center</code></li>
 <li><code>holdMs</code></li>
 </ul>
 </li>
@@ -5888,13 +5888,13 @@
 </ul>
 <p>Do not author Boxing + MediaPipe v1 against raw camera coordinates. The runtime maps authored boxing semantics onto MediaPipe landmarks.</p>
 <h3 id="timing-rule">Timing rule<a class="headerlink" href="#timing-rule" title="Permanent link">&para;</a></h3>
-<p>Event times should align to conductor/song time, not render frames.</p>
+<p>Event times align to conductor/song time, not render frames.</p>
 <p>Use one of these consistently per toolchain:</p>
 <ul>
 <li>beat-relative timing with measure/beat subdivision, or</li>
 <li>precise absolute song time such as seconds or milliseconds</li>
 </ul>
-<p>Whichever representation is used in authoring tools, runtime judgment should resolve against the same conductor timeline.</p>
+<p>Whichever representation is used in authoring tools, runtime judgment resolves against the same conductor timeline.</p>
 <h3 id="concrete-example">Concrete example<a class="headerlink" href="#concrete-example" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aerobeat.chart.boxing.v1&quot;</span><span class="p">,</span>
@@ -5980,7 +5980,7 @@
 </code></pre></div>
 <h3 id="boxing-authoring-guidance-for-v1">Boxing authoring guidance for v1<a class="headerlink" href="#boxing-authoring-guidance-for-v1" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Author for the movement the athlete should perform, not the device they happen to be using.</li>
+<li>Author for the movement the athlete performs, not the device they happen to be using.</li>
 <li>Prefer interaction-family compatibility over raw device branching.</li>
 <li>Keep portal and zone symbolic so the same chart can render in Portal View or Track View.</li>
 <li>Treat <code>travelBeats</code> and similar fields as presentation hints, not the core scoring semantics.</li>
@@ -6079,7 +6079,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 13:33:40 UTC">April 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 13:56:33 UTC">April 20, 2026</span>
   </span>
 
     
