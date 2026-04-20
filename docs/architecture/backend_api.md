@@ -21,7 +21,7 @@ To prevent **Dependency Rot** (where a Workout breaks because a referenced Song,
 ### 1. Immutable Versioning
 *   **Policy:** Once an asset (Skin, Song, Environment) is published, its binary content (`.pck`) is **Immutable**. It can never be overwritten.
 *   **Updates:** When a creator updates a mod, the API generates a new version (e.g., `v2`).
-*   **References:** Workouts and other dependent assets reference specific versions (e.g., `mod_id@v1`). This ensures that even if `v2` changes the art style completely, the original workout using `v1` remains visually consistent. Player-facing UI may still surface that workout as a playlist.
+*   **References:** Workouts and other dependent assets reference specific versions (e.g., `mod_id@v1`). This ensures that even if `v2` changes the art style completely, the original workout using `v1` remains visually consistent.
 
 ### 2. Soft Delete Policy
 *   **Risk:** If a creator deletes a popular Song, every Workout using that song would break.
@@ -29,7 +29,7 @@ To prevent **Dependency Rot** (where a Workout breaks because a referenced Song,
 *   **Action:** When a creator "deletes" a mod:
     1.  **Unlisted:** It is removed from Search and the "New Releases" feed.
     2.  **Archived:** It remains on the CDN.
-    3.  **Available:** Existing workouts referencing the ID can still download and play it. If the client labels those saved workouts as playlists in athlete-facing UI, the underlying dependency is still the workout asset.
+    3.  **Available:** Existing workouts referencing the ID can still download and play it.
 *   **Exception:** DMCA Takedowns or Illegal Content result in a "Hard Delete" (or replacement with a placeholder), which *will* break dependencies. This is unavoidable for legal compliance.
 
 ## 🔐 Authentication & Guest Access
@@ -100,7 +100,7 @@ These endpoints are used by the specialized SDKs (`aerobeat-skins-*`, `aerobeat-
 *   **Endpoint:** `GET /api/v1/assets/search`
 *   **Query Params:**
     *   `q`: Search query string (Title, Artist, Tag).
-    *   `type`: `SONG`, `WORKOUT` (Filter by asset type; athlete-facing clients may still label workout results as playlists).
+    *   `type`: `SONG`, `WORKOUT` (Filter by asset type).
     *   `page`: Pagination cursor.
 *   **Response:** JSON list of Asset Summaries (ID, Title, Author, Metadata).
 

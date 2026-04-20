@@ -1,12 +1,12 @@
 # Athlete Preferences & Overrides
 
-This document details the "Preferences" system, which allows athletes to customize their visual and gameplay experience, overriding default Workout presentation suggestions. In player-facing UI, a Workout may still be surfaced as a playlist.
+This document details the "Preferences" system, which allows athletes to customize their visual and gameplay experience, overriding default Workout presentation suggestions.
 
 ## 1. Philosophy
 
 **"My Game, My Way."**
 
-While Workouts suggest specific Environments and Skins to create a mood, athletes often have strong preferences for visibility, comfort, or accessibility. The system must allow global overrides that persist across sessions. If the frontend calls the selected Workout a playlist, that is only a UX label.
+While Workouts suggest specific Environments and Skins to create a mood, athletes often have strong preferences for visibility, comfort, or accessibility. The system must allow global overrides that persist across sessions.
 
 ## 2. Preference Categories
 
@@ -17,11 +17,11 @@ Preferences are divided into three layers based on their impact.
 These settings override the presentation suggestions defined in a Workout.
 
 *   **Preferred Environment:**
-    *   *Default:* "Use Workout Suggestion" (player-facing UI may phrase this as "Use Playlist Suggestion").
+    *   *Default:* "Use Workout Suggestion".
     *   *Override:* Force a specific Environment (e.g., "The Void") for all songs.
     *   *Use Case:* Critical for players prone to motion sickness or distraction who need a consistent background.
 *   **Preferred Skins:**
-    *   *Default:* "Use Workout Suggestion" (player-facing UI may phrase this as "Use Playlist Suggestion").
+    *   *Default:* "Use Workout Suggestion".
     *   *Override:* Force specific Gloves/Targets.
     *   *Use Case:* Critical for players with color blindness or visibility issues who need high-contrast assets.
 *   **Avatar Visibility:**

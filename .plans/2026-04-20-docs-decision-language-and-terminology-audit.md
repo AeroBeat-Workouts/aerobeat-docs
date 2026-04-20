@@ -171,15 +171,16 @@ Examples of likely target concepts:
 
 **Status:** ❌ Blocked by audit gaps
 
-**What We Built:** The rewrite pass successfully established the new canon in the core docs: **Input Provider** / **Provider Pattern** for input architecture, **Track View** as the broader linear 2D presentation family, and **Song -> Routine -> Chart Variant -> Workout** as the content-model hierarchy. Those decisions are now reflected in the main architecture, glossary, gameplay, and choreography docs. The targeted outer-ring cleanup also fixed the originally identified six failing files.
+**What We Built:** The rewrite pass successfully established the core canon in the main architecture, glossary, gameplay, and choreography docs: **Input Provider** / **Provider Pattern** for input architecture, **Track View** as the broader linear 2D presentation family, and **Song -> Routine -> Chart Variant -> Workout** as the content-model hierarchy. The targeted cleanup passes also removed the specific `playlist` leaks previously identified in the nine-file follow-up batch.
 
-**Reference Check:** `REF-02`, `REF-03`, `REF-04`, `REF-05`, `REF-06`, and `REF-07` still agree on the primary canon for input terminology, Track View semantics, and the layered content model, and the targeted follow-up fixes resolved the previously cited issues in `docs/architecture/backend_api.md`, `docs/gdd/meta/preferences.md`, `docs/gdd/economy/currency.md`, `docs/gdd/gamification/overview.md`, `docs/guides/accessibility.md`, and `docs/gdd/releases/community.md`. However, the repo does **not** yet fully satisfy the broader audit goal because additional docs outside that six-file follow-up still use `playlist` as an architectural/session/content term instead of clearly UX-facing language.
+**Reference Check:** `REF-02`, `REF-03`, `REF-04`, and the related gameplay/choreography canon pages still agree on the primary architecture and terminology decisions: `Workout` remains the correct public/model term, `Track View` remains the broader family term, and `Input Provider` / `Provider Pattern` remain intact. However, the repo still fails Derrick's final rule because `playlist` is still visible in additional public docs outside the last targeted cleanup batch, including accessibility, coaching, release, preferences, glossary, economy, user-content, gamification, and backend API pages.
 
 **Commits:**
 - Implementation commit already landed before this audit: `0619892`
 - Targeted cleanup commit already landed before this re-audit: `fd47fae`
+- Latest cleanup commit already landed before this final re-audit: `efe399a`
 
-**Lessons Learned:** The hardest part was not the core canon rewrite — it was finding the legacy outer-ring docs that still speak the old model. A docs-set audit has to include product, meta, API, economy, accessibility, release-marketing, modifiers, social, modding, and landing-page docs, not just architecture + glossary + gameplay.
+**Lessons Learned:** Narrow follow-up sweeps are not enough when the acceptance rule is absolute. For a docs-wide ban like `playlist should never appear`, the only reliable finish line is a repo-wide search plus canon spot checks, because small UX-note remnants and FAQ wording can survive even after the main architecture pages are corrected.
 
 ---
 
@@ -265,6 +266,55 @@ Examples of likely target concepts:
 **SubAgent:** `auditor`  
 **References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-08`  
 **Prompt:** Independently verify that `Workout` is now the consistent public term across docs, that `playlist` no longer appears as public-doc product/content wording, and that the repo-wide terminology audit can be marked complete.
+
+**Folders Created/Deleted/Modified:**
+- `docs/`
+
+**Files Created/Deleted/Modified:**
+- None expected from audit beyond plan updates
+
+**Status:** ❌ Failed
+
+**Results:** Final repo-wide re-audit completed independently via full-tree grep checks across `docs/` plus canon spot checks for `Workout`, `Track View`, `Input Provider`, and `Provider Pattern`. **Canon still passes** in the primary reference surfaces: `docs/architecture/input.md`, `docs/architecture/overview.md`, `docs/architecture/content-model.md`, `docs/gdd/glossary/terms.md`, `docs/gdd/gameplay/view-modes.md`, `docs/gdd/gameplay/boxing.md`, `docs/gdd/gameplay/step.md`, and `docs/guides/choreography/overview.md` still agree on `Workout` as the content-model term, `Track View` as the broader linear 2D family, and `Input Provider` / `Provider Pattern` as the input architecture canon. **Audit still fails** because `playlist` remains visible in multiple public docs, which violates Derrick's final rule that players should never see that word in AeroBeat docs. Remaining public-doc blockers found in this pass: `docs/guides/accessibility.md:16`; `docs/guides/coaching.md:15,96`; `docs/gdd/releases/community.md:10,12,14,17`; `docs/gdd/meta/preferences.md:3,9,20,24`; `docs/gdd/gamification/quests.md:20`; `docs/gdd/glossary/terms.md:10`; `docs/gdd/economy/currency.md:11`; `docs/gdd/user-content/community-creations.md:3,5`; `docs/gdd/user-content/overview.md:11`; `docs/architecture/backend_api.md:24,32,103`. Additional non-product/reference hits also remain in roadmap/API-repo-name surfaces (`docs/gdd/roadmap/future-roadmap.md:7` and multiple `docs/api/**` pages containing `AeroBeat-Workouts` repo names), but the product/content terminology failures listed above are sufficient to keep the audit open.
+
+---
+
+### Follow-up: Final strict playlist-string cleanup in public docs
+
+**Bead ID:** `aerobeat-docs-1oy`  
+**SubAgent:** `primary`  
+**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-08`  
+**Prompt:** Remove the remaining `playlist` string leaks from the exact public-doc files identified by the final audit: `docs/guides/accessibility.md`, `docs/guides/coaching.md`, `docs/gdd/releases/community.md`, `docs/gdd/meta/preferences.md`, `docs/gdd/gamification/quests.md`, `docs/gdd/glossary/terms.md`, `docs/gdd/economy/currency.md`, `docs/gdd/user-content/community-creations.md`, `docs/gdd/user-content/overview.md`, and `docs/architecture/backend_api.md`. Preserve established canon and make no unrelated edits.
+
+**Folders Created/Deleted/Modified:**
+- `docs/architecture/`
+- `docs/gdd/`
+- `docs/guides/`
+
+**Files Created/Deleted/Modified:**
+- `docs/guides/accessibility.md`
+- `docs/guides/coaching.md`
+- `docs/gdd/releases/community.md`
+- `docs/gdd/meta/preferences.md`
+- `docs/gdd/gamification/quests.md`
+- `docs/gdd/glossary/terms.md`
+- `docs/gdd/economy/currency.md`
+- `docs/gdd/user-content/community-creations.md`
+- `docs/gdd/user-content/overview.md`
+- `docs/architecture/backend_api.md`
+
+**Status:** ✅ Complete
+
+**Results:** Removed the remaining `playlist` string leaks from the exact ten-file public-doc batch without broadening scope. Updated files: `docs/guides/accessibility.md`, `docs/guides/coaching.md`, `docs/gdd/releases/community.md`, `docs/gdd/meta/preferences.md`, `docs/gdd/gamification/quests.md`, `docs/gdd/glossary/terms.md`, `docs/gdd/economy/currency.md`, `docs/gdd/user-content/community-creations.md`, `docs/gdd/user-content/overview.md`, and `docs/architecture/backend_api.md`. A direct grep verification against that exact file list returned no remaining `playlist` / `playlists` hits (`grep -RInE '\\bplaylists?\\b' -- <targeted files>` exited with code 1 / no matches).
+
+---
+
+### Follow-up: Final strict re-audit after playlist-string cleanup
+
+**Bead ID:** `aerobeat-docs-cuo`  
+**SubAgent:** `auditor`  
+**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-08`  
+**Prompt:** Independently verify that the remaining public docs no longer contain `playlist` as product/content/session wording, and close the terminology audit if clean.
 
 **Folders Created/Deleted/Modified:**
 - `docs/`

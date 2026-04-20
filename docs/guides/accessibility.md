@@ -13,7 +13,7 @@ Our scoring system is designed to be permissive.
 
 ## ⚙️ Gameplay Modifiers
 
-Before starting a Workout, you can enable specific modifiers to tailor the session to your needs. If the menu labels that Workout as a playlist, that wording is purely player-facing UX.
+Before starting a Workout, you can enable specific modifiers to tailor the session to your needs.
 
 *   **No Squats:** Disables obstacles (Walls/Bars) that force you to squat or duck.
 *   **No Knee Strikes:** Removes Knee Strike targets from Boxing Workouts.

@@ -12,8 +12,6 @@ The most successful coaching content (inspired by platforms like Supernatural VR
 * **Tell a Story.** A Workout is not just random songs. It is a journey. Use the warm-up to set the theme ("Today is about resilience") and the cool-down to reflect.
 * **Vibe Check.** Match your energy to the song. If it is a high-intensity interval track, use your voice to acknowledge what the athlete is working through. If it is a flow track, be calm and grounding.
 
-> **Terminology note:** The player-facing UI may still call a Workout a playlist. In the content model, **Workout** is the canonical term.
-
 ## 📦 Anatomy of a Coaching Pack
 
 A Coaching Pack is a collection of media files designed to wrap around a specific **Workout**.
@@ -93,5 +91,5 @@ Not every athlete can perform high-impact moves. It is important to acknowledge 
 2. In the Coaching SDK, select your video resource.
 3. Enable **Transparent Background** in the inspector. The engine uses a real-time shader to remove the green, making you appear inside the game environment.
 
-**Q: Can I remix an existing playlist?**
+**Q: Can I remix an existing Workout?**
 **A:** Yes. You can load an existing Workout in the SDK, add your coaching tracks, and save it as a remix. The original author is automatically credited in the manifest.

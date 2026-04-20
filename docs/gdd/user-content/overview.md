@@ -8,4 +8,4 @@ To support the "YouTube" vision, visual content is strictly separated from game 
 
 This allows the community to create total-conversion aesthetics without touching a line of code.
 
-Simply select a **Workout** in the content browser and the engine takes care of the rest. Player-facing UI may still call that Workout a playlist.
+Simply select a **Workout** in the content browser and the engine takes care of the rest.

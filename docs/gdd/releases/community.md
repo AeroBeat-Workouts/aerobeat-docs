@@ -7,14 +7,14 @@ AeroBeat will be available from our website as the "Community Edition" for PC/Ma
 * **Gameplay Modes** - Multiple rhythm gameplay modes. `Boxing`, `Flow`, `Dance`, and `Step` available across devices.
 * **View Modes** - Change `view` styles between `track` and `portal` to visualize gameplay in different ways. `Track View` is the broader linear 2D presentation family for compact screens; bottom-to-top upward scrolling is a common subtype, not the only valid layout. `Portal View` is the first-person immersive presentation used on TVs and VR-friendly setups.
 * **Multiplayer** - Supports both local and online multiplayer modes with `supporters` and `friends`.
-* **Play Anywhere** - Downloaded Workouts are available offline and region free. Athlete-facing browser UI may still label those saved Workouts as playlists.
+* **Play Anywhere** - Downloaded Workouts are available offline and region free.
 * **Runs On Your Device** - Runs on Windows, Mac, Linux, and Android phones. Unavailable on iOS due to restrictions.
-* **Workout Browser** - Easily search and filter Workouts. In the player-facing product UI this browser may still be branded as a playlist browser, including `community playlists`.
+* **Workout Browser** - Easily search and filter Workouts.
 * **Official Workouts** - Based on `supporter` funding, we will patronize the creation cost of `official` AeroBeat Workouts.
-* **Community Workouts** - Navigate the Workout Browser to find a never ending amount of content developed by the community. In player-facing copy, these may still be surfaced as community playlists.
+* **Community Workouts** - Navigate the Workout Browser to find a never ending amount of content developed by the community.
 * **Favorites** - Add Workouts and creators to your `favorite` to easily find them again
 * **Recommended Workouts** - Featured pre-screened Workouts we think you'll love based on your play style. 
-* **Workout Of The Day** - Featured pre-screened Workout our `supporters` want to shout-out as the daily pick for everyone to see. The product UI may still badge this as `playlist of the day`.
+* **Workout Of The Day** - Featured pre-screened Workout our `supporters` want to shout-out as the daily pick for everyone to see.
 * **Meet Your Fitness Goals** - Track your progress and achieve your weekly workout goals to build good workout habits.
 
 To fund development, we will use a `supporter` model. Pay a one time fee for each month you wish to support AeroBeat and recieve the following account perks. These are similar to the perks given in the touch rhythm platform `Osu!` to their supporters, but with some new additions.

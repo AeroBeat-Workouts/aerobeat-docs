@@ -8,7 +8,7 @@ The goal of the WP economy is to incentivize consistency. We reward effort (Time
 
 ## 2. Earning WP (The Faucet)
 
-WP is calculated at the end of every completed Workout. If the athlete started that Workout from a playlist-style browser, the underlying rewarded unit is still the Workout session.
+WP is calculated at the end of every completed Workout.
 
 ### The Formula
 

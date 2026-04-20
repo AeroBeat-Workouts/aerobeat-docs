@@ -1,8 +1,6 @@
 # 🌐 Community Creations
 
-When athletes browse community content, the player-facing UI may describe a session as a **playlist**. In the underlying content model, the canonical term is **Workout**.
-
-A Workout assembles community-authored content into a coherent training session. It is specific to a gameplay style and difficulty intent, even though the athlete may simply experience it as a playlist in the browser UI.
+A Workout assembles community-authored content into a coherent training session. It is specific to a gameplay style and difficulty intent.
 
 The durable content hierarchy is:
 

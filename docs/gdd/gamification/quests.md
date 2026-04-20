@@ -16,8 +16,8 @@ Quests are generated in three difficulty tiers to ensure accessibility for all s
 | Tier | Reward | Difficulty | Target Audience | Example |
 | :--- | :--- | :--- | :--- | :--- |
 | **Easy** | **100 WP** | Participation | Everyone | "Play 1 Song in Boxing Mode" |
-| **Medium** | **250 WP** | Effort | Regulars | "Complete 2 Playlists" |
-| **Hard** | **500 WP** | Skill/Endurance | Veterans | "Complete over 30 minutes of Pro level playlists" |
+| **Medium** | **250 WP** | Effort | Regulars | "Complete 2 Workouts" |
+| **Hard** | **500 WP** | Skill/Endurance | Veterans | "Complete over 30 minutes of Pro level Workouts" |
 
 ## 3. Quest Types
 
@@ -37,7 +37,7 @@ Encourages skill improvement.
 ### C. Endurance Based
 Encourages longer sessions.
 *   *Play for [X] minutes total.*
-*   *Complete [X] Playlists.*
+*   *Complete [X] Workouts.*
 
 ## 4. Generation Logic
 
