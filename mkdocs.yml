@@ -109,6 +109,7 @@ nav:
       - Cloud Baker: architecture/cloud_baker.md
       - Coding Style: architecture/coding-style.md
       - Content Model: architecture/content-model.md
+      - Content Repo Shapes: architecture/content-repo-shapes.md
       - Input: architecture/input.md
       - Multiplayer: architecture/multiplayer.md
       - Performance: architecture/performance.md

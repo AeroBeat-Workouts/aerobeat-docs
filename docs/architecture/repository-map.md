@@ -32,6 +32,7 @@ These six repos are the canonical lane owners for shared contracts and dependenc
 * **`aerobeat-input-xr`**: XR input management layer for the AeroBeat platform.
 * **`aerobeat-tool-api`**: Backend API client built on `aerobeat-tool-core` contracts.
 * **`aerobeat-tool-settings`**: User preferences and persistence management built on `aerobeat-tool-core` contracts.
+* **`aerobeat-tool-*` authoring products**: Concrete content-authoring, validation, migration, packaging, and ingestion tools. These depend on `aerobeat-content-core` and `aerobeat-tool-core`, and core content operations should be available through a headless/CLI surface even if the repo also ships an editor UI.
 * **`aerobeat-ui-kit-community`**: AeroBeat's default UI visual components used by the Community Edition.
 * **`aerobeat-ui-shell-desktop-community`**: AeroBeat's Community Edition desktop UI. Uses `aerobeat-ui-kit-community`.
 * **`aerobeat-ui-shell-mobile-community`**: AeroBeat's Community Edition mobile UI. Uses `aerobeat-ui-kit-community`.
@@ -41,3 +42,5 @@ These six repos are the canonical lane owners for shared contracts and dependenc
 ## Ownership rule
 
 AeroBeat no longer treats `aerobeat-core` as the long-term universal hub. The platform is documented as a lane-based architecture with one core repo per domain. Concrete repos depend on the core repos for their lane and on any adjacent lane contracts they consume, especially `aerobeat-content-core` for authored playable content and `aerobeat-asset-core` for reusable asset definitions.
+
+Concrete authoring products belong in the Tool lane, not in the Content lane. Conversely, 2D lane renderers, 3D portal systems, and other runtime visual consumers of authored content belong in Feature repos, not in `aerobeat-content-core` or `aerobeat-tool-core`.

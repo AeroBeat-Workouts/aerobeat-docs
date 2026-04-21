@@ -35,7 +35,7 @@ This is the official template for creating an **Internal Asset** repository with
     *   `fonts/` - TTF/OTF files.
     *   `mock/` - JSON/Resource data for testing.
     *   `prototypes/` - Greybox meshes.
-*   `LICENSE` - The CC BY-NC 4.0 legal text.
+*   `LICENSE.md` - The CC BY-NC 4.0 legal text.
 
 ## 📝 Licensing & Commercial Use
 

@@ -20,6 +20,8 @@ The canonical contracts for `Song`, `Routine`, `Chart Variant`, `Workout`, the s
 
 [`aerobeat-tool-core`](https://github.com/AeroBeat-Workouts/aerobeat-tool-core) and tool repos consume the same content contracts so authoring, validation, ingestion, and runtime all speak the same content language.
 
+Concrete authoring products belong under the `aerobeat-tool-*` family, not under `aerobeat-content-*`. `aerobeat-content-core` owns the durable content language; concrete tool repos own the author-facing workflows that create, edit, validate, migrate, package, import, and publish that content.
+
 ## Why AeroBeat needs `Routine`
 
 `Routine` is the missing primitive between `Song` and `Workout`.
@@ -224,6 +226,10 @@ Then let the runtime render that interaction as:
 
 If a future mode truly requires view-specific authored data that cannot be derived, add that as an extension field rather than replacing the content hierarchy.
 
+### Runtime-visual ownership rule
+
+Content may declare portable presentation hints, but concrete visual realizations of those hints stay out of the content lane. 2D lane renderers, 3D portal implementations, multi-portal layouts, world-space spawn systems, and other content-consuming runtime visuals belong in `aerobeat-feature-core` or concrete `aerobeat-feature-*` repos. They may depend on `aerobeat-content-core`, but they do not move into it.
+
 ## Recommended file / package relationship
 
 At the docs level, AeroBeat treats these as distinct assets even if implementation details evolve later:
@@ -396,6 +402,10 @@ AeroBeat keeps canonical content contracts separate from ingestion mechanics.
 
 That means CSV import, editor project conversion, web upload, and cloud catalog ingestion are all tool responsibilities. The resulting durable records still have to land on the same `Song` / `Routine` / `Chart Variant` / `Workout` contracts owned by `aerobeat-content-core`.
 
+### Headless tooling rule
+
+Content tooling must not require a GUI in order to perform core content operations. Validation, migration, packaging, import/export, registry/index maintenance, fixture generation, and other automation-friendly actions should be exposed through a headless/CLI surface in the Tool lane, even if the same repo also ships an interactive editor or richer desktop UX. Interactive tooling can layer on top of the same contracts and services, but headless execution is a first-class requirement rather than an afterthought.
+
 ## Workout sequencing and playback handoff
 
 The workout contract ends at **session sequencing intent**.
@@ -444,6 +454,9 @@ Owns shared tool-side operational models around that content:
 - publishing/moderation workflow models
 - batch validation/migration job models
 - tool-side status/progress/error surfaces
+- service interfaces usable by both interactive/editor UX and headless/CLI entrypoints
+
+Concrete tool products live in `aerobeat-tool-*` repos. A chart editor, workout planner, package builder, validation runner, or ingestion utility is a Tool-lane product even when it is primarily used for content authoring.
 
 ### non-goals
 

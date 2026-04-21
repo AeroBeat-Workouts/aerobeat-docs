@@ -32,6 +32,6 @@ Go to the AeroBeat-Workouts GitHub organization and look for repositories named 
 | **Avatars** | `avatars/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `setup_dev.py`, `AeroAvatar.gd` |
 | **Cosmetics** | `cosmetics/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `setup_dev.py`, `AeroAccessory.gd` |
 | **Environments** | `environments/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `setup_dev.py`, `AeroEnvironment.gd` |
-| **Asset (Internal)** | `asset/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `.gitignore`, `setup_dev.py`, `LICENSE` |
+| **Asset (Internal)** | `asset/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `.gitignore`, `setup_dev.py`, `LICENSE.md` |
 
 > **Note:** All templates include the `.github/workflows/cla.yml` workflow automatically.

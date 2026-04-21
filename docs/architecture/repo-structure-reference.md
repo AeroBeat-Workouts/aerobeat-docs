@@ -48,6 +48,8 @@ aerobeat-content-core/
 
 `Song`, `Routine`, `Chart Variant`, and `Workout` live in `aerobeat-content-core`. Shared chart-envelope fields, content-package manifest contracts, registry/query interfaces, workout-resolution contracts, schema-version rules, migration interfaces, and cross-tool/runtime validation types also live there.
 
+For the more opinionated day-one shape of both `aerobeat-content-core` and the first concrete authoring repo, see [Content Repo Shapes](content-repo-shapes.md).
+
 ## D. Asset Core (`aerobeat-asset-core`)
 
 ```text
@@ -82,6 +84,10 @@ aerobeat-tool-core/
 └── globals/            # Shared tool enums and constants
 ```
 
+Concrete authoring tools do not live under `aerobeat-content-*`. They live under `aerobeat-tool-*` and depend on `aerobeat-content-core` for durable content contracts. Any interactive/editor UX in those repos should sit on top of the same services that power a headless/CLI surface.
+
+Concrete content-consuming visuals also do not live in `aerobeat-content-core`. 2D lanes, 3D portals, and similar runtime presentation systems belong in `aerobeat-feature-*` repos because they are feature/runtime implementations, not durable authored-content contracts.
+
 ## G. Concrete implementation repo examples
 
 ### Input provider repo (`aerobeat-input-mediapipe-python`)
@@ -96,6 +102,18 @@ aerobeat-input-mediapipe-python/
 │   ├── server/         # Local transport / bridge server code
 │   └── strategies/     # Technology-specific interpretation logic
 ├── .testbed/           # Ignored local dev project
+├── tests/
+└── plugin.cfg
+```
+
+### Tool authoring repo (`aerobeat-tool-content-authoring`)
+
+```text
+aerobeat-tool-content-authoring/
+├── interfaces/         # Tool-facing service interfaces shared by CLI and editor surfaces
+├── services/           # Validation, migration, packaging, import/export workflows
+├── cli/                # Headless entrypoints / command wiring
+├── editor/             # Optional interactive/editor UX layered on the same services
 ├── tests/
 └── plugin.cfg
 ```
