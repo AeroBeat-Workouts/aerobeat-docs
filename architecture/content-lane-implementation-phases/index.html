@@ -2764,6 +2764,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../content-repo-shapes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Content Repo Shapes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../input/" class="md-nav__link">
         
   
@@ -5595,6 +5623,8 @@
 <li>documented shared chart envelope and interaction-family targeting rules</li>
 <li>documented package/file relationship for song, routine, chart-variant, and workout artifacts</li>
 <li>documented decision on what belongs to content contracts vs tool workflows vs runtime interpretation</li>
+<li>documented rule that concrete authoring products live in <code>aerobeat-tool-*</code> repos with both headless/CLI and optional interactive/editor surfaces</li>
+<li>documented rule that 2D lanes, 3D portals, and other content-consuming runtime visuals belong in feature repos rather than the content lane</li>
 </ul>
 <h3 id="required-decisions-before-code-starts">Required decisions before code starts<a class="headerlink" href="#required-decisions-before-code-starts" title="Permanent link">&para;</a></h3>
 <ul>
@@ -5603,6 +5633,8 @@
 <li>which presentation hints are durable content fields versus runtime-only concerns</li>
 <li>whether workouts default to routine+difficulty selection or exact chart ids</li>
 <li>which validation responsibilities are shared across all content versus delegated to feature repos</li>
+<li>whether the first authoring product is a Tool-lane repo with a headless-first service surface plus optional editor UX</li>
+<li>which runtime visual concerns stay in feature repos even when they consume content presentation hints</li>
 </ul>
 <h3 id="exit-criteria">Exit criteria<a class="headerlink" href="#exit-criteria" title="Permanent link">&para;</a></h3>
 <ul>
@@ -5630,6 +5662,7 @@
 <li>editor UI</li>
 <li>ingestion-side API clients or service orchestration</li>
 <li>mode-specific runtime systems that belong in feature repos</li>
+<li>concrete 2D lane, 3D portal, or other runtime visual implementations</li>
 </ul>
 <h3 id="recommended-repository-action">Recommended repository action<a class="headerlink" href="#recommended-repository-action" title="Permanent link">&para;</a></h3>
 <ul>
@@ -5684,17 +5717,19 @@
 <li>workout authoring flows</li>
 <li>import/ingestion flows from source audio/metadata/chart sources</li>
 <li>validation runners used by CLI/editor tooling</li>
+<li>shared service surfaces that can be invoked from both headless/CLI and interactive/editor entrypoints</li>
 </ul>
 <h3 id="recommended-repository-actions">Recommended repository actions<a class="headerlink" href="#recommended-repository-actions" title="Permanent link">&para;</a></h3>
 <p>Create concrete tool repos only when ownership or release cadence becomes distinct:</p>
 <ol>
-<li><strong>Likely next repo:</strong> <code>aerobeat-tool-content-authoring</code></li>
+<li><strong>Likely next repo:</strong> a concrete <code>aerobeat-tool-*</code> authoring repo such as <code>aerobeat-tool-content-authoring</code></li>
 <li>justified once there is enough editing workflow to warrant its own release surface</li>
 <li>should consume <code>aerobeat-content-core</code> and <code>aerobeat-tool-core</code></li>
-<li><strong>Likely later repo:</strong> <code>aerobeat-tool-content-ingestion</code></li>
+<li>should expose headless/CLI entrypoints for validation, migration, packaging, import/export, and automation-friendly authoring tasks, with any interactive/editor UX layered on top</li>
+<li><strong>Likely later repo:</strong> a concrete <code>aerobeat-tool-*</code> ingestion repo such as <code>aerobeat-tool-content-ingestion</code></li>
 <li>justified only when import/conversion pipelines become substantial enough to stand apart from authoring</li>
 <li>should not become the canonical owner of schema definitions</li>
-<li><strong>Optional later split:</strong> dedicated workout/choreography editor repo</li>
+<li><strong>Optional later split:</strong> dedicated <code>aerobeat-tool-*</code> workout/choreography repo</li>
 <li>only justified if workout programming diverges materially from chart authoring</li>
 </ol>
 <h3 id="not-yet-justified">Not yet justified<a class="headerlink" href="#not-yet-justified" title="Permanent link">&para;</a></h3>
@@ -5716,6 +5751,7 @@
 <ul>
 <li><code>aerobeat-feature-core</code> defines how gameplay systems consume chart events, scoring windows, and runtime interpretation rules</li>
 <li>concrete <code>aerobeat-feature-*</code> repos implement mode-specific loaders/adapters on top of shared chart envelopes and mode payloads</li>
+<li>concrete <code>aerobeat-feature-*</code> repos also own content-consuming runtime visuals such as 2D lanes, 3D portals, and other view-specific presentation systems</li>
 <li>assemblies compose the necessary cores and concrete repos through GodotEnv</li>
 <li>runtime selection logic resolves workout → routine/chart selection using content-core references and validated manifests</li>
 </ul>
@@ -5735,9 +5771,9 @@
 <p>Create repos only when their ownership is already clear from the phase plan:</p>
 <ol>
 <li><strong><code>aerobeat-content-core</code></strong> — required now; canonical lane owner</li>
-<li><strong><code>aerobeat-tool-content-authoring</code></strong> — next likely concrete tool repo once contract implementation exists</li>
-<li><strong><code>aerobeat-tool-content-ingestion</code></strong> — only after import/conversion workflows become distinct enough</li>
-<li><strong>Optional dedicated workout/choreography tool repo</strong> — only if authoring workflows diverge enough to justify the split</li>
+<li><strong>A first concrete <code>aerobeat-tool-*</code> authoring repo</strong> — next likely repo once contract implementation exists; should include headless/CLI entrypoints and may later layer on interactive/editor UX</li>
+<li><strong>A later concrete <code>aerobeat-tool-*</code> ingestion repo</strong> — only after import/conversion workflows become distinct enough</li>
+<li><strong>Optional dedicated <code>aerobeat-tool-*</code> workout/choreography repo</strong> — only if authoring workflows diverge enough to justify the split</li>
 </ol>
 <h2 id="recommended-implementation-sequence-summary">Recommended implementation sequence summary<a class="headerlink" href="#recommended-implementation-sequence-summary" title="Permanent link">&para;</a></h2>
 <ol>
@@ -5769,7 +5805,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 21:23:01 UTC">April 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 21, 2026 23:34:00 UTC">April 21, 2026</span>
   </span>
 
     

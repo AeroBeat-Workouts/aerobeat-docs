@@ -2772,6 +2772,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../content-repo-shapes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Content Repo Shapes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../input/" class="md-nav__link">
         
   
@@ -5327,6 +5355,7 @@
 <li><strong><code>aerobeat-input-xr</code></strong>: XR input management layer for the AeroBeat platform.</li>
 <li><strong><code>aerobeat-tool-api</code></strong>: Backend API client built on <code>aerobeat-tool-core</code> contracts.</li>
 <li><strong><code>aerobeat-tool-settings</code></strong>: User preferences and persistence management built on <code>aerobeat-tool-core</code> contracts.</li>
+<li><strong><code>aerobeat-tool-*</code> authoring products</strong>: Concrete content-authoring, validation, migration, packaging, and ingestion tools. These depend on <code>aerobeat-content-core</code> and <code>aerobeat-tool-core</code>, and core content operations should be available through a headless/CLI surface even if the repo also ships an editor UI.</li>
 <li><strong><code>aerobeat-ui-kit-community</code></strong>: AeroBeat's default UI visual components used by the Community Edition.</li>
 <li><strong><code>aerobeat-ui-shell-desktop-community</code></strong>: AeroBeat's Community Edition desktop UI. Uses <code>aerobeat-ui-kit-community</code>.</li>
 <li><strong><code>aerobeat-ui-shell-mobile-community</code></strong>: AeroBeat's Community Edition mobile UI. Uses <code>aerobeat-ui-kit-community</code>.</li>
@@ -5335,6 +5364,7 @@
 </ul>
 <h2 id="ownership-rule">Ownership rule<a class="headerlink" href="#ownership-rule" title="Permanent link">&para;</a></h2>
 <p>AeroBeat no longer treats <code>aerobeat-core</code> as the long-term universal hub. The platform is documented as a lane-based architecture with one core repo per domain. Concrete repos depend on the core repos for their lane and on any adjacent lane contracts they consume, especially <code>aerobeat-content-core</code> for authored playable content and <code>aerobeat-asset-core</code> for reusable asset definitions.</p>
+<p>Concrete authoring products belong in the Tool lane, not in the Content lane. Conversely, 2D lane renderers, 3D portal systems, and other runtime visual consumers of authored content belong in Feature repos, not in <code>aerobeat-content-core</code> or <code>aerobeat-tool-core</code>.</p>
 
 
 
@@ -5355,7 +5385,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 18:09:29 UTC">April 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 21, 2026 23:34:00 UTC">April 21, 2026</span>
   </span>
 
     

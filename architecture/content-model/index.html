@@ -14,7 +14,7 @@
         <link rel="prev" href="../coding-style/">
       
       
-        <link rel="next" href="../input/">
+        <link rel="next" href="../content-repo-shapes/">
       
       
         
@@ -3015,6 +3015,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#runtime-visual-ownership-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime-visual ownership rule
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3268,6 +3279,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Import, export, and ingestion boundaries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#headless-tooling-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Headless tooling rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3396,6 +3424,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../content-repo-shapes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Content Repo Shapes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -6011,6 +6067,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#runtime-visual-ownership-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime-visual ownership rule
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6264,6 +6331,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Import, export, and ingestion boundaries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#headless-tooling-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Headless tooling rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -6425,6 +6509,7 @@
 <p>The canonical contracts for <code>Song</code>, <code>Routine</code>, <code>Chart Variant</code>, <code>Workout</code>, the shared chart envelope, and shared content loading / validation interfaces live in <a href="https://github.com/AeroBeat-Workouts/aerobeat-content-core"><code>aerobeat-content-core</code></a>.</p>
 <p><a href="https://github.com/AeroBeat-Workouts/aerobeat-feature-core"><code>aerobeat-feature-core</code></a> consumes those contracts to define gameplay-mode/runtime rules. It does not own the durable content primitives.</p>
 <p><a href="https://github.com/AeroBeat-Workouts/aerobeat-tool-core"><code>aerobeat-tool-core</code></a> and tool repos consume the same content contracts so authoring, validation, ingestion, and runtime all speak the same content language.</p>
+<p>Concrete authoring products belong under the <code>aerobeat-tool-*</code> family, not under <code>aerobeat-content-*</code>. <code>aerobeat-content-core</code> owns the durable content language; concrete tool repos own the author-facing workflows that create, edit, validate, migrate, package, import, and publish that content.</p>
 <h2 id="why-aerobeat-needs-routine">Why AeroBeat needs <code>Routine</code><a class="headerlink" href="#why-aerobeat-needs-routine" title="Permanent link">&para;</a></h2>
 <p><code>Routine</code> is the missing primitive between <code>Song</code> and <code>Workout</code>.</p>
 <p>A <code>Song</code> alone is too low-level. It knows about the audio timeline, credits, and metadata, but it does not know whether the athlete is boxing, stepping, dancing, or flowing.</p>
@@ -6589,6 +6674,8 @@
 <li>multi-portal or simplified mobile representations</li>
 </ul>
 <p>If a future mode truly requires view-specific authored data that cannot be derived, add that as an extension field rather than replacing the content hierarchy.</p>
+<h3 id="runtime-visual-ownership-rule">Runtime-visual ownership rule<a class="headerlink" href="#runtime-visual-ownership-rule" title="Permanent link">&para;</a></h3>
+<p>Content may declare portable presentation hints, but concrete visual realizations of those hints stay out of the content lane. 2D lane renderers, 3D portal implementations, multi-portal layouts, world-space spawn systems, and other content-consuming runtime visuals belong in <code>aerobeat-feature-core</code> or concrete <code>aerobeat-feature-*</code> repos. They may depend on <code>aerobeat-content-core</code>, but they do not move into it.</p>
 <h2 id="recommended-file-package-relationship">Recommended file / package relationship<a class="headerlink" href="#recommended-file-package-relationship" title="Permanent link">&para;</a></h2>
 <p>At the docs level, AeroBeat treats these as distinct assets even if implementation details evolve later:</p>
 <ul>
@@ -6729,6 +6816,8 @@ It sequences playable selections, transition timing, and coaching/program flow, 
 <li>moderation/publishing workflow state</li>
 </ul>
 <p>That means CSV import, editor project conversion, web upload, and cloud catalog ingestion are all tool responsibilities. The resulting durable records still have to land on the same <code>Song</code> / <code>Routine</code> / <code>Chart Variant</code> / <code>Workout</code> contracts owned by <code>aerobeat-content-core</code>.</p>
+<h3 id="headless-tooling-rule">Headless tooling rule<a class="headerlink" href="#headless-tooling-rule" title="Permanent link">&para;</a></h3>
+<p>Content tooling must not require a GUI in order to perform core content operations. Validation, migration, packaging, import/export, registry/index maintenance, fixture generation, and other automation-friendly actions should be exposed through a headless/CLI surface in the Tool lane, even if the same repo also ships an interactive editor or richer desktop UX. Interactive tooling can layer on top of the same contracts and services, but headless execution is a first-class requirement rather than an afterthought.</p>
 <h2 id="workout-sequencing-and-playback-handoff">Workout sequencing and playback handoff<a class="headerlink" href="#workout-sequencing-and-playback-handoff" title="Permanent link">&para;</a></h2>
 <p>The workout contract ends at <strong>session sequencing intent</strong>.
 The feature/runtime contract begins at <strong>playback execution and athlete interpretation</strong>.</p>
@@ -6771,7 +6860,9 @@ The feature/runtime contract begins at <strong>playback execution and athlete in
 <li>publishing/moderation workflow models</li>
 <li>batch validation/migration job models</li>
 <li>tool-side status/progress/error surfaces</li>
+<li>service interfaces usable by both interactive/editor UX and headless/CLI entrypoints</li>
 </ul>
+<p>Concrete tool products live in <code>aerobeat-tool-*</code> repos. A chart editor, workout planner, package builder, validation runner, or ingestion utility is a Tool-lane product even when it is primarily used for content authoring.</p>
 <h3 id="non-goals">non-goals<a class="headerlink" href="#non-goals" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>aerobeat-content-core</code> does not own editor UX, upload workflows, or backend queue state.</li>
@@ -6854,7 +6945,7 @@ The feature/runtime contract begins at <strong>playback execution and athlete in
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 23:18:05 UTC">April 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 21, 2026 23:34:00 UTC">April 21, 2026</span>
   </span>
 
     
