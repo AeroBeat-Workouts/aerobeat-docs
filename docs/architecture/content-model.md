@@ -1,4 +1,4 @@
-# Content Model: Songs, Routines, Chart Variants, and Workouts
+# Content Model: Songs, Routines, Charts, and Workouts
 
 AeroBeat content is authored as a layered model rather than a single flat chart blob or a set of unrelated per-mode file formats.
 
@@ -6,15 +6,31 @@ The durable hierarchy is:
 
 - **Song**
   - **Routine**
-    - **Chart Variant**
+    - **Chart**
 - **Workout**
-  - ordered selections of routines or chart variants
+  - ordered selections of exact chart UIDs
 
-This structure keeps audio and licensing metadata reusable at the song layer, keeps gameplay-mode semantics at the routine layer, keeps difficulty-specific authored event streams at the chart variant layer, and keeps coaching / workout programming at the workout layer.
+This structure keeps audio and licensing metadata reusable at the song layer, keeps gameplay-mode semantics at the routine layer, keeps difficulty-specific authored event streams at the chart layer, and keeps coaching / workout programming at the workout layer.
+
+## Current schema direction
+
+As of 2026-04-23, the current naming and shape direction is:
+
+- Use consistent `*Id` + `*Name` fields across the core records where applicable:
+  - `songId`, `songName`
+  - `routineId`, `routineName`
+  - `chartId`, `chartName`
+  - `workoutId`, `workoutName`
+- All primary ids are UIDs.
+- `Routine` means one `Song` interpreted through one gameplay `mode`.
+- `Chart` is the durable term for one concrete playable difficulty slice.
+- Workouts resolve to exact referenced UIDs rather than loose song/mode/difficulty selectors.
+- Athlete/device-specific timing calibration such as song offset does not belong in durable content data; it belongs in athlete/profile/device state.
+- Workout coaching is owned by the `Workout` and includes overlay entries for each referenced song/chart UID used by that workout.
 
 ## Canonical ownership
 
-The canonical contracts for `Song`, `Routine`, `Chart Variant`, `Workout`, the shared chart envelope, and shared content loading / validation interfaces live in [`aerobeat-content-core`](https://github.com/AeroBeat-Workouts/aerobeat-content-core).
+The canonical contracts for `Song`, `Routine`, `Chart`, `Workout`, the shared chart envelope, and shared content loading / validation interfaces live in [`aerobeat-content-core`](https://github.com/AeroBeat-Workouts/aerobeat-content-core).
 
 [`aerobeat-feature-core`](https://github.com/AeroBeat-Workouts/aerobeat-feature-core) consumes those contracts to define gameplay-mode/runtime rules. It does not own the durable content primitives.
 
@@ -41,7 +57,7 @@ A `Workout` is too high-level. It is a program that assembles multiple playable 
 Examples:
 
 - one song can have a **Boxing Routine** and a **Dance Routine**
-- a Boxing Routine can have **Easy**, **Medium**, **Hard**, and **Pro** chart variants
+- a Boxing Routine can have **Easy**, **Medium**, **Hard**, and **Pro** charts
 - a Workout can pick the Medium Boxing chart from one song and the Hard Dance chart from another
 
 ## Core primitives
@@ -50,75 +66,83 @@ Examples:
 
 A `Song` is the reusable music and timing source.
 
-It owns:
+It owns fields such as:
 
-- song id
-- title / artist / credits / licensing metadata
+- `songId`
+- `songName`
+- artist / credits / licensing metadata
 - audio asset references
 - duration
 - tempo map / beat grid / conductor alignment data
 - global tags and descriptive metadata
 
-It does **not** own gameplay-mode-specific note data.
+It does **not** own gameplay-mode-specific note data, and it does **not** own athlete/device-specific timing offsets.
 
 ### 2. Routine
 
 A `Routine` is the authored gameplay package for one `Song` interpreted through one gameplay mode.
 
-It owns:
+It stays intentionally lean and owns fields such as:
 
-- routine id
-- song reference
-- gameplay mode reference, such as `boxing`, `dance`, `step`, or `flow`
-- routine-level metadata such as intensity, training focus, and authoring notes
-- presentation defaults
-- validation profile for the mode
-- one or more chart variants
+- `routineId`
+- `routineName`
+- `songId`
+- `mode` such as `boxing`, `dance`, `step`, or `flow`
+- `authorId`
+- `authorName`
+- `charts` as referenced chart UIDs
 
 A routine is where AeroBeat says, “this is the boxing choreography for this song,” not just “this song exists.”
 
-### 3. Chart Variant
+### 3. Chart
 
-A `Chart Variant` is one concrete playable authored sequence.
+A `Chart` is one concrete playable authored sequence.
 
-It owns:
+It owns fields such as:
 
-- chart id
-- routine reference
+- `chartId`
+- `chartName`
+- `routineId`
 - difficulty
 - interaction family target
 - optional supported / validated input profiles
 - timing-aligned event stream
-- scoring metadata and hit windows
-- optional presentation hints needed to render the chart well
+- optional presentation hints needed to render the chart well only when those hints are truly part of durable content
 
-A chart variant represents **one playable difficulty / compatibility slice**, not an all-difficulties megafile.
+A chart represents **one playable difficulty / compatibility slice**, not an all-difficulties megafile.
+
+Mode-global tuning such as hit windows should not live in authored chart data. Those belong in feature/mode rules rather than in each chart record.
 
 #### Why difficulty belongs here
 
 AeroBeat does not store all difficulties as peer event arrays inside one giant chart by default.
 
-Separate chart variants give us:
+Separate charts give us:
 
 - cleaner diffs and version control
 - easier validation
 - easier tooling
 - fewer edit collisions between contributors
-- room for alternate device-compatible variants later without forking the whole routine
+- room for alternate compatibility slices later without forking the whole routine
 
 ### 4. Workout
 
 A `Workout` is a training program.
 
-It owns:
+It owns fields such as:
 
-- workout id
-- title / coach / goal / target duration / intensity metadata
-- ordered list of routine selections or chart selections
-- pre-roll / warmup / cooldown / post-roll content
-- transitions, coaching cues, and workout-level presentation notes
+- `workoutId`
+- `workoutName`
+- `description`
+- `coachId`
+- `coachName`
+- workout-level background scene selection
+- pre-workout / warmup media
+- post-workout / cooldown media
+- ordered list of exact chart UID selections
+- workout-owned coaching overlays keyed to the referenced song/chart UIDs used in that workout
 
-A workout references either a full routine plus difficulty preference, or an exact chart variant directly when the sequence must be locked.
+Workout runtime length is derived from the referenced content rather than stored as a separate authored duration field.
 
 ## Shared chart envelope
 
@@ -130,7 +154,7 @@ The shared chart envelope is owned by `aerobeat-content-core` because it is part
 
 ### Shared fields
 
-All chart variants expose a common envelope containing fields such as:
+All charts expose a common envelope containing fields such as:
 
 - `schema`
 - `chartId`
@@ -236,7 +260,7 @@ At the docs level, AeroBeat treats these as distinct assets even if implementati
 
 - one `Song` record
 - one or more `Routine` records under that song
-- one chart file or record per `Chart Variant`
+- one chart file or record per `Chart`
 - one `Workout` file or record assembling selections
 
 That yields small, reviewable, reusable units.
@@ -246,7 +270,7 @@ That yields small, reviewable, reusable units.
 AeroBeat packages authored content as a **content package** with one manifest and one or more typed records/resources inside it.
 
 The package boundary is the unit of distribution, import, indexing, and compatibility review.
-The individual `Song`, `Routine`, `Chart Variant`, and `Workout` records inside that package remain the unit of authoring, validation, and runtime selection.
+The individual `Song`, `Routine`, `Chart`, and `Workout` records inside that package remain the unit of authoring, validation, and runtime selection.
 
 ### Package responsibilities
 
@@ -255,7 +279,7 @@ A content package owns:
 - package id
 - package version
 - package-level author / attribution / licensing metadata
-- package manifest entries for contained songs, routines, chart variants, workouts, and media resources
+- package manifest entries for contained songs, routines, charts, workouts, and media resources
 - references to the binary resources required by those records, such as audio, thumbnails, coaching clips, and preview art
 - package-level compatibility declarations, such as minimum supported schema family or required feature lanes
 
@@ -263,8 +287,8 @@ A content package owns:
 
 1. A package may contain one or more songs.
 2. A routine must reference a song that exists in the same package or in a separately declared dependency package.
-3. A chart variant must reference exactly one routine.
-4. A workout may reference routines or exact chart variants, but a workout step must declare which resolution rule it is using.
+3. A chart must reference exactly one routine.
+4. A workout may reference routines or exact charts, but a workout step must declare which resolution rule it is using.
 5. Binary media stays as referenced resources; the canonical authored contracts stay in structured content records.
 
 ## Authored data contract boundaries
@@ -281,9 +305,9 @@ It must remain free of mode-specific gameplay data.
 The `Routine` contract is responsible for the mode-specific authored package for one song.
 It is the boundary where AeroBeat commits to the gameplay family, authoring vocabulary, validation profile, and default presentation intent.
 
-### Chart Variant contract
+### Chart contract
 
-The `Chart Variant` contract is responsible for one exact playable authored sequence.
+The `Chart` contract is responsible for one exact playable authored sequence.
 It is the boundary for difficulty, interaction family, validated compatibility, scoring envelope, and the timed event stream.
 
 ### Workout contract
@@ -300,7 +324,7 @@ AeroBeat separates **registry contracts** from **registry implementations**.
 - content identity fields and reference rules
 - package-manifest contract shape
 - registry query/result interfaces
-- lookup semantics for songs, routines, chart variants, workouts, and resource references
+- lookup semantics for songs, routines, charts, workouts, and resource references
 - stable rules for duplicate ids, missing references, package precedence, and disabled/hidden content states
 
 ### concrete tools/runtime own
@@ -400,7 +424,7 @@ AeroBeat keeps canonical content contracts separate from ingestion mechanics.
 - backend upload/download workflows
 - moderation/publishing workflow state
 
-That means CSV import, editor project conversion, web upload, and cloud catalog ingestion are all tool responsibilities. The resulting durable records still have to land on the same `Song` / `Routine` / `Chart Variant` / `Workout` contracts owned by `aerobeat-content-core`.
+That means CSV import, editor project conversion, web upload, and cloud catalog ingestion are all tool responsibilities. The resulting durable records still have to land on the same `Song` / `Routine` / `Chart` / `Workout` contracts owned by `aerobeat-content-core`.
 
 ### Headless tooling rule
 
@@ -461,7 +485,7 @@ Concrete tool products live in `aerobeat-tool-*` repos. A chart editor, workout 
 ### non-goals
 
 - `aerobeat-content-core` does not own editor UX, upload workflows, or backend queue state.
-- `aerobeat-tool-core` does not redefine `Song`, `Routine`, `Chart Variant`, `Workout`, or the shared chart envelope.
+- `aerobeat-tool-core` does not redefine `Song`, `Routine`, `Chart`, `Workout`, or the shared chart envelope.
 - feature repos do not replace the shared content contracts with mode-local durable content roots.
 
 ## Minimal shared chart envelope example
@@ -519,7 +543,7 @@ For the first shipping slice, AeroBeat standardizes on:
 
 - `Song` as the reusable music source
 - `Routine` as the missing gameplay package primitive
-- `Chart Variant` as the single playable difficulty artifact
+- `Chart` as the single playable difficulty artifact
 - `Workout` as the session/program container
 - a shared chart envelope with mode-specific event payloads
 - `gesture_2d` as the first target interaction family for Boxing + MediaPipe

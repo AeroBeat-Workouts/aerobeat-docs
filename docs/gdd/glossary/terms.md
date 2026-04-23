@@ -6,7 +6,7 @@ Use this glossary of AeroBeat specific terms to keep the docs set aligned.
 | :--- | :--- |
 | **Song** | The reusable audio / timing asset and metadata source for gameplay content. |
 | **Routine** | The gameplay-mode-specific package for one Song, such as the boxing routine for that song. |
-| **Chart Variant** | One concrete playable chart inside a Routine representing a single difficulty and compatibility slice. |
+| **Chart** | One concrete playable chart inside a Routine representing a single difficulty and compatibility slice. |
 | **Workout** | An ordered training program that assembles routines or chart variants into a session. |
 | **Chart Envelope** | The shared chart-level contract that carries ids, timing, scoring, presentation hints, and a mode-specific event payload. |
 | **Interaction Family** | A durable movement-target abstraction such as `gesture_2d`, `tracked_6dof`, or `hybrid`, used instead of binding content directly to a raw device. |
