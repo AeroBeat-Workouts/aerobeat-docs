@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#content-model-songs-routines-chart-variants-and-workouts" class="md-skip">
+        <a href="#content-model-songs-routines-charts-and-workouts" class="md-skip">
           Skip to content
         </a>
       
@@ -2804,6 +2804,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#current-schema-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current schema direction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#canonical-ownership" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2860,15 +2871,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-chart-variant" class="md-nav__link">
+  <a href="#3-chart" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Chart Variant
+        3. Chart
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. Chart Variant">
+    <nav class="md-nav" aria-label="3. Chart">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3116,10 +3127,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#chart-variant-contract" class="md-nav__link">
+  <a href="#chart-contract" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Chart Variant contract
+        Chart contract
       
     </span>
   </a>
@@ -5856,6 +5867,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#current-schema-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current schema direction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#canonical-ownership" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5912,15 +5934,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-chart-variant" class="md-nav__link">
+  <a href="#3-chart" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Chart Variant
+        3. Chart
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. Chart Variant">
+    <nav class="md-nav" aria-label="3. Chart">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6168,10 +6190,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#chart-variant-contract" class="md-nav__link">
+  <a href="#chart-contract" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Chart Variant contract
+        Chart contract
       
     </span>
   </a>
@@ -6492,21 +6514,36 @@
   
 
 
-<h1 id="content-model-songs-routines-chart-variants-and-workouts">Content Model: Songs, Routines, Chart Variants, and Workouts<a class="headerlink" href="#content-model-songs-routines-chart-variants-and-workouts" title="Permanent link">&para;</a></h1>
+<h1 id="content-model-songs-routines-charts-and-workouts">Content Model: Songs, Routines, Charts, and Workouts<a class="headerlink" href="#content-model-songs-routines-charts-and-workouts" title="Permanent link">&para;</a></h1>
 <p>AeroBeat content is authored as a layered model rather than a single flat chart blob or a set of unrelated per-mode file formats.</p>
 <p>The durable hierarchy is:</p>
 <ul>
 <li><strong>Song</strong></li>
 <li><strong>Routine</strong><ul>
-<li><strong>Chart Variant</strong></li>
+<li><strong>Chart</strong></li>
 </ul>
 </li>
 <li><strong>Workout</strong></li>
-<li>ordered selections of routines or chart variants</li>
+<li>ordered selections of exact chart UIDs</li>
 </ul>
-<p>This structure keeps audio and licensing metadata reusable at the song layer, keeps gameplay-mode semantics at the routine layer, keeps difficulty-specific authored event streams at the chart variant layer, and keeps coaching / workout programming at the workout layer.</p>
+<p>This structure keeps audio and licensing metadata reusable at the song layer, keeps gameplay-mode semantics at the routine layer, keeps difficulty-specific authored event streams at the chart layer, and keeps coaching / workout programming at the workout layer.</p>
+<h2 id="current-schema-direction">Current schema direction<a class="headerlink" href="#current-schema-direction" title="Permanent link">&para;</a></h2>
+<p>As of 2026-04-23, the current naming and shape direction is:</p>
+<ul>
+<li>Use consistent <code>*Id</code> + <code>*Name</code> fields across the core records where applicable:</li>
+<li><code>songId</code>, <code>songName</code></li>
+<li><code>routineId</code>, <code>routineName</code></li>
+<li><code>chartId</code>, <code>chartName</code></li>
+<li><code>workoutId</code>, <code>workoutName</code></li>
+<li>All primary ids are UIDs.</li>
+<li><code>Routine</code> means one <code>Song</code> interpreted through one gameplay <code>mode</code>.</li>
+<li><code>Chart</code> is the durable term for one concrete playable difficulty slice.</li>
+<li>Workouts resolve to exact referenced UIDs rather than loose song/mode/difficulty selectors.</li>
+<li>Athlete/device-specific timing calibration such as song offset does not belong in durable content data; it belongs in athlete/profile/device state.</li>
+<li>Workout coaching is owned by the <code>Workout</code> and includes overlay entries for each referenced song/chart UID used by that workout.</li>
+</ul>
 <h2 id="canonical-ownership">Canonical ownership<a class="headerlink" href="#canonical-ownership" title="Permanent link">&para;</a></h2>
-<p>The canonical contracts for <code>Song</code>, <code>Routine</code>, <code>Chart Variant</code>, <code>Workout</code>, the shared chart envelope, and shared content loading / validation interfaces live in <a href="https://github.com/AeroBeat-Workouts/aerobeat-content-core"><code>aerobeat-content-core</code></a>.</p>
+<p>The canonical contracts for <code>Song</code>, <code>Routine</code>, <code>Chart</code>, <code>Workout</code>, the shared chart envelope, and shared content loading / validation interfaces live in <a href="https://github.com/AeroBeat-Workouts/aerobeat-content-core"><code>aerobeat-content-core</code></a>.</p>
 <p><a href="https://github.com/AeroBeat-Workouts/aerobeat-feature-core"><code>aerobeat-feature-core</code></a> consumes those contracts to define gameplay-mode/runtime rules. It does not own the durable content primitives.</p>
 <p><a href="https://github.com/AeroBeat-Workouts/aerobeat-tool-core"><code>aerobeat-tool-core</code></a> and tool repos consume the same content contracts so authoring, validation, ingestion, and runtime all speak the same content language.</p>
 <p>Concrete authoring products belong under the <code>aerobeat-tool-*</code> family, not under <code>aerobeat-content-*</code>. <code>aerobeat-content-core</code> owns the durable content language; concrete tool repos own the author-facing workflows that create, edit, validate, migrate, package, import, and publish that content.</p>
@@ -6525,76 +6562,83 @@
 <p>Examples:</p>
 <ul>
 <li>one song can have a <strong>Boxing Routine</strong> and a <strong>Dance Routine</strong></li>
-<li>a Boxing Routine can have <strong>Easy</strong>, <strong>Medium</strong>, <strong>Hard</strong>, and <strong>Pro</strong> chart variants</li>
+<li>a Boxing Routine can have <strong>Easy</strong>, <strong>Medium</strong>, <strong>Hard</strong>, and <strong>Pro</strong> charts</li>
 <li>a Workout can pick the Medium Boxing chart from one song and the Hard Dance chart from another</li>
 </ul>
 <h2 id="core-primitives">Core primitives<a class="headerlink" href="#core-primitives" title="Permanent link">&para;</a></h2>
 <h3 id="1-song">1. Song<a class="headerlink" href="#1-song" title="Permanent link">&para;</a></h3>
 <p>A <code>Song</code> is the reusable music and timing source.</p>
-<p>It owns:</p>
+<p>It owns fields such as:</p>
 <ul>
-<li>song id</li>
-<li>title / artist / credits / licensing metadata</li>
+<li><code>songId</code></li>
+<li><code>songName</code></li>
+<li>artist / credits / licensing metadata</li>
 <li>audio asset references</li>
 <li>duration</li>
 <li>tempo map / beat grid / conductor alignment data</li>
 <li>global tags and descriptive metadata</li>
 </ul>
-<p>It does <strong>not</strong> own gameplay-mode-specific note data.</p>
+<p>It does <strong>not</strong> own gameplay-mode-specific note data, and it does <strong>not</strong> own athlete/device-specific timing offsets.</p>
 <h3 id="2-routine">2. Routine<a class="headerlink" href="#2-routine" title="Permanent link">&para;</a></h3>
 <p>A <code>Routine</code> is the authored gameplay package for one <code>Song</code> interpreted through one gameplay mode.</p>
-<p>It owns:</p>
+<p>It stays intentionally lean and owns fields such as:</p>
 <ul>
-<li>routine id</li>
-<li>song reference</li>
-<li>gameplay mode reference, such as <code>boxing</code>, <code>dance</code>, <code>step</code>, or <code>flow</code></li>
-<li>routine-level metadata such as intensity, training focus, and authoring notes</li>
-<li>presentation defaults</li>
-<li>validation profile for the mode</li>
-<li>one or more chart variants</li>
+<li><code>routineId</code></li>
+<li><code>routineName</code></li>
+<li><code>songId</code></li>
+<li><code>mode</code> such as <code>boxing</code>, <code>dance</code>, <code>step</code>, or <code>flow</code></li>
+<li><code>authorId</code></li>
+<li><code>authorName</code></li>
+<li><code>charts</code> as referenced chart UIDs</li>
 </ul>
 <p>A routine is where AeroBeat says, “this is the boxing choreography for this song,” not just “this song exists.”</p>
-<h3 id="3-chart-variant">3. Chart Variant<a class="headerlink" href="#3-chart-variant" title="Permanent link">&para;</a></h3>
-<p>A <code>Chart Variant</code> is one concrete playable authored sequence.</p>
-<p>It owns:</p>
+<h3 id="3-chart">3. Chart<a class="headerlink" href="#3-chart" title="Permanent link">&para;</a></h3>
+<p>A <code>Chart</code> is one concrete playable authored sequence.</p>
+<p>It owns fields such as:</p>
 <ul>
-<li>chart id</li>
-<li>routine reference</li>
+<li><code>chartId</code></li>
+<li><code>chartName</code></li>
+<li><code>routineId</code></li>
 <li>difficulty</li>
 <li>interaction family target</li>
 <li>optional supported / validated input profiles</li>
 <li>timing-aligned event stream</li>
-<li>scoring metadata and hit windows</li>
-<li>optional presentation hints needed to render the chart well</li>
+<li>optional presentation hints needed to render the chart well only when those hints are truly part of durable content</li>
 </ul>
-<p>A chart variant represents <strong>one playable difficulty / compatibility slice</strong>, not an all-difficulties megafile.</p>
+<p>A chart represents <strong>one playable difficulty / compatibility slice</strong>, not an all-difficulties megafile.</p>
+<p>Mode-global tuning such as hit windows should not live in authored chart data. Those belong in feature/mode rules rather than in each chart record.</p>
 <h4 id="why-difficulty-belongs-here">Why difficulty belongs here<a class="headerlink" href="#why-difficulty-belongs-here" title="Permanent link">&para;</a></h4>
 <p>AeroBeat does not store all difficulties as peer event arrays inside one giant chart by default.</p>
-<p>Separate chart variants give us:</p>
+<p>Separate charts give us:</p>
 <ul>
 <li>cleaner diffs and version control</li>
 <li>easier validation</li>
 <li>easier tooling</li>
 <li>fewer edit collisions between contributors</li>
-<li>room for alternate device-compatible variants later without forking the whole routine</li>
+<li>room for alternate compatibility slices later without forking the whole routine</li>
 </ul>
 <h3 id="4-workout">4. Workout<a class="headerlink" href="#4-workout" title="Permanent link">&para;</a></h3>
 <p>A <code>Workout</code> is a training program.</p>
-<p>It owns:</p>
+<p>It owns fields such as:</p>
 <ul>
-<li>workout id</li>
-<li>title / coach / goal / target duration / intensity metadata</li>
-<li>ordered list of routine selections or chart selections</li>
-<li>pre-roll / warmup / cooldown / post-roll content</li>
-<li>transitions, coaching cues, and workout-level presentation notes</li>
+<li><code>workoutId</code></li>
+<li><code>workoutName</code></li>
+<li><code>description</code></li>
+<li><code>coachId</code></li>
+<li><code>coachName</code></li>
+<li>workout-level background scene selection</li>
+<li>pre-workout / warmup media</li>
+<li>post-workout / cooldown media</li>
+<li>ordered list of exact chart UID selections</li>
+<li>workout-owned coaching overlays keyed to the referenced song/chart UIDs used in that workout</li>
 </ul>
-<p>A workout references either a full routine plus difficulty preference, or an exact chart variant directly when the sequence must be locked.</p>
+<p>Workout runtime length is derived from the referenced content rather than stored as a separate authored duration field.</p>
 <h2 id="shared-chart-envelope">Shared chart envelope<a class="headerlink" href="#shared-chart-envelope" title="Permanent link">&para;</a></h2>
 <p>AeroBeat uses <strong>one shared chart envelope</strong> across gameplay modes, with <strong>mode-specific payloads</strong> inside it.</p>
 <p>This keeps tooling, loading, validation, and runtime contracts coherent without pretending that Boxing and Step are authored with the exact same event vocabulary.</p>
 <p>The shared chart envelope is owned by <code>aerobeat-content-core</code> because it is part of the durable authored-content contract. Feature repos consume it and interpret it.</p>
 <h3 id="shared-fields">Shared fields<a class="headerlink" href="#shared-fields" title="Permanent link">&para;</a></h3>
-<p>All chart variants expose a common envelope containing fields such as:</p>
+<p>All charts expose a common envelope containing fields such as:</p>
 <ul>
 <li><code>schema</code></li>
 <li><code>chartId</code></li>
@@ -6681,21 +6725,21 @@
 <ul>
 <li>one <code>Song</code> record</li>
 <li>one or more <code>Routine</code> records under that song</li>
-<li>one chart file or record per <code>Chart Variant</code></li>
+<li>one chart file or record per <code>Chart</code></li>
 <li>one <code>Workout</code> file or record assembling selections</li>
 </ul>
 <p>That yields small, reviewable, reusable units.</p>
 <h2 id="content-package-boundary">Content package boundary<a class="headerlink" href="#content-package-boundary" title="Permanent link">&para;</a></h2>
 <p>AeroBeat packages authored content as a <strong>content package</strong> with one manifest and one or more typed records/resources inside it.</p>
 <p>The package boundary is the unit of distribution, import, indexing, and compatibility review.
-The individual <code>Song</code>, <code>Routine</code>, <code>Chart Variant</code>, and <code>Workout</code> records inside that package remain the unit of authoring, validation, and runtime selection.</p>
+The individual <code>Song</code>, <code>Routine</code>, <code>Chart</code>, and <code>Workout</code> records inside that package remain the unit of authoring, validation, and runtime selection.</p>
 <h3 id="package-responsibilities">Package responsibilities<a class="headerlink" href="#package-responsibilities" title="Permanent link">&para;</a></h3>
 <p>A content package owns:</p>
 <ul>
 <li>package id</li>
 <li>package version</li>
 <li>package-level author / attribution / licensing metadata</li>
-<li>package manifest entries for contained songs, routines, chart variants, workouts, and media resources</li>
+<li>package manifest entries for contained songs, routines, charts, workouts, and media resources</li>
 <li>references to the binary resources required by those records, such as audio, thumbnails, coaching clips, and preview art</li>
 <li>package-level compatibility declarations, such as minimum supported schema family or required feature lanes</li>
 </ul>
@@ -6703,8 +6747,8 @@ The individual <code>Song</code>, <code>Routine</code>, <code>Chart Variant</cod
 <ol>
 <li>A package may contain one or more songs.</li>
 <li>A routine must reference a song that exists in the same package or in a separately declared dependency package.</li>
-<li>A chart variant must reference exactly one routine.</li>
-<li>A workout may reference routines or exact chart variants, but a workout step must declare which resolution rule it is using.</li>
+<li>A chart must reference exactly one routine.</li>
+<li>A workout may reference routines or exact charts, but a workout step must declare which resolution rule it is using.</li>
 <li>Binary media stays as referenced resources; the canonical authored contracts stay in structured content records.</li>
 </ol>
 <h2 id="authored-data-contract-boundaries">Authored data contract boundaries<a class="headerlink" href="#authored-data-contract-boundaries" title="Permanent link">&para;</a></h2>
@@ -6715,8 +6759,8 @@ It must remain free of mode-specific gameplay data.</p>
 <h3 id="routine-contract">Routine contract<a class="headerlink" href="#routine-contract" title="Permanent link">&para;</a></h3>
 <p>The <code>Routine</code> contract is responsible for the mode-specific authored package for one song.
 It is the boundary where AeroBeat commits to the gameplay family, authoring vocabulary, validation profile, and default presentation intent.</p>
-<h3 id="chart-variant-contract">Chart Variant contract<a class="headerlink" href="#chart-variant-contract" title="Permanent link">&para;</a></h3>
-<p>The <code>Chart Variant</code> contract is responsible for one exact playable authored sequence.
+<h3 id="chart-contract">Chart contract<a class="headerlink" href="#chart-contract" title="Permanent link">&para;</a></h3>
+<p>The <code>Chart</code> contract is responsible for one exact playable authored sequence.
 It is the boundary for difficulty, interaction family, validated compatibility, scoring envelope, and the timed event stream.</p>
 <h3 id="workout-contract">Workout contract<a class="headerlink" href="#workout-contract" title="Permanent link">&para;</a></h3>
 <p>The <code>Workout</code> contract is responsible for session composition.
@@ -6728,7 +6772,7 @@ It sequences playable selections, transition timing, and coaching/program flow, 
 <li>content identity fields and reference rules</li>
 <li>package-manifest contract shape</li>
 <li>registry query/result interfaces</li>
-<li>lookup semantics for songs, routines, chart variants, workouts, and resource references</li>
+<li>lookup semantics for songs, routines, charts, workouts, and resource references</li>
 <li>stable rules for duplicate ids, missing references, package precedence, and disabled/hidden content states</li>
 </ul>
 <h3 id="concrete-toolsruntime-own">concrete tools/runtime own<a class="headerlink" href="#concrete-toolsruntime-own" title="Permanent link">&para;</a></h3>
@@ -6815,7 +6859,7 @@ It sequences playable selections, transition timing, and coaching/program flow, 
 <li>backend upload/download workflows</li>
 <li>moderation/publishing workflow state</li>
 </ul>
-<p>That means CSV import, editor project conversion, web upload, and cloud catalog ingestion are all tool responsibilities. The resulting durable records still have to land on the same <code>Song</code> / <code>Routine</code> / <code>Chart Variant</code> / <code>Workout</code> contracts owned by <code>aerobeat-content-core</code>.</p>
+<p>That means CSV import, editor project conversion, web upload, and cloud catalog ingestion are all tool responsibilities. The resulting durable records still have to land on the same <code>Song</code> / <code>Routine</code> / <code>Chart</code> / <code>Workout</code> contracts owned by <code>aerobeat-content-core</code>.</p>
 <h3 id="headless-tooling-rule">Headless tooling rule<a class="headerlink" href="#headless-tooling-rule" title="Permanent link">&para;</a></h3>
 <p>Content tooling must not require a GUI in order to perform core content operations. Validation, migration, packaging, import/export, registry/index maintenance, fixture generation, and other automation-friendly actions should be exposed through a headless/CLI surface in the Tool lane, even if the same repo also ships an interactive editor or richer desktop UX. Interactive tooling can layer on top of the same contracts and services, but headless execution is a first-class requirement rather than an afterthought.</p>
 <h2 id="workout-sequencing-and-playback-handoff">Workout sequencing and playback handoff<a class="headerlink" href="#workout-sequencing-and-playback-handoff" title="Permanent link">&para;</a></h2>
@@ -6866,7 +6910,7 @@ The feature/runtime contract begins at <strong>playback execution and athlete in
 <h3 id="non-goals">non-goals<a class="headerlink" href="#non-goals" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>aerobeat-content-core</code> does not own editor UX, upload workflows, or backend queue state.</li>
-<li><code>aerobeat-tool-core</code> does not redefine <code>Song</code>, <code>Routine</code>, <code>Chart Variant</code>, <code>Workout</code>, or the shared chart envelope.</li>
+<li><code>aerobeat-tool-core</code> does not redefine <code>Song</code>, <code>Routine</code>, <code>Chart</code>, <code>Workout</code>, or the shared chart envelope.</li>
 <li>feature repos do not replace the shared content contracts with mode-local durable content roots.</li>
 </ul>
 <h2 id="minimal-shared-chart-envelope-example">Minimal shared chart envelope example<a class="headerlink" href="#minimal-shared-chart-envelope-example" title="Permanent link">&para;</a></h2>
@@ -6919,7 +6963,7 @@ The feature/runtime contract begins at <strong>playback execution and athlete in
 <ul>
 <li><code>Song</code> as the reusable music source</li>
 <li><code>Routine</code> as the missing gameplay package primitive</li>
-<li><code>Chart Variant</code> as the single playable difficulty artifact</li>
+<li><code>Chart</code> as the single playable difficulty artifact</li>
 <li><code>Workout</code> as the session/program container</li>
 <li>a shared chart envelope with mode-specific event payloads</li>
 <li><code>gesture_2d</code> as the first target interaction family for Boxing + MediaPipe</li>
@@ -6945,7 +6989,7 @@ The feature/runtime contract begins at <strong>playback execution and athlete in
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 21, 2026 23:34:00 UTC">April 21, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 23, 2026 22:26:52 UTC">April 23, 2026</span>
   </span>
 
     
