@@ -36,7 +36,7 @@ aerobeat-content-core/
 ├── data_types/
 │   ├── song.gd
 │   ├── routine.gd
-│   ├── chart_variant.gd
+│   ├── chart.gd
 │   ├── workout.gd
 │   ├── chart_envelope.gd
 │   └── content_package_manifest.gd
@@ -46,7 +46,7 @@ aerobeat-content-core/
     └── aero_content_schema.gd
 ```
 
-`Song`, `Routine`, `Chart Variant`, and `Workout` live in `aerobeat-content-core`. Shared chart-envelope fields, content-package manifest contracts, registry/query interfaces, workout-resolution contracts, schema-version rules, migration interfaces, and cross-tool/runtime validation types also live there.
+`Song`, `Routine`, `Chart`, and `Workout` live in `aerobeat-content-core`. Shared chart-envelope fields, content-package manifest contracts, registry/query interfaces, workout-resolution contracts, schema-version rules, migration interfaces, and cross-tool/runtime validation types also live there.
 
 For the more opinionated day-one shape of both `aerobeat-content-core` and the first concrete authoring repo, see [Content Repo Shapes](content-repo-shapes.md).
 

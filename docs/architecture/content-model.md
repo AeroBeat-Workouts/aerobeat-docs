@@ -439,7 +439,7 @@ The feature/runtime contract begins at **playback execution and athlete interpre
 
 - workout step ordering
 - routine/chart selection references
-- optional difficulty-resolution rules when the workout references a routine rather than an exact chart variant
+- optional difficulty-resolution rules when the workout references a routine rather than an exact chart
 - transition metadata
 - workout-level timing and coaching-sequence metadata
 - the handoff contract that resolves a workout step into a concrete playable chart selection plus any attached session metadata
@@ -531,7 +531,7 @@ To keep the ecosystem coherent, AeroBeat follows these rules:
 
 1. **One song can power many routines.** Do not duplicate song metadata per mode.
 2. **One routine equals one song interpreted through one mode.** Do not mix Boxing and Dance inside a single routine.
-3. **One chart variant equals one playable sequence.** Keep each difficulty / compatibility slice distinct.
+3. **One chart equals one playable sequence.** Keep each difficulty / compatibility slice distinct.
 4. **Charts target interaction families first.** Devices are compatibility notes, not the root abstraction.
 5. **View modes are render strategies first.** Do not create separate content silos for portal vs track unless a future mode proves it is necessary.
 6. **Mode-specific event vocabularies are allowed.** The chart envelope is shared; the authored payload is not forced into fake universality.

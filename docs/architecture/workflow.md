@@ -40,7 +40,7 @@ To develop package repos in isolation:
 
 When creating or updating playable content contracts:
 
-1. Put `Song`, `Routine`, `Chart Variant`, `Workout`, shared chart-envelope changes, package-manifest contracts, registry/query interfaces, and shared schema-version or migration contracts in [`aerobeat-content-core`](https://github.com/AeroBeat-Workouts/aerobeat-content-core).
+1. Put `Song`, `Routine`, `Chart`, `Workout`, shared chart-envelope changes, package-manifest contracts, registry/query interfaces, and shared schema-version or migration contracts in [`aerobeat-content-core`](https://github.com/AeroBeat-Workouts/aerobeat-content-core).
 2. Put gameplay-mode/runtime rule changes and mode-specific payload validation in [`aerobeat-feature-core`](https://github.com/AeroBeat-Workouts/aerobeat-feature-core) or a concrete `aerobeat-feature-*` repo.
 3. Put import/export jobs, ingestion flows, publishing workflows, and other tool-side operational models in [`aerobeat-tool-core`](https://github.com/AeroBeat-Workouts/aerobeat-tool-core) or a concrete `aerobeat-tool-*` repo. Treat headless/CLI execution for validation, migration, packaging, import/export, and automation-friendly authoring tasks as a first-class requirement, not a later convenience.
 4. Put asset-side shared definitions for avatars, cosmetics, environments, and similar reusable assets in [`aerobeat-asset-core`](https://github.com/AeroBeat-Workouts/aerobeat-asset-core).

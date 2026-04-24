@@ -4,9 +4,9 @@ In AeroBeat, charting is the art of translating music into movement. A good char
 
 AeroBeat's content model is:
 
-* **Song → Routine → Chart Variant → Workout**
+* **Song → Routine → Chart → Workout**
 
-When you author gameplay, you are usually creating or editing a **Routine** for one Song and one or more **Chart Variants** inside that routine.
+When you author gameplay, you are usually creating or editing a **Routine** for one Song and one or more **Charts** inside that routine.
 
 ## 🛠️ The Choreography SDKs
 
@@ -53,7 +53,7 @@ You cannot map silence. You need a base audio track.
 Before placing a single note, you must sync the grid and establish the routine / chart structure.
 
 1. **Create or open a Routine:** Choose the gameplay mode for the selected Song.
-2. **Create or open a Chart Variant:** Work inside one concrete playable difficulty / compatibility slice.
+2. **Create or open a Chart:** Work inside one concrete playable difficulty / compatibility slice.
 3. **Link the Song:** Ensure the routine points at the selected Song ID.
 4. **BPM & Offset:**
    * **Auto-detect:** The SDK automatically scans the audio file to calculate BPM and offset when assigned.
@@ -83,5 +83,5 @@ The SDK includes a **Flow Validator**. Run this before uploading.
 1. **Check Parity:** Ensure no hand tangles or vision blocks.
 2. **Prepare the Publishable Content:**
    * Finalize the routine metadata.
-   * Finalize the chart-variant metadata for difficulty, interaction family, and any supported / validated input profiles.
+   * Finalize the chart metadata for difficulty, interaction family, and any supported / validated input profiles.
 3. **Upload:** Use the uploader tab to publish your authored gameplay content.

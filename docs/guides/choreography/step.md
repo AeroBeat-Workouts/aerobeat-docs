@@ -4,7 +4,7 @@ Welcome to the world of Step mapping. Unlike Boxing or Flow, Step gameplay is en
 
 If you are coming from *StepMania* or *Dance Dance Revolution*, you will feel right at home. The `aerobeat-sdk-choreography-step` tooling is built to support standard 4-panel charting.
 
-In AeroBeat's content model, a Step chart is a **Chart Variant** inside a Step **Routine** for one **Song**.
+In AeroBeat's content model, a Step chart is a **Chart** inside a Step **Routine** for one **Song**.
 
 ## 🛠️ The Step Studio
 
@@ -38,7 +38,7 @@ Unless you are creating a specific jack (repeated tap) pattern, players should n
 
 1. Open `aerobeat-sdk-choreography-step`.
 2. Create or open the Step **Routine** for the selected Song.
-3. Create or open the **Chart Variant** for the intended difficulty.
+3. Create or open the **Chart** for the intended difficulty.
 4. Load your Song using the content browser and sync the BPM with the **Auto-Detect** feature.
 
 ### 2. The Editor Grid

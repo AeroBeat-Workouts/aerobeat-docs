@@ -11,7 +11,7 @@ The goal is not to over-design a future platform. The goal is to make repo creat
 
 These repo shapes assume the six-core model already documented elsewhere:
 
-- `aerobeat-content-core` owns the durable content language: `Song`, `Routine`, `Chart Variant`, `Workout`, shared chart-envelope contracts, ids, manifests, schema/version rules, shared validators, registry/query interfaces, and workout resolution contracts.
+- `aerobeat-content-core` owns the durable content language: `Song`, `Routine`, `Chart`, `Workout`, shared chart-envelope contracts, ids, manifests, schema/version rules, shared validators, registry/query interfaces, and workout resolution contracts.
 - `aerobeat-tool-core` owns shared tool-side operational models, progress/result DTOs, and other tool-common contracts.
 - `aerobeat-tool-content-authoring` is a concrete Tool-lane product built on top of `aerobeat-content-core` and `aerobeat-tool-core`.
 - `aerobeat-feature-core` and concrete `aerobeat-feature-*` repos consume content contracts and own runtime interpretation, scoring, spawning, and presentation systems such as 2D lanes and 3D portals.
@@ -39,7 +39,7 @@ aerobeat-content-core/
 │   ├── content_id.gd
 │   ├── song.gd
 │   ├── routine.gd
-│   ├── chart_variant.gd
+│   ├── chart.gd
 │   ├── workout.gd
 │   ├── chart_envelope.gd
 │   ├── content_package_manifest.gd
@@ -84,8 +84,8 @@ The exact filenames can evolve, but the **shape categories should not**: contrac
 - `data_types/routine.gd`
   - canonical `Routine` contract
   - song reference, mode, routine metadata, validation profile, presentation defaults
-- `data_types/chart_variant.gd`
-  - canonical `Chart Variant` contract
+- `data_types/chart.gd`
+  - canonical `Chart` contract
   - difficulty, interaction family, input-profile compatibility fields, event stream envelope
 - `data_types/workout.gd`
   - canonical `Workout` contract
@@ -212,7 +212,7 @@ aerobeat-tool-content-authoring/
 │   ├── authoring/
 │   │   ├── routine_authoring_service.gd
 │   │   ├── workout_authoring_service.gd
-│   │   └── chart_variant_authoring_service.gd
+│   │   └── chart_authoring_service.gd
 │   ├── validation/
 │   │   ├── validate_package_service.gd
 │   │   └── validate_chart_service.gd
@@ -293,8 +293,8 @@ The service layer should accept and return stable DTOs/contracts from `aerobeat-
   - create/update routine records from tool actions
 - `services/authoring/workout_authoring_service.gd`
   - create/update workout records
-- `services/authoring/chart_variant_authoring_service.gd`
-  - create/update chart variants while preserving canonical ids/reference rules
+- `services/authoring/chart_authoring_service.gd`
+  - create/update charts while preserving canonical ids/reference rules
 - `services/validation/validate_package_service.gd`
   - run shared structural validation and return normalized reports
 - `services/validation/validate_chart_service.gd`
@@ -358,7 +358,7 @@ Editor code should orchestrate services and present results. It should not becom
 
 `aerobeat-tool-content-authoring` must not own:
 
-- canonical definitions of `Song`, `Routine`, `Chart Variant`, or `Workout`
+- canonical definitions of `Song`, `Routine`, `Chart`, or `Workout`
 - the shared chart envelope contract
 - feature runtime visuals such as 2D lanes or 3D portals
 - gameplay scoring/runtime execution logic

@@ -6,13 +6,13 @@ The durable content hierarchy is:
 
 * **Song** → reusable audio and timing source
 * **Routine** → gameplay-mode-specific package for one Song
-* **Chart Variant** → one concrete playable difficulty / compatibility slice inside a Routine
-* **Workout** → ordered training session that assembles routines or chart variants
+* **Chart** → one concrete playable difficulty / compatibility slice inside a Routine
+* **Workout** → ordered training session that assembles routines or charts
 
 ## Community Content Types
 
 * **Songs:** Musicians can add songs to the platform for others to use.
-* **Routines / Chart Variants:** Choreographers author gameplay for songs using the charting tools. A routine packages one gameplay mode for one song, and chart variants represent specific difficulties or compatibility slices inside that routine.
+* **Routines / Charts:** Choreographers author gameplay for songs using the charting tools. A routine packages one gameplay mode for one song, and charts represent specific difficulties or compatibility slices inside that routine.
 * **Environments:** Environments change the background visuals and looping sound effects during a song or workout segment.
 * **Skins:** Artists can create custom visuals for `targets`, `obstacles`, `portals`, and `gloves / bats`.
 * **Coaching:** Trainers can upload motivational content to guide athletes through a workout.
@@ -26,8 +26,8 @@ When creating a Workout, a creator uses the community browser and tooling to pic
 
 * **Gameplay:** What gameplay style is this Workout made for? (`Boxing`, `Flow`, etc.)
 * **Difficulty Intent:** Which chart-variant difficulty is this Workout targeting (`easy`, `medium`, `hard`, `pro`)?
-* **Songs / Selections:** Which songs, routines, or exact chart variants are included?
-* **Chart Choice:** By default the Workout can reference the preferred chart variant for the requested gameplay and difficulty, but the creator may override this and pin a different variant explicitly.
+* **Songs / Selections:** Which songs, routines, or exact charts are included?
+* **Chart Choice:** By default the Workout can reference the preferred chart for the requested gameplay and difficulty, but the creator may override this and pin a different chart explicitly.
 * **Environments:** Optional. Change the recommended environment for each song or segment in the Workout.
 * **Skins:** Optional. Change the recommended visuals such as `targets`, `obstacles`, `portals`, and `gloves`.
 * **Coaching:** Optional. Select a **Coaching Pack** to apply warm-up / cool-down videos and per-song audio overlays.

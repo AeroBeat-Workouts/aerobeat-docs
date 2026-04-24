@@ -56,7 +56,7 @@ For playable fitness content, AeroBeat uses a layered model:
 
 - **Song:** Reusable audio and timing source.
 - **Routine:** Gameplay-mode-specific package for one song.
-- **Chart Variant:** One concrete playable difficulty / compatibility slice.
+- **Chart:** One concrete playable difficulty / compatibility slice.
 - **Workout:** A program that assembles selections into a session.
 
 Charts share a common envelope for ids, timing, scoring, presentation hints, and metadata, while the event payload remains mode-specific. This preserves input agnosticism without forcing Boxing, Dance, Step, and Flow into a fake one-size-fits-all event schema.

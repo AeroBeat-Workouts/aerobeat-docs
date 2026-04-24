@@ -39,7 +39,7 @@ Our documentation is divided by role. Choose your path below:
 * Understand the **lane-based six-core** topology.
 * Learn how the six core repos divide contracts by lane, starting with `aerobeat-input-core`, `aerobeat-feature-core`, `aerobeat-content-core`, `aerobeat-asset-core`, `aerobeat-ui-core`, and `aerobeat-tool-core`.
 * Dive into platform concerns such as Cloud Baker, testing strategy, security, and performance.
-* Read the new [**Content Model**](architecture/content-model.md) doc for how Songs, Routines, Chart Variants, and Workouts fit together.
+* Read the new [**Content Model**](architecture/content-model.md) doc for how Songs, Routines, Charts, and Workouts fit together.
 * Read [**Content Repo Shapes**](architecture/content-repo-shapes.md) for the concrete day-one structure of `aerobeat-content-core` and `aerobeat-tool-content-authoring`.
 * **Key Tech:** Godot 4.x, GDScript, Python sidecars, and modular package boundaries.
 

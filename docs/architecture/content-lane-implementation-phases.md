@@ -24,7 +24,7 @@ The goal is to avoid collapsing contracts, authoring tools, importers, registrie
 Freeze the architecture and vocabulary well enough that implementation repos can be created without re-litigating the model.
 
 ### Deliverables
-- canonical docs for `Song`, `Routine`, `Chart Variant`, and `Workout`
+- canonical docs for `Song`, `Routine`, `Chart`, and `Workout`
 - explicit ownership language for `aerobeat-content-core`, `aerobeat-feature-core`, and `aerobeat-tool-core`
 - documented shared chart envelope and interaction-family targeting rules
 - documented package/file relationship for song, routine, chart-variant, and workout artifacts
@@ -33,7 +33,7 @@ Freeze the architecture and vocabulary well enough that implementation repos can
 - documented rule that 2D lanes, 3D portals, and other content-consuming runtime visuals belong in feature repos rather than the content lane
 
 ### Required decisions before code starts
-- canonical ids/references for song, routine, chart variant, and workout
+- canonical ids/references for song, routine, chart, and workout
 - minimum chart envelope fields
 - which presentation hints are durable content fields versus runtime-only concerns
 - whether workouts default to routine+difficulty selection or exact chart ids
@@ -52,7 +52,7 @@ Freeze the architecture and vocabulary well enough that implementation repos can
 Stand up the dependency-light shared repo that owns the content model and loader-facing contracts.
 
 ### `aerobeat-content-core` should contain
-- data/resource contracts for `Song`, `Routine`, `Chart Variant`, and `Workout`
+- data/resource contracts for `Song`, `Routine`, `Chart`, and `Workout`
 - shared chart-envelope types
 - content references, ids, metadata, and manifest primitives
 - loader/registry interfaces used by both runtime and tools
