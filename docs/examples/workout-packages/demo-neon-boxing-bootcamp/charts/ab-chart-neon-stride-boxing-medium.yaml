@@ -1,0 +1,51 @@
+# A chart is one exact playable difficulty slice.
+schemaId: aerobeat.chart.boxing.v1
+schemaVersion: 1
+recordVersion: 1
+
+# Chart identity must be unique within the package.
+chartId: ab-chart-neon-stride-boxing-medium
+chartName: Neon Stride Medium Boxing
+
+# A chart references one routine and the routine's song.
+routineId: ab-routine-neon-stride-boxing
+songId: ab-song-neon-stride
+mode: boxing
+
+# Difficulty belongs on the chart, not on the workout entry.
+difficulty: medium
+
+# interactionFamily targets movement semantics rather than a specific hardware device.
+interactionFamily: gesture_2d
+
+# supportedInputProfiles lists intended compatibility targets.
+supportedInputProfiles:
+  - mediapipe_camera
+  - keyboard_debug
+
+# validatedInputProfiles lists the profiles the team has actually tested.
+validatedInputProfiles:
+  - mediapipe_camera
+
+# Timing and presentation hints shape playback without redefining global engine rules.
+timing:
+  resolution: 16
+presentationHints:
+  preferredViews:
+    - portal
+    - track
+scoringHints:
+  comboModel: standard
+
+# events is mode-specific payload data.
+# This file keeps the event list short so the example stays readable.
+events:
+  - beat: 8
+    eventType: jab_left
+    laneHint: left
+  - beat: 12
+    eventType: jab_right
+    laneHint: right
+  - beat: 16
+    eventType: guard_hold
+    durationBeats: 2

@@ -1,0 +1,51 @@
+# Harder follow-up chart for the workout's second entry.
+schemaId: aerobeat.chart.boxing.v1
+schemaVersion: 1
+recordVersion: 1
+
+# Chart identity is what the workout entry selects directly.
+chartId: ab-chart-midnight-sprint-boxing-hard
+chartName: Midnight Sprint Hard Boxing
+
+# The chart must point back to one routine and that routine's song.
+routineId: ab-routine-midnight-sprint-boxing
+songId: ab-song-midnight-sprint
+mode: boxing
+
+# Difficulty is part of the exact playable chart slice.
+difficulty: hard
+
+# The chart targets movement semantics, not a raw device.
+interactionFamily: gesture_2d
+
+# These profiles are intended to work with this chart.
+supportedInputProfiles:
+  - mediapipe_camera
+  - keyboard_debug
+
+# These are the profiles actually validated so far.
+validatedInputProfiles:
+  - mediapipe_camera
+
+# Timing and presentation hints shape playback expectations.
+timing:
+  resolution: 16
+presentationHints:
+  preferredViews:
+    - portal
+scoringHints:
+  comboModel: standard
+
+# Short sample event list for readability.
+events:
+  - beat: 6
+    eventType: jab_left
+    laneHint: left
+  - beat: 8
+    eventType: jab_right
+    laneHint: right
+  - beat: 10
+    eventType: dodge_duck
+  - beat: 14
+    eventType: hook_left
+    laneHint: left

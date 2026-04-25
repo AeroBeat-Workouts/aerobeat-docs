@@ -2,6 +2,12 @@
 
 Welcome to the AeroBeat Creator Community! This guide will help you create your first Skin, Song, or Environment and publish it to the in-game browser.
 
+## Before You Start: Read One Real Package
+
+If you want to understand the current package contract before opening any SDK or tool, read the [Demo Workout Package Guide](demo_workout_package.md) first.
+
+It links to one complete example package with commented `workout.yaml`, `songs/`, `routines/`, `charts/`, `coaches/coach-config.yaml`, `environments/`, `assets/`, and example SQLite schemas.
+
 ## 1. Choose Your SDK
 
 We provide specialized Godot projects for different types of content. Download the one that matches your goal.

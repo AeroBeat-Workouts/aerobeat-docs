@@ -49,6 +49,7 @@ Our documentation is divided by role. Choose your path below:
 *For contributors who want practical setup and workflow guidance.*
 
 * Start with the **Contributing Workflow** and **Feature Development** guides.
+* Read the [**Demo Workout Package Guide**](guides/demo_workout_package.md) if you want one concrete end-to-end package example with linked YAML and SQL files.
 * Use the calibration, accessibility, choreography, and content creation guides when working in specialized areas.
 * Follow the licensing and contribution docs before publishing shared work.
 

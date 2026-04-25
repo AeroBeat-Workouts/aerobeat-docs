@@ -1,0 +1,19 @@
+# Coach support asset referenced from coach-config, not from workout entry assetSelections.
+schemaId: aerobeat.asset.v1
+schemaVersion: 1
+recordVersion: 1
+
+# Asset identity is referenced from featuredCoaches[*].voiceAssetId.
+assetId: ab-asset-coach-voice-aria-energetic
+assetName: Coach Aria Energetic Voice Pack
+
+# coach_voice is part of the locked v1 enum, but it is not an entry-selectable gameplay asset type.
+assetType: coach_voice
+resourcePath: media/assets/coaches/aria-energetic-voice.ogg
+thumbnailPath: media/art/aria-voice-thumb.png
+metadata:
+  tone: energetic
+  cadence: upbeat
+tags:
+  - coach
+  - voice

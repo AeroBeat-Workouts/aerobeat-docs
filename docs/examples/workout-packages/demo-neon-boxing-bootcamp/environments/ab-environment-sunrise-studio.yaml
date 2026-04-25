@@ -1,0 +1,18 @@
+# Second environment to show per-entry environment switching.
+schemaId: aerobeat.environment.v1
+schemaVersion: 1
+recordVersion: 1
+
+# Environment identity is selected by the workout entry.
+environmentId: ab-environment-sunrise-studio
+environmentName: Sunrise Studio
+
+# Scene and lighting references remain package-local.
+scenePath: media/scenes/sunrise-studio.tscn
+lightingProfile: warm-daybreak
+fogProfile: none
+
+tags:
+  - studio
+  - sunrise
+  - bright

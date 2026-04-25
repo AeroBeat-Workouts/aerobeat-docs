@@ -1,0 +1,19 @@
+# Gameplay-facing target asset.
+schemaId: aerobeat.asset.v1
+schemaVersion: 1
+recordVersion: 1
+
+# Asset identity is what workout entries reference for the targets slot.
+assetId: ab-asset-targets-holo-rings
+assetName: Holo Ring Targets
+
+# targets is one of the locked v1 gameplay-facing asset types.
+assetType: targets
+resourcePath: media/assets/targets/holo-rings.glb
+thumbnailPath: media/art/holo-rings-thumb.png
+metadata:
+  palette: electric-blue
+  style: holographic
+tags:
+  - targets
+  - holographic

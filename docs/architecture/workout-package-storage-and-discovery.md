@@ -824,6 +824,18 @@ These are consciously deferred rather than undefined:
 4. future moderation/ranking/distribution tables for remote catalog workflows
 5. richer asset families beyond the locked v1 `assetType` enum
 
+## Example package and schema files
+
+If you want to inspect the current contract as a concrete folder instead of only prose, use the docs example package:
+
+- [Demo Workout Package Guide](../guides/demo_workout_package.md)
+- [Example package overview](../examples/workout-packages/overview.md)
+- [Demo package root `workout.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/workout.yaml)
+- [Example `workouts.db` schema](../examples/workout-packages/demo-neon-boxing-bootcamp/sql/workouts.db.schema.sql)
+- [Example `leaderboard-cache.db` schema](../examples/workout-packages/demo-neon-boxing-bootcamp/sql/leaderboard-cache.db.schema.sql)
+
+These files are the docs repo's canonical onboarding example for the locked v1 package contract.
+
 ## Current recommendation
 
 For the first implementation-oriented package/storage pass, AeroBeat should proceed assuming:
