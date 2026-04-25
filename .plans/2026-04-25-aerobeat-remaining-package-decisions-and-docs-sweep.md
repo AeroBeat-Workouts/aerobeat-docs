@@ -302,9 +302,9 @@ This coordination plan belongs in `aerobeat-docs` because the docs repo is still
 - repo-specific docs files to be determined by the audit
 - this plan file
 
-**Status:** ⏳ Pending discussion
+**Status:** ✅ Coder complete / ⏳ QA and auditor pending
 
-**Results:** Blocked on the hard-call decisions and the cleanup inventory.
+**Results:** Applied the approved coder-side cleanup pass across `aerobeat-docs` plus the inventoried README surfaces in the wider AeroBeat repo family. Batch 1 semantic fixes rewrote the highest-priority contradictory docs in `aerobeat-docs`: `docs/gdd/user-content/community-creations.md` now uses `Chart` terminology and the locked package/asset/coaching model; `docs/index.md` now points contributors at authored package contracts instead of `.pck`-as-source language; `docs/guides/coaching.md` now frames coaching as the package’s single `coaches/coach-config.yaml` domain rather than a standalone coaching-pack product; `templates/README.md` now distinguishes repo-root package boundaries from `.testbed/` workbench projects; and related contradiction cleanup landed in `docs/gdd/user-content/overview.md`, `docs/guides/feature_development.md`, `docs/architecture/cloud_baker.md`, and `docs/architecture/content-lane-implementation-phases.md`. Batch 2 normalized README wording across the inventoried repos so they no longer present stale `aerobeat-core` hub language as canonical architecture. Where the live repo manifests still pin transition-era `aerobeat-core` keys, the READMEs now call that out explicitly as bootstrap-state drift/transitional truth instead of pretending the dependency contract has already been fully renamed. Validation completed with targeted `git diff --check` passes across every touched file plus grep sanity checks for the active-doc contradiction terms; a repo-local MkDocs build could not be rerun in this environment because `python3 -m mkdocs build` failed with `No module named mkdocs`. Commits were made in each touched owning repo. QA and independent audit are still pending by design.
 
 ---
 
@@ -321,16 +321,48 @@ This coordination plan belongs in `aerobeat-docs` because the docs repo is still
 
 ## Final Results
 
-**Status:** ⚠️ Partial
+**Status:** ⚠️ Coder complete; QA/audit still pending
 
-**What We Built:** Completed the hard-call decision pass, the core-docs update pass inside `aerobeat-docs`, and the wider cross-repo audit inventory for stale package/docs wording. The remaining work on this plan is the actual cleanup/application pass in the owning repos under Task 4. Validation for the earlier doc-edit slice was a repo-local MkDocs build: `python -m mkdocs build --strict` correctly failed on pre-existing unrelated bad links in `docs/architecture/package-dependency-research.md`, while a normal `python -m mkdocs build` completed successfully and showed no warnings from the files changed in that slice.
+**What We Built:** Completed the hard-call decision pass, the core-docs update pass inside `aerobeat-docs`, the wider cross-repo audit inventory, and the coder-side cleanup/application pass in the owning repos. The active docs now align to the locked v1 package decisions around `Chart` terminology, the single `coaches/coach-config.yaml` coaching domain, strict v1 asset-type direction, discoverability in `workouts.db` rather than package YAML, self-contained v1 packages, and duplication/forking instead of inheritance/patching. The wider README pass no longer presents stale `aerobeat-core` hub wording as canonical architecture; where the underlying manifests still pin transition-era `aerobeat-core` keys, the READMEs now label that state explicitly as transitional/bootstrap drift instead of treating it as the normative lane story.
 
-**Reference Check:** `REF-02`, `REF-03`, and `REF-04` now agree on the locked v1 package decisions, and the Task 3 inventory identifies the remaining out-of-date surfaces that still need propagation work. The decisions continue the direction established in `REF-01` and stay consistent with the earlier definition-phase lineage in `REF-06`.
+**Reference Check:** `REF-02`, `REF-03`, and `REF-04` remain the truth source for the package/coaching/asset/discovery model, and the Task 4 cleanup pass propagated that wording into the highest-priority active docs plus the inventoried README surfaces. The final coder pass stayed consistent with the earlier definition-phase lineage in `REF-01` and `REF-06` while deliberately avoiding unsupported claims about repo dependencies that have not yet been migrated in their manifests.
 
 **Commits:**
 - `7932e0b` - Lock remaining AeroBeat package doc decisions
+- `afd1678` - Align package docs with locked v1 contract
+- `ae3e26b` - Normalize README lane dependency wording (`aerobeat-assembly-community`)
+- `6ce6699` - Normalize README lane dependency wording (`aerobeat-asset-prototypes`)
+- `e489e32` - Normalize README lane dependency wording (`aerobeat-feature-boxing`)
+- `81dfe67` - Normalize README lane dependency wording (`aerobeat-feature-dance`)
+- `e66c281` - Normalize README lane dependency wording (`aerobeat-feature-flow`)
+- `eba971f` - Normalize README lane dependency wording (`aerobeat-feature-step`)
+- `bac1ea9` - Normalize README lane dependency wording (`aerobeat-input-gamepad`)
+- `a1d7d19` - Normalize README lane dependency wording (`aerobeat-input-joycon-hid`)
+- `2d4375f` - Normalize README lane dependency wording (`aerobeat-input-keyboard`)
+- `9406cc6` - Normalize README lane dependency wording (`aerobeat-input-mediapipe-native`)
+- `537752f` - Normalize README lane dependency wording (`aerobeat-input-mouse`)
+- `a33dd56` - Normalize README lane dependency wording (`aerobeat-input-touch`)
+- `a99d0a8` - Normalize README lane dependency wording (`aerobeat-input-xr`)
+- `2dbcf98` - Normalize README lane dependency wording (`aerobeat-template-assembly`)
+- `645dc14` - Normalize README lane dependency wording (`aerobeat-template-asset`)
+- `8602a72` - Normalize README lane dependency wording (`aerobeat-template-avatar`)
+- `9f9b774` - Normalize README lane dependency wording (`aerobeat-template-cosmetic`)
+- `d538665` - Normalize README lane dependency wording (`aerobeat-template-environment`)
+- `07d7d10` - Normalize README lane dependency wording (`aerobeat-template-feature`)
+- `d0a2a86` - Normalize README lane dependency wording (`aerobeat-template-input`)
+- `2a3a007` - Normalize README lane dependency wording (`aerobeat-template-skin`)
+- `7d95c54` - Normalize README lane dependency wording (`aerobeat-template-tool`)
+- `61f1d8c` - Normalize README lane dependency wording (`aerobeat-template-ui-kit`)
+- `6013113` - Normalize README lane dependency wording (`aerobeat-template-ui-shell`)
+- `c9a1311` - Normalize README lane dependency wording (`aerobeat-tool-api`)
+- `d19553b` - Normalize README lane dependency wording (`aerobeat-tool-settings`)
+- `2ac6c42` - Normalize README lane dependency wording (`aerobeat-ui-kit-community`)
+- `22f0eca` - Normalize README lane dependency wording (`aerobeat-ui-shell-desktop-community`)
+- `778896a` - Normalize README lane dependency wording (`aerobeat-ui-shell-mobile-community`)
+- `8872fd7` - Normalize README lane dependency wording (`aerobeat-ui-shell-web-community`)
+- `f7ef9eb` - Normalize README lane dependency wording (`aerobeat-ui-shell-xr-community`)
 
-**Lessons Learned:** The safest way to keep the package contract coherent was to close the last few ambiguities explicitly instead of leaving them as “we’ll know it when we implement it.” The main remaining risk is now broader docs drift across other repos, not uncertainty in the core package contract itself.
+**Lessons Learned:** The safest way to keep the package contract coherent was to close the last few ambiguities explicitly instead of leaving them as “we’ll know it when we implement it.” For the wider README sweep, the important discipline was to avoid lying about dependency state: when manifests still use transition-era keys, the README should say so plainly rather than silently rewriting history or inventing a migration that did not actually happen.
 
 ---
 
