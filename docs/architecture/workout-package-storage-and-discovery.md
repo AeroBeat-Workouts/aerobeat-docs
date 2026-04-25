@@ -470,7 +470,7 @@ tags:
 
 ### `assets/<asset-id>.yaml`
 
-Assets are reusable package-local records for typed runtime-presented content such as gloves, targets, obstacles, trails, coach avatar resources, or other supported asset families.
+Assets are reusable package-local records for typed runtime-presented content. For v1, AeroBeat keeps `assetType` intentionally small and closed so package validation, entry selection, and runtime binding stay boring and predictable.
 
 #### Owns
 
@@ -502,6 +502,26 @@ tags:
   - neon
 ```
 
+#### Locked v1 `assetType` direction
+
+`assetType` is a **strict v1 enum**, not an open-ended freeform string. Unknown values should fail package validation rather than being silently accepted.
+
+The locked v1 enum is:
+
+- `gloves`
+- `targets`
+- `obstacles`
+- `trails`
+- `coach_avatar`
+- `coach_voice`
+
+Direction notes:
+
+- `gloves`, `targets`, `obstacles`, and `trails` are the **entry-selectable gameplay-facing asset types** referenced from `session.entries[*].assetSelections`.
+- `coach_avatar` and `coach_voice` are **coach-config-referenced support asset types**. They exist so coach media/resources can still live under the same package asset system without inventing a separate asset contract.
+- v1 should **not** introduce broader freeform categories such as `misc`, `custom`, or implementation-specific plugin types. If AeroBeat later needs more asset families, add them through a deliberate schema revision rather than string drift.
+- Missing entry selections mean “use runtime/default presentation behavior for that asset type,” not inheritance from another package.
+
 ## Relationship and reference rules
 
 1. `workout.yaml` is the package root and authoritative session manifest.
@@ -509,10 +529,12 @@ tags:
 3. Each chart must reference exactly one routine in `routines/`.
 4. Each routine must reference exactly one song in `songs/`.
 5. Each session entry must choose exactly one environment id.
-6. Each session entry may choose zero or one asset id for each supported asset type; it must not choose multiple assets for the same asset type in the same entry.
-7. The single coach-config file may define multiple coaches and overlays referenced by session entries.
-8. Package-local references should remain package-local for v1 self-contained validation.
-9. Alternate versions of content are created by copying/forking package contents into a new package revision rather than layering patches across packages.
+6. Each session entry may choose zero or one asset id for each entry-selectable asset type; it must not choose multiple assets for the same asset type in the same entry.
+7. `coach_avatar` and `coach_voice` assets are referenced from `coaches/coach-config.yaml`, not from workout entry asset-selection maps.
+8. The single coach-config file may define multiple coaches and overlays referenced by session entries.
+9. Package-local references should remain package-local for v1 self-contained validation.
+10. Package validation should reject unknown `assetType` values rather than downgrading them to generic assets.
+11. Alternate versions of content are created by copying/forking package contents into a new package revision rather than layering patches across packages.
 
 ## What intentionally stays out of package YAML
 
@@ -528,8 +550,10 @@ The following are intentionally **not** authored into the package YAML contracts
 - authoritative leaderboard submissions/history
 - player-wide stats caches
 - cross-package inheritance or patch instructions
+- package signing, signature chains, or embedded trust-policy metadata
+- checksum/integrity manifests intended for distribution security rather than authored playback semantics
 
-These belong in runtime profile state, service state, moderation/catalog systems, or disposable local caches.
+These belong in runtime profile state, service state, moderation/catalog systems, disposable local caches, or a later distribution-hardening layer.
 
 ## Canonical SQLite direction
 
@@ -548,13 +572,14 @@ AeroBeat currently needs two SQLite shapes:
 - expose denormalized browse metadata without reparsing all YAML files
 - track install/update/indexing state
 - support local client browse/filter views
-- optionally support downloaded catalog snapshots later using similar table shapes
+- feed the local installed-workout browse surface only
 
 ### Must not become
 
 - the only source of package truth
 - the place where authored chart/song/workout semantics originate
 - the authoritative leaderboard store
+- the exact schema for a downloaded online catalog snapshot
 
 ### Minimum v1 tables
 
@@ -633,6 +658,25 @@ Optional but useful summary table for moderation/debug/search by asset usage.
 - `workouts.db` stores duplicated browse metadata on purpose.
 - If YAML and `workouts.db` disagree, YAML plus package validation is the truth source; the index should be rebuilt.
 - A workout may remain locally installed/playable even if future remote catalog state would make it undiscoverable online.
+
+### Locked online catalog direction
+
+A downloaded online catalog SQLite should **intentionally diverge** from local `workouts.db` rather than mirror it byte-for-byte.
+
+Why:
+
+- local `workouts.db` is about **installed package state**, filesystem paths, validation results, and fast local resolution into `workout.yaml`
+- an online catalog snapshot is about **remote discoverability/distribution metadata**, not local install state
+- forcing both concerns into one exact schema would either pollute the local index with remote-only concerns or pollute the remote snapshot with meaningless local path/install columns
+
+The recommended v1 direction is:
+
+- keep `workouts.db` as the local installed index only
+- if/when AeroBeat ships a downloaded catalog snapshot, treat it as a sibling DB such as `catalog.db`
+- let `catalog.db` reuse the **same logical browse vocabulary** where helpful (`workouts`, tags, modes, difficulties, song summaries), but give it its own columns for remote concerns such as package source, download URL, file size, content hash, publication/moderation state, and remote timestamps
+- do not require `workout_yaml_path`, `package_root_path`, `installed_at`, `indexed_at`, `is_installed`, `is_valid`, or `validation_error` in the online catalog DB
+
+This preserves a clean authority split: authored truth in package YAML, local discoverability in `workouts.db`, remote discoverability/distribution in a future sibling catalog DB.
 
 ## Per-workout `leaderboard-cache.db` v1 direction
 
@@ -749,7 +793,7 @@ Check:
 - referenced songs/routines/charts/environments/assets exist
 - package-local media paths exist
 - ids are unique and references are coherent
-- each session entry has one environment and at most one asset per asset type
+- each session entry has one environment and at most one asset per entry-selectable asset type
 
 ### Index validation
 
@@ -758,6 +802,7 @@ Check:
 - `workouts.db` rows reflect current installed packages
 - denormalized metadata matches current YAML-derived values
 - invalid packages are flagged rather than silently indexed as healthy
+- no remote-catalog-only fields or assumptions have leaked into the local installed index contract
 
 ### Submission validation
 
@@ -767,27 +812,31 @@ Check:
 - disposable cache artifacts are omitted
 - leaderboard cache is ignored/removed
 - no cross-package inheritance/patch dependency is required
+- no signing/integrity metadata is required or inferred as part of the v1 authored package contract
 
-## Remaining deferred questions
+## Explicit near-term deferrals
 
-These are now explicitly deferred rather than undefined:
+These are consciously deferred rather than undefined:
 
-1. the exact enum list for supported asset types in v1
-2. the exact environment rendering contract beyond package-local identity/resource fields
-3. how a future downloaded online catalog snapshot should differ from the local installed index, if at all
-4. what future moderation/ranking tables should be added to `workouts.db`
-5. whether future official content distribution wants signed package metadata beyond the current schema/package/tool version fields
+1. the exact environment rendering contract beyond package-local identity/resource fields
+2. the future remote catalog schema beyond the now-locked rule that it should be a sibling DB rather than an exact mirror of local `workouts.db`
+3. any package signing, trust chain, embedded signature, or distribution-integrity manifest inside authored package YAML
+4. future moderation/ranking/distribution tables for remote catalog workflows
+5. richer asset families beyond the locked v1 `assetType` enum
 
 ## Current recommendation
 
 For the first implementation-oriented package/storage pass, AeroBeat should proceed assuming:
 
 - authored truth lives in package YAML
-- discoverability lives in `workouts.db` only
+- discoverability for installed workouts lives in local `workouts.db` only
+- any future downloaded online catalog SQLite should be a sibling remote-catalog DB, not an exact mirror of local `workouts.db`
 - leaderboard browsing cache lives in package-local `leaderboard-cache.db` only
 - packages are self-contained and duplication/fork-based rather than inheritance-based
 - `coaches/`, `environments/`, and `assets/` are first-class content domains
-- each session entry resolves exact chart/routine/song ids plus one environment and one asset per asset type
+- `assetType` is a strict v1 enum: `gloves`, `targets`, `obstacles`, `trails`, `coach_avatar`, `coach_voice`
+- each session entry resolves exact chart/routine/song ids plus one environment and at most one selected asset per entry-selectable asset type
+- package signing/integrity metadata is explicitly deferred from the v1 authored package contract
 - runtime may still do per-entry unload/reload even when ids repeat
 - first-party and community packages share the same conceptual system
 

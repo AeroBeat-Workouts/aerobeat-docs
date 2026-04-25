@@ -139,8 +139,10 @@ It owns fields such as:
 - post-workout / cooldown media
 - ordered list of exact chart UID selections
 - per-entry environment selection
-- per-entry asset selections with at most one asset per supported asset type
+- per-entry asset selections with at most one asset per entry-selectable asset type
 - workout-owned coaching overlays keyed to the referenced song/chart UIDs used in that workout
+
+The locked v1 `assetType` enum is intentionally narrow: `gloves`, `targets`, `obstacles`, `trails`, `coach_avatar`, and `coach_voice`. Only the gameplay-facing subset (`gloves`, `targets`, `obstacles`, `trails`) belongs in per-entry asset selections; coach asset types are referenced from the package’s single coach-config domain.
 
 Workout runtime length is derived from the referenced content rather than stored as a separate authored duration field.
 
@@ -292,9 +294,10 @@ A content package owns:
 5. A workout entry resolves to exact ids rather than loose lookup selectors.
 6. Each workout package contains exactly one `coaches/` folder with exactly one coach-config YAML file, though that file may describe multiple featured coaches.
 7. `environments/` and `assets/` are distinct first-class content folders with their own YAML records.
-8. Each workout entry chooses exactly one environment and at most one asset per asset type.
-9. Binary media stays as referenced resources inside the package; the canonical authored contracts stay in structured content records.
-10. Alternate versions are created by duplication/forking, not inheritance or patch layering across workout packages.
+8. Each workout entry chooses exactly one environment and at most one asset per entry-selectable asset type.
+9. `assetType` is a strict v1 enum rather than a freeform string; unknown values should fail package validation.
+10. Binary media stays as referenced resources inside the package; the canonical authored contracts stay in structured content records.
+11. Alternate versions are created by duplication/forking, not inheritance or patch layering across workout packages.
 
 ## Authored data contract boundaries
 

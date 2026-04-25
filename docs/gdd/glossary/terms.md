@@ -31,6 +31,8 @@ Use this glossary of AeroBeat specific terms to keep the docs set aligned.
 | **Avatar** | A 3D character model representing the player or coach. |
 | **Cosmetic** | An accessory attachment for an Avatar (Hat, Glasses). |
 | **Environment** | The package-local authored environment record and its referenced scene/lighting resources used to surround gameplay for a workout entry. |
-| **Asset** | A package-local typed runtime-presented content record, such as gloves, targets, obstacles, trails, or coach/avatar resources. |
+| **Asset** | A package-local typed runtime-presented content record. The locked v1 asset types are `gloves`, `targets`, `obstacles`, `trails`, `coach_avatar`, and `coach_voice`. |
+| **Asset Type** | The closed v1 enum that identifies what kind of package asset a record is. Unknown values fail validation rather than silently behaving like generic assets. |
 | **workouts.db** | The local SQLite discovery/index database for installed workouts. It powers browse/search/filter views but is not the authored source of truth. |
+| **Catalog DB** | A future sibling SQLite snapshot for remote/distribution discoverability. It should intentionally diverge from local `workouts.db` instead of mirroring local install/path state exactly. |
 | **Leaderboard Cache** | The local disposable per-workout SQLite cache used for leaderboard browsing. It is non-authoritative and excluded from canonical package submission payloads. |
