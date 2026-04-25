@@ -9,7 +9,7 @@ Unlike standard Godot development, building a Feature requires strict adherence 
 A **Feature** is a self-contained library that provides:
 
 1.  **Gameplay Logic:** Scoring, Hit Detection, Spawning.
-2.  **Base Scenes:** The "Parents" that artists inherit from to create Skins, Environments, etc.
+2.  **Base Scenes:** Stable runtime/view-facing scenes/resources that artists extend or consume when building Skins, Environments, and related asset packages.
 3.  **Choreography Parsers:** Logic to read `.beat` files, controlling how targets and obstacles spawn.
 
 It does **NOT** provide:
@@ -32,7 +32,7 @@ This is where your messy code lives. You can refactor this as much as you want.
 
 ### 2. Public API (`src/api/`)
 
-These are the scenes that Skins inherit from. **These are sacred.**
+These are the stable runtime/view contracts that downstream skins or asset packages rely on. **These are sacred.**
 
 *   `src/api/base_glove.tscn`
 *   `src/api/base_target.tscn`
@@ -48,7 +48,7 @@ These are the scenes that Skins inherit from. **These are sacred.**
 You might wonder why `base_glove.tscn` is here and not in an Art repository.
 
 1.  **The Scene IS the Contract:** In Godot, the node hierarchy (e.g., "Script expects a child named `CollisionShape`") is part of the logic.
-2.  **Dependency Direction:** Skins depend on Features. If the base scene were in an asset repo, the Feature would need to depend on that asset repo to spawn it, creating a circular dependency.
+2.  **Dependency Direction:** Skins depend on Features. If the base scene were in an asset repo, the Feature would need to depend on that asset repo to spawn it, creating a circular dependency. This is a runtime/view contract concern, not permission for workout packages to inherit or patch other packages.
 3.  **Greyboxing:** These scenes contain no production art. They use debug shapes (cubes/spheres) to allow engineers to test gameplay without waiting for artists.
 
 ## 🤝 API Contracts

@@ -27,7 +27,7 @@ Freeze the architecture and vocabulary well enough that implementation repos can
 - canonical docs for `Song`, `Routine`, `Chart`, and `Workout`
 - explicit ownership language for `aerobeat-content-core`, `aerobeat-feature-core`, and `aerobeat-tool-core`
 - documented shared chart envelope and interaction-family targeting rules
-- documented package/file relationship for song, routine, chart-variant, and workout artifacts
+- documented package/file relationship for song, routine, chart, and workout artifacts
 - documented decision on what belongs to content contracts vs tool workflows vs runtime interpretation
 - documented rule that concrete authoring products live in `aerobeat-tool-*` repos with both headless/CLI and optional interactive/editor surfaces
 - documented rule that 2D lanes, 3D portals, and other content-consuming runtime visuals belong in feature repos rather than the content lane

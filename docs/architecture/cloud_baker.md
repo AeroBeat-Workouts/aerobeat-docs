@@ -1,6 +1,8 @@
 # Cloud Baker Architecture
 
-The **Cloud Baker** is the server-side pipeline responsible for validating, optimizing, and packaging User Generated Content (UGC). It ensures that raw assets uploaded by creators are safe and performant before they reach athletes' devices.
+The **Cloud Baker** is the server-side pipeline responsible for validating, optimizing, and packaging User Generated Content (UGC). It ensures that raw creator submissions are safe and performant before they reach athletes' devices.
+
+> **Package-contract boundary:** The Cloud Baker is a future distribution/build pipeline concern. It does **not** redefine the authored workout-package contract. The canonical authored truth remains the self-contained package folders/YAML described in the package docs. If this pipeline later emits `.pck` files or signed bundles, those are distribution artifacts layered on top of the authored package model.
 
 ## 🏗️ The Pipeline
 
@@ -8,27 +10,29 @@ The pipeline is triggered via a webhook when a file lands in the S3 "Uploads" bu
 
 ### Stage 1: Validation (The Gatekeeper)
 *   **Environment:** Ephemeral Docker Container (Network Isolated).
-*   **Input:** Raw `.pck` or Source Files (GLB/WAV).
+*   **Input:** Authored workout packages or raw source assets destined for a later build step.
 *   **Checks:**
-    1.  **Manifest Check:** Is `manifest.tres` valid?
-    2.  **Script Scan:** Grep for `script/source` or `type="GDScript"` in all text resources. **Fail immediately if found.**
-    3.  **Path Check:** Ensure all internal paths start with `res://mods/`. Reject overwrites to `res://addons/` or `res://src/`.
+    1.  **Package Shape Check:** Does the submission match the expected package/domain layout and parse cleanly?
+    2.  **Script Scan:** Grep for `script/source` or `type="GDScript"` in any submitted runtime resources. **Fail immediately if found.**
+    3.  **Reference Check:** Ensure paths and ids resolve inside the package boundary and do not attempt to overwrite engine/addon/runtime-owned paths.
 
 ### Stage 2: Optimization (The Crunch)
 *   **Texture Compression:**
-    *   Convert raw PNG/JPG to **WebP** (Lossless) for UI.
-    *   Convert textures to **ASTC** (4x4 block) for Mobile/VR performance.
+    *   Convert raw PNG/JPG to **WebP** (Lossless) for UI when appropriate.
+    *   Convert textures to **ASTC** (4x4 block) for Mobile/VR performance when packaging runtime artifacts.
 *   **Audio Conversion:**
     *   Convert WAV/MP3 to **Ogg Vorbis** (Quality 7) for streaming.
 *   **Mesh LODs:**
     *   Generate LOD1 and LOD2 meshes automatically using Godot's mesh optimizer.
 
 ### Stage 3: Packaging (The Baker)
-*   **Tool:** Headless Godot Editor (`godot --headless --export-pack`).
+*   **Tool:** Headless Godot Editor or other packaging/runtime build steps.
 *   **Action:**
-    1.  Import the optimized assets into a temporary project.
-    2.  Generate the final `.pck` file.
-    3.  Sign the package with the AeroBeat Private Key (preventing tampering).
+    1.  Import the validated package into a temporary build environment.
+    2.  Generate runtime/distribution artifacts such as exported packs if the target platform needs them.
+    3.  Optionally sign the **distribution artifact** with AeroBeat-controlled keys.
+
+Signing and integrity metadata here are a transport/distribution hardening concern. They are intentionally separate from the v1 authored package YAML contract.
 
 ## ☁️ Infrastructure
 
@@ -40,13 +44,13 @@ The pipeline is triggered via a webhook when a file lands in the S3 "Uploads" bu
 
 ## 🔄 Re-Baking Strategy
 
-One of the biggest risks in Godot development is **Binary Compatibility**. A `.pck` exported in Godot 4.2 might not load in Godot 4.3.
+One of the biggest risks in Godot development is **Binary Compatibility**. A runtime bundle exported in one Godot version might not load correctly in another.
 
-To solve this, we store the **Source Assets** (GLB, WAV, Tres), not just the final PCK.
+To solve this, we store the **authored package/source assets**, not just the final exported artifact.
 
-*   **Trigger:** When AeroBeat upgrades the engine version.
-*   **Action:** The Cloud Baker spins up thousands of workers to re-import and re-export every active mod using the *new* Godot version.
-*   **Result:** Athletes automatically download the v2 version of their skins without the creator needing to lift a finger.
+*   **Trigger:** When AeroBeat upgrades the engine version or its packaging pipeline.
+*   **Action:** The Cloud Baker spins up workers to re-import and re-export active content using the new toolchain.
+*   **Result:** Athletes download refreshed runtime artifacts without creators having to re-author the package contract itself.
 
 ## 🛡️ Security Measures
 

@@ -12,7 +12,7 @@ We are building a platform, not just a game. Our architecture separates **Input*
 
 * **Hardware Agnostic:** Play using a Webcam (MediaPipe), VR Controllers, JoyCons, or even a Keyboard.
 * **Modular Gameplay:** Swap the "Core Mechanic" instantly. Go from **Boxing** (punching targets) to **Flow** (Beat Saber style movement) without changing the engine.
-* **Community First:** Built for modding. Artists can skin targets, Musicians can map songs, and Coders can write new input drivers.
+* **Community First:** Built for modding. Artists can author package-local assets, Musicians can map songs, and Coders can write new input drivers.
 
 ---
 
@@ -40,6 +40,7 @@ Our documentation is divided by role. Choose your path below:
 * Learn how the six core repos divide contracts by lane, starting with `aerobeat-input-core`, `aerobeat-feature-core`, `aerobeat-content-core`, `aerobeat-asset-core`, `aerobeat-ui-core`, and `aerobeat-tool-core`.
 * Dive into platform concerns such as Cloud Baker, testing strategy, security, and performance.
 * Read the new [**Content Model**](architecture/content-model.md) doc for how Songs, Routines, Charts, and Workouts fit together.
+* Read [**Workout Package Storage and Discovery**](architecture/workout-package-storage-and-discovery.md) for the locked v1 package contract, including `coaches/coach-config.yaml`, `workouts.db`, the strict v1 `assetType` enum, and the self-contained package rules.
 * Read [**Content Repo Shapes**](architecture/content-repo-shapes.md) for the concrete day-one structure of `aerobeat-content-core` and `aerobeat-tool-content-authoring`.
 * **Key Tech:** Godot 4.x, GDScript, Python sidecars, and modular package boundaries.
 
@@ -55,8 +56,8 @@ Our documentation is divided by role. Choose your path below:
 
 *For artists looking to add new art assets.*
 
-* Learn how to inherit from `base_target.tscn` to create skins.
-* Understand the **Single-Dependency Rule** for asset packages.
+* Learn how feature and UI-facing base scenes expose stable runtime contracts for skins, environments, and other asset packages.
+* Understand the difference between authored package assets and runtime/distribution artifacts.
 * Review licensing expectations for creative contributions.
 
 ### 📘 Guides & Legal
@@ -95,11 +96,11 @@ We welcome contributions of all kinds. To ensure you have the best experience, c
 3. Join the discussion on our GitHub Discussions or Discord to coordinate with the art direction team.
 
 ### 🖌️ For Modders (UGC)
-*Looking to create custom Boxing Gloves, Targets, or Environments for yourself and the community?*
+*Looking to create custom gloves, targets, obstacles, trails, environments, coaches, or full workout packages for yourself and the community?*
 
-1. Download the **Skins SDK**, **Avatars SDK**, or **Environment SDK**.
-2. Learn how to pack your assets into `.pck` files.
-3. Upload your creations to the community hub.
+1. Start from the relevant `aerobeat-template-*` repo or its generated descendant.
+2. Author a self-contained workout or asset package using the current YAML/package docs rather than treating `.pck` as the authored source of truth.
+3. If a future distribution pipeline emits `.pck` or other runtime bundles, treat those as build artifacts layered on top of the authored package contract.
 
 ### 🎵 For Creators (Music & Fitness)
 *Are you a composer, choreographer, or coach? You don't need to download the game engine.*
@@ -107,8 +108,8 @@ We welcome contributions of all kinds. To ensure you have the best experience, c
 We provide specialized web-based tools for you:
 
 * **Musicians:** Upload tracks and get verified at **www.aerobeat-workouts.com/creators**.
-* **Choreographers:** Use the **Choreography Studio** to map songs.
-* **Coaches:** Create workouts and voice-overs in the **Coaching Studio**.
+* **Choreographers:** Use the **Choreography Studio** to map songs and workouts.
+* **Coaches:** Build workout-level coaching content around the package’s single `coaches/coach-config.yaml` domain.
 
 > **Current Status:** AeroBeat is currently in **Prototype (v0.0.1)**. We are actively building the six shared core lanes and the initial Boxing feature.
 

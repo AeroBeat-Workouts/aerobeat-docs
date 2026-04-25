@@ -100,9 +100,189 @@ This coordination plan belongs in `aerobeat-docs` because the docs repo is still
 - likely this plan file first
 - then repo-specific docs files after cleanup planning is approved
 
-**Status:** ⏳ Pending discussion
+**Status:** ✅ Complete
 
-**Results:** Need a concrete cleanup inventory before we fan work out across repos.
+**Results:** Completed a targeted wider-docs audit across the AeroBeat polyrepo using `grep -RIn` over repo `README.md`, docs markdown, template docs, and plan-adjacent architecture surfaces. The audit found two main drift clusters: (1) live product/docs surfaces still carrying pre-lock package vocabulary (`chart-variant`, `Coaching Pack`, `.pck`-centric packaging, `portals` as a selectable skin asset type, warm-up/cool-down media implied as workout-level coaching selections), and (2) many repo README/template surfaces still describing `aerobeat-core` as the active shared foundation even though the current architecture is lane-based and the old universal-hub wording is explicitly deprecated. Cleanup inventory below.
+
+**Cleanup inventory by owning repo:**
+
+- `aerobeat-docs`
+  - `docs/gdd/user-content/community-creations.md`
+    - Stale: still says `chart-variant` difficulty, treats skins as covering `portals` and `gloves / bats`, and describes a separate `Coaching Pack` with warm-up/cool-down media and per-song overlays.
+    - Update to: use `Chart` terminology, align selectable asset types to `gloves`, `targets`, `obstacles`, `trails`, and describe coaching through the package’s single `coaches/coach-config.yaml` plus `coach_avatar` / `coach_voice` assets rather than a separate per-workout coaching-pack concept.
+  - `docs/index.md`
+    - Stale: still tells UGC creators to pack assets into `.pck` files and advertises `Skins SDK` / `Avatars SDK` / `Environment SDK` as the entrypoint language.
+    - Update to: describe authored workout/content packages in the current package-system vocabulary; if distributable bundles are still `.pck` later in the pipeline, distinguish distribution artifacts from the authored package contract.
+  - `docs/guides/coaching.md`
+    - Stale: centered on a standalone `Coaching Pack` concept with warm-up/cool-down media.
+    - Update to: either mark as exploratory/historical or rewrite around the locked workout package model where coach configuration lives in `coaches/coach-config.yaml` and coach media uses `coach_avatar` / `coach_voice` asset references.
+  - `docs/guides/feature_development.md`
+    - Stale/confusing: repeatedly says artists "inherit" feature scenes to create skins/environments.
+    - Update to: distinguish Godot scene inheritance for runtime/view contracts from the package-system rule that workout/content packages do not inherit/patch other packages.
+  - `docs/architecture/cloud_baker.md`
+    - Potential contradiction: still frames the system around uploaded `.pck` or raw files and says the baker signs the package with a private key.
+    - Update to: clarify this is a future distribution/build pipeline concern, not part of the v1 authored package contract; explicitly separate artifact signing from authored-package YAML semantics.
+  - `docs/architecture/content-lane-implementation-phases.md`
+    - Stale term: says `chart-variant` in the phase-1 deliverables list.
+    - Update to: replace with `Chart` / routine-chart-workout wording that matches the current model.
+  - `templates/README.md`
+    - Stale: `Project Location` still shows `.testbed/` for package repos even though current template READMEs describe repo-root package boundaries with `.testbed/` only as the hidden workbench.
+    - Update to: rename the column or values so it clearly distinguishes package boundary (`/`) from dev/test workbench (`.testbed/`).
+
+- `aerobeat-template-skin`
+  - `README.md`
+    - Stale: still depends on `aerobeat-core` and only documents `gloves`, `targets`, and `obstacles` under `assets/`.
+    - Update to: use the lane-specific core repo name/contract and decide whether `trails` should be documented here so the template matches the locked v1 asset-type set.
+
+- `aerobeat-template-avatar`
+  - `README.md`
+    - Stale: still names `aerobeat-core` as the required foundation.
+    - Update to: point at the current asset-lane/shared-contract dependency (`aerobeat-asset-core` or the correct lane-specific contract) instead of the deprecated universal-hub name.
+
+- `aerobeat-template-cosmetic`
+  - `README.md`
+    - Stale: still names `aerobeat-core` as the required foundation.
+    - Update to: point at the correct lane-specific asset/shared-contract repo.
+
+- `aerobeat-template-environment`
+  - `README.md`
+    - Stale: still names `aerobeat-core` as the required foundation.
+    - Update to: point at `aerobeat-asset-core` / current environment contract language, matching the docs template source.
+
+- `aerobeat-template-asset`
+  - `README.md`
+    - Stale: still names `aerobeat-core` as the required foundation.
+    - Update to: point at the correct asset-lane foundation or explicitly document this template as internal/system-only if it intentionally sits outside the public workout-package model.
+
+- `aerobeat-asset-prototypes`
+  - `README.md`
+    - Stale: still names `aerobeat-core` as the required foundation.
+    - Update to: point at the current asset-lane/shared-resource contract and clarify how this repo relates to the newer package/content vocabulary.
+
+- `aerobeat-assembly-community`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as the pinned foundation.
+    - Update to: reflect the current lane-based dependency story and, if this assembly intentionally still consumes the renamed predecessor, call that out as transitional rather than normative architecture language.
+
+- `aerobeat-template-assembly`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as the baseline assembly foundation.
+    - Update to: align the template with the lane-based core naming and dependency guidance.
+
+- `aerobeat-template-feature`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as the required dependency.
+    - Update to: use `aerobeat-feature-core` plus any adjacent shared contracts actually required.
+
+- `aerobeat-feature-boxing`
+  - `README.md`
+    - Stale: still says the workbench installs tagged `aerobeat-core` and pins `aerobeat-core` in validation notes.
+    - Update to: use the current feature-lane dependency naming.
+
+- `aerobeat-feature-dance`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as required.
+    - Update to: use `aerobeat-feature-core` / current lane-specific dependency wording.
+
+- `aerobeat-feature-flow`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as required.
+    - Update to: use `aerobeat-feature-core` / current lane-specific dependency wording.
+
+- `aerobeat-feature-step`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as required.
+    - Update to: use `aerobeat-feature-core` / current lane-specific dependency wording.
+
+- `aerobeat-template-input`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as required.
+    - Update to: use `aerobeat-input-core`.
+
+- `aerobeat-input-gamepad`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as required.
+    - Update to: use `aerobeat-input-core`.
+
+- `aerobeat-input-joycon-hid`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as required.
+    - Update to: use `aerobeat-input-core`.
+
+- `aerobeat-input-keyboard`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as required.
+    - Update to: use `aerobeat-input-core`.
+
+- `aerobeat-input-mediapipe-native`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as the Godot-side contract dependency.
+    - Update to: use `aerobeat-input-core` and keep the `src`-bridge note if still true.
+
+- `aerobeat-input-mouse`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as required.
+    - Update to: use `aerobeat-input-core`.
+
+- `aerobeat-input-touch`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as required.
+    - Update to: use `aerobeat-input-core`.
+
+- `aerobeat-input-xr`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as required.
+    - Update to: use `aerobeat-input-core`.
+
+- `aerobeat-template-tool`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as required.
+    - Update to: use `aerobeat-tool-core` (plus any adjacent shared contracts as needed).
+
+- `aerobeat-tool-api`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as required.
+    - Update to: use `aerobeat-tool-core` / current lane-specific dependency wording.
+
+- `aerobeat-tool-settings`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as required.
+    - Update to: use `aerobeat-tool-core` / current lane-specific dependency wording.
+
+- `aerobeat-template-ui-kit`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as a required foundation alongside `aerobeat-ui-core`.
+    - Update to: remove deprecated universal-hub wording and document only the lane-specific UI/input/content deps actually needed.
+
+- `aerobeat-ui-kit-community`
+  - `README.md`
+    - Stale: still says the workbench installs tagged `aerobeat-core` plus `aerobeat-ui-core`.
+    - Update to: align to the lane-based dependency story.
+
+- `aerobeat-template-ui-shell`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as the required foundation.
+    - Update to: align with the lane-based core split and current UI shell dependency language.
+
+- `aerobeat-ui-shell-desktop-community`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as the required foundation.
+    - Update to: align with the lane-based core split.
+
+- `aerobeat-ui-shell-mobile-community`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as the required foundation.
+    - Update to: align with the lane-based core split.
+
+- `aerobeat-ui-shell-web-community`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as the required foundation.
+    - Update to: align with the lane-based core split.
+
+- `aerobeat-ui-shell-xr-community`
+  - `README.md`
+    - Stale: still presents `aerobeat-core` as the required foundation.
+    - Update to: align with the lane-based core split.
 
 ---
 
@@ -143,9 +323,9 @@ This coordination plan belongs in `aerobeat-docs` because the docs repo is still
 
 **Status:** ⚠️ Partial
 
-**What We Built:** Completed the hard-call decision pass plus the core-docs update pass inside `aerobeat-docs`. The remaining wider cross-repo audit/cleanup tasks on this plan have not been executed yet in this subagent slice. Validation for this slice was a repo-local MkDocs build: `python -m mkdocs build --strict` correctly failed on pre-existing unrelated bad links in `docs/architecture/package-dependency-research.md`, while a normal `python -m mkdocs build` completed successfully and showed no warnings from the files changed in this slice.
+**What We Built:** Completed the hard-call decision pass, the core-docs update pass inside `aerobeat-docs`, and the wider cross-repo audit inventory for stale package/docs wording. The remaining work on this plan is the actual cleanup/application pass in the owning repos under Task 4. Validation for the earlier doc-edit slice was a repo-local MkDocs build: `python -m mkdocs build --strict` correctly failed on pre-existing unrelated bad links in `docs/architecture/package-dependency-research.md`, while a normal `python -m mkdocs build` completed successfully and showed no warnings from the files changed in that slice.
 
-**Reference Check:** `REF-02`, `REF-03`, and `REF-04` now agree on the locked v1 package decisions. The decisions continue the direction established in `REF-01` and stay consistent with the earlier definition-phase lineage in `REF-06`.
+**Reference Check:** `REF-02`, `REF-03`, and `REF-04` now agree on the locked v1 package decisions, and the Task 3 inventory identifies the remaining out-of-date surfaces that still need propagation work. The decisions continue the direction established in `REF-01` and stay consistent with the earlier definition-phase lineage in `REF-06`.
 
 **Commits:**
 - `7932e0b` - Lock remaining AeroBeat package doc decisions

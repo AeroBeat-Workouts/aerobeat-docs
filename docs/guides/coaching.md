@@ -4,21 +4,27 @@ Coaches are the heart of the AeroBeat experience. While the music provides the r
 
 Our coaching system is designed to replicate the feeling of a personal trainer working out right beside the athlete. You are not just a voice in their ear; you are their partner in the session.
 
+> **Current contract note:** This guide reflects the locked v1 package model. Coaching is not a separate “Coaching Pack” product. Coaching data lives inside the workout package’s single `coaches/coach-config.yaml` domain, and any coach-specific media/assets stay package-local.
+
 ## 🎯 The Philosophy: "Sweat With Them"
 
 The most successful coaching content (inspired by platforms like Supernatural VR) feels authentic because the coach is physically active during the recording.
 
 * **Do not just read a script.** Get your heart rate up. Let the athlete hear the effort in your voice.
-* **Tell a Story.** A Workout is not just random songs. It is a journey. Use the warm-up to set the theme ("Today is about resilience") and the cool-down to reflect.
+* **Tell a Story.** A Workout is not just random songs. It is a journey. If you use intro or cooldown media, use it to set the theme and reflect on the session.
 * **Vibe Check.** Match your energy to the song. If it is a high-intensity interval track, use your voice to acknowledge what the athlete is working through. If it is a flow track, be calm and grounding.
 
-## 📦 Anatomy of a Coaching Pack
+## 📦 Anatomy of the Workout Coaching Domain
 
-A Coaching Pack is a collection of media files designed to wrap around a specific **Workout**.
+A workout package owns exactly one `coaches/coach-config.yaml` file.
 
-1. **Warm-Up Video:** Plays before the first song. (1-2 minutes)
-2. **Audio Overlays:** Voice tracks that play *on top of* specific songs in the Workout.
-3. **Cool-Down Video:** Plays after the last song. (2-3 minutes)
+That single file may describe:
+
+1. **Featured Coaches:** one or more package-local coaches, typically referencing `coach_avatar` and `coach_voice` assets.
+2. **Coach Media:** intro, overlay, or other referenced media files that live inside the same package.
+3. **Overlay Triggers:** workout/chart moment mappings that tell runtime which coaching clip or cue belongs where.
+
+If the workout also includes warm-up or cooldown media, treat those as workout-package media references rather than a separate coaching-pack artifact.
 
 ## 🛠️ Technical Requirements
 
@@ -26,53 +32,48 @@ A Coaching Pack is a collection of media files designed to wrap around a specifi
 * **Audio Format:** `.ogg` (Vorbis).
 * **Tools:**
   * **Recording:** OBS Studio (video), Audacity / Reaper (audio).
-  * **Tool:** **Coaching Studio** (web app).
+  * **Tool:** a future AeroBeat coaching/content authoring workflow built on the shared package contracts.
 
 ## 🚀 Step-by-Step Workflow
 
 ### Phase 1: Preparation
 
-1. **Select Base Content:** Use the SDK's content browser to find an existing Workout or Song on the AeroBeat server. You do not need to have the files locally; the SDK streams the metadata and audio for you to coach against.
+1. **Select Base Content:** Start from the workout package you are coaching. Know the exact workout, charts, and session flow you are targeting.
 2. **Learn the Charts:** Play the Workout yourself. Note where the hard drops are, where the breaks are, and where the athlete will be struggling.
-3. **Write Your Script (Loose):** Plan your intro story and your outro message. For the songs, note down cues such as "Big uppercuts coming up!" or "Breathe through the squat."
+3. **Write Your Script (Loose):** Plan your coach intro, any optional workout-level intro/outro media, and the key chart moments where coaching overlays should trigger.
 
 ### Phase 2: Recording
 
-#### The Videos (Warm-Up / Cool-Down)
+#### Coach Intro / Workout-Level Media
 
 * **Lighting:** Ensure you are well lit.
 * **Background:** Keep it clean or use a green screen.
-* **Action:** Lead the athlete through dynamic stretching (warm-up) or static stretching (cool-down).
+* **Action:** Record any optional workout-level intro/outro or explanatory media you want the package to reference.
 * **Export:** Render as `.webm`.
 
-#### The Audio Overlays
+#### Voice / Overlay Clips
 
 * **Setup:** Put on your headset, start recording in your DAW, and **play the song** in your headphones.
 * **Action:** Perform the workout while recording. Speak to the athlete as if they are next to you.
-* **Export:** Save the vocal track *only* (do not include the music) as `.ogg`. Ensure the start time aligns with the song start, or note the offset.
+* **Export:** Save the vocal track *only* (do not include the music) as `.ogg`. Ensure the start time aligns with the intended trigger moment, or record the offset you will wire into coaching metadata.
 
-### Phase 3: The Coaching Studio
+### Phase 3: Package Authoring
 
-1. **Open:** Navigate to the **Coaching Studio** web portal.
-2. **Import Files:** Drag your `.webm` and `.ogg` files into the project.
-3. **Create the Pack:**
-   * Create a new resource: `AeroCoachingPack`.
-   * Assign your `warm_up_video` and `cool_down_video`.
-   * **Map the Songs:** In the `overlays` array, add entries for each song in the Workout.
-     * `Song ID`: The ID of the song you are coaching over.
-     * `Audio Clip`: Your `.ogg` voice track.
-     * `Volume`: Adjust to ensure you do not drown out the music (default `1.0`).
-4. **Create Manifest:**
-   * Create `AeroModManifest`.
-   * Type: `COACHING`.
-   * Target Feature: (for example, `boxing`).
-5. **Validate & Upload:** Use the AeroBeat uploader tab to publish.
+1. **Open the workout package authoring flow.**
+2. **Import Files:** Add your `.webm`, `.ogg`, avatar assets, and voice assets to the package-local media/assets folders.
+3. **Update `coaches/coach-config.yaml`:**
+   * Define your featured coach entries.
+   * Reference any `coach_avatar` / `coach_voice` assets.
+   * Add overlay mappings keyed to the relevant chart/event moments.
+4. **Update the workout package:** If you are using optional workout-level intro/outro media, wire those references through the workout package contract instead of inventing a parallel pack type.
+5. **Validate:** Run package validation so ids, references, asset types, and media paths resolve cleanly.
 
 ## 💡 Best Practices
 
 * **Feel the Vibe:** You do not need to talk non-stop. Let the music drive the energy. Speak when motivation or instruction is needed.
-* **Generic vs. Specific:** Since you are coaching a specific **Workout**, you can reference the specific songs ("I love this guitar solo!"). This creates much deeper immersion than generic "Good job" lines.
-* **Audio Ducking:** The game engine automatically ducks the music volume slightly when your voice track is speaking. You do not need to mix this yourself.
+* **Specific beats beat generic hype:** Because the coaching config is attached to one workout package, you can tailor cues to exact chart moments and session flow.
+* **Keep packages self-contained:** Do not rely on cross-package inheritance, patching, or external coaching bundles.
+* **Coach assets are typed:** Use `coach_avatar` and `coach_voice` for coach-facing asset records. Do not place those asset types in workout-entry gameplay asset selections.
 
 ## ♿ Coaching Modifications
 
@@ -88,8 +89,7 @@ Not every athlete can perform high-impact moves. It is important to acknowledge 
 **Q: Can I use Green Screen (Chroma Key) video?**
 **A:** **Yes.** This is highly recommended for immersion.
 1. Record your video against a green background.
-2. In the Coaching SDK, select your video resource.
-3. Enable **Transparent Background** in the inspector. The engine uses a real-time shader to remove the green, making you appear inside the game environment.
+2. Keep the keyed result as package-local media referenced by the coaching config or workout package.
 
 **Q: Can I remix an existing Workout?**
-**A:** Yes. You can load an existing Workout in the SDK, add your coaching tracks, and save it as a remix. The original author is automatically credited in the manifest.
+**A:** Yes. Duplicate or fork the workout package, then add your coaching configuration and media in the new package revision. Do not rely on inheritance or patch layering across packages.

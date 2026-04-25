@@ -20,18 +20,18 @@ Go to the AeroBeat-Workouts GitHub organization and look for repositories named 
 
 ## Template Types
 
-| Type | Folder | License | Project Location | Key Files |
-| :--- | :--- | :--- | :--- | :--- |
-| **Assembly** | `assembly/` | GPLv3 | **Root** | `project.godot`, `.gitignore`, `setup_dev.py` |
-| **Feature** | `feature/` | GPLv3 | `.testbed/` | `plugin.cfg`, `.gitignore`, `.testbed/`, `setup_dev.py` |
-| **Tool** | `tool/` | MPL 2.0 | `.testbed/` | `plugin.cfg`, `.gitignore`, `setup_dev.py` |
-| **Input** | `input/` | MPL 2.0 | `.testbed/` | `plugin.cfg`, `.gitignore`, `setup_dev.py` |
-| **UI Kit** | `ui-kit/` | MPL 2.0 | `.testbed/` | `plugin.cfg`, `.gitignore`, `setup_dev.py` |
-| **UI Shell** | `ui-shell/` | GPLv3 | `.testbed/` | `plugin.cfg`, `.gitignore`, `sync_ui_kit.py`, `setup_dev.py` |
-| **Skins** | `skins/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `setup_dev.py`, `AeroSkin.gd` |
-| **Avatars** | `avatars/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `setup_dev.py`, `AeroAvatar.gd` |
-| **Cosmetics** | `cosmetics/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `setup_dev.py`, `AeroAccessory.gd` |
-| **Environments** | `environments/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `setup_dev.py`, `AeroEnvironment.gd` |
-| **Asset (Internal)** | `asset/` | CC BY-NC 4.0 | `.testbed/` | `plugin.cfg`, `.gitignore`, `setup_dev.py`, `LICENSE.md` |
+| Type | Folder | License | Package Boundary | Workbench Project | Key Files |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Assembly** | `assembly/` | GPLv3 | **Root** | **Root project** | `project.godot`, `.gitignore`, `setup_dev.py` |
+| **Feature** | `feature/` | GPLv3 | **Root** | `.testbed/` | `plugin.cfg`, `.gitignore`, `.testbed/`, `setup_dev.py` |
+| **Tool** | `tool/` | MPL 2.0 | **Root** | `.testbed/` | `plugin.cfg`, `.gitignore`, `setup_dev.py` |
+| **Input** | `input/` | MPL 2.0 | **Root** | `.testbed/` | `plugin.cfg`, `.gitignore`, `setup_dev.py` |
+| **UI Kit** | `ui-kit/` | MPL 2.0 | **Root** | `.testbed/` | `plugin.cfg`, `.gitignore`, `setup_dev.py` |
+| **UI Shell** | `ui-shell/` | GPLv3 | **Root** | `.testbed/` | `plugin.cfg`, `.gitignore`, `sync_ui_kit.py`, `setup_dev.py` |
+| **Skins** | `skins/` | CC BY-NC 4.0 | **Root** | `.testbed/` | `plugin.cfg`, `setup_dev.py`, `AeroSkin.gd` |
+| **Avatars** | `avatars/` | CC BY-NC 4.0 | **Root** | `.testbed/` | `plugin.cfg`, `setup_dev.py`, `AeroAvatar.gd` |
+| **Cosmetics** | `cosmetics/` | CC BY-NC 4.0 | **Root** | `.testbed/` | `plugin.cfg`, `setup_dev.py`, `AeroAccessory.gd` |
+| **Environments** | `environments/` | CC BY-NC 4.0 | **Root** | `.testbed/` | `plugin.cfg`, `setup_dev.py`, `AeroEnvironment.gd` |
+| **Asset (Internal)** | `asset/` | CC BY-NC 4.0 | **Root** | `.testbed/` | `plugin.cfg`, `.gitignore`, `setup_dev.py`, `LICENSE.md` |
 
-> **Note:** All templates include the `.github/workflows/cla.yml` workflow automatically.
+> **Note:** For package-style repos, `.testbed/` is the hidden developer workbench, not the package boundary. All templates include the `.github/workflows/cla.yml` workflow automatically.
