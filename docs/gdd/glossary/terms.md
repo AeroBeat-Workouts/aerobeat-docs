@@ -7,7 +7,9 @@ Use this glossary of AeroBeat specific terms to keep the docs set aligned.
 | **Song** | The reusable audio / timing asset and metadata source for gameplay content. |
 | **Routine** | The gameplay-mode-specific package for one Song, such as the boxing routine for that song. |
 | **Chart** | One concrete playable chart inside a Routine representing a single difficulty and compatibility slice. |
-| **Workout** | An ordered training program that assembles routines or charts into a session. |
+| **Workout** | An ordered training program that assembles exact chart selections into a session and owns workout-level coaching/session flow. |
+| **Workout Package** | A self-contained on-disk folder containing `workout.yaml`, typed YAML content folders, package-local media/resources, and optional disposable local caches. |
+| **Coach Config** | The single workout-level coaching configuration YAML domain inside a package. One package has exactly one coach-config file, but that file may describe multiple featured coaches. |
 | **Chart Envelope** | The shared chart-level contract that carries ids, timing, scoring, presentation hints, and a mode-specific event payload. |
 | **Interaction Family** | A durable movement-target abstraction such as `gesture_2d`, `tracked_6dof`, or `hybrid`, used instead of binding content directly to a raw device. |
 | **Input Provider** | The top-level runtime/gameplay abstraction that bridges hardware input systems to gameplay logic. |
@@ -28,4 +30,7 @@ Use this glossary of AeroBeat specific terms to keep the docs set aligned.
 | **Skin** | A visual replacement for a gameplay object (Gloves, Bats, Targets, Obstacles). |
 | **Avatar** | A 3D character model representing the player or coach. |
 | **Cosmetic** | An accessory attachment for an Avatar (Hat, Glasses). |
-| **Environment** | The 3D level geometry and lighting surrounding the gameplay. |
+| **Environment** | The package-local authored environment record and its referenced scene/lighting resources used to surround gameplay for a workout entry. |
+| **Asset** | A package-local typed runtime-presented content record, such as gloves, targets, obstacles, trails, or coach/avatar resources. |
+| **workouts.db** | The local SQLite discovery/index database for installed workouts. It powers browse/search/filter views but is not the authored source of truth. |
+| **Leaderboard Cache** | The local disposable per-workout SQLite cache used for leaderboard browsing. It is non-authoritative and excluded from canonical package submission payloads. |

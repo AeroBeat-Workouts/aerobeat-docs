@@ -1,115 +1,111 @@
 # Workout Package Storage and Discovery
 
-This document captures the current draft direction for how AeroBeat workout content should be stored on disk, discovered by Godot at runtime, and indexed for local and online browsing.
+This document defines the current canonical direction for how AeroBeat workout packages are authored, stored on disk, discovered at runtime, and indexed for browsing.
 
-It is intentionally grounded in the data-shape decisions made on 2026-04-23:
+It turns the earlier 2026-04-23 storage draft into a more implementation-guiding contract.
 
-- the durable content model is `Song -> Routine -> Chart -> Workout`
-- naming should stay consistent with `*Id` + `*Name` pairs where applicable
-- all primary ids are UIDs
-- authored durable records should use YAML rather than JSON so they remain comment-friendly and hand-editable
-- workout packages should prefer copied/self-contained content rather than cross-package references
-- package layout should use **separate YAML files** rather than one giant monolithic workout file
-- `workout.yaml` should carry both workout metadata and manifest/version metadata
-- a root `workouts.db` SQLite file should index installed workouts for search and discovery
+The package system is grounded in these now-locked decisions:
 
-This is a draft architecture proposal, not a finalized implementation contract.
+- workout packages are **self-contained**
+- YAML is the **authored durable format**
+- discoverability lives in **`workouts.db` only**, not in package YAML
+- the package contains everything required to play the workout for validation/runtime purposes
+- leaderboard data is stored only as a **local per-workout cache**, is **non-authoritative**, and is **ignored/removed during submission/upload**
+- each package has one `coaches/` folder containing exactly one coach-config YAML file
+- that coach-config YAML may describe multiple featured coaches
+- alternate versions are created by **duplication/forking**, not inheritance or patch layering across workout packages
+- `environments/` and `assets/` are distinct content domains with their own YAML files
+- each workout entry chooses one environment and one asset per asset type
+- runtime may still unload/load on each song transition even when consecutive entries reuse the same ids
+- official first-party assets/environments are future content under the same system, not a special-case path
 
 ## Design goals
 
 The storage and discovery system should optimize for:
 
-- **clarity** — easy to understand where content lives
-- **debuggability** — easy to inspect broken or incomplete packages by looking at files on disk
-- **symmetry** — first-party workouts and UGC workouts should use the same package shape
-- **runtime friendliness** — Godot should be able to discover installed content without re-parsing every YAML file on every browse action
-- **low-scope iteration** — early online browsing should be possible without requiring a large custom API surface on day one
+- **clarity** — creators and engineers can inspect a package on disk and understand it quickly
+- **debuggability** — broken references are visible as broken package-local files or ids
+- **portability** — packages can be copied, archived, validated, and reinstalled as self-contained units
+- **symmetry** — first-party and community-authored workouts use the same conceptual package system
+- **runtime friendliness** — browse/search should use SQLite rather than reparsing every YAML file for every query
+- **durable authorship** — YAML remains the canonical human-authored source, while indexes/caches are derived data
 
-## Core model recap
+## Core content model recap
 
-The content model being stored is:
+The durable content hierarchy remains:
 
 - **Song**
-  - reusable music/media identity and timing authority
+  - reusable audio/timing identity
 - **Routine**
   - one song interpreted through one gameplay mode
 - **Chart**
-  - one concrete playable difficulty slice of a routine
+  - one exact playable difficulty slice of a routine
 - **Workout**
-  - the programmed session that selects exact chart UIDs and owns workout-level coaching and package metadata
+  - the programmed session that selects exact chart ids and owns workout-level coaching/package metadata
 
-### Current naming direction
+Related package-local domains now also include:
 
-Use consistent naming where applicable:
+- **Coach Config**
+  - the workout-level coaching/media definition file for that package
+- **Environment**
+  - a reusable environment record authorable inside the package
+- **Asset**
+  - a reusable per-type asset record authorable inside the package
+
+All primary ids are UIDs and follow the same naming rule where applicable:
 
 - `songId`, `songName`
 - `routineId`, `routineName`
 - `chartId`, `chartName`
 - `workoutId`, `workoutName`
+- `coachConfigId`, `coachConfigName`
+- `environmentId`, `environmentName`
+- `assetId`, `assetName`
 
-## Storage model overview
+## Authority split: authored package vs derived indexes/caches
 
-AeroBeat should treat workout content as **self-contained installed packages on disk**.
+AeroBeat intentionally splits authority across three layers.
 
-Each workout package lives in its own folder under a shared workouts root. The package contains:
+### 1. Package YAML = durable authored truth
 
-- one root `workout.yaml`
-- separate YAML files for songs, routines, and charts
-- copied media/artifacts required to run the workout
+The package YAML files are the canonical authored content payload.
 
-At the root of the workouts install location, AeroBeat also maintains a SQLite index:
+They own:
 
-- `workouts.db`
+- workout/session definition
+- songs, routines, charts
+- workout-local coach configuration
+- package-local environments/assets
+- package-local resource references
+- schema/package/tool version metadata
 
-The split of responsibilities is:
+They do **not** own:
 
-- **YAML package files** = human-readable portable source of truth for each installed workout package
-- **SQLite index** = searchable discovery/index layer for installed packages
+- discoverability/search indexing
+- athlete/device-specific calibration or profile overrides
+- authoritative score history
+- player-wide social/profile state
 
-## Why YAML
+### 2. `workouts.db` = install/discovery catalog index
 
-YAML is preferred over JSON for the authored package files because it gives us:
+`workouts.db` exists to power local browsing, filtering, moderation surfaces, and install-state lookups.
 
-- comments
-- easier hand-editing
-- easier inspection during debugging
-- a friendlier shape for creators and internal iteration
+It is derived from installed packages and may also be used for downloaded catalog snapshots, but it is not the authored truth.
 
-This is especially important because AeroBeat wants first-party and community-authored workouts to share the same packaging model.
+### 3. `leaderboard-cache.db` = local disposable score-browsing cache
 
-## Why copied/self-contained packages
+The leaderboard cache database is strictly a local convenience cache for viewing leaderboard snapshots for a specific workout.
 
-Packages should prefer copied content rather than required external references.
+It is:
 
-Reasons:
+- non-authoritative
+- safe to rebuild or delete
+- excluded from canonical package submission payloads
+- ignored or stripped during upload/submission validation
 
-- easier to reason about what is actually installed
-- easier to debug broken packages
-- easier to move/share/archive/install/uninstall packages
-- fewer hidden dependencies
-- keeps first-party and UGC structurally identical
+Server APIs remain authoritative for score submission, anti-cheat enforcement, and player-wide leaderboard/profile state.
 
-For now, package robustness matters more than deduplication.
-
-## Package layout decision: separate files early
-
-AeroBeat is explicitly choosing the **separate-files** path instead of a single giant `workout.yaml`.
-
-Why:
-
-- chart payloads will become large
-- keeping chart data inline would make workout files noisy and hard to edit
-- Songs, Routines, Charts, and Workouts are already distinct durable concepts
-- separate files make validation and diffs easier to reason about
-
-That means:
-
-- `workout.yaml` stays focused on workout/package metadata and workout-owned session data
-- `songs/` contains one YAML file per `Song`
-- `routines/` contains one YAML file per `Routine`
-- `charts/` contains one YAML file per `Chart`
-
-## Proposed on-disk layout
+## Canonical on-disk layout
 
 ```text
 aerobeat-workouts/
@@ -123,259 +119,676 @@ aerobeat-workouts/
         │   └── <routine-id>.yaml
         ├── charts/
         │   └── <chart-id>.yaml
-        └── media/
-            ├── audio/
-            ├── video/
-            ├── art/
-            ├── coaching/
-            └── scenes/
+        ├── coaches/
+        │   └── coach-config.yaml
+        ├── environments/
+        │   └── <environment-id>.yaml
+        ├── assets/
+        │   └── <asset-id>.yaml
+        ├── media/
+        │   ├── audio/
+        │   ├── video/
+        │   ├── art/
+        │   ├── coaching/
+        │   ├── scenes/
+        │   └── assets/
+        └── cache/
+            └── leaderboard-cache.db
 ```
 
-This keeps the package rule simple:
+### Layout rules
 
-- the root contains `workout.yaml`
-- every other major content family lives in its own subfolder
-- those subfolders contain the YAML files and copied artifacts needed by the package
+1. The package root contains exactly one `workout.yaml`.
+2. `songs/`, `routines/`, `charts/`, `coaches/`, `environments/`, and `assets/` are distinct content-domain folders.
+3. `coaches/` contains exactly one YAML file for the workout-level coach config domain.
+4. Media/resource references should resolve inside the package folder.
+5. `cache/` contains only disposable derived data and must not be treated as authored package content.
+6. Submission/export validators may omit `cache/` entirely from canonical package payload generation.
 
-## `workout.yaml` responsibilities
+## Package-wide shared field direction
 
-`workout.yaml` should combine two concerns:
+Every authored YAML record should carry a small set of predictable contract fields.
 
-1. **Workout data**
-2. **Manifest/version metadata**
+### Required shared fields for all authored YAML records
 
-The current direction is to avoid a separate manifest file unless a future need proves that split useful.
+- `schemaId` — explicit schema identifier such as `aerobeat.song.v1`
+- `schemaVersion` — version of the record contract
+- `recordVersion` — revision of this authored record
+- primary id/name fields for that record type
+- `createdByTool` — tool id/name that produced the record
+- `createdByToolVersion` — tool version
+- `createdAt`
+- `updatedAt`
 
-### `workout.yaml` should likely contain
+### Recommended shared optional metadata
 
-- `workoutId`
-- `workoutName`
-- `description`
-- `coachId`
-- `coachName`
-- workout-level default background scene selection
-- pre-workout / warmup media references
-- post-workout / cooldown media references
-- ordered workout entries that resolve to exact chart UIDs
-- workout-owned coaching overlays keyed to the referenced song/chart UIDs used in the workout
-- tags or browse metadata needed as part of the durable workout definition
-- version metadata such as:
-  - workout/package version
-  - schema version
-  - creation tool name/version
+- `authorId`
+- `authorName`
+- `tags`
+- `notes`
+- `source`
 
-### Versioning fields to carry
+These shared fields are about traceability and migration support, not discoverability. Search-facing denormalization belongs in `workouts.db`.
 
-At minimum, the combined workout/manifest file should preserve the distinction between:
+## Canonical YAML schema direction
 
-- **schema version** — how to interpret the file structure/contracts
-- **package version** — which revision of this workout package this is
-- **creation tool version** — which authoring/build tool generated the package
+The sections below define the current v1 field direction. They are intended as implementation-guiding contracts, not strict serialization code yet.
 
-That gives AeroBeat enough information to reason about parsing, migration, and support/debugging.
+### `workout.yaml`
 
-## `Song`, `Routine`, and `Chart` YAML responsibilities
+`workout.yaml` combines package manifest metadata and workout-level session data.
+
+#### Owns
+
+- package identity/version metadata
+- workout identity/description
+- package-local default coach config reference
+- ordered session entries
+- workout-level media and transition settings
+- package-level resource ownership declarations that are part of authored playback
+
+#### Must not own
+
+- discovery/search ranking fields
+- global catalog visibility state
+- authoritative leaderboard state
+- athlete/device overrides
+
+#### Canonical field direction
+
+```yaml
+schemaId: aerobeat.workout-package.v1
+schemaVersion: 1
+recordVersion: 3
+workoutId: uid
+workoutName: string
+description: string
+packageVersion: 1.2.0
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-25T19:00:00Z
+updatedAt: 2026-04-25T19:20:00Z
+authorId: uid
+authorName: string
+coachConfigId: coach-config
+preview:
+  coverArtPath: media/art/cover.png
+  thumbnailPath: media/art/thumb.png
+session:
+  warmupMedia:
+    - mediaId: warmup-intro
+      mediaType: video
+      path: media/coaching/warmup-intro.mp4
+  cooldownMedia:
+    - mediaId: cooldown-outro
+      mediaType: video
+      path: media/coaching/cooldown-outro.mp4
+  defaultTransition:
+    crossfadeMs: 0
+    allowRuntimeUnloadReload: true
+  entries:
+    - entryId: uid
+      order: 1
+      chartId: uid
+      routineId: uid
+      songId: uid
+      environmentId: uid
+      assetSelections:
+        gloves: uid
+        targets: uid
+        obstacles: uid
+      transition:
+        allowRuntimeUnloadReload: true
+      coachingOverlayIds:
+        - uid
+packageContents:
+  songs:
+    - uid
+  routines:
+    - uid
+  charts:
+    - uid
+  environments:
+    - uid
+  assets:
+    - uid
+  coachConfigs:
+    - coach-config
+submission:
+  stripCacheDirectories: true
+  ignoreLeaderboardCache: true
+```
+
+#### Notes
+
+- `packageContents` is an authored manifest of included logical records, not a search index.
+- `session.entries` resolve to exact ids; they do not use loose song/mode/difficulty matching.
+- Each entry chooses exactly one `environmentId`.
+- `assetSelections` is a keyed map by asset type. Current direction is **one selected asset per asset type per entry**.
+- If two consecutive entries reference the same `environmentId` or asset ids, runtime may still unload/reload them at the transition boundary.
+- Total runtime should still be derived from referenced media/song durations rather than stored as a manual authoritative duration field.
 
 ### `songs/<song-id>.yaml`
 
-Owns reusable music/media identity, for example:
+#### Owns
 
-- `songId`
-- `songName`
-- artist/credits/licensing metadata
-- audio/media references
-- duration
-- tempo map / beat grid authority
-- tags/metadata
+- reusable song identity
+- music/timing authority
+- song-level credits and licensing metadata
+- references to audio and other song-local playback media
 
-Must not own athlete/device-specific timing offsets.
+#### Must not own
+
+- gameplay mode definitions
+- chart event payloads
+- athlete/device calibration offsets
+- discovery/catalog state
+
+#### Canonical field direction
+
+```yaml
+schemaId: aerobeat.song.v1
+schemaVersion: 1
+recordVersion: 1
+songId: uid
+songName: string
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-25T19:00:00Z
+updatedAt: 2026-04-25T19:00:00Z
+artist:
+  displayName: string
+credits:
+  composer: string
+  publisher: string
+licensing:
+  licenseType: string
+  usageRights: []
+audio:
+  filePath: media/audio/song.ogg
+  durationMs: 123456
+  previewStartMs: 30000
+timing:
+  bpm: 128
+  beatGrid:
+    resolution: 16
+    anchors: []
+metadata:
+  explicit: false
+  language: en
+tags:
+  - boxing
+  - cardio
+```
 
 ### `routines/<routine-id>.yaml`
 
-Owns one song interpreted through one gameplay mode, for example:
+#### Owns
 
-- `routineId`
-- `routineName`
-- `songId`
-- `mode`
-- `authorId`
-- `authorName`
-- `charts` as exact chart UIDs
+- one song interpreted through one gameplay mode
+- routine identity and authorship
+- references to its chart ids
 
-`Routine` is intentionally lean.
+#### Must not own
+
+- workout sequencing
+- environment/asset selections for a workout entry
+- score cache/discoverability state
+
+#### Canonical field direction
+
+```yaml
+schemaId: aerobeat.routine.v1
+schemaVersion: 1
+recordVersion: 1
+routineId: uid
+routineName: string
+songId: uid
+mode: boxing
+authorId: uid
+authorName: string
+chartIds:
+  - uid
+tags:
+  - beginner-friendly
+```
 
 ### `charts/<chart-id>.yaml`
 
-Owns one concrete playable difficulty slice, for example:
+#### Owns
 
-- `chartId`
-- `chartName`
-- `routineId`
-- difficulty
-- interaction-family compatibility fields where needed
-- the authored timed event payload
+- one exact playable difficulty slice
+- chart-to-routine linkage
+- chart-local event payload and compatibility declarations
 
-Mode-global tuning such as hit windows should not be duplicated into each chart file.
+#### Must not own
 
-## `workouts.db` responsibilities
+- discoverability/catalog state
+- workout-level environment/asset selections
+- mode-global tuning better owned by feature/runtime rules
 
-`workouts.db` should be the runtime-searchable index of installed workouts.
+#### Canonical field direction
 
-It is **not** the canonical authored source of truth. It exists so Godot can efficiently discover, filter, and browse installed content without reparsing every package YAML on each browse pass.
+```yaml
+schemaId: aerobeat.chart.boxing.v1
+schemaVersion: 1
+recordVersion: 2
+chartId: uid
+chartName: string
+routineId: uid
+songId: uid
+mode: boxing
+difficulty: medium
+interactionFamily: gesture_2d
+supportedInputProfiles:
+  - mediapipe_camera
+validatedInputProfiles:
+  - mediapipe_camera
+timing:
+  resolution: 16
+presentationHints:
+  preferredViews:
+    - portal
+scoringHints:
+  comboModel: standard
+events: []
+```
 
-### `workouts.db` should likely store
+### `coaches/coach-config.yaml`
 
-- the installed workout id
-- the path to `workout.yaml`
-- search/display metadata copied or denormalized from `workout.yaml`
-- tags and filterable facets
-- install/update timestamps
-- version metadata needed for compatibility checks or refresh logic
-- package presence/install-state information
+There is exactly one coach-config YAML per workout package.
 
-### Candidate search fields
+It may describe one or more featured coaches, but the package owns only one workout-level coaching config domain.
 
-The exact schema still needs discussion, but likely candidates include:
+#### Owns
+
+- workout-level coach configuration
+- featured coach roster used by the package
+- media/overlay references for coaching moments
+- package-local mappings from workout/chart moments to coaching assets
+
+#### Must not own
+
+- discoverability/catalog state
+- player-specific preferences
+- reusable cross-package inheritance rules
+
+#### Canonical field direction
+
+```yaml
+schemaId: aerobeat.coach-config.v1
+schemaVersion: 1
+recordVersion: 1
+coachConfigId: coach-config
+coachConfigName: string
+defaultCoachId: uid
+featuredCoaches:
+  - coachId: uid
+    coachName: string
+    avatarAssetId: uid
+    voiceAssetId: uid
+    introVideoPath: media/coaching/coach-a-intro.mp4
+overlays:
+  - overlayId: uid
+    trigger:
+      chartId: uid
+      eventKey: intro
+    coachId: uid
+    mediaType: video
+    path: media/coaching/coach-a-cue.mp4
+```
+
+### `environments/<environment-id>.yaml`
+
+#### Owns
+
+- package-local environment identity
+- environment scene/art/lighting references
+- authored environment metadata needed to load the environment in playback
+
+#### Must not own
+
+- workout entry order
+- chart content
+- special first-party-only semantics
+
+#### Canonical field direction
+
+```yaml
+schemaId: aerobeat.environment.v1
+schemaVersion: 1
+recordVersion: 1
+environmentId: uid
+environmentName: string
+scenePath: media/scenes/neon-gym.tscn
+lightingProfile: neon-night
+fogProfile: light-haze
+tags:
+  - cyber
+  - studio
+```
+
+### `assets/<asset-id>.yaml`
+
+Assets are reusable package-local records for typed runtime-presented content such as gloves, targets, obstacles, trails, coach avatar resources, or other supported asset families.
+
+#### Owns
+
+- asset identity and asset type
+- package-local resource references
+- metadata needed to bind the asset in playback
+
+#### Must not own
+
+- workout sequencing
+- discovery state
+- cross-package inheritance behavior
+
+#### Canonical field direction
+
+```yaml
+schemaId: aerobeat.asset.v1
+schemaVersion: 1
+recordVersion: 1
+assetId: uid
+assetName: string
+assetType: gloves
+resourcePath: media/assets/gloves/neon-gloves.glb
+thumbnailPath: media/art/neon-gloves-thumb.png
+metadata:
+  palette: neon-pink
+  style: arcade
+tags:
+  - neon
+```
+
+## Relationship and reference rules
+
+1. `workout.yaml` is the package root and authoritative session manifest.
+2. `session.entries[*].chartId` must reference a chart in `charts/`.
+3. Each chart must reference exactly one routine in `routines/`.
+4. Each routine must reference exactly one song in `songs/`.
+5. Each session entry must choose exactly one environment id.
+6. Each session entry may choose zero or one asset id for each supported asset type; it must not choose multiple assets for the same asset type in the same entry.
+7. The single coach-config file may define multiple coaches and overlays referenced by session entries.
+8. Package-local references should remain package-local for v1 self-contained validation.
+9. Alternate versions of content are created by copying/forking package contents into a new package revision rather than layering patches across packages.
+
+## What intentionally stays out of package YAML
+
+The following are intentionally **not** authored into the package YAML contracts:
+
+- search ranking
+- catalog moderation state
+- install state
+- download state
+- local favorite/bookmark state
+- player progression
+- player calibration or device offsets
+- authoritative leaderboard submissions/history
+- player-wide stats caches
+- cross-package inheritance or patch instructions
+
+These belong in runtime profile state, service state, moderation/catalog systems, or disposable local caches.
+
+## Canonical SQLite direction
+
+AeroBeat currently needs two SQLite shapes:
+
+1. a root `workouts.db` catalog/index database
+2. a package-local `leaderboard-cache.db` database
+
+## `workouts.db` v1 direction
+
+`workouts.db` lives at the workouts root and indexes installed packages for browse/search/filter/discovery.
+
+### Responsibilities
+
+- discover installed workouts quickly
+- expose denormalized browse metadata without reparsing all YAML files
+- track install/update/indexing state
+- support local client browse/filter views
+- optionally support downloaded catalog snapshots later using similar table shapes
+
+### Must not become
+
+- the only source of package truth
+- the place where authored chart/song/workout semantics originate
+- the authoritative leaderboard store
+
+### Minimum v1 tables
+
+#### `workouts`
+
+One row per installed workout package.
+
+Suggested columns:
+
+- `workout_id TEXT PRIMARY KEY`
+- `workout_name TEXT NOT NULL`
+- `description TEXT`
+- `package_version TEXT NOT NULL`
+- `schema_version INTEGER NOT NULL`
+- `created_by_tool TEXT`
+- `created_by_tool_version TEXT`
+- `coach_config_id TEXT`
+- `default_coach_name TEXT`
+- `workout_yaml_path TEXT NOT NULL`
+- `package_root_path TEXT NOT NULL`
+- `cover_art_path TEXT`
+- `installed_at TEXT NOT NULL`
+- `indexed_at TEXT NOT NULL`
+- `updated_at TEXT`
+- `is_installed INTEGER NOT NULL DEFAULT 1`
+- `is_valid INTEGER NOT NULL DEFAULT 1`
+- `validation_error TEXT`
+
+#### `workout_tags`
+
+Normalized tags for filter/search.
+
+- `workout_id TEXT NOT NULL`
+- `tag TEXT NOT NULL`
+- `PRIMARY KEY (workout_id, tag)`
+
+#### `workout_modes`
+
+Summarized mode availability for browse filters.
+
+- `workout_id TEXT NOT NULL`
+- `mode TEXT NOT NULL`
+- `PRIMARY KEY (workout_id, mode)`
+
+#### `workout_difficulties`
+
+Summarized difficulty availability for browse filters.
+
+- `workout_id TEXT NOT NULL`
+- `difficulty TEXT NOT NULL`
+- `PRIMARY KEY (workout_id, difficulty)`
+
+#### `workout_songs`
+
+A lightweight denormalized song summary per installed workout.
+
+- `workout_id TEXT NOT NULL`
+- `song_id TEXT NOT NULL`
+- `song_name TEXT NOT NULL`
+- `artist_name TEXT`
+- `duration_ms INTEGER`
+- `PRIMARY KEY (workout_id, song_id)`
+
+#### `workout_assets`
+
+Optional but useful summary table for moderation/debug/search by asset usage.
+
+- `workout_id TEXT NOT NULL`
+- `entry_id TEXT NOT NULL`
+- `asset_type TEXT NOT NULL`
+- `asset_id TEXT NOT NULL`
+- `PRIMARY KEY (workout_id, entry_id, asset_type)`
+
+### Indexing notes
+
+- `workouts.db` stores duplicated browse metadata on purpose.
+- If YAML and `workouts.db` disagree, YAML plus package validation is the truth source; the index should be rebuilt.
+- A workout may remain locally installed/playable even if future remote catalog state would make it undiscoverable online.
+
+## Per-workout `leaderboard-cache.db` v1 direction
+
+Each installed workout package may have a local leaderboard cache at `cache/leaderboard-cache.db`.
+
+### Responsibilities
+
+- cache recent leaderboard snapshots for that workout
+- support local browsing when the player opens that workout’s leaderboard UI
+- keep last-sync metadata for refresh logic
+
+### Non-goals
+
+- no authority over score validity
+- no upload/submission ownership
+- no player-wide stats authority
+- no requirement to ship with or survive package submission/export
+
+### Minimum v1 tables
+
+#### `cache_meta`
+
+- `cache_key TEXT PRIMARY KEY`
+- `cache_value TEXT NOT NULL`
+
+Expected keys include:
 
 - `workout_id`
-- `workout_name`
-- `description`
-- `coach_id`
-- `coach_name`
-- `background_scene_id`
-- `package_version`
-- `schema_version`
-- `creation_tool_version`
-- `workout_yaml_path`
-- tag summaries or normalized tag rows
-- mode summaries
-- difficulty summaries
-- install timestamps / updated timestamps
+- `source_region`
+- `last_synced_at`
+- `etag`
+- `api_schema_version`
 
-A likely future split is:
+#### `leaderboard_entries`
 
-- one main `workouts` table
-- supporting normalized tables for tags, modes, songs, and charts when richer search becomes necessary
+- `leaderboard_scope TEXT NOT NULL`
+- `rank INTEGER NOT NULL`
+- `score_id TEXT NOT NULL`
+- `player_id TEXT NOT NULL`
+- `player_name TEXT NOT NULL`
+- `score INTEGER NOT NULL`
+- `performance_time_ms INTEGER`
+- `achieved_at TEXT NOT NULL`
+- `difficulty TEXT`
+- `mode TEXT`
+- `input_profile TEXT`
+- `is_local_player INTEGER NOT NULL DEFAULT 0`
+- `PRIMARY KEY (leaderboard_scope, rank, score_id)`
 
-## Godot discovery flow
+#### `leaderboard_sync_runs`
 
-The current intended discovery model is:
+- `sync_run_id TEXT PRIMARY KEY`
+- `requested_at TEXT NOT NULL`
+- `completed_at TEXT`
+- `status TEXT NOT NULL`
+- `response_code INTEGER`
+- `error_text TEXT`
 
-1. Godot opens `workouts.db`
-2. Godot queries installed workouts for browse/search/filter views
-3. Godot resolves a selected workout entry to its `workout.yaml` path
-4. Godot loads the package folder and referenced YAML/media files from disk
-5. validation/loading resolves the Workout -> Chart -> Routine -> Song relationships for play
+### Cache rules
 
-This keeps browse/search fast while preserving YAML package transparency.
+1. Deleting `leaderboard-cache.db` must be safe.
+2. Rebuilding it from server data must be safe.
+3. Package submission/export must ignore it or strip it.
+4. Validation should fail only if a supposedly submission-clean payload incorrectly includes cache data where it should not.
+5. Runtime may create the cache lazily the first time leaderboard data is requested.
 
-## Install/update/remove flow
+## Godot/runtime discovery flow
 
-A likely package lifecycle is:
+1. Runtime opens `workouts.db`.
+2. Browse/search/filter queries use index tables, not raw YAML parsing.
+3. Selecting a workout resolves `workout_yaml_path` and `package_root_path`.
+4. Runtime loads `workout.yaml`, then referenced songs/routines/charts/coaches/environments/assets.
+5. Runtime validates reference integrity and package-local resources before play.
+6. Optional leaderboard UI reads or refreshes `cache/leaderboard-cache.db` for that installed workout.
+
+## Install, update, remove, and submission flow
 
 ### Install
 
-1. copy a self-contained workout package folder into `aerobeat-workouts/workouts/<workout-id>/`
-2. validate the package structure and YAML files
-3. update or insert the discovery metadata into `workouts.db`
+1. Copy the self-contained package into `workouts/<workout-id>/`.
+2. Validate folder shape, YAML parsing, ids, and resource references.
+3. Rebuild that package’s index rows in `workouts.db`.
+4. Create no leaderboard cache until needed, or initialize an empty one lazily.
 
 ### Update
 
-1. replace or patch the package folder contents
-2. revalidate the package
-3. refresh the indexed search metadata in `workouts.db`
+1. Replace package contents with the new package revision.
+2. Revalidate.
+3. Refresh `workouts.db` rows.
+4. Preserve or invalidate `leaderboard-cache.db` according to cache version/source rules; it remains disposable either way.
 
 ### Remove
 
-1. delete the package folder
-2. remove its index rows from `workouts.db`
+1. Delete the package folder.
+2. Delete its `workouts.db` rows.
+3. Discard any package-local cache data with it.
 
-## Local installed index vs online catalog snapshot
+### Submission/export
 
-There are two related SQLite ideas in play:
-
-### 1. Local installed index
-
-This is the primary day-one use of `workouts.db`.
-It describes what is actually installed on the current machine.
-
-### 2. Downloaded online catalog snapshot
-
-AeroBeat may also use the same general SQLite idea as a low-scope online catalog approach:
-
-- download a SQLite snapshot from the server/cloud
-- query it locally for browsing/search/filtering
-- if a workout is not yet installed, download the package before play
-
-This would provide a simpler path than building a full query API immediately.
-
-### Why this is attractive
-
-- simple to build
-- simple local query model
-- easy offline-ish browsing after sync
-- avoids prematurely building a more complex backend
-
-### Risks / open concerns
-
-- snapshot sync/update semantics still need design
-- integrity/versioning/tamper concerns need explicit handling
-- large catalogs may eventually outgrow the snapshot model
-- personalized/social/live features may still want a more traditional backend later
-
-For now, the snapshot approach looks like a valid low-scope candidate rather than a final forever-architecture commitment.
+1. Validate the authored package payload only.
+2. Ignore or strip `cache/` and any disposable local runtime artifacts.
+3. Reject packages that rely on non-package-local dependencies for v1 self-contained validation.
+4. Submit only the canonical authored content/resources needed to reconstruct the workout package.
 
 ## Validation direction
 
-The package layout implies layered validation:
-
-### Package-level validation
+### Package validation
 
 Check:
 
-- folder shape
-- required files exist
-- `workout.yaml` exists and is parseable
-- referenced `songs/`, `routines/`, `charts/`, and media files exist
-- copied artifacts are present and paths stay package-local where required
-
-### Content-level validation
-
-Check:
-
-- `Workout` references valid chart UIDs
-- `Chart` references valid routine UIDs
-- `Routine` references valid song UIDs
-- mode/difficulty/content rules are consistent
+- required folders/files exist
+- `workout.yaml` exists and parses
+- exactly one coach-config YAML exists under `coaches/`
+- referenced songs/routines/charts/environments/assets exist
+- package-local media paths exist
+- ids are unique and references are coherent
+- each session entry has one environment and at most one asset per asset type
 
 ### Index validation
 
 Check:
 
-- `workouts.db` reflects current installed packages
-- indexed metadata stays in sync with the package YAML files
+- `workouts.db` rows reflect current installed packages
+- denormalized metadata matches current YAML-derived values
+- invalid packages are flagged rather than silently indexed as healthy
 
-## Open questions
+### Submission validation
 
-The following still need definition before implementation:
+Check:
 
-1. What exact fields are required vs optional in each YAML file?
-2. What exact folder paths should media references use inside the package?
-3. Should `workout.yaml` embed lightweight summaries of songs/charts for convenience, or should it stay reference-only?
-4. What exact SQLite schema should `workouts.db` use on day one?
-5. How should install/update/remove handle partially invalid packages?
-6. How should the downloaded online-catalog SQLite snapshot be versioned and refreshed?
-7. How much metadata should be duplicated into `workouts.db` versus resolved lazily from YAML when opening details?
+- only authored package content is included
+- disposable cache artifacts are omitted
+- leaderboard cache is ignored/removed
+- no cross-package inheritance/patch dependency is required
+
+## Remaining deferred questions
+
+These are now explicitly deferred rather than undefined:
+
+1. the exact enum list for supported asset types in v1
+2. the exact environment rendering contract beyond package-local identity/resource fields
+3. how a future downloaded online catalog snapshot should differ from the local installed index, if at all
+4. what future moderation/ranking tables should be added to `workouts.db`
+5. whether future official content distribution wants signed package metadata beyond the current schema/package/tool version fields
 
 ## Current recommendation
 
-For the first implementation-oriented storage direction, AeroBeat should proceed assuming:
+For the first implementation-oriented package/storage pass, AeroBeat should proceed assuming:
 
-- YAML is the durable authored package format
-- packages are self-contained and copied rather than externally referenced
-- package data is split across `workout.yaml`, `songs/`, `routines/`, and `charts/`
-- `workout.yaml` combines workout metadata and manifest/version metadata
-- `workouts.db` is the installed-workout discovery index
-- a downloadable SQLite catalog snapshot is a viable low-scope candidate for online browsing later
+- authored truth lives in package YAML
+- discoverability lives in `workouts.db` only
+- leaderboard browsing cache lives in package-local `leaderboard-cache.db` only
+- packages are self-contained and duplication/fork-based rather than inheritance-based
+- `coaches/`, `environments/`, and `assets/` are first-class content domains
+- each session entry resolves exact chart/routine/song ids plus one environment and one asset per asset type
+- runtime may still do per-entry unload/reload even when ids repeat
+- first-party and community packages share the same conceptual system
 
-That is the smallest clean storage/discovery shape that matches the decisions made so far.
+That is the cleanest v1 contract that matches the current AeroBeat decisions and is concrete enough to guide implementation.

@@ -267,29 +267,34 @@ That yields small, reviewable, reusable units.
 
 ## Content package boundary
 
-AeroBeat packages authored content as a **content package** with one manifest and one or more typed records/resources inside it.
+AeroBeat packages authored content as a **self-contained workout package** with one root `workout.yaml`, typed YAML records in domain folders, package-local resources, and optional disposable local caches.
 
-The package boundary is the unit of distribution, import, indexing, and compatibility review.
-The individual `Song`, `Routine`, `Chart`, and `Workout` records inside that package remain the unit of authoring, validation, and runtime selection.
+The package boundary is the unit of distribution, import, install, indexing, validation, and compatibility review.
+The individual `Song`, `Routine`, `Chart`, `Workout`, `Coach Config`, `Environment`, and `Asset` records inside that package remain the unit of authoring, validation, and runtime selection.
 
 ### Package responsibilities
 
 A content package owns:
 
-- package id
+- package id / workout id
 - package version
 - package-level author / attribution / licensing metadata
-- package manifest entries for contained songs, routines, charts, workouts, and media resources
-- references to the binary resources required by those records, such as audio, thumbnails, coaching clips, and preview art
-- package-level compatibility declarations, such as minimum supported schema family or required feature lanes
+- typed records for contained songs, routines, charts, workout session data, coach config, environments, and assets
+- references to the binary resources required by those records, such as audio, thumbnails, coaching clips, preview art, scenes, and runtime assets
+- package-level schema/tool version metadata needed for parsing and migration
 
 ### Package rules
 
-1. A package may contain one or more songs.
-2. A routine must reference a song that exists in the same package or in a separately declared dependency package.
-3. A chart must reference exactly one routine.
-4. A workout may reference routines or exact charts, but a workout step must declare which resolution rule it is using.
-5. Binary media stays as referenced resources; the canonical authored contracts stay in structured content records.
+1. A workout package is self-contained for v1 validation and playback.
+2. A package may contain one or more songs.
+3. A routine must reference a song that exists in the same package.
+4. A chart must reference exactly one routine in the same package.
+5. A workout entry resolves to exact ids rather than loose lookup selectors.
+6. Each workout package contains exactly one `coaches/` folder with exactly one coach-config YAML file, though that file may describe multiple featured coaches.
+7. `environments/` and `assets/` are distinct first-class content folders with their own YAML records.
+8. Each workout entry chooses exactly one environment and at most one asset per asset type.
+9. Binary media stays as referenced resources inside the package; the canonical authored contracts stay in structured content records.
+10. Alternate versions are created by duplication/forking, not inheritance or patch layering across workout packages.
 
 ## Authored data contract boundaries
 
