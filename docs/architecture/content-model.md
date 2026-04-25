@@ -134,12 +134,12 @@ It owns fields such as:
 - `workoutId`
 - `workoutName`
 - `description`
-- `coachId`
-- `coachName`
-- workout-level background scene selection
+- `coachConfigId` referencing the package’s single coach-config domain
 - pre-workout / warmup media
 - post-workout / cooldown media
 - ordered list of exact chart UID selections
+- per-entry environment selection
+- per-entry asset selections with at most one asset per supported asset type
 - workout-owned coaching overlays keyed to the referenced song/chart UIDs used in that workout
 
 Workout runtime length is derived from the referenced content rather than stored as a separate authored duration field.
@@ -516,11 +516,6 @@ Concrete tool products live in `aerobeat-tool-*` repos. A chart editor, workout 
     "mirrorCamera": true
   },
   "scoring": {
-    "hitWindowMs": {
-      "perfect": 45,
-      "good": 90,
-      "ok": 140
-    },
     "comboModel": "standard"
   },
   "events": [],

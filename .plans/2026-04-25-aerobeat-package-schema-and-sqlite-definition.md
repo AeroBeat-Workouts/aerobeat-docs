@@ -116,14 +116,16 @@ This work belongs in `aerobeat-docs` because the docs repo is the current review
 **Prompt:** Independently review the updated docs to confirm they reflect the actual decisions Derrick and Chip made, that no older wording contradicts the new package-system model, and that the remaining open questions are explicitly identified instead of hidden.
 
 **Folders Created/Deleted/Modified:**
-- none yet
+- `docs/architecture/`
+- `.plans/`
 
 **Files Created/Deleted/Modified:**
-- none yet
+- `docs/architecture/content-model.md`
+- this plan file
 
-**Status:** ⏳ Pending  
+**Status:** ✅ QA complete / ⏳ auditor pending  
 
-**Results:** Left intentionally for the separate QA/audit pass.
+**Results:** QA reviewed `REF-02`, `REF-03`, the glossary, this plan, and commit `9353c21d93135afdacbd89c9039e5a9f85227398`. Two clear contract-weakening issues were fixed in a follow-up QA patch: (1) `REF-02` still described `Workout` ownership using older `coachId` / `coachName` / workout-level background-scene wording instead of the now-locked single `coachConfigId` plus per-entry environment/asset selection model, and (2) the minimal shared chart-envelope example still included `hitWindowMs` even though the doc says mode-global hit windows should stay out of durable chart content. After the patch, the main remaining QA note for the independent auditor is to truth-check whether the intentionally loose areas (for example the exact shared field set on every YAML record and how much coach/avatar media belongs under generic `assets/` versus coach-config references) match the real decision thread, since those are framed as direction rather than strict finalized schema.
 
 ---
 
