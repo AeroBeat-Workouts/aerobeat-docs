@@ -90,7 +90,7 @@ They do **not** own:
 
 `workouts.db` exists to power local browsing, filtering, moderation surfaces, and install-state lookups.
 
-It is derived from installed packages and may also be used for downloaded catalog snapshots, but it is not the authored truth.
+It is derived from installed packages, is not the authored truth, and should remain separate from any future downloaded online catalog snapshot DB.
 
 ### 3. `leaderboard-cache.db` = local disposable score-browsing cache
 
