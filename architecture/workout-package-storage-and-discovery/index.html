@@ -5773,15 +5773,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#workoutsdb-v1-direction" class="md-nav__link">
+  <a href="#shared-workout-catalog-schema-v1-direction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        workouts.db v1 direction
+        Shared workout catalog schema v1 direction
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="workouts.db v1 direction">
+    <nav class="md-nav" aria-label="Shared workout catalog schema v1 direction">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5807,15 +5807,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#minimum-v1-tables" class="md-nav__link">
+  <a href="#shared-core-v1-tables" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Minimum v1 tables
+        Shared core v1 tables
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Minimum v1 tables">
+    <nav class="md-nav" aria-label="Shared core v1 tables">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5874,10 +5874,60 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#workout_assets" class="md-nav__link">
+  <a href="#workout_coaches" class="md-nav__link">
     <span class="md-ellipsis">
       
-        workout_assets
+        workout_coaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workout_genres" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        workout_genres
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#companion-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Companion tables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Companion tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workout_local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        workout_local
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workout_remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        workout_remote
       
     </span>
   </a>
@@ -5901,10 +5951,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#locked-online-catalog-direction" class="md-nav__link">
+  <a href="#local-vs-remote-file-layout-direction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Locked online catalog direction
+        Local vs remote file layout direction
       
     </span>
   </a>
@@ -5951,7 +6001,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#minimum-v1-tables_1" class="md-nav__link">
+  <a href="#minimum-v1-tables" class="md-nav__link">
     <span class="md-ellipsis">
       
         Minimum v1 tables
@@ -6273,7 +6323,7 @@
 </ul>
 <h3 id="2-workoutsdb-installdiscovery-catalog-index">2. <code>workouts.db</code> = install/discovery catalog index<a class="headerlink" href="#2-workoutsdb-installdiscovery-catalog-index" title="Permanent link">&para;</a></h3>
 <p><code>workouts.db</code> exists to power local browsing, filtering, moderation surfaces, and install-state lookups.</p>
-<p>It is derived from installed packages, is not the authored truth, and should remain separate from any future downloaded online catalog snapshot DB.</p>
+<p>It is derived from package/authored data, is not the authored truth, and is the local installed-workout instance of AeroBeat's shared catalog schema. A future remote catalog snapshot should reuse the same core tables rather than inventing a divergent browse contract.</p>
 <h3 id="3-leaderboard-cachedb-local-disposable-score-browsing-cache">3. <code>leaderboard-cache.db</code> = local disposable score-browsing cache<a class="headerlink" href="#3-leaderboard-cachedb-local-disposable-score-browsing-cache" title="Permanent link">&para;</a></h3>
 <p>The leaderboard cache database is strictly a local convenience cache for viewing leaderboard snapshots for a specific workout.</p>
 <p>It is:</p>
@@ -6675,31 +6725,39 @@
 </ul>
 <p>These belong in runtime profile state, service state, moderation/catalog systems, disposable local caches, or a later distribution-hardening layer.</p>
 <h2 id="canonical-sqlite-direction">Canonical SQLite direction<a class="headerlink" href="#canonical-sqlite-direction" title="Permanent link">&para;</a></h2>
-<p>AeroBeat currently needs two SQLite shapes:</p>
+<p>AeroBeat currently needs two SQLite schema families:</p>
 <ol>
-<li>a root <code>workouts.db</code> catalog/index database</li>
+<li>a shared workout catalog schema used by both local and remote browse databases</li>
 <li>a package-local <code>leaderboard-cache.db</code> database</li>
 </ol>
-<h2 id="workoutsdb-v1-direction"><code>workouts.db</code> v1 direction<a class="headerlink" href="#workoutsdb-v1-direction" title="Permanent link">&para;</a></h2>
-<p><code>workouts.db</code> lives at the workouts root and indexes installed packages for browse/search/filter/discovery.</p>
+<h2 id="shared-workout-catalog-schema-v1-direction">Shared workout catalog schema v1 direction<a class="headerlink" href="#shared-workout-catalog-schema-v1-direction" title="Permanent link">&para;</a></h2>
+<p>AeroBeat's browse/discovery model is now locked to a <strong>shared core schema</strong> across local and remote catalog databases.</p>
+<p>In plain language:</p>
+<ul>
+<li>local <code>workouts.db</code> and a future remote catalog snapshot may still be different database files</li>
+<li>but they should speak the same core browse language</li>
+<li>local-only install/path/validation state belongs in <code>workout_local</code></li>
+<li>remote-only preview/distribution browse state belongs in <code>workout_remote</code></li>
+</ul>
+<p>That keeps authored truth in YAML while avoiding two different catalog contracts for the same browse concepts.</p>
 <h3 id="responsibilities">Responsibilities<a class="headerlink" href="#responsibilities" title="Permanent link">&para;</a></h3>
 <ul>
-<li>discover installed workouts quickly</li>
-<li>expose denormalized browse metadata without reparsing all YAML files</li>
-<li>track install/update/indexing state</li>
-<li>support local client browse/filter views</li>
-<li>feed the local installed-workout browse surface only</li>
+<li>discover workouts quickly without reparsing all YAML files</li>
+<li>expose denormalized browse metadata for search/filter surfaces</li>
+<li>keep shared browse concepts in shared core tables</li>
+<li>attach local-only install/indexing state through <code>workout_local</code></li>
+<li>attach remote-only preview/distribution state through <code>workout_remote</code></li>
 </ul>
 <h3 id="must-not-become">Must not become<a class="headerlink" href="#must-not-become" title="Permanent link">&para;</a></h3>
 <ul>
 <li>the only source of package truth</li>
 <li>the place where authored chart/song/workout semantics originate</li>
 <li>the authoritative leaderboard store</li>
-<li>the exact schema for a downloaded online catalog snapshot</li>
+<li>a validator that invents missing authored metadata</li>
 </ul>
-<h3 id="minimum-v1-tables">Minimum v1 tables<a class="headerlink" href="#minimum-v1-tables" title="Permanent link">&para;</a></h3>
+<h3 id="shared-core-v1-tables">Shared core v1 tables<a class="headerlink" href="#shared-core-v1-tables" title="Permanent link">&para;</a></h3>
 <h4 id="workouts"><code>workouts</code><a class="headerlink" href="#workouts" title="Permanent link">&para;</a></h4>
-<p>One row per installed workout package.</p>
+<p>One row per workout known to the catalog.</p>
 <p>Suggested columns:</p>
 <ul>
 <li><code>workout_id TEXT PRIMARY KEY</code></li>
@@ -6710,16 +6768,13 @@
 <li><code>created_by_tool TEXT</code></li>
 <li><code>created_by_tool_version TEXT</code></li>
 <li><code>coach_config_id TEXT</code></li>
-<li><code>default_coach_name TEXT</code></li>
-<li><code>workout_yaml_path TEXT NOT NULL</code></li>
-<li><code>package_root_path TEXT NOT NULL</code></li>
-<li><code>cover_art_path TEXT</code></li>
-<li><code>installed_at TEXT NOT NULL</code></li>
-<li><code>indexed_at TEXT NOT NULL</code></li>
-<li><code>updated_at TEXT</code></li>
-<li><code>is_installed INTEGER NOT NULL DEFAULT 1</code></li>
-<li><code>is_valid INTEGER NOT NULL DEFAULT 1</code></li>
-<li><code>validation_error TEXT</code></li>
+<li><code>duration_ms INTEGER</code></li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li><code>duration_ms</code> is a shared browse field on the workout itself.</li>
+<li><code>default_coach_name</code> is removed from the shared contract.</li>
+<li>shared-core cover art path fields are removed; remote preview image handling belongs in <code>workout_remote</code>.</li>
 </ul>
 <h4 id="workout_tags"><code>workout_tags</code><a class="headerlink" href="#workout_tags" title="Permanent link">&para;</a></h4>
 <p>Normalized tags for filter/search.</p>
@@ -6742,8 +6797,15 @@
 <li><code>difficulty TEXT NOT NULL</code></li>
 <li><code>PRIMARY KEY (workout_id, difficulty)</code></li>
 </ul>
+<p>Locked values:</p>
+<ul>
+<li><code>easy</code></li>
+<li><code>medium</code></li>
+<li><code>hard</code></li>
+<li><code>pro</code></li>
+</ul>
 <h4 id="workout_songs"><code>workout_songs</code><a class="headerlink" href="#workout_songs" title="Permanent link">&para;</a></h4>
-<p>A lightweight denormalized song summary per installed workout.</p>
+<p>A lightweight denormalized song summary per workout.</p>
 <ul>
 <li><code>workout_id TEXT NOT NULL</code></li>
 <li><code>song_id TEXT NOT NULL</code></li>
@@ -6752,37 +6814,83 @@
 <li><code>duration_ms INTEGER</code></li>
 <li><code>PRIMARY KEY (workout_id, song_id)</code></li>
 </ul>
-<h4 id="workout_assets"><code>workout_assets</code><a class="headerlink" href="#workout_assets" title="Permanent link">&para;</a></h4>
-<p>Optional but useful summary table for moderation/debug/search by asset usage.</p>
+<h4 id="workout_coaches"><code>workout_coaches</code><a class="headerlink" href="#workout_coaches" title="Permanent link">&para;</a></h4>
+<p>Summarized coach roster rows derived from <code>coaches/coach-config.yaml</code>.</p>
 <ul>
 <li><code>workout_id TEXT NOT NULL</code></li>
-<li><code>entry_id TEXT NOT NULL</code></li>
-<li><code>asset_type TEXT NOT NULL</code></li>
-<li><code>asset_id TEXT NOT NULL</code></li>
-<li><code>PRIMARY KEY (workout_id, entry_id, asset_type)</code></li>
+<li><code>coach_id TEXT NOT NULL</code></li>
+<li><code>coach_name TEXT NOT NULL</code></li>
+<li><code>PRIMARY KEY (workout_id, coach_id)</code></li>
+</ul>
+<p>Rule:</p>
+<ul>
+<li>if coaching is disabled, <code>workout_coaches</code> must contain zero rows for that workout</li>
+</ul>
+<h4 id="workout_genres"><code>workout_genres</code><a class="headerlink" href="#workout_genres" title="Permanent link">&para;</a></h4>
+<p>Browse genres derived from the workout's referenced songs.</p>
+<ul>
+<li><code>workout_id TEXT NOT NULL</code></li>
+<li><code>genre TEXT NOT NULL</code></li>
+<li><code>PRIMARY KEY (workout_id, genre)</code></li>
+</ul>
+<p>Locked values:</p>
+<ul>
+<li><code>pop</code>, <code>rock</code>, <code>hip_hop</code>, <code>r_and_b</code>, <code>edm</code>, <code>country</code>, <code>latin</code>, <code>jazz</code>, <code>blues</code>, <code>funk</code>, <code>soul</code>, <code>reggae</code>, <code>folk</code>, <code>classical</code>, <code>metal</code>, <code>punk</code>, <code>world</code>, <code>soundtrack</code>, <code>holiday</code>, <code>game</code>, <code>chiptune</code>, <code>anime</code></li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>genres come from authored song metadata; validators/indexers must not invent them</li>
+<li>a workout's browse genres are the union of the genres on its referenced songs</li>
+</ul>
+<h3 id="companion-tables">Companion tables<a class="headerlink" href="#companion-tables" title="Permanent link">&para;</a></h3>
+<h4 id="workout_local"><code>workout_local</code><a class="headerlink" href="#workout_local" title="Permanent link">&para;</a></h4>
+<p>Local installed-workout state that should not pollute the shared core tables.</p>
+<p>Suggested columns:</p>
+<ul>
+<li><code>workout_id TEXT PRIMARY KEY</code></li>
+<li><code>workout_yaml_path TEXT NOT NULL</code></li>
+<li><code>package_root_path TEXT NOT NULL</code></li>
+<li><code>installed_at TEXT NOT NULL</code></li>
+<li><code>indexed_at TEXT NOT NULL</code></li>
+<li><code>updated_at TEXT</code></li>
+<li><code>is_installed INTEGER NOT NULL DEFAULT 1</code></li>
+<li><code>is_valid INTEGER NOT NULL DEFAULT 1</code></li>
+<li><code>validation_error TEXT</code></li>
+</ul>
+<h4 id="workout_remote"><code>workout_remote</code><a class="headerlink" href="#workout_remote" title="Permanent link">&para;</a></h4>
+<p>Remote/distribution browse state that should not pollute the shared core tables.</p>
+<p>Suggested columns:</p>
+<ul>
+<li><code>workout_id TEXT PRIMARY KEY</code></li>
+<li><code>preview_image_strategy TEXT NOT NULL</code></li>
+<li><code>preview_image_url TEXT</code></li>
+</ul>
+<p>Locked <code>preview_image_strategy</code> values:</p>
+<ul>
+<li><code>direct_url</code></li>
+<li><code>api_resolve</code></li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li><code>direct_url</code> requires <code>preview_image_url</code></li>
+<li><code>api_resolve</code> may leave <code>preview_image_url</code> null</li>
 </ul>
 <h3 id="indexing-notes">Indexing notes<a class="headerlink" href="#indexing-notes" title="Permanent link">&para;</a></h3>
 <ul>
-<li><code>workouts.db</code> stores duplicated browse metadata on purpose.</li>
-<li>If YAML and <code>workouts.db</code> disagree, YAML plus package validation is the truth source; the index should be rebuilt.</li>
-<li>A workout may remain locally installed/playable even if future remote catalog state would make it undiscoverable online.</li>
+<li>catalog databases store duplicated browse metadata on purpose</li>
+<li>if YAML and catalog rows disagree, YAML plus package validation is the truth source; the catalog should be rebuilt/refreshed</li>
+<li>a workout may remain locally installed/playable even if future remote catalog state would make it undiscoverable online</li>
+<li>removing <code>workout_assets</code> from the core contract is intentional; asset usage is not part of the approved shared browse schema</li>
 </ul>
-<h3 id="locked-online-catalog-direction">Locked online catalog direction<a class="headerlink" href="#locked-online-catalog-direction" title="Permanent link">&para;</a></h3>
-<p>A downloaded online catalog SQLite should <strong>intentionally diverge</strong> from local <code>workouts.db</code> rather than mirror it byte-for-byte.</p>
-<p>Why:</p>
+<h3 id="local-vs-remote-file-layout-direction">Local vs remote file layout direction<a class="headerlink" href="#local-vs-remote-file-layout-direction" title="Permanent link">&para;</a></h3>
+<p>The shared schema does <strong>not</strong> require local and remote catalogs to be the same physical file.</p>
+<p>The approved direction is:</p>
 <ul>
-<li>local <code>workouts.db</code> is about <strong>installed package state</strong>, filesystem paths, validation results, and fast local resolution into <code>workout.yaml</code></li>
-<li>an online catalog snapshot is about <strong>remote discoverability/distribution metadata</strong>, not local install state</li>
-<li>forcing both concerns into one exact schema would either pollute the local index with remote-only concerns or pollute the remote snapshot with meaningless local path/install columns</li>
+<li>local browse/install state may live in <code>workouts.db</code> using the shared core tables plus <code>workout_local</code></li>
+<li>a future downloaded or bundled remote catalog snapshot may live in a separate DB file such as <code>catalog.db</code> using the same shared core tables plus <code>workout_remote</code></li>
+<li>both sides should keep the same meanings for shared tables like <code>workouts</code>, <code>workout_tags</code>, <code>workout_modes</code>, <code>workout_difficulties</code>, <code>workout_songs</code>, <code>workout_coaches</code>, and <code>workout_genres</code></li>
 </ul>
-<p>The recommended v1 direction is:</p>
-<ul>
-<li>keep <code>workouts.db</code> as the local installed index only</li>
-<li>if/when AeroBeat ships a downloaded catalog snapshot, treat it as a sibling DB such as <code>catalog.db</code></li>
-<li>let <code>catalog.db</code> reuse the <strong>same logical browse vocabulary</strong> where helpful (<code>workouts</code>, tags, modes, difficulties, song summaries), but give it its own columns for remote concerns such as package source, download URL, file size, content hash, publication/moderation state, and remote timestamps</li>
-<li>do not require <code>workout_yaml_path</code>, <code>package_root_path</code>, <code>installed_at</code>, <code>indexed_at</code>, <code>is_installed</code>, <code>is_valid</code>, or <code>validation_error</code> in the online catalog DB</li>
-</ul>
-<p>This preserves a clean authority split: authored truth in package YAML, local discoverability in <code>workouts.db</code>, remote discoverability/distribution in a future sibling catalog DB.</p>
+<p>This preserves a clean authority split: authored truth in package YAML, shared browse vocabulary in the catalog core, local install state in <code>workout_local</code>, and remote preview/distribution state in <code>workout_remote</code>.</p>
 <h2 id="per-workout-leaderboard-cachedb-v1-direction">Per-workout <code>leaderboard-cache.db</code> v1 direction<a class="headerlink" href="#per-workout-leaderboard-cachedb-v1-direction" title="Permanent link">&para;</a></h2>
 <p>Each installed workout package may have a local leaderboard cache at <code>cache/leaderboard-cache.db</code>.</p>
 <h3 id="responsibilities_1">Responsibilities<a class="headerlink" href="#responsibilities_1" title="Permanent link">&para;</a></h3>
@@ -6798,7 +6906,7 @@
 <li>no player-wide stats authority</li>
 <li>no requirement to ship with or survive package submission/export</li>
 </ul>
-<h3 id="minimum-v1-tables_1">Minimum v1 tables<a class="headerlink" href="#minimum-v1-tables_1" title="Permanent link">&para;</a></h3>
+<h3 id="minimum-v1-tables">Minimum v1 tables<a class="headerlink" href="#minimum-v1-tables" title="Permanent link">&para;</a></h3>
 <h4 id="cache_meta"><code>cache_meta</code><a class="headerlink" href="#cache_meta" title="Permanent link">&para;</a></h4>
 <ul>
 <li><code>cache_key TEXT PRIMARY KEY</code></li>
@@ -6902,7 +7010,10 @@
 <li><code>workouts.db</code> rows reflect current installed packages</li>
 <li>denormalized metadata matches current YAML-derived values</li>
 <li>invalid packages are flagged rather than silently indexed as healthy</li>
-<li>no remote-catalog-only fields or assumptions have leaked into the local installed index contract</li>
+<li>shared core rows match YAML-derived browse metadata</li>
+<li><code>workout_local</code> owns local install/path/validation state</li>
+<li><code>workout_remote</code> owns remote preview-image strategy metadata when a remote catalog snapshot is present</li>
+<li>difficulty and genre rows stay inside the approved locked enums</li>
 </ul>
 <h3 id="submission-validation">Submission validation<a class="headerlink" href="#submission-validation" title="Permanent link">&para;</a></h3>
 <p>Check:</p>
@@ -6917,9 +7028,9 @@
 <p>These are consciously deferred rather than undefined:</p>
 <ol>
 <li>the exact environment rendering contract beyond package-local identity/resource fields</li>
-<li>the future remote catalog schema beyond the now-locked rule that it should be a sibling DB rather than an exact mirror of local <code>workouts.db</code></li>
+<li>any additional remote-only distribution tables beyond the now-locked <code>workout_remote</code> preview-image contract</li>
 <li>any package signing, trust chain, embedded signature, or distribution-integrity manifest inside authored package YAML</li>
-<li>future moderation/ranking/distribution tables for remote catalog workflows</li>
+<li>future moderation/ranking/distribution tables beyond the current shared-core-plus-companion catalog model</li>
 <li>richer asset families beyond the locked v1 <code>assetType</code> enum</li>
 </ol>
 <h2 id="example-package-and-schema-files">Example package and schema files<a class="headerlink" href="#example-package-and-schema-files" title="Permanent link">&para;</a></h2>
@@ -6936,8 +7047,8 @@
 <p>For the first implementation-oriented package/storage pass, AeroBeat should proceed assuming:</p>
 <ul>
 <li>authored truth lives in package YAML</li>
-<li>discoverability for installed workouts lives in local <code>workouts.db</code> only</li>
-<li>any future downloaded online catalog SQLite should be a sibling remote-catalog DB, not an exact mirror of local <code>workouts.db</code></li>
+<li>discoverability for installed workouts lives in the local <code>workouts.db</code> instance of the shared catalog schema</li>
+<li>local and remote catalog databases should share the same core browse schema, with <code>workout_local</code> for local-only state and <code>workout_remote</code> for remote-only state</li>
 <li>leaderboard browsing cache lives in package-local <code>leaderboard-cache.db</code> only</li>
 <li>packages are self-contained and duplication/fork-based rather than inheritance-based</li>
 <li><code>coaches/</code>, <code>environments/</code>, and <code>assets/</code> are first-class content domains</li>
@@ -6968,7 +7079,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 26, 2026 14:02:51 UTC">April 26, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 26, 2026 20:33:40 UTC">April 26, 2026</span>
   </span>
 
     
