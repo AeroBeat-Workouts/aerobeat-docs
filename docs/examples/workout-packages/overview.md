@@ -45,7 +45,7 @@ This demo package is aligned to the current package rules:
 - Workout entries select gameplay-facing assets through `assetSelections` only.
 - Local discoverability belongs in **`workouts.db`**, not in package YAML.
 - Packages are **self-contained** and are versioned by duplication/forking rather than inheritance/patch layering.
-- The future online catalog DB is intentionally **separate** from local `workouts.db`.
+- Local and remote catalog databases share the same **core catalog schema**; local install-only state lives in `workout_local`, and remote-only browse/distribution state lives in `workout_remote`.
 - Signing and integrity metadata are **deferred** from the v1 authored package contract.
 - The locked v1 `assetType` enum is:
   - `gloves`

@@ -91,7 +91,7 @@ They do **not** own:
 
 `workouts.db` exists to power local browsing, filtering, moderation surfaces, and install-state lookups.
 
-It is derived from installed packages, is not the authored truth, and should remain separate from any future downloaded online catalog snapshot DB.
+It is derived from package/authored data, is not the authored truth, and is the local installed-workout instance of AeroBeat's shared catalog schema. A future remote catalog snapshot should reuse the same core tables rather than inventing a divergent browse contract.
 
 ### 3. `leaderboard-cache.db` = local disposable score-browsing cache
 
@@ -541,35 +541,44 @@ These belong in runtime profile state, service state, moderation/catalog systems
 
 ## Canonical SQLite direction
 
-AeroBeat currently needs two SQLite shapes:
+AeroBeat currently needs two SQLite schema families:
 
-1. a root `workouts.db` catalog/index database
+1. a shared workout catalog schema used by both local and remote browse databases
 2. a package-local `leaderboard-cache.db` database
 
-## `workouts.db` v1 direction
+## Shared workout catalog schema v1 direction
 
-`workouts.db` lives at the workouts root and indexes installed packages for browse/search/filter/discovery.
+AeroBeat's browse/discovery model is now locked to a **shared core schema** across local and remote catalog databases.
+
+In plain language:
+
+- local `workouts.db` and a future remote catalog snapshot may still be different database files
+- but they should speak the same core browse language
+- local-only install/path/validation state belongs in `workout_local`
+- remote-only preview/distribution browse state belongs in `workout_remote`
+
+That keeps authored truth in YAML while avoiding two different catalog contracts for the same browse concepts.
 
 ### Responsibilities
 
-- discover installed workouts quickly
-- expose denormalized browse metadata without reparsing all YAML files
-- track install/update/indexing state
-- support local client browse/filter views
-- feed the local installed-workout browse surface only
+- discover workouts quickly without reparsing all YAML files
+- expose denormalized browse metadata for search/filter surfaces
+- keep shared browse concepts in shared core tables
+- attach local-only install/indexing state through `workout_local`
+- attach remote-only preview/distribution state through `workout_remote`
 
 ### Must not become
 
 - the only source of package truth
 - the place where authored chart/song/workout semantics originate
 - the authoritative leaderboard store
-- the exact schema for a downloaded online catalog snapshot
+- a validator that invents missing authored metadata
 
-### Minimum v1 tables
+### Shared core v1 tables
 
 #### `workouts`
 
-One row per installed workout package.
+One row per workout known to the catalog.
 
 Suggested columns:
 
@@ -581,16 +590,13 @@ Suggested columns:
 - `created_by_tool TEXT`
 - `created_by_tool_version TEXT`
 - `coach_config_id TEXT`
-- `default_coach_name TEXT`
-- `workout_yaml_path TEXT NOT NULL`
-- `package_root_path TEXT NOT NULL`
-- `cover_art_path TEXT`
-- `installed_at TEXT NOT NULL`
-- `indexed_at TEXT NOT NULL`
-- `updated_at TEXT`
-- `is_installed INTEGER NOT NULL DEFAULT 1`
-- `is_valid INTEGER NOT NULL DEFAULT 1`
-- `validation_error TEXT`
+- `duration_ms INTEGER`
+
+Notes:
+
+- `duration_ms` is a shared browse field on the workout itself.
+- `default_coach_name` is removed from the shared contract.
+- shared-core cover art path fields are removed; remote preview image handling belongs in `workout_remote`.
 
 #### `workout_tags`
 
@@ -616,9 +622,16 @@ Summarized difficulty availability for browse filters.
 - `difficulty TEXT NOT NULL`
 - `PRIMARY KEY (workout_id, difficulty)`
 
+Locked values:
+
+- `easy`
+- `medium`
+- `hard`
+- `pro`
+
 #### `workout_songs`
 
-A lightweight denormalized song summary per installed workout.
+A lightweight denormalized song summary per workout.
 
 - `workout_id TEXT NOT NULL`
 - `song_id TEXT NOT NULL`
@@ -627,40 +640,92 @@ A lightweight denormalized song summary per installed workout.
 - `duration_ms INTEGER`
 - `PRIMARY KEY (workout_id, song_id)`
 
-#### `workout_assets`
+#### `workout_coaches`
 
-Optional but useful summary table for moderation/debug/search by asset usage.
+Summarized coach roster rows derived from `coaches/coach-config.yaml`.
 
 - `workout_id TEXT NOT NULL`
-- `entry_id TEXT NOT NULL`
-- `asset_type TEXT NOT NULL`
-- `asset_id TEXT NOT NULL`
-- `PRIMARY KEY (workout_id, entry_id, asset_type)`
+- `coach_id TEXT NOT NULL`
+- `coach_name TEXT NOT NULL`
+- `PRIMARY KEY (workout_id, coach_id)`
+
+Rule:
+
+- if coaching is disabled, `workout_coaches` must contain zero rows for that workout
+
+#### `workout_genres`
+
+Browse genres derived from the workout's referenced songs.
+
+- `workout_id TEXT NOT NULL`
+- `genre TEXT NOT NULL`
+- `PRIMARY KEY (workout_id, genre)`
+
+Locked values:
+
+- `pop`, `rock`, `hip_hop`, `r_and_b`, `edm`, `country`, `latin`, `jazz`, `blues`, `funk`, `soul`, `reggae`, `folk`, `classical`, `metal`, `punk`, `world`, `soundtrack`, `holiday`, `game`, `chiptune`, `anime`
+
+Rules:
+
+- genres come from authored song metadata; validators/indexers must not invent them
+- a workout's browse genres are the union of the genres on its referenced songs
+
+### Companion tables
+
+#### `workout_local`
+
+Local installed-workout state that should not pollute the shared core tables.
+
+Suggested columns:
+
+- `workout_id TEXT PRIMARY KEY`
+- `workout_yaml_path TEXT NOT NULL`
+- `package_root_path TEXT NOT NULL`
+- `installed_at TEXT NOT NULL`
+- `indexed_at TEXT NOT NULL`
+- `updated_at TEXT`
+- `is_installed INTEGER NOT NULL DEFAULT 1`
+- `is_valid INTEGER NOT NULL DEFAULT 1`
+- `validation_error TEXT`
+
+#### `workout_remote`
+
+Remote/distribution browse state that should not pollute the shared core tables.
+
+Suggested columns:
+
+- `workout_id TEXT PRIMARY KEY`
+- `preview_image_strategy TEXT NOT NULL`
+- `preview_image_url TEXT`
+
+Locked `preview_image_strategy` values:
+
+- `direct_url`
+- `api_resolve`
+
+Rules:
+
+- `direct_url` requires `preview_image_url`
+- `api_resolve` may leave `preview_image_url` null
 
 ### Indexing notes
 
-- `workouts.db` stores duplicated browse metadata on purpose.
-- If YAML and `workouts.db` disagree, YAML plus package validation is the truth source; the index should be rebuilt.
-- A workout may remain locally installed/playable even if future remote catalog state would make it undiscoverable online.
+- catalog databases store duplicated browse metadata on purpose
+- if YAML and catalog rows disagree, YAML plus package validation is the truth source; the catalog should be rebuilt/refreshed
+- a workout may remain locally installed/playable even if future remote catalog state would make it undiscoverable online
+- removing `workout_assets` from the core contract is intentional; asset usage is not part of the approved shared browse schema
 
-### Locked online catalog direction
+### Local vs remote file layout direction
 
-A downloaded online catalog SQLite should **intentionally diverge** from local `workouts.db` rather than mirror it byte-for-byte.
+The shared schema does **not** require local and remote catalogs to be the same physical file.
 
-Why:
+The approved direction is:
 
-- local `workouts.db` is about **installed package state**, filesystem paths, validation results, and fast local resolution into `workout.yaml`
-- an online catalog snapshot is about **remote discoverability/distribution metadata**, not local install state
-- forcing both concerns into one exact schema would either pollute the local index with remote-only concerns or pollute the remote snapshot with meaningless local path/install columns
+- local browse/install state may live in `workouts.db` using the shared core tables plus `workout_local`
+- a future downloaded or bundled remote catalog snapshot may live in a separate DB file such as `catalog.db` using the same shared core tables plus `workout_remote`
+- both sides should keep the same meanings for shared tables like `workouts`, `workout_tags`, `workout_modes`, `workout_difficulties`, `workout_songs`, `workout_coaches`, and `workout_genres`
 
-The recommended v1 direction is:
-
-- keep `workouts.db` as the local installed index only
-- if/when AeroBeat ships a downloaded catalog snapshot, treat it as a sibling DB such as `catalog.db`
-- let `catalog.db` reuse the **same logical browse vocabulary** where helpful (`workouts`, tags, modes, difficulties, song summaries), but give it its own columns for remote concerns such as package source, download URL, file size, content hash, publication/moderation state, and remote timestamps
-- do not require `workout_yaml_path`, `package_root_path`, `installed_at`, `indexed_at`, `is_installed`, `is_valid`, or `validation_error` in the online catalog DB
-
-This preserves a clean authority split: authored truth in package YAML, local discoverability in `workouts.db`, remote discoverability/distribution in a future sibling catalog DB.
+This preserves a clean authority split: authored truth in package YAML, shared browse vocabulary in the catalog core, local install state in `workout_local`, and remote preview/distribution state in `workout_remote`.
 
 ## Per-workout `leaderboard-cache.db` v1 direction
 
@@ -788,7 +853,10 @@ Check:
 - `workouts.db` rows reflect current installed packages
 - denormalized metadata matches current YAML-derived values
 - invalid packages are flagged rather than silently indexed as healthy
-- no remote-catalog-only fields or assumptions have leaked into the local installed index contract
+- shared core rows match YAML-derived browse metadata
+- `workout_local` owns local install/path/validation state
+- `workout_remote` owns remote preview-image strategy metadata when a remote catalog snapshot is present
+- difficulty and genre rows stay inside the approved locked enums
 
 ### Submission validation
 
@@ -805,9 +873,9 @@ Check:
 These are consciously deferred rather than undefined:
 
 1. the exact environment rendering contract beyond package-local identity/resource fields
-2. the future remote catalog schema beyond the now-locked rule that it should be a sibling DB rather than an exact mirror of local `workouts.db`
+2. any additional remote-only distribution tables beyond the now-locked `workout_remote` preview-image contract
 3. any package signing, trust chain, embedded signature, or distribution-integrity manifest inside authored package YAML
-4. future moderation/ranking/distribution tables for remote catalog workflows
+4. future moderation/ranking/distribution tables beyond the current shared-core-plus-companion catalog model
 5. richer asset families beyond the locked v1 `assetType` enum
 
 ## Example package and schema files
@@ -827,8 +895,8 @@ These files are the docs repo's canonical onboarding example for the locked v1 p
 For the first implementation-oriented package/storage pass, AeroBeat should proceed assuming:
 
 - authored truth lives in package YAML
-- discoverability for installed workouts lives in local `workouts.db` only
-- any future downloaded online catalog SQLite should be a sibling remote-catalog DB, not an exact mirror of local `workouts.db`
+- discoverability for installed workouts lives in the local `workouts.db` instance of the shared catalog schema
+- local and remote catalog databases should share the same core browse schema, with `workout_local` for local-only state and `workout_remote` for remote-only state
 - leaderboard browsing cache lives in package-local `leaderboard-cache.db` only
 - packages are self-contained and duplication/fork-based rather than inheritance-based
 - `coaches/`, `environments/`, and `assets/` are first-class content domains

@@ -40,7 +40,7 @@ Our documentation is divided by role. Choose your path below:
 * Learn how the six core repos divide contracts by lane, starting with `aerobeat-input-core`, `aerobeat-feature-core`, `aerobeat-content-core`, `aerobeat-asset-core`, `aerobeat-ui-core`, and `aerobeat-tool-core`.
 * Dive into platform concerns such as Cloud Baker, testing strategy, security, and performance.
 * Read the new [**Content Model**](architecture/content-model.md) doc for how Songs, Routines, Charts, and Workouts fit together.
-* Read [**Workout Package Storage and Discovery**](architecture/workout-package-storage-and-discovery.md) for the locked v1 package contract, including `coaches/coach-config.yaml`, `workouts.db`, the strict v1 `assetType` enum, and the self-contained package rules.
+* Read [**Workout Package Storage and Discovery**](architecture/workout-package-storage-and-discovery.md) for the locked v1 package contract, including `coaches/coach-config.yaml`, the shared local/remote catalog schema (`workouts`, `workout_local`, `workout_remote`, and related browse tables), the strict v1 `assetType` enum, and the self-contained package rules.
 * Read [**Content Repo Shapes**](architecture/content-repo-shapes.md) for the concrete day-one structure of `aerobeat-content-core` and `aerobeat-tool-content-authoring`.
 * **Key Tech:** Godot 4.x, GDScript, Python sidecars, and modular package boundaries.
 

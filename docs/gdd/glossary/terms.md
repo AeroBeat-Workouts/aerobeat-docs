@@ -34,5 +34,5 @@ Use this glossary of AeroBeat specific terms to keep the docs set aligned.
 | **Asset** | A package-local typed runtime-presented content record. The locked v1 asset types are `gloves`, `targets`, `obstacles`, and `trails`. |
 | **Asset Type** | The closed v1 enum that identifies what kind of package asset a record is. Unknown values fail validation rather than silently behaving like generic assets. |
 | **workouts.db** | The local SQLite discovery/index database for installed workouts. It powers browse/search/filter views but is not the authored source of truth. |
-| **Catalog DB** | A future sibling SQLite snapshot for remote/distribution discoverability. It should intentionally diverge from local `workouts.db` instead of mirroring local install/path state exactly. |
+| **Catalog DB** | A SQLite browse/discovery snapshot that uses the shared AeroBeat catalog core schema. Local installs use the core tables plus `workout_local`; remote/distribution snapshots use the same core tables plus `workout_remote`. |
 | **Leaderboard Cache** | The local disposable per-workout SQLite cache used for leaderboard browsing. It is non-authoritative and excluded from canonical package submission payloads. |

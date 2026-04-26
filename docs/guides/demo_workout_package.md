@@ -75,7 +75,9 @@ The package shows the approved coaching rule clearly:
 The SQL examples show the difference between:
 
 - **authored package truth** in YAML
-- **installed workout browse/search data** in `workouts.db`
+- **shared catalog browse/search data** in the catalog core tables
+- **local install-only state** in `workout_local` when the catalog lives on disk as `workouts.db`
+- **remote catalog-only state** in `workout_remote` when the same core schema is used for a downloaded/bundled remote snapshot
 - **non-authoritative per-workout leaderboard cache data** in `leaderboard-cache.db`
 
 ## Why this example matters

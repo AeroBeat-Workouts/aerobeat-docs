@@ -69,9 +69,9 @@ The package uses one shared coach config, a two-coach roster, two environments, 
 - warmup/cooldown references live in coach-config under the approved coaching model
 - each workout entry maps to exactly one overlay audio clip through coach-config `entryId` references
 - workout entries choose one environment and zero-or-one asset per gameplay-facing asset type
-- local install/discovery state lives in `workouts.db`
+- shared browse/discovery rows live in the catalog core tables, while local install-only state lives in `workout_local`
 - local leaderboard snapshots live in the package's disposable cache DB
-- no inheritance, patching, remote catalog data, trigger graphs, or signing metadata appears in the authored package files
+- no inheritance, patching, remote-only catalog companion fields, trigger graphs, or signing metadata appears in the authored package files
 
 ## Validation note
 
