@@ -6554,7 +6554,7 @@
 <li><strong>Workout</strong></li>
 <li>ordered selections of exact chart UIDs</li>
 </ul>
-<p>This structure keeps audio and licensing metadata reusable at the song layer, keeps gameplay-mode semantics at the routine layer, keeps difficulty-specific authored event streams at the chart layer, and keeps coaching / workout programming at the workout layer.</p>
+<p>This structure keeps audio and licensing metadata reusable at the song layer, keeps gameplay-mode semantics at the routine layer, keeps difficulty-specific authored event streams at the chart layer, keeps workout session programming at the workout layer, and keeps optional coaching media/config in the package’s single coach-config domain.</p>
 <h2 id="current-schema-direction">Current schema direction<a class="headerlink" href="#current-schema-direction" title="Permanent link">&para;</a></h2>
 <p>As of 2026-04-23, the current naming and shape direction is:</p>
 <ul>
@@ -6568,7 +6568,7 @@
 <li><code>Chart</code> is the durable term for one concrete playable difficulty slice.</li>
 <li>Workouts resolve to exact referenced UIDs rather than loose song/mode/difficulty selectors.</li>
 <li>Athlete/device-specific timing calibration such as song offset does not belong in durable content data; it belongs in athlete/profile/device state.</li>
-<li>Workout coaching is owned by the <code>Workout</code> and includes overlay entries for each referenced song/chart UID used by that workout.</li>
+<li>Workout coaching is owned by the package’s single <code>coaches/coach-config.yaml</code>; enabled coaching requires roster + warmup + cooldown + exactly one overlay audio clip per workout entry keyed by <code>entryId</code>.</li>
 </ul>
 <h2 id="canonical-ownership">Canonical ownership<a class="headerlink" href="#canonical-ownership" title="Permanent link">&para;</a></h2>
 <p>The canonical contracts for <code>Song</code>, <code>Routine</code>, <code>Chart</code>, <code>Workout</code>, the shared chart envelope, and shared content loading / validation interfaces live in <a href="https://github.com/AeroBeat-Workouts/aerobeat-content-core"><code>aerobeat-content-core</code></a>.</p>
@@ -7019,7 +7019,7 @@ The feature/runtime contract begins at <strong>playback execution and athlete in
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 26, 2026 14:02:51 UTC">April 26, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 26, 2026 15:28:13 UTC">April 26, 2026</span>
   </span>
 
     
