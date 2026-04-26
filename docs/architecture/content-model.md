@@ -44,7 +44,7 @@ Concrete authoring products belong under the `aerobeat-tool-*` family, not under
 
 A `Song` alone is too low-level. It knows about the audio timeline, credits, and metadata, but it does not know whether the athlete is boxing, stepping, dancing, or flowing.
 
-A `Workout` is too high-level. It is a program that assembles multiple playable items into a training session, possibly with an optional coaching pass, warmup/cooldown media, and non-song media.
+A `Workout` is too high-level. It is a program that assembles multiple playable items into a training session, possibly with an optional coaching pass via the package’s coach-config domain and non-song media.
 
 `Routine` is the correct place for:
 
