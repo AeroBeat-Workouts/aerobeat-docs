@@ -46,6 +46,9 @@ timing:
 metadata:
   explicit: false
   language: en
+  genres:
+    - edm
+    - soundtrack
 tags:
   - boxing
   - finisher
