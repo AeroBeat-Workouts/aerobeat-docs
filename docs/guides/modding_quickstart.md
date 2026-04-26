@@ -15,7 +15,7 @@ We provide specialized Godot projects for different types of content. Download t
 | SDK Name | Use Case |
 | :--- | :--- |
 | **Musician Portal (Web)** | Uploading Songs, converting audio, and setting BPM. |
-| **Coaching Studio (Web)** | Creating immersive [Coaching](coaching.md) content (Warmups, Overlays). |
+| **Coaching Studio (Web)** | Creating immersive [Coaching](coaching.md) content (roster, warmup/cooldown video, one overlay audio clip per workout entry). |
 | **Choreography Studio** | Mapping songs. Specialized Apps for [Boxing](choreography/boxing.md), [Flow](choreography/flow.md), etc. |
 | **Skins SDK** | (Godot Editor) Creating Gloves, Bats, Targets, and Obstacles. |
 | **Avatars SDK** | (Godot Editor) Rigging and importing 3D Characters. |

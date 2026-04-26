@@ -25,7 +25,7 @@ packageVersion: 1.0.0
 createdByTool: aerobeat-tool-content-authoring
 createdByToolVersion: 0.1.0
 createdAt: 2026-04-25T22:00:00Z
-updatedAt: 2026-04-25T22:00:00Z
+updatedAt: 2026-04-26T09:00:00Z
 
 # Optional author metadata is fine here because it is traceability, not discovery state.
 authorId: ab-author-docs-team
@@ -44,17 +44,6 @@ preview:
 
 # Session owns the programmed workout flow.
 session:
-  # Warm-up and cooldown media belong at the workout/session layer.
-  warmupMedia:
-    - mediaId: ab-warmup-breathing-intro
-      mediaType: video
-      path: media/coaching/warmup-breathing-intro.mp4
-
-  cooldownMedia:
-    - mediaId: ab-cooldown-stretch-outro
-      mediaType: video
-      path: media/coaching/cooldown-stretch-outro.mp4
-
   # Default transition settings apply unless an entry overrides them.
   defaultTransition:
     crossfadeMs: 0
@@ -81,11 +70,6 @@ session:
       transition:
         allowRuntimeUnloadReload: true
 
-      # These ids point into coach-config overlays for moment-specific coaching media.
-      coachingOverlayIds:
-        - ab-overlay-aria-neon-stride-count-in
-        - ab-overlay-aria-neon-stride-recover-cue
-
     - entryId: ab-entry-midnight-sprint-finish-round
       order: 2
       chartId: ab-chart-midnight-sprint-boxing-hard
@@ -103,10 +87,6 @@ session:
 
       transition:
         allowRuntimeUnloadReload: true
-
-      coachingOverlayIds:
-        - ab-overlay-aria-midnight-sprint-push-cue
-        - ab-overlay-aria-midnight-sprint-finish-cue
 
 # packageContents lists which logical records belong to this package.
 # It is a package manifest aid, not a local browse/search index.
@@ -128,8 +108,6 @@ packageContents:
     - ab-asset-targets-holo-rings
     - ab-asset-obstacles-light-walls
     - ab-asset-trails-comet-streak
-    - ab-asset-coach-avatar-aria-holo
-    - ab-asset-coach-voice-aria-energetic
   coachConfigs:
     - ab-coach-config-neon-bootcamp
 

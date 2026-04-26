@@ -8,7 +8,7 @@ It is designed for onboarding, code review, validation planning, and tool implem
 - how ids connect across files
 - which fields belong in package YAML
 - which concerns belong in local SQLite databases instead
-- how coaching, environments, and assets fit into the same package
+- how the approved coaching model fits into the package
 
 ## Package shape
 
@@ -31,12 +31,16 @@ demo-neon-boxing-bootcamp/
 │   ├── ab-environment-neon-rooftop.yaml
 │   └── ab-environment-sunrise-studio.yaml
 ├── assets/
-│   ├── ab-asset-coach-avatar-aria-holo.yaml
-│   ├── ab-asset-coach-voice-aria-energetic.yaml
 │   ├── ab-asset-gloves-neon-pulse.yaml
 │   ├── ab-asset-obstacles-light-walls.yaml
 │   ├── ab-asset-targets-holo-rings.yaml
 │   └── ab-asset-trails-comet-streak.yaml
+├── media/
+│   ├── art/
+│   ├── assets/
+│   ├── audio/
+│   ├── coaching/
+│   └── scenes/
 └── sql/
     ├── leaderboard-cache.db.schema.sql
     └── workouts.db.schema.sql
@@ -49,20 +53,26 @@ This example package imagines a short boxing workout with two songs:
 1. **Neon Stride** — medium difficulty opener in a rooftop night environment
 2. **Midnight Sprint** — harder follow-up in a brighter studio environment
 
-The package uses one shared coach config, one featured coach, two environments, four gameplay-facing asset selections, and two coach support assets.
+The package uses one shared coach config, a two-coach roster, two environments, four gameplay-facing asset selections, one warmup video, one cooldown video, and one overlay audio clip per workout entry.
 
 ## Reading order
 
 - Start with [`workout.yaml`](workout.yaml).
-- Then follow the ids into [`songs/`](songs/), [`routines/`](routines/), and [`charts/`](charts/).
-- After that, read [`coaches/coach-config.yaml`](coaches/coach-config.yaml), [`environments/`](environments/), and [`assets/`](assets/).
+- Then follow the ids into `songs/`, `routines/`, and `charts/`.
+- After that, read [`coaches/coach-config.yaml`](coaches/coach-config.yaml), then inspect `environments/` and `assets/`.
 - Finish with [`sql/workouts.db.schema.sql`](sql/workouts.db.schema.sql) and [`sql/leaderboard-cache.db.schema.sql`](sql/leaderboard-cache.db.schema.sql).
 
 ## Intentional v1 boundaries shown here
 
 - discoverability/search metadata is not authored into `workout.yaml`
-- coach avatar/voice assets are referenced from coach config only
+- coaching stays inside the package's single `coaches/coach-config.yaml` file
+- warmup/cooldown references live in coach-config under the approved coaching model
+- each workout entry maps to exactly one overlay audio clip through coach-config `entryId` references
 - workout entries choose one environment and zero-or-one asset per gameplay-facing asset type
 - local install/discovery state lives in `workouts.db`
 - local leaderboard snapshots live in the package's disposable cache DB
-- no inheritance, patching, remote catalog data, or signing metadata appears in the authored package files
+- no inheritance, patching, remote catalog data, trigger graphs, or signing metadata appears in the authored package files
+
+## Validation note
+
+The `media/` tree in this docs example contains tiny placeholder files so file-existence validation examples have something real to point at. They are stand-ins for real package media, not production assets.

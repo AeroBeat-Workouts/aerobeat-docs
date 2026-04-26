@@ -31,8 +31,6 @@ That folder is intentionally authored as a **teaching package** rather than a mi
    - [`ab-asset-targets-holo-rings.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/assets/ab-asset-targets-holo-rings.yaml)
    - [`ab-asset-obstacles-light-walls.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/assets/ab-asset-obstacles-light-walls.yaml)
    - [`ab-asset-trails-comet-streak.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/assets/ab-asset-trails-comet-streak.yaml)
-   - [`ab-asset-coach-avatar-aria-holo.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/assets/ab-asset-coach-avatar-aria-holo.yaml)
-   - [`ab-asset-coach-voice-aria-energetic.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/assets/ab-asset-coach-voice-aria-energetic.yaml)
 8. [`sql/workouts.db.schema.sql`](../examples/workout-packages/demo-neon-boxing-bootcamp/sql/workouts.db.schema.sql)
 9. [`sql/leaderboard-cache.db.schema.sql`](../examples/workout-packages/demo-neon-boxing-bootcamp/sql/leaderboard-cache.db.schema.sql)
 
@@ -48,7 +46,7 @@ The example models a single package with:
 - two charts
 - one coaching domain file
 - two environments
-- six asset records covering the full locked v1 `assetType` enum
+- four gameplay-facing asset records
 
 ### 2. Exact ids, not loose lookup rules
 
@@ -64,11 +62,13 @@ That is the current v1 direction. Discovery happens elsewhere; package playback 
 
 ### 3. The coaching split
 
-The package shows the locked coaching rule clearly:
+The package shows the approved coaching rule clearly:
 
-- workout entries use `assetSelections` only for gameplay-facing asset types
-- coach avatar and voice assets live in the shared `assets/` domain
-- those coach support assets are referenced from `coaches/coach-config.yaml`, not from workout entries
+- every package has exactly one `coaches/coach-config.yaml`
+- coaching is optional all-or-nothing
+- if coaching is enabled, warmup/cooldown media live in coach-config, not in `workout.yaml`
+- coach-config also owns exactly one overlay audio clip per workout entry, keyed by `entryId`
+- workout entries do not carry reusable trigger graphs or per-entry overlay lists
 
 ### 4. SQLite authority boundaries
 
@@ -84,7 +84,8 @@ This example is meant to be the easiest place for a new developer to answer ques
 
 - "What does a valid v1 workout package folder look like?"
 - "Where does coach config live?"
-- "Which asset types can a workout entry select directly?"
+- "Where do warmup/cooldown references live under the approved coaching model?"
+- "How does `coach-config.yaml` target the right workout entry for each overlay audio clip?"
 - "Where does browse metadata belong versus package metadata?"
 - "How should ids line up across package files?"
 

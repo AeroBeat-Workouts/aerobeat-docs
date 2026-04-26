@@ -31,8 +31,6 @@ If you are new to the package system, start here before reading the lower-level 
   - [`ab-asset-targets-holo-rings.yaml`](demo-neon-boxing-bootcamp/assets/ab-asset-targets-holo-rings.yaml)
   - [`ab-asset-obstacles-light-walls.yaml`](demo-neon-boxing-bootcamp/assets/ab-asset-obstacles-light-walls.yaml)
   - [`ab-asset-trails-comet-streak.yaml`](demo-neon-boxing-bootcamp/assets/ab-asset-trails-comet-streak.yaml)
-  - [`ab-asset-coach-avatar-aria-holo.yaml`](demo-neon-boxing-bootcamp/assets/ab-asset-coach-avatar-aria-holo.yaml)
-  - [`ab-asset-coach-voice-aria-energetic.yaml`](demo-neon-boxing-bootcamp/assets/ab-asset-coach-voice-aria-energetic.yaml)
 - [Local `workouts.db` schema example](demo-neon-boxing-bootcamp/sql/workouts.db.schema.sql)
 - [Per-workout `leaderboard-cache.db` schema example](demo-neon-boxing-bootcamp/sql/leaderboard-cache.db.schema.sql)
 
@@ -42,8 +40,9 @@ This demo package is aligned to the current package rules:
 
 - **Chart** is the durable term, not chart variant.
 - A package has **one** `coaches/` folder and **one** `coach-config.yaml` file.
+- Coaching is optional all-or-nothing.
+- When coaching is enabled, `coach-config.yaml` owns the warmup video, cooldown video, and exactly one overlay audio clip per workout entry.
 - Workout entries select gameplay-facing assets through `assetSelections` only.
-- Coach avatar/voice assets are referenced from `coaches/coach-config.yaml`, not from workout entries.
 - Local discoverability belongs in **`workouts.db`**, not in package YAML.
 - Packages are **self-contained** and are versioned by duplication/forking rather than inheritance/patch layering.
 - The future online catalog DB is intentionally **separate** from local `workouts.db`.
@@ -53,8 +52,6 @@ This demo package is aligned to the current package rules:
   - `targets`
   - `obstacles`
   - `trails`
-  - `coach_avatar`
-  - `coach_voice`
 
 ## How to read the package
 
@@ -66,4 +63,4 @@ This demo package is aligned to the current package rules:
 
 ## Important scope note
 
-This is a **documentation example**, not a shippable media bundle. The YAML records point at realistic package-local `media/...` paths, but this docs repo does not include the large binary audio/video/scene payloads those paths would resolve to in a real installed workout package.
+This is a **documentation example** with tiny placeholder media files checked in so path-based validation examples can pass. Real workout packages would replace those placeholder files with real authored media/resources.

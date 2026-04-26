@@ -44,7 +44,7 @@ Concrete authoring products belong under the `aerobeat-tool-*` family, not under
 
 A `Song` alone is too low-level. It knows about the audio timeline, credits, and metadata, but it does not know whether the athlete is boxing, stepping, dancing, or flowing.
 
-A `Workout` is too high-level. It is a program that assembles multiple playable items into a training session, possibly with warmup, cooldown, coaching cues, and non-song media.
+A `Workout` is too high-level. It is a program that assembles multiple playable items into a training session, possibly with an optional coaching pass, warmup/cooldown media, and non-song media.
 
 `Routine` is the correct place for:
 
@@ -135,14 +135,13 @@ It owns fields such as:
 - `workoutName`
 - `description`
 - `coachConfigId` referencing the package’s single coach-config domain
-- pre-workout / warmup media
-- post-workout / cooldown media
 - ordered list of exact chart UID selections
 - per-entry environment selection
 - per-entry asset selections with at most one asset per entry-selectable asset type
-- workout-owned coaching overlays keyed to the referenced song/chart UIDs used in that workout
 
-The locked v1 `assetType` enum is intentionally narrow: `gloves`, `targets`, `obstacles`, `trails`, `coach_avatar`, and `coach_voice`. Only the gameplay-facing subset (`gloves`, `targets`, `obstacles`, `trails`) belongs in per-entry asset selections; coach asset types are referenced from the package’s single coach-config domain.
+When coaching is enabled, the package’s single coach-config domain owns the coach roster, warmup video, cooldown video, and exactly one overlay audio clip per workout entry keyed by `entryId`. `workout.yaml` points at coach-config but does not own those media references directly.
+
+The locked v1 `assetType` enum is intentionally narrow: `gloves`, `targets`, `obstacles`, and `trails`. Those are the gameplay-facing asset types that belong in per-entry asset selections.
 
 Workout runtime length is derived from the referenced content rather than stored as a separate authored duration field.
 
@@ -292,12 +291,14 @@ A content package owns:
 3. A routine must reference a song that exists in the same package.
 4. A chart must reference exactly one routine in the same package.
 5. A workout entry resolves to exact ids rather than loose lookup selectors.
-6. Each workout package contains exactly one `coaches/` folder with exactly one coach-config YAML file, though that file may describe multiple featured coaches.
-7. `environments/` and `assets/` are distinct first-class content folders with their own YAML records.
-8. Each workout entry chooses exactly one environment and at most one asset per entry-selectable asset type.
-9. `assetType` is a strict v1 enum rather than a freeform string; unknown values should fail package validation.
-10. Binary media stays as referenced resources inside the package; the canonical authored contracts stay in structured content records.
-11. Alternate versions are created by duplication/forking, not inheritance or patch layering across workout packages.
+6. Each workout package contains exactly one `coaches/` folder with exactly one coach-config YAML file.
+7. Coaching is optional all-or-nothing: disabled coaching uses `enabled: false`, while enabled coaching must provide the full roster/media contract.
+8. Enabled coaching owns the warmup video, cooldown video, and exactly one overlay audio clip per workout entry keyed by `entryId`.
+9. `environments/` and `assets/` are distinct first-class content folders with their own YAML records.
+10. Each workout entry chooses exactly one environment and at most one asset per entry-selectable asset type.
+11. `assetType` is a strict v1 enum rather than a freeform string; unknown values should fail package validation.
+12. Binary media stays as referenced resources inside the package; the canonical authored contracts stay in structured content records.
+13. Alternate versions are created by duplication/forking, not inheritance or patch layering across workout packages.
 
 ## Authored data contract boundaries
 

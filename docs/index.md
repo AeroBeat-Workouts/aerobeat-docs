@@ -110,7 +110,7 @@ We provide specialized web-based tools for you:
 
 * **Musicians:** Upload tracks and get verified at **www.aerobeat-workouts.com/creators**.
 * **Choreographers:** Use the **Choreography Studio** to map songs and workouts.
-* **Coaches:** Build workout-level coaching content around the package’s single `coaches/coach-config.yaml` domain.
+* **Coaches:** Build optional workout-level coaching content around the package's single `coaches/coach-config.yaml` domain, with all-or-nothing enablement and one overlay audio clip per workout entry when enabled.
 
 > **Current Status:** AeroBeat is currently in **Prototype (v0.0.1)**. We are actively building the six shared core lanes and the initial Boxing feature.
 

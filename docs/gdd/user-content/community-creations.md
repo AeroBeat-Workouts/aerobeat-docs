@@ -15,7 +15,7 @@ The durable content hierarchy is:
 * **Routines / Charts:** Choreographers author gameplay for songs using the charting tools. A routine packages one gameplay mode for one song, and charts represent specific difficulties or compatibility slices inside that routine.
 * **Environments:** Environment authors create package-local worlds that a workout entry can select one at a time.
 * **Assets:** Artists can create typed package-local assets for `gloves`, `targets`, `obstacles`, and `trails`.
-* **Coaching:** Trainers can create workout-level coaching content inside the package’s single `coaches/coach-config.yaml` domain, using package-local `coach_avatar` / `coach_voice` assets plus referenced intro, overlay, or other coaching media.
+* **Coaching:** Trainers can create optional workout-level coaching content inside the package's single `coaches/coach-config.yaml` domain. When enabled, that file owns the coach roster, warmup video, cooldown video, and exactly one overlay audio clip per workout entry.
 
 ## Building a Workout
 
@@ -27,7 +27,7 @@ When creating a Workout, a creator uses the community browser and tooling to pic
 * **Chart Choice:** The package should resolve to exact chart ids rather than loose song/mode/difficulty matching.
 * **Environments:** Optional. Choose one environment per workout entry.
 * **Assets:** Optional. Choose at most one asset per entry-selectable asset type (`gloves`, `targets`, `obstacles`, `trails`) for each workout entry.
-* **Coaching:** Optional. Attach workout-level coaching configuration through the package’s single `coaches/coach-config.yaml` file instead of a separate coaching-pack product.
+* **Coaching:** Optional. Attach workout-level coaching configuration through the package's single `coaches/coach-config.yaml` file. Disabled coaching uses `enabled: false`; enabled coaching must fully wire the roster, warmup/cooldown videos, and one overlay audio clip per entry.
 
 When choosing any Workout, athletes can override the suggestions using their **Profile Preferences**.
 
