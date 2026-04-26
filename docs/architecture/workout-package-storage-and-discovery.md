@@ -307,10 +307,16 @@ timing:
 metadata:
   explicit: false
   language: en
+  genres:
+    - edm
+    - pop
 tags:
   - boxing
   - cardio
 ```
+
+Genre note: use only the locked normalized lowercase enum. Workout browse genres are derived as the union of the referenced songs' authored genres rather than being invented separately at the workout layer.
+
 
 ### `routines/<routine-id>.yaml`
 

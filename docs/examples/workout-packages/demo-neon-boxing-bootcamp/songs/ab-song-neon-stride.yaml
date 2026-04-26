@@ -45,6 +45,9 @@ timing:
 metadata:
   explicit: false
   language: en
+  genres:
+    - edm
+    - pop
 tags:
   - boxing
   - warmup
