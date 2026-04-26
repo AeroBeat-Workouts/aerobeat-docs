@@ -10,7 +10,7 @@ The durable hierarchy is:
 - **Workout**
   - ordered selections of exact chart UIDs
 
-This structure keeps audio and licensing metadata reusable at the song layer, keeps gameplay-mode semantics at the routine layer, keeps difficulty-specific authored event streams at the chart layer, and keeps coaching / workout programming at the workout layer.
+This structure keeps audio and licensing metadata reusable at the song layer, keeps gameplay-mode semantics at the routine layer, keeps difficulty-specific authored event streams at the chart layer, keeps workout session programming at the workout layer, and keeps optional coaching media/config in the package’s single coach-config domain.
 
 ## Current schema direction
 
@@ -26,7 +26,7 @@ As of 2026-04-23, the current naming and shape direction is:
 - `Chart` is the durable term for one concrete playable difficulty slice.
 - Workouts resolve to exact referenced UIDs rather than loose song/mode/difficulty selectors.
 - Athlete/device-specific timing calibration such as song offset does not belong in durable content data; it belongs in athlete/profile/device state.
-- Workout coaching is owned by the `Workout` and includes overlay entries for each referenced song/chart UID used by that workout.
+- Workout coaching is owned by the package’s single `coaches/coach-config.yaml`; enabled coaching requires roster + warmup + cooldown + exactly one overlay audio clip per workout entry keyed by `entryId`.
 
 ## Canonical ownership
 
