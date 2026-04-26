@@ -1,58 +1,39 @@
 # There is exactly one coach-config YAML per workout package.
-schemaId: aerobeat.coach-config.v1
-schemaVersion: 1
-recordVersion: 1
+# Coaching is optional all-or-nothing. Disabled coaching would be only:
+# enabled: false
+enabled: true
 
 # This id is referenced by workout.yaml.
 coachConfigId: ab-coach-config-neon-bootcamp
 coachConfigName: Neon Bootcamp Coach Config
 
-# defaultCoachId picks the featured coach used unless a specific overlay says otherwise.
-defaultCoachId: ab-coach-aria
-
 # featuredCoaches defines the roster available to this package.
+# Multiple coaches are allowed.
 featuredCoaches:
   - coachId: ab-coach-aria
     coachName: Coach Aria
+  - coachId: ab-coach-blaze
+    coachName: Coach Blaze
 
-    # Coach support assets come from the package asset system,
-    # but they are referenced here instead of from workout entry assetSelections.
-    avatarAssetId: ab-asset-coach-avatar-aria-holo
-    voiceAssetId: ab-asset-coach-voice-aria-energetic
+# Enabled coaching requires a warmup video reference.
+warmupVideo:
+  mediaId: ab-warmup-breathing-intro
+  path: media/coaching/warmup-breathing-intro.mp4
 
-    # Intro media paths still resolve inside the package.
-    introVideoPath: media/coaching/coach-aria-intro.mp4
+# Enabled coaching requires a cooldown video reference.
+cooldownVideo:
+  mediaId: ab-cooldown-stretch-outro
+  path: media/coaching/cooldown-stretch-outro.mp4
 
-# overlays are reusable coaching moments that session entries can reference by id.
-overlays:
-  - overlayId: ab-overlay-aria-neon-stride-count-in
-    trigger:
-      chartId: ab-chart-neon-stride-boxing-medium
-      eventKey: intro
+# Enabled coaching requires exactly one overlay audio clip per workout entry.
+# Validation should fail if any entry is missing, duplicated, or points at a missing file.
+entryOverlayAudio:
+  - entryId: ab-entry-neon-stride-opening-round
     coachId: ab-coach-aria
-    mediaType: video
-    path: media/coaching/aria-neon-stride-count-in.mp4
+    mediaId: ab-overlay-aria-neon-stride-cue
+    path: media/coaching/aria-neon-stride-overlay.ogg
 
-  - overlayId: ab-overlay-aria-neon-stride-recover-cue
-    trigger:
-      chartId: ab-chart-neon-stride-boxing-medium
-      eventKey: recovery_window
-    coachId: ab-coach-aria
-    mediaType: video
-    path: media/coaching/aria-neon-stride-recover-cue.mp4
-
-  - overlayId: ab-overlay-aria-midnight-sprint-push-cue
-    trigger:
-      chartId: ab-chart-midnight-sprint-boxing-hard
-      eventKey: midpoint_push
-    coachId: ab-coach-aria
-    mediaType: video
-    path: media/coaching/aria-midnight-sprint-push-cue.mp4
-
-  - overlayId: ab-overlay-aria-midnight-sprint-finish-cue
-    trigger:
-      chartId: ab-chart-midnight-sprint-boxing-hard
-      eventKey: final_push
-    coachId: ab-coach-aria
-    mediaType: video
-    path: media/coaching/aria-midnight-sprint-finish-cue.mp4
+  - entryId: ab-entry-midnight-sprint-finish-round
+    coachId: ab-coach-blaze
+    mediaId: ab-overlay-blaze-midnight-sprint-cue
+    path: media/coaching/blaze-midnight-sprint-overlay.ogg

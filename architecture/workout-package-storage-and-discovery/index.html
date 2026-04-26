@@ -6202,10 +6202,11 @@
 <li>the package contains everything required to play the workout for validation/runtime purposes</li>
 <li>leaderboard data is stored only as a <strong>local per-workout cache</strong>, is <strong>non-authoritative</strong>, and is <strong>ignored/removed during submission/upload</strong></li>
 <li>each package has one <code>coaches/</code> folder containing exactly one coach-config YAML file</li>
-<li>that coach-config YAML may describe multiple featured coaches</li>
+<li>coaching is optional all-or-nothing: disabled uses <code>enabled: false</code>, enabled requires the full roster/media contract</li>
+<li>enabled coach-config may describe multiple featured coaches</li>
 <li>alternate versions are created by <strong>duplication/forking</strong>, not inheritance or patch layering across workout packages</li>
 <li><code>environments/</code> and <code>assets/</code> are distinct content domains with their own YAML files</li>
-<li>each workout entry chooses one environment and one asset per asset type</li>
+<li>each workout entry chooses one environment and at most one asset per gameplay-facing asset type</li>
 <li>runtime may still unload/load on each song transition even when consecutive entries reuse the same ids</li>
 <li>official first-party assets/environments are future content under the same system, not a special-case path</li>
 </ul>
@@ -6258,7 +6259,7 @@
 <ul>
 <li>workout/session definition</li>
 <li>songs, routines, charts</li>
-<li>workout-local coach configuration</li>
+<li>workout-local coach configuration, including optional all-or-nothing coaching media</li>
 <li>package-local environments/assets</li>
 <li>package-local resource references</li>
 <li>schema/package/tool version metadata</li>
@@ -6352,7 +6353,7 @@
 <li>workout identity/description</li>
 <li>package-local default coach config reference</li>
 <li>ordered session entries</li>
-<li>workout-level media and transition settings</li>
+<li>transition settings</li>
 <li>package-level resource ownership declarations that are part of authored playback</li>
 </ul>
 <h4 id="must-not-own">Must not own<a class="headerlink" href="#must-not-own" title="Permanent link">&para;</a></h4>
@@ -6381,14 +6382,6 @@
 <span class="w">  </span><span class="nt">coverArtPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/art/cover.png</span>
 <span class="w">  </span><span class="nt">thumbnailPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/art/thumb.png</span>
 <span class="nt">session</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">warmupMedia</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mediaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warmup-intro</span>
-<span class="w">      </span><span class="nt">mediaType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">video</span>
-<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/coaching/warmup-intro.mp4</span>
-<span class="w">  </span><span class="nt">cooldownMedia</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mediaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cooldown-outro</span>
-<span class="w">      </span><span class="nt">mediaType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">video</span>
-<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/coaching/cooldown-outro.mp4</span>
 <span class="w">  </span><span class="nt">defaultTransition</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">crossfadeMs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
 <span class="w">    </span><span class="nt">allowRuntimeUnloadReload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -6405,8 +6398,6 @@
 <span class="w">        </span><span class="nt">obstacles</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
 <span class="w">      </span><span class="nt">transition</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">allowRuntimeUnloadReload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">      </span><span class="nt">coachingOverlayIds</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
 <span class="nt">packageContents</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">songs</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
@@ -6548,14 +6539,14 @@
 <span class="nt">events</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
 </code></pre></div>
 <h3 id="coachescoach-configyaml"><code>coaches/coach-config.yaml</code><a class="headerlink" href="#coachescoach-configyaml" title="Permanent link">&para;</a></h3>
-<p>There is exactly one coach-config YAML per workout package.</p>
-<p>It may describe one or more featured coaches, but the package owns only one workout-level coaching config domain.</p>
+<p>There is exactly one coach-config YAML per workout package. Coaching is optional all-or-nothing: disabled coaching uses <code>enabled: false</code>; enabled coaching owns the workout's roster and coaching media references.</p>
 <h4 id="owns_4">Owns<a class="headerlink" href="#owns_4" title="Permanent link">&para;</a></h4>
 <ul>
 <li>workout-level coach configuration</li>
+<li>optional all-or-nothing coaching enablement</li>
 <li>featured coach roster used by the package</li>
-<li>media/overlay references for coaching moments</li>
-<li>package-local mappings from workout/chart moments to coaching assets</li>
+<li>required warmup/cooldown media references when coaching is enabled</li>
+<li>exactly one overlay audio reference per workout entry when coaching is enabled</li>
 </ul>
 <h4 id="must-not-own_4">Must not own<a class="headerlink" href="#must-not-own_4" title="Permanent link">&para;</a></h4>
 <ul>
@@ -6564,26 +6555,23 @@
 <li>reusable cross-package inheritance rules</li>
 </ul>
 <h4 id="canonical-field-direction_4">Canonical field direction<a class="headerlink" href="#canonical-field-direction_4" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">schemaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerobeat.coach-config.v1</span>
-<span class="nt">schemaVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="nt">recordVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">coachConfigId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coach-config</span>
 <span class="nt">coachConfigName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">defaultCoachId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
 <span class="nt">featuredCoaches</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">coachId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
 <span class="w">    </span><span class="nt">coachName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">avatarAssetId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
-<span class="w">    </span><span class="nt">voiceAssetId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
-<span class="w">    </span><span class="nt">introVideoPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/coaching/coach-a-intro.mp4</span>
-<span class="nt">overlays</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">overlayId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
-<span class="w">    </span><span class="nt">trigger</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">chartId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
-<span class="w">      </span><span class="nt">eventKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">intro</span>
+<span class="nt">warmupVideo</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mediaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warmup-intro</span>
+<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/coaching/warmup-intro.mp4</span>
+<span class="nt">cooldownVideo</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mediaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cooldown-outro</span>
+<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/coaching/cooldown-outro.mp4</span>
+<span class="nt">entryOverlayAudio</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">entryId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
 <span class="w">    </span><span class="nt">coachId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
-<span class="w">    </span><span class="nt">mediaType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">video</span>
-<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/coaching/coach-a-cue.mp4</span>
+<span class="w">    </span><span class="nt">mediaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overlay-a</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/coaching/coach-a-cue.ogg</span>
 </code></pre></div>
 <h3 id="environmentsenvironment-idyaml"><code>environments/&lt;environment-id&gt;.yaml</code><a class="headerlink" href="#environmentsenvironment-idyaml" title="Permanent link">&para;</a></h3>
 <h4 id="owns_5">Owns<a class="headerlink" href="#owns_5" title="Permanent link">&para;</a></h4>
@@ -6648,13 +6636,10 @@
 <li><code>targets</code></li>
 <li><code>obstacles</code></li>
 <li><code>trails</code></li>
-<li><code>coach_avatar</code></li>
-<li><code>coach_voice</code></li>
 </ul>
 <p>Direction notes:</p>
 <ul>
 <li><code>gloves</code>, <code>targets</code>, <code>obstacles</code>, and <code>trails</code> are the <strong>entry-selectable gameplay-facing asset types</strong> referenced from <code>session.entries[*].assetSelections</code>.</li>
-<li><code>coach_avatar</code> and <code>coach_voice</code> are <strong>coach-config-referenced support asset types</strong>. They exist so coach media/resources can still live under the same package asset system without inventing a separate asset contract.</li>
 <li>v1 should <strong>not</strong> introduce broader freeform categories such as <code>misc</code>, <code>custom</code>, or implementation-specific plugin types. If AeroBeat later needs more asset families, add them through a deliberate schema revision rather than string drift.</li>
 <li>Missing entry selections mean “use runtime/default presentation behavior for that asset type,” not inheritance from another package.</li>
 </ul>
@@ -6666,8 +6651,8 @@
 <li>Each routine must reference exactly one song in <code>songs/</code>.</li>
 <li>Each session entry must choose exactly one environment id.</li>
 <li>Each session entry may choose zero or one asset id for each entry-selectable asset type; it must not choose multiple assets for the same asset type in the same entry.</li>
-<li><code>coach_avatar</code> and <code>coach_voice</code> assets are referenced from <code>coaches/coach-config.yaml</code>, not from workout entry asset-selection maps.</li>
-<li>The single coach-config file may define multiple coaches and overlays referenced by session entries.</li>
+<li>The single coach-config file may define multiple coaches.</li>
+<li>If coaching is enabled, coach-config must include one warmup video, one cooldown video, and exactly one overlay audio clip for every <code>session.entries[*].entryId</code>.</li>
 <li>Package-local references should remain package-local for v1 self-contained validation.</li>
 <li>Package validation should reject unknown <code>assetType</code> values rather than downgrading them to generic assets.</li>
 <li>Alternate versions of content are created by copying/forking package contents into a new package revision rather than layering patches across packages.</li>
@@ -6904,8 +6889,10 @@
 <li>required folders/files exist</li>
 <li><code>workout.yaml</code> exists and parses</li>
 <li>exactly one coach-config YAML exists under <code>coaches/</code></li>
+<li>if coach-config says <code>enabled: false</code>, it does not also carry dormant roster/media sections</li>
+<li>if coach-config says <code>enabled: true</code>, it includes the coach roster, warmup video, cooldown video, and exactly one overlay audio record for every workout <code>entryId</code></li>
 <li>referenced songs/routines/charts/environments/assets exist</li>
-<li>package-local media paths exist</li>
+<li>referenced package-local media paths exist on disk</li>
 <li>ids are unique and references are coherent</li>
 <li>each session entry has one environment and at most one asset per entry-selectable asset type</li>
 </ul>
@@ -6954,7 +6941,7 @@
 <li>leaderboard browsing cache lives in package-local <code>leaderboard-cache.db</code> only</li>
 <li>packages are self-contained and duplication/fork-based rather than inheritance-based</li>
 <li><code>coaches/</code>, <code>environments/</code>, and <code>assets/</code> are first-class content domains</li>
-<li><code>assetType</code> is a strict v1 enum: <code>gloves</code>, <code>targets</code>, <code>obstacles</code>, <code>trails</code>, <code>coach_avatar</code>, <code>coach_voice</code></li>
+<li><code>assetType</code> is a strict v1 enum: <code>gloves</code>, <code>targets</code>, <code>obstacles</code>, <code>trails</code></li>
 <li>each session entry resolves exact chart/routine/song ids plus one environment and at most one selected asset per entry-selectable asset type</li>
 <li>package signing/integrity metadata is explicitly deferred from the v1 authored package contract</li>
 <li>runtime may still do per-entry unload/reload even when ids repeat</li>
@@ -6981,7 +6968,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2026 23:12:05 UTC">April 25, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 26, 2026 14:02:51 UTC">April 26, 2026</span>
   </span>
 
     
