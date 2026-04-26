@@ -32,15 +32,15 @@ AeroBeat's current workflow is already package-like in intent, but not in releas
 
 ### Current assembly consumer behavior
 
-`aerobeat-assembly-community/setup_dev.py` currently wires dependencies in through **git submodules from sibling local paths**, specifically `../aerobeat-core` and `../aerobeat-input-mediapipe-python`, then updates `project.godot` plugin configuration.[^L1] The repo's `.gitmodules` pins those sources as local `file://` URLs on `main`, not release tags.[^L2]
+The `setup_dev.py` file in the sibling `aerobeat-assembly-community` repo currently wires dependencies in through **git submodules from sibling local paths**, specifically `../aerobeat-core` and `../aerobeat-input-mediapipe-python`, then updates `project.godot` plugin configuration.[^L1] That repo's `.gitmodules` pins those sources as local `file://` URLs on `main`, not release tags.[^L2]
 
 ### Current feature/UI package behavior
 
 Feature and UI repos are structured like reusable packages already:
 
-- `aerobeat-feature-boxing/setup_dev.py` clones `aerobeat-core` and GUT into `.testbed/addons`, then symlinks `src/` and `test/` into the hidden `.testbed/` project.[^L3]
-- `aerobeat-ui-kit-community/setup_dev.py` clones `aerobeat-core`, `aerobeat-ui-core`, and GUT into `.testbed/addons`, then symlinks `src/` and `test/`.[^L4]
-- `aerobeat-ui-shell-desktop-community/setup_dev.py` does the same for `aerobeat-core`, `aerobeat-ui-core`, and GUT.[^L5]
+- The `setup_dev.py` file in sibling repo `aerobeat-feature-boxing` clones `aerobeat-core` and GUT into `.testbed/addons`, then symlinks `src/` and `test/` into the hidden `.testbed/` project.[^L3]
+- The `setup_dev.py` file in sibling repo `aerobeat-ui-kit-community` clones `aerobeat-core`, `aerobeat-ui-core`, and GUT into `.testbed/addons`, then symlinks `src/` and `test/`.[^L4]
+- The `setup_dev.py` file in sibling repo `aerobeat-ui-shell-desktop-community` does the same for `aerobeat-core`, `aerobeat-ui-core`, and GUT.[^L5]
 
 The topology docs already describe this as a layered dependency system where assemblies consume active packages and dev-only dependencies are cloned into local testbeds.[^L6]
 
@@ -394,10 +394,10 @@ That gets AeroBeat close to the requested model without fighting Godot's core as
 
 ### Local AeroBeat evidence
 
-[^L1]: `aerobeat-assembly-community/setup_dev.py`
-[^L2]: `aerobeat-assembly-community/.gitmodules`
-[^L3]: `aerobeat-feature-boxing/setup_dev.py`
-[^L4]: `aerobeat-ui-kit-community/setup_dev.py`
-[^L5]: `aerobeat-ui-shell-desktop-community/setup_dev.py`
-[^L6]: `docs/architecture/topology.md`
-[^L7]: `docs/architecture/repository-map.md`
+[^L1]: Sibling repo evidence: `aerobeat-assembly-community`, file `setup_dev.py`.
+[^L2]: Sibling repo evidence: `aerobeat-assembly-community`, file `.gitmodules`.
+[^L3]: Sibling repo evidence: `aerobeat-feature-boxing`, file `setup_dev.py`.
+[^L4]: Sibling repo evidence: `aerobeat-ui-kit-community`, file `setup_dev.py`.
+[^L5]: Sibling repo evidence: `aerobeat-ui-shell-desktop-community`, file `setup_dev.py`.
+[^L6]: AeroBeat docs, "Repository Topology" — [topology.md](topology.md)
+[^L7]: AeroBeat docs, "Repository Map" — [repository-map.md](repository-map.md)
