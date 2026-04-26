@@ -5780,7 +5780,7 @@
 <li><strong>Chickensoft's strongest packaging story is for Godot C# code distributed as NuGet packages.</strong> That works well for <strong>compiled C# libraries</strong>, not for Godot scenes, GDScript assets, textures, audio, or whole addon folders.[^S1][^S2][^S3]</li>
 <li><strong>Godot's native/addon workflow for asset-bearing packages is still folder-based</strong>: packages are copied into <code>addons/</code> (or otherwise into the project tree), then optionally enabled if they are true editor plugins.[^S5][^S6]</li>
 <li><strong>Chickensoft GodotEnv is the closest official tool to an npm-like addon workflow</strong> for Godot assets. It gives AeroBeat a manifest-driven install flow (<code>addons.json</code> / <code>addons.jsonc</code>), supports installs from remote git repos, local repos, or symlinks, supports <code>checkout</code> values that can be branches or tags, and allows addons to declare dependencies in a <strong>flat dependency graph</strong>.[^S4]</li>
-<li>For AeroBeat's current repos, which are overwhelmingly <strong>GDScript/addon-oriented</strong> and contain <strong>scenes + assets + hidden <code>.testbed</code> projects</strong>, the best fit is a <strong>Godot addon package model with version-pinned git tags</strong>, not NuGet-first packaging.<a href="`aerobeat-assembly-community/.gitmodules`">^L1</a><a href="`aerobeat-ui-kit-community/setup_dev.py`">^L3</a><a href="`docs/architecture/topology.md`">^L5</a></li>
+<li>For AeroBeat's current repos, which are overwhelmingly <strong>GDScript/addon-oriented</strong> and contain <strong>scenes + assets + hidden <code>.testbed</code> projects</strong>, the best fit is a <strong>Godot addon package model with version-pinned git tags</strong>, not NuGet-first packaging.[^L1][^L2][^L3][^L4][^L5][^L6]</li>
 <li>If AeroBeat wants production builds that <strong>do not always ship every feature's assets/code</strong>, that is <strong>not solved by package installation alone</strong>. Godot handles shipping through <strong>export presets, resource include/exclude rules, hidden-folder exclusion, and optional PCK/ZIP packs</strong>, not through npm-style tree shaking.[^S7][^S8][^S9][^S10]</li>
 </ul>
 <h2 id="verdict">Verdict<a class="headerlink" href="#verdict" title="Permanent link">&para;</a></h2>
@@ -5814,20 +5814,20 @@
 <h2 id="what-aerobeat-is-doing-today">What AeroBeat is doing today<a class="headerlink" href="#what-aerobeat-is-doing-today" title="Permanent link">&para;</a></h2>
 <p>AeroBeat's current workflow is already package-like in intent, but not in release/install mechanics.</p>
 <h3 id="current-assembly-consumer-behavior">Current assembly consumer behavior<a class="headerlink" href="#current-assembly-consumer-behavior" title="Permanent link">&para;</a></h3>
-<p><code>aerobeat-assembly-community/setup_dev.py</code> currently wires dependencies in through <strong>git submodules from sibling local paths</strong>, specifically <code>../aerobeat-core</code> and <code>../aerobeat-input-mediapipe-python</code>, then updates <code>project.godot</code> plugin configuration.<a href="`aerobeat-assembly-community/setup_dev.py`">^L1</a> The repo's <code>.gitmodules</code> pins those sources as local <code>file://</code> URLs on <code>main</code>, not release tags.<a href="`aerobeat-assembly-community/.gitmodules`">^L2</a></p>
+<p>The <code>setup_dev.py</code> file in the sibling <code>aerobeat-assembly-community</code> repo currently wires dependencies in through <strong>git submodules from sibling local paths</strong>, specifically <code>../aerobeat-core</code> and <code>../aerobeat-input-mediapipe-python</code>, then updates <code>project.godot</code> plugin configuration.[^L1] That repo's <code>.gitmodules</code> pins those sources as local <code>file://</code> URLs on <code>main</code>, not release tags.[^L2]</p>
 <h3 id="current-featureui-package-behavior">Current feature/UI package behavior<a class="headerlink" href="#current-featureui-package-behavior" title="Permanent link">&para;</a></h3>
 <p>Feature and UI repos are structured like reusable packages already:</p>
 <ul>
-<li><code>aerobeat-feature-boxing/setup_dev.py</code> clones <code>aerobeat-core</code> and GUT into <code>.testbed/addons</code>, then symlinks <code>src/</code> and <code>test/</code> into the hidden <code>.testbed/</code> project.<a href="`aerobeat-feature-boxing/setup_dev.py`">^L3</a></li>
-<li><code>aerobeat-ui-kit-community/setup_dev.py</code> clones <code>aerobeat-core</code>, <code>aerobeat-ui-core</code>, and GUT into <code>.testbed/addons</code>, then symlinks <code>src/</code> and <code>test/</code>.<a href="`aerobeat-ui-kit-community/setup_dev.py`">^L4</a></li>
-<li><code>aerobeat-ui-shell-desktop-community/setup_dev.py</code> does the same for <code>aerobeat-core</code>, <code>aerobeat-ui-core</code>, and GUT.<a href="`aerobeat-ui-shell-desktop-community/setup_dev.py`">^L5</a></li>
+<li>The <code>setup_dev.py</code> file in sibling repo <code>aerobeat-feature-boxing</code> clones <code>aerobeat-core</code> and GUT into <code>.testbed/addons</code>, then symlinks <code>src/</code> and <code>test/</code> into the hidden <code>.testbed/</code> project.[^L3]</li>
+<li>The <code>setup_dev.py</code> file in sibling repo <code>aerobeat-ui-kit-community</code> clones <code>aerobeat-core</code>, <code>aerobeat-ui-core</code>, and GUT into <code>.testbed/addons</code>, then symlinks <code>src/</code> and <code>test/</code>.[^L4]</li>
+<li>The <code>setup_dev.py</code> file in sibling repo <code>aerobeat-ui-shell-desktop-community</code> does the same for <code>aerobeat-core</code>, <code>aerobeat-ui-core</code>, and GUT.[^L5]</li>
 </ul>
-<p>The topology docs already describe this as a layered dependency system where assemblies consume active packages and dev-only dependencies are cloned into local testbeds.<a href="`docs/architecture/topology.md`">^L6</a></p>
+<p>The topology docs already describe this as a layered dependency system where assemblies consume active packages and dev-only dependencies are cloned into local testbeds.[^L6]</p>
 <h3 id="current-hard-evidence-from-the-repo-set">Current hard evidence from the repo set<a class="headerlink" href="#current-hard-evidence-from-the-repo-set" title="Permanent link">&para;</a></h3>
 <ul>
 <li>The sampled AeroBeat repos currently have <strong>no local git tags</strong> and <code>ls-remote --tags origin</code> returned no remote tags for the sampled package repos during this research. That means a tag-pinned workflow is <strong>possible</strong>, but <strong>not yet established</strong>.</li>
 <li>A scan of the AeroBeat repo set found <strong>no <code>.csproj</code>, <code>.sln</code>, or <code>global.json</code> files</strong>, which means the current architecture is <strong>not presently using Chickensoft's C#/NuGet project model</strong>.</li>
-<li>The package repos commonly contain hidden <code>.testbed/</code> projects, plugin metadata, tests, and runtime source folders, which strongly matches a <strong>Godot addon/package</strong> model rather than a NuGet library model.<a href="`aerobeat-ui-kit-community/setup_dev.py`">^L3</a><a href="`aerobeat-ui-shell-desktop-community/setup_dev.py`">^L5</a></li>
+<li>The package repos commonly contain hidden <code>.testbed/</code> projects, plugin metadata, tests, and runtime source folders, which strongly matches a <strong>Godot addon/package</strong> model rather than a NuGet library model.[^L3][^L4][^L5]</li>
 </ul>
 <h2 id="what-chickensoft-officially-supports">What Chickensoft officially supports<a class="headerlink" href="#what-chickensoft-officially-supports" title="Permanent link">&para;</a></h2>
 <h2 id="1-reusable-c-packages-via-nuget">1) Reusable C# packages via NuGet<a class="headerlink" href="#1-reusable-c-packages-via-nuget" title="Permanent link">&para;</a></h2>
@@ -5968,7 +5968,7 @@
 <p>AeroBeat is currently structured as addon repos with GDScript/testbeds, not as C# solution/package repos. Chickensoft's NuGet story is excellent for C# libraries, but <strong>AeroBeat would have to rewrite or split large parts of the system</strong> to benefit from it directly.</p>
 <h2 id="2-c-is-a-poor-fit-if-web-export-matters">2) C# is a poor fit if web export matters<a class="headerlink" href="#2-c-is-a-poor-fit-if-web-export-matters" title="Permanent link">&para;</a></h2>
 <p>Godot's official C# docs state that <strong>Godot 4 C# projects currently cannot be exported to the web platform</strong>.[^S5]</p>
-<p>That matters because AeroBeat's repo map includes a <code>aerobeat-ui-shell-web-community</code> target.<a href="`docs/architecture/repository-map.md`">^L7</a> If web remains in scope, a C#-first Chickensoft package architecture is not a universal answer.</p>
+<p>That matters because AeroBeat's repo map includes a <code>aerobeat-ui-shell-web-community</code> target.[^L7] If web remains in scope, a C#-first Chickensoft package architecture is not a universal answer.</p>
 <h2 id="3-flat-addon-graphs-are-not-node_modules">3) Flat addon graphs are not <code>node_modules</code><a class="headerlink" href="#3-flat-addon-graphs-are-not-node_modules" title="Permanent link">&para;</a></h2>
 <p>GodotEnv explicitly uses a <strong>flat dependency graph</strong> for addons.[^S4]</p>
 <p>That means:</p>
@@ -6104,6 +6104,13 @@
 [^S9]: Godot docs, "Feature tags" — https://docs.godotengine.org/en/stable/tutorials/export/feature_tags.html
 [^S10]: Microsoft Learn, "Compiler Options - language feature rules" (<code>DefineConstants</code>) — https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/language</p>
 <h3 id="local-aerobeat-evidence">Local AeroBeat evidence<a class="headerlink" href="#local-aerobeat-evidence" title="Permanent link">&para;</a></h3>
+<p>[^L1]: Sibling repo evidence: <code>aerobeat-assembly-community</code>, file <code>setup_dev.py</code>.
+[^L2]: Sibling repo evidence: <code>aerobeat-assembly-community</code>, file <code>.gitmodules</code>.
+[^L3]: Sibling repo evidence: <code>aerobeat-feature-boxing</code>, file <code>setup_dev.py</code>.
+[^L4]: Sibling repo evidence: <code>aerobeat-ui-kit-community</code>, file <code>setup_dev.py</code>.
+[^L5]: Sibling repo evidence: <code>aerobeat-ui-shell-desktop-community</code>, file <code>setup_dev.py</code>.
+[^L6]: AeroBeat docs, "Repository Topology" — <a href="../topology/">topology.md</a>
+[^L7]: AeroBeat docs, "Repository Map" — <a href="../repository-map/">repository-map.md</a></p>
 
 
 
@@ -6124,7 +6131,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 20:21:21 UTC">April 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 26, 2026 15:28:59 UTC">April 26, 2026</span>
   </span>
 
     
