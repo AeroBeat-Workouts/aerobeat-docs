@@ -1,0 +1,16 @@
+# Environment records define reusable package-local play spaces.
+schemaId: aerobeat.environment.v1
+schemaVersion: 1
+recordVersion: 1
+environmentId: ab-environment-neon-rooftop
+environmentName: Neon Rooftop
+
+# Scene and lighting references stay package-local.
+scenePath: media/scenes/neon-rooftop.tscn
+lightingProfile: neon-night
+fogProfile: light-haze
+
+tags:
+  - cyber
+  - rooftop
+  - night

@@ -1,0 +1,52 @@
+# Second song in the same package to show multi-song workout composition.
+schemaId: aerobeat.song.v1
+schemaVersion: 1
+recordVersion: 1
+
+# Stable song identity referenced by its routine and the second workout entry.
+songId: ab-song-midnight-sprint
+songName: Midnight Sprint
+
+# Tool provenance is useful for migrations and debugging.
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-25T22:00:00Z
+updatedAt: 2026-04-25T22:00:00Z
+
+# Artist and publishing credits stay on the reusable song layer.
+artist:
+  displayName: Velocity Echo
+credits:
+  composer: Mason Rivera
+  publisher: NightTrack Audio
+
+# Licensing lives with the song because the audio asset is the reusable source.
+licensing:
+  licenseType: creator_demo_noncommercial
+  usageRights:
+    - local_playback
+    - docs_example
+
+# Audio paths point at package-local media files in a real installed package.
+audio:
+  filePath: media/audio/midnight-sprint.ogg
+  durationMs: 201500
+  previewStartMs: 36000
+
+# Timing stays on the song so multiple routines can share the same musical truth.
+timing:
+  bpm: 146
+  beatGrid:
+    resolution: 16
+    anchors:
+      - beat: 1
+        timeMs: 0
+
+# Lightweight descriptive metadata is fine at the song layer.
+metadata:
+  explicit: false
+  language: en
+tags:
+  - boxing
+  - finisher
+  - cardio

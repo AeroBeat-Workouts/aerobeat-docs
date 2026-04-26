@@ -806,6 +806,34 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../demo_workout_package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demo Workout Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -815,10 +843,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
         
           
-          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
             
   
   
@@ -836,8 +864,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1185,10 +1213,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#anatomy-of-a-coaching-pack" class="md-nav__link">
+  <a href="#anatomy-of-the-workout-coaching-domain" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📦 Anatomy of a Coaching Pack
+        📦 Anatomy of the Workout Coaching Domain
       
     </span>
   </a>
@@ -1242,10 +1270,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-videos-warm-up-cool-down" class="md-nav__link">
+  <a href="#coach-intro-workout-level-media" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Videos (Warm-Up / Cool-Down)
+        Coach Intro / Workout-Level Media
       
     </span>
   </a>
@@ -1253,10 +1281,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-audio-overlays" class="md-nav__link">
+  <a href="#voice-overlay-clips" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Audio Overlays
+        Voice / Overlay Clips
       
     </span>
   </a>
@@ -1269,10 +1297,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#phase-3-the-coaching-studio" class="md-nav__link">
+  <a href="#phase-3-package-authoring" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase 3: The Coaching Studio
+        Phase 3: Package Authoring
       
     </span>
   </a>
@@ -5392,10 +5420,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#anatomy-of-a-coaching-pack" class="md-nav__link">
+  <a href="#anatomy-of-the-workout-coaching-domain" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📦 Anatomy of a Coaching Pack
+        📦 Anatomy of the Workout Coaching Domain
       
     </span>
   </a>
@@ -5449,10 +5477,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-videos-warm-up-cool-down" class="md-nav__link">
+  <a href="#coach-intro-workout-level-media" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Videos (Warm-Up / Cool-Down)
+        Coach Intro / Workout-Level Media
       
     </span>
   </a>
@@ -5460,10 +5488,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-audio-overlays" class="md-nav__link">
+  <a href="#voice-overlay-clips" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Audio Overlays
+        Voice / Overlay Clips
       
     </span>
   </a>
@@ -5476,10 +5504,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#phase-3-the-coaching-studio" class="md-nav__link">
+  <a href="#phase-3-package-authoring" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase 3: The Coaching Studio
+        Phase 3: Package Authoring
       
     </span>
   </a>
@@ -5547,73 +5575,71 @@
 <h1 id="creating-coaching-content">Creating Coaching Content<a class="headerlink" href="#creating-coaching-content" title="Permanent link">&para;</a></h1>
 <p>Coaches are the heart of the AeroBeat experience. While the music provides the rhythm, <strong>you</strong> provide the motivation.</p>
 <p>Our coaching system is designed to replicate the feeling of a personal trainer working out right beside the athlete. You are not just a voice in their ear; you are their partner in the session.</p>
+<blockquote>
+<p><strong>Current contract note:</strong> This guide reflects the locked v1 package model. Coaching is not a separate “Coaching Pack” product. Coaching data lives inside the workout package’s single <code>coaches/coach-config.yaml</code> domain, and any coach-specific media/assets stay package-local.</p>
+</blockquote>
 <h2 id="the-philosophy-sweat-with-them">🎯 The Philosophy: "Sweat With Them"<a class="headerlink" href="#the-philosophy-sweat-with-them" title="Permanent link">&para;</a></h2>
 <p>The most successful coaching content (inspired by platforms like Supernatural VR) feels authentic because the coach is physically active during the recording.</p>
 <ul>
 <li><strong>Do not just read a script.</strong> Get your heart rate up. Let the athlete hear the effort in your voice.</li>
-<li><strong>Tell a Story.</strong> A Workout is not just random songs. It is a journey. Use the warm-up to set the theme ("Today is about resilience") and the cool-down to reflect.</li>
+<li><strong>Tell a Story.</strong> A Workout is not just random songs. It is a journey. If you use intro or cooldown media, use it to set the theme and reflect on the session.</li>
 <li><strong>Vibe Check.</strong> Match your energy to the song. If it is a high-intensity interval track, use your voice to acknowledge what the athlete is working through. If it is a flow track, be calm and grounding.</li>
 </ul>
-<h2 id="anatomy-of-a-coaching-pack">📦 Anatomy of a Coaching Pack<a class="headerlink" href="#anatomy-of-a-coaching-pack" title="Permanent link">&para;</a></h2>
-<p>A Coaching Pack is a collection of media files designed to wrap around a specific <strong>Workout</strong>.</p>
+<h2 id="anatomy-of-the-workout-coaching-domain">📦 Anatomy of the Workout Coaching Domain<a class="headerlink" href="#anatomy-of-the-workout-coaching-domain" title="Permanent link">&para;</a></h2>
+<p>A workout package owns exactly one <code>coaches/coach-config.yaml</code> file.</p>
+<p>That single file may describe:</p>
 <ol>
-<li><strong>Warm-Up Video:</strong> Plays before the first song. (1-2 minutes)</li>
-<li><strong>Audio Overlays:</strong> Voice tracks that play <em>on top of</em> specific songs in the Workout.</li>
-<li><strong>Cool-Down Video:</strong> Plays after the last song. (2-3 minutes)</li>
+<li><strong>Featured Coaches:</strong> one or more package-local coaches, typically referencing <code>coach_avatar</code> and <code>coach_voice</code> assets.</li>
+<li><strong>Coach Media:</strong> intro, overlay, or other referenced media files that live inside the same package.</li>
+<li><strong>Overlay Triggers:</strong> workout/chart moment mappings that tell runtime which coaching clip or cue belongs where.</li>
 </ol>
+<p>If the workout also includes warm-up or cooldown media, treat those as workout-package media references rather than a separate coaching-pack artifact.</p>
 <h2 id="technical-requirements">🛠️ Technical Requirements<a class="headerlink" href="#technical-requirements" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Video Format:</strong> <code>.webm</code> (VP8 or VP9 codec). Max resolution 1080p.</li>
 <li><strong>Audio Format:</strong> <code>.ogg</code> (Vorbis).</li>
 <li><strong>Tools:</strong></li>
 <li><strong>Recording:</strong> OBS Studio (video), Audacity / Reaper (audio).</li>
-<li><strong>Tool:</strong> <strong>Coaching Studio</strong> (web app).</li>
+<li><strong>Tool:</strong> a future AeroBeat coaching/content authoring workflow built on the shared package contracts.</li>
 </ul>
 <h2 id="step-by-step-workflow">🚀 Step-by-Step Workflow<a class="headerlink" href="#step-by-step-workflow" title="Permanent link">&para;</a></h2>
 <h3 id="phase-1-preparation">Phase 1: Preparation<a class="headerlink" href="#phase-1-preparation" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Select Base Content:</strong> Use the SDK's content browser to find an existing Workout or Song on the AeroBeat server. You do not need to have the files locally; the SDK streams the metadata and audio for you to coach against.</li>
+<li><strong>Select Base Content:</strong> Start from the workout package you are coaching. Know the exact workout, charts, and session flow you are targeting.</li>
 <li><strong>Learn the Charts:</strong> Play the Workout yourself. Note where the hard drops are, where the breaks are, and where the athlete will be struggling.</li>
-<li><strong>Write Your Script (Loose):</strong> Plan your intro story and your outro message. For the songs, note down cues such as "Big uppercuts coming up!" or "Breathe through the squat."</li>
+<li><strong>Write Your Script (Loose):</strong> Plan your coach intro, any optional workout-level intro/outro media, and the key chart moments where coaching overlays should trigger.</li>
 </ol>
 <h3 id="phase-2-recording">Phase 2: Recording<a class="headerlink" href="#phase-2-recording" title="Permanent link">&para;</a></h3>
-<h4 id="the-videos-warm-up-cool-down">The Videos (Warm-Up / Cool-Down)<a class="headerlink" href="#the-videos-warm-up-cool-down" title="Permanent link">&para;</a></h4>
+<h4 id="coach-intro-workout-level-media">Coach Intro / Workout-Level Media<a class="headerlink" href="#coach-intro-workout-level-media" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Lighting:</strong> Ensure you are well lit.</li>
 <li><strong>Background:</strong> Keep it clean or use a green screen.</li>
-<li><strong>Action:</strong> Lead the athlete through dynamic stretching (warm-up) or static stretching (cool-down).</li>
+<li><strong>Action:</strong> Record any optional workout-level intro/outro or explanatory media you want the package to reference.</li>
 <li><strong>Export:</strong> Render as <code>.webm</code>.</li>
 </ul>
-<h4 id="the-audio-overlays">The Audio Overlays<a class="headerlink" href="#the-audio-overlays" title="Permanent link">&para;</a></h4>
+<h4 id="voice-overlay-clips">Voice / Overlay Clips<a class="headerlink" href="#voice-overlay-clips" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Setup:</strong> Put on your headset, start recording in your DAW, and <strong>play the song</strong> in your headphones.</li>
 <li><strong>Action:</strong> Perform the workout while recording. Speak to the athlete as if they are next to you.</li>
-<li><strong>Export:</strong> Save the vocal track <em>only</em> (do not include the music) as <code>.ogg</code>. Ensure the start time aligns with the song start, or note the offset.</li>
+<li><strong>Export:</strong> Save the vocal track <em>only</em> (do not include the music) as <code>.ogg</code>. Ensure the start time aligns with the intended trigger moment, or record the offset you will wire into coaching metadata.</li>
 </ul>
-<h3 id="phase-3-the-coaching-studio">Phase 3: The Coaching Studio<a class="headerlink" href="#phase-3-the-coaching-studio" title="Permanent link">&para;</a></h3>
+<h3 id="phase-3-package-authoring">Phase 3: Package Authoring<a class="headerlink" href="#phase-3-package-authoring" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Open:</strong> Navigate to the <strong>Coaching Studio</strong> web portal.</li>
-<li><strong>Import Files:</strong> Drag your <code>.webm</code> and <code>.ogg</code> files into the project.</li>
-<li><strong>Create the Pack:</strong></li>
-<li>Create a new resource: <code>AeroCoachingPack</code>.</li>
-<li>Assign your <code>warm_up_video</code> and <code>cool_down_video</code>.</li>
-<li><strong>Map the Songs:</strong> In the <code>overlays</code> array, add entries for each song in the Workout.<ul>
-<li><code>Song ID</code>: The ID of the song you are coaching over.</li>
-<li><code>Audio Clip</code>: Your <code>.ogg</code> voice track.</li>
-<li><code>Volume</code>: Adjust to ensure you do not drown out the music (default <code>1.0</code>).</li>
-</ul>
-</li>
-<li><strong>Create Manifest:</strong></li>
-<li>Create <code>AeroModManifest</code>.</li>
-<li>Type: <code>COACHING</code>.</li>
-<li>Target Feature: (for example, <code>boxing</code>).</li>
-<li><strong>Validate &amp; Upload:</strong> Use the AeroBeat uploader tab to publish.</li>
+<li><strong>Open the workout package authoring flow.</strong></li>
+<li><strong>Import Files:</strong> Add your <code>.webm</code>, <code>.ogg</code>, avatar assets, and voice assets to the package-local media/assets folders.</li>
+<li><strong>Update <code>coaches/coach-config.yaml</code>:</strong></li>
+<li>Define your featured coach entries.</li>
+<li>Reference any <code>coach_avatar</code> / <code>coach_voice</code> assets.</li>
+<li>Add overlay mappings keyed to the relevant chart/event moments.</li>
+<li><strong>Update the workout package:</strong> If you are using optional workout-level intro/outro media, wire those references through the workout package contract instead of inventing a parallel pack type.</li>
+<li><strong>Validate:</strong> Run package validation so ids, references, asset types, and media paths resolve cleanly.</li>
 </ol>
 <h2 id="best-practices">💡 Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Feel the Vibe:</strong> You do not need to talk non-stop. Let the music drive the energy. Speak when motivation or instruction is needed.</li>
-<li><strong>Generic vs. Specific:</strong> Since you are coaching a specific <strong>Workout</strong>, you can reference the specific songs ("I love this guitar solo!"). This creates much deeper immersion than generic "Good job" lines.</li>
-<li><strong>Audio Ducking:</strong> The game engine automatically ducks the music volume slightly when your voice track is speaking. You do not need to mix this yourself.</li>
+<li><strong>Specific beats beat generic hype:</strong> Because the coaching config is attached to one workout package, you can tailor cues to exact chart moments and session flow.</li>
+<li><strong>Keep packages self-contained:</strong> Do not rely on cross-package inheritance, patching, or external coaching bundles.</li>
+<li><strong>Coach assets are typed:</strong> Use <code>coach_avatar</code> and <code>coach_voice</code> for coach-facing asset records. Do not place those asset types in workout-entry gameplay asset selections.</li>
 </ul>
 <h2 id="coaching-modifications">♿ Coaching Modifications<a class="headerlink" href="#coaching-modifications" title="Permanent link">&para;</a></h2>
 <p>Not every athlete can perform high-impact moves. It is important to acknowledge this and offer alternatives.</p>
@@ -5627,10 +5653,9 @@
 <p><strong>Q: Can I use Green Screen (Chroma Key) video?</strong>
 <strong>A:</strong> <strong>Yes.</strong> This is highly recommended for immersion.
 1. Record your video against a green background.
-2. In the Coaching SDK, select your video resource.
-3. Enable <strong>Transparent Background</strong> in the inspector. The engine uses a real-time shader to remove the green, making you appear inside the game environment.</p>
+2. Keep the keyed result as package-local media referenced by the coaching config or workout package.</p>
 <p><strong>Q: Can I remix an existing Workout?</strong>
-<strong>A:</strong> Yes. You can load an existing Workout in the SDK, add your coaching tracks, and save it as a remix. The original author is automatically credited in the manifest.</p>
+<strong>A:</strong> Yes. Duplicate or fork the workout package, then add your coaching configuration and media in the new package revision. Do not rely on inheritance or patch layering across packages.</p>
 
 
 
@@ -5651,7 +5676,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 16:37:32 UTC">April 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2026 21:27:37 UTC">April 25, 2026</span>
   </span>
 
     

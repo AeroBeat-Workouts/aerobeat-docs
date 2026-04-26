@@ -1,0 +1,51 @@
+# Song records own reusable music identity, timing, and credits.
+schemaId: aerobeat.song.v1
+schemaVersion: 1
+recordVersion: 1
+
+# Stable song identity referenced by routines and workout entries.
+songId: ab-song-neon-stride
+songName: Neon Stride
+
+# Tool and timestamp metadata support migrations and provenance.
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-25T22:00:00Z
+updatedAt: 2026-04-25T22:00:00Z
+
+# Artist and credit metadata belongs on the song.
+artist:
+  displayName: DJ CardioSpark
+credits:
+  composer: Lena Park
+  publisher: PulseForge Publishing
+
+# Licensing data stays attached to the reusable song record.
+licensing:
+  licenseType: creator_demo_noncommercial
+  usageRights:
+    - local_playback
+    - docs_example
+
+# Audio and timing data define the reusable playback source.
+audio:
+  filePath: media/audio/neon-stride.ogg
+  durationMs: 184000
+  previewStartMs: 28000
+
+timing:
+  bpm: 132
+  beatGrid:
+    resolution: 16
+    anchors:
+      - beat: 1
+        timeMs: 0
+
+# General descriptive metadata stays lightweight here.
+metadata:
+  explicit: false
+  language: en
+tags:
+  - boxing
+  - warmup
+  - neon

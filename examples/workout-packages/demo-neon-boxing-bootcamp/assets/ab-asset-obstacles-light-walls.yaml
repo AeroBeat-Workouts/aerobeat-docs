@@ -1,0 +1,19 @@
+# Gameplay-facing obstacle asset.
+schemaId: aerobeat.asset.v1
+schemaVersion: 1
+recordVersion: 1
+
+# Asset identity is what workout entries reference for the obstacles slot.
+assetId: ab-asset-obstacles-light-walls
+assetName: Light Wall Obstacles
+
+# obstacles is one of the locked v1 gameplay-facing asset types.
+assetType: obstacles
+resourcePath: media/assets/obstacles/light-walls.glb
+thumbnailPath: media/art/light-walls-thumb.png
+metadata:
+  palette: ultraviolet
+  style: translucent
+tags:
+  - obstacles
+  - dodge

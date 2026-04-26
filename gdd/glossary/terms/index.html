@@ -804,6 +804,34 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../guides/demo_workout_package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demo Workout Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -813,10 +841,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
         
           
-          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
             
   
   
@@ -834,8 +862,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5235,7 +5263,15 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Workout</strong></td>
-<td style="text-align: left;">An ordered training program that assembles routines or charts into a session.</td>
+<td style="text-align: left;">An ordered training program that assembles exact chart selections into a session and owns workout-level coaching/session flow.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Workout Package</strong></td>
+<td style="text-align: left;">A self-contained on-disk folder containing <code>workout.yaml</code>, typed YAML content folders, package-local media/resources, and optional disposable local caches.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Coach Config</strong></td>
+<td style="text-align: left;">The single workout-level coaching configuration YAML domain inside a package. One package has exactly one coach-config file, but that file may describe multiple featured coaches.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Chart Envelope</strong></td>
@@ -5319,7 +5355,27 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Environment</strong></td>
-<td style="text-align: left;">The 3D level geometry and lighting surrounding the gameplay.</td>
+<td style="text-align: left;">The package-local authored environment record and its referenced scene/lighting resources used to surround gameplay for a workout entry.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Asset</strong></td>
+<td style="text-align: left;">A package-local typed runtime-presented content record. The locked v1 asset types are <code>gloves</code>, <code>targets</code>, <code>obstacles</code>, <code>trails</code>, <code>coach_avatar</code>, and <code>coach_voice</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Asset Type</strong></td>
+<td style="text-align: left;">The closed v1 enum that identifies what kind of package asset a record is. Unknown values fail validation rather than silently behaving like generic assets.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>workouts.db</strong></td>
+<td style="text-align: left;">The local SQLite discovery/index database for installed workouts. It powers browse/search/filter views but is not the authored source of truth.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Catalog DB</strong></td>
+<td style="text-align: left;">A future sibling SQLite snapshot for remote/distribution discoverability. It should intentionally diverge from local <code>workouts.db</code> instead of mirroring local install/path state exactly.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Leaderboard Cache</strong></td>
+<td style="text-align: left;">The local disposable per-workout SQLite cache used for leaderboard browsing. It is non-authoritative and excluded from canonical package submission payloads.</td>
 </tr>
 </tbody>
 </table>
@@ -5343,7 +5399,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 24, 2026 19:09:13 UTC">April 24, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2026 20:57:23 UTC">April 25, 2026</span>
   </span>
 
     

@@ -1,0 +1,25 @@
+# Second boxing routine for the workout's harder finish.
+schemaId: aerobeat.routine.v1
+schemaVersion: 1
+recordVersion: 1
+
+# Routine identity links the song to one gameplay mode.
+routineId: ab-routine-midnight-sprint-boxing
+routineName: Midnight Sprint Boxing Routine
+
+# This routine interprets exactly one song.
+songId: ab-song-midnight-sprint
+
+# Mode belongs here because this is the boxing take on the song.
+mode: boxing
+
+authorId: ab-author-docs-team
+authorName: AeroBeat Docs Team
+
+# The routine points to the exact chart records it owns.
+chartIds:
+  - ab-chart-midnight-sprint-boxing-hard
+
+tags:
+  - interval-finisher
+  - advanced-cardio

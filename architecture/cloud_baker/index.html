@@ -804,6 +804,34 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../guides/demo_workout_package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demo Workout Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -813,10 +841,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
         
           
-          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
             
   
   
@@ -834,8 +862,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5425,25 +5453,28 @@
 
 
 <h1 id="cloud-baker-architecture">Cloud Baker Architecture<a class="headerlink" href="#cloud-baker-architecture" title="Permanent link">&para;</a></h1>
-<p>The <strong>Cloud Baker</strong> is the server-side pipeline responsible for validating, optimizing, and packaging User Generated Content (UGC). It ensures that raw assets uploaded by creators are safe and performant before they reach athletes' devices.</p>
+<p>The <strong>Cloud Baker</strong> is the server-side pipeline responsible for validating, optimizing, and packaging User Generated Content (UGC). It ensures that raw creator submissions are safe and performant before they reach athletes' devices.</p>
+<blockquote>
+<p><strong>Package-contract boundary:</strong> The Cloud Baker is a future distribution/build pipeline concern. It does <strong>not</strong> redefine the authored workout-package contract. The canonical authored truth remains the self-contained package folders/YAML described in the package docs. If this pipeline later emits <code>.pck</code> files or signed bundles, those are distribution artifacts layered on top of the authored package model.</p>
+</blockquote>
 <h2 id="the-pipeline">🏗️ The Pipeline<a class="headerlink" href="#the-pipeline" title="Permanent link">&para;</a></h2>
 <p>The pipeline is triggered via a webhook when a file lands in the S3 "Uploads" bucket.</p>
 <h3 id="stage-1-validation-the-gatekeeper">Stage 1: Validation (The Gatekeeper)<a class="headerlink" href="#stage-1-validation-the-gatekeeper" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Environment:</strong> Ephemeral Docker Container (Network Isolated).</li>
-<li><strong>Input:</strong> Raw <code>.pck</code> or Source Files (GLB/WAV).</li>
+<li><strong>Input:</strong> Authored workout packages or raw source assets destined for a later build step.</li>
 <li><strong>Checks:</strong><ol>
-<li><strong>Manifest Check:</strong> Is <code>manifest.tres</code> valid?</li>
-<li><strong>Script Scan:</strong> Grep for <code>script/source</code> or <code>type="GDScript"</code> in all text resources. <strong>Fail immediately if found.</strong></li>
-<li><strong>Path Check:</strong> Ensure all internal paths start with <code>res://mods/</code>. Reject overwrites to <code>res://addons/</code> or <code>res://src/</code>.</li>
+<li><strong>Package Shape Check:</strong> Does the submission match the expected package/domain layout and parse cleanly?</li>
+<li><strong>Script Scan:</strong> Grep for <code>script/source</code> or <code>type="GDScript"</code> in any submitted runtime resources. <strong>Fail immediately if found.</strong></li>
+<li><strong>Reference Check:</strong> Ensure paths and ids resolve inside the package boundary and do not attempt to overwrite engine/addon/runtime-owned paths.</li>
 </ol>
 </li>
 </ul>
 <h3 id="stage-2-optimization-the-crunch">Stage 2: Optimization (The Crunch)<a class="headerlink" href="#stage-2-optimization-the-crunch" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Texture Compression:</strong><ul>
-<li>Convert raw PNG/JPG to <strong>WebP</strong> (Lossless) for UI.</li>
-<li>Convert textures to <strong>ASTC</strong> (4x4 block) for Mobile/VR performance.</li>
+<li>Convert raw PNG/JPG to <strong>WebP</strong> (Lossless) for UI when appropriate.</li>
+<li>Convert textures to <strong>ASTC</strong> (4x4 block) for Mobile/VR performance when packaging runtime artifacts.</li>
 </ul>
 </li>
 <li><strong>Audio Conversion:</strong><ul>
@@ -5457,14 +5488,15 @@
 </ul>
 <h3 id="stage-3-packaging-the-baker">Stage 3: Packaging (The Baker)<a class="headerlink" href="#stage-3-packaging-the-baker" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Tool:</strong> Headless Godot Editor (<code>godot --headless --export-pack</code>).</li>
+<li><strong>Tool:</strong> Headless Godot Editor or other packaging/runtime build steps.</li>
 <li><strong>Action:</strong><ol>
-<li>Import the optimized assets into a temporary project.</li>
-<li>Generate the final <code>.pck</code> file.</li>
-<li>Sign the package with the AeroBeat Private Key (preventing tampering).</li>
+<li>Import the validated package into a temporary build environment.</li>
+<li>Generate runtime/distribution artifacts such as exported packs if the target platform needs them.</li>
+<li>Optionally sign the <strong>distribution artifact</strong> with AeroBeat-controlled keys.</li>
 </ol>
 </li>
 </ul>
+<p>Signing and integrity metadata here are a transport/distribution hardening concern. They are intentionally separate from the v1 authored package YAML contract.</p>
 <h2 id="infrastructure">☁️ Infrastructure<a class="headerlink" href="#infrastructure" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Orchestrator:</strong> AWS Step Functions / Temporal.</li>
@@ -5476,12 +5508,12 @@
 </li>
 </ul>
 <h2 id="re-baking-strategy">🔄 Re-Baking Strategy<a class="headerlink" href="#re-baking-strategy" title="Permanent link">&para;</a></h2>
-<p>One of the biggest risks in Godot development is <strong>Binary Compatibility</strong>. A <code>.pck</code> exported in Godot 4.2 might not load in Godot 4.3.</p>
-<p>To solve this, we store the <strong>Source Assets</strong> (GLB, WAV, Tres), not just the final PCK.</p>
+<p>One of the biggest risks in Godot development is <strong>Binary Compatibility</strong>. A runtime bundle exported in one Godot version might not load correctly in another.</p>
+<p>To solve this, we store the <strong>authored package/source assets</strong>, not just the final exported artifact.</p>
 <ul>
-<li><strong>Trigger:</strong> When AeroBeat upgrades the engine version.</li>
-<li><strong>Action:</strong> The Cloud Baker spins up thousands of workers to re-import and re-export every active mod using the <em>new</em> Godot version.</li>
-<li><strong>Result:</strong> Athletes automatically download the v2 version of their skins without the creator needing to lift a finger.</li>
+<li><strong>Trigger:</strong> When AeroBeat upgrades the engine version or its packaging pipeline.</li>
+<li><strong>Action:</strong> The Cloud Baker spins up workers to re-import and re-export active content using the new toolchain.</li>
+<li><strong>Result:</strong> Athletes download refreshed runtime artifacts without creators having to re-author the package contract itself.</li>
 </ul>
 <h2 id="security-measures">🛡️ Security Measures<a class="headerlink" href="#security-measures" title="Permanent link">&para;</a></h2>
 <ol>
@@ -5509,7 +5541,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 23, 2026 22:13:14 UTC">January 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2026 21:27:37 UTC">April 25, 2026</span>
   </span>
 
     

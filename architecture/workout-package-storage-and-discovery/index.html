@@ -800,6 +800,34 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../guides/demo_workout_package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demo Workout Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -809,10 +837,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
         
           
-          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
             
   
   
@@ -830,8 +858,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5195,22 +5223,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#core-model-recap" class="md-nav__link">
+  <a href="#core-content-model-recap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Core model recap
+        Core content model recap
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Core model recap">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authority-split-authored-package-vs-derived-indexescaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authority split: authored package vs derived indexes/caches
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authority split: authored package vs derived indexes/caches">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#current-naming-direction" class="md-nav__link">
+  <a href="#1-package-yaml-durable-authored-truth" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Current naming direction
+        1. Package YAML = durable authored truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-workoutsdb-installdiscovery-catalog-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. workouts.db = install/discovery catalog index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-leaderboard-cachedb-local-disposable-score-browsing-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. leaderboard-cache.db = local disposable score-browsing cache
       
     </span>
   </a>
@@ -5223,88 +5284,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#storage-model-overview" class="md-nav__link">
+  <a href="#canonical-on-disk-layout" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Storage model overview
+        Canonical on-disk layout
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-yaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why YAML
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-copiedself-contained-packages" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why copied/self-contained packages
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#package-layout-decision-separate-files-early" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Package layout decision: separate files early
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#proposed-on-disk-layout" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proposed on-disk layout
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#workoutyaml-responsibilities" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        workout.yaml responsibilities
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="workout.yaml responsibilities">
+    <nav class="md-nav" aria-label="Canonical on-disk layout">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#workoutyaml-should-likely-contain" class="md-nav__link">
+  <a href="#layout-rules" class="md-nav__link">
     <span class="md-ellipsis">
       
-        workout.yaml should likely contain
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#versioning-fields-to-carry" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Versioning fields to carry
+        Layout rules
       
     </span>
   </a>
@@ -5317,16 +5312,116 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#song-routine-and-chart-yaml-responsibilities" class="md-nav__link">
+  <a href="#package-wide-shared-field-direction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Song, Routine, and Chart YAML responsibilities
+        Package-wide shared field direction
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Song, Routine, and Chart YAML responsibilities">
+    <nav class="md-nav" aria-label="Package-wide shared field direction">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-shared-fields-for-all-authored-yaml-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required shared fields for all authored YAML records
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-shared-optional-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended shared optional metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#canonical-yaml-schema-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical YAML schema direction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Canonical YAML schema direction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workoutyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        workout.yaml
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="workout.yaml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#owns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Owns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#must-not-own" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Must not own
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#canonical-field-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical field direction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#songssong-idyaml" class="md-nav__link">
@@ -5336,6 +5431,45 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="songs/&lt;song-id&gt;.yaml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#owns_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Owns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#must-not-own_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Must not own
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#canonical-field-direction_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical field direction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -5348,6 +5482,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="routines/&lt;routine-id&gt;.yaml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#owns_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Owns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#must-not-own_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Must not own
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#canonical-field-direction_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical field direction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -5359,30 +5532,14 @@
     </span>
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#workoutsdb-responsibilities" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        workouts.db responsibilities
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="workouts.db responsibilities">
+    <nav class="md-nav" aria-label="charts/&lt;chart-id&gt;.yaml">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#workoutsdb-should-likely-store" class="md-nav__link">
+  <a href="#owns_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        workouts.db should likely store
+        Owns
       
     </span>
   </a>
@@ -5390,10 +5547,364 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#candidate-search-fields" class="md-nav__link">
+  <a href="#must-not-own_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Candidate search fields
+        Must not own
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#canonical-field-direction_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical field direction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coachescoach-configyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        coaches/coach-config.yaml
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="coaches/coach-config.yaml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#owns_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Owns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#must-not-own_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Must not own
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#canonical-field-direction_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical field direction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environmentsenvironment-idyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        environments/&lt;environment-id&gt;.yaml
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="environments/&lt;environment-id&gt;.yaml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#owns_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Owns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#must-not-own_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Must not own
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#canonical-field-direction_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical field direction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assetsasset-idyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        assets/&lt;asset-id&gt;.yaml
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="assets/&lt;asset-id&gt;.yaml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#owns_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Owns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#must-not-own_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Must not own
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#canonical-field-direction_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical field direction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locked-v1-assettype-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked v1 assetType direction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationship-and-reference-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship and reference rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-intentionally-stays-out-of-package-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What intentionally stays out of package YAML
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#canonical-sqlite-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical SQLite direction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workoutsdb-v1-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        workouts.db v1 direction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="workouts.db v1 direction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#must-not-become" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Must not become
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum-v1-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimum v1 tables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Minimum v1 tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        workouts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workout_tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        workout_tags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workout_modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        workout_modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workout_difficulties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        workout_difficulties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workout_songs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        workout_songs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workout_assets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        workout_assets
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexing-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Indexing notes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locked-online-catalog-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked online catalog direction
       
     </span>
   </a>
@@ -5406,10 +5917,110 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#godot-discovery-flow" class="md-nav__link">
+  <a href="#per-workout-leaderboard-cachedb-v1-direction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Godot discovery flow
+        Per-workout leaderboard-cache.db v1 direction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Per-workout leaderboard-cache.db v1 direction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responsibilities_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-goals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum-v1-tables_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimum v1 tables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Minimum v1 tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cache_meta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cache_meta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leaderboard_entries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        leaderboard_entries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leaderboard_sync_runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        leaderboard_sync_runs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cache rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#godotruntime-discovery-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Godot/runtime discovery flow
       
     </span>
   </a>
@@ -5417,15 +6028,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installupdateremove-flow" class="md-nav__link">
+  <a href="#install-update-remove-and-submission-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install/update/remove flow
+        Install, update, remove, and submission flow
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Install/update/remove flow">
+    <nav class="md-nav" aria-label="Install, update, remove, and submission flow">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5461,61 +6072,11 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#local-installed-index-vs-online-catalog-snapshot" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Local installed index vs online catalog snapshot
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Local installed index vs online catalog snapshot">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
-  <a href="#1-local-installed-index" class="md-nav__link">
+  <a href="#submissionexport" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Local installed index
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-downloaded-online-catalog-snapshot" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Downloaded online catalog snapshot
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-this-is-attractive" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this is attractive
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#risks-open-concerns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Risks / open concerns
+        Submission/export
       
     </span>
   </a>
@@ -5540,21 +6101,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#package-level-validation" class="md-nav__link">
+  <a href="#package-validation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Package-level validation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#content-level-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Content-level validation
+        Package validation
       
     </span>
   </a>
@@ -5572,16 +6122,38 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#submission-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submission validation
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#open-questions" class="md-nav__link">
+  <a href="#explicit-near-term-deferrals" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Open questions
+        Explicit near-term deferrals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-package-and-schema-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example package and schema files
       
     </span>
   </a>
@@ -5620,102 +6192,98 @@
 
 
 <h1 id="workout-package-storage-and-discovery">Workout Package Storage and Discovery<a class="headerlink" href="#workout-package-storage-and-discovery" title="Permanent link">&para;</a></h1>
-<p>This document captures the current draft direction for how AeroBeat workout content should be stored on disk, discovered by Godot at runtime, and indexed for local and online browsing.</p>
-<p>It is intentionally grounded in the data-shape decisions made on 2026-04-23:</p>
+<p>This document defines the current canonical direction for how AeroBeat workout packages are authored, stored on disk, discovered at runtime, and indexed for browsing.</p>
+<p>It turns the earlier 2026-04-23 storage draft into a more implementation-guiding contract.</p>
+<p>The package system is grounded in these now-locked decisions:</p>
 <ul>
-<li>the durable content model is <code>Song -&gt; Routine -&gt; Chart -&gt; Workout</code></li>
-<li>naming should stay consistent with <code>*Id</code> + <code>*Name</code> pairs where applicable</li>
-<li>all primary ids are UIDs</li>
-<li>authored durable records should use YAML rather than JSON so they remain comment-friendly and hand-editable</li>
-<li>workout packages should prefer copied/self-contained content rather than cross-package references</li>
-<li>package layout should use <strong>separate YAML files</strong> rather than one giant monolithic workout file</li>
-<li><code>workout.yaml</code> should carry both workout metadata and manifest/version metadata</li>
-<li>a root <code>workouts.db</code> SQLite file should index installed workouts for search and discovery</li>
+<li>workout packages are <strong>self-contained</strong></li>
+<li>YAML is the <strong>authored durable format</strong></li>
+<li>discoverability lives in <strong><code>workouts.db</code> only</strong>, not in package YAML</li>
+<li>the package contains everything required to play the workout for validation/runtime purposes</li>
+<li>leaderboard data is stored only as a <strong>local per-workout cache</strong>, is <strong>non-authoritative</strong>, and is <strong>ignored/removed during submission/upload</strong></li>
+<li>each package has one <code>coaches/</code> folder containing exactly one coach-config YAML file</li>
+<li>that coach-config YAML may describe multiple featured coaches</li>
+<li>alternate versions are created by <strong>duplication/forking</strong>, not inheritance or patch layering across workout packages</li>
+<li><code>environments/</code> and <code>assets/</code> are distinct content domains with their own YAML files</li>
+<li>each workout entry chooses one environment and one asset per asset type</li>
+<li>runtime may still unload/load on each song transition even when consecutive entries reuse the same ids</li>
+<li>official first-party assets/environments are future content under the same system, not a special-case path</li>
 </ul>
-<p>This is a draft architecture proposal, not a finalized implementation contract.</p>
 <h2 id="design-goals">Design goals<a class="headerlink" href="#design-goals" title="Permanent link">&para;</a></h2>
 <p>The storage and discovery system should optimize for:</p>
 <ul>
-<li><strong>clarity</strong> — easy to understand where content lives</li>
-<li><strong>debuggability</strong> — easy to inspect broken or incomplete packages by looking at files on disk</li>
-<li><strong>symmetry</strong> — first-party workouts and UGC workouts should use the same package shape</li>
-<li><strong>runtime friendliness</strong> — Godot should be able to discover installed content without re-parsing every YAML file on every browse action</li>
-<li><strong>low-scope iteration</strong> — early online browsing should be possible without requiring a large custom API surface on day one</li>
+<li><strong>clarity</strong> — creators and engineers can inspect a package on disk and understand it quickly</li>
+<li><strong>debuggability</strong> — broken references are visible as broken package-local files or ids</li>
+<li><strong>portability</strong> — packages can be copied, archived, validated, and reinstalled as self-contained units</li>
+<li><strong>symmetry</strong> — first-party and community-authored workouts use the same conceptual package system</li>
+<li><strong>runtime friendliness</strong> — browse/search should use SQLite rather than reparsing every YAML file for every query</li>
+<li><strong>durable authorship</strong> — YAML remains the canonical human-authored source, while indexes/caches are derived data</li>
 </ul>
-<h2 id="core-model-recap">Core model recap<a class="headerlink" href="#core-model-recap" title="Permanent link">&para;</a></h2>
-<p>The content model being stored is:</p>
+<h2 id="core-content-model-recap">Core content model recap<a class="headerlink" href="#core-content-model-recap" title="Permanent link">&para;</a></h2>
+<p>The durable content hierarchy remains:</p>
 <ul>
 <li><strong>Song</strong></li>
-<li>reusable music/media identity and timing authority</li>
+<li>reusable audio/timing identity</li>
 <li><strong>Routine</strong></li>
 <li>one song interpreted through one gameplay mode</li>
 <li><strong>Chart</strong></li>
-<li>one concrete playable difficulty slice of a routine</li>
+<li>one exact playable difficulty slice of a routine</li>
 <li><strong>Workout</strong></li>
-<li>the programmed session that selects exact chart UIDs and owns workout-level coaching and package metadata</li>
+<li>the programmed session that selects exact chart ids and owns workout-level coaching/package metadata</li>
 </ul>
-<h3 id="current-naming-direction">Current naming direction<a class="headerlink" href="#current-naming-direction" title="Permanent link">&para;</a></h3>
-<p>Use consistent naming where applicable:</p>
+<p>Related package-local domains now also include:</p>
+<ul>
+<li><strong>Coach Config</strong></li>
+<li>the workout-level coaching/media definition file for that package</li>
+<li><strong>Environment</strong></li>
+<li>a reusable environment record authorable inside the package</li>
+<li><strong>Asset</strong></li>
+<li>a reusable per-type asset record authorable inside the package</li>
+</ul>
+<p>All primary ids are UIDs and follow the same naming rule where applicable:</p>
 <ul>
 <li><code>songId</code>, <code>songName</code></li>
 <li><code>routineId</code>, <code>routineName</code></li>
 <li><code>chartId</code>, <code>chartName</code></li>
 <li><code>workoutId</code>, <code>workoutName</code></li>
+<li><code>coachConfigId</code>, <code>coachConfigName</code></li>
+<li><code>environmentId</code>, <code>environmentName</code></li>
+<li><code>assetId</code>, <code>assetName</code></li>
 </ul>
-<h2 id="storage-model-overview">Storage model overview<a class="headerlink" href="#storage-model-overview" title="Permanent link">&para;</a></h2>
-<p>AeroBeat should treat workout content as <strong>self-contained installed packages on disk</strong>.</p>
-<p>Each workout package lives in its own folder under a shared workouts root. The package contains:</p>
+<h2 id="authority-split-authored-package-vs-derived-indexescaches">Authority split: authored package vs derived indexes/caches<a class="headerlink" href="#authority-split-authored-package-vs-derived-indexescaches" title="Permanent link">&para;</a></h2>
+<p>AeroBeat intentionally splits authority across three layers.</p>
+<h3 id="1-package-yaml-durable-authored-truth">1. Package YAML = durable authored truth<a class="headerlink" href="#1-package-yaml-durable-authored-truth" title="Permanent link">&para;</a></h3>
+<p>The package YAML files are the canonical authored content payload.</p>
+<p>They own:</p>
 <ul>
-<li>one root <code>workout.yaml</code></li>
-<li>separate YAML files for songs, routines, and charts</li>
-<li>copied media/artifacts required to run the workout</li>
+<li>workout/session definition</li>
+<li>songs, routines, charts</li>
+<li>workout-local coach configuration</li>
+<li>package-local environments/assets</li>
+<li>package-local resource references</li>
+<li>schema/package/tool version metadata</li>
 </ul>
-<p>At the root of the workouts install location, AeroBeat also maintains a SQLite index:</p>
+<p>They do <strong>not</strong> own:</p>
 <ul>
-<li><code>workouts.db</code></li>
+<li>discoverability/search indexing</li>
+<li>athlete/device-specific calibration or profile overrides</li>
+<li>authoritative score history</li>
+<li>player-wide social/profile state</li>
 </ul>
-<p>The split of responsibilities is:</p>
+<h3 id="2-workoutsdb-installdiscovery-catalog-index">2. <code>workouts.db</code> = install/discovery catalog index<a class="headerlink" href="#2-workoutsdb-installdiscovery-catalog-index" title="Permanent link">&para;</a></h3>
+<p><code>workouts.db</code> exists to power local browsing, filtering, moderation surfaces, and install-state lookups.</p>
+<p>It is derived from installed packages, is not the authored truth, and should remain separate from any future downloaded online catalog snapshot DB.</p>
+<h3 id="3-leaderboard-cachedb-local-disposable-score-browsing-cache">3. <code>leaderboard-cache.db</code> = local disposable score-browsing cache<a class="headerlink" href="#3-leaderboard-cachedb-local-disposable-score-browsing-cache" title="Permanent link">&para;</a></h3>
+<p>The leaderboard cache database is strictly a local convenience cache for viewing leaderboard snapshots for a specific workout.</p>
+<p>It is:</p>
 <ul>
-<li><strong>YAML package files</strong> = human-readable portable source of truth for each installed workout package</li>
-<li><strong>SQLite index</strong> = searchable discovery/index layer for installed packages</li>
+<li>non-authoritative</li>
+<li>safe to rebuild or delete</li>
+<li>excluded from canonical package submission payloads</li>
+<li>ignored or stripped during upload/submission validation</li>
 </ul>
-<h2 id="why-yaml">Why YAML<a class="headerlink" href="#why-yaml" title="Permanent link">&para;</a></h2>
-<p>YAML is preferred over JSON for the authored package files because it gives us:</p>
-<ul>
-<li>comments</li>
-<li>easier hand-editing</li>
-<li>easier inspection during debugging</li>
-<li>a friendlier shape for creators and internal iteration</li>
-</ul>
-<p>This is especially important because AeroBeat wants first-party and community-authored workouts to share the same packaging model.</p>
-<h2 id="why-copiedself-contained-packages">Why copied/self-contained packages<a class="headerlink" href="#why-copiedself-contained-packages" title="Permanent link">&para;</a></h2>
-<p>Packages should prefer copied content rather than required external references.</p>
-<p>Reasons:</p>
-<ul>
-<li>easier to reason about what is actually installed</li>
-<li>easier to debug broken packages</li>
-<li>easier to move/share/archive/install/uninstall packages</li>
-<li>fewer hidden dependencies</li>
-<li>keeps first-party and UGC structurally identical</li>
-</ul>
-<p>For now, package robustness matters more than deduplication.</p>
-<h2 id="package-layout-decision-separate-files-early">Package layout decision: separate files early<a class="headerlink" href="#package-layout-decision-separate-files-early" title="Permanent link">&para;</a></h2>
-<p>AeroBeat is explicitly choosing the <strong>separate-files</strong> path instead of a single giant <code>workout.yaml</code>.</p>
-<p>Why:</p>
-<ul>
-<li>chart payloads will become large</li>
-<li>keeping chart data inline would make workout files noisy and hard to edit</li>
-<li>Songs, Routines, Charts, and Workouts are already distinct durable concepts</li>
-<li>separate files make validation and diffs easier to reason about</li>
-</ul>
-<p>That means:</p>
-<ul>
-<li><code>workout.yaml</code> stays focused on workout/package metadata and workout-owned session data</li>
-<li><code>songs/</code> contains one YAML file per <code>Song</code></li>
-<li><code>routines/</code> contains one YAML file per <code>Routine</code></li>
-<li><code>charts/</code> contains one YAML file per <code>Chart</code></li>
-</ul>
-<h2 id="proposed-on-disk-layout">Proposed on-disk layout<a class="headerlink" href="#proposed-on-disk-layout" title="Permanent link">&para;</a></h2>
+<p>Server APIs remain authoritative for score submission, anti-cheat enforcement, and player-wide leaderboard/profile state.</p>
+<h2 id="canonical-on-disk-layout">Canonical on-disk layout<a class="headerlink" href="#canonical-on-disk-layout" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>aerobeat-workouts/
 ├── workouts.db
 └── workouts/
@@ -5727,228 +6295,672 @@
         │   └── &lt;routine-id&gt;.yaml
         ├── charts/
         │   └── &lt;chart-id&gt;.yaml
-        └── media/
-            ├── audio/
-            ├── video/
-            ├── art/
-            ├── coaching/
-            └── scenes/
+        ├── coaches/
+        │   └── coach-config.yaml
+        ├── environments/
+        │   └── &lt;environment-id&gt;.yaml
+        ├── assets/
+        │   └── &lt;asset-id&gt;.yaml
+        ├── media/
+        │   ├── audio/
+        │   ├── video/
+        │   ├── art/
+        │   ├── coaching/
+        │   ├── scenes/
+        │   └── assets/
+        └── cache/
+            └── leaderboard-cache.db
 </code></pre></div>
-<p>This keeps the package rule simple:</p>
-<ul>
-<li>the root contains <code>workout.yaml</code></li>
-<li>every other major content family lives in its own subfolder</li>
-<li>those subfolders contain the YAML files and copied artifacts needed by the package</li>
-</ul>
-<h2 id="workoutyaml-responsibilities"><code>workout.yaml</code> responsibilities<a class="headerlink" href="#workoutyaml-responsibilities" title="Permanent link">&para;</a></h2>
-<p><code>workout.yaml</code> should combine two concerns:</p>
+<h3 id="layout-rules">Layout rules<a class="headerlink" href="#layout-rules" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Workout data</strong></li>
-<li><strong>Manifest/version metadata</strong></li>
+<li>The package root contains exactly one <code>workout.yaml</code>.</li>
+<li><code>songs/</code>, <code>routines/</code>, <code>charts/</code>, <code>coaches/</code>, <code>environments/</code>, and <code>assets/</code> are distinct content-domain folders.</li>
+<li><code>coaches/</code> contains exactly one YAML file for the workout-level coach config domain.</li>
+<li>Media/resource references should resolve inside the package folder.</li>
+<li><code>cache/</code> contains only disposable derived data and must not be treated as authored package content.</li>
+<li>Submission/export validators may omit <code>cache/</code> entirely from canonical package payload generation.</li>
 </ol>
-<p>The current direction is to avoid a separate manifest file unless a future need proves that split useful.</p>
-<h3 id="workoutyaml-should-likely-contain"><code>workout.yaml</code> should likely contain<a class="headerlink" href="#workoutyaml-should-likely-contain" title="Permanent link">&para;</a></h3>
+<h2 id="package-wide-shared-field-direction">Package-wide shared field direction<a class="headerlink" href="#package-wide-shared-field-direction" title="Permanent link">&para;</a></h2>
+<p>Every authored YAML record should carry a small set of predictable contract fields.</p>
+<h3 id="required-shared-fields-for-all-authored-yaml-records">Required shared fields for all authored YAML records<a class="headerlink" href="#required-shared-fields-for-all-authored-yaml-records" title="Permanent link">&para;</a></h3>
 <ul>
-<li><code>workoutId</code></li>
-<li><code>workoutName</code></li>
-<li><code>description</code></li>
-<li><code>coachId</code></li>
-<li><code>coachName</code></li>
-<li>workout-level default background scene selection</li>
-<li>pre-workout / warmup media references</li>
-<li>post-workout / cooldown media references</li>
-<li>ordered workout entries that resolve to exact chart UIDs</li>
-<li>workout-owned coaching overlays keyed to the referenced song/chart UIDs used in the workout</li>
-<li>tags or browse metadata needed as part of the durable workout definition</li>
-<li>version metadata such as:</li>
-<li>workout/package version</li>
-<li>schema version</li>
-<li>creation tool name/version</li>
+<li><code>schemaId</code> — explicit schema identifier such as <code>aerobeat.song.v1</code></li>
+<li><code>schemaVersion</code> — version of the record contract</li>
+<li><code>recordVersion</code> — revision of this authored record</li>
+<li>primary id/name fields for that record type</li>
+<li><code>createdByTool</code> — tool id/name that produced the record</li>
+<li><code>createdByToolVersion</code> — tool version</li>
+<li><code>createdAt</code></li>
+<li><code>updatedAt</code></li>
 </ul>
-<h3 id="versioning-fields-to-carry">Versioning fields to carry<a class="headerlink" href="#versioning-fields-to-carry" title="Permanent link">&para;</a></h3>
-<p>At minimum, the combined workout/manifest file should preserve the distinction between:</p>
+<h3 id="recommended-shared-optional-metadata">Recommended shared optional metadata<a class="headerlink" href="#recommended-shared-optional-metadata" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>schema version</strong> — how to interpret the file structure/contracts</li>
-<li><strong>package version</strong> — which revision of this workout package this is</li>
-<li><strong>creation tool version</strong> — which authoring/build tool generated the package</li>
-</ul>
-<p>That gives AeroBeat enough information to reason about parsing, migration, and support/debugging.</p>
-<h2 id="song-routine-and-chart-yaml-responsibilities"><code>Song</code>, <code>Routine</code>, and <code>Chart</code> YAML responsibilities<a class="headerlink" href="#song-routine-and-chart-yaml-responsibilities" title="Permanent link">&para;</a></h2>
-<h3 id="songssong-idyaml"><code>songs/&lt;song-id&gt;.yaml</code><a class="headerlink" href="#songssong-idyaml" title="Permanent link">&para;</a></h3>
-<p>Owns reusable music/media identity, for example:</p>
-<ul>
-<li><code>songId</code></li>
-<li><code>songName</code></li>
-<li>artist/credits/licensing metadata</li>
-<li>audio/media references</li>
-<li>duration</li>
-<li>tempo map / beat grid authority</li>
-<li>tags/metadata</li>
-</ul>
-<p>Must not own athlete/device-specific timing offsets.</p>
-<h3 id="routinesroutine-idyaml"><code>routines/&lt;routine-id&gt;.yaml</code><a class="headerlink" href="#routinesroutine-idyaml" title="Permanent link">&para;</a></h3>
-<p>Owns one song interpreted through one gameplay mode, for example:</p>
-<ul>
-<li><code>routineId</code></li>
-<li><code>routineName</code></li>
-<li><code>songId</code></li>
-<li><code>mode</code></li>
 <li><code>authorId</code></li>
 <li><code>authorName</code></li>
-<li><code>charts</code> as exact chart UIDs</li>
+<li><code>tags</code></li>
+<li><code>notes</code></li>
+<li><code>source</code></li>
 </ul>
-<p><code>Routine</code> is intentionally lean.</p>
+<p>These shared fields are about traceability and migration support, not discoverability. Search-facing denormalization belongs in <code>workouts.db</code>.</p>
+<h2 id="canonical-yaml-schema-direction">Canonical YAML schema direction<a class="headerlink" href="#canonical-yaml-schema-direction" title="Permanent link">&para;</a></h2>
+<p>The sections below define the current v1 field direction. They are intended as implementation-guiding contracts, not strict serialization code yet.</p>
+<h3 id="workoutyaml"><code>workout.yaml</code><a class="headerlink" href="#workoutyaml" title="Permanent link">&para;</a></h3>
+<p><code>workout.yaml</code> combines package manifest metadata and workout-level session data.</p>
+<h4 id="owns">Owns<a class="headerlink" href="#owns" title="Permanent link">&para;</a></h4>
+<ul>
+<li>package identity/version metadata</li>
+<li>workout identity/description</li>
+<li>package-local default coach config reference</li>
+<li>ordered session entries</li>
+<li>workout-level media and transition settings</li>
+<li>package-level resource ownership declarations that are part of authored playback</li>
+</ul>
+<h4 id="must-not-own">Must not own<a class="headerlink" href="#must-not-own" title="Permanent link">&para;</a></h4>
+<ul>
+<li>discovery/search ranking fields</li>
+<li>global catalog visibility state</li>
+<li>authoritative leaderboard state</li>
+<li>athlete/device overrides</li>
+</ul>
+<h4 id="canonical-field-direction">Canonical field direction<a class="headerlink" href="#canonical-field-direction" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">schemaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerobeat.workout-package.v1</span>
+<span class="nt">schemaVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">recordVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="nt">workoutId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="nt">workoutName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">packageVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.2.0</span>
+<span class="nt">createdByTool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerobeat-tool-content-authoring</span>
+<span class="nt">createdByToolVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1.0</span>
+<span class="nt">createdAt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2026-04-25T19:00:00Z</span>
+<span class="nt">updatedAt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2026-04-25T19:20:00Z</span>
+<span class="nt">authorId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="nt">authorName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">coachConfigId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coach-config</span>
+<span class="nt">preview</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">coverArtPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/art/cover.png</span>
+<span class="w">  </span><span class="nt">thumbnailPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/art/thumb.png</span>
+<span class="nt">session</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">warmupMedia</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mediaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warmup-intro</span>
+<span class="w">      </span><span class="nt">mediaType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">video</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/coaching/warmup-intro.mp4</span>
+<span class="w">  </span><span class="nt">cooldownMedia</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mediaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cooldown-outro</span>
+<span class="w">      </span><span class="nt">mediaType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">video</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/coaching/cooldown-outro.mp4</span>
+<span class="w">  </span><span class="nt">defaultTransition</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">crossfadeMs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">    </span><span class="nt">allowRuntimeUnloadReload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">entries</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">entryId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">      </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="nt">chartId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">      </span><span class="nt">routineId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">      </span><span class="nt">songId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">      </span><span class="nt">environmentId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">      </span><span class="nt">assetSelections</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">gloves</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">        </span><span class="nt">targets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">        </span><span class="nt">obstacles</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">      </span><span class="nt">transition</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">allowRuntimeUnloadReload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">coachingOverlayIds</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="nt">packageContents</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">songs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">  </span><span class="nt">routines</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">  </span><span class="nt">charts</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">  </span><span class="nt">environments</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">  </span><span class="nt">assets</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">  </span><span class="nt">coachConfigs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coach-config</span>
+<span class="nt">submission</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stripCacheDirectories</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">ignoreLeaderboardCache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<h4 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>packageContents</code> is an authored manifest of included logical records, not a search index.</li>
+<li><code>session.entries</code> resolve to exact ids; they do not use loose song/mode/difficulty matching.</li>
+<li>Each entry chooses exactly one <code>environmentId</code>.</li>
+<li><code>assetSelections</code> is a keyed map by asset type. Current direction is <strong>one selected asset per asset type per entry</strong>.</li>
+<li>If two consecutive entries reference the same <code>environmentId</code> or asset ids, runtime may still unload/reload them at the transition boundary.</li>
+<li>Total runtime should still be derived from referenced media/song durations rather than stored as a manual authoritative duration field.</li>
+</ul>
+<h3 id="songssong-idyaml"><code>songs/&lt;song-id&gt;.yaml</code><a class="headerlink" href="#songssong-idyaml" title="Permanent link">&para;</a></h3>
+<h4 id="owns_1">Owns<a class="headerlink" href="#owns_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>reusable song identity</li>
+<li>music/timing authority</li>
+<li>song-level credits and licensing metadata</li>
+<li>references to audio and other song-local playback media</li>
+</ul>
+<h4 id="must-not-own_1">Must not own<a class="headerlink" href="#must-not-own_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>gameplay mode definitions</li>
+<li>chart event payloads</li>
+<li>athlete/device calibration offsets</li>
+<li>discovery/catalog state</li>
+</ul>
+<h4 id="canonical-field-direction_1">Canonical field direction<a class="headerlink" href="#canonical-field-direction_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">schemaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerobeat.song.v1</span>
+<span class="nt">schemaVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">recordVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">songId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="nt">songName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">createdByTool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerobeat-tool-content-authoring</span>
+<span class="nt">createdByToolVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1.0</span>
+<span class="nt">createdAt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2026-04-25T19:00:00Z</span>
+<span class="nt">updatedAt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2026-04-25T19:00:00Z</span>
+<span class="nt">artist</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">credits</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">composer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="nt">publisher</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">licensing</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">licenseType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="nt">usageRights</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="nt">audio</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">filePath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/audio/song.ogg</span>
+<span class="w">  </span><span class="nt">durationMs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">123456</span>
+<span class="w">  </span><span class="nt">previewStartMs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
+<span class="nt">timing</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">bpm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">128</span>
+<span class="w">  </span><span class="nt">beatGrid</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span>
+<span class="w">    </span><span class="nt">anchors</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">explicit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">en</span>
+<span class="nt">tags</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boxing</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cardio</span>
+</code></pre></div>
+<h3 id="routinesroutine-idyaml"><code>routines/&lt;routine-id&gt;.yaml</code><a class="headerlink" href="#routinesroutine-idyaml" title="Permanent link">&para;</a></h3>
+<h4 id="owns_2">Owns<a class="headerlink" href="#owns_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>one song interpreted through one gameplay mode</li>
+<li>routine identity and authorship</li>
+<li>references to its chart ids</li>
+</ul>
+<h4 id="must-not-own_2">Must not own<a class="headerlink" href="#must-not-own_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>workout sequencing</li>
+<li>environment/asset selections for a workout entry</li>
+<li>score cache/discoverability state</li>
+</ul>
+<h4 id="canonical-field-direction_2">Canonical field direction<a class="headerlink" href="#canonical-field-direction_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">schemaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerobeat.routine.v1</span>
+<span class="nt">schemaVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">recordVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">routineId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="nt">routineName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">songId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boxing</span>
+<span class="nt">authorId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="nt">authorName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">chartIds</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="nt">tags</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beginner-friendly</span>
+</code></pre></div>
 <h3 id="chartschart-idyaml"><code>charts/&lt;chart-id&gt;.yaml</code><a class="headerlink" href="#chartschart-idyaml" title="Permanent link">&para;</a></h3>
-<p>Owns one concrete playable difficulty slice, for example:</p>
+<h4 id="owns_3">Owns<a class="headerlink" href="#owns_3" title="Permanent link">&para;</a></h4>
 <ul>
-<li><code>chartId</code></li>
-<li><code>chartName</code></li>
-<li><code>routineId</code></li>
-<li>difficulty</li>
-<li>interaction-family compatibility fields where needed</li>
-<li>the authored timed event payload</li>
+<li>one exact playable difficulty slice</li>
+<li>chart-to-routine linkage</li>
+<li>chart-local event payload and compatibility declarations</li>
 </ul>
-<p>Mode-global tuning such as hit windows should not be duplicated into each chart file.</p>
-<h2 id="workoutsdb-responsibilities"><code>workouts.db</code> responsibilities<a class="headerlink" href="#workoutsdb-responsibilities" title="Permanent link">&para;</a></h2>
-<p><code>workouts.db</code> should be the runtime-searchable index of installed workouts.</p>
-<p>It is <strong>not</strong> the canonical authored source of truth. It exists so Godot can efficiently discover, filter, and browse installed content without reparsing every package YAML on each browse pass.</p>
-<h3 id="workoutsdb-should-likely-store"><code>workouts.db</code> should likely store<a class="headerlink" href="#workoutsdb-should-likely-store" title="Permanent link">&para;</a></h3>
+<h4 id="must-not-own_3">Must not own<a class="headerlink" href="#must-not-own_3" title="Permanent link">&para;</a></h4>
 <ul>
-<li>the installed workout id</li>
-<li>the path to <code>workout.yaml</code></li>
-<li>search/display metadata copied or denormalized from <code>workout.yaml</code></li>
-<li>tags and filterable facets</li>
-<li>install/update timestamps</li>
-<li>version metadata needed for compatibility checks or refresh logic</li>
-<li>package presence/install-state information</li>
+<li>discoverability/catalog state</li>
+<li>workout-level environment/asset selections</li>
+<li>mode-global tuning better owned by feature/runtime rules</li>
 </ul>
-<h3 id="candidate-search-fields">Candidate search fields<a class="headerlink" href="#candidate-search-fields" title="Permanent link">&para;</a></h3>
-<p>The exact schema still needs discussion, but likely candidates include:</p>
+<h4 id="canonical-field-direction_3">Canonical field direction<a class="headerlink" href="#canonical-field-direction_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">schemaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerobeat.chart.boxing.v1</span>
+<span class="nt">schemaVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">recordVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">chartId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="nt">chartName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">routineId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="nt">songId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boxing</span>
+<span class="nt">difficulty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span>
+<span class="nt">interactionFamily</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gesture_2d</span>
+<span class="nt">supportedInputProfiles</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mediapipe_camera</span>
+<span class="nt">validatedInputProfiles</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mediapipe_camera</span>
+<span class="nt">timing</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span>
+<span class="nt">presentationHints</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">preferredViews</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">portal</span>
+<span class="nt">scoringHints</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">comboModel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">standard</span>
+<span class="nt">events</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+</code></pre></div>
+<h3 id="coachescoach-configyaml"><code>coaches/coach-config.yaml</code><a class="headerlink" href="#coachescoach-configyaml" title="Permanent link">&para;</a></h3>
+<p>There is exactly one coach-config YAML per workout package.</p>
+<p>It may describe one or more featured coaches, but the package owns only one workout-level coaching config domain.</p>
+<h4 id="owns_4">Owns<a class="headerlink" href="#owns_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>workout-level coach configuration</li>
+<li>featured coach roster used by the package</li>
+<li>media/overlay references for coaching moments</li>
+<li>package-local mappings from workout/chart moments to coaching assets</li>
+</ul>
+<h4 id="must-not-own_4">Must not own<a class="headerlink" href="#must-not-own_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>discoverability/catalog state</li>
+<li>player-specific preferences</li>
+<li>reusable cross-package inheritance rules</li>
+</ul>
+<h4 id="canonical-field-direction_4">Canonical field direction<a class="headerlink" href="#canonical-field-direction_4" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">schemaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerobeat.coach-config.v1</span>
+<span class="nt">schemaVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">recordVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">coachConfigId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coach-config</span>
+<span class="nt">coachConfigName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">defaultCoachId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="nt">featuredCoaches</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">coachId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">    </span><span class="nt">coachName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">avatarAssetId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">    </span><span class="nt">voiceAssetId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">    </span><span class="nt">introVideoPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/coaching/coach-a-intro.mp4</span>
+<span class="nt">overlays</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">overlayId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">    </span><span class="nt">trigger</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">chartId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">      </span><span class="nt">eventKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">intro</span>
+<span class="w">    </span><span class="nt">coachId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="w">    </span><span class="nt">mediaType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">video</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/coaching/coach-a-cue.mp4</span>
+</code></pre></div>
+<h3 id="environmentsenvironment-idyaml"><code>environments/&lt;environment-id&gt;.yaml</code><a class="headerlink" href="#environmentsenvironment-idyaml" title="Permanent link">&para;</a></h3>
+<h4 id="owns_5">Owns<a class="headerlink" href="#owns_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li>package-local environment identity</li>
+<li>environment scene/art/lighting references</li>
+<li>authored environment metadata needed to load the environment in playback</li>
+</ul>
+<h4 id="must-not-own_5">Must not own<a class="headerlink" href="#must-not-own_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li>workout entry order</li>
+<li>chart content</li>
+<li>special first-party-only semantics</li>
+</ul>
+<h4 id="canonical-field-direction_5">Canonical field direction<a class="headerlink" href="#canonical-field-direction_5" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">schemaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerobeat.environment.v1</span>
+<span class="nt">schemaVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">recordVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">environmentId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="nt">environmentName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">scenePath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/scenes/neon-gym.tscn</span>
+<span class="nt">lightingProfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">neon-night</span>
+<span class="nt">fogProfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">light-haze</span>
+<span class="nt">tags</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cyber</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">studio</span>
+</code></pre></div>
+<h3 id="assetsasset-idyaml"><code>assets/&lt;asset-id&gt;.yaml</code><a class="headerlink" href="#assetsasset-idyaml" title="Permanent link">&para;</a></h3>
+<p>Assets are reusable package-local records for typed runtime-presented content. For v1, AeroBeat keeps <code>assetType</code> intentionally small and closed so package validation, entry selection, and runtime binding stay boring and predictable.</p>
+<h4 id="owns_6">Owns<a class="headerlink" href="#owns_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li>asset identity and asset type</li>
+<li>package-local resource references</li>
+<li>metadata needed to bind the asset in playback</li>
+</ul>
+<h4 id="must-not-own_6">Must not own<a class="headerlink" href="#must-not-own_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li>workout sequencing</li>
+<li>discovery state</li>
+<li>cross-package inheritance behavior</li>
+</ul>
+<h4 id="canonical-field-direction_6">Canonical field direction<a class="headerlink" href="#canonical-field-direction_6" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">schemaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerobeat.asset.v1</span>
+<span class="nt">schemaVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">recordVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">assetId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="nt">assetName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">assetType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gloves</span>
+<span class="nt">resourcePath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/assets/gloves/neon-gloves.glb</span>
+<span class="nt">thumbnailPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/art/neon-gloves-thumb.png</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">palette</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">neon-pink</span>
+<span class="w">  </span><span class="nt">style</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arcade</span>
+<span class="nt">tags</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">neon</span>
+</code></pre></div>
+<h4 id="locked-v1-assettype-direction">Locked v1 <code>assetType</code> direction<a class="headerlink" href="#locked-v1-assettype-direction" title="Permanent link">&para;</a></h4>
+<p><code>assetType</code> is a <strong>strict v1 enum</strong>, not an open-ended freeform string. Unknown values should fail package validation rather than being silently accepted.</p>
+<p>The locked v1 enum is:</p>
+<ul>
+<li><code>gloves</code></li>
+<li><code>targets</code></li>
+<li><code>obstacles</code></li>
+<li><code>trails</code></li>
+<li><code>coach_avatar</code></li>
+<li><code>coach_voice</code></li>
+</ul>
+<p>Direction notes:</p>
+<ul>
+<li><code>gloves</code>, <code>targets</code>, <code>obstacles</code>, and <code>trails</code> are the <strong>entry-selectable gameplay-facing asset types</strong> referenced from <code>session.entries[*].assetSelections</code>.</li>
+<li><code>coach_avatar</code> and <code>coach_voice</code> are <strong>coach-config-referenced support asset types</strong>. They exist so coach media/resources can still live under the same package asset system without inventing a separate asset contract.</li>
+<li>v1 should <strong>not</strong> introduce broader freeform categories such as <code>misc</code>, <code>custom</code>, or implementation-specific plugin types. If AeroBeat later needs more asset families, add them through a deliberate schema revision rather than string drift.</li>
+<li>Missing entry selections mean “use runtime/default presentation behavior for that asset type,” not inheritance from another package.</li>
+</ul>
+<h2 id="relationship-and-reference-rules">Relationship and reference rules<a class="headerlink" href="#relationship-and-reference-rules" title="Permanent link">&para;</a></h2>
+<ol>
+<li><code>workout.yaml</code> is the package root and authoritative session manifest.</li>
+<li><code>session.entries[*].chartId</code> must reference a chart in <code>charts/</code>.</li>
+<li>Each chart must reference exactly one routine in <code>routines/</code>.</li>
+<li>Each routine must reference exactly one song in <code>songs/</code>.</li>
+<li>Each session entry must choose exactly one environment id.</li>
+<li>Each session entry may choose zero or one asset id for each entry-selectable asset type; it must not choose multiple assets for the same asset type in the same entry.</li>
+<li><code>coach_avatar</code> and <code>coach_voice</code> assets are referenced from <code>coaches/coach-config.yaml</code>, not from workout entry asset-selection maps.</li>
+<li>The single coach-config file may define multiple coaches and overlays referenced by session entries.</li>
+<li>Package-local references should remain package-local for v1 self-contained validation.</li>
+<li>Package validation should reject unknown <code>assetType</code> values rather than downgrading them to generic assets.</li>
+<li>Alternate versions of content are created by copying/forking package contents into a new package revision rather than layering patches across packages.</li>
+</ol>
+<h2 id="what-intentionally-stays-out-of-package-yaml">What intentionally stays out of package YAML<a class="headerlink" href="#what-intentionally-stays-out-of-package-yaml" title="Permanent link">&para;</a></h2>
+<p>The following are intentionally <strong>not</strong> authored into the package YAML contracts:</p>
+<ul>
+<li>search ranking</li>
+<li>catalog moderation state</li>
+<li>install state</li>
+<li>download state</li>
+<li>local favorite/bookmark state</li>
+<li>player progression</li>
+<li>player calibration or device offsets</li>
+<li>authoritative leaderboard submissions/history</li>
+<li>player-wide stats caches</li>
+<li>cross-package inheritance or patch instructions</li>
+<li>package signing, signature chains, or embedded trust-policy metadata</li>
+<li>checksum/integrity manifests intended for distribution security rather than authored playback semantics</li>
+</ul>
+<p>These belong in runtime profile state, service state, moderation/catalog systems, disposable local caches, or a later distribution-hardening layer.</p>
+<h2 id="canonical-sqlite-direction">Canonical SQLite direction<a class="headerlink" href="#canonical-sqlite-direction" title="Permanent link">&para;</a></h2>
+<p>AeroBeat currently needs two SQLite shapes:</p>
+<ol>
+<li>a root <code>workouts.db</code> catalog/index database</li>
+<li>a package-local <code>leaderboard-cache.db</code> database</li>
+</ol>
+<h2 id="workoutsdb-v1-direction"><code>workouts.db</code> v1 direction<a class="headerlink" href="#workoutsdb-v1-direction" title="Permanent link">&para;</a></h2>
+<p><code>workouts.db</code> lives at the workouts root and indexes installed packages for browse/search/filter/discovery.</p>
+<h3 id="responsibilities">Responsibilities<a class="headerlink" href="#responsibilities" title="Permanent link">&para;</a></h3>
+<ul>
+<li>discover installed workouts quickly</li>
+<li>expose denormalized browse metadata without reparsing all YAML files</li>
+<li>track install/update/indexing state</li>
+<li>support local client browse/filter views</li>
+<li>feed the local installed-workout browse surface only</li>
+</ul>
+<h3 id="must-not-become">Must not become<a class="headerlink" href="#must-not-become" title="Permanent link">&para;</a></h3>
+<ul>
+<li>the only source of package truth</li>
+<li>the place where authored chart/song/workout semantics originate</li>
+<li>the authoritative leaderboard store</li>
+<li>the exact schema for a downloaded online catalog snapshot</li>
+</ul>
+<h3 id="minimum-v1-tables">Minimum v1 tables<a class="headerlink" href="#minimum-v1-tables" title="Permanent link">&para;</a></h3>
+<h4 id="workouts"><code>workouts</code><a class="headerlink" href="#workouts" title="Permanent link">&para;</a></h4>
+<p>One row per installed workout package.</p>
+<p>Suggested columns:</p>
+<ul>
+<li><code>workout_id TEXT PRIMARY KEY</code></li>
+<li><code>workout_name TEXT NOT NULL</code></li>
+<li><code>description TEXT</code></li>
+<li><code>package_version TEXT NOT NULL</code></li>
+<li><code>schema_version INTEGER NOT NULL</code></li>
+<li><code>created_by_tool TEXT</code></li>
+<li><code>created_by_tool_version TEXT</code></li>
+<li><code>coach_config_id TEXT</code></li>
+<li><code>default_coach_name TEXT</code></li>
+<li><code>workout_yaml_path TEXT NOT NULL</code></li>
+<li><code>package_root_path TEXT NOT NULL</code></li>
+<li><code>cover_art_path TEXT</code></li>
+<li><code>installed_at TEXT NOT NULL</code></li>
+<li><code>indexed_at TEXT NOT NULL</code></li>
+<li><code>updated_at TEXT</code></li>
+<li><code>is_installed INTEGER NOT NULL DEFAULT 1</code></li>
+<li><code>is_valid INTEGER NOT NULL DEFAULT 1</code></li>
+<li><code>validation_error TEXT</code></li>
+</ul>
+<h4 id="workout_tags"><code>workout_tags</code><a class="headerlink" href="#workout_tags" title="Permanent link">&para;</a></h4>
+<p>Normalized tags for filter/search.</p>
+<ul>
+<li><code>workout_id TEXT NOT NULL</code></li>
+<li><code>tag TEXT NOT NULL</code></li>
+<li><code>PRIMARY KEY (workout_id, tag)</code></li>
+</ul>
+<h4 id="workout_modes"><code>workout_modes</code><a class="headerlink" href="#workout_modes" title="Permanent link">&para;</a></h4>
+<p>Summarized mode availability for browse filters.</p>
+<ul>
+<li><code>workout_id TEXT NOT NULL</code></li>
+<li><code>mode TEXT NOT NULL</code></li>
+<li><code>PRIMARY KEY (workout_id, mode)</code></li>
+</ul>
+<h4 id="workout_difficulties"><code>workout_difficulties</code><a class="headerlink" href="#workout_difficulties" title="Permanent link">&para;</a></h4>
+<p>Summarized difficulty availability for browse filters.</p>
+<ul>
+<li><code>workout_id TEXT NOT NULL</code></li>
+<li><code>difficulty TEXT NOT NULL</code></li>
+<li><code>PRIMARY KEY (workout_id, difficulty)</code></li>
+</ul>
+<h4 id="workout_songs"><code>workout_songs</code><a class="headerlink" href="#workout_songs" title="Permanent link">&para;</a></h4>
+<p>A lightweight denormalized song summary per installed workout.</p>
+<ul>
+<li><code>workout_id TEXT NOT NULL</code></li>
+<li><code>song_id TEXT NOT NULL</code></li>
+<li><code>song_name TEXT NOT NULL</code></li>
+<li><code>artist_name TEXT</code></li>
+<li><code>duration_ms INTEGER</code></li>
+<li><code>PRIMARY KEY (workout_id, song_id)</code></li>
+</ul>
+<h4 id="workout_assets"><code>workout_assets</code><a class="headerlink" href="#workout_assets" title="Permanent link">&para;</a></h4>
+<p>Optional but useful summary table for moderation/debug/search by asset usage.</p>
+<ul>
+<li><code>workout_id TEXT NOT NULL</code></li>
+<li><code>entry_id TEXT NOT NULL</code></li>
+<li><code>asset_type TEXT NOT NULL</code></li>
+<li><code>asset_id TEXT NOT NULL</code></li>
+<li><code>PRIMARY KEY (workout_id, entry_id, asset_type)</code></li>
+</ul>
+<h3 id="indexing-notes">Indexing notes<a class="headerlink" href="#indexing-notes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>workouts.db</code> stores duplicated browse metadata on purpose.</li>
+<li>If YAML and <code>workouts.db</code> disagree, YAML plus package validation is the truth source; the index should be rebuilt.</li>
+<li>A workout may remain locally installed/playable even if future remote catalog state would make it undiscoverable online.</li>
+</ul>
+<h3 id="locked-online-catalog-direction">Locked online catalog direction<a class="headerlink" href="#locked-online-catalog-direction" title="Permanent link">&para;</a></h3>
+<p>A downloaded online catalog SQLite should <strong>intentionally diverge</strong> from local <code>workouts.db</code> rather than mirror it byte-for-byte.</p>
+<p>Why:</p>
+<ul>
+<li>local <code>workouts.db</code> is about <strong>installed package state</strong>, filesystem paths, validation results, and fast local resolution into <code>workout.yaml</code></li>
+<li>an online catalog snapshot is about <strong>remote discoverability/distribution metadata</strong>, not local install state</li>
+<li>forcing both concerns into one exact schema would either pollute the local index with remote-only concerns or pollute the remote snapshot with meaningless local path/install columns</li>
+</ul>
+<p>The recommended v1 direction is:</p>
+<ul>
+<li>keep <code>workouts.db</code> as the local installed index only</li>
+<li>if/when AeroBeat ships a downloaded catalog snapshot, treat it as a sibling DB such as <code>catalog.db</code></li>
+<li>let <code>catalog.db</code> reuse the <strong>same logical browse vocabulary</strong> where helpful (<code>workouts</code>, tags, modes, difficulties, song summaries), but give it its own columns for remote concerns such as package source, download URL, file size, content hash, publication/moderation state, and remote timestamps</li>
+<li>do not require <code>workout_yaml_path</code>, <code>package_root_path</code>, <code>installed_at</code>, <code>indexed_at</code>, <code>is_installed</code>, <code>is_valid</code>, or <code>validation_error</code> in the online catalog DB</li>
+</ul>
+<p>This preserves a clean authority split: authored truth in package YAML, local discoverability in <code>workouts.db</code>, remote discoverability/distribution in a future sibling catalog DB.</p>
+<h2 id="per-workout-leaderboard-cachedb-v1-direction">Per-workout <code>leaderboard-cache.db</code> v1 direction<a class="headerlink" href="#per-workout-leaderboard-cachedb-v1-direction" title="Permanent link">&para;</a></h2>
+<p>Each installed workout package may have a local leaderboard cache at <code>cache/leaderboard-cache.db</code>.</p>
+<h3 id="responsibilities_1">Responsibilities<a class="headerlink" href="#responsibilities_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>cache recent leaderboard snapshots for that workout</li>
+<li>support local browsing when the player opens that workout’s leaderboard UI</li>
+<li>keep last-sync metadata for refresh logic</li>
+</ul>
+<h3 id="non-goals">Non-goals<a class="headerlink" href="#non-goals" title="Permanent link">&para;</a></h3>
+<ul>
+<li>no authority over score validity</li>
+<li>no upload/submission ownership</li>
+<li>no player-wide stats authority</li>
+<li>no requirement to ship with or survive package submission/export</li>
+</ul>
+<h3 id="minimum-v1-tables_1">Minimum v1 tables<a class="headerlink" href="#minimum-v1-tables_1" title="Permanent link">&para;</a></h3>
+<h4 id="cache_meta"><code>cache_meta</code><a class="headerlink" href="#cache_meta" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>cache_key TEXT PRIMARY KEY</code></li>
+<li><code>cache_value TEXT NOT NULL</code></li>
+</ul>
+<p>Expected keys include:</p>
 <ul>
 <li><code>workout_id</code></li>
-<li><code>workout_name</code></li>
-<li><code>description</code></li>
-<li><code>coach_id</code></li>
-<li><code>coach_name</code></li>
-<li><code>background_scene_id</code></li>
-<li><code>package_version</code></li>
-<li><code>schema_version</code></li>
-<li><code>creation_tool_version</code></li>
-<li><code>workout_yaml_path</code></li>
-<li>tag summaries or normalized tag rows</li>
-<li>mode summaries</li>
-<li>difficulty summaries</li>
-<li>install timestamps / updated timestamps</li>
+<li><code>source_region</code></li>
+<li><code>last_synced_at</code></li>
+<li><code>etag</code></li>
+<li><code>api_schema_version</code></li>
 </ul>
-<p>A likely future split is:</p>
+<h4 id="leaderboard_entries"><code>leaderboard_entries</code><a class="headerlink" href="#leaderboard_entries" title="Permanent link">&para;</a></h4>
 <ul>
-<li>one main <code>workouts</code> table</li>
-<li>supporting normalized tables for tags, modes, songs, and charts when richer search becomes necessary</li>
+<li><code>leaderboard_scope TEXT NOT NULL</code></li>
+<li><code>rank INTEGER NOT NULL</code></li>
+<li><code>score_id TEXT NOT NULL</code></li>
+<li><code>player_id TEXT NOT NULL</code></li>
+<li><code>player_name TEXT NOT NULL</code></li>
+<li><code>score INTEGER NOT NULL</code></li>
+<li><code>performance_time_ms INTEGER</code></li>
+<li><code>achieved_at TEXT NOT NULL</code></li>
+<li><code>difficulty TEXT</code></li>
+<li><code>mode TEXT</code></li>
+<li><code>input_profile TEXT</code></li>
+<li><code>is_local_player INTEGER NOT NULL DEFAULT 0</code></li>
+<li><code>PRIMARY KEY (leaderboard_scope, rank, score_id)</code></li>
 </ul>
-<h2 id="godot-discovery-flow">Godot discovery flow<a class="headerlink" href="#godot-discovery-flow" title="Permanent link">&para;</a></h2>
-<p>The current intended discovery model is:</p>
+<h4 id="leaderboard_sync_runs"><code>leaderboard_sync_runs</code><a class="headerlink" href="#leaderboard_sync_runs" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>sync_run_id TEXT PRIMARY KEY</code></li>
+<li><code>requested_at TEXT NOT NULL</code></li>
+<li><code>completed_at TEXT</code></li>
+<li><code>status TEXT NOT NULL</code></li>
+<li><code>response_code INTEGER</code></li>
+<li><code>error_text TEXT</code></li>
+</ul>
+<h3 id="cache-rules">Cache rules<a class="headerlink" href="#cache-rules" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Godot opens <code>workouts.db</code></li>
-<li>Godot queries installed workouts for browse/search/filter views</li>
-<li>Godot resolves a selected workout entry to its <code>workout.yaml</code> path</li>
-<li>Godot loads the package folder and referenced YAML/media files from disk</li>
-<li>validation/loading resolves the Workout -&gt; Chart -&gt; Routine -&gt; Song relationships for play</li>
+<li>Deleting <code>leaderboard-cache.db</code> must be safe.</li>
+<li>Rebuilding it from server data must be safe.</li>
+<li>Package submission/export must ignore it or strip it.</li>
+<li>Validation should fail only if a supposedly submission-clean payload incorrectly includes cache data where it should not.</li>
+<li>Runtime may create the cache lazily the first time leaderboard data is requested.</li>
 </ol>
-<p>This keeps browse/search fast while preserving YAML package transparency.</p>
-<h2 id="installupdateremove-flow">Install/update/remove flow<a class="headerlink" href="#installupdateremove-flow" title="Permanent link">&para;</a></h2>
-<p>A likely package lifecycle is:</p>
+<h2 id="godotruntime-discovery-flow">Godot/runtime discovery flow<a class="headerlink" href="#godotruntime-discovery-flow" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Runtime opens <code>workouts.db</code>.</li>
+<li>Browse/search/filter queries use index tables, not raw YAML parsing.</li>
+<li>Selecting a workout resolves <code>workout_yaml_path</code> and <code>package_root_path</code>.</li>
+<li>Runtime loads <code>workout.yaml</code>, then referenced songs/routines/charts/coaches/environments/assets.</li>
+<li>Runtime validates reference integrity and package-local resources before play.</li>
+<li>Optional leaderboard UI reads or refreshes <code>cache/leaderboard-cache.db</code> for that installed workout.</li>
+</ol>
+<h2 id="install-update-remove-and-submission-flow">Install, update, remove, and submission flow<a class="headerlink" href="#install-update-remove-and-submission-flow" title="Permanent link">&para;</a></h2>
 <h3 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h3>
 <ol>
-<li>copy a self-contained workout package folder into <code>aerobeat-workouts/workouts/&lt;workout-id&gt;/</code></li>
-<li>validate the package structure and YAML files</li>
-<li>update or insert the discovery metadata into <code>workouts.db</code></li>
+<li>Copy the self-contained package into <code>workouts/&lt;workout-id&gt;/</code>.</li>
+<li>Validate folder shape, YAML parsing, ids, and resource references.</li>
+<li>Rebuild that package’s index rows in <code>workouts.db</code>.</li>
+<li>Create no leaderboard cache until needed, or initialize an empty one lazily.</li>
 </ol>
 <h3 id="update">Update<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
 <ol>
-<li>replace or patch the package folder contents</li>
-<li>revalidate the package</li>
-<li>refresh the indexed search metadata in <code>workouts.db</code></li>
+<li>Replace package contents with the new package revision.</li>
+<li>Revalidate.</li>
+<li>Refresh <code>workouts.db</code> rows.</li>
+<li>Preserve or invalidate <code>leaderboard-cache.db</code> according to cache version/source rules; it remains disposable either way.</li>
 </ol>
 <h3 id="remove">Remove<a class="headerlink" href="#remove" title="Permanent link">&para;</a></h3>
 <ol>
-<li>delete the package folder</li>
-<li>remove its index rows from <code>workouts.db</code></li>
+<li>Delete the package folder.</li>
+<li>Delete its <code>workouts.db</code> rows.</li>
+<li>Discard any package-local cache data with it.</li>
 </ol>
-<h2 id="local-installed-index-vs-online-catalog-snapshot">Local installed index vs online catalog snapshot<a class="headerlink" href="#local-installed-index-vs-online-catalog-snapshot" title="Permanent link">&para;</a></h2>
-<p>There are two related SQLite ideas in play:</p>
-<h3 id="1-local-installed-index">1. Local installed index<a class="headerlink" href="#1-local-installed-index" title="Permanent link">&para;</a></h3>
-<p>This is the primary day-one use of <code>workouts.db</code>.
-It describes what is actually installed on the current machine.</p>
-<h3 id="2-downloaded-online-catalog-snapshot">2. Downloaded online catalog snapshot<a class="headerlink" href="#2-downloaded-online-catalog-snapshot" title="Permanent link">&para;</a></h3>
-<p>AeroBeat may also use the same general SQLite idea as a low-scope online catalog approach:</p>
-<ul>
-<li>download a SQLite snapshot from the server/cloud</li>
-<li>query it locally for browsing/search/filtering</li>
-<li>if a workout is not yet installed, download the package before play</li>
-</ul>
-<p>This would provide a simpler path than building a full query API immediately.</p>
-<h3 id="why-this-is-attractive">Why this is attractive<a class="headerlink" href="#why-this-is-attractive" title="Permanent link">&para;</a></h3>
-<ul>
-<li>simple to build</li>
-<li>simple local query model</li>
-<li>easy offline-ish browsing after sync</li>
-<li>avoids prematurely building a more complex backend</li>
-</ul>
-<h3 id="risks-open-concerns">Risks / open concerns<a class="headerlink" href="#risks-open-concerns" title="Permanent link">&para;</a></h3>
-<ul>
-<li>snapshot sync/update semantics still need design</li>
-<li>integrity/versioning/tamper concerns need explicit handling</li>
-<li>large catalogs may eventually outgrow the snapshot model</li>
-<li>personalized/social/live features may still want a more traditional backend later</li>
-</ul>
-<p>For now, the snapshot approach looks like a valid low-scope candidate rather than a final forever-architecture commitment.</p>
+<h3 id="submissionexport">Submission/export<a class="headerlink" href="#submissionexport" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Validate the authored package payload only.</li>
+<li>Ignore or strip <code>cache/</code> and any disposable local runtime artifacts.</li>
+<li>Reject packages that rely on non-package-local dependencies for v1 self-contained validation.</li>
+<li>Submit only the canonical authored content/resources needed to reconstruct the workout package.</li>
+</ol>
 <h2 id="validation-direction">Validation direction<a class="headerlink" href="#validation-direction" title="Permanent link">&para;</a></h2>
-<p>The package layout implies layered validation:</p>
-<h3 id="package-level-validation">Package-level validation<a class="headerlink" href="#package-level-validation" title="Permanent link">&para;</a></h3>
+<h3 id="package-validation">Package validation<a class="headerlink" href="#package-validation" title="Permanent link">&para;</a></h3>
 <p>Check:</p>
 <ul>
-<li>folder shape</li>
-<li>required files exist</li>
-<li><code>workout.yaml</code> exists and is parseable</li>
-<li>referenced <code>songs/</code>, <code>routines/</code>, <code>charts/</code>, and media files exist</li>
-<li>copied artifacts are present and paths stay package-local where required</li>
-</ul>
-<h3 id="content-level-validation">Content-level validation<a class="headerlink" href="#content-level-validation" title="Permanent link">&para;</a></h3>
-<p>Check:</p>
-<ul>
-<li><code>Workout</code> references valid chart UIDs</li>
-<li><code>Chart</code> references valid routine UIDs</li>
-<li><code>Routine</code> references valid song UIDs</li>
-<li>mode/difficulty/content rules are consistent</li>
+<li>required folders/files exist</li>
+<li><code>workout.yaml</code> exists and parses</li>
+<li>exactly one coach-config YAML exists under <code>coaches/</code></li>
+<li>referenced songs/routines/charts/environments/assets exist</li>
+<li>package-local media paths exist</li>
+<li>ids are unique and references are coherent</li>
+<li>each session entry has one environment and at most one asset per entry-selectable asset type</li>
 </ul>
 <h3 id="index-validation">Index validation<a class="headerlink" href="#index-validation" title="Permanent link">&para;</a></h3>
 <p>Check:</p>
 <ul>
-<li><code>workouts.db</code> reflects current installed packages</li>
-<li>indexed metadata stays in sync with the package YAML files</li>
+<li><code>workouts.db</code> rows reflect current installed packages</li>
+<li>denormalized metadata matches current YAML-derived values</li>
+<li>invalid packages are flagged rather than silently indexed as healthy</li>
+<li>no remote-catalog-only fields or assumptions have leaked into the local installed index contract</li>
 </ul>
-<h2 id="open-questions">Open questions<a class="headerlink" href="#open-questions" title="Permanent link">&para;</a></h2>
-<p>The following still need definition before implementation:</p>
-<ol>
-<li>What exact fields are required vs optional in each YAML file?</li>
-<li>What exact folder paths should media references use inside the package?</li>
-<li>Should <code>workout.yaml</code> embed lightweight summaries of songs/charts for convenience, or should it stay reference-only?</li>
-<li>What exact SQLite schema should <code>workouts.db</code> use on day one?</li>
-<li>How should install/update/remove handle partially invalid packages?</li>
-<li>How should the downloaded online-catalog SQLite snapshot be versioned and refreshed?</li>
-<li>How much metadata should be duplicated into <code>workouts.db</code> versus resolved lazily from YAML when opening details?</li>
-</ol>
-<h2 id="current-recommendation">Current recommendation<a class="headerlink" href="#current-recommendation" title="Permanent link">&para;</a></h2>
-<p>For the first implementation-oriented storage direction, AeroBeat should proceed assuming:</p>
+<h3 id="submission-validation">Submission validation<a class="headerlink" href="#submission-validation" title="Permanent link">&para;</a></h3>
+<p>Check:</p>
 <ul>
-<li>YAML is the durable authored package format</li>
-<li>packages are self-contained and copied rather than externally referenced</li>
-<li>package data is split across <code>workout.yaml</code>, <code>songs/</code>, <code>routines/</code>, and <code>charts/</code></li>
-<li><code>workout.yaml</code> combines workout metadata and manifest/version metadata</li>
-<li><code>workouts.db</code> is the installed-workout discovery index</li>
-<li>a downloadable SQLite catalog snapshot is a viable low-scope candidate for online browsing later</li>
+<li>only authored package content is included</li>
+<li>disposable cache artifacts are omitted</li>
+<li>leaderboard cache is ignored/removed</li>
+<li>no cross-package inheritance/patch dependency is required</li>
+<li>no signing/integrity metadata is required or inferred as part of the v1 authored package contract</li>
 </ul>
-<p>That is the smallest clean storage/discovery shape that matches the decisions made so far.</p>
+<h2 id="explicit-near-term-deferrals">Explicit near-term deferrals<a class="headerlink" href="#explicit-near-term-deferrals" title="Permanent link">&para;</a></h2>
+<p>These are consciously deferred rather than undefined:</p>
+<ol>
+<li>the exact environment rendering contract beyond package-local identity/resource fields</li>
+<li>the future remote catalog schema beyond the now-locked rule that it should be a sibling DB rather than an exact mirror of local <code>workouts.db</code></li>
+<li>any package signing, trust chain, embedded signature, or distribution-integrity manifest inside authored package YAML</li>
+<li>future moderation/ranking/distribution tables for remote catalog workflows</li>
+<li>richer asset families beyond the locked v1 <code>assetType</code> enum</li>
+</ol>
+<h2 id="example-package-and-schema-files">Example package and schema files<a class="headerlink" href="#example-package-and-schema-files" title="Permanent link">&para;</a></h2>
+<p>If you want to inspect the current contract as a concrete folder instead of only prose, use the docs example package:</p>
+<ul>
+<li><a href="../../guides/demo_workout_package/">Demo Workout Package Guide</a></li>
+<li><a href="../../examples/workout-packages/overview/">Example package overview</a></li>
+<li><a href="../../examples/workout-packages/demo-neon-boxing-bootcamp/workout.yaml">Demo package root <code>workout.yaml</code></a></li>
+<li><a href="../../examples/workout-packages/demo-neon-boxing-bootcamp/sql/workouts.db.schema.sql">Example <code>workouts.db</code> schema</a></li>
+<li><a href="../../examples/workout-packages/demo-neon-boxing-bootcamp/sql/leaderboard-cache.db.schema.sql">Example <code>leaderboard-cache.db</code> schema</a></li>
+</ul>
+<p>These files are the docs repo's canonical onboarding example for the locked v1 package contract.</p>
+<h2 id="current-recommendation">Current recommendation<a class="headerlink" href="#current-recommendation" title="Permanent link">&para;</a></h2>
+<p>For the first implementation-oriented package/storage pass, AeroBeat should proceed assuming:</p>
+<ul>
+<li>authored truth lives in package YAML</li>
+<li>discoverability for installed workouts lives in local <code>workouts.db</code> only</li>
+<li>any future downloaded online catalog SQLite should be a sibling remote-catalog DB, not an exact mirror of local <code>workouts.db</code></li>
+<li>leaderboard browsing cache lives in package-local <code>leaderboard-cache.db</code> only</li>
+<li>packages are self-contained and duplication/fork-based rather than inheritance-based</li>
+<li><code>coaches/</code>, <code>environments/</code>, and <code>assets/</code> are first-class content domains</li>
+<li><code>assetType</code> is a strict v1 enum: <code>gloves</code>, <code>targets</code>, <code>obstacles</code>, <code>trails</code>, <code>coach_avatar</code>, <code>coach_voice</code></li>
+<li>each session entry resolves exact chart/routine/song ids plus one environment and at most one selected asset per entry-selectable asset type</li>
+<li>package signing/integrity metadata is explicitly deferred from the v1 authored package contract</li>
+<li>runtime may still do per-entry unload/reload even when ids repeat</li>
+<li>first-party and community packages share the same conceptual system</li>
+</ul>
+<p>That is the cleanest v1 contract that matches the current AeroBeat decisions and is concrete enough to guide implementation.</p>
 
 
 
@@ -5969,7 +6981,7 @@ It describes what is actually installed on the current machine.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 23, 2026 22:26:52 UTC">April 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2026 23:12:05 UTC">April 25, 2026</span>
   </span>
 
     

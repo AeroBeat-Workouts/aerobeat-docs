@@ -1,0 +1,19 @@
+# Gameplay-facing trail asset.
+schemaId: aerobeat.asset.v1
+schemaVersion: 1
+recordVersion: 1
+
+# Asset identity is what workout entries reference for the trails slot.
+assetId: ab-asset-trails-comet-streak
+assetName: Comet Streak Trails
+
+# trails is one of the locked v1 gameplay-facing asset types.
+assetType: trails
+resourcePath: media/assets/trails/comet-streak.tres
+thumbnailPath: media/art/comet-streak-thumb.png
+metadata:
+  palette: orange-gold
+  style: streak
+tags:
+  - trails
+  - motion
