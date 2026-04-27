@@ -10,7 +10,7 @@ The durable hierarchy is:
 - **Workout**
   - ordered selections of exact chart UIDs
 
-This structure keeps audio and licensing metadata reusable at the song layer, keeps gameplay-mode semantics at the routine layer, keeps difficulty-specific authored event streams at the chart layer, keeps workout session programming at the workout layer, and keeps optional coaching media/config in the package’s single coach-config domain.
+This structure keeps audio and licensing metadata reusable at the song layer, keeps gameplay-mode semantics at the routine layer, keeps difficulty-specific authored event streams at the chart layer, keeps workout set programming at the workout layer, and keeps optional coaching media/config in the package’s single coach-config domain.
 
 ## Current schema direction
 
@@ -26,7 +26,7 @@ As of 2026-04-23, the current naming and shape direction is:
 - `Chart` is the durable term for one concrete playable difficulty slice.
 - Workouts resolve to exact referenced UIDs rather than loose song/mode/difficulty selectors.
 - Athlete/device-specific timing calibration such as song offset does not belong in durable content data; it belongs in athlete/profile/device state.
-- Workout coaching is owned by the package’s single `coaches/coach-config.yaml`; enabled coaching requires roster + warmup + cooldown + exactly one overlay audio clip per workout entry keyed by `entryId`.
+- Workout coaching is owned by the package’s single `coaches/coach-config.yaml`; enabled coaching requires roster + warmup + cooldown + exactly one overlay audio clip per workout set keyed by `setId`.
 
 ## Canonical ownership
 
@@ -135,13 +135,13 @@ It owns fields such as:
 - `workoutName`
 - `description`
 - `coachConfigId` referencing the package’s single coach-config domain
-- ordered list of exact chart UID selections
-- per-entry environment selection
-- per-entry asset selections with at most one asset per entry-selectable asset type
+- ordered list of exact chart UID selections as workout sets
+- per-set environment selection
+- per-set asset selections with at most one asset per set-selectable asset type
 
-When coaching is enabled, the package’s single coach-config domain owns the coach roster, warmup video, cooldown video, and exactly one overlay audio clip per workout entry keyed by `entryId`. `workout.yaml` points at coach-config but does not own those media references directly.
+When coaching is enabled, the package’s single coach-config domain owns the coach roster, warmup video, cooldown video, and exactly one overlay audio clip per workout set keyed by `setId`. `workout.yaml` points at coach-config but does not own those media references directly.
 
-The locked v1 `assetType` enum is intentionally narrow: `gloves`, `targets`, `obstacles`, and `trails`. Those are the gameplay-facing asset types that belong in per-entry asset selections.
+The locked v1 `assetType` enum is intentionally narrow: `gloves`, `targets`, `obstacles`, and `trails`. Those are the gameplay-facing asset types that belong in per-set asset selections. AeroBeat owns a single fixed between-set runtime/UI flow rather than authoring per-set transition behavior in the package.
 
 Workout runtime length is derived from the referenced content rather than stored as a separate authored duration field.
 
@@ -280,7 +280,7 @@ A content package owns:
 - package id / workout id
 - package version
 - package-level author / attribution / licensing metadata
-- typed records for contained songs, routines, charts, workout session data, coach config, environments, and assets
+- typed records for contained songs, routines, charts, workout set plan data, coach config, environments, and assets
 - references to the binary resources required by those records, such as audio, thumbnails, coaching clips, preview art, scenes, and runtime assets
 - package-level schema/tool version metadata needed for parsing and migration
 
@@ -290,12 +290,12 @@ A content package owns:
 2. A package may contain one or more songs.
 3. A routine must reference a song that exists in the same package.
 4. A chart must reference exactly one routine in the same package.
-5. A workout entry resolves to exact ids rather than loose lookup selectors.
+5. A workout set resolves to exact ids rather than loose lookup selectors.
 6. Each workout package contains exactly one `coaches/` folder with exactly one coach-config YAML file.
 7. Coaching is optional all-or-nothing: disabled coaching uses `enabled: false`, while enabled coaching must provide the full roster/media contract.
-8. Enabled coaching owns the warmup video, cooldown video, and exactly one overlay audio clip per workout entry keyed by `entryId`.
+8. Enabled coaching owns the warmup video, cooldown video, and exactly one overlay audio clip per workout set keyed by `setId`.
 9. `environments/` and `assets/` are distinct first-class content folders with their own YAML records.
-10. Each workout entry chooses exactly one environment and at most one asset per entry-selectable asset type.
+10. Each workout set chooses exactly one environment and at most one asset per set-selectable asset type.
 11. `assetType` is a strict v1 enum rather than a freeform string; unknown values should fail package validation.
 12. Binary media stays as referenced resources inside the package; the canonical authored contracts stay in structured content records.
 13. Alternate versions are created by duplication/forking, not inheritance or patch layering across workout packages.
@@ -321,7 +321,7 @@ It is the boundary for difficulty, interaction family, validated compatibility, 
 
 ### Workout contract
 
-The `Workout` contract is responsible for session composition.
+The `Workout` contract is responsible for set composition.
 It sequences playable selections, transition timing, and coaching/program flow, but it does not redefine the underlying chart semantics.
 
 ## Registry and discovery responsibilities
@@ -391,7 +391,7 @@ Shared validation in `aerobeat-content-core` checks:
 - required field presence
 - timing-envelope shape
 - package/resource reference existence
-- workout step reference legality
+- workout set reference legality
 - interaction-family field validity
 
 ### Layer 2: mode-specific content validation
@@ -441,17 +441,17 @@ Content tooling must not require a GUI in order to perform core content operatio
 
 ## Workout sequencing and playback handoff
 
-The workout contract ends at **session sequencing intent**.
+The workout contract ends at **set sequencing intent**.
 The feature/runtime contract begins at **playback execution and athlete interpretation**.
 
 ### `aerobeat-content-core` owns
 
-- workout step ordering
+- workout set ordering
 - routine/chart selection references
 - optional difficulty-resolution rules when the workout references a routine rather than an exact chart
-- transition metadata
+- the fixed between-set handoff metadata implied by the root contract
 - workout-level timing and coaching-sequence metadata
-- the handoff contract that resolves a workout step into a concrete playable chart selection plus any attached session metadata
+- the handoff contract that resolves a workout set into a concrete playable chart selection plus any attached set metadata
 
 ### feature/runtime owns
 
@@ -548,7 +548,7 @@ For the first shipping slice, AeroBeat standardizes on:
 - `Song` as the reusable music source
 - `Routine` as the missing gameplay package primitive
 - `Chart` as the single playable difficulty artifact
-- `Workout` as the session/program container
+- `Workout` as the set/program container
 - a shared chart envelope with mode-specific event payloads
 - `gesture_2d` as the first target interaction family for Boxing + MediaPipe
 

@@ -3,7 +3,7 @@ schemaId: aerobeat.song.v1
 schemaVersion: 1
 recordVersion: 1
 
-# Stable song identity referenced by its routine and the second workout entry.
+# Stable song identity referenced by its routine and the second workout set.
 songId: ab-song-midnight-sprint
 songName: Midnight Sprint
 

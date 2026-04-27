@@ -53,7 +53,7 @@ This example package imagines a short boxing workout with two songs:
 1. **Neon Stride** — medium difficulty opener in a rooftop night environment
 2. **Midnight Sprint** — harder follow-up in a brighter studio environment
 
-The package uses one shared coach config, a two-coach roster, two environments, four gameplay-facing asset selections, one warmup video, one cooldown video, and one overlay audio clip per workout entry.
+The package uses one shared coach config, a two-coach roster, two environments, four gameplay-facing asset selections, one warmup video, one cooldown video, and one overlay audio clip per workout set.
 
 ## Reading order
 
@@ -67,8 +67,8 @@ The package uses one shared coach config, a two-coach roster, two environments, 
 - discoverability/search metadata is not authored into `workout.yaml`
 - coaching stays inside the package's single `coaches/coach-config.yaml` file
 - warmup/cooldown references live in coach-config under the approved coaching model
-- each workout entry maps to exactly one overlay audio clip through coach-config `entryId` references
-- workout entries choose one environment and zero-or-one asset per gameplay-facing asset type
+- each workout set maps to exactly one overlay audio clip through coach-config `setId` references
+- workout sets choose one environment and zero-or-one asset per gameplay-facing asset type
 - shared browse/discovery rows live in the catalog core tables, while local install-only state lives in `workout_local`
 - local leaderboard snapshots live in the package's disposable cache DB
 - no inheritance, patching, remote-only catalog companion fields, trigger graphs, or signing metadata appears in the authored package files

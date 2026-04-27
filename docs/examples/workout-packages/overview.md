@@ -41,8 +41,8 @@ This demo package is aligned to the current package rules:
 - **Chart** is the durable term, not chart variant.
 - A package has **one** `coaches/` folder and **one** `coach-config.yaml` file.
 - Coaching is optional all-or-nothing.
-- When coaching is enabled, `coach-config.yaml` owns the warmup video, cooldown video, and exactly one overlay audio clip per workout entry.
-- Workout entries select gameplay-facing assets through `assetSelections` only.
+- When coaching is enabled, `coach-config.yaml` owns the warmup video, cooldown video, and exactly one overlay audio clip per workout set.
+- Workout sets select gameplay-facing assets through `assetSelections` only.
 - Local discoverability belongs in **`workouts.db`**, not in package YAML.
 - Packages are **self-contained** and are versioned by duplication/forking rather than inheritance/patch layering.
 - Local and remote catalog databases share the same **core catalog schema**; local install-only state lives in `workout_local`, and remote-only browse/distribution state lives in `workout_remote`.
@@ -55,7 +55,7 @@ This demo package is aligned to the current package rules:
 
 ## How to read the package
 
-1. Open [`workout.yaml`](demo-neon-boxing-bootcamp/workout.yaml) to see the package root, session order, and referenced ids.
+1. Open [`workout.yaml`](demo-neon-boxing-bootcamp/workout.yaml) to see the package root, set order, and referenced ids.
 2. Open the `songs/`, `routines/`, and `charts/` files to follow how exact playable content is layered.
 3. Open [`coaches/coach-config.yaml`](demo-neon-boxing-bootcamp/coaches/coach-config.yaml) to see the single-package coaching domain.
 4. Open the `environments/` and `assets/` files to see how reusable package-local presentation content is defined.

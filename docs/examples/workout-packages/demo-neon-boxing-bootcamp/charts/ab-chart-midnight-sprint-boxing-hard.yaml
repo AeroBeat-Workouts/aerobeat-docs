@@ -3,7 +3,7 @@ schemaId: aerobeat.chart.boxing.v1
 schemaVersion: 1
 recordVersion: 1
 
-# Chart identity is what the workout entry selects directly.
+# Chart identity is what the workout set selects directly.
 chartId: ab-chart-midnight-sprint-boxing-hard
 chartName: Midnight Sprint Hard Boxing
 

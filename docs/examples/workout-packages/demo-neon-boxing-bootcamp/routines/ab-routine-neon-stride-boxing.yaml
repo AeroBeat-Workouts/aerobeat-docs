@@ -3,7 +3,7 @@ schemaId: aerobeat.routine.v1
 schemaVersion: 1
 recordVersion: 1
 
-# This routine id is referenced by the chart and by workout entries.
+# This routine id is referenced by the chart and by workout sets.
 routineId: ab-routine-neon-stride-boxing
 routineName: Neon Stride Boxing Routine
 

@@ -3,7 +3,7 @@ schemaId: aerobeat.asset.v1
 schemaVersion: 1
 recordVersion: 1
 
-# Asset identity is what workout entries reference for the obstacles slot.
+# Asset identity is what workout sets reference for the obstacles slot.
 assetId: ab-asset-obstacles-light-walls
 assetName: Light Wall Obstacles
 

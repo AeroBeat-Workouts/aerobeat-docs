@@ -3,7 +3,7 @@ schemaId: aerobeat.song.v1
 schemaVersion: 1
 recordVersion: 1
 
-# Stable song identity referenced by routines and workout entries.
+# Stable song identity referenced by routines and workout sets.
 songId: ab-song-neon-stride
 songName: Neon Stride
 

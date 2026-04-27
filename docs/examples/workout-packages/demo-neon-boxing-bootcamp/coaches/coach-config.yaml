@@ -25,15 +25,15 @@ cooldownVideo:
   mediaId: ab-cooldown-stretch-outro
   path: media/coaching/cooldown-stretch-outro.mp4
 
-# Enabled coaching requires exactly one overlay audio clip per workout entry.
-# Validation should fail if any entry is missing, duplicated, or points at a missing file.
+# Enabled coaching requires exactly one overlay audio clip per workout set.
+# Validation should fail if any set is missing, duplicated, or points at a missing file.
 entryOverlayAudio:
-  - entryId: ab-entry-neon-stride-opening-round
+  - setId: ab-entry-neon-stride-opening-round
     coachId: ab-coach-aria
     mediaId: ab-overlay-aria-neon-stride-cue
     path: media/coaching/aria-neon-stride-overlay.ogg
 
-  - entryId: ab-entry-midnight-sprint-finish-round
+  - setId: ab-entry-midnight-sprint-finish-round
     coachId: ab-coach-blaze
     mediaId: ab-overlay-blaze-midnight-sprint-cue
     path: media/coaching/blaze-midnight-sprint-overlay.ogg

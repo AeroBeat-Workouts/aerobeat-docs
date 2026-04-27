@@ -12,7 +12,7 @@ routineId: ab-routine-neon-stride-boxing
 songId: ab-song-neon-stride
 mode: boxing
 
-# Difficulty belongs on the chart, not on the workout entry.
+# Difficulty belongs on the chart, not on the workout set.
 difficulty: medium
 
 # interactionFamily targets movement semantics rather than a specific hardware device.

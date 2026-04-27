@@ -50,7 +50,7 @@ The example models a single package with:
 
 ### 2. Exact ids, not loose lookup rules
 
-The workout session entries point to exact:
+The workout sets point to exact:
 
 - `songId`
 - `routineId`
@@ -67,8 +67,8 @@ The package shows the approved coaching rule clearly:
 - every package has exactly one `coaches/coach-config.yaml`
 - coaching is optional all-or-nothing
 - if coaching is enabled, warmup/cooldown media live in coach-config, not in `workout.yaml`
-- coach-config also owns exactly one overlay audio clip per workout entry, keyed by `entryId`
-- workout entries do not carry reusable trigger graphs or per-entry overlay lists
+- coach-config also owns exactly one overlay audio clip per workout set, keyed by `setId`
+- workout sets do not carry reusable trigger graphs or per-set overlay lists
 
 ### 4. SQLite authority boundaries
 
@@ -87,7 +87,7 @@ This example is meant to be the easiest place for a new developer to answer ques
 - "What does a valid v1 workout package folder look like?"
 - "Where does coach config live?"
 - "Where do warmup/cooldown references live under the approved coaching model?"
-- "How does `coach-config.yaml` target the right workout entry for each overlay audio clip?"
+- "How does `coach-config.yaml` target the right workout set for each overlay audio clip?"
 - "Where does browse metadata belong versus package metadata?"
 - "How should ids line up across package files?"
 

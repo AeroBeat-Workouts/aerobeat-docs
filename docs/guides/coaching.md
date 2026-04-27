@@ -11,7 +11,7 @@ Our coaching system is designed to feel like a real trainer working out beside t
 The best coaching content feels authentic because the coach is physically engaged during the recording.
 
 - **Do not just read a script.** Get your heart rate up. Let the athlete hear the effort.
-- **Tell a Story.** If you include warmup or cooldown video, use them to set the session tone and close it out well.
+- **Tell a Story.** If you include warmup or cooldown video, use them to set the workout tone and close it out well.
 - **Match the song energy.** High-intensity tracks need sharper encouragement. Flow tracks need calmer guidance.
 
 ## 📦 The Approved v1 Coaching Contract
@@ -31,7 +31,7 @@ enabled: false
   - a coach roster with one or more `coachId` + `coachName` entries
   - one required warmup video reference
   - one required cooldown video reference
-  - one required overlay audio reference for **each** workout entry, keyed by `entryId`
+  - one required overlay audio reference for **each** workout set, keyed by `setId`
 
 ### Enabled example
 
@@ -49,11 +49,11 @@ cooldownVideo:
   mediaId: ab-cooldown-stretch-outro
   path: media/coaching/cooldown-stretch-outro.mp4
 entryOverlayAudio:
-  - entryId: ab-entry-neon-stride-opening-round
+  - setId: ab-entry-neon-stride-opening-round
     coachId: ab-coach-aria
     mediaId: ab-overlay-aria-neon-stride-cue
     path: media/coaching/aria-neon-stride-overlay.ogg
-  - entryId: ab-entry-midnight-sprint-finish-round
+  - setId: ab-entry-midnight-sprint-finish-round
     coachId: ab-coach-blaze
     mediaId: ab-overlay-blaze-midnight-sprint-cue
     path: media/coaching/blaze-midnight-sprint-overlay.ogg
@@ -66,7 +66,7 @@ When coaching is enabled, validation should fail if **any** of the following are
 - the roster is missing
 - the warmup video reference is missing
 - the cooldown video reference is missing
-- any workout entry is missing its one overlay audio clip
+- any workout set is missing its one overlay audio clip
 - any referenced file path does not exist on disk inside the package
 
 When coaching is disabled, validation should fail if authors try to leave behind dormant roster/media sections. Disabled means disabled.
@@ -84,8 +84,8 @@ When coaching is disabled, validation should fail if authors try to leave behind
 ### Phase 1: Preparation
 
 1. **Select Base Content:** Start from the workout package you are coaching.
-2. **Learn the Session Flow:** Know each workout entry and where the athlete will need support.
-3. **Plan the Coaching Pass:** Write the warmup, the cooldown, and exactly one overlay audio cue for each workout entry.
+2. **Learn the Set Flow:** Know each workout set and where the athlete will need support.
+3. **Plan the Coaching Pass:** Write the warmup, the cooldown, and exactly one overlay audio cue for each workout set.
 
 ### Phase 2: Recording
 
@@ -101,7 +101,7 @@ When coaching is disabled, validation should fail if authors try to leave behind
 - **Setup:** Put on your headset, start recording in your DAW, and play the song in your headphones.
 - **Action:** Perform the workout while recording. Speak to the athlete as if they are next to you.
 - **Export:** Save the vocal track only. Do not include the music.
-- **Scope rule:** Record one final overlay clip per workout entry. Do not author multiple competing overlay clips for the same entry under the current v1 contract.
+- **Scope rule:** Record one final overlay clip per workout set. Do not author multiple competing overlay clips for the same set under the current v1 contract.
 
 ### Phase 3: Package Authoring
 
@@ -112,13 +112,13 @@ When coaching is disabled, validation should fail if authors try to leave behind
    - define the coach roster
    - wire the warmup video reference
    - wire the cooldown video reference
-   - add exactly one overlay audio record for each `entryId`
-4. **Validate:** Run package validation so every `entryId` resolves and every referenced file exists.
+   - add exactly one overlay audio record for each `setId`
+4. **Validate:** Run package validation so every `setId` resolves and every referenced file exists.
 
 ## 💡 Best Practices
 
 - **Feel the Vibe:** You do not need to talk constantly. Speak when motivation or guidance matters.
-- **Keep it specific:** Because overlay audio is keyed by `entryId`, you can tailor each cue to the exact workout slice the athlete is playing.
+- **Keep it specific:** Because overlay audio is keyed by `setId`, you can tailor each cue to the exact workout slice the athlete is playing.
 - **Keep packages self-contained:** Do not rely on cross-package inheritance, hidden defaults, or external coaching bundles.
 - **Be explicit:** If a package is not coached, ship the minimal disabled file. If it is coached, fully wire every required section.
 

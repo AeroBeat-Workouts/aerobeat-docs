@@ -3,7 +3,7 @@ schemaId: aerobeat.asset.v1
 schemaVersion: 1
 recordVersion: 1
 
-# Asset identity is what workout entries reference for the trails slot.
+# Asset identity is what workout sets reference for the trails slot.
 assetId: ab-asset-trails-comet-streak
 assetName: Comet Streak Trails
 

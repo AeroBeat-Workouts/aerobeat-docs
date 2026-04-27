@@ -16,8 +16,8 @@ The package system is grounded in these now-locked decisions:
 - enabled coach-config may describe multiple featured coaches
 - alternate versions are created by **duplication/forking**, not inheritance or patch layering across workout packages
 - `environments/` and `assets/` are distinct content domains with their own YAML files
-- each workout entry chooses one environment and at most one asset per gameplay-facing asset type
-- runtime may still unload/load on each song transition even when consecutive entries reuse the same ids
+- each workout set chooses one environment and at most one asset per gameplay-facing asset type
+- runtime may still unload/load between sets even when consecutive sets reuse the same ids
 - official first-party assets/environments are future content under the same system, not a special-case path
 
 ## Design goals
@@ -42,7 +42,7 @@ The durable content hierarchy remains:
 - **Chart**
   - one exact playable difficulty slice of a routine
 - **Workout**
-  - the programmed session that selects exact chart ids and owns workout-level coaching/package metadata
+  - the programmed set plan that selects exact chart ids and owns workout-level coaching/package metadata
 
 Related package-local domains now also include:
 
@@ -73,7 +73,7 @@ The package YAML files are the canonical authored content payload.
 
 They own:
 
-- workout/session definition
+- workout set definition
 - songs, routines, charts
 - workout-local coach configuration, including optional all-or-nothing coaching media
 - package-local environments/assets
@@ -177,15 +177,14 @@ The sections below define the current v1 field direction. They are intended as i
 
 ### `workout.yaml`
 
-`workout.yaml` combines package manifest metadata and workout-level session data.
+`workout.yaml` combines package manifest metadata and workout-level set data.
 
 #### Owns
 
 - package identity/version metadata
 - workout identity/description
 - package-local default coach config reference
-- ordered session entries
-- transition settings
+- ordered workout sets
 - package-level resource ownership declarations that are part of authored playback
 
 #### Must not own
@@ -214,49 +213,24 @@ authorName: string
 coachConfigId: coach-config
 preview:
   coverArtPath: media/art/cover.png
-  thumbnailPath: media/art/thumb.png
-session:
-  defaultTransition:
-    crossfadeMs: 0
-    allowRuntimeUnloadReload: true
-  entries:
-    - entryId: uid
-      order: 1
-      chartId: uid
-      routineId: uid
-      songId: uid
-      environmentId: uid
-      assetSelections:
-        gloves: uid
-        targets: uid
-        obstacles: uid
-      transition:
-        allowRuntimeUnloadReload: true
-packageContents:
-  songs:
-    - uid
-  routines:
-    - uid
-  charts:
-    - uid
-  environments:
-    - uid
-  assets:
-    - uid
-  coachConfigs:
-    - coach-config
-submission:
-  stripCacheDirectories: true
-  ignoreLeaderboardCache: true
+sets:
+  - setId: uid
+    chartId: uid
+    routineId: uid
+    songId: uid
+    environmentId: uid
+    assetSelections:
+      gloves: uid
+      targets: uid
+      obstacles: uid
 ```
 
 #### Notes
 
-- `packageContents` is an authored manifest of included logical records, not a search index.
-- `session.entries` resolve to exact ids; they do not use loose song/mode/difficulty matching.
-- Each entry chooses exactly one `environmentId`.
-- `assetSelections` is a keyed map by asset type. Current direction is **one selected asset per asset type per entry**.
-- If two consecutive entries reference the same `environmentId` or asset ids, runtime may still unload/reload them at the transition boundary.
+- `sets` resolve to exact ids; they do not use loose song/mode/difficulty matching.
+- Each set chooses exactly one `environmentId`.
+- `assetSelections` is a keyed map by asset type. Current direction is **one selected asset per asset type per set**.
+- If two consecutive sets reference the same `environmentId` or asset ids, runtime may still unload/reload them at the fixed between-set boundary. Packages do not author alternate transition behavior.
 - Total runtime should still be derived from referenced media/song durations rather than stored as a manual authoritative duration field.
 
 ### `songs/<song-id>.yaml`
@@ -329,7 +303,7 @@ Genre note: use only the locked normalized lowercase enum. Workout browse genres
 #### Must not own
 
 - workout sequencing
-- environment/asset selections for a workout entry
+- environment/asset selections for a workout set
 - score cache/discoverability state
 
 #### Canonical field direction
@@ -401,7 +375,7 @@ There is exactly one coach-config YAML per workout package. Coaching is optional
 - optional all-or-nothing coaching enablement
 - featured coach roster used by the package
 - required warmup/cooldown media references when coaching is enabled
-- exactly one overlay audio reference per workout entry when coaching is enabled
+- exactly one overlay audio reference per workout set when coaching is enabled
 
 #### Must not own
 
@@ -425,7 +399,7 @@ cooldownVideo:
   mediaId: cooldown-outro
   path: media/coaching/cooldown-outro.mp4
 entryOverlayAudio:
-  - entryId: uid
+  - setId: uid
     coachId: uid
     mediaId: overlay-a
     path: media/coaching/coach-a-cue.ogg
@@ -441,7 +415,7 @@ entryOverlayAudio:
 
 #### Must not own
 
-- workout entry order
+- workout set order
 - chart content
 - special first-party-only semantics
 
@@ -508,20 +482,20 @@ The locked v1 enum is:
 
 Direction notes:
 
-- `gloves`, `targets`, `obstacles`, and `trails` are the **entry-selectable gameplay-facing asset types** referenced from `session.entries[*].assetSelections`.
+- `gloves`, `targets`, `obstacles`, and `trails` are the **set-selectable gameplay-facing asset types** referenced from `sets[*].assetSelections`.
 - v1 should **not** introduce broader freeform categories such as `misc`, `custom`, or implementation-specific plugin types. If AeroBeat later needs more asset families, add them through a deliberate schema revision rather than string drift.
-- Missing entry selections mean “use runtime/default presentation behavior for that asset type,” not inheritance from another package.
+- Missing set selections mean “use runtime/default presentation behavior for that asset type,” not inheritance from another package.
 
 ## Relationship and reference rules
 
-1. `workout.yaml` is the package root and authoritative session manifest.
-2. `session.entries[*].chartId` must reference a chart in `charts/`.
+1. `workout.yaml` is the package root and authoritative set manifest.
+2. `sets[*].chartId` must reference a chart in `charts/`.
 3. Each chart must reference exactly one routine in `routines/`.
 4. Each routine must reference exactly one song in `songs/`.
-5. Each session entry must choose exactly one environment id.
-6. Each session entry may choose zero or one asset id for each entry-selectable asset type; it must not choose multiple assets for the same asset type in the same entry.
+5. Each workout set must choose exactly one environment id.
+6. Each workout set may choose zero or one asset id for each set-selectable asset type; it must not choose multiple assets for the same asset type in the same set.
 7. The single coach-config file may define multiple coaches.
-8. If coaching is enabled, coach-config must include one warmup video, one cooldown video, and exactly one overlay audio clip for every `session.entries[*].entryId`.
+8. If coaching is enabled, coach-config must include one warmup video, one cooldown video, and exactly one overlay audio clip for every `sets[*].setId`.
 9. Package-local references should remain package-local for v1 self-contained validation.
 10. Package validation should reject unknown `assetType` values rather than downgrading them to generic assets.
 11. Alternate versions of content are created by copying/forking package contents into a new package revision rather than layering patches across packages.
@@ -846,11 +820,11 @@ Check:
 - `workout.yaml` exists and parses
 - exactly one coach-config YAML exists under `coaches/`
 - if coach-config says `enabled: false`, it does not also carry dormant roster/media sections
-- if coach-config says `enabled: true`, it includes the coach roster, warmup video, cooldown video, and exactly one overlay audio record for every workout `entryId`
+- if coach-config says `enabled: true`, it includes the coach roster, warmup video, cooldown video, and exactly one overlay audio record for every workout set `setId`
 - referenced songs/routines/charts/environments/assets exist
 - referenced package-local media paths exist on disk
 - ids are unique and references are coherent
-- each session entry has one environment and at most one asset per entry-selectable asset type
+- each workout set has one environment and at most one asset per set-selectable asset type
 
 ### Index validation
 
@@ -907,9 +881,9 @@ For the first implementation-oriented package/storage pass, AeroBeat should proc
 - packages are self-contained and duplication/fork-based rather than inheritance-based
 - `coaches/`, `environments/`, and `assets/` are first-class content domains
 - `assetType` is a strict v1 enum: `gloves`, `targets`, `obstacles`, `trails`
-- each session entry resolves exact chart/routine/song ids plus one environment and at most one selected asset per entry-selectable asset type
+- each workout set resolves exact chart/routine/song ids plus one environment and at most one selected asset per set-selectable asset type
 - package signing/integrity metadata is explicitly deferred from the v1 authored package contract
-- runtime may still do per-entry unload/reload even when ids repeat
+- runtime may still do between-set unload/reload even when ids repeat
 - first-party and community packages share the same conceptual system
 
 That is the cleanest v1 contract that matches the current AeroBeat decisions and is concrete enough to guide implementation.

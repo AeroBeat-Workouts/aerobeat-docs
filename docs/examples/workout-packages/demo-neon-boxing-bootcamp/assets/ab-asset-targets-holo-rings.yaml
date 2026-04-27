@@ -3,7 +3,7 @@ schemaId: aerobeat.asset.v1
 schemaVersion: 1
 recordVersion: 1
 
-# Asset identity is what workout entries reference for the targets slot.
+# Asset identity is what workout sets reference for the targets slot.
 assetId: ab-asset-targets-holo-rings
 assetName: Holo Ring Targets
 

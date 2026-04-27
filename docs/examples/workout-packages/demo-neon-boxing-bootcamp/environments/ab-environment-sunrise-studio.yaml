@@ -3,7 +3,7 @@ schemaId: aerobeat.environment.v1
 schemaVersion: 1
 recordVersion: 1
 
-# Environment identity is selected by the workout entry.
+# Environment identity is selected by the workout set.
 environmentId: ab-environment-sunrise-studio
 environmentName: Sunrise Studio
 
