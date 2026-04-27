@@ -29,7 +29,7 @@ As of 2026-04-27, the current naming and shape direction is:
 - `Song` records do not link to charts, sets, or workouts.
 - `Chart` records do not link to songs or sets.
 - Athlete/device-specific timing calibration such as song offset does not belong in durable content data; it belongs in athlete/profile/device state.
-- Workout coaching is owned by the package's single `coaches/coach-config.yaml`; enabled coaching requires roster + warmup + cooldown + an overlay registry that set files can reference by `overlayId`.
+- Workout coaching is owned by the package's single `coaches/coach-config.yaml`; enabled coaching requires roster + warmup + cooldown + an overlay registry whose records use `overlayId`, while set files reference that registry via `coachingOverlayId`.
 
 ## Canonical ownership
 
