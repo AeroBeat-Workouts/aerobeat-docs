@@ -437,7 +437,7 @@ tags:
 
 ### `assets/<asset-id>.yaml`
 
-Assets are reusable package-local records for typed runtime-presented content. For v1, AeroBeat keeps `assetType` intentionally small and closed so package validation, entry selection, and runtime binding stay boring and predictable.
+Assets are reusable package-local records for typed runtime-presented content. For v1, AeroBeat keeps `assetType` intentionally small and closed so package validation, set selections, and runtime binding stay boring and predictable.
 
 #### Owns
 
