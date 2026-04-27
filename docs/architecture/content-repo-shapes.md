@@ -11,7 +11,7 @@ The goal is not to over-design a future platform. The goal is to make repo creat
 
 These repo shapes assume the six-core model already documented elsewhere:
 
-- `aerobeat-content-core` owns the durable content language: `Song`, `Routine`, `Chart`, `Workout`, shared chart-envelope contracts, ids, manifests, schema/version rules, shared validators, registry/query interfaces, and workout resolution contracts.
+- `aerobeat-content-core` owns the durable content language: `Song`, `Set`, `Chart`, `Workout`, shared chart-envelope contracts, ids, manifests, schema/version rules, shared validators, registry/query interfaces, and workout resolution contracts.
 - `aerobeat-tool-core` owns shared tool-side operational models, progress/result DTOs, and other tool-common contracts.
 - `aerobeat-tool-content-authoring` is a concrete Tool-lane product built on top of `aerobeat-content-core` and `aerobeat-tool-core`.
 - `aerobeat-feature-core` and concrete `aerobeat-feature-*` repos consume content contracts and own runtime interpretation, scoring, spawning, and presentation systems such as 2D lanes and 3D portals.
@@ -38,7 +38,7 @@ aerobeat-content-core/
 ├── data_types/
 │   ├── content_id.gd
 │   ├── song.gd
-│   ├── routine.gd
+│   ├── set.gd
 │   ├── chart.gd
 │   ├── workout.gd
 │   ├── chart_envelope.gd
@@ -58,7 +58,7 @@ aerobeat-content-core/
 │   ├── package_minimal_boxing/
 │   │   ├── manifest.json
 │   │   ├── songs/song-demo.json
-│   │   ├── routines/song-demo-boxing.json
+│   │   ├── sets/song-demo-opening-round.json
 │   │   ├── charts/song-demo-boxing-medium.json
 │   │   └── workouts/demo-workout.json
 │   └── invalid_missing_song_ref/
@@ -81,15 +81,15 @@ The exact filenames can evolve, but the **shape categories should not**: contrac
 - `data_types/song.gd`
   - canonical `Song` contract
   - audio/timing authority, metadata, licensing references, global tags
-- `data_types/routine.gd`
-  - canonical `Routine` contract
-  - song reference, mode, routine metadata, validation profile, presentation defaults
+- `data_types/set.gd`
+  - canonical `Set` contract
+  - package-local composition links for one exact playable slice, including song/chart/environment selections and optional coaching overlay or asset selections
 - `data_types/chart.gd`
   - canonical `Chart` contract
   - difficulty, interaction family, input-profile compatibility fields, event stream envelope
 - `data_types/workout.gd`
   - canonical `Workout` contract
-  - session sequencing, chart/routine references, transition/coaching metadata
+  - session sequencing through ordered `setId` references plus workout-level metadata
 - `data_types/chart_envelope.gd`
   - shared top-level chart shape used by all modes
 - `data_types/content_package_manifest.gd`
@@ -98,7 +98,7 @@ The exact filenames can evolve, but the **shape categories should not**: contrac
 #### Support contracts
 
 - `data_types/content_id.gd`
-  - stable typed ids and/or helper structure for `songId`, `routineId`, `chartId`, `workoutId`, `packageId`
+  - stable typed ids and/or helper structure for `songId`, `setId`, `chartId`, `workoutId`, `packageId`
 - `data_types/content_reference.gd`
   - explicit reference object shape used across packages, workouts, manifests, and registry results
 - `data_types/content_query.gd`
@@ -110,7 +110,7 @@ The exact filenames can evolve, but the **shape categories should not**: contrac
   - defines how a consumer asks for chart content by id/path/reference
   - should return shared contracts, not feature-local runtime objects
 - `interfaces/content_registry.gd`
-  - defines query and lookup semantics for songs, routines, charts, workouts, and resources
+  - defines query and lookup semantics for songs, sets, charts, workouts, and resources
   - should describe the interface, not storage or network implementation
 - `interfaces/content_migration.gd`
   - defines migration contract and migration report/result semantics
@@ -140,7 +140,7 @@ The exact filenames can evolve, but the **shape categories should not**: contrac
 #### Example resources and tests
 
 - `fixtures/package_minimal_boxing/*`
-  - one tiny but real package proving the contract works end-to-end for a single routine/chart/workout path
+  - one tiny but real package proving the contract works end-to-end for a single set/chart/workout path
 - `fixtures/invalid_missing_song_ref/*`
   - one intentionally broken package for validator regression coverage
 - `tests/*`
@@ -210,7 +210,7 @@ aerobeat-tool-content-authoring/
 │   └── import_export_service.gd
 ├── services/
 │   ├── authoring/
-│   │   ├── routine_authoring_service.gd
+│   │   ├── set_authoring_service.gd
 │   │   ├── workout_authoring_service.gd
 │   │   └── chart_authoring_service.gd
 │   ├── validation/
@@ -289,8 +289,8 @@ The service layer should accept and return stable DTOs/contracts from `aerobeat-
 
 #### Services
 
-- `services/authoring/routine_authoring_service.gd`
-  - create/update routine records from tool actions
+- `services/authoring/set_authoring_service.gd`
+  - create/update set records from tool actions while preserving package-local composition rules
 - `services/authoring/workout_authoring_service.gd`
   - create/update workout records
 - `services/authoring/chart_authoring_service.gd`
@@ -330,7 +330,7 @@ The service layer should accept and return stable DTOs/contracts from `aerobeat-
 - `editor/plugins/content_authoring_plugin.gd`
   - plugin bootstrap only
 - `editor/docks/*`
-  - views for charts/routines/workouts/package inspection
+  - views for charts/sets/workouts/package inspection
 - `editor/inspectors/*`
   - record inspectors/editors
 - `editor/view_models/*`
@@ -358,7 +358,7 @@ Editor code should orchestrate services and present results. It should not becom
 
 `aerobeat-tool-content-authoring` must not own:
 
-- canonical definitions of `Song`, `Routine`, `Chart`, or `Workout`
+- canonical definitions of `Song`, `Set`, `Chart`, or `Workout`
 - the shared chart envelope contract
 - feature runtime visuals such as 2D lanes or 3D portals
 - gameplay scoring/runtime execution logic

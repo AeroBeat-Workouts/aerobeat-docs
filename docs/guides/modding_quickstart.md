@@ -6,7 +6,7 @@ Welcome to the AeroBeat Creator Community! This guide will help you create your 
 
 If you want to understand the current package contract before opening any SDK or tool, read the [Demo Workout Package Guide](demo_workout_package.md) first.
 
-It links to one complete example package with commented `workout.yaml`, `songs/`, `routines/`, `charts/`, `coaches/coach-config.yaml`, `environments/`, `assets/`, and example SQLite schemas.
+It links to one complete example package with commented `workout.yaml`, `songs/`, `sets/`, `charts/`, `coaches/coach-config.yaml`, `environments/`, `assets/`, and example SQLite schemas.
 
 ## 1. Choose Your SDK
 

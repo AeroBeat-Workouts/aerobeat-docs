@@ -7,7 +7,7 @@ Boxing is the core gameplay of AeroBeat. A good boxing chart is a conversation b
 *   **Tool:** **Boxing Choreography Studio**
 *   **Grid:** 5 Zones (Left, Right, Low-Left, Low-Right, Center).
 *   **Perspective:** 3D Portal View (Targets fly towards you).
-*   **Content Model:** A boxing chart is a **Chart** inside a song's **Boxing Routine**. The song owns audio/timing, the routine owns boxing-specific packaging, and the chart owns one concrete playable difficulty.
+*   **Content Model:** A boxing chart is a reusable **Chart** record. The song owns audio/timing, the chart owns one concrete playable difficulty, and package-local **Set** records link charts to songs, environments, asset selections, and optional coaching overlays.
 *   **Targeting Rule:** Author against **interaction semantics** (`gesture_2d`) rather than hard-binding the chart to a raw device. MediaPipe camera tracking is the first validated input profile, not the core content abstraction.
 
 ## 🥊 Mechanics & Objects
@@ -63,7 +63,7 @@ The first shipping boxing chart format uses a shared chart envelope with a boxin
 A Boxing chart includes:
 
 *   `schema`: `aerobeat.chart.boxing.v1`
-*   `chartId`, `songId`, `routineId`
+*   `chartId`
 *   `mode`: `boxing`
 *   `difficulty`
 *   `interactionFamily`: `gesture_2d` for camera-first boxing
@@ -122,8 +122,6 @@ Whichever representation is used in authoring tools, runtime judgment resolves a
 {
   "schema": "aerobeat.chart.boxing.v1",
   "chartId": "boxing-song123-medium-gesture",
-  "songId": "song123",
-  "routineId": "song123-boxing",
   "mode": "boxing",
   "difficulty": "medium",
   "interactionFamily": "gesture_2d",
