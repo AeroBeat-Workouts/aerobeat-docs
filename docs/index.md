@@ -12,7 +12,7 @@ We are building a platform, not just a game. Our architecture separates **Input*
 
 * **Hardware Agnostic:** Play using a Webcam (MediaPipe), VR Controllers, JoyCons, or even a Keyboard.
 * **Modular Gameplay:** Swap the "Core Mechanic" instantly. Go from **Boxing** (punching targets) to **Flow** (Beat Saber style movement) without changing the engine.
-* **Community First:** Built for modding. Artists can author package-local assets, Musicians can map songs, and Coders can write new input drivers.
+* **Community First:** Built for modding. Musicians can publish songs, choreographers can author charts and sets, artists can build package-local assets, and coders can write new input drivers.
 
 ---
 
@@ -109,7 +109,7 @@ We welcome contributions of all kinds. To ensure you have the best experience, c
 We provide specialized web-based tools for you:
 
 * **Musicians:** Upload tracks and get verified at **www.aerobeat-workouts.com/creators**.
-* **Choreographers:** Use the **Choreography Studio** to map songs and workouts.
+* **Choreographers:** Use the **Choreography Studio** to author charts and package-local sets that workouts sequence.
 * **Coaches:** Build optional workout-level coaching content around the package's single `coaches/coach-config.yaml` domain, with all-or-nothing enablement and one overlay audio clip per workout set when enabled.
 
 > **Current Status:** AeroBeat is currently in **Prototype (v0.0.1)**. We are actively building the six shared core lanes and the initial Boxing feature.

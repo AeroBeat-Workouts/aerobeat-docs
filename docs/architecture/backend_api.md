@@ -16,7 +16,7 @@ To protect the platform from abuse, we implement strict security measures for al
 
 ## 📦 Data Integrity & Versioning
 
-To prevent **Dependency Rot** (where a Workout breaks because a referenced Song, Routine asset, or Skin was deleted or changed), the API enforces strict immutability rules.
+To prevent **Dependency Rot** (where a Workout breaks because a referenced Song, Set-linked Chart, Environment, or Skin was deleted or changed), the API enforces strict immutability rules.
 
 ### 1. Immutable Versioning
 *   **Policy:** Once an asset (Skin, Song, Environment) is published, its binary content (`.pck`) is **Immutable**. It can never be overwritten.

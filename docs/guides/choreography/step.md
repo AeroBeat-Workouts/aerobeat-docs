@@ -39,7 +39,7 @@ Unless you are creating a specific jack (repeated tap) pattern, players should n
 1. Open `aerobeat-sdk-choreography-step`.
 2. Create or open the **Chart** for the intended difficulty.
 3. Create or open the Step **Set** that links the selected Song and Chart for this workout slice.
-4. Load your Song using the content browser, ensure the set references the correct Song + Chart IDs, and sync the BPM with the **Auto-Detect** feature.
+4. Load your Song using the content browser, ensure the set is the only composition record linking the exact Song + Chart IDs, and sync the BPM with the **Auto-Detect** feature.
 
 ### 2. The Editor Grid
 

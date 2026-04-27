@@ -54,7 +54,7 @@ Before placing a single note, you must sync the grid and establish the chart / s
 
 1. **Create or open a Chart:** Choose the gameplay mode and work inside one concrete playable difficulty / compatibility slice.
 2. **Create or open a Set:** Wire the selected Song and Chart together for one package-local workout slice.
-3. **Link the Song and Chart:** Ensure the set points at the selected Song ID and Chart ID.
+3. **Use the Set as the linker:** Keep song/chart composition on the set rather than back-linking charts to songs or workouts.
 4. **BPM & Offset:**
    * **Auto-detect:** The SDK automatically scans the audio file to calculate BPM and offset when assigned.
    * **Manual Override:** If detection is slightly off, type in the correct value or use the **Tap Tempo** button.
@@ -84,4 +84,5 @@ The SDK includes a **Flow Validator**. Run this before uploading.
 2. **Prepare the Publishable Content:**
    * Finalize the set metadata and composition links.
    * Finalize the chart metadata for difficulty, interaction family, and any supported / validated input profiles.
+   * Keep package composition explicit through set ids rather than loose song/difficulty matching.
 3. **Upload:** Use the uploader tab to publish your authored gameplay content.

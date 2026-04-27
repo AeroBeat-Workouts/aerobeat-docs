@@ -24,19 +24,19 @@ The goal is to avoid collapsing contracts, authoring tools, importers, registrie
 Freeze the architecture and vocabulary well enough that implementation repos can be created without re-litigating the model.
 
 ### Deliverables
-- canonical docs for `Song`, `Routine`, `Chart`, and `Workout`
+- canonical docs for `Song`, `Chart`, `Set`, and `Workout`
 - explicit ownership language for `aerobeat-content-core`, `aerobeat-feature-core`, and `aerobeat-tool-core`
 - documented shared chart envelope and interaction-family targeting rules
-- documented package/file relationship for song, routine, chart, and workout artifacts
+- documented package/file relationship for song, chart, set, and workout artifacts
 - documented decision on what belongs to content contracts vs tool workflows vs runtime interpretation
 - documented rule that concrete authoring products live in `aerobeat-tool-*` repos with both headless/CLI and optional interactive/editor surfaces
 - documented rule that 2D lanes, 3D portals, and other content-consuming runtime visuals belong in feature repos rather than the content lane
 
 ### Required decisions before code starts
-- canonical ids/references for song, routine, chart, and workout
+- canonical ids/references for song, chart, set, and workout
 - minimum chart envelope fields
 - which presentation hints are durable content fields versus runtime-only concerns
-- whether workouts default to routine+difficulty selection or exact chart ids
+- whether workouts resolve exact set ids rather than loose song/difficulty matching
 - which validation responsibilities are shared across all content versus delegated to feature repos
 - whether the first authoring product is a Tool-lane repo with a headless-first service surface plus optional editor UX
 - which runtime visual concerns stay in feature repos even when they consume content presentation hints
@@ -52,7 +52,7 @@ Freeze the architecture and vocabulary well enough that implementation repos can
 Stand up the dependency-light shared repo that owns the content model and loader-facing contracts.
 
 ### `aerobeat-content-core` should contain
-- data/resource contracts for `Song`, `Routine`, `Chart`, and `Workout`
+- data/resource contracts for `Song`, `Chart`, `Set`, and `Workout`
 - shared chart-envelope types
 - content references, ids, metadata, and manifest primitives
 - loader/registry interfaces used by both runtime and tools
@@ -73,7 +73,7 @@ Stand up the dependency-light shared repo that owns the content model and loader
 
 ### Exit criteria
 - a consumer can load the shared contract layer without depending on a specific feature repo
-- content fixtures exist for at least one routine and one workout path
+- content fixtures exist for at least one set-centered workout path
 - feature and tool repos can import the same content contracts without duplicating types
 
 ## Phase 3 — Validation, registry, and schema-version foundations
@@ -113,7 +113,7 @@ Build tooling against the stabilized content contracts instead of inventing tool
 - shared diagnostics/result plumbing used by authoring or ingestion apps
 
 ### Concrete tool work expected after `content-core` stabilizes
-- chart/routine authoring flows
+- chart/set authoring flows
 - workout authoring flows
 - import/ingestion flows from source audio/metadata/chart sources
 - validation runners used by CLI/editor tooling
@@ -138,7 +138,7 @@ Create concrete tool repos only when ownership or release cadence becomes distin
 - separate workout-only repo before there is clear workflow divergence
 
 ### Exit criteria
-- at least one tool path can author or edit a routine/chart using only shared contracts
+- at least one tool path can author or edit a chart/set using only shared contracts
 - ingestion can emit canonical content artifacts without hand-written post-fixups in runtime repos
 - tool diagnostics map cleanly back to shared schema/validator results
 
@@ -152,7 +152,7 @@ Connect the approved content contracts to live feature/runtime behavior without 
 - concrete `aerobeat-feature-*` repos implement mode-specific loaders/adapters on top of shared chart envelopes and mode payloads
 - concrete `aerobeat-feature-*` repos also own content-consuming runtime visuals such as 2D lanes, 3D portals, and other view-specific presentation systems
 - assemblies compose the necessary cores and concrete repos through GodotEnv
-- runtime selection logic resolves workout → routine/chart selection using content-core references and validated manifests
+- runtime selection logic resolves workout → set → chart/song selection using content-core references and validated manifests
 
 ### Important constraint
 Playback integration should consume the schema/version and registry contracts from the content lane. Runtime repos may cache, adapt, or optimize content, but they should not quietly fork the canonical content model.
@@ -162,7 +162,7 @@ Playback integration should consume the schema/version and registry contracts fr
 
 ### Exit criteria
 - one end-to-end path can load validated content artifacts into a feature runtime
-- workout selection can resolve into a concrete playable chart path
+- workout selection can resolve into a concrete playable set and chart path
 - runtime errors can be traced back to shared content ids/manifests rather than ad hoc feature-local assumptions
 
 ## Recommended repo creation order

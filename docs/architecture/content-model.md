@@ -346,22 +346,14 @@ Tools should load package content in this order:
 
 That keeps package-level orchestration explicit while leaving reusable authored records decoupled.
 
-## Migration direction from the older package model
+## Durable package contract summary
 
-Older docs/examples showed a routine-centered package contract where:
+Keep the package shape explicit and set-centered:
 
-- `workout.yaml` inlined song/chart/routine/environment choices
-- `charts/*.yaml` linked back to `routineId` and `songId`
-- `songs/*.yaml` were described as feeding routines
-- `coaches/coach-config.yaml` mapped overlays by `setId`
-
-The current direction replaces that with a set-centered single-linker model:
-
-- `routines/` is removed from the durable workout-package contract
-- `sets/*.yaml` becomes the single source of truth for composition wiring
-- `workout.yaml` keeps only package/workout metadata plus ordered `setId` references
-- `charts/*.yaml` stand alone as reusable exact playable slices
-- `songs/*.yaml` stand alone as reusable audio/timing/licensing records
-- `coach-config.yaml` becomes a coaching media/roster registry that set records can reference through `coachingOverlayId`
+- `songs/*.yaml` are reusable audio/timing/licensing records
+- `charts/*.yaml` are reusable exact playable slices
+- `sets/*.yaml` are the single source of truth for composition wiring
+- `workout.yaml` keeps package/workout metadata plus ordered `setId` references
+- `coach-config.yaml` is a coaching media/roster registry that set records can reference through `coachingOverlayId`
 
 That split keeps authored responsibilities cleaner and removes duplicated linkage.
