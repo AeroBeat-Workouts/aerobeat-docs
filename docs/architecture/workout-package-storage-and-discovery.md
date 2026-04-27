@@ -442,7 +442,7 @@ Assets are reusable package-local records for typed runtime-presented content. F
 #### Owns
 
 - asset identity and asset type
-- package-local resource references
+- package-local runtime resource references
 - metadata needed to bind the asset in playback
 
 #### Must not own
@@ -461,7 +461,6 @@ assetId: uid
 assetName: string
 assetType: gloves
 resourcePath: media/assets/gloves/neon-gloves.glb
-thumbnailPath: media/art/neon-gloves-thumb.png
 metadata:
   palette: neon-pink
   style: arcade

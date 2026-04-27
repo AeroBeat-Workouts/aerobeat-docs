@@ -10,7 +10,6 @@ assetName: Light Wall Obstacles
 # obstacles is one of the locked v1 gameplay-facing asset types.
 assetType: obstacles
 resourcePath: media/assets/obstacles/light-walls.glb
-thumbnailPath: media/art/light-walls-thumb.png
 metadata:
   palette: ultraviolet
   style: translucent

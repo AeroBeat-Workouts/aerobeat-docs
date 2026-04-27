@@ -10,7 +10,6 @@ assetName: Holo Ring Targets
 # targets is one of the locked v1 gameplay-facing asset types.
 assetType: targets
 resourcePath: media/assets/targets/holo-rings.glb
-thumbnailPath: media/art/holo-rings-thumb.png
 metadata:
   palette: electric-blue
   style: holographic

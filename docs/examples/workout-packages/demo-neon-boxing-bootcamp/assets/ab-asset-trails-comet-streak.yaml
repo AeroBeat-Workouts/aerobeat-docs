@@ -10,7 +10,6 @@ assetName: Comet Streak Trails
 # trails is one of the locked v1 gameplay-facing asset types.
 assetType: trails
 resourcePath: media/assets/trails/comet-streak.tres
-thumbnailPath: media/art/comet-streak-thumb.png
 metadata:
   palette: orange-gold
   style: streak
