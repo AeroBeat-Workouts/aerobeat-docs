@@ -27,13 +27,13 @@ cooldownVideo:
 
 # Enabled coaching requires exactly one overlay audio clip per workout set.
 # Validation should fail if any set is missing, duplicated, or points at a missing file.
-entryOverlayAudio:
-  - setId: ab-entry-neon-stride-opening-round
+setOverlayAudio:
+  - setId: ab-set-neon-stride-opening-round
     coachId: ab-coach-aria
     mediaId: ab-overlay-aria-neon-stride-cue
     path: media/coaching/aria-neon-stride-overlay.ogg
 
-  - setId: ab-entry-midnight-sprint-finish-round
+  - setId: ab-set-midnight-sprint-finish-round
     coachId: ab-coach-blaze
     mediaId: ab-overlay-blaze-midnight-sprint-cue
     path: media/coaching/blaze-midnight-sprint-overlay.ogg

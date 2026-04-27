@@ -398,7 +398,7 @@ warmupVideo:
 cooldownVideo:
   mediaId: cooldown-outro
   path: media/coaching/cooldown-outro.mp4
-entryOverlayAudio:
+setOverlayAudio:
   - setId: uid
     coachId: uid
     mediaId: overlay-a

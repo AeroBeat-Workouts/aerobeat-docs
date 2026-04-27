@@ -48,12 +48,12 @@ warmupVideo:
 cooldownVideo:
   mediaId: ab-cooldown-stretch-outro
   path: media/coaching/cooldown-stretch-outro.mp4
-entryOverlayAudio:
-  - setId: ab-entry-neon-stride-opening-round
+setOverlayAudio:
+  - setId: ab-set-neon-stride-opening-round
     coachId: ab-coach-aria
     mediaId: ab-overlay-aria-neon-stride-cue
     path: media/coaching/aria-neon-stride-overlay.ogg
-  - setId: ab-entry-midnight-sprint-finish-round
+  - setId: ab-set-midnight-sprint-finish-round
     coachId: ab-coach-blaze
     mediaId: ab-overlay-blaze-midnight-sprint-cue
     path: media/coaching/blaze-midnight-sprint-overlay.ogg
@@ -96,7 +96,7 @@ When coaching is disabled, validation should fail if authors try to leave behind
 - **Action:** Record the package warmup and cooldown videos.
 - **Export:** Render as package-local video files.
 
-#### Entry Overlay Audio
+#### Set Overlay Audio
 
 - **Setup:** Put on your headset, start recording in your DAW, and play the song in your headphones.
 - **Action:** Perform the workout while recording. Speak to the athlete as if they are next to you.

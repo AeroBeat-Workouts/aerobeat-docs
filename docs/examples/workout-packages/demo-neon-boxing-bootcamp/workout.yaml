@@ -44,7 +44,7 @@ preview:
 # transition behavior here.
 sets:
   # Each set resolves exact chart/routine/song ids rather than loose difficulty lookups.
-  - setId: ab-entry-neon-stride-opening-round
+  - setId: ab-set-neon-stride-opening-round
     chartId: ab-chart-neon-stride-boxing-medium
     routineId: ab-routine-neon-stride-boxing
     songId: ab-song-neon-stride
@@ -58,7 +58,7 @@ sets:
       obstacles: ab-asset-obstacles-light-walls
       trails: ab-asset-trails-comet-streak
 
-  - setId: ab-entry-midnight-sprint-finish-round
+  - setId: ab-set-midnight-sprint-finish-round
     chartId: ab-chart-midnight-sprint-boxing-hard
     routineId: ab-routine-midnight-sprint-boxing
     songId: ab-song-midnight-sprint

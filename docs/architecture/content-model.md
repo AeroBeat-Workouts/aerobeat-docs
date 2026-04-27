@@ -322,7 +322,7 @@ It is the boundary for difficulty, interaction family, validated compatibility, 
 ### Workout contract
 
 The `Workout` contract is responsible for set composition.
-It sequences playable selections, transition timing, and coaching/program flow, but it does not redefine the underlying chart semantics.
+It sequences playable selections and coaching/program flow, but it does not redefine the underlying chart semantics or author between-set transition behavior.
 
 ## Registry and discovery responsibilities
 
