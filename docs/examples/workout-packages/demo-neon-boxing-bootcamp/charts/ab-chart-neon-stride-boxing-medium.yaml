@@ -7,12 +7,11 @@ recordVersion: 1
 chartId: ab-chart-neon-stride-boxing-medium
 chartName: Neon Stride Medium Boxing
 
-# A chart references one routine and the routine's song.
-routineId: ab-routine-neon-stride-boxing
-songId: ab-song-neon-stride
+# Charts stand alone as reusable playable slices.
+# They do not point back to songs or outward to sets.
 mode: boxing
 
-# Difficulty belongs on the chart, not on the workout set.
+# Difficulty belongs on the chart, not on the set.
 difficulty: medium
 
 # interactionFamily targets movement semantics rather than a specific hardware device.

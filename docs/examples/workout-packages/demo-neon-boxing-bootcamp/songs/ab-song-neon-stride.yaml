@@ -3,7 +3,7 @@ schemaId: aerobeat.song.v1
 schemaVersion: 1
 recordVersion: 1
 
-# Stable song identity referenced by routines and workout sets.
+# Stable song identity selected by set records.
 songId: ab-song-neon-stride
 songName: Neon Stride
 
@@ -11,7 +11,7 @@ songName: Neon Stride
 createdByTool: aerobeat-tool-content-authoring
 createdByToolVersion: 0.1.0
 createdAt: 2026-04-25T22:00:00Z
-updatedAt: 2026-04-25T22:00:00Z
+updatedAt: 2026-04-27T13:00:00Z
 
 # Artist and credit metadata belongs on the song.
 artist:

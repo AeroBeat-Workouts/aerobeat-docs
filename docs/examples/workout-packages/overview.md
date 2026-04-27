@@ -17,12 +17,12 @@ If you are new to the package system, start here before reading the lower-level 
 - Songs:
   - [`ab-song-neon-stride.yaml`](demo-neon-boxing-bootcamp/songs/ab-song-neon-stride.yaml)
   - [`ab-song-midnight-sprint.yaml`](demo-neon-boxing-bootcamp/songs/ab-song-midnight-sprint.yaml)
-- Routines:
-  - [`ab-routine-neon-stride-boxing.yaml`](demo-neon-boxing-bootcamp/routines/ab-routine-neon-stride-boxing.yaml)
-  - [`ab-routine-midnight-sprint-boxing.yaml`](demo-neon-boxing-bootcamp/routines/ab-routine-midnight-sprint-boxing.yaml)
 - Charts:
   - [`ab-chart-neon-stride-boxing-medium.yaml`](demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-boxing-medium.yaml)
   - [`ab-chart-midnight-sprint-boxing-hard.yaml`](demo-neon-boxing-bootcamp/charts/ab-chart-midnight-sprint-boxing-hard.yaml)
+- Sets:
+  - [`ab-set-neon-stride-opening-round.yaml`](demo-neon-boxing-bootcamp/sets/ab-set-neon-stride-opening-round.yaml)
+  - [`ab-set-midnight-sprint-finish-round.yaml`](demo-neon-boxing-bootcamp/sets/ab-set-midnight-sprint-finish-round.yaml)
 - [Coach config](demo-neon-boxing-bootcamp/coaches/coach-config.yaml)
 - Environments:
   - [`ab-environment-neon-rooftop.yaml`](demo-neon-boxing-bootcamp/environments/ab-environment-neon-rooftop.yaml)
@@ -39,11 +39,14 @@ If you are new to the package system, start here before reading the lower-level 
 
 This demo package is aligned to the current package rules:
 
-- **Chart** is the durable term, not chart variant.
+- **Chart** is the durable term for one exact playable slice.
+- **Set** is the durable term for one package-local composition record.
 - A package has **one** `coaches/` folder and **one** `coach-config.yaml` file.
 - Coaching is optional all-or-nothing.
-- When coaching is enabled, `coach-config.yaml` owns the warmup video, cooldown video, and exactly one overlay audio clip per workout set.
+- When coaching is enabled, `coach-config.yaml` owns the warmup video, cooldown video, and overlay audio registry.
+- Workout sets select the right overlay through `coachingOverlayId`.
 - Workout sets select gameplay-facing assets through `assetSelections` only.
+- `workout.yaml` owns package metadata plus `setOrder`, not full set composition details inline.
 - Local discoverability belongs in **`workouts.db`**, not in package YAML.
 - Packages are **self-contained** and are versioned by duplication/forking rather than inheritance/patch layering.
 - Local and remote catalog databases share the same **core catalog schema**; local install-only state lives in `workout_local`, and remote-only browse/distribution state lives in `workout_remote`.
@@ -56,10 +59,10 @@ This demo package is aligned to the current package rules:
 
 ## How to read the package
 
-1. Open [`workout.yaml`](demo-neon-boxing-bootcamp/workout.yaml) to see the package root, set order, and referenced ids.
-2. Open the `songs/`, `routines/`, and `charts/` files to follow how exact playable content is layered.
-3. Open [`coaches/coach-config.yaml`](demo-neon-boxing-bootcamp/coaches/coach-config.yaml) to see the single-package coaching domain.
-4. Open the `environments/` and `assets/` files to see how reusable package-local presentation content is defined.
+1. Open [`workout.yaml`](demo-neon-boxing-bootcamp/workout.yaml) to see the package root and authored set order.
+2. Open the `sets/` files to follow the exact composition links.
+3. From each set, open the referenced `songs/`, `charts/`, `environments/`, and `assets/` files.
+4. Open [`coaches/coach-config.yaml`](demo-neon-boxing-bootcamp/coaches/coach-config.yaml) to see the single-package coaching domain.
 5. Open the two SQL files to see what belongs in local discovery/cache databases versus authored YAML.
 
 ## Important scope note

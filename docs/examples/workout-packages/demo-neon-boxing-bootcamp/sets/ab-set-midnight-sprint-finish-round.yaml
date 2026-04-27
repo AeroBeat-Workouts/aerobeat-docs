@@ -1,0 +1,23 @@
+# A second set shows how a workout orders exact set ids instead of inlining composition.
+schemaId: aerobeat.set.v1
+schemaVersion: 1
+recordVersion: 1
+
+# Stable set identity for workout ordering and coaching lookup.
+setId: ab-set-midnight-sprint-finish-round
+setName: Midnight Sprint Finish Round
+
+# The set links one reusable song to one exact playable chart.
+songId: ab-song-midnight-sprint
+chartId: ab-chart-midnight-sprint-boxing-hard
+
+# Environment and coaching overlay are selected at the set layer.
+environmentId: ab-environment-sunrise-studio
+coachingOverlayId: ab-overlay-blaze-midnight-sprint-cue
+
+# Reusing the same asset ids across sets is valid.
+assetSelections:
+  gloves: ab-asset-gloves-neon-pulse
+  targets: ab-asset-targets-holo-rings
+  obstacles: ab-asset-obstacles-light-walls
+  trails: ab-asset-trails-comet-streak

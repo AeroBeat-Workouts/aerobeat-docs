@@ -13,12 +13,12 @@ That folder is intentionally authored as a **teaching package** rather than a mi
 ## What to open first
 
 1. [`workout.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/workout.yaml)
-2. Song records:
+2. Set records:
+   - [`ab-set-neon-stride-opening-round.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/sets/ab-set-neon-stride-opening-round.yaml)
+   - [`ab-set-midnight-sprint-finish-round.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/sets/ab-set-midnight-sprint-finish-round.yaml)
+3. Song records:
    - [`ab-song-neon-stride.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/songs/ab-song-neon-stride.yaml)
    - [`ab-song-midnight-sprint.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/songs/ab-song-midnight-sprint.yaml)
-3. Routine records:
-   - [`ab-routine-neon-stride-boxing.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/routines/ab-routine-neon-stride-boxing.yaml)
-   - [`ab-routine-midnight-sprint-boxing.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/routines/ab-routine-midnight-sprint-boxing.yaml)
 4. Chart records:
    - [`ab-chart-neon-stride-boxing-medium.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-boxing-medium.yaml)
    - [`ab-chart-midnight-sprint-boxing-hard.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/charts/ab-chart-midnight-sprint-boxing-hard.yaml)
@@ -42,20 +42,20 @@ The example models a single package with:
 
 - one root `workout.yaml`
 - two songs
-- two boxing routines
 - two charts
+- two sets
 - one coaching domain file
 - two environments
 - four gameplay-facing asset records
 
 ### 2. Exact ids, not loose lookup rules
 
-The workout sets point to exact:
+The set files point to exact:
 
 - `songId`
-- `routineId`
 - `chartId`
 - `environmentId`
+- `coachingOverlayId`
 - gameplay-facing asset ids
 
 That is the current v1 direction. Discovery happens elsewhere; package playback resolves exact ids.
@@ -82,8 +82,9 @@ The package shows the approved coaching rule clearly:
 - every package has exactly one `coaches/coach-config.yaml`
 - coaching is optional all-or-nothing
 - if coaching is enabled, warmup/cooldown media live in coach-config, not in `workout.yaml`
-- coach-config also owns exactly one overlay audio clip per workout set, keyed by `setId`
-- workout sets do not carry reusable trigger graphs or per-set overlay lists
+- coach-config owns the overlay audio registry
+- set files choose overlay clips by `coachingOverlayId`
+- workout roots do not carry reusable trigger graphs or per-set overlay lists
 
 ### 4. SQLite authority boundaries
 
@@ -102,7 +103,7 @@ This example is meant to be the easiest place for a new developer to answer ques
 - "What does a valid v1 workout package folder look like?"
 - "Where does coach config live?"
 - "Where do warmup/cooldown references live under the approved coaching model?"
-- "How does `coach-config.yaml` target the right workout set for each overlay audio clip?"
+- "How does a set pick the right coaching overlay clip?"
 - "Where does browse metadata belong versus package metadata?"
 - "How should ids line up across package files?"
 

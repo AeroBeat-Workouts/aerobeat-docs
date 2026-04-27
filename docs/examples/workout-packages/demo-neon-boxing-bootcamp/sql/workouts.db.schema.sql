@@ -29,6 +29,7 @@ CREATE TABLE workout_tags (
 );
 
 -- Mode summary table so the client can filter without reparsing every chart file.
+-- Rows are derived from the charts referenced by authored set files.
 CREATE TABLE workout_modes (
   workout_id TEXT NOT NULL,
   mode TEXT NOT NULL,
@@ -37,6 +38,7 @@ CREATE TABLE workout_modes (
 );
 
 -- Difficulty summary table for browse filters.
+-- Rows are derived from the charts referenced by authored set files.
 CREATE TABLE workout_difficulties (
   workout_id TEXT NOT NULL,
   difficulty TEXT NOT NULL CHECK (difficulty IN ('easy', 'medium', 'hard', 'pro')),
@@ -45,6 +47,7 @@ CREATE TABLE workout_difficulties (
 );
 
 -- Lightweight denormalized song summaries for workout browsing.
+-- Rows are derived from the song ids referenced by authored set files.
 CREATE TABLE workout_songs (
   workout_id TEXT NOT NULL,
   song_id TEXT NOT NULL,

@@ -3,13 +3,12 @@ schemaId: aerobeat.chart.boxing.v1
 schemaVersion: 1
 recordVersion: 1
 
-# Chart identity is what the workout set selects directly.
+# Chart identity is what the set selects directly.
 chartId: ab-chart-midnight-sprint-boxing-hard
 chartName: Midnight Sprint Hard Boxing
 
-# The chart must point back to one routine and that routine's song.
-routineId: ab-routine-midnight-sprint-boxing
-songId: ab-song-midnight-sprint
+# Charts stand alone as reusable playable slices.
+# They do not point back to songs or outward to sets.
 mode: boxing
 
 # Difficulty is part of the exact playable chart slice.
