@@ -62,15 +62,15 @@ The first shipping boxing chart format uses a shared chart envelope with a boxin
 
 A Boxing chart includes:
 
-*   `schema`: `aerobeat.chart.boxing.v1`
+*   `schemaId`: `aerobeat.chart.boxing.v1`
 *   `chartId`
 *   `mode`: `boxing`
 *   `difficulty`
 *   `interactionFamily`: `gesture_2d` for camera-first boxing
 *   `supportedInputProfiles` and `validatedInputProfiles`
 *   `timing`: aligned to song/conductor time
-*   `presentation`: view preferences and portal-layout hints
-*   `scoring`: hit windows and combo model
+*   `presentationHints`: view preferences and portal-layout hints
+*   `scoringHints`: hit windows and combo model
 *   `events`: timed boxing actions
 *   `metadata`: author, tags, notes
 
@@ -120,7 +120,7 @@ Whichever representation is used in authoring tools, runtime judgment resolves a
 
 ```json
 {
-  "schema": "aerobeat.chart.boxing.v1",
+  "schemaId": "aerobeat.chart.boxing.v1",
   "chartId": "boxing-song123-medium-gesture",
   "mode": "boxing",
   "difficulty": "medium",
@@ -131,12 +131,12 @@ Whichever representation is used in authoring tools, runtime judgment resolves a
     "offsetMs": 0,
     "resolution": 16
   },
-  "presentation": {
+  "presentationHints": {
     "preferredViews": ["portal", "track"],
     "portalMode": "front_3_portal",
     "mirrorCamera": true
   },
-  "scoring": {
+  "scoringHints": {
     "hitWindowMs": {
       "perfect": 45,
       "good": 90,
