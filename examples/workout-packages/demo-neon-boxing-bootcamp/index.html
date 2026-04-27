@@ -5292,7 +5292,7 @@
 <ul>
 <li>what records exist in a package</li>
 <li>how ids connect across files</li>
-<li>which fields belong in package YAML</li>
+<li>which fields belong in package YAML versus set YAML</li>
 <li>which concerns belong in local SQLite databases instead</li>
 <li>how the approved coaching model fits into the package</li>
 </ul>
@@ -5303,12 +5303,12 @@
 ├── songs/
 │   ├── ab-song-midnight-sprint.yaml
 │   └── ab-song-neon-stride.yaml
-├── routines/
-│   ├── ab-routine-midnight-sprint-boxing.yaml
-│   └── ab-routine-neon-stride-boxing.yaml
 ├── charts/
 │   ├── ab-chart-midnight-sprint-boxing-hard.yaml
 │   └── ab-chart-neon-stride-boxing-medium.yaml
+├── sets/
+│   ├── ab-set-midnight-sprint-finish-round.yaml
+│   └── ab-set-neon-stride-opening-round.yaml
 ├── coaches/
 │   └── coach-config.yaml
 ├── environments/
@@ -5335,21 +5335,27 @@
 <li><strong>Neon Stride</strong> — medium difficulty opener in a rooftop night environment</li>
 <li><strong>Midnight Sprint</strong> — harder follow-up in a brighter studio environment</li>
 </ol>
-<p>The package uses one shared coach config, a two-coach roster, two environments, four gameplay-facing asset selections, one warmup video, one cooldown video, and one overlay audio clip per workout entry.</p>
+<p>The package uses one shared coach config, a two-coach roster, two environments, four gameplay-facing asset selections, one warmup video, one cooldown video, and one overlay audio clip selected by each set. Every authored YAML record in the enabled example also carries the shared schema/provenance fields; the only deliberate exception path in this contract is a disabled <code>coach-config.yaml</code> sentinel of just <code>enabled: false</code>.</p>
 <h2 id="reading-order">Reading order<a class="headerlink" href="#reading-order" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Start with <a href="workout.yaml"><code>workout.yaml</code></a>.</li>
-<li>Then follow the ids into <code>songs/</code>, <code>routines/</code>, and <code>charts/</code>.</li>
-<li>After that, read <a href="coaches/coach-config.yaml"><code>coaches/coach-config.yaml</code></a>, then inspect <code>environments/</code> and <code>assets/</code>.</li>
+<li>Then follow the ordered set ids into <code>sets/</code>.</li>
+<li>From each set, follow the ids into <code>songs/</code>, <code>charts/</code>, <code>environments/</code>, <code>assets/</code>, and <code>coaches/coach-config.yaml</code>.</li>
 <li>Finish with <a href="sql/workouts.db.schema.sql"><code>sql/workouts.db.schema.sql</code></a> and <a href="sql/leaderboard-cache.db.schema.sql"><code>sql/leaderboard-cache.db.schema.sql</code></a>.</li>
 </ul>
 <h2 id="intentional-v1-boundaries-shown-here">Intentional v1 boundaries shown here<a class="headerlink" href="#intentional-v1-boundaries-shown-here" title="Permanent link">&para;</a></h2>
 <ul>
 <li>discoverability/search metadata is not authored into <code>workout.yaml</code></li>
+<li><code>workout.yaml</code> owns package metadata plus <code>setOrder</code>, not the full composition payload inline</li>
+<li><code>sets/*.yaml</code> are the single source of truth for song/chart/environment/asset/coaching-overlay links</li>
+<li>song licensing uses the locked <code>licenseType</code> enum plus <code>streamingSafe</code> and <code>aiAssisted</code> booleans</li>
+<li>the demo song records keep <code>timing.bpm</code>, <code>audio.previewStartMs</code>, boolean <code>metadata.explicit</code>, BCP 47 <code>metadata.language</code>, and locked-enum <code>metadata.genres</code></li>
+<li>song-level <code>usageRights</code>, <code>timing.beatGrid.resolution</code>, <code>timing.beatGrid.anchors</code>, and freeform <code>tags</code> are intentionally absent from this slice</li>
 <li>coaching stays inside the package's single <code>coaches/coach-config.yaml</code> file</li>
 <li>warmup/cooldown references live in coach-config under the approved coaching model</li>
-<li>each workout entry maps to exactly one overlay audio clip through coach-config <code>entryId</code> references</li>
-<li>workout entries choose one environment and zero-or-one asset per gameplay-facing asset type</li>
+<li>each workout set maps to one overlay audio record through <code>coachingOverlayId</code></li>
+<li>the boxing chart examples use structured event payload fields such as <code>type</code>, <code>hand</code>, <code>strike</code>, <code>zone</code>, and <code>portal</code> instead of the older <code>eventType</code> / <code>laneHint</code> shorthand</li>
+<li>workout sets choose one environment and zero-or-one asset per gameplay-facing asset type</li>
 <li>shared browse/discovery rows live in the catalog core tables, while local install-only state lives in <code>workout_local</code></li>
 <li>local leaderboard snapshots live in the package's disposable cache DB</li>
 <li>no inheritance, patching, remote-only catalog companion fields, trigger graphs, or signing metadata appears in the authored package files</li>
@@ -5376,7 +5382,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 26, 2026 20:33:40 UTC">April 26, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2026 18:51:20 UTC">April 27, 2026</span>
   </span>
 
     

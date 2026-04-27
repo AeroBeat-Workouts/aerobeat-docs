@@ -6016,7 +6016,7 @@
 <h2 id="architecture-position">Architecture position<a class="headerlink" href="#architecture-position" title="Permanent link">&para;</a></h2>
 <p>These repo shapes assume the six-core model already documented elsewhere:</p>
 <ul>
-<li><code>aerobeat-content-core</code> owns the durable content language: <code>Song</code>, <code>Routine</code>, <code>Chart</code>, <code>Workout</code>, shared chart-envelope contracts, ids, manifests, schema/version rules, shared validators, registry/query interfaces, and workout resolution contracts.</li>
+<li><code>aerobeat-content-core</code> owns the durable content language: <code>Song</code>, <code>Set</code>, <code>Chart</code>, <code>Workout</code>, shared chart-envelope contracts, ids, manifests, schema/version rules, shared validators, registry/query interfaces, and workout resolution contracts.</li>
 <li><code>aerobeat-tool-core</code> owns shared tool-side operational models, progress/result DTOs, and other tool-common contracts.</li>
 <li><code>aerobeat-tool-content-authoring</code> is a concrete Tool-lane product built on top of <code>aerobeat-content-core</code> and <code>aerobeat-tool-core</code>.</li>
 <li><code>aerobeat-feature-core</code> and concrete <code>aerobeat-feature-*</code> repos consume content contracts and own runtime interpretation, scoring, spawning, and presentation systems such as 2D lanes and 3D portals.</li>
@@ -6036,7 +6036,7 @@
 ├── data_types/
 │   ├── content_id.gd
 │   ├── song.gd
-│   ├── routine.gd
+│   ├── set.gd
 │   ├── chart.gd
 │   ├── workout.gd
 │   ├── chart_envelope.gd
@@ -6056,7 +6056,7 @@
 │   ├── package_minimal_boxing/
 │   │   ├── manifest.json
 │   │   ├── songs/song-demo.json
-│   │   ├── routines/song-demo-boxing.json
+│   │   ├── sets/song-demo-opening-round.json
 │   │   ├── charts/song-demo-boxing-medium.json
 │   │   └── workouts/demo-workout.json
 │   └── invalid_missing_song_ref/
@@ -6076,15 +6076,15 @@
 <li><code>data_types/song.gd</code></li>
 <li>canonical <code>Song</code> contract</li>
 <li>audio/timing authority, metadata, licensing references, global tags</li>
-<li><code>data_types/routine.gd</code></li>
-<li>canonical <code>Routine</code> contract</li>
-<li>song reference, mode, routine metadata, validation profile, presentation defaults</li>
+<li><code>data_types/set.gd</code></li>
+<li>canonical <code>Set</code> contract</li>
+<li>package-local composition links for one exact playable slice, including song/chart/environment selections and optional coaching overlay or asset selections</li>
 <li><code>data_types/chart.gd</code></li>
 <li>canonical <code>Chart</code> contract</li>
 <li>difficulty, interaction family, input-profile compatibility fields, event stream envelope</li>
 <li><code>data_types/workout.gd</code></li>
 <li>canonical <code>Workout</code> contract</li>
-<li>session sequencing, chart/routine references, transition/coaching metadata</li>
+<li>session sequencing through ordered <code>setId</code> references plus workout-level metadata</li>
 <li><code>data_types/chart_envelope.gd</code></li>
 <li>shared top-level chart shape used by all modes</li>
 <li><code>data_types/content_package_manifest.gd</code></li>
@@ -6093,7 +6093,7 @@
 <h4 id="support-contracts">Support contracts<a class="headerlink" href="#support-contracts" title="Permanent link">&para;</a></h4>
 <ul>
 <li><code>data_types/content_id.gd</code></li>
-<li>stable typed ids and/or helper structure for <code>songId</code>, <code>routineId</code>, <code>chartId</code>, <code>workoutId</code>, <code>packageId</code></li>
+<li>stable typed ids and/or helper structure for <code>songId</code>, <code>setId</code>, <code>chartId</code>, <code>workoutId</code>, <code>packageId</code></li>
 <li><code>data_types/content_reference.gd</code></li>
 <li>explicit reference object shape used across packages, workouts, manifests, and registry results</li>
 <li><code>data_types/content_query.gd</code></li>
@@ -6105,7 +6105,7 @@
 <li>defines how a consumer asks for chart content by id/path/reference</li>
 <li>should return shared contracts, not feature-local runtime objects</li>
 <li><code>interfaces/content_registry.gd</code></li>
-<li>defines query and lookup semantics for songs, routines, charts, workouts, and resources</li>
+<li>defines query and lookup semantics for songs, sets, charts, workouts, and resources</li>
 <li>should describe the interface, not storage or network implementation</li>
 <li><code>interfaces/content_migration.gd</code></li>
 <li>defines migration contract and migration report/result semantics</li>
@@ -6135,7 +6135,7 @@
 <h4 id="example-resources-and-tests">Example resources and tests<a class="headerlink" href="#example-resources-and-tests" title="Permanent link">&para;</a></h4>
 <ul>
 <li><code>fixtures/package_minimal_boxing/*</code></li>
-<li>one tiny but real package proving the contract works end-to-end for a single routine/chart/workout path</li>
+<li>one tiny but real package proving the contract works end-to-end for a single set/chart/workout path</li>
 <li><code>fixtures/invalid_missing_song_ref/*</code></li>
 <li>one intentionally broken package for validator regression coverage</li>
 <li><code>tests/*</code></li>
@@ -6195,7 +6195,7 @@
 │   └── import_export_service.gd
 ├── services/
 │   ├── authoring/
-│   │   ├── routine_authoring_service.gd
+│   │   ├── set_authoring_service.gd
 │   │   ├── workout_authoring_service.gd
 │   │   └── chart_authoring_service.gd
 │   ├── validation/
@@ -6270,8 +6270,8 @@
 </ul>
 <h4 id="services">Services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h4>
 <ul>
-<li><code>services/authoring/routine_authoring_service.gd</code></li>
-<li>create/update routine records from tool actions</li>
+<li><code>services/authoring/set_authoring_service.gd</code></li>
+<li>create/update set records from tool actions while preserving package-local composition rules</li>
 <li><code>services/authoring/workout_authoring_service.gd</code></li>
 <li>create/update workout records</li>
 <li><code>services/authoring/chart_authoring_service.gd</code></li>
@@ -6311,7 +6311,7 @@
 <li><code>editor/plugins/content_authoring_plugin.gd</code></li>
 <li>plugin bootstrap only</li>
 <li><code>editor/docks/*</code></li>
-<li>views for charts/routines/workouts/package inspection</li>
+<li>views for charts/sets/workouts/package inspection</li>
 <li><code>editor/inspectors/*</code></li>
 <li>record inspectors/editors</li>
 <li><code>editor/view_models/*</code></li>
@@ -6337,7 +6337,7 @@
 </ul>
 <p><code>aerobeat-tool-content-authoring</code> must not own:</p>
 <ul>
-<li>canonical definitions of <code>Song</code>, <code>Routine</code>, <code>Chart</code>, or <code>Workout</code></li>
+<li>canonical definitions of <code>Song</code>, <code>Set</code>, <code>Chart</code>, or <code>Workout</code></li>
 <li>the shared chart envelope contract</li>
 <li>feature runtime visuals such as 2D lanes or 3D portals</li>
 <li>gameplay scoring/runtime execution logic</li>
@@ -6416,7 +6416,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 24, 2026 19:09:13 UTC">April 24, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2026 17:27:48 UTC">April 27, 2026</span>
   </span>
 
     

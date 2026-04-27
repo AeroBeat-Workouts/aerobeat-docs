@@ -1,11 +1,11 @@
-# This schema id tells loaders that this file is the package root plus workout session record.
+# This schema id tells loaders that this file is the package root plus workout ordering record.
 schemaId: aerobeat.workout-package.v1
 
 # This is the contract version for the workout-package record shape.
 schemaVersion: 1
 
-# Increment this when the authored workout record changes within the same schema.
-recordVersion: 1
+# Increment this when the authored workout root changes within the same schema.
+recordVersion: 2
 
 # This package's stable workout/package identity.
 workoutId: ab-workout-demo-neon-boxing-bootcamp
@@ -16,16 +16,16 @@ workoutName: Neon Boxing Bootcamp
 # Plain-language summary of the workout's purpose and feel.
 description: >-
   A docs-friendly two-song boxing workout package that demonstrates the current
-  AeroBeat v1 package contract with matching ids and commented YAML.
+  AeroBeat v1 set-centered package contract with matching ids and commented YAML.
 
 # Semantic version for the package payload itself.
-packageVersion: 1.0.0
+packageVersion: 1.1.0
 
 # Tool metadata helps future migrations and debugging.
 createdByTool: aerobeat-tool-content-authoring
 createdByToolVersion: 0.1.0
 createdAt: 2026-04-25T22:00:00Z
-updatedAt: 2026-04-26T09:00:00Z
+updatedAt: 2026-04-27T13:00:00Z
 
 # Optional author metadata is fine here because it is traceability, not discovery state.
 authorId: ab-author-docs-team
@@ -39,79 +39,7 @@ preview:
   # Package-local artwork path for the main card image.
   coverArtPath: media/art/neon-boxing-bootcamp-cover.png
 
-  # Smaller artwork path for list/grid thumbnails.
-  thumbnailPath: media/art/neon-boxing-bootcamp-thumb.png
-
-# Session owns the programmed workout flow.
-session:
-  # Default transition settings apply unless an entry overrides them.
-  defaultTransition:
-    crossfadeMs: 0
-    allowRuntimeUnloadReload: true
-
-  # Entries select exact chart/routine/song ids rather than loose difficulty lookups.
-  entries:
-    - entryId: ab-entry-neon-stride-opening-round
-      order: 1
-      chartId: ab-chart-neon-stride-boxing-medium
-      routineId: ab-routine-neon-stride-boxing
-      songId: ab-song-neon-stride
-      environmentId: ab-environment-neon-rooftop
-
-      # assetSelections is only for gameplay-facing asset types.
-      # v1 allowed keys here are: gloves, targets, obstacles, trails.
-      assetSelections:
-        gloves: ab-asset-gloves-neon-pulse
-        targets: ab-asset-targets-holo-rings
-        obstacles: ab-asset-obstacles-light-walls
-        trails: ab-asset-trails-comet-streak
-
-      # Entry-specific transition overrides are allowed when this slice needs them.
-      transition:
-        allowRuntimeUnloadReload: true
-
-    - entryId: ab-entry-midnight-sprint-finish-round
-      order: 2
-      chartId: ab-chart-midnight-sprint-boxing-hard
-      routineId: ab-routine-midnight-sprint-boxing
-      songId: ab-song-midnight-sprint
-      environmentId: ab-environment-sunrise-studio
-
-      # Reusing the same asset ids across entries is valid.
-      # Runtime may still unload/reload between entries even when ids repeat.
-      assetSelections:
-        gloves: ab-asset-gloves-neon-pulse
-        targets: ab-asset-targets-holo-rings
-        obstacles: ab-asset-obstacles-light-walls
-        trails: ab-asset-trails-comet-streak
-
-      transition:
-        allowRuntimeUnloadReload: true
-
-# packageContents lists which logical records belong to this package.
-# It is a package manifest aid, not a local browse/search index.
-packageContents:
-  songs:
-    - ab-song-neon-stride
-    - ab-song-midnight-sprint
-  routines:
-    - ab-routine-neon-stride-boxing
-    - ab-routine-midnight-sprint-boxing
-  charts:
-    - ab-chart-neon-stride-boxing-medium
-    - ab-chart-midnight-sprint-boxing-hard
-  environments:
-    - ab-environment-neon-rooftop
-    - ab-environment-sunrise-studio
-  assets:
-    - ab-asset-gloves-neon-pulse
-    - ab-asset-targets-holo-rings
-    - ab-asset-obstacles-light-walls
-    - ab-asset-trails-comet-streak
-  coachConfigs:
-    - ab-coach-config-neon-bootcamp
-
-# Submission rules say cache data is disposable and not part of the authored payload.
-submission:
-  stripCacheDirectories: true
-  ignoreLeaderboardCache: true
+# workout.yaml owns order only. The set files own the actual composition wiring.
+setOrder:
+  - ab-set-neon-stride-opening-round
+  - ab-set-midnight-sprint-finish-round

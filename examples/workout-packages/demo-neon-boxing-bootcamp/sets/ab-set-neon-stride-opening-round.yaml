@@ -1,0 +1,29 @@
+# A set is the package-local single source of truth for one playable slice.
+schemaId: aerobeat.set.v1
+schemaVersion: 1
+recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-25T22:00:00Z
+updatedAt: 2026-04-27T13:00:00Z
+
+# Stable set identity for workout ordering and coaching lookup.
+setId: ab-set-neon-stride-opening-round
+setName: Neon Stride Opening Round
+
+# The set links one reusable song to one exact playable chart.
+songId: ab-song-neon-stride
+chartId: ab-chart-neon-stride-boxing-medium
+
+# Environment selection belongs here because it is part of this set's composition.
+environmentId: ab-environment-neon-rooftop
+
+# coachingOverlayId points into coaches/coach-config.yaml, which owns the media registry.
+coachingOverlayId: ab-overlay-aria-neon-stride-cue
+
+# assetSelections picks zero-or-one asset per gameplay-facing asset type.
+assetSelections:
+  gloves: ab-asset-gloves-neon-pulse
+  targets: ab-asset-targets-holo-rings
+  obstacles: ab-asset-obstacles-light-walls
+  trails: ab-asset-trails-comet-streak

@@ -2,14 +2,18 @@
 schemaId: aerobeat.asset.v1
 schemaVersion: 1
 recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-25T22:00:00Z
+updatedAt: 2026-04-27T13:00:00Z
+
 assetId: ab-asset-gloves-neon-pulse
 assetName: Neon Pulse Gloves
 
 # assetType is a strict v1 enum.
-# This asset shows one gameplay-facing type allowed in workout entry assetSelections.
+# This asset shows one gameplay-facing type allowed in workout set assetSelections.
 assetType: gloves
 resourcePath: media/assets/gloves/neon-pulse-gloves.glb
-thumbnailPath: media/art/neon-pulse-gloves-thumb.png
 metadata:
   palette: magenta-cyan
   style: arcade

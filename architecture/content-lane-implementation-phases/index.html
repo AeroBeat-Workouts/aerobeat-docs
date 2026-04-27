@@ -5646,20 +5646,20 @@
 <p>Freeze the architecture and vocabulary well enough that implementation repos can be created without re-litigating the model.</p>
 <h3 id="deliverables">Deliverables<a class="headerlink" href="#deliverables" title="Permanent link">&para;</a></h3>
 <ul>
-<li>canonical docs for <code>Song</code>, <code>Routine</code>, <code>Chart</code>, and <code>Workout</code></li>
+<li>canonical docs for <code>Song</code>, <code>Chart</code>, <code>Set</code>, and <code>Workout</code></li>
 <li>explicit ownership language for <code>aerobeat-content-core</code>, <code>aerobeat-feature-core</code>, and <code>aerobeat-tool-core</code></li>
 <li>documented shared chart envelope and interaction-family targeting rules</li>
-<li>documented package/file relationship for song, routine, chart, and workout artifacts</li>
+<li>documented package/file relationship for song, chart, set, and workout artifacts</li>
 <li>documented decision on what belongs to content contracts vs tool workflows vs runtime interpretation</li>
 <li>documented rule that concrete authoring products live in <code>aerobeat-tool-*</code> repos with both headless/CLI and optional interactive/editor surfaces</li>
 <li>documented rule that 2D lanes, 3D portals, and other content-consuming runtime visuals belong in feature repos rather than the content lane</li>
 </ul>
 <h3 id="required-decisions-before-code-starts">Required decisions before code starts<a class="headerlink" href="#required-decisions-before-code-starts" title="Permanent link">&para;</a></h3>
 <ul>
-<li>canonical ids/references for song, routine, chart, and workout</li>
+<li>canonical ids/references for song, chart, set, and workout</li>
 <li>minimum chart envelope fields</li>
 <li>which presentation hints are durable content fields versus runtime-only concerns</li>
-<li>whether workouts default to routine+difficulty selection or exact chart ids</li>
+<li>whether workouts resolve exact set ids rather than loose song/difficulty matching</li>
 <li>which validation responsibilities are shared across all content versus delegated to feature repos</li>
 <li>whether the first authoring product is a Tool-lane repo with a headless-first service surface plus optional editor UX</li>
 <li>which runtime visual concerns stay in feature repos even when they consume content presentation hints</li>
@@ -5675,7 +5675,7 @@
 <p>Stand up the dependency-light shared repo that owns the content model and loader-facing contracts.</p>
 <h3 id="aerobeat-content-core-should-contain"><code>aerobeat-content-core</code> should contain<a class="headerlink" href="#aerobeat-content-core-should-contain" title="Permanent link">&para;</a></h3>
 <ul>
-<li>data/resource contracts for <code>Song</code>, <code>Routine</code>, <code>Chart</code>, and <code>Workout</code></li>
+<li>data/resource contracts for <code>Song</code>, <code>Chart</code>, <code>Set</code>, and <code>Workout</code></li>
 <li>shared chart-envelope types</li>
 <li>content references, ids, metadata, and manifest primitives</li>
 <li>loader/registry interfaces used by both runtime and tools</li>
@@ -5699,7 +5699,7 @@
 <h3 id="exit-criteria_1">Exit criteria<a class="headerlink" href="#exit-criteria_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>a consumer can load the shared contract layer without depending on a specific feature repo</li>
-<li>content fixtures exist for at least one routine and one workout path</li>
+<li>content fixtures exist for at least one set-centered workout path</li>
 <li>feature and tool repos can import the same content contracts without duplicating types</li>
 </ul>
 <h2 id="phase-3-validation-registry-and-schema-version-foundations">Phase 3 — Validation, registry, and schema-version foundations<a class="headerlink" href="#phase-3-validation-registry-and-schema-version-foundations" title="Permanent link">&para;</a></h2>
@@ -5741,7 +5741,7 @@
 </ul>
 <h3 id="concrete-tool-work-expected-after-content-core-stabilizes">Concrete tool work expected after <code>content-core</code> stabilizes<a class="headerlink" href="#concrete-tool-work-expected-after-content-core-stabilizes" title="Permanent link">&para;</a></h3>
 <ul>
-<li>chart/routine authoring flows</li>
+<li>chart/set authoring flows</li>
 <li>workout authoring flows</li>
 <li>import/ingestion flows from source audio/metadata/chart sources</li>
 <li>validation runners used by CLI/editor tooling</li>
@@ -5768,7 +5768,7 @@
 </ul>
 <h3 id="exit-criteria_3">Exit criteria<a class="headerlink" href="#exit-criteria_3" title="Permanent link">&para;</a></h3>
 <ul>
-<li>at least one tool path can author or edit a routine/chart using only shared contracts</li>
+<li>at least one tool path can author or edit a chart/set using only shared contracts</li>
 <li>ingestion can emit canonical content artifacts without hand-written post-fixups in runtime repos</li>
 <li>tool diagnostics map cleanly back to shared schema/validator results</li>
 </ul>
@@ -5781,7 +5781,7 @@
 <li>concrete <code>aerobeat-feature-*</code> repos implement mode-specific loaders/adapters on top of shared chart envelopes and mode payloads</li>
 <li>concrete <code>aerobeat-feature-*</code> repos also own content-consuming runtime visuals such as 2D lanes, 3D portals, and other view-specific presentation systems</li>
 <li>assemblies compose the necessary cores and concrete repos through GodotEnv</li>
-<li>runtime selection logic resolves workout → routine/chart selection using content-core references and validated manifests</li>
+<li>runtime selection logic resolves workout → set → chart/song selection using content-core references and validated manifests</li>
 </ul>
 <h3 id="important-constraint">Important constraint<a class="headerlink" href="#important-constraint" title="Permanent link">&para;</a></h3>
 <p>Playback integration should consume the schema/version and registry contracts from the content lane. Runtime repos may cache, adapt, or optimize content, but they should not quietly fork the canonical content model.</p>
@@ -5792,7 +5792,7 @@
 <h3 id="exit-criteria_4">Exit criteria<a class="headerlink" href="#exit-criteria_4" title="Permanent link">&para;</a></h3>
 <ul>
 <li>one end-to-end path can load validated content artifacts into a feature runtime</li>
-<li>workout selection can resolve into a concrete playable chart path</li>
+<li>workout selection can resolve into a concrete playable set and chart path</li>
 <li>runtime errors can be traced back to shared content ids/manifests rather than ad hoc feature-local assumptions</li>
 </ul>
 <h2 id="recommended-repo-creation-order">Recommended repo creation order<a class="headerlink" href="#recommended-repo-creation-order" title="Permanent link">&para;</a></h2>
@@ -5833,7 +5833,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2026 21:27:37 UTC">April 25, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2026 19:15:50 UTC">April 27, 2026</span>
   </span>
 
     

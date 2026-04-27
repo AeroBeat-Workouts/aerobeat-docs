@@ -1309,10 +1309,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#entry-overlay-audio" class="md-nav__link">
+  <a href="#set-overlay-audio" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Entry Overlay Audio
+        Set Overlay Audio
       
     </span>
   </a>
@@ -5544,10 +5544,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#entry-overlay-audio" class="md-nav__link">
+  <a href="#set-overlay-audio" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Entry Overlay Audio
+        Set Overlay Audio
       
     </span>
   </a>
@@ -5638,7 +5638,7 @@
 <p>The best coaching content feels authentic because the coach is physically engaged during the recording.</p>
 <ul>
 <li><strong>Do not just read a script.</strong> Get your heart rate up. Let the athlete hear the effort.</li>
-<li><strong>Tell a Story.</strong> If you include warmup or cooldown video, use them to set the session tone and close it out well.</li>
+<li><strong>Tell a Story.</strong> If you include warmup or cooldown video, use them to set the workout tone and close it out well.</li>
 <li><strong>Match the song energy.</strong> High-intensity tracks need sharper encouragement. Flow tracks need calmer guidance.</li>
 </ul>
 <h2 id="the-approved-v1-coaching-contract">📦 The Approved v1 Coaching Contract<a class="headerlink" href="#the-approved-v1-coaching-contract" title="Permanent link">&para;</a></h2>
@@ -5650,15 +5650,26 @@
 <div class="highlight"><pre><span></span><code><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <ul>
-<li>If coaching is <strong>enabled</strong>, the file must include all required coaching sections:</li>
+<li>If coaching is <strong>enabled</strong>, the file returns to the normal authored-record rule and must include its schema/provenance fields plus all required coaching sections:</li>
+<li><code>schemaId</code>, <code>schemaVersion</code>, <code>recordVersion</code></li>
+<li><code>createdByTool</code>, <code>createdByToolVersion</code>, <code>createdAt</code>, <code>updatedAt</code></li>
 <li><code>enabled: true</code></li>
 <li>a coach roster with one or more <code>coachId</code> + <code>coachName</code> entries</li>
 <li>one required warmup video reference</li>
 <li>one required cooldown video reference</li>
-<li>one required overlay audio reference for <strong>each</strong> workout entry, keyed by <code>entryId</code></li>
+<li>an overlay audio registry whose records use <code>overlayId</code>; workout sets choose entries from that registry through <code>coachingOverlayId</code></li>
 </ul>
 <h3 id="enabled-example">Enabled example<a class="headerlink" href="#enabled-example" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<div class="highlight"><pre><span></span><code><span class="nt">schemaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerobeat.coach-config.v1</span>
+<span class="nt">schemaVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">recordVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">createdByTool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerobeat-tool-content-authoring</span>
+<span class="nt">createdByToolVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1.0</span>
+<span class="nt">createdAt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2026-04-25T22:00:00Z</span>
+<span class="nt">updatedAt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2026-04-27T13:00:00Z</span>
+<span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">coachConfigId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ab-coach-config-neon-bootcamp</span>
+<span class="nt">coachConfigName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Neon Bootcamp Coach Config</span>
 <span class="nt">featuredCoaches</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">coachId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ab-coach-aria</span>
 <span class="w">    </span><span class="nt">coachName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Coach Aria</span>
@@ -5670,14 +5681,14 @@
 <span class="nt">cooldownVideo</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">mediaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ab-cooldown-stretch-outro</span>
 <span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/coaching/cooldown-stretch-outro.mp4</span>
-<span class="nt">entryOverlayAudio</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">entryId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ab-entry-neon-stride-opening-round</span>
+<span class="nt">overlayAudio</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">overlayId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ab-overlay-aria-neon-stride-cue</span>
 <span class="w">    </span><span class="nt">coachId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ab-coach-aria</span>
-<span class="w">    </span><span class="nt">mediaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ab-overlay-aria-neon-stride-cue</span>
+<span class="w">    </span><span class="nt">mediaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ab-overlay-aria-neon-stride-cue-media</span>
 <span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/coaching/aria-neon-stride-overlay.ogg</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">entryId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ab-entry-midnight-sprint-finish-round</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">overlayId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ab-overlay-blaze-midnight-sprint-cue</span>
 <span class="w">    </span><span class="nt">coachId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ab-coach-blaze</span>
-<span class="w">    </span><span class="nt">mediaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ab-overlay-blaze-midnight-sprint-cue</span>
+<span class="w">    </span><span class="nt">mediaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ab-overlay-blaze-midnight-sprint-cue-media</span>
 <span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/coaching/blaze-midnight-sprint-overlay.ogg</span>
 </code></pre></div>
 <h2 id="validation-rules-in-plain-language">✅ Validation Rules in Plain Language<a class="headerlink" href="#validation-rules-in-plain-language" title="Permanent link">&para;</a></h2>
@@ -5686,7 +5697,7 @@
 <li>the roster is missing</li>
 <li>the warmup video reference is missing</li>
 <li>the cooldown video reference is missing</li>
-<li>any workout entry is missing its one overlay audio clip</li>
+<li>any workout set is missing its one referenced overlay audio clip</li>
 <li>any referenced file path does not exist on disk inside the package</li>
 </ul>
 <p>When coaching is disabled, validation should fail if authors try to leave behind dormant roster/media sections. Disabled means disabled.</p>
@@ -5702,8 +5713,8 @@
 <h3 id="phase-1-preparation">Phase 1: Preparation<a class="headerlink" href="#phase-1-preparation" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Select Base Content:</strong> Start from the workout package you are coaching.</li>
-<li><strong>Learn the Session Flow:</strong> Know each workout entry and where the athlete will need support.</li>
-<li><strong>Plan the Coaching Pass:</strong> Write the warmup, the cooldown, and exactly one overlay audio cue for each workout entry.</li>
+<li><strong>Learn the Set Flow:</strong> Know each workout set and where the athlete will need support.</li>
+<li><strong>Plan the Coaching Pass:</strong> Write the warmup, the cooldown, and exactly one overlay audio cue that each workout set will reference by <code>coachingOverlayId</code>.</li>
 </ol>
 <h3 id="phase-2-recording">Phase 2: Recording<a class="headerlink" href="#phase-2-recording" title="Permanent link">&para;</a></h3>
 <h4 id="warmup-cooldown-video">Warmup / Cooldown Video<a class="headerlink" href="#warmup-cooldown-video" title="Permanent link">&para;</a></h4>
@@ -5713,12 +5724,12 @@
 <li><strong>Action:</strong> Record the package warmup and cooldown videos.</li>
 <li><strong>Export:</strong> Render as package-local video files.</li>
 </ul>
-<h4 id="entry-overlay-audio">Entry Overlay Audio<a class="headerlink" href="#entry-overlay-audio" title="Permanent link">&para;</a></h4>
+<h4 id="set-overlay-audio">Set Overlay Audio<a class="headerlink" href="#set-overlay-audio" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Setup:</strong> Put on your headset, start recording in your DAW, and play the song in your headphones.</li>
 <li><strong>Action:</strong> Perform the workout while recording. Speak to the athlete as if they are next to you.</li>
 <li><strong>Export:</strong> Save the vocal track only. Do not include the music.</li>
-<li><strong>Scope rule:</strong> Record one final overlay clip per workout entry. Do not author multiple competing overlay clips for the same entry under the current v1 contract.</li>
+<li><strong>Scope rule:</strong> Record one final overlay clip per workout set. Do not author multiple competing overlay clips for the same set under the current v1 contract.</li>
 </ul>
 <h3 id="phase-3-package-authoring">Phase 3: Package Authoring<a class="headerlink" href="#phase-3-package-authoring" title="Permanent link">&para;</a></h3>
 <ol>
@@ -5729,13 +5740,13 @@
 <li>define the coach roster</li>
 <li>wire the warmup video reference</li>
 <li>wire the cooldown video reference</li>
-<li>add exactly one overlay audio record for each <code>entryId</code></li>
-<li><strong>Validate:</strong> Run package validation so every <code>entryId</code> resolves and every referenced file exists.</li>
+<li>add the overlay audio registry records</li>
+<li><strong>Validate:</strong> Run package validation so every <code>coachingOverlayId</code> resolves and every referenced file exists.</li>
 </ol>
 <h2 id="best-practices">💡 Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Feel the Vibe:</strong> You do not need to talk constantly. Speak when motivation or guidance matters.</li>
-<li><strong>Keep it specific:</strong> Because overlay audio is keyed by <code>entryId</code>, you can tailor each cue to the exact workout slice the athlete is playing.</li>
+<li><strong>Keep it specific:</strong> Because each set picks one <code>coachingOverlayId</code>, you can tailor each cue to the exact workout slice the athlete is playing.</li>
 <li><strong>Keep packages self-contained:</strong> Do not rely on cross-package inheritance, hidden defaults, or external coaching bundles.</li>
 <li><strong>Be explicit:</strong> If a package is not coached, ship the minimal disabled file. If it is coached, fully wire every required section.</li>
 </ul>
@@ -5771,7 +5782,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 26, 2026 14:02:51 UTC">April 26, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2026 18:51:20 UTC">April 27, 2026</span>
   </span>
 
     

@@ -1,15 +1,18 @@
-# Harder follow-up chart for the workout's second entry.
+# Harder follow-up chart for the second workout set.
 schemaId: aerobeat.chart.boxing.v1
 schemaVersion: 1
 recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-25T22:00:00Z
+updatedAt: 2026-04-27T13:00:00Z
 
-# Chart identity is what the workout entry selects directly.
+# Chart identity is what the set selects directly.
 chartId: ab-chart-midnight-sprint-boxing-hard
 chartName: Midnight Sprint Hard Boxing
 
-# The chart must point back to one routine and that routine's song.
-routineId: ab-routine-midnight-sprint-boxing
-songId: ab-song-midnight-sprint
+# Charts stand alone as reusable playable slices.
+# They do not point back to songs or outward to sets.
 mode: boxing
 
 # Difficulty is part of the exact playable chart slice.
@@ -37,15 +40,29 @@ scoringHints:
   comboModel: standard
 
 # Short sample event list for readability.
+# Boxing examples use the stronger structured payload fields instead of eventType/laneHint shorthand.
 events:
   - beat: 6
-    eventType: jab_left
-    laneHint: left
+    type: strike
+    hand: left
+    strike: jab
+    zone: left_high
+    portal: center
   - beat: 8
-    eventType: jab_right
-    laneHint: right
+    type: strike
+    hand: right
+    strike: jab
+    zone: right_high
+    portal: center
   - beat: 10
-    eventType: dodge_duck
+    type: obstacle
+    avoid: squat
+    shape: bar_horizontal
+    portal: center
+    durationMs: 500
   - beat: 14
-    eventType: hook_left
-    laneHint: left
+    type: strike
+    hand: left
+    strike: hook
+    zone: left_high
+    portal: center

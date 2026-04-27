@@ -5282,7 +5282,10 @@
 <li>ids match across files</li>
 <li>comments sit <strong>above</strong> each meaningful field or section</li>
 <li>the files model the current <strong>locked v1 contract</strong></li>
+<li>the song examples specifically show the cleaned-up licensing + metadata shape (<code>licenseType</code>, <code>streamingSafe</code>, <code>aiAssisted</code>, BCP 47 <code>language</code>, locked-enum <code>genres</code>, no song <code>tags</code>)</li>
 <li>the package demonstrates the split between authored YAML, local <code>workouts.db</code>, and per-workout <code>leaderboard-cache.db</code></li>
+<li>authored YAML records carry the shared schema/provenance fields by default, with the documented disabled <code>coach-config.yaml</code> sentinel as the lone exception</li>
+<li>the boxing charts model the stronger structured event payload direction rather than the older shorthand event fields</li>
 </ul>
 <h2 id="start-here">Start Here<a class="headerlink" href="#start-here" title="Permanent link">&para;</a></h2>
 <ul>
@@ -5291,12 +5294,12 @@
 <li>Songs:</li>
 <li><a href="../demo-neon-boxing-bootcamp/songs/ab-song-neon-stride.yaml"><code>ab-song-neon-stride.yaml</code></a></li>
 <li><a href="../demo-neon-boxing-bootcamp/songs/ab-song-midnight-sprint.yaml"><code>ab-song-midnight-sprint.yaml</code></a></li>
-<li>Routines:</li>
-<li><a href="../demo-neon-boxing-bootcamp/routines/ab-routine-neon-stride-boxing.yaml"><code>ab-routine-neon-stride-boxing.yaml</code></a></li>
-<li><a href="../demo-neon-boxing-bootcamp/routines/ab-routine-midnight-sprint-boxing.yaml"><code>ab-routine-midnight-sprint-boxing.yaml</code></a></li>
 <li>Charts:</li>
 <li><a href="../demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-boxing-medium.yaml"><code>ab-chart-neon-stride-boxing-medium.yaml</code></a></li>
 <li><a href="../demo-neon-boxing-bootcamp/charts/ab-chart-midnight-sprint-boxing-hard.yaml"><code>ab-chart-midnight-sprint-boxing-hard.yaml</code></a></li>
+<li>Sets:</li>
+<li><a href="../demo-neon-boxing-bootcamp/sets/ab-set-neon-stride-opening-round.yaml"><code>ab-set-neon-stride-opening-round.yaml</code></a></li>
+<li><a href="../demo-neon-boxing-bootcamp/sets/ab-set-midnight-sprint-finish-round.yaml"><code>ab-set-midnight-sprint-finish-round.yaml</code></a></li>
 <li><a href="../demo-neon-boxing-bootcamp/coaches/coach-config.yaml">Coach config</a></li>
 <li>Environments:</li>
 <li><a href="../demo-neon-boxing-bootcamp/environments/ab-environment-neon-rooftop.yaml"><code>ab-environment-neon-rooftop.yaml</code></a></li>
@@ -5312,11 +5315,14 @@
 <h2 id="what-this-example-is-teaching">What this example is teaching<a class="headerlink" href="#what-this-example-is-teaching" title="Permanent link">&para;</a></h2>
 <p>This demo package is aligned to the current package rules:</p>
 <ul>
-<li><strong>Chart</strong> is the durable term, not chart variant.</li>
+<li><strong>Chart</strong> is the durable term for one exact playable slice.</li>
+<li><strong>Set</strong> is the durable term for one package-local composition record.</li>
 <li>A package has <strong>one</strong> <code>coaches/</code> folder and <strong>one</strong> <code>coach-config.yaml</code> file.</li>
 <li>Coaching is optional all-or-nothing.</li>
-<li>When coaching is enabled, <code>coach-config.yaml</code> owns the warmup video, cooldown video, and exactly one overlay audio clip per workout entry.</li>
-<li>Workout entries select gameplay-facing assets through <code>assetSelections</code> only.</li>
+<li>When coaching is enabled, <code>coach-config.yaml</code> owns the warmup video, cooldown video, and overlay audio registry.</li>
+<li>Workout sets select the right overlay through <code>coachingOverlayId</code>.</li>
+<li>Workout sets select gameplay-facing assets through <code>assetSelections</code> only.</li>
+<li><code>workout.yaml</code> owns package metadata plus <code>setOrder</code>, not full set composition details inline.</li>
 <li>Local discoverability belongs in <strong><code>workouts.db</code></strong>, not in package YAML.</li>
 <li>Packages are <strong>self-contained</strong> and are versioned by duplication/forking rather than inheritance/patch layering.</li>
 <li>Local and remote catalog databases share the same <strong>core catalog schema</strong>; local install-only state lives in <code>workout_local</code>, and remote-only browse/distribution state lives in <code>workout_remote</code>.</li>
@@ -5329,10 +5335,10 @@
 </ul>
 <h2 id="how-to-read-the-package">How to read the package<a class="headerlink" href="#how-to-read-the-package" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Open <a href="../demo-neon-boxing-bootcamp/workout.yaml"><code>workout.yaml</code></a> to see the package root, session order, and referenced ids.</li>
-<li>Open the <code>songs/</code>, <code>routines/</code>, and <code>charts/</code> files to follow how exact playable content is layered.</li>
+<li>Open <a href="../demo-neon-boxing-bootcamp/workout.yaml"><code>workout.yaml</code></a> to see the package root and authored set order.</li>
+<li>Open the <code>sets/</code> files to follow the exact composition links.</li>
+<li>From each set, open the referenced <code>songs/</code>, <code>charts/</code>, <code>environments/</code>, and <code>assets/</code> files.</li>
 <li>Open <a href="../demo-neon-boxing-bootcamp/coaches/coach-config.yaml"><code>coaches/coach-config.yaml</code></a> to see the single-package coaching domain.</li>
-<li>Open the <code>environments/</code> and <code>assets/</code> files to see how reusable package-local presentation content is defined.</li>
 <li>Open the two SQL files to see what belongs in local discovery/cache databases versus authored YAML.</li>
 </ol>
 <h2 id="important-scope-note">Important scope note<a class="headerlink" href="#important-scope-note" title="Permanent link">&para;</a></h2>
@@ -5357,7 +5363,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 26, 2026 20:33:40 UTC">April 26, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2026 18:51:20 UTC">April 27, 2026</span>
   </span>
 
     

@@ -2,15 +2,18 @@
 schemaId: aerobeat.asset.v1
 schemaVersion: 1
 recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-25T22:00:00Z
+updatedAt: 2026-04-27T13:00:00Z
 
-# Asset identity is what workout entries reference for the trails slot.
+# Asset identity is what workout sets reference for the trails slot.
 assetId: ab-asset-trails-comet-streak
 assetName: Comet Streak Trails
 
 # trails is one of the locked v1 gameplay-facing asset types.
 assetType: trails
 resourcePath: media/assets/trails/comet-streak.tres
-thumbnailPath: media/art/comet-streak-thumb.png
 metadata:
   palette: orange-gold
   style: streak
