@@ -282,7 +282,7 @@ A content package owns:
 
 - package id / workout id
 - package version
-- package-level author / attribution / licensing metadata
+- package-level author / attribution metadata
 - typed records for contained songs, routines, charts, workout set plan data, coach config, environments, and assets
 - references to the binary resources required by those records, such as audio, thumbnails, coaching clips, preview art, scenes, and runtime assets
 - package-level schema/tool version metadata needed for parsing and migration
