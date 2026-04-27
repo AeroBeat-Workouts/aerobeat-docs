@@ -7,6 +7,7 @@ If you are new to the package system, start here before reading the lower-level 
 - ids match across files
 - comments sit **above** each meaningful field or section
 - the files model the current **locked v1 contract**
+- the song examples specifically show the cleaned-up licensing + metadata shape (`licenseType`, `streamingSafe`, `aiAssisted`, BCP 47 `language`, locked-enum `genres`, no song `tags`)
 - the package demonstrates the split between authored YAML, local `workouts.db`, and per-workout `leaderboard-cache.db`
 
 ## Start Here

@@ -60,6 +60,21 @@ The workout sets point to exact:
 
 That is the current v1 direction. Discovery happens elsewhere; package playback resolves exact ids.
 
+### 2a. What the song examples are teaching
+
+The two demo song YAML files also model the currently approved song-contract cleanup:
+
+- `licensing.licenseType` uses the locked enum-oriented contract
+- `licensing.streamingSafe` is a required boolean
+- `licensing.aiAssisted` is a required boolean
+- structured AI disclosure fields are only needed when `aiAssisted: true`
+- `timing.bpm` stays on the song, while the old `timing.beatGrid.resolution` and `timing.beatGrid.anchors` teaching fields are gone from this slice
+- `audio.previewStartMs` remains on the song
+- `metadata.explicit` stays boolean
+- `metadata.language` should be a valid BCP 47 language tag, with base language codes preferred unless extra specificity matters
+- `metadata.genres` stays on the locked normalized lowercase enum
+- song-level `tags` are intentionally absent from the current demo contract
+
 ### 3. The coaching split
 
 The package shows the approved coaching rule clearly:

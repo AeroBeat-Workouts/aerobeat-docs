@@ -267,27 +267,28 @@ credits:
   composer: string
   publisher: string
 licensing:
-  licenseType: string
-  usageRights: []
+  licenseType: creator_noncommercial
+  streamingSafe: true
+  aiAssisted: false
 audio:
   filePath: media/audio/song.ogg
   durationMs: 123456
   previewStartMs: 30000
 timing:
   bpm: 128
-  beatGrid:
-    resolution: 16
-    anchors: []
 metadata:
   explicit: false
   language: en
   genres:
     - edm
     - pop
-tags:
-  - boxing
-  - cardio
 ```
+
+Licensing note: `licensing.licenseType` is a locked v1 enum with these values: `unknown`, `cc0_public_domain`, `cc_by`, `cc_by_sa`, `cc_by_nd`, `cc_by_nc`, `cc_by_nc_sa`, `cc_by_nc_nd`, `creator_noncommercial`, `creator_commercial`, `licensed_noncommercial`, `licensed_commercial`.
+
+AI disclosure note: `licensing.aiAssisted` is always required. If it is `true`, the song record should also carry the structured AI disclosure fields required by the schema revision that introduces them. If it is `false`, those extra disclosure fields may be omitted.
+
+Language note: `metadata.language` should validate as a BCP 47 language tag. Prefer simple base language codes such as `en` unless a regional/script distinction is actually needed.
 
 Genre note: use only the locked normalized lowercase enum. Workout browse genres are derived as the union of the referenced songs' authored genres rather than being invented separately at the workout layer.
 

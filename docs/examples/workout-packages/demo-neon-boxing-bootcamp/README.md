@@ -65,6 +65,9 @@ The package uses one shared coach config, a two-coach roster, two environments, 
 ## Intentional v1 boundaries shown here
 
 - discoverability/search metadata is not authored into `workout.yaml`
+- song licensing uses the locked `licenseType` enum plus `streamingSafe` and `aiAssisted` booleans
+- the demo song records keep `timing.bpm`, `audio.previewStartMs`, boolean `metadata.explicit`, BCP 47 `metadata.language`, and locked-enum `metadata.genres`
+- song-level `usageRights`, `timing.beatGrid.resolution`, `timing.beatGrid.anchors`, and freeform `tags` are intentionally absent from this slice
 - coaching stays inside the package's single `coaches/coach-config.yaml` file
 - warmup/cooldown references live in coach-config under the approved coaching model
 - each workout set maps to exactly one overlay audio clip through coach-config `setId` references

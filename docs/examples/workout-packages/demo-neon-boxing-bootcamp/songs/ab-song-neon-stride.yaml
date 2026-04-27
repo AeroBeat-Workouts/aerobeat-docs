@@ -20,12 +20,11 @@ credits:
   composer: Lena Park
   publisher: PulseForge Publishing
 
-# Licensing data stays attached to the reusable song record.
+# Licensing stays on the reusable song record and uses the locked v1 enum.
 licensing:
-  licenseType: creator_demo_noncommercial
-  usageRights:
-    - local_playback
-    - docs_example
+  licenseType: creator_noncommercial
+  streamingSafe: true
+  aiAssisted: false
 
 # Audio and timing data define the reusable playback source.
 audio:
@@ -35,11 +34,6 @@ audio:
 
 timing:
   bpm: 132
-  beatGrid:
-    resolution: 16
-    anchors:
-      - beat: 1
-        timeMs: 0
 
 # General descriptive metadata stays lightweight here.
 metadata:
@@ -48,7 +42,3 @@ metadata:
   genres:
     - edm
     - pop
-tags:
-  - boxing
-  - warmup
-  - neon

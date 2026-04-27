@@ -71,12 +71,15 @@ It owns fields such as:
 - `songId`
 - `songName`
 - artist / credits / licensing metadata
+- `licensing.licenseType` from the locked enum (`unknown`, `cc0_public_domain`, `cc_by`, `cc_by_sa`, `cc_by_nd`, `cc_by_nc`, `cc_by_nc_sa`, `cc_by_nc_nd`, `creator_noncommercial`, `creator_commercial`, `licensed_noncommercial`, `licensed_commercial`)
+- `licensing.streamingSafe` as a required boolean
+- `licensing.aiAssisted` as a required boolean, plus structured AI disclosure fields when that value is `true`
 - audio asset references
 - duration
-- tempo map / beat grid / conductor alignment data
-- global tags and descriptive metadata
+- song-level timing authority such as `timing.bpm`
+- descriptive metadata such as `metadata.explicit`, BCP 47 `metadata.language` values, and locked-enum `metadata.genres`
 
-It does **not** own gameplay-mode-specific note data, and it does **not** own athlete/device-specific timing offsets.
+It does **not** own gameplay-mode-specific note data, athlete/device-specific timing offsets, or freeform song `tags` in the current v1 contract.
 
 ### 2. Routine
 

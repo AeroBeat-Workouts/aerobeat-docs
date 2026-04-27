@@ -22,10 +22,9 @@ credits:
 
 # Licensing lives with the song because the audio asset is the reusable source.
 licensing:
-  licenseType: creator_demo_noncommercial
-  usageRights:
-    - local_playback
-    - docs_example
+  licenseType: creator_noncommercial
+  streamingSafe: true
+  aiAssisted: false
 
 # Audio paths point at package-local media files in a real installed package.
 audio:
@@ -36,11 +35,6 @@ audio:
 # Timing stays on the song so multiple routines can share the same musical truth.
 timing:
   bpm: 146
-  beatGrid:
-    resolution: 16
-    anchors:
-      - beat: 1
-        timeMs: 0
 
 # Lightweight descriptive metadata is fine at the song layer.
 metadata:
@@ -49,7 +43,3 @@ metadata:
   genres:
     - edm
     - soundtrack
-tags:
-  - boxing
-  - finisher
-  - cardio
