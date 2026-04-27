@@ -162,6 +162,8 @@ Every authored YAML record should carry a small set of predictable contract fiel
 - `createdAt`
 - `updatedAt`
 
+Exception: the minimal disabled sentinel form of `coaches/coach-config.yaml` may be exactly `enabled: false` without the usual provenance block. Once coaching is enabled, coach-config returns to the normal authored-record rule and should carry the same schema/provenance fields as the other YAML records.
+
 ### Recommended shared optional metadata
 
 - `authorId`
@@ -308,6 +310,10 @@ metadata:
 schemaId: aerobeat.chart.boxing.v1
 schemaVersion: 1
 recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-25T19:00:00Z
+updatedAt: 2026-04-25T19:20:00Z
 chartId: uid
 chartName: string
 mode: boxing
@@ -326,12 +332,17 @@ scoringHints:
   comboModel: standard
 events:
   - beat: 8
-    eventType: jab_left
+    type: strike
+    hand: left
+    strike: jab
+    zone: left_high
+    portal: center
 ```
 
 #### Notes
 
 - `charts/*.yaml` are intentionally reusable exact playable slices.
+- Boxing chart examples should use structured event payload fields such as `type`, `hand`, `strike`, `zone`, and `portal` rather than legacy shorthand like `eventType` / `laneHint`.
 - They do not contain `songId`, `setId`, or older routine linkage fields.
 - Set files provide the package-local wiring from chart ids to song/environment/coaching choices.
 
@@ -358,6 +369,10 @@ events:
 schemaId: aerobeat.set.v1
 schemaVersion: 1
 recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-25T19:00:00Z
+updatedAt: 2026-04-25T19:20:00Z
 setId: uid
 setName: string
 songId: uid
@@ -385,6 +400,13 @@ There is exactly one coach-config YAML per workout package. Coaching is optional
 #### Enabled coaching canonical field direction
 
 ```yaml
+schemaId: aerobeat.coach-config.v1
+schemaVersion: 1
+recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-25T19:00:00Z
+updatedAt: 2026-04-25T19:20:00Z
 enabled: true
 coachConfigId: coach-config
 coachConfigName: string
@@ -413,17 +435,18 @@ enabled: false
 #### Notes
 
 - `coach-config.yaml` acts as a reusable coaching media/roster registry for the package.
+- The disabled sentinel exception is intentionally tiny: `enabled: false` may stand alone without the normal schema/provenance block.
 - It does not map overlays directly to `setId`; set files choose overlays by `coachingOverlayId`.
 - Enabled coaching requires one warmup video and one cooldown video for the package.
 - Enabled coaching may define multiple featured coaches and multiple overlay audio records.
 
 ### `environments/<environment-id>.yaml`
 
-Environment records remain reusable package-local presentation records. They own environment identity plus resource references needed to load the environment.
+Environment records remain reusable package-local presentation records. They own environment identity plus resource references needed to load the environment, and they follow the shared authored-record schema/provenance field block described above.
 
 ### `assets/<asset-id>.yaml`
 
-Asset records remain reusable package-local gameplay-facing asset records. They own asset identity, asset type, and the resource path for the asset payload.
+Asset records remain reusable package-local gameplay-facing asset records. They own asset identity, asset type, and the resource path for the asset payload, and they follow the shared authored-record schema/provenance field block described above.
 
 ## Validation rules
 

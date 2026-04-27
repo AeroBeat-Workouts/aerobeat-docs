@@ -1,6 +1,13 @@
 # There is exactly one coach-config YAML per workout package.
 # Coaching is optional all-or-nothing. Disabled coaching would be only:
 # enabled: false
+schemaId: aerobeat.coach-config.v1
+schemaVersion: 1
+recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-25T22:00:00Z
+updatedAt: 2026-04-27T13:00:00Z
 enabled: true
 
 # This id is referenced by workout.yaml.

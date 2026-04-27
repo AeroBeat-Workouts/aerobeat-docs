@@ -2,6 +2,10 @@
 schemaId: aerobeat.set.v1
 schemaVersion: 1
 recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-25T22:00:00Z
+updatedAt: 2026-04-27T13:00:00Z
 
 # Stable set identity for workout ordering and coaching lookup.
 setId: ab-set-neon-stride-opening-round

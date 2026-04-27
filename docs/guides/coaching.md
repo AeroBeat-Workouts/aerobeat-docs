@@ -26,17 +26,28 @@ Coaching is **optional all-or-nothing**:
 enabled: false
 ```
 
-- If coaching is **enabled**, the file must include all required coaching sections:
+- If coaching is **enabled**, the file returns to the normal authored-record rule and must include its schema/provenance fields plus all required coaching sections:
+  - `schemaId`, `schemaVersion`, `recordVersion`
+  - `createdByTool`, `createdByToolVersion`, `createdAt`, `updatedAt`
   - `enabled: true`
   - a coach roster with one or more `coachId` + `coachName` entries
   - one required warmup video reference
   - one required cooldown video reference
-  - one required overlay audio reference for **each** workout set, keyed by `setId`
+  - an overlay audio registry whose records use `overlayId`; workout sets choose entries from that registry through `coachingOverlayId`
 
 ### Enabled example
 
 ```yaml
+schemaId: aerobeat.coach-config.v1
+schemaVersion: 1
+recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-25T22:00:00Z
+updatedAt: 2026-04-27T13:00:00Z
 enabled: true
+coachConfigId: ab-coach-config-neon-bootcamp
+coachConfigName: Neon Bootcamp Coach Config
 featuredCoaches:
   - coachId: ab-coach-aria
     coachName: Coach Aria
@@ -48,14 +59,14 @@ warmupVideo:
 cooldownVideo:
   mediaId: ab-cooldown-stretch-outro
   path: media/coaching/cooldown-stretch-outro.mp4
-setOverlayAudio:
-  - setId: ab-set-neon-stride-opening-round
+overlayAudio:
+  - overlayId: ab-overlay-aria-neon-stride-cue
     coachId: ab-coach-aria
-    mediaId: ab-overlay-aria-neon-stride-cue
+    mediaId: ab-overlay-aria-neon-stride-cue-media
     path: media/coaching/aria-neon-stride-overlay.ogg
-  - setId: ab-set-midnight-sprint-finish-round
+  - overlayId: ab-overlay-blaze-midnight-sprint-cue
     coachId: ab-coach-blaze
-    mediaId: ab-overlay-blaze-midnight-sprint-cue
+    mediaId: ab-overlay-blaze-midnight-sprint-cue-media
     path: media/coaching/blaze-midnight-sprint-overlay.ogg
 ```
 
@@ -66,7 +77,7 @@ When coaching is enabled, validation should fail if **any** of the following are
 - the roster is missing
 - the warmup video reference is missing
 - the cooldown video reference is missing
-- any workout set is missing its one overlay audio clip
+- any workout set is missing its one referenced overlay audio clip
 - any referenced file path does not exist on disk inside the package
 
 When coaching is disabled, validation should fail if authors try to leave behind dormant roster/media sections. Disabled means disabled.
@@ -85,7 +96,7 @@ When coaching is disabled, validation should fail if authors try to leave behind
 
 1. **Select Base Content:** Start from the workout package you are coaching.
 2. **Learn the Set Flow:** Know each workout set and where the athlete will need support.
-3. **Plan the Coaching Pass:** Write the warmup, the cooldown, and exactly one overlay audio cue for each workout set.
+3. **Plan the Coaching Pass:** Write the warmup, the cooldown, and exactly one overlay audio cue that each workout set will reference by `coachingOverlayId`.
 
 ### Phase 2: Recording
 
@@ -112,13 +123,13 @@ When coaching is disabled, validation should fail if authors try to leave behind
    - define the coach roster
    - wire the warmup video reference
    - wire the cooldown video reference
-   - add exactly one overlay audio record for each `setId`
-4. **Validate:** Run package validation so every `setId` resolves and every referenced file exists.
+   - add the overlay audio registry records
+4. **Validate:** Run package validation so every `coachingOverlayId` resolves and every referenced file exists.
 
 ## 💡 Best Practices
 
 - **Feel the Vibe:** You do not need to talk constantly. Speak when motivation or guidance matters.
-- **Keep it specific:** Because overlay audio is keyed by `setId`, you can tailor each cue to the exact workout slice the athlete is playing.
+- **Keep it specific:** Because each set picks one `coachingOverlayId`, you can tailor each cue to the exact workout slice the athlete is playing.
 - **Keep packages self-contained:** Do not rely on cross-package inheritance, hidden defaults, or external coaching bundles.
 - **Be explicit:** If a package is not coached, ship the minimal disabled file. If it is coached, fully wire every required section.
 

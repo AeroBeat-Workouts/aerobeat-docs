@@ -53,7 +53,7 @@ This example package imagines a short boxing workout with two songs:
 1. **Neon Stride** — medium difficulty opener in a rooftop night environment
 2. **Midnight Sprint** — harder follow-up in a brighter studio environment
 
-The package uses one shared coach config, a two-coach roster, two environments, four gameplay-facing asset selections, one warmup video, one cooldown video, and one overlay audio clip selected by each set.
+The package uses one shared coach config, a two-coach roster, two environments, four gameplay-facing asset selections, one warmup video, one cooldown video, and one overlay audio clip selected by each set. Every authored YAML record in the enabled example also carries the shared schema/provenance fields; the only deliberate exception path in this contract is a disabled `coach-config.yaml` sentinel of just `enabled: false`.
 
 ## Reading order
 
@@ -73,6 +73,7 @@ The package uses one shared coach config, a two-coach roster, two environments, 
 - coaching stays inside the package's single `coaches/coach-config.yaml` file
 - warmup/cooldown references live in coach-config under the approved coaching model
 - each workout set maps to one overlay audio record through `coachingOverlayId`
+- the boxing chart examples use structured event payload fields such as `type`, `hand`, `strike`, `zone`, and `portal` instead of the older `eventType` / `laneHint` shorthand
 - workout sets choose one environment and zero-or-one asset per gameplay-facing asset type
 - shared browse/discovery rows live in the catalog core tables, while local install-only state lives in `workout_local`
 - local leaderboard snapshots live in the package's disposable cache DB

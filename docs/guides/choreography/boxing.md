@@ -56,7 +56,7 @@ Knee strikes add lower-body intensity to the workout.
 
 ## 📦 Boxing + MediaPipe v1 Chart Shape
 
-The first shipping boxing chart format uses a shared chart envelope with a boxing-specific event payload.
+The first shipping boxing chart format uses a shared chart envelope with a boxing-specific event payload. Treat the structured payload fields in this guide as canonical; older shorthand like `eventType` / `laneHint` is legacy teaching material and should not be used for new docs/examples.
 
 ### Shared boxing chart fields
 

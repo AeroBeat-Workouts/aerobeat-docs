@@ -9,6 +9,8 @@ If you are new to the package system, start here before reading the lower-level 
 - the files model the current **locked v1 contract**
 - the song examples specifically show the cleaned-up licensing + metadata shape (`licenseType`, `streamingSafe`, `aiAssisted`, BCP 47 `language`, locked-enum `genres`, no song `tags`)
 - the package demonstrates the split between authored YAML, local `workouts.db`, and per-workout `leaderboard-cache.db`
+- authored YAML records carry the shared schema/provenance fields by default, with the documented disabled `coach-config.yaml` sentinel as the lone exception
+- the boxing charts model the stronger structured event payload direction rather than the older shorthand event fields
 
 ## Start Here
 

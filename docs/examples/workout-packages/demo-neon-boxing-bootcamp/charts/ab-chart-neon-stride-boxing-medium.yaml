@@ -2,6 +2,10 @@
 schemaId: aerobeat.chart.boxing.v1
 schemaVersion: 1
 recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-25T22:00:00Z
+updatedAt: 2026-04-27T13:00:00Z
 
 # Chart identity must be unique within the package.
 chartId: ab-chart-neon-stride-boxing-medium
@@ -37,14 +41,22 @@ scoringHints:
   comboModel: standard
 
 # events is mode-specific payload data.
-# This file keeps the event list short so the example stays readable.
+# Boxing examples use the stronger structured payload fields instead of eventType/laneHint shorthand.
 events:
   - beat: 8
-    eventType: jab_left
-    laneHint: left
+    type: strike
+    hand: left
+    strike: jab
+    zone: left_high
+    portal: center
   - beat: 12
-    eventType: jab_right
-    laneHint: right
+    type: strike
+    hand: right
+    strike: jab
+    zone: right_high
+    portal: center
   - beat: 16
-    eventType: guard_hold
-    durationBeats: 2
+    type: guard
+    zone: center
+    portal: center
+    holdMs: 500

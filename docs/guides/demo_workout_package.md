@@ -47,6 +47,7 @@ The example models a single package with:
 - one coaching domain file
 - two environments
 - four gameplay-facing asset records
+- authored-record provenance on the demo YAML records, with the documented disabled coach-config sentinel as the lone exception path
 
 ### 2. Exact ids, not loose lookup rules
 
@@ -81,10 +82,20 @@ The package shows the approved coaching rule clearly:
 
 - every package has exactly one `coaches/coach-config.yaml`
 - coaching is optional all-or-nothing
+- the minimal disabled exception is exactly `enabled: false`; once enabled, coach-config follows the normal schema/provenance rule
 - if coaching is enabled, warmup/cooldown media live in coach-config, not in `workout.yaml`
 - coach-config owns the overlay audio registry
 - set files choose overlay clips by `coachingOverlayId`
 - workout roots do not carry reusable trigger graphs or per-set overlay lists
+
+### 3a. Boxing chart payload direction
+
+The two demo boxing charts now teach the stronger structured event payload direction:
+
+- strike events use fields like `type`, `hand`, `strike`, `zone`, and `portal`
+- guard events use `type`, `zone`, `portal`, and `holdMs`
+- obstacle events use `type`, `avoid`, `shape`, `portal`, and `durationMs`
+- the old `eventType` / `laneHint` shorthand is intentionally absent from the canonical demo
 
 ### 4. SQLite authority boundaries
 
