@@ -5,11 +5,11 @@ Use this glossary of AeroBeat specific terms to keep the docs set aligned.
 | Term | Definition |
 | :--- | :--- |
 | **Song** | The reusable audio / timing asset and metadata source for gameplay content. |
-| **Routine** | The gameplay-mode-specific package for one Song, such as the boxing routine for that song. |
-| **Chart** | One concrete playable chart inside a Routine representing a single difficulty and compatibility slice. |
-| **Workout** | An ordered training program that assembles exact chart selections into a session and owns workout-level coaching/session flow. |
+| **Chart** | One concrete playable authored chart representing a single difficulty and compatibility slice. |
+| **Set** | The package-local composition record that links one Song, one Chart, optional environment / asset selections, and optional coaching overlay choices. |
+| **Workout** | An ordered training program that assembles exact set selections into a session and owns workout-level coaching/session flow. |
 | **Workout Package** | A self-contained on-disk folder containing `workout.yaml`, typed YAML content folders, package-local media/resources, and optional disposable local caches. |
-| **Coach Config** | The single workout-level coaching YAML domain inside a package. If coaching is disabled it reduces to `enabled: false`; if enabled it must define the coach roster, warmup/cooldown video references, and exactly one overlay audio clip per workout entry. |
+| **Coach Config** | The single workout-level coaching YAML domain inside a package. If coaching is disabled it reduces to `enabled: false`; if enabled it must define the coach roster, warmup/cooldown video references, and exactly one overlay audio clip per workout set. |
 | **Chart Envelope** | The shared chart-level contract that carries ids, timing, scoring, presentation hints, and a mode-specific event payload. |
 | **Interaction Family** | A durable movement-target abstraction such as `gesture_2d`, `tracked_6dof`, or `hybrid`, used instead of binding content directly to a raw device. |
 | **Input Provider** | The top-level runtime/gameplay abstraction that bridges hardware input systems to gameplay logic. |
@@ -30,7 +30,7 @@ Use this glossary of AeroBeat specific terms to keep the docs set aligned.
 | **Skin** | A visual replacement for a gameplay object (Gloves, Bats, Targets, Obstacles). |
 | **Avatar** | A 3D character model representing the player or coach. |
 | **Cosmetic** | An accessory attachment for an Avatar (Hat, Glasses). |
-| **Environment** | The package-local authored environment record and its referenced scene/lighting resources used to surround gameplay for a workout entry. |
+| **Environment** | The package-local authored environment record and its referenced scene/lighting resources used to surround gameplay for a workout set. |
 | **Asset** | A package-local typed runtime-presented content record. The locked v1 asset types are `gloves`, `targets`, `obstacles`, and `trails`. |
 | **Asset Type** | The closed v1 enum that identifies what kind of package asset a record is. Unknown values fail validation rather than silently behaving like generic assets. |
 | **workouts.db** | The local SQLite discovery/index database for installed workouts. It powers browse/search/filter views but is not the authored source of truth. |

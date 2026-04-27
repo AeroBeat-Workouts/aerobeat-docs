@@ -8,7 +8,7 @@ These six repos are the canonical lane owners for shared contracts and dependenc
 
 * **[`aerobeat-input-core`](https://github.com/AeroBeat-Workouts/aerobeat-input-core)**: Shared input abstractions, provider contracts, normalized input-facing enums, and input runtime interfaces.
 * **[`aerobeat-feature-core`](https://github.com/AeroBeat-Workouts/aerobeat-feature-core)**: Shared gameplay-mode and runtime-rule contracts that interpret athlete actions against authored content over time.
-* **[`aerobeat-content-core`](https://github.com/AeroBeat-Workouts/aerobeat-content-core)**: Canonical authored-content contracts, including `Song`, `Routine`, `Chart`, `Workout`, shared chart-envelope types, and content loading / validation interfaces.
+* **[`aerobeat-content-core`](https://github.com/AeroBeat-Workouts/aerobeat-content-core)**: Canonical authored-content contracts, including `Song`, `Chart`, `Set`, `Workout`, shared chart-envelope types, and content loading / validation interfaces.
 * **[`aerobeat-asset-core`](https://github.com/AeroBeat-Workouts/aerobeat-asset-core)**: Shared asset-side contracts such as avatars, cosmetics, environments, and other reusable asset definitions.
 * **[`aerobeat-ui-core`](https://github.com/AeroBeat-Workouts/aerobeat-ui-core)**: Shared UI abstractions, signals, enums, and base types used across UI kits and shells.
 * **[`aerobeat-tool-core`](https://github.com/AeroBeat-Workouts/aerobeat-tool-core)**: Shared tool-side contracts for settings, backend/API integration, validation, and other common tooling models.

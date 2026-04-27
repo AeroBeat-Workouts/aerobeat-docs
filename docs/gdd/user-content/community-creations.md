@@ -5,17 +5,17 @@ A Workout assembles community-authored content into a coherent training session.
 The durable content hierarchy is:
 
 * **Song** → reusable audio and timing source
-* **Routine** → gameplay-mode-specific package for one Song
-* **Chart** → one concrete playable difficulty / compatibility slice inside a Routine
-* **Workout** → ordered training session that assembles exact chart selections plus workout-level coaching/session flow
+* **Chart** → one concrete playable difficulty / compatibility slice
+* **Set** → package-local composition record that links one Song, one Chart, optional environment / asset selections, and optional coaching overlay choices
+* **Workout** → ordered training session that assembles exact set selections plus workout-level coaching/session flow
 
 ## Community Content Types
 
 * **Songs:** Musicians can add songs to the platform for others to use.
-* **Routines / Charts:** Choreographers author gameplay for songs using the charting tools. A routine packages one gameplay mode for one song, and charts represent specific difficulties or compatibility slices inside that routine.
-* **Environments:** Environment authors create package-local worlds that a workout entry can select one at a time.
+* **Charts / Sets:** Choreographers author reusable gameplay charts for songs using the charting tools, then package those charts into sets that link the exact song, chart, environment, asset, and optional coaching choices for one workout slice.
+* **Environments:** Environment authors create package-local worlds that a workout set can select one at a time.
 * **Assets:** Artists can create typed package-local assets for `gloves`, `targets`, `obstacles`, and `trails`.
-* **Coaching:** Trainers can create optional workout-level coaching content inside the package's single `coaches/coach-config.yaml` domain. When enabled, that file owns the coach roster, warmup video, cooldown video, and exactly one overlay audio clip per workout entry.
+* **Coaching:** Trainers can create optional workout-level coaching content inside the package's single `coaches/coach-config.yaml` domain. When enabled, that file owns the coach roster, warmup video, cooldown video, and exactly one overlay audio clip per workout set.
 
 ## Building a Workout
 
@@ -23,11 +23,11 @@ When creating a Workout, a creator uses the community browser and tooling to pic
 
 * **Gameplay:** What gameplay style is this Workout made for? (`Boxing`, `Flow`, etc.)
 * **Difficulty Intent:** Which chart difficulty is this Workout targeting (`easy`, `medium`, `hard`, `pro`)?
-* **Songs / Selections:** Which exact songs, routines, and charts are included?
-* **Chart Choice:** The package should resolve to exact chart ids rather than loose song/mode/difficulty matching.
-* **Environments:** Optional. Choose one environment per workout entry.
-* **Assets:** Optional. Choose at most one asset per entry-selectable asset type (`gloves`, `targets`, `obstacles`, `trails`) for each workout entry.
-* **Coaching:** Optional. Attach workout-level coaching configuration through the package's single `coaches/coach-config.yaml` file. Disabled coaching uses `enabled: false`; enabled coaching must fully wire the roster, warmup/cooldown videos, and one overlay audio clip per entry.
+* **Songs / Selections:** Which exact songs, charts, and sets are included?
+* **Chart Choice:** The package should resolve to exact chart ids and set ids rather than loose song/mode/difficulty matching.
+* **Environments:** Optional. Choose one environment per workout set.
+* **Assets:** Optional. Choose at most one asset per entry-selectable asset type (`gloves`, `targets`, `obstacles`, `trails`) for each workout set.
+* **Coaching:** Optional. Attach workout-level coaching configuration through the package's single `coaches/coach-config.yaml` file. Disabled coaching uses `enabled: false`; enabled coaching must fully wire the roster, warmup/cooldown videos, and one overlay audio clip per workout set.
 
 When choosing any Workout, athletes can override the suggestions using their **Profile Preferences**.
 

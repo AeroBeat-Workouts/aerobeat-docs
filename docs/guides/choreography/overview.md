@@ -4,9 +4,9 @@ In AeroBeat, charting is the art of translating music into movement. A good char
 
 AeroBeat's content model is:
 
-* **Song → Routine → Chart → Workout**
+* **Song → Chart → Set → Workout**
 
-When you author gameplay, you are usually creating or editing a **Routine** for one Song and one or more **Charts** inside that routine.
+When you author gameplay, you are usually creating or editing one or more reusable **Charts** for a Song, then wiring those charts into package-local **Sets** that a **Workout** can order.
 
 ## 🛠️ The Choreography SDKs
 
@@ -50,11 +50,11 @@ You cannot map silence. You need a base audio track.
 
 ### Phase 2: Setup & Analysis
 
-Before placing a single note, you must sync the grid and establish the routine / chart structure.
+Before placing a single note, you must sync the grid and establish the chart / set structure.
 
-1. **Create or open a Routine:** Choose the gameplay mode for the selected Song.
-2. **Create or open a Chart:** Work inside one concrete playable difficulty / compatibility slice.
-3. **Link the Song:** Ensure the routine points at the selected Song ID.
+1. **Create or open a Chart:** Choose the gameplay mode and work inside one concrete playable difficulty / compatibility slice.
+2. **Create or open a Set:** Wire the selected Song and Chart together for one package-local workout slice.
+3. **Link the Song and Chart:** Ensure the set points at the selected Song ID and Chart ID.
 4. **BPM & Offset:**
    * **Auto-detect:** The SDK automatically scans the audio file to calculate BPM and offset when assigned.
    * **Manual Override:** If detection is slightly off, type in the correct value or use the **Tap Tempo** button.
@@ -82,6 +82,6 @@ The SDK includes a **Flow Validator**. Run this before uploading.
 
 1. **Check Parity:** Ensure no hand tangles or vision blocks.
 2. **Prepare the Publishable Content:**
-   * Finalize the routine metadata.
+   * Finalize the set metadata and composition links.
    * Finalize the chart metadata for difficulty, interaction family, and any supported / validated input profiles.
 3. **Upload:** Use the uploader tab to publish your authored gameplay content.
