@@ -6020,7 +6020,7 @@
 <li><code>licensing.aiAssisted</code> as a required boolean, plus structured AI disclosure fields when that value is <code>true</code></li>
 <li>audio asset references</li>
 <li>duration</li>
-<li>song-level timing authority such as <code>timing.bpm</code></li>
+<li>song-level canonical timing truth through <code>timing.anchorMs</code>, <code>timing.tempoSegments</code>, <code>timing.stopSegments</code>, and <code>timing.timeSignatureSegments</code></li>
 <li>descriptive metadata such as <code>metadata.explicit</code>, BCP 47 <code>metadata.language</code> values, and locked-enum <code>metadata.genres</code></li>
 </ul>
 <p>It does <strong>not</strong> own gameplay-mode-specific note data, chart references, set references, workout references, athlete/device-specific timing offsets, or freeform song <code>tags</code> in the current v1 contract.</p>
@@ -6034,7 +6034,7 @@
 <li>difficulty</li>
 <li>interaction family target</li>
 <li>optional supported / validated input profiles</li>
-<li>timing-aligned event stream</li>
+<li>beat-timed event stream authored against the song-owned canonical timing truth</li>
 <li>optional presentation hints needed to render the chart well only when those hints are truly part of durable content</li>
 </ul>
 <p>A chart represents <strong>one playable difficulty / compatibility slice</strong>, not an all-difficulties megafile.</p>
@@ -6099,7 +6099,7 @@
 <li><code>interactionFamily</code></li>
 <li><code>supportedInputProfiles</code></li>
 <li><code>validatedInputProfiles</code></li>
-<li><code>timing</code></li>
+<li><code>timing</code> (chart-side timing details remain separate follow-up contract work; the song owns canonical timing truth now)</li>
 <li><code>presentationHints</code></li>
 <li><code>scoringHints</code></li>
 <li><code>events</code></li>
@@ -6183,7 +6183,7 @@
 <p>The individual <code>Song</code>, <code>Chart</code>, <code>Set</code>, <code>Workout</code>, <code>Coach Config</code>, <code>Environment</code>, and <code>Asset</code> records inside that package remain the unit of authoring, validation, and runtime selection.</p>
 <h2 id="contract-boundaries-that-matter">Contract boundaries that matter<a class="headerlink" href="#contract-boundaries-that-matter" title="Permanent link">&para;</a></h2>
 <h3 id="song-contract">Song contract<a class="headerlink" href="#song-contract" title="Permanent link">&para;</a></h3>
-<p>The <code>Song</code> contract is responsible for reusable audio/media identity, timing truth, and licensing/credit metadata.</p>
+<p>The <code>Song</code> contract is responsible for reusable audio/media identity, canonical timing truth, and licensing/credit metadata.</p>
 <p>It is <strong>not</strong> responsible for:</p>
 <ul>
 <li>mode-specific gameplay packaging</li>
@@ -6234,7 +6234,7 @@
 <h2 id="durable-package-contract-summary">Durable package contract summary<a class="headerlink" href="#durable-package-contract-summary" title="Permanent link">&para;</a></h2>
 <p>Keep the package shape explicit and set-centered:</p>
 <ul>
-<li><code>songs/*.yaml</code> are reusable audio/timing/licensing records</li>
+<li><code>songs/*.yaml</code> are reusable audio/licensing records that also own the canonical timing map through <code>anchorMs</code>, <code>tempoSegments</code>, <code>stopSegments</code>, and <code>timeSignatureSegments</code></li>
 <li><code>charts/*.yaml</code> are reusable exact playable slices</li>
 <li><code>sets/*.yaml</code> are the single source of truth for composition wiring</li>
 <li><code>workout.yaml</code> keeps package/workout metadata plus ordered <code>setId</code> references</li>
@@ -6261,7 +6261,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2026 19:15:50 UTC">April 27, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 28, 2026 15:12:03 UTC">April 28, 2026</span>
   </span>
 
     

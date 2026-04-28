@@ -6000,7 +6000,15 @@
 <span class="w">  </span><span class="nt">durationMs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">180000</span>
 <span class="w">  </span><span class="nt">previewStartMs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
 <span class="nt">timing</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">bpm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">128</span>
+<span class="w">  </span><span class="nt">anchorMs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">  </span><span class="nt">tempoSegments</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">startBeat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">      </span><span class="nt">bpm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">128</span>
+<span class="w">  </span><span class="nt">stopSegments</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="w">  </span><span class="nt">timeSignatureSegments</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">startBeat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">      </span><span class="nt">numerator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">      </span><span class="nt">denominator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">explicit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">en</span>
@@ -6011,7 +6019,11 @@
 <ul>
 <li><code>songs/*.yaml</code> should not point to charts, sets, or workouts.</li>
 <li><code>licensing</code> belongs on the song because the audio asset is the reusable source.</li>
-<li><code>timing.bpm</code> remains the package's reusable musical timing truth.</li>
+<li><code>songs/*.yaml</code> own the canonical reusable timing truth for the package.</li>
+<li><code>timing.anchorMs</code> is the canonical beat-zero anchor in integer milliseconds.</li>
+<li><code>timing.tempoSegments</code> is the only approved tempo-map form; do not add a parallel <code>timing.bpm</code> shortcut.</li>
+<li><code>timing.stopSegments</code> are explicit deterministic timing-map holds.</li>
+<li><code>timing.timeSignatureSegments</code> declare canonical musical meter plus recommended authoring guidance; chart/gameplay-mode-specific snap behavior remains separate later contract work.</li>
 </ul>
 <h3 id="chartschart-idyaml"><code>charts/&lt;chart-id&gt;.yaml</code><a class="headerlink" href="#chartschart-idyaml" title="Permanent link">&para;</a></h3>
 <h4 id="owns_2">Owns<a class="headerlink" href="#owns_2" title="Permanent link">&para;</a></h4>
@@ -6214,7 +6226,7 @@ A future remote/distribution catalog snapshot should reuse the same core tables 
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>The durable workout-package contract is now set-centered:</p>
 <ul>
-<li><code>songs/</code> own reusable music/timing/licensing truth</li>
+<li><code>songs/</code> own reusable music/licensing truth plus the package's canonical timing map (<code>anchorMs</code>, <code>tempoSegments</code>, <code>stopSegments</code>, <code>timeSignatureSegments</code>)</li>
 <li><code>charts/</code> own exact playable event payloads plus mode/difficulty semantics</li>
 <li><code>sets/</code> own package-local composition wiring through ids only</li>
 <li><code>workout.yaml</code> owns package metadata plus ordered <code>setId</code> references</li>
@@ -6241,7 +6253,7 @@ A future remote/distribution catalog snapshot should reuse the same core tables 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2026 18:51:20 UTC">April 27, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 28, 2026 15:12:03 UTC">April 28, 2026</span>
   </span>
 
     
