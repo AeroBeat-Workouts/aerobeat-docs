@@ -133,9 +133,9 @@ This rollout therefore starts with a cross-repo audit rather than immediate edit
 **Files Created/Deleted/Modified:**
 - audit-driven repo scope only
 
-**Status:** ⏳ Ready after docs repo lands
+**Status:** ⚠️ Partial / `aerobeat-content-core` complete, authoring repo still pending
 
-**Results:** Repo-owned implementation beads created as `oc-jox` (`aerobeat-content-core`) and `aerobeat-tool-content-authoring-ad9` (`aerobeat-tool-content-authoring`). Note: `aerobeat-content-core` did not yet have a local Beads database, so repo-local Beads were initialized there before creating `oc-jox`.
+**Results:** Repo-owned implementation beads were created as `oc-jox` (`aerobeat-content-core`) and `aerobeat-tool-content-authoring-ad9` (`aerobeat-tool-content-authoring`). `aerobeat-content-core` is now landed: `data_types/song.gd` requires song-owned `timing`; `Song.validate_timing_shape()` enforces `anchorMs`, `tempoSegments`, `stopSegments`, and `timeSignatureSegments` while explicitly rejecting `timing.bpm`; `data_types/chart_envelope.gd` no longer requires chart-local `timing`; `validators/content_package_validator.gd` now emits song-timing contract issues; valid and invalid fixtures were refreshed to move timing truth into songs; and new contract/validator tests were added for the approved timing shape. Validation run in `aerobeat-content-core`: `godot --headless --path .testbed --script res://../tests/run_contract_tests.gd` (passed). Commit pushed to `main`: `c4894f2` (`Add canonical song timing contract validation`). The `aerobeat-tool-content-authoring` follow-up bead remains open and still needs authoring/import/validation alignment against this newly enforced shared contract.
 
 ---
 
@@ -181,16 +181,17 @@ This rollout therefore starts with a cross-repo audit rather than immediate edit
 
 ## Final Results
 
-**Status:** ⚠️ Partial / docs repo implementation complete
+**Status:** ⚠️ Partial / docs + content-core complete, authoring repo still pending
 
-**What We Built:** Landed the `aerobeat-docs` portion of the rollout so the canonical docs and demo songs now present song-owned timing truth through `anchorMs`, `tempoSegments`, `stopSegments`, and `timeSignatureSegments`, while keeping chart-side timing expansion deferred to later contract work.
+**What We Built:** Landed the canonical docs/example updates in `aerobeat-docs` and the shared contract/fixture/validator updates in `aerobeat-content-core` so song-owned timing truth is now both taught and enforced through `anchorMs`, `tempoSegments`, `stopSegments`, and `timeSignatureSegments`, while keeping broader chart/gameplay-mode timing redesign deferred to later work.
 
-**Reference Check:** `REF-02` through `REF-06` were updated to match the approved timing direction from `REF-01`. No deliberate docs-repo deviations were introduced; chart-side timing specifics remain intentionally deferred for the separate follow-up work already called out by the plan.
+**Reference Check:** `REF-02` through `REF-06` were updated to match the approved timing direction from `REF-01`, and `aerobeat-content-core` now encodes that same approved contract in its shared song validation surface. No deliberate deviations were introduced; chart-side timing specifics remain intentionally deferred for the separate follow-up work already called out by the plan.
 
 **Commits:**
+- `c4894f2` - `aerobeat-content-core`: Add canonical song timing contract validation
 - Pending coder commit from `aerobeat-docs` implementation bead `aerobeat-docs-8fn`
 
-**Lessons Learned:** The docs/examples layer was a clean first landing zone for this contract change, but content-core and tooling still need explicit follow-up so the published timing-map shape becomes enforceable instead of just documented.
+**Lessons Learned:** The docs/examples layer was the clean first landing zone, but the real contract lock happened once `aerobeat-content-core` stopped treating chart-local timing as required and started validating song-owned timing explicitly. The remaining important follow-up is tool-side authoring/import alignment so creators can emit the enforced contract without hand-editing fixtures.
 
 ---
 
