@@ -68,8 +68,9 @@ The package uses one shared coach config, a two-coach roster, two environments, 
 - `workout.yaml` owns package metadata plus `setOrder`, not the full composition payload inline
 - `sets/*.yaml` are the single source of truth for song/chart/environment/asset/coaching-overlay links
 - song licensing uses the locked `licenseType` enum plus `streamingSafe` and `aiAssisted` booleans
-- the demo song records keep `timing.bpm`, `audio.previewStartMs`, boolean `metadata.explicit`, BCP 47 `metadata.language`, and locked-enum `metadata.genres`
-- song-level `usageRights`, `timing.beatGrid.resolution`, `timing.beatGrid.anchors`, and freeform `tags` are intentionally absent from this slice
+- the demo song records keep `audio.previewStartMs`, boolean `metadata.explicit`, BCP 47 `metadata.language`, and locked-enum `metadata.genres`
+- the demo song records now own canonical timing truth through `timing.anchorMs`, `timing.tempoSegments`, `timing.stopSegments`, and `timing.timeSignatureSegments`
+- `timing.bpm`, `timing.beatGrid.resolution`, `timing.beatGrid.anchors`, song-level `usageRights`, and freeform `tags` are intentionally absent from this slice
 - coaching stays inside the package's single `coaches/coach-config.yaml` file
 - warmup/cooldown references live in coach-config under the approved coaching model
 - each workout set maps to one overlay audio record through `coachingOverlayId`

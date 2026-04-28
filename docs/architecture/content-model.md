@@ -84,7 +84,7 @@ It owns fields such as:
 - `licensing.aiAssisted` as a required boolean, plus structured AI disclosure fields when that value is `true`
 - audio asset references
 - duration
-- song-level timing authority such as `timing.bpm`
+- song-level canonical timing truth through `timing.anchorMs`, `timing.tempoSegments`, `timing.stopSegments`, and `timing.timeSignatureSegments`
 - descriptive metadata such as `metadata.explicit`, BCP 47 `metadata.language` values, and locked-enum `metadata.genres`
 
 It does **not** own gameplay-mode-specific note data, chart references, set references, workout references, athlete/device-specific timing offsets, or freeform song `tags` in the current v1 contract.
@@ -101,7 +101,7 @@ It owns fields such as:
 - difficulty
 - interaction family target
 - optional supported / validated input profiles
-- timing-aligned event stream
+- beat-timed event stream authored against the song-owned canonical timing truth
 - optional presentation hints needed to render the chart well only when those hints are truly part of durable content
 
 A chart represents **one playable difficulty / compatibility slice**, not an all-difficulties megafile.
@@ -183,7 +183,7 @@ All charts expose a common envelope containing fields such as:
 - `interactionFamily`
 - `supportedInputProfiles`
 - `validatedInputProfiles`
-- `timing`
+- `timing` (chart-side timing details remain separate follow-up contract work; the song owns canonical timing truth now)
 - `presentationHints`
 - `scoringHints`
 - `events`
@@ -289,7 +289,7 @@ The individual `Song`, `Chart`, `Set`, `Workout`, `Coach Config`, `Environment`,
 
 ### Song contract
 
-The `Song` contract is responsible for reusable audio/media identity, timing truth, and licensing/credit metadata.
+The `Song` contract is responsible for reusable audio/media identity, canonical timing truth, and licensing/credit metadata.
 
 It is **not** responsible for:
 
@@ -350,7 +350,7 @@ That keeps package-level orchestration explicit while leaving reusable authored 
 
 Keep the package shape explicit and set-centered:
 
-- `songs/*.yaml` are reusable audio/timing/licensing records
+- `songs/*.yaml` are reusable audio/licensing records that also own the canonical timing map through `anchorMs`, `tempoSegments`, `stopSegments`, and `timeSignatureSegments`
 - `charts/*.yaml` are reusable exact playable slices
 - `sets/*.yaml` are the single source of truth for composition wiring
 - `workout.yaml` keeps package/workout metadata plus ordered `setId` references

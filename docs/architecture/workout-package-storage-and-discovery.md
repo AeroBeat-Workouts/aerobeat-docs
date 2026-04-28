@@ -271,7 +271,15 @@ audio:
   durationMs: 180000
   previewStartMs: 30000
 timing:
-  bpm: 128
+  anchorMs: 0
+  tempoSegments:
+    - startBeat: 0
+      bpm: 128
+  stopSegments: []
+  timeSignatureSegments:
+    - startBeat: 0
+      numerator: 4
+      denominator: 4
 metadata:
   explicit: false
   language: en
@@ -283,7 +291,11 @@ metadata:
 
 - `songs/*.yaml` should not point to charts, sets, or workouts.
 - `licensing` belongs on the song because the audio asset is the reusable source.
-- `timing.bpm` remains the package's reusable musical timing truth.
+- `songs/*.yaml` own the canonical reusable timing truth for the package.
+- `timing.anchorMs` is the canonical beat-zero anchor in integer milliseconds.
+- `timing.tempoSegments` is the only approved tempo-map form; do not add a parallel `timing.bpm` shortcut.
+- `timing.stopSegments` are explicit deterministic timing-map holds.
+- `timing.timeSignatureSegments` declare canonical musical meter plus recommended authoring guidance; chart/gameplay-mode-specific snap behavior remains separate later contract work.
 
 ### `charts/<chart-id>.yaml`
 
@@ -514,7 +526,7 @@ Do not treat as authored truth:
 
 The durable workout-package contract is now set-centered:
 
-- `songs/` own reusable music/timing/licensing truth
+- `songs/` own reusable music/licensing truth plus the package's canonical timing map (`anchorMs`, `tempoSegments`, `stopSegments`, `timeSignatureSegments`)
 - `charts/` own exact playable event payloads plus mode/difficulty semantics
 - `sets/` own package-local composition wiring through ids only
 - `workout.yaml` owns package metadata plus ordered `setId` references

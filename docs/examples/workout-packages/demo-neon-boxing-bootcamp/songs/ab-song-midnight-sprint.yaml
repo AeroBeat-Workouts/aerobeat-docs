@@ -11,7 +11,7 @@ songName: Midnight Sprint
 createdByTool: aerobeat-tool-content-authoring
 createdByToolVersion: 0.1.0
 createdAt: 2026-04-25T22:00:00Z
-updatedAt: 2026-04-27T13:00:00Z
+updatedAt: 2026-04-28T15:00:00Z
 
 # Artist and publishing credits stay on the reusable song layer.
 artist:
@@ -32,9 +32,17 @@ audio:
   durationMs: 201500
   previewStartMs: 36000
 
-# Timing stays on the song as reusable musical truth.
+# Timing stays on the song as canonical reusable musical truth.
 timing:
-  bpm: 146
+  anchorMs: 0
+  tempoSegments:
+    - startBeat: 0
+      bpm: 146
+  stopSegments: []
+  timeSignatureSegments:
+    - startBeat: 0
+      numerator: 4
+      denominator: 4
 
 # Lightweight descriptive metadata is fine at the song layer.
 metadata:

@@ -69,7 +69,11 @@ The two demo song YAML files also model the currently approved song-contract cle
 - `licensing.streamingSafe` is a required boolean
 - `licensing.aiAssisted` is a required boolean
 - structured AI disclosure fields are only needed when `aiAssisted: true`
-- `timing.bpm` stays on the song, while the old `timing.beatGrid.resolution` and `timing.beatGrid.anchors` teaching fields are gone from this slice
+- songs now own canonical timing truth through `timing.anchorMs`, `timing.tempoSegments`, `timing.stopSegments`, and `timing.timeSignatureSegments`
+- `timing.anchorMs` is the canonical beat-zero anchor in integer milliseconds
+- `timing.tempoSegments` is the single approved tempo-map form; there is no `timing.bpm` shortcut or parallel alternate tempo shape
+- `timing.stopSegments` explicitly encode deterministic timing-map holds
+- `timing.timeSignatureSegments` declare canonical musical meter and recommended authoring guidance, while chart/gameplay-mode-specific snap behavior remains later contract work
 - `audio.previewStartMs` remains on the song
 - `metadata.explicit` stays boolean
 - `metadata.language` should be a valid BCP 47 language tag, with base language codes preferred unless extra specificity matters
