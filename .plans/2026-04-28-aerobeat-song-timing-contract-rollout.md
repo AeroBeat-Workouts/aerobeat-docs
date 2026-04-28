@@ -155,9 +155,9 @@ This rollout therefore starts with a cross-repo audit rather than immediate edit
 **Files Created/Deleted/Modified:**
 - touched repo scope only
 
-**Status:** ⚠️ QA failed / repair in progress
+**Status:** ✅ Complete
 
-**Results:** Re-ran the landed validations successfully in all three touched repos, then performed a direct cross-repo contract check on the changed docs/examples, shared content contract code, fixtures, and authoring-tool behavior. QA found a real cross-repo contract mismatch, and repair bead `oc-7i7` was created in `aerobeat-content-core` to align shared validation for `stopSegments[*]` with the approved `{ startBeat, durationMs }` shape before QA is rerun.
+**Results:** Re-ran the landed validations successfully in all three touched repos, re-checked the repaired `aerobeat-content-core` surfaces, and performed a direct cross-repo contract check on the changed docs/examples, shared content contract code, fixtures, and authoring-tool behavior. The earlier shared-validator mismatch found by QA is now resolved in `aerobeat-content-core` bead `oc-7i7`: `stopSegments[*]` requires the approved `{ startBeat, durationMs }` shape, the negative fixture/package coverage is present, and the rerun confirms the rollout is coherent across the touched repos. QA now passes and the work is ready for independent audit.
 
 **Validation reruns**
 - `aerobeat-docs`: `. .venv/bin/activate && python scripts/create_placeholders.py && mkdocs build --strict` ✅
@@ -186,13 +186,21 @@ This rollout therefore starts with a cross-repo audit rather than immediate edit
 **Repair update (bead `oc-7i7`)**
 - The content-core repair is now landed in commit `b6e2b8d` (`Require stop segment timing fields`). `data_types/song.gd` now requires both `startBeat` and `durationMs` on each `stopSegments[*]` entry, `tests/test_song_timing_contract.gd` now includes direct negative coverage for a malformed stop segment, and `tests/test_song_timing_validation.gd` now validates the new negative fixture package `fixtures/invalid_song_stop_segment_missing_duration/`.
 - Validation rerun after the repair: `godot --headless --path .testbed --script res://../tests/run_contract_tests.gd` ✅
-- This closes the specific shared-validator mismatch found by QA; independent QA rerun and final audit closure are still pending.
+
+**QA rerun conclusion**
+- `stopSegments` enforcement now matches between `aerobeat-content-core` and `aerobeat-tool-content-authoring`: both require `startBeat` + `durationMs`.
+- The canonical docs/examples, shared contract code, fixtures, and authoring-tool behavior are aligned on song-owned timing truth through `anchorMs`, `tempoSegments`, `stopSegments`, and `timeSignatureSegments`.
+- No positive `timing.bpm` teaching remains in the touched product scope; remaining mentions are only negative/forbidden references in docs, validator messages, invalid fixtures, and plan history.
+- No new chart/runtime scope drift was introduced: chart-local `timing` remains removed/de-emphasized rather than redesigned, and chart/gameplay-mode timing redesign is still explicitly deferred.
+
+**QA verdict after repair rerun**
+- Pass. Ready for independent audit.
 
 ---
 
 ### Task 5: Independently audit the rollout and close the loop
 
-**Bead ID:** `Pending`  
+**Bead ID:** `aerobeat-docs-djj`  
 **SubAgent:** `primary` (for `auditor`)  
 **Role:** `auditor`  
 **References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-05`, `REF-06`  
@@ -204,19 +212,32 @@ This rollout therefore starts with a cross-repo audit rather than immediate edit
 **Files Created/Deleted/Modified:**
 - touched repo scope only
 
-**Status:** ⏸️ Blocked on QA
+**Status:** ✅ Complete
 
-**Results:** Pending.
+**Results:** Independent audit pass. I reviewed the plan history plus the landed commits in all touched repos (`67036c0`, `c4894f2`, `b6e2b8d`, `96c6313`), verified the changed source files match the approved contract, and reran the repo validations myself:
+- `aerobeat-docs`: `. .venv/bin/activate && python scripts/create_placeholders.py && mkdocs build --strict` ✅
+- `aerobeat-content-core`: `godot --headless --path .testbed --script res://../tests/run_contract_tests.gd` ✅
+- `aerobeat-tool-content-authoring`: `godot --headless --path .testbed --script res://../tests/run_tool_tests.gd` ✅
+
+Audit findings:
+- `aerobeat-docs` now teaches songs as the canonical timing owner and uses the approved field shape in the architecture docs, demo guide, example README, and demo song YAML examples.
+- `aerobeat-content-core` now requires song-owned `timing`, rejects `timing.bpm`, requires `tempoSegments[*] = {startBeat, bpm}`, requires `stopSegments[*] = {startBeat, durationMs}`, requires `timeSignatureSegments[*] = {startBeat, numerator, denominator}`, and no longer requires chart-local `timing` on `ChartEnvelope`.
+- `aerobeat-tool-content-authoring` now emits the canonical song timing block during import, validates the same field shape, and strips chart-local `timing` during chart upsert so the rollout does not silently reintroduce chart-owned timing truth.
+- The earlier QA contradiction around `stopSegments` enforcement is genuinely repaired by `b6e2b8d`; current shared-validator and authoring-validator behavior now agree.
+- Remaining `timing.bpm` mentions in touched scope are negative/forbidden references, invalid fixtures, validator messages, or plan history only — not positive contract teaching.
+- The rollout stayed within the approved scope boundary: chart examples still carry chart-side snap/presentation metadata such as `timing.resolution`, but no touched repo now claims charts own canonical tempo/anchor/stop/meter truth, and no chart/gameplay-mode timing redesign was silently introduced.
+
+Audit conclusion: this song-timing contract section is ready to close before chart/gameplay-mode work resumes.
 
 ---
 
 ## Final Results
 
-**Status:** ⚠️ Partial / coder implementation complete across docs + content-core + authoring, and the QA-found shared-validator gap is now repaired, but independent QA rerun and audit closure are still pending
+**Status:** ✅ Complete
 
-**What We Built:** Landed the canonical docs/example updates in `aerobeat-docs`, the shared contract/fixture/validator updates in `aerobeat-content-core`, and the authoring/import/validation alignment in `aerobeat-tool-content-authoring` so song-owned timing truth is now taught, enforced, and emitted through `anchorMs`, `tempoSegments`, `stopSegments`, and `timeSignatureSegments`, while broader chart/gameplay-mode timing redesign remains deferred to later work.
+**What We Built:** Landed and independently audited the canonical docs/example updates in `aerobeat-docs`, the shared contract/fixture/validator updates in `aerobeat-content-core`, and the authoring/import/validation alignment in `aerobeat-tool-content-authoring` so song-owned timing truth is now taught, enforced, and emitted through `anchorMs`, `tempoSegments`, `stopSegments`, and `timeSignatureSegments`, while broader chart/gameplay-mode timing redesign remains deferred to later work.
 
-**Reference Check:** `REF-02` through `REF-06` were updated to match the approved timing direction from `REF-01`, and the touched product docs/examples now consistently teach the approved song-owned timing contract with no positive `timing.bpm` teaching left in scope. QA found a concrete repo-to-repo contradiction during verification — `aerobeat-tool-content-authoring` enforced `stopSegments[*] = {startBeat, durationMs}` while `aerobeat-content-core` under-validated those entries — and bead `oc-7i7` has now repaired that shared-validator gap in `aerobeat-content-core` commit `b6e2b8d`. Chart-side timing specifics remain intentionally deferred for the separate follow-up work already called out by the plan.
+**Reference Check:** `REF-02` through `REF-06` now match the approved timing direction from `REF-01`. The touched product docs/examples consistently teach song-owned canonical timing truth, `aerobeat-content-core` and `aerobeat-tool-content-authoring` now enforce the same field-level contract, and no positive `timing.bpm` teaching remains in the touched product scope. The only real contradiction found during rollout — missing shared enforcement for `stopSegments[*].durationMs` — was repaired by `aerobeat-content-core` commit `b6e2b8d`, and my independent reruns confirmed that repair plus the full repo-level validations.
 
 **Commits:**
 - `67036c0` - `aerobeat-docs`: Lock docs into canonical song timing contract
