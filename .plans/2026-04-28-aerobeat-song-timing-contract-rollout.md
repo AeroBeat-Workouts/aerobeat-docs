@@ -133,9 +133,11 @@ This rollout therefore starts with a cross-repo audit rather than immediate edit
 **Files Created/Deleted/Modified:**
 - audit-driven repo scope only
 
-**Status:** ⚠️ Partial / `aerobeat-content-core` complete, authoring repo still pending
+**Status:** ✅ Complete
 
-**Results:** Repo-owned implementation beads were created as `oc-jox` (`aerobeat-content-core`) and `aerobeat-tool-content-authoring-ad9` (`aerobeat-tool-content-authoring`). `aerobeat-content-core` is now landed: `data_types/song.gd` requires song-owned `timing`; `Song.validate_timing_shape()` enforces `anchorMs`, `tempoSegments`, `stopSegments`, and `timeSignatureSegments` while explicitly rejecting `timing.bpm`; `data_types/chart_envelope.gd` no longer requires chart-local `timing`; `validators/content_package_validator.gd` now emits song-timing contract issues; valid and invalid fixtures were refreshed to move timing truth into songs; and new contract/validator tests were added for the approved timing shape. Validation run in `aerobeat-content-core`: `godot --headless --path .testbed --script res://../tests/run_contract_tests.gd` (passed). Commit pushed to `main`: `c4894f2` (`Add canonical song timing contract validation`). The `aerobeat-tool-content-authoring` follow-up bead remains open and still needs authoring/import/validation alignment against this newly enforced shared contract.
+**Results:** Repo-owned implementation beads were created as `oc-jox` (`aerobeat-content-core`) and `aerobeat-tool-content-authoring-ad9` (`aerobeat-tool-content-authoring`). `aerobeat-content-core` landed first: `data_types/song.gd` now requires song-owned `timing`; `Song.validate_timing_shape()` enforces `anchorMs`, `tempoSegments`, `stopSegments`, and `timeSignatureSegments` while explicitly rejecting `timing.bpm`; `data_types/chart_envelope.gd` no longer requires chart-local `timing`; `validators/content_package_validator.gd` emits song-timing contract issues; valid and invalid fixtures were refreshed to move timing truth into songs; and new contract/validator tests were added for the approved timing shape. Validation run in `aerobeat-content-core`: `godot --headless --path .testbed --script res://../tests/run_contract_tests.gd` (passed). Commit pushed to `main`: `c4894f2` (`Add canonical song timing contract validation`).
+
+`aerobeat-tool-content-authoring` is now landed too: `services/importers/audio_metadata_import_service.gd` emits song records with canonical song-owned timing (`anchorMs`, `tempoSegments`, `stopSegments`, `timeSignatureSegments`) and no `timing.bpm` shortcut; `services/validation/validate_package_service.gd` now requires/validates the canonical song timing block and rejects `timing.bpm`; `services/authoring/chart_authoring_service.gd` strips chart-local `timing` on upsert so authored charts stop carrying stale timing truth; `tests/test_chart_authoring_service.gd` was updated to validate the content-core fixture’s song timing ownership; and new focused tests were added for audio-import timing output and validator rejection of the forbidden `timing.bpm` shortcut. Validation run in `aerobeat-tool-content-authoring`: `godot --headless --path .testbed --script res://../tests/run_tool_tests.gd` (passed). Commit pushed to `main`: `96c6313` (`Align authoring tool to song timing contract`).
 
 ---
 
@@ -181,17 +183,18 @@ This rollout therefore starts with a cross-repo audit rather than immediate edit
 
 ## Final Results
 
-**Status:** ⚠️ Partial / docs + content-core complete, authoring repo still pending
+**Status:** ⚠️ Partial / coder implementation complete across docs + content-core + authoring; QA/audit still pending
 
-**What We Built:** Landed the canonical docs/example updates in `aerobeat-docs` and the shared contract/fixture/validator updates in `aerobeat-content-core` so song-owned timing truth is now both taught and enforced through `anchorMs`, `tempoSegments`, `stopSegments`, and `timeSignatureSegments`, while keeping broader chart/gameplay-mode timing redesign deferred to later work.
+**What We Built:** Landed the canonical docs/example updates in `aerobeat-docs`, the shared contract/fixture/validator updates in `aerobeat-content-core`, and the authoring/import/validation alignment in `aerobeat-tool-content-authoring` so song-owned timing truth is now taught, enforced, and emitted through `anchorMs`, `tempoSegments`, `stopSegments`, and `timeSignatureSegments`, while broader chart/gameplay-mode timing redesign remains deferred to later work.
 
-**Reference Check:** `REF-02` through `REF-06` were updated to match the approved timing direction from `REF-01`, and `aerobeat-content-core` now encodes that same approved contract in its shared song validation surface. No deliberate deviations were introduced; chart-side timing specifics remain intentionally deferred for the separate follow-up work already called out by the plan.
+**Reference Check:** `REF-02` through `REF-06` were updated to match the approved timing direction from `REF-01`, `aerobeat-content-core` now encodes that approved contract in its shared song validation surface, and `aerobeat-tool-content-authoring` now validates and emits the same contract while stripping stale chart-local timing on authored charts. No deliberate deviations were introduced; chart-side timing specifics remain intentionally deferred for the separate follow-up work already called out by the plan.
 
 **Commits:**
 - `c4894f2` - `aerobeat-content-core`: Add canonical song timing contract validation
 - Pending coder commit from `aerobeat-docs` implementation bead `aerobeat-docs-8fn`
+- `96c6313` - `aerobeat-tool-content-authoring`: Align authoring tool to song timing contract
 
-**Lessons Learned:** The docs/examples layer was the clean first landing zone, but the real contract lock happened once `aerobeat-content-core` stopped treating chart-local timing as required and started validating song-owned timing explicitly. The remaining important follow-up is tool-side authoring/import alignment so creators can emit the enforced contract without hand-editing fixtures.
+**Lessons Learned:** The docs/examples layer was the clean first landing zone, but the real contract lock happened once `aerobeat-content-core` stopped treating chart-local timing as required and started validating song-owned timing explicitly. The final coder-side piece was making the authoring tool emit and enforce the same song timing shape while refusing to keep stale chart-local timing attached to newly authored charts.
 
 ---
 
