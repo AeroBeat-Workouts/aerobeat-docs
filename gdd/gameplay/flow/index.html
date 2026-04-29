@@ -5400,42 +5400,37 @@
 <p>The "Flow" module focuses on large, continuous movements using virtual bats. It is designed to improve range of motion, core stability, and balance.</p>
 <h3 id="the-loop">The Loop<a class="headerlink" href="#the-loop" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>The Beat:</strong> Targets fly toward the athlete from a central portal.</li>
-<li><strong>The Action:</strong> The athlete must swing their bats (Left=Black, Right=White) through the targets in the direction indicated.</li>
-<li><strong>The Feedback:</strong> Successful hits create a satisfying slice effect and maintain the combo.</li>
+<li><strong>The Beat:</strong> Flow charts author a flat <code>beats:</code> list under <code>feature: flow</code>.</li>
+<li><strong>The Action:</strong> The athlete swings through beats using the authored <code>type</code>, <code>placement</code>, and optional <code>direction</code> guidance.</li>
+<li><strong>The Feedback:</strong> Successful hits create a satisfying slice effect and maintain combo.</li>
 <li><strong>The Workout:</strong> Focuses on core rotation, shoulder mobility, and lower body stability.</li>
 </ol>
 <h3 id="mechanics">Mechanics<a class="headerlink" href="#mechanics" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Bats:</strong> The athlete wields two bats. Left is Black, Right is White.</li>
-<li><strong>360 Target Ring:</strong> Targets spawn along a 360-degree ring with two distinct zones:<ul>
-<li><strong>Outer Ring:</strong> Requires full arm extension and body movement.</li>
-<li><strong>Inner Ring:</strong> Requires half-movements. Used for rapid "drumming" or "rope swing" rhythms.</li>
-</ul>
-</li>
-<li><strong>Directional Swings:</strong> Targets have arrows indicating the required cut direction.</li>
-<li><strong>Trails (Arcs):</strong> Visual lines that guide the athlete's arm movement from one position to another, sometimes without targets, creating "Zen-like" flow or setting up the next hit.</li>
+<li><strong>Primary Swing Families:</strong> <code>swing_left</code>, <code>swing_right</code>, <code>trail_left</code>, <code>trail_right</code>, <code>warn_left</code>, <code>warn_right</code>, <code>reward_left</code>, and <code>reward_right</code>.</li>
+<li><strong>Body-Movement Families:</strong> <code>squat</code>, <code>lean_left</code>, <code>lean_right</code>, <code>knee_left</code>, <code>knee_right</code>, <code>leg_lift_left</code>, <code>leg_lift_right</code>, and <code>run_in_place</code>.</li>
+<li><strong>Placement:</strong> <code>placement</code> describes where around the athlete the beat passes.</li>
+<li><strong>Direction:</strong> <code>direction</code> describes swing/follow-through guidance. When omitted for <code>swing_*</code>, <code>trail_*</code>, and <code>warn_*</code>, it inherits from <code>placement</code>.</li>
 <li><strong>No Guard:</strong> There are no blocking targets in Flow mode.</li>
 </ul>
 <h3 id="obstacles-fitness-prefabs">Obstacles &amp; Fitness Prefabs<a class="headerlink" href="#obstacles-fitness-prefabs" title="Permanent link">&para;</a></h3>
-<p>Obstacles in Flow work similarly to Boxing but include specialized fitness movements:
-*   <strong>Walls/Bars:</strong> Force squats and leans. <strong>Note:</strong> Only the <strong>Head</strong> is tracked for collision.
-*   <strong>Leg Lifts:</strong> Triangular obstacles requiring the athlete to lift one leg horizontally while balancing. <strong>Note:</strong> The leg lift itself is not scored, only the head position avoiding the obstacle. Athletes can modify this action for safety.
-*   <strong>Run In Place:</strong> Rapid sequences of obstacles requiring a running motion. <strong>Note:</strong> Safety is priority; athletes can replace this with stretching or low-impact movement if needed.
-*   <strong>Coaching Callouts:</strong> For complex fitness moves (Leg Lifts, Run In Place), coaches are encouraged to verbally prepare the athlete for the weight shift, especially at lower difficulties.</p>
+<p>Flow keeps the authored chart shape flat rather than splitting a separate obstacle lane. Body-movement beats still live in the same <code>beats:</code> list.</p>
+<ul>
+<li><strong>Squats and Leans:</strong> Use <code>squat</code>, <code>lean_left</code>, and <code>lean_right</code>.</li>
+<li><strong>Leg Lifts:</strong> Use <code>leg_lift_left</code> and <code>leg_lift_right</code>.</li>
+<li><strong>Run In Place:</strong> Use <code>run_in_place</code>.</li>
+<li><strong>Coaching Callouts:</strong> For complex fitness moves, coaches are encouraged to verbally prepare the athlete for the weight shift, especially at lower difficulties.</li>
+</ul>
 <h3 id="portals">Portals<a class="headerlink" href="#portals" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Active Portal:</strong> Targets and obstacles spawn from the currently active portal.</li>
-<li><strong>Rotation:</strong> Just like in Boxing, portals can appear 360 degrees around the player. The choreography (swings) should guide the player's rotation to face the new portal.</li>
+<li><strong>Active Portal:</strong> <code>portal</code> identifies the origin/presentation source when the beat needs explicit portal placement.</li>
+<li><strong>Rotation:</strong> Just like in Boxing, portals can appear 360 degrees around the player. The choreography should guide the player's rotation toward the next readable swing.</li>
 </ul>
 <h3 id="view-modes">View Modes<a class="headerlink" href="#view-modes" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Portal View:</strong> Targets emerge from the active portal in 3D space.</li>
-<li><strong>Track View:</strong> The 360 ring is mapped to linear lanes.<ul>
-<li><em>Top/Bottom Targets:</em> Mapped to height.</li>
-<li><em>Side Targets:</em> Mapped to left/right lanes.</li>
-</ul>
-</li>
+<li><strong>Portal View:</strong> Flow beats are rendered from their authored portal/placement relationship in 3D space.</li>
+<li><strong>Track View:</strong> The same authored beats can be adapted into track-like presentation without changing the chart contract.</li>
 </ul>
 
 
@@ -5457,7 +5452,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 23, 2026 03:19:55 UTC">January 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 29, 2026 20:25:15 UTC">April 29, 2026</span>
   </span>
 
     

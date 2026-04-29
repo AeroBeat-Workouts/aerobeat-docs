@@ -5623,13 +5623,13 @@
 <li>workout roots do not carry reusable trigger graphs or per-set overlay lists</li>
 </ul>
 <h3 id="3a-boxing-chart-payload-direction">3a. Boxing chart payload direction<a class="headerlink" href="#3a-boxing-chart-payload-direction" title="Permanent link">&para;</a></h3>
-<p>The two demo boxing charts now teach the stronger structured event payload direction:</p>
+<p>The two demo boxing charts intentionally teach the <strong>locked flattened boxing contract</strong> for this package example:</p>
 <ul>
-<li>strike events use fields like <code>type</code>, <code>hand</code>, <code>strike</code>, <code>zone</code>, and <code>portal</code></li>
-<li>guard events use <code>type</code>, <code>zone</code>, <code>portal</code>, and <code>holdMs</code></li>
-<li>obstacle events use <code>type</code>, <code>avoid</code>, <code>shape</code>, <code>portal</code>, and <code>durationMs</code></li>
-<li>the old <code>eventType</code> / <code>laneHint</code> shorthand is intentionally absent from the canonical demo</li>
+<li>authored entries live under <code>beats:</code></li>
+<li>each beat uses required <code>start</code>, optional inclusive <code>end</code>, required concrete <code>type</code>, and optional integer <code>portal</code></li>
+<li>the older boxing-only payload fields such as <code>hand</code>, <code>strike</code>, <code>zone</code>, <code>holdMs</code>, and <code>durationMs</code> are intentionally absent</li>
 </ul>
+<p>There is not yet a checked-in demo Flow chart package example in this docs repo. For the locked Flow contract, use the dedicated choreography guide plus the architecture chart-contract docs.</p>
 <h3 id="4-sqlite-authority-boundaries">4. SQLite authority boundaries<a class="headerlink" href="#4-sqlite-authority-boundaries" title="Permanent link">&para;</a></h3>
 <p>The SQL examples show the difference between:</p>
 <ul>
@@ -5676,7 +5676,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 28, 2026 15:12:03 UTC">April 28, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 29, 2026 20:25:15 UTC">April 29, 2026</span>
   </span>
 
     
