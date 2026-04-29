@@ -51,7 +51,7 @@ aerobeat-content-core/
 │   └── content_package_validator.gd
 ├── globals/
 │   ├── aero_content_schema.gd
-│   ├── content_mode.gd
+│   ├── content_feature.gd
 │   ├── content_difficulty.gd
 │   └── interaction_family.gd
 ├── fixtures/
@@ -130,8 +130,8 @@ The exact filenames can evolve, but the **shape categories should not**: contrac
 
 - `globals/aero_content_schema.gd`
   - schema ids, schema families, version constants, and compatibility helpers
-- `globals/content_mode.gd`
-  - stable mode ids such as `boxing`, `dance`, `step`, `flow`
+- `globals/content_feature.gd`
+  - stable feature ids such as `boxing`, `dance`, `step`, `flow`
 - `globals/content_difficulty.gd`
   - canonical difficulty vocabulary
 - `globals/interaction_family.gd`

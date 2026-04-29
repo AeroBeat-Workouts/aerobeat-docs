@@ -24,7 +24,7 @@ When creating a Workout, a creator uses the community browser and tooling to pic
 * **Gameplay:** What gameplay style is this Workout made for? (`Boxing`, `Flow`, etc.)
 * **Difficulty Intent:** Which chart difficulty is this Workout targeting (`easy`, `medium`, `hard`, `pro`)?
 * **Songs / Selections:** Which exact songs, charts, and sets are included?
-* **Chart Choice:** The package should resolve to exact chart ids and set ids rather than loose song/mode/difficulty matching.
+* **Chart Choice:** The package should resolve to exact chart ids and set ids rather than loose song/feature/difficulty matching.
 * **Environments:** Optional. Choose one environment per workout set.
 * **Assets:** Optional. Choose at most one asset per entry-selectable asset type (`gloves`, `targets`, `obstacles`, `trails`) for each workout set.
 * **Coaching:** Optional. Attach workout-level coaching configuration through the package's single `coaches/coach-config.yaml` file. Disabled coaching uses `enabled: false`; enabled coaching must fully wire the roster, warmup/cooldown videos, and one overlay audio clip per workout set.

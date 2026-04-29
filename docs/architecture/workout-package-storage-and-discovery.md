@@ -224,7 +224,7 @@ setOrder:
 
 #### Notes
 
-- `setOrder` resolves to exact `setId` values; it does not use loose song/mode/difficulty matching.
+- `setOrder` resolves to exact `setId` values; it does not use loose song/feature/difficulty matching.
 - Full composition details live in `sets/*.yaml`, not in `workout.yaml`.
 - Total runtime should still be derived from referenced media/song durations rather than stored as a manual authoritative duration field.
 

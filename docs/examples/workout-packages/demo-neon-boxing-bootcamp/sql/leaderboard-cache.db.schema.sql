@@ -21,7 +21,7 @@ CREATE TABLE leaderboard_entries (
   performance_time_ms INTEGER,
   achieved_at TEXT NOT NULL,
   difficulty TEXT,
-  mode TEXT,
+  feature TEXT,
   input_profile TEXT,
   is_local_player INTEGER NOT NULL DEFAULT 0,
   PRIMARY KEY (leaderboard_scope, rank, score_id)
