@@ -231,28 +231,17 @@ This preserves AeroBeat's input-agnostic architecture:
 - validated compatibility can be recorded without pretending every device behaves identically
 - device-specific extensions can be added later without forking the entire content model
 
-### Input profile fields
+### Compatibility metadata remains follow-up work
 
-Use profile fields to express compatibility without making the profile the primary content target.
+Use interaction-family thinking to keep charts device-agnostic, but do not treat the current boxing pass as authoring chart fields such as `interactionFamily`, `supportedInputProfiles`, or `validatedInputProfiles`.
 
-- `interactionFamily` = what movement semantics the chart expects
-- `supportedInputProfiles` = profiles the chart is intended to run on
-- `validatedInputProfiles` = profiles that have actually been tested and approved
-
-For example, a Boxing chart targets `gesture_2d`, supports `mediapipe_camera`, `keyboard_debug`, and `gamepad_virtual_presence`, but only marks `mediapipe_camera` as validated initially.
+Those compatibility/profile details may still be recorded elsewhere in tooling or promoted into a future shared chart contract, but they are not part of the locked flattened boxing authored schema documented above.
 
 ## View modes belong mostly to runtime presentation
 
 View modes such as Portal View, Track View, 3-Portal View, and 360-Portal View are treated primarily as **presentation and runtime interpretation concerns**, not as separate chart families.
 
-Charts include presentation hints such as:
-
-- preferred views
-- preferred portal layout
-- mirror-camera mode preference
-- travel-time or approach hints where authoring truly depends on them
-
-The same authored event stream remains portable across views by default.
+For the current boxing pass, authored charts should stay portable by expressing only the flattened boxing `beats` payload. Do not teach boxing-specific chart fields for preferred views, portal layouts, mirror-camera preferences, or similar presentation hints here.
 
 ### Authoring rule
 
@@ -265,11 +254,11 @@ Then let the runtime render that interaction as:
 - folded 360-to-front fallback layouts
 - multi-portal or simplified mobile representations
 
-If a future mode truly requires view-specific authored data that cannot be derived, add that as an extension field rather than replacing the content hierarchy.
+If a future feature truly requires view-specific authored data that cannot be derived, add that as an explicit extension later rather than treating it as part of the current boxing contract.
 
 ### Runtime-visual ownership rule
 
-Content may declare portable presentation hints, but concrete visual realizations of those hints stay out of the content lane. 2D lane renderers, 3D portal implementations, multi-portal layouts, world-space spawn systems, and other content-consuming runtime visuals belong in `aerobeat-feature-core` or concrete `aerobeat-feature-*` repos. They may depend on `aerobeat-content-core`, but they do not move into it.
+Concrete visual realizations stay out of the current content lane. 2D lane renderers, 3D portal implementations, multi-portal layouts, world-space spawn systems, and other content-consuming runtime visuals belong in `aerobeat-feature-core` or concrete `aerobeat-feature-*` repos. They may depend on `aerobeat-content-core`, but they do not move into it.
 
 ## Package-level composition recap
 
