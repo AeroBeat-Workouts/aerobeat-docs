@@ -31,7 +31,7 @@ As of 2026-04-27, the current naming and shape direction is:
 - `Chart` records do not link to songs or sets.
 - Athlete/device-specific timing calibration such as song offset does not belong in durable content data; it belongs in athlete/profile/device state.
 - Workout coaching is owned by the package's single `coaches/coach-config.yaml`; enabled coaching requires roster + warmup + cooldown + an overlay registry whose records use `overlayId`, while set files reference that registry via `coachingOverlayId`.
-- Boxing charts should be documented and exemplified with structured event payloads (`type`, `hand`, `strike`, `zone`, `portal`, etc.) rather than legacy shorthand fields such as `eventType` and `laneHint`.
+- Boxing charts should be documented and exemplified with a flat `beats` list where each beat has `start`, optional inclusive `end`, concrete `type`, and optional integer `portal` (`0-11`) rather than legacy shorthand or nested boxing payload fields.
 
 ## Canonical ownership
 
@@ -97,18 +97,17 @@ It owns fields such as:
 
 - `chartId`
 - `chartName`
-- `mode`
+- `feature`
 - difficulty
-- interaction family target
-- optional supported / validated input profiles
-- beat-timed event stream authored against the song-owned canonical timing truth
-- optional presentation hints needed to render the chart well only when those hints are truly part of durable content
+- beat-timed authored content aligned to the song-owned canonical timing truth
+- boxing-specific `beats` payloads for the current locked boxing pass
+- any future cross-feature chart fields that are explicitly promoted into the shared contract later
 
 A chart represents **one playable difficulty / compatibility slice**, not an all-difficulties megafile.
 
 A chart does **not** point back to a song or forward to a set. That wiring belongs to the set layer.
 
-Mode-global tuning such as hit windows should not live in authored chart data. Those belong in feature/mode rules rather than in each chart record.
+Feature-global tuning such as hit windows should not live in authored chart data. Those belong in feature rules rather than in each chart record.
 
 #### Why difficulty belongs here
 
@@ -165,9 +164,9 @@ Workout runtime length is derived from the referenced content rather than stored
 
 ## Shared chart envelope
 
-AeroBeat uses **one shared chart envelope** across gameplay modes, with **mode-specific payloads** inside it.
+AeroBeat uses **one shared chart envelope** across gameplay features, with **feature-specific payloads** inside it.
 
-This keeps tooling, loading, validation, and runtime contracts coherent without pretending that Boxing and Step are authored with the exact same event vocabulary.
+This keeps tooling, loading, validation, and runtime contracts coherent without pretending that Boxing and Step are authored with the exact same payload vocabulary.
 
 The shared chart envelope is owned by `aerobeat-content-core` because it is part of the durable authored-content contract. Feature repos consume it and interpret it.
 
@@ -178,30 +177,31 @@ All charts expose a common envelope containing fields such as:
 - `schemaId`
 - `chartId`
 - `chartName`
-- `mode`
+- `feature`
 - `difficulty`
-- `interactionFamily`
-- `supportedInputProfiles`
-- `validatedInputProfiles`
-- `timing` (chart-side timing details remain separate follow-up contract work; the song owns canonical timing truth now)
-- `presentationHints`
-- `scoringHints`
-- `events`
 
-### Mode-specific payloads
+For the current locked boxing pass, the authored gameplay payload lives under `beats`, not `events`, and each boxing beat uses the flat shape `start` / `end?` / `type` / `portal?`.
 
-The meaning of `events` depends on the chart mode.
+### Feature-specific payloads
 
-Examples:
+The meaning of the authored gameplay payload depends on the chart feature.
 
-- **Boxing:** strike, guard, obstacle, stance, knee, rotation cue
-- **Dance:** limb pose, direction, hold, travel, formation cue
-- **Step:** pad lane, hold, jump, mine, modifier
-- **Flow:** saber-style cut direction, lane, obstacle, path, gesture hold
+For **Boxing**, the current locked authored payload is a flat `beats` list using concrete move `type` values such as:
 
-The loader contract is shared. The event schema is not identical across all modes.
+- `jab`, `cross`
+- `hook_left`, `hook_right`
+- `uppercut_left`, `uppercut_right`
+- `guard`
+- `orthodox`, `southpaw`
+- `squat`, `lean_left`, `lean_right`
+- `sidestep_left`, `sidestep_right`
+- `knee_left`, `knee_right`
+- `leg_lift_left`, `leg_lift_right`
+- `run_in_place`
 
-That is the correct compromise.
+Boxing does **not** author `zone`, symbolic portal strings, nested subtype payloads, or old boxing timing fields such as `holdMs` / `durationMs` in this pass.
+
+Dance, Step, and Flow payload details remain follow-up work. The loader contract is shared, but this document does not try to prematurely force their authored vocabularies to match boxing exactly.
 
 ## Interaction families, not raw devices
 
@@ -301,7 +301,7 @@ It is **not** responsible for:
 
 ### Chart contract
 
-The `Chart` contract is responsible for one exact playable authored event stream for one mode/difficulty slice.
+The `Chart` contract is responsible for one exact playable authored sequence for one feature/difficulty slice.
 
 It is **not** responsible for:
 

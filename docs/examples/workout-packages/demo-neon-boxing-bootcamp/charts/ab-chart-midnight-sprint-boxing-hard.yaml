@@ -5,64 +5,49 @@ recordVersion: 1
 createdByTool: aerobeat-tool-content-authoring
 createdByToolVersion: 0.1.0
 createdAt: 2026-04-25T22:00:00Z
-updatedAt: 2026-04-27T13:00:00Z
+updatedAt: 2026-04-29T09:40:00Z
 
 # Chart identity is what the set selects directly.
 chartId: ab-chart-midnight-sprint-boxing-hard
 chartName: Midnight Sprint Hard Boxing
 
-# Charts stand alone as reusable playable slices.
-# They do not point back to songs or outward to sets.
-mode: boxing
+# Boxing charts declare the feature directly.
+feature: boxing
 
 # Difficulty is part of the exact playable chart slice.
 difficulty: hard
 
-# The chart targets movement semantics, not a raw device.
-interactionFamily: gesture_2d
-
-# These profiles are intended to work with this chart.
-supportedInputProfiles:
-  - mediapipe_camera
-  - keyboard_debug
-
-# These are the profiles actually validated so far.
-validatedInputProfiles:
-  - mediapipe_camera
-
-# Timing and presentation hints shape playback expectations.
-timing:
-  resolution: 16
-presentationHints:
-  preferredViews:
-    - portal
-scoringHints:
-  comboModel: standard
-
-# Short sample event list for readability.
-# Boxing examples use the stronger structured payload fields instead of eventType/laneHint shorthand.
-events:
-  - beat: 6
-    type: strike
-    hand: left
-    strike: jab
-    zone: left_high
-    portal: center
-  - beat: 8
-    type: strike
-    hand: right
-    strike: jab
-    zone: right_high
-    portal: center
-  - beat: 10
-    type: obstacle
-    avoid: squat
-    shape: bar_horizontal
-    portal: center
-    durationMs: 500
-  - beat: 14
-    type: strike
-    hand: left
-    strike: hook
-    zone: left_high
-    portal: center
+# Short sample beat list for readability.
+beats:
+  - start: 6.0
+    type: jab
+  - start: 8.0
+    type: cross
+  - start: 10.0
+    end: 11.0
+    type: squat
+  - start: 14.0
+    type: hook_left
+    portal: 10
+  - start: 16.0
+    type: hook_right
+    portal: 2
+  - start: 18.0
+    type: leg_lift_left
+    portal: 10
+  - start: 20.0
+    type: leg_lift_right
+    portal: 2
+  - start: 22.0
+    end: 25.0
+    type: southpaw
+  - start: 26.0
+    type: sidestep_left
+    portal: 9
+  - start: 28.0
+    type: sidestep_right
+    portal: 3
+  - start: 30.0
+    type: uppercut_left
+  - start: 32.0
+    type: uppercut_right

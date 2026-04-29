@@ -1,62 +1,59 @@
 # Creating Boxing Choreography
 
-Boxing is the core gameplay of AeroBeat. A good boxing chart is a conversation between the music and the athlete's body. It uses punches to express rhythm and obstacles to force body movement (squats and leans).
+Boxing is the core gameplay of AeroBeat. A good boxing chart is a conversation between the music and the athlete's body. It uses punches, guards, footwork, stance changes, and body-movement cues to express rhythm while staying easy for a choreographer to sight-read.
 
 ## 🛠️ The Boxing Studio
 
 *   **Tool:** **Boxing Choreography Studio**
-*   **Grid:** 5 Zones (Left, Right, Low-Left, Low-Right, Center).
-*   **Perspective:** 3D Portal View (Targets fly towards you).
+*   **Perspective:** 3D Portal View for authoring and review.
 *   **Content Model:** A boxing chart is a reusable **Chart** record. The song owns audio/timing, the chart owns one concrete playable difficulty, and package-local **Set** records link charts to songs, environments, asset selections, and optional coaching overlays.
-*   **Targeting Rule:** Author against **interaction semantics** (`gesture_2d`) rather than hard-binding the chart to a raw device. MediaPipe camera tracking is the first validated input profile, not the core content abstraction.
+*   **Targeting Rule:** Author boxing against movement intent, not raw device coordinates. Boxing charts use concrete move `type` values plus an optional integer `portal` target from `0` to `11` when a move should land somewhere other than the default front target.
 
-## 🥊 Mechanics & Objects
+## 🥊 Mechanics & Move Vocabulary
 
-### Targets (Punches)
+### Punches
 
-*   **Color Coding:**
-    *   **Black:** Left Hand.
-    *   **White:** Right Hand.
-*   **Positioning:** Targets spawn at specific heights relative to the user's calibration.
-    *   **Standard:** Arm height (Left/Right).
-    *   **Low:** Crouch height (Left/Right).
-    *   **Center:** Reserved for **Guard/Block** targets.
-*   **Direction:** The arrow on the target dictates the punch type.
-    *   *Up Arrow:* Uppercut (Left or right vertical punch).
-    *   *Side Arrow:* Hook (Left or right horizontal punch).
-    *   *Dot:* Jab Or Cross (Left or right hand forward punch).
+Concrete punch types are authored directly in the chart:
 
-### Obstacles (Movement)
+*   `jab`
+*   `cross`
+*   `hook_left`
+*   `hook_right`
+*   `uppercut_left`
+*   `uppercut_right`
 
-Obstacles spawn within a specific radius around the active portal, using a separate positioning system to force body movement.
+Use the move name that the athlete should perform. Do not split punches into nested payloads like `type: strike` plus extra `hand` / `strike` / `zone` fields.
 
-> **Tracking Note:** Collision is determined solely by the player's **Head** position.
+### Guards, Stance, and Footwork
 
-*   **Vertical Wall:** Forces a lean (engages core).
-*   **Horizontal Bar:** Forces a squat (engages legs).
-*   **Angled Wall:** Forces a specific body rotation.
+These moves are also authored as direct `type` values:
 
-### Stance Changes (Form)
+*   `guard`
+*   `orthodox`
+*   `southpaw`
+*   `sidestep_left`
+*   `sidestep_right`
+*   `run_in_place`
 
-Stance indicators appear on the track to guide the athlete's foot placement. While the game does not track feet in Boxing mode, proper stance is critical for power and flow.
+`orthodox` and `southpaw` remain normal beat types in authored YAML. The boxing feature interprets them internally as stance-state changes without needing a special nested payload shape.
 
-*   **Orthodox:** Swap body position so your **Left Foot** is pointing forward.
-*   **Southpaw:** Swap body position so your **Right Foot** is pointing forward.
+### Lower-Body Moves
 
-> **Note:** Failing to change your body to the correct side does not affect your score. It is merely a guide to keep the athlete in proper form for the upcoming choreography, as determined by you (the choreographer).
+Lower-body intensity comes from concrete authored beat types too:
 
-### Knee Strikes (Legs)
+*   `squat`
+*   `lean_left`
+*   `lean_right`
+*   `knee_left`
+*   `knee_right`
+*   `leg_lift_left`
+*   `leg_lift_right`
 
-Knee strikes add lower-body intensity to the workout.
+These remain human-readable authored moves. Do not author boxing-only subtype objects like `obstacle.avoid`, `knee.side`, or `stance.stance`.
 
-*   **Target:** A specific "Knee Target" (Black or White) that appears low in the portal.
-*   **Action:** Lift the corresponding knee (Left=Black, Right=White) to intercept the target.
-*   **Placement:** These are always placed on the **Bottom Row** of the grid to align with the knee lift height.
-*   **Tracking:** The engine does not track legs in Boxing mode. Instead, it checks if the player's **Head** is horizontally aligned with the target lane. This allows for accessibility modifications (like substituting a Knee Strike for a Block/Crunch).
+## 📦 Boxing Chart Shape
 
-## 📦 Boxing + MediaPipe v1 Chart Shape
-
-The first shipping boxing chart format uses a shared chart envelope with a boxing-specific event payload. Treat the structured payload fields in this guide as canonical; older shorthand like `eventType` / `laneHint` is legacy teaching material and should not be used for new docs/examples.
+For this pass, the boxing chart contract is intentionally flat and boxing-specific.
 
 ### Shared boxing chart fields
 
@@ -64,203 +61,140 @@ A Boxing chart includes:
 
 *   `schemaId`: `aerobeat.chart.boxing.v1`
 *   `chartId`
-*   `mode`: `boxing`
+*   `chartName`
+*   `feature`: `boxing`
 *   `difficulty`
-*   `interactionFamily`: `gesture_2d` for camera-first boxing
-*   `supportedInputProfiles` and `validatedInputProfiles`
-*   `timing`: aligned to song/conductor time
-*   `presentationHints`: view preferences and portal-layout hints
-*   `scoringHints`: hit windows and combo model
-*   `events`: timed boxing actions
-*   `metadata`: author, tags, notes
+*   `beats`: timed boxing actions
 
-### Event vocabulary
+For boxing authoring in this pass:
 
-For Boxing + MediaPipe v1, the authoring vocabulary focuses on athlete intent rather than device details:
+*   use `feature`, not `mode`
+*   use `beats`, not `events`
+*   do **not** add a chart-level `beatSpace`
+*   do **not** add authored boxing `zone`
+*   do **not** use symbolic portal strings such as `center`, `left`, or `right`
+*   do **not** use old boxing timing fields such as `holdMs` or `durationMs`
 
-*   `strike`
-    *   `hand`: `left` or `right`
-    *   `strike`: `jab`, `cross`, `hook`, `uppercut`
-    *   `zone`: `left_high`, `right_high`, `left_low`, `right_low`, `center`
-*   `guard`
-    *   `zone`: `center`
-    *   `holdMs`
-*   `obstacle`
-    *   `avoid`: `squat`, `lean_left`, `lean_right`, `rotate_left`, `rotate_right`
-    *   `shape`
-    *   `durationMs`
-*   `stance`
-    *   `stance`: `orthodox` or `southpaw`
-    *   `scored`: usually `false`
-*   `knee`
-    *   `side`: `left` or `right`
-    *   `zone`: usually low
+### Beat shape
+
+Each boxing beat has:
+
+*   required float `start`
+*   optional inclusive float `end`
+*   required concrete `type`
+*   optional integer `portal` in `0-11` (defaults to `0`)
+
+Author only the information the choreographer actually needs to read. If a move should hit the default front target, omit `portal` and let it default to `0`.
 
 ### Spatial targeting rule
 
-Use `zone` and `portal` as symbolic, athlete-relative fields.
+`portal` is a concrete authored integer, not a symbolic string.
 
-*   `zone` expresses where the action lands relative to the active portal and the athlete.
-*   `portal` expresses which portal context is active, such as `center`, `left`, or `right`.
+Think of the values like a clock face around the athlete:
 
-Do not author Boxing + MediaPipe v1 against raw camera coordinates. The runtime maps authored boxing semantics onto MediaPipe landmarks.
+*   `0` = front
+*   `3` = right
+*   `6` = back
+*   `9` = left
+
+The values between them fill the ring. This keeps the authored chart compact while still supporting portal-aware presentation.
 
 ### Timing rule
 
-Event times align to conductor/song time, not render frames.
+Boxing timing is authored directly in beat-domain floats.
 
-Use one of these consistently per toolchain:
+*   `start` marks when the move begins.
+*   `end`, when present, is inclusive and means the move continues through that beat.
 
-*   beat-relative timing with measure/beat subdivision, or
-*   precise absolute song time such as seconds or milliseconds
-
-Whichever representation is used in authoring tools, runtime judgment resolves against the same conductor timeline.
+Use this one timing shape consistently instead of mixing alternate boxing-only fields like `holdMs` or `durationMs`.
 
 ### Concrete example
 
-```json
-{
-  "schemaId": "aerobeat.chart.boxing.v1",
-  "chartId": "boxing-song123-medium-gesture",
-  "mode": "boxing",
-  "difficulty": "medium",
-  "interactionFamily": "gesture_2d",
-  "supportedInputProfiles": ["mediapipe_camera", "keyboard_debug"],
-  "validatedInputProfiles": ["mediapipe_camera"],
-  "timing": {
-    "offsetMs": 0,
-    "resolution": 16
-  },
-  "presentationHints": {
-    "preferredViews": ["portal", "track"],
-    "portalMode": "front_3_portal",
-    "mirrorCamera": true
-  },
-  "scoringHints": {
-    "hitWindowMs": {
-      "perfect": 45,
-      "good": 90,
-      "ok": 140
-    },
-    "comboModel": "standard"
-  },
-  "events": [
-    {
-      "t": 1.875,
-      "type": "strike",
-      "id": "e1",
-      "hand": "left",
-      "strike": "jab",
-      "zone": "left_high",
-      "portal": "center",
-      "travelBeats": 2,
-      "intensity": 0.4
-    },
-    {
-      "t": 2.344,
-      "type": "strike",
-      "id": "e2",
-      "hand": "right",
-      "strike": "cross",
-      "zone": "right_high",
-      "portal": "center",
-      "travelBeats": 2,
-      "intensity": 0.6
-    },
-    {
-      "t": 3.750,
-      "type": "guard",
-      "id": "e3",
-      "zone": "center",
-      "holdMs": 250,
-      "portal": "center"
-    },
-    {
-      "t": 5.625,
-      "type": "obstacle",
-      "id": "e4",
-      "avoid": "squat",
-      "shape": "bar_horizontal",
-      "portal": "center",
-      "durationMs": 500
-    },
-    {
-      "t": 7.500,
-      "type": "stance",
-      "id": "e5",
-      "stance": "southpaw",
-      "portal": "center",
-      "scored": false
-    }
-  ],
-  "metadata": {
-    "author": "tbd",
-    "tags": ["cardio", "boxing", "camera-first"]
-  }
-}
+```yaml
+schemaId: aerobeat.chart.boxing.v1
+chartId: boxing-song123-medium
+chartName: Boxing Song 123 Medium
+feature: boxing
+difficulty: medium
+beats:
+  - start: 1.0
+    type: jab
+  - start: 2.0
+    type: cross
+  - start: 3.5
+    end: 4.5
+    type: guard
+  - start: 5.0
+    end: 6.0
+    type: squat
+  - start: 7.0
+    type: hook_left
+    portal: 9
+  - start: 8.0
+    type: southpaw
+  - start: 9.0
+    type: run_in_place
+    end: 12.0
 ```
 
-### Boxing authoring guidance for v1
+### Boxing authoring guidance for this pass
 
-*   Author for the movement the athlete performs, not the device they happen to be using.
-*   Prefer interaction-family compatibility over raw device branching.
-*   Keep portal and zone symbolic so the same chart can render in Portal View or Track View.
-*   Treat `travelBeats` and similar fields as presentation hints, not the core scoring semantics.
-*   Use `validatedInputProfiles` to record what has actually been tested.
+*   Author the athlete move directly as the `type`.
+*   Prefer the default front target and only add `portal` when placement matters.
+*   Keep beats flat and sight-readable.
+*   Use `end` only when the move truly spans beats.
+*   Keep the boxing contract local to boxing docs/examples for now rather than trying to force unresolved Flow, Dance, or Step details into the same vocabulary.
 
 ## 📐 Mapping Best Practices
 
 ### 1. Flow & Parity
 
-The "Golden Rule" of boxing mapping is **Flow**.
+The golden rule of boxing mapping is **flow**.
 
-*   **Alternation:** The most natural rhythm is L -> R -> L -> R.
-*   **Reset:** After a punch, the hand needs time to return to the "Guard" position.
-*   **Bad Parity:** Avoid "Double Vision" (placing a target directly behind another) or "Hand Tangles" (Cross-body Left punch followed immediately by a far-left punch).
+*   **Alternation:** The most natural rhythm is left-right alternation.
+*   **Reset:** After a punch, the hand needs time to return to guard.
+*   **Readability:** A flat beat list should still read like choreography, not like a serialized runtime object dump.
 
 ### 2. Fitness Intensity
 
-*   **Squats:** The most calorie-burning move. Use horizontal bars on the downbeats of the chorus.
-*   **Reach:** Use the outer lanes to force full arm extension.
-*   **Core:** Use vertical walls to force rapid side-to-side weaving.
+*   **Squats:** Use `squat` spans to create sustained lower-body work.
+*   **Reach:** Use non-default `portal` values to ask for fuller rotation or reach.
+*   **Core:** `lean_left` and `lean_right` can create quick weave patterns.
 
-### 3. 360 vs. 2D
+### 3. Portal Awareness
 
-When mapping in the Boxing SDK, you can place targets in a 360-degree ring.
+Boxing can still play well in portal-aware views without symbolic layout strings.
 
-*   **VR Players:** Will physically rotate to face the new portal.
-*   **2D Players:** The engine automatically "folds" these targets to the front.
-*   **Relative Lanes:** The 5-Zone Grid is always **relative to the Active Portal**. If the player turns 90 degrees right, "Left Arm" is still their physical left hand.
-
-#### Rotation Cues (The Fitness Flow)
-
-Instead of random portal jumps, use the choreography to guide the turn.
-
-*   **The Guide:** Use obstacles and directional punches (Hooks) to force body rotation towards the next target zone. Sequential portals in a single direction also create a strong guiding flow.
-*   **Example:** If the next portal is to the **Right**, end the current phrase with a **Left Hook** or **Right Cross**. This naturally rotates the athlete's torso to the right, setting them up for the new portal.
-*   **Visuals:** Every active portal emits a particle trail flowing towards the player to help them center their stance.
-
-> **Note:** **Simultaneous Portals** (targets coming from multiple directions) are a valid mechanic for high-intensity "Pro" charts, but use them sparingly to maintain flow.
+*   **Default:** Omit `portal` for front-facing moves.
+*   **Rotation Cues:** Use left/right hooks, sidesteps, and off-front portal targets to suggest turning flow.
+*   **Sparingly:** Wide portal jumps are strongest when they reinforce the choreography rather than fighting it.
 
 ## 🚀 Workflow Tips
 
 ### Pattern Prefabs
 
-Use the **Prefab Library** (Spacebar) to drag-and-drop common boxing combos:
+Useful flat-schema boxing phrases include:
 
-*   **"The 1-2":** Left Jab, Right Cross.
-*   **"The Weave":** Wall Left, Wall Right, Wall Left.
-*   **"The Burpee":** High Target, Squat Wall, High Target.
+*   **"The 1-2":** `jab`, `cross`
+*   **"Guard Break":** `jab`, `cross`, `guard`
+*   **"Weave":** `lean_left`, `lean_right`, `lean_left`
+*   **"Burner":** `jab`, `cross`, `squat`, `jab`, `cross`
 
 ### Difficulty Grading
 
 | Difficulty | Mechanics | Density |
 | :--- | :--- | :--- |
-| **Easy** | On-beat only. No obstacles. | Low |
-| **Medium** | Simple 1-2 combos. Basic walls. | Moderate |
-| **Hard** | 1/8th streams. Squats. Wide reaches. | High |
-| **Pro** | 1/16th bursts. Complex weaves. 360 rotation. | Extreme |
+| **Easy** | On-beat punches and simple guards. | Low |
+| **Medium** | 1-2 combos, short spans, basic footwork. | Moderate |
+| **Hard** | Denser phrases, portal movement, mixed lower-body cues. | High |
+| **Pro** | Fast alternation, sustained spans, aggressive portal travel. | Extreme |
 
 ## 🛡️ Validation
 
-Always run the **"Flow Validator"** before uploading. It checks for impossible reaches and vision blocks specific to the human arm span.
+Before publishing a boxing chart, check that:
+
+*   every entry lives under `beats`
+*   every beat has `start` and `type`
+*   any `end` value is intentional and inclusive
+*   any `portal` value is an integer from `0` to `11`
+*   no authored boxing beat uses `zone`, symbolic portal strings, `holdMs`, or `durationMs`

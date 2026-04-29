@@ -302,12 +302,10 @@ metadata:
 #### Owns
 
 - chart identity
-- gameplay `mode`
+- gameplay `feature`
 - exact difficulty slice
-- interaction family target
-- compatibility profile hints
-- timing-aligned event payloads
-- optional portable presentation/scoring hints
+- boxing beat payloads aligned to song-owned timing
+- any future cross-feature chart fields that are explicitly promoted into the shared contract later
 
 #### Must not own
 
@@ -316,7 +314,7 @@ metadata:
 - environment/asset selections
 - browse/discovery state
 
-#### Canonical field direction
+#### Canonical boxing field direction for this pass
 
 ```yaml
 schemaId: aerobeat.chart.boxing.v1
@@ -325,36 +323,30 @@ recordVersion: 1
 createdByTool: aerobeat-tool-content-authoring
 createdByToolVersion: 0.1.0
 createdAt: 2026-04-25T19:00:00Z
-updatedAt: 2026-04-25T19:20:00Z
+updatedAt: 2026-04-29T09:40:00Z
 chartId: uid
 chartName: string
-mode: boxing
+feature: boxing
 difficulty: medium
-interactionFamily: gesture_2d
-supportedInputProfiles:
-  - mediapipe_camera
-validatedInputProfiles:
-  - mediapipe_camera
-timing:
-  resolution: 16
-presentationHints:
-  preferredViews:
-    - portal
-scoringHints:
-  comboModel: standard
-events:
-  - beat: 8
-    type: strike
-    hand: left
-    strike: jab
-    zone: left_high
-    portal: center
+beats:
+  - start: 8.0
+    type: jab
+  - start: 12.0
+    type: cross
+  - start: 16.0
+    end: 17.0
+    type: guard
+    portal: 0
 ```
 
 #### Notes
 
 - `charts/*.yaml` are intentionally reusable exact playable slices.
-- Boxing chart examples should use structured event payload fields such as `type`, `hand`, `strike`, `zone`, and `portal` rather than legacy shorthand like `eventType` / `laneHint`.
+- For boxing authoring in this pass, use `feature`, not `mode`.
+- Boxing authored entries live under `beats`, not `events`.
+- Each boxing beat has required float `start`, optional inclusive float `end`, required concrete `type`, and optional integer `portal` in `0-11` defaulting to `0`.
+- Boxing charts do not author `zone`, symbolic portal strings, nested subtype payloads, or old boxing timing fields such as `holdMs` / `durationMs`.
+- This document is only locking the boxing shape here; broader Flow/Dance/Step payload details remain follow-up work.
 - They do not contain `songId`, `setId`, or older routine linkage fields.
 - Set files provide the package-local wiring from chart ids to song/environment/coaching choices.
 
@@ -485,7 +477,7 @@ At minimum, package validators should enforce:
 The shared catalog core tables should continue to summarize package data such as:
 
 - workout identity and description
-- modes present in the workout (derived from referenced chart records)
+- features present in the workout (derived from referenced chart records)
 - difficulties present in the workout (derived from referenced chart records)
 - songs present in the workout (derived from referenced set -> song links)
 - coaches present in the workout (derived from coach-config when enabled)
@@ -527,7 +519,7 @@ Do not treat as authored truth:
 The durable workout-package contract is now set-centered:
 
 - `songs/` own reusable music/licensing truth plus the package's canonical timing map (`anchorMs`, `tempoSegments`, `stopSegments`, `timeSignatureSegments`)
-- `charts/` own exact playable event payloads plus mode/difficulty semantics
+- `charts/` own exact playable authored payloads plus feature/difficulty semantics
 - `sets/` own package-local composition wiring through ids only
 - `workout.yaml` owns package metadata plus ordered `setId` references
 - `coaches/coach-config.yaml` owns the package's coaching roster/media registry
