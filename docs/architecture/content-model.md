@@ -32,6 +32,7 @@ As of 2026-04-27, the current naming and shape direction is:
 - Athlete/device-specific timing calibration such as song offset does not belong in durable content data; it belongs in athlete/profile/device state.
 - Workout coaching is owned by the package's single `coaches/coach-config.yaml`; enabled coaching requires roster + warmup + cooldown + an overlay registry whose records use `overlayId`, while set files reference that registry via `coachingOverlayId`.
 - Boxing charts should be documented and exemplified with a flat `beats` list where each beat has `start`, optional inclusive `end`, concrete `type`, and optional integer `portal` (`0-11`) rather than legacy shorthand or nested boxing payload fields.
+- Flow charts should use the same flattened `beats` list, with Flow-specific optional `placement` (`0-12`) and `direction` (`0-11`) added only where the selected Flow `type` supports them.
 
 ## Canonical ownership
 
@@ -201,7 +202,28 @@ For **Boxing**, the current locked authored payload is a flat `beats` list using
 
 Boxing does **not** author `zone`, symbolic portal strings, nested subtype payloads, or old boxing timing fields such as `holdMs` / `durationMs` in this pass.
 
-Dance, Step, and Flow payload details remain follow-up work. The loader contract is shared, but this document does not try to prematurely force their authored vocabularies to match boxing exactly.
+For **Flow**, the current locked authored payload is also a flat `beats` list. Each beat uses required `start`, optional inclusive `end`, required `type`, optional integer `portal` (`0-11`), optional integer `placement` (`0-12`), and optional integer `direction` (`0-11`).
+
+The current approved Flow type pool is:
+
+- `swing_left`, `swing_right`
+- `trail_left`, `trail_right`
+- `warn_left`, `warn_right`
+- `reward_left`, `reward_right`
+- `squat`, `lean_left`, `lean_right`
+- `knee_left`, `knee_right`
+- `leg_lift_left`, `leg_lift_right`
+- `run_in_place`
+
+Flow field support is intentionally explicit:
+
+- `swing_*`, `trail_*`, and `warn_*` support both `placement` and `direction`
+- `reward_*` supports `placement` only
+- `squat`, `lean_*`, `knee_*`, `leg_lift_*`, and `run_in_place` support neither
+
+For `swing_*`, `trail_*`, and `warn_*`, omitted `direction` inherits from `placement`.
+
+Dance and Step payload details remain follow-up work. The loader contract is shared, but this document does not try to prematurely force their authored vocabularies to match boxing or Flow exactly.
 
 ## Interaction families, not raw devices
 

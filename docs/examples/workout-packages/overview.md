@@ -10,7 +10,8 @@ If you are new to the package system, start here before reading the lower-level 
 - the song examples specifically show the cleaned-up licensing + metadata shape (`licenseType`, `streamingSafe`, `aiAssisted`, BCP 47 `language`, locked-enum `genres`, no song `tags`)
 - the package demonstrates the split between authored YAML, local `workouts.db`, and per-workout `leaderboard-cache.db`
 - authored YAML records carry the shared schema/provenance fields by default, with the documented disabled `coach-config.yaml` sentinel as the lone exception
-- the boxing charts model the stronger structured event payload direction rather than the older shorthand event fields
+- the boxing charts model the locked flattened boxing `beats:` contract rather than older boxing-only shorthand/event payload fields
+- the locked Flow chart contract is documented in the Flow choreography and architecture docs, but this example package does not yet include a checked-in Flow chart file
 
 ## Start Here
 

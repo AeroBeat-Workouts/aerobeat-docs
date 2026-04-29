@@ -305,6 +305,7 @@ metadata:
 - gameplay `feature`
 - exact difficulty slice
 - boxing beat payloads aligned to song-owned timing
+- flow beat payloads aligned to song-owned timing
 - any future cross-feature chart fields that are explicitly promoted into the shared contract later
 
 #### Must not own
@@ -346,9 +347,52 @@ beats:
 - Boxing authored entries live under `beats`, not `events`.
 - Each boxing beat has required float `start`, optional inclusive float `end`, required concrete `type`, and optional integer `portal` in `0-11` defaulting to `0`.
 - Boxing charts do not author `zone`, symbolic portal strings, nested subtype payloads, or old boxing timing fields such as `holdMs` / `durationMs`.
-- This document is only locking the boxing shape here; broader Flow/Dance/Step payload details remain follow-up work.
 - They do not contain `songId`, `setId`, or older routine linkage fields.
 - Set files provide the package-local wiring from chart ids to song/environment/coaching choices.
+
+#### Canonical flow field direction for this pass
+
+```yaml
+schemaId: aerobeat.chart.flow.v1
+schemaVersion: 1
+recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-29T16:00:00Z
+updatedAt: 2026-04-29T16:00:00Z
+chartId: uid
+chartName: string
+feature: flow
+difficulty: medium
+beats:
+  - start: 8.0
+    type: swing_left
+    portal: 0
+    placement: 2
+    direction: 3
+  - start: 9.0
+    type: trail_right
+    portal: 1
+    placement: 4
+  - start: 10.0
+    type: reward_left
+    placement: 12
+  - start: 12.0
+    end: 13.0
+    type: squat
+```
+
+#### Notes
+
+- For Flow authoring in this pass, use `feature`, not `mode`.
+- Flow authored entries live under `beats`, not `events`.
+- Each Flow beat has required float `start`, optional inclusive float `end`, required concrete `type`, optional integer `portal` in `0-11`, optional integer `placement` in `0-12`, and optional integer `direction` in `0-11`.
+- `portal` means origin/presentation source, `placement` means where around the athlete the beat passes, and `direction` means swing/follow-through guidance.
+- `swing_left`, `swing_right`, `trail_left`, `trail_right`, `warn_left`, and `warn_right` support both `placement` and `direction`.
+- `reward_left` and `reward_right` support `placement` only.
+- `squat`, `lean_left`, `lean_right`, `knee_left`, `knee_right`, `leg_lift_left`, `leg_lift_right`, and `run_in_place` support neither `placement` nor `direction`.
+- For `swing_*`, `trail_*`, and `warn_*`, omitted `direction` inherits from `placement`.
+- This document is only locking the boxing and Flow shapes here; broader Dance/Step payload details remain follow-up work.
 
 ### `sets/<set-id>.yaml`
 

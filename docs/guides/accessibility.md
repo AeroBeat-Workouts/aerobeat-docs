@@ -20,7 +20,7 @@ Before starting a Workout, you can enable specific modifiers to tailor the sessi
 *   **No Leg Lifts:** Removes balancing obstacles from Flow Workouts.
 *   **No Obstacles:** Removes all walls and barriers entirely.
 *   **No Arrows:** Removes the directional requirement. You can hit targets from any angle (great for limited wrist mobility).
-*   **No Bombs:** Removes explosive targets in Flow mode that penalize accidental hits.
+*   **No Trails & Warnings:** Removes `trail_*` and `warn_*` guidance beats for athletes who want simpler primary swing reads.
 *   **Zen Mode:** Disables all targets and scoring. Just enjoy the music and the environment.
 
 ## 🪑 Seated Play

@@ -94,12 +94,13 @@ The package shows the approved coaching rule clearly:
 
 ### 3a. Boxing chart payload direction
 
-The two demo boxing charts now teach the stronger structured event payload direction:
+The two demo boxing charts intentionally teach the **locked flattened boxing contract** for this package example:
 
-- strike events use fields like `type`, `hand`, `strike`, `zone`, and `portal`
-- guard events use `type`, `zone`, `portal`, and `holdMs`
-- obstacle events use `type`, `avoid`, `shape`, `portal`, and `durationMs`
-- the old `eventType` / `laneHint` shorthand is intentionally absent from the canonical demo
+- authored entries live under `beats:`
+- each beat uses required `start`, optional inclusive `end`, required concrete `type`, and optional integer `portal`
+- the older boxing-only payload fields such as `hand`, `strike`, `zone`, `holdMs`, and `durationMs` are intentionally absent
+
+There is not yet a checked-in demo Flow chart package example in this docs repo. For the locked Flow contract, use the dedicated choreography guide plus the architecture chart-contract docs.
 
 ### 4. SQLite authority boundaries
 
