@@ -5553,7 +5553,7 @@
 <p>Because a Boxing workout is biomechanically different from a Step workout, AeroBeat provides specialized SDKs for each gameplay style.</p>
 <ul>
 <li><strong><a href="../boxing/">Boxing Guide</a>:</strong> Optimized for arm reach, punches, and 360-degree spatial mapping.</li>
-<li><strong><a href="../flow/">Flow Guide</a>:</strong> Optimized for continuous arm arcs and bat swing mechanics.</li>
+<li><strong><a href="../flow/">Flow Guide</a>:</strong> Optimized for continuous arm arcs, sight-readable swing guidance, and body-movement prompts.</li>
 <li><strong><a href="../step/">Step Guide</a>:</strong> Optimized for foot placement and balance (4-lane grid).</li>
 <li><strong><a href="../dance/">Dance Guide</a>:</strong> Timeline-based gesture matching.</li>
 </ul>
@@ -5566,9 +5566,9 @@
 <h2 id="designing-for-multiple-views">👁️ Designing for Multiple Views<a class="headerlink" href="#designing-for-multiple-views" title="Permanent link">&para;</a></h2>
 <p>Your chart may be played on VR headsets (Portal View) and phones, tablets, or laptops (Track View).</p>
 <ul>
-<li><strong>Portal View:</strong> Targets fly at the athlete through 3D space.<ul>
-<li><strong>Automatic Portals:</strong> Creators do not manually place portals, only targets and obstacles. The engine automatically opens and closes portals based on authored placement.</li>
-<li><strong>Visual Cues:</strong> When a new portal opens, a subtle particle trail guides the athlete's eye. In VR, this signals that they should rotate to face the new portal.</li>
+<li><strong>Portal View:</strong> Gameplay beats fly at the athlete through 3D space.<ul>
+<li><strong>Explicit portal authoring:</strong> When a feature supports <code>portal</code>, creators author the concrete portal value directly in the chart. Runtime presentation can still add visual cues around those authored placements.</li>
+<li><strong>Visual Cues:</strong> When presentation emphasis shifts, a subtle trail or particle cue can guide the athlete's eye. In VR, this can signal that they should rotate to face the next authored portal.</li>
 </ul>
 </li>
 <li><strong>Track View:</strong> Targets render in a linear 2D presentation.<ul>
@@ -5577,7 +5577,7 @@
 </li>
 </ul>
 <blockquote>
-<p><strong>Note:</strong> The engine handles auto-optimizations for you. If you author a 360-degree Portal View chart, the runtime automatically folds rear targets to the front for Track View devices. You do not need to make separate portal and track charts by default.</p>
+<p><strong>Note:</strong> The runtime can still adapt one authored chart for multiple renderers, but that does not replace explicit chart authoring. If your chart uses portal-capable beats, keep the authored <code>portal</code> values in the source chart and let each renderer interpret them appropriately.</p>
 </blockquote>
 <h2 id="step-by-step-workflow">🚀 Step-by-Step Workflow<a class="headerlink" href="#step-by-step-workflow" title="Permanent link">&para;</a></h2>
 <h3 id="phase-1-song-selection">Phase 1: Song Selection<a class="headerlink" href="#phase-1-song-selection" title="Permanent link">&para;</a></h3>
@@ -5613,9 +5613,9 @@
 2. <strong>Object Library:</strong> The palette of available moves / notes.
 3. <strong>Properties Panel:</strong> Fine-tune rotation, lane position, width, and presentation hints.</p>
 <h3 id="phase-4-validation-publish">Phase 4: Validation &amp; Publish<a class="headerlink" href="#phase-4-validation-publish" title="Permanent link">&para;</a></h3>
-<p>The SDK includes a <strong>Flow Validator</strong>. Run this before uploading.</p>
+<p>The SDK should include feature-aware chart validation. Run it before uploading.</p>
 <ol>
-<li><strong>Check Parity:</strong> Ensure no hand tangles or vision blocks.</li>
+<li><strong>Check Parity and readability:</strong> Ensure no hand tangles, unreadable follow-through, or obvious vision blocks.</li>
 <li><strong>Prepare the Publishable Content:</strong></li>
 <li>Finalize the set metadata and composition links.</li>
 <li>Finalize the chart metadata for difficulty, interaction family, and any supported / validated input profiles.</li>
@@ -5642,7 +5642,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2026 19:15:50 UTC">April 27, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 29, 2026 21:07:18 UTC">April 29, 2026</span>
   </span>
 
     

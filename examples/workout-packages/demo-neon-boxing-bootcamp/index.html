@@ -5295,6 +5295,8 @@
 <li>which fields belong in package YAML versus set YAML</li>
 <li>which concerns belong in local SQLite databases instead</li>
 <li>how the approved coaching model fits into the package</li>
+<li>how one song can be reused by multiple exact playable charts</li>
+<li>how the checked-in Boxing and Flow chart examples differ while sharing the same package contract</li>
 </ul>
 <h2 id="package-shape">Package shape<a class="headerlink" href="#package-shape" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>demo-neon-boxing-bootcamp/
@@ -5305,9 +5307,11 @@
 │   └── ab-song-neon-stride.yaml
 ├── charts/
 │   ├── ab-chart-midnight-sprint-boxing-hard.yaml
-│   └── ab-chart-neon-stride-boxing-medium.yaml
+│   ├── ab-chart-neon-stride-boxing-medium.yaml
+│   └── ab-chart-neon-stride-flow-medium.yaml
 ├── sets/
 │   ├── ab-set-midnight-sprint-finish-round.yaml
+│   ├── ab-set-neon-stride-flow-round.yaml
 │   └── ab-set-neon-stride-opening-round.yaml
 ├── coaches/
 │   └── coach-config.yaml
@@ -5330,10 +5334,11 @@
     └── workouts.db.schema.sql
 </code></pre></div>
 <h2 id="scenario-modeled-by-this-package">Scenario modeled by this package<a class="headerlink" href="#scenario-modeled-by-this-package" title="Permanent link">&para;</a></h2>
-<p>This example package imagines a short boxing workout with two songs:</p>
+<p>This example package imagines a short mixed-feature workout with two songs and three exact playable sets:</p>
 <ol>
-<li><strong>Neon Stride</strong> — medium difficulty opener in a rooftop night environment</li>
-<li><strong>Midnight Sprint</strong> — harder follow-up in a brighter studio environment</li>
+<li><strong>Neon Stride Opening Round</strong> — medium Boxing opener in a rooftop night environment</li>
+<li><strong>Neon Stride Flow Round</strong> — medium Flow follow-up that reuses the same song with a different chart</li>
+<li><strong>Midnight Sprint Finish Round</strong> — harder Boxing finisher in a brighter studio environment</li>
 </ol>
 <p>The package uses one shared coach config, a two-coach roster, two environments, four gameplay-facing asset selections, one warmup video, one cooldown video, and one overlay audio clip selected by each set. Every authored YAML record in the enabled example also carries the shared schema/provenance fields; the only deliberate exception path in this contract is a disabled <code>coach-config.yaml</code> sentinel of just <code>enabled: false</code>.</p>
 <h2 id="reading-order">Reading order<a class="headerlink" href="#reading-order" title="Permanent link">&para;</a></h2>
@@ -5341,6 +5346,7 @@
 <li>Start with <a href="workout.yaml"><code>workout.yaml</code></a>.</li>
 <li>Then follow the ordered set ids into <code>sets/</code>.</li>
 <li>From each set, follow the ids into <code>songs/</code>, <code>charts/</code>, <code>environments/</code>, <code>assets/</code>, and <code>coaches/coach-config.yaml</code>.</li>
+<li>Compare the two <code>Neon Stride</code> sets to see how one song can drive both Boxing and Flow chart slices without changing the package contract.</li>
 <li>Finish with <a href="sql/workouts.db.schema.sql"><code>sql/workouts.db.schema.sql</code></a> and <a href="sql/leaderboard-cache.db.schema.sql"><code>sql/leaderboard-cache.db.schema.sql</code></a>.</li>
 </ul>
 <h2 id="intentional-v1-boundaries-shown-here">Intentional v1 boundaries shown here<a class="headerlink" href="#intentional-v1-boundaries-shown-here" title="Permanent link">&para;</a></h2>
@@ -5355,7 +5361,8 @@
 <li>coaching stays inside the package's single <code>coaches/coach-config.yaml</code> file</li>
 <li>warmup/cooldown references live in coach-config under the approved coaching model</li>
 <li>each workout set maps to one overlay audio record through <code>coachingOverlayId</code></li>
-<li>the boxing chart examples use structured event payload fields such as <code>type</code>, <code>hand</code>, <code>strike</code>, <code>zone</code>, and <code>portal</code> instead of the older <code>eventType</code> / <code>laneHint</code> shorthand</li>
+<li>the checked-in chart examples now show both the locked flattened Boxing <code>beats:</code> contract and the locked flattened Flow <code>beats:</code> contract</li>
+<li>the Flow example demonstrates explicit <code>portal</code>, <code>placement</code>, optional <code>direction</code>, and inherited <code>direction = placement</code> on supported beat families</li>
 <li>workout sets choose one environment and zero-or-one asset per gameplay-facing asset type</li>
 <li>shared browse/discovery rows live in the catalog core tables, while local install-only state lives in <code>workout_local</code></li>
 <li>local leaderboard snapshots live in the package's disposable cache DB</li>
@@ -5383,7 +5390,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 28, 2026 15:12:03 UTC">April 28, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 29, 2026 21:07:18 UTC">April 29, 2026</span>
   </span>
 
     

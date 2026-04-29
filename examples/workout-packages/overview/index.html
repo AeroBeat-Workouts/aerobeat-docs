@@ -5285,8 +5285,8 @@
 <li>the song examples specifically show the cleaned-up licensing + metadata shape (<code>licenseType</code>, <code>streamingSafe</code>, <code>aiAssisted</code>, BCP 47 <code>language</code>, locked-enum <code>genres</code>, no song <code>tags</code>)</li>
 <li>the package demonstrates the split between authored YAML, local <code>workouts.db</code>, and per-workout <code>leaderboard-cache.db</code></li>
 <li>authored YAML records carry the shared schema/provenance fields by default, with the documented disabled <code>coach-config.yaml</code> sentinel as the lone exception</li>
-<li>the boxing charts model the locked flattened boxing <code>beats:</code> contract rather than older boxing-only shorthand/event payload fields</li>
-<li>the locked Flow chart contract is documented in the Flow choreography and architecture docs, but this example package does not yet include a checked-in Flow chart file</li>
+<li>the checked-in chart examples now include both locked flattened Boxing and Flow <code>beats:</code> examples</li>
+<li>the package also demonstrates that one reusable song can back multiple exact playable charts and sets</li>
 </ul>
 <h2 id="start-here">Start Here<a class="headerlink" href="#start-here" title="Permanent link">&para;</a></h2>
 <ul>
@@ -5297,9 +5297,11 @@
 <li><a href="../demo-neon-boxing-bootcamp/songs/ab-song-midnight-sprint.yaml"><code>ab-song-midnight-sprint.yaml</code></a></li>
 <li>Charts:</li>
 <li><a href="../demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-boxing-medium.yaml"><code>ab-chart-neon-stride-boxing-medium.yaml</code></a></li>
+<li><a href="../demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-flow-medium.yaml"><code>ab-chart-neon-stride-flow-medium.yaml</code></a></li>
 <li><a href="../demo-neon-boxing-bootcamp/charts/ab-chart-midnight-sprint-boxing-hard.yaml"><code>ab-chart-midnight-sprint-boxing-hard.yaml</code></a></li>
 <li>Sets:</li>
 <li><a href="../demo-neon-boxing-bootcamp/sets/ab-set-neon-stride-opening-round.yaml"><code>ab-set-neon-stride-opening-round.yaml</code></a></li>
+<li><a href="../demo-neon-boxing-bootcamp/sets/ab-set-neon-stride-flow-round.yaml"><code>ab-set-neon-stride-flow-round.yaml</code></a></li>
 <li><a href="../demo-neon-boxing-bootcamp/sets/ab-set-midnight-sprint-finish-round.yaml"><code>ab-set-midnight-sprint-finish-round.yaml</code></a></li>
 <li><a href="../demo-neon-boxing-bootcamp/coaches/coach-config.yaml">Coach config</a></li>
 <li>Environments:</li>
@@ -5338,6 +5340,7 @@
 <ol>
 <li>Open <a href="../demo-neon-boxing-bootcamp/workout.yaml"><code>workout.yaml</code></a> to see the package root and authored set order.</li>
 <li>Open the <code>sets/</code> files to follow the exact composition links.</li>
+<li>Compare the two <code>Neon Stride</code> sets to see how one song can back both a Boxing chart and a Flow chart without changing the package contract.</li>
 <li>From each set, open the referenced <code>songs/</code>, <code>charts/</code>, <code>environments/</code>, and <code>assets/</code> files.</li>
 <li>Open <a href="../demo-neon-boxing-bootcamp/coaches/coach-config.yaml"><code>coaches/coach-config.yaml</code></a> to see the single-package coaching domain.</li>
 <li>Open the two SQL files to see what belongs in local discovery/cache databases versus authored YAML.</li>
@@ -5364,7 +5367,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 29, 2026 20:25:15 UTC">April 29, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 29, 2026 21:07:18 UTC">April 29, 2026</span>
   </span>
 
     

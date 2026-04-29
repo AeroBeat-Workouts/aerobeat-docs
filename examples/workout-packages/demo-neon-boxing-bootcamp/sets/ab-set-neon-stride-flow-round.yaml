@@ -1,0 +1,25 @@
+# A second Neon Stride set shows one song reused with a different feature/chart pairing.
+schemaId: aerobeat.set.v1
+schemaVersion: 1
+recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-29T21:15:00Z
+updatedAt: 2026-04-29T21:15:00Z
+
+# Stable set identity for workout ordering and coaching lookup.
+setId: ab-set-neon-stride-flow-round
+setName: Neon Stride Flow Round
+
+# The set links the existing song to a different exact playable chart.
+songId: ab-song-neon-stride
+chartId: ab-chart-neon-stride-flow-medium
+
+# Environment and coaching overlay stay package-local set choices.
+environmentId: ab-environment-neon-rooftop
+coachingOverlayId: ab-overlay-aria-neon-stride-cue
+
+# Flow can reuse only the gameplay-facing assets that make sense for the slice.
+assetSelections:
+  targets: ab-asset-targets-holo-rings
+  trails: ab-asset-trails-comet-streak

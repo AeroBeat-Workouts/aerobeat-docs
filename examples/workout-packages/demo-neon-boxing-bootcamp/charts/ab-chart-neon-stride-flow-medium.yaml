@@ -1,0 +1,63 @@
+# A second chart for the same song shows how one song can support multiple features.
+schemaId: aerobeat.chart.flow.v1
+schemaVersion: 1
+recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-29T21:15:00Z
+updatedAt: 2026-04-29T21:15:00Z
+
+# Chart identity must still be unique within the package.
+chartId: ab-chart-neon-stride-flow-medium
+chartName: Neon Stride Medium Flow
+
+# Flow charts declare the feature directly.
+feature: flow
+
+# Difficulty belongs on the chart, not on the set.
+difficulty: medium
+
+# Flow beats stay flat and sight-readable.
+# start/end are beat-domain floats, end is inclusive when present,
+# portal is the presentation origin, placement is where the beat passes,
+# and direction is follow-through guidance for supported beat families.
+beats:
+  - start: 8.0
+    type: swing_left
+    portal: 11
+    placement: 10
+  - start: 10.0
+    type: trail_right
+    portal: 1
+    placement: 3
+  - start: 12.0
+    type: swing_right
+    portal: 2
+    placement: 4
+    direction: 6
+  - start: 14.0
+    type: warn_left
+    portal: 9
+    placement: 8
+  - start: 16.0
+    type: reward_right
+    placement: 12
+  - start: 18.0
+    end: 19.0
+    type: squat
+  - start: 22.0
+    type: lean_right
+  - start: 24.0
+    type: trail_left
+    portal: 10
+    placement: 9
+    direction: 7
+  - start: 26.0
+    type: swing_left
+    portal: 0
+    placement: 1
+  - start: 28.0
+    type: knee_left
+  - start: 30.0
+    end: 33.0
+    type: run_in_place
