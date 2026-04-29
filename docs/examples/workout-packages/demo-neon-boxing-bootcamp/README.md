@@ -9,6 +9,8 @@ It is designed for onboarding, code review, validation planning, and tool implem
 - which fields belong in package YAML versus set YAML
 - which concerns belong in local SQLite databases instead
 - how the approved coaching model fits into the package
+- how one song can be reused by multiple exact playable charts
+- how the checked-in Boxing and Flow chart examples differ while sharing the same package contract
 
 ## Package shape
 
@@ -21,9 +23,11 @@ demo-neon-boxing-bootcamp/
 │   └── ab-song-neon-stride.yaml
 ├── charts/
 │   ├── ab-chart-midnight-sprint-boxing-hard.yaml
-│   └── ab-chart-neon-stride-boxing-medium.yaml
+│   ├── ab-chart-neon-stride-boxing-medium.yaml
+│   └── ab-chart-neon-stride-flow-medium.yaml
 ├── sets/
 │   ├── ab-set-midnight-sprint-finish-round.yaml
+│   ├── ab-set-neon-stride-flow-round.yaml
 │   └── ab-set-neon-stride-opening-round.yaml
 ├── coaches/
 │   └── coach-config.yaml
@@ -48,10 +52,11 @@ demo-neon-boxing-bootcamp/
 
 ## Scenario modeled by this package
 
-This example package imagines a short boxing workout with two songs:
+This example package imagines a short mixed-feature workout with two songs and three exact playable sets:
 
-1. **Neon Stride** — medium difficulty opener in a rooftop night environment
-2. **Midnight Sprint** — harder follow-up in a brighter studio environment
+1. **Neon Stride Opening Round** — medium Boxing opener in a rooftop night environment
+2. **Neon Stride Flow Round** — medium Flow follow-up that reuses the same song with a different chart
+3. **Midnight Sprint Finish Round** — harder Boxing finisher in a brighter studio environment
 
 The package uses one shared coach config, a two-coach roster, two environments, four gameplay-facing asset selections, one warmup video, one cooldown video, and one overlay audio clip selected by each set. Every authored YAML record in the enabled example also carries the shared schema/provenance fields; the only deliberate exception path in this contract is a disabled `coach-config.yaml` sentinel of just `enabled: false`.
 
@@ -60,6 +65,7 @@ The package uses one shared coach config, a two-coach roster, two environments, 
 - Start with [`workout.yaml`](workout.yaml).
 - Then follow the ordered set ids into `sets/`.
 - From each set, follow the ids into `songs/`, `charts/`, `environments/`, `assets/`, and `coaches/coach-config.yaml`.
+- Compare the two `Neon Stride` sets to see how one song can drive both Boxing and Flow chart slices without changing the package contract.
 - Finish with [`sql/workouts.db.schema.sql`](sql/workouts.db.schema.sql) and [`sql/leaderboard-cache.db.schema.sql`](sql/leaderboard-cache.db.schema.sql).
 
 ## Intentional v1 boundaries shown here
@@ -74,7 +80,8 @@ The package uses one shared coach config, a two-coach roster, two environments, 
 - coaching stays inside the package's single `coaches/coach-config.yaml` file
 - warmup/cooldown references live in coach-config under the approved coaching model
 - each workout set maps to one overlay audio record through `coachingOverlayId`
-- the boxing chart examples use structured event payload fields such as `type`, `hand`, `strike`, `zone`, and `portal` instead of the older `eventType` / `laneHint` shorthand
+- the checked-in chart examples now show both the locked flattened Boxing `beats:` contract and the locked flattened Flow `beats:` contract
+- the Flow example demonstrates explicit `portal`, `placement`, optional `direction`, and inherited `direction = placement` on supported beat families
 - workout sets choose one environment and zero-or-one asset per gameplay-facing asset type
 - shared browse/discovery rows live in the catalog core tables, while local install-only state lives in `workout_local`
 - local leaderboard snapshots live in the package's disposable cache DB

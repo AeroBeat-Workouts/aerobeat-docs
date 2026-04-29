@@ -15,12 +15,14 @@ That folder is intentionally authored as a **teaching package** rather than a mi
 1. [`workout.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/workout.yaml)
 2. Set records:
    - [`ab-set-neon-stride-opening-round.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/sets/ab-set-neon-stride-opening-round.yaml)
+   - [`ab-set-neon-stride-flow-round.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/sets/ab-set-neon-stride-flow-round.yaml)
    - [`ab-set-midnight-sprint-finish-round.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/sets/ab-set-midnight-sprint-finish-round.yaml)
 3. Song records:
    - [`ab-song-neon-stride.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/songs/ab-song-neon-stride.yaml)
    - [`ab-song-midnight-sprint.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/songs/ab-song-midnight-sprint.yaml)
 4. Chart records:
    - [`ab-chart-neon-stride-boxing-medium.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-boxing-medium.yaml)
+   - [`ab-chart-neon-stride-flow-medium.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-flow-medium.yaml)
    - [`ab-chart-midnight-sprint-boxing-hard.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/charts/ab-chart-midnight-sprint-boxing-hard.yaml)
 5. [`coaches/coach-config.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/coaches/coach-config.yaml)
 6. Environment records:
@@ -42,8 +44,8 @@ The example models a single package with:
 
 - one root `workout.yaml`
 - two songs
-- two charts
-- two sets
+- three charts
+- three sets
 - one coaching domain file
 - two environments
 - four gameplay-facing asset records
@@ -60,6 +62,8 @@ The set files point to exact:
 - gameplay-facing asset ids
 
 That is the current v1 direction. Discovery happens elsewhere; package playback resolves exact ids.
+
+The paired `Neon Stride` sets also show that one reusable song can support multiple exact playable charts across different features without changing the broader package shape.
 
 ### 2a. What the song examples are teaching
 
@@ -92,15 +96,15 @@ The package shows the approved coaching rule clearly:
 - set files choose overlay clips by `coachingOverlayId`
 - workout roots do not carry reusable trigger graphs or per-set overlay lists
 
-### 3a. Boxing chart payload direction
+### 3a. Chart payload direction
 
-The two demo boxing charts intentionally teach the **locked flattened boxing contract** for this package example:
+The checked-in demo charts now intentionally teach both locked flattened chart contracts used in this docs repo:
 
-- authored entries live under `beats:`
-- each beat uses required `start`, optional inclusive `end`, required concrete `type`, and optional integer `portal`
-- the older boxing-only payload fields such as `hand`, `strike`, `zone`, `holdMs`, and `durationMs` are intentionally absent
-
-There is not yet a checked-in demo Flow chart package example in this docs repo. For the locked Flow contract, use the dedicated choreography guide plus the architecture chart-contract docs.
+- Boxing charts author flat `beats:` entries with required `start`, optional inclusive `end`, required concrete `type`, and optional integer `portal`
+- Flow charts author flat `beats:` entries with the same shared fields plus optional `placement` and optional `direction`
+- For Flow `swing_*`, `trail_*`, and `warn_*` beats, omitted `direction` inherits from `placement`
+- Older boxing-only payload fields such as `hand`, `strike`, `zone`, `holdMs`, and `durationMs` are intentionally absent
+- Older Flow-only terminology that implied automatic portal generation or a separate obstacle lane is intentionally absent from this package example
 
 ### 4. SQLite authority boundaries
 
@@ -122,6 +126,7 @@ This example is meant to be the easiest place for a new developer to answer ques
 - "How does a set pick the right coaching overlay clip?"
 - "Where does browse metadata belong versus package metadata?"
 - "How should ids line up across package files?"
+- "How can one song be reused for Boxing and Flow without changing the package contract?"
 
 ## Related docs
 

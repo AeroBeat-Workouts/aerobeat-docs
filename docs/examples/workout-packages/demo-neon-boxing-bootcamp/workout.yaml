@@ -5,7 +5,7 @@ schemaId: aerobeat.workout-package.v1
 schemaVersion: 1
 
 # Increment this when the authored workout root changes within the same schema.
-recordVersion: 2
+recordVersion: 3
 
 # This package's stable workout/package identity.
 workoutId: ab-workout-demo-neon-boxing-bootcamp
@@ -15,17 +15,18 @@ workoutName: Neon Boxing Bootcamp
 
 # Plain-language summary of the workout's purpose and feel.
 description: >-
-  A docs-friendly two-song boxing workout package that demonstrates the current
-  AeroBeat v1 set-centered package contract with matching ids and commented YAML.
+  A docs-friendly mixed-feature workout package that demonstrates the current
+  AeroBeat v1 set-centered package contract with matching ids, commented YAML,
+  and both Boxing and Flow chart examples.
 
 # Semantic version for the package payload itself.
-packageVersion: 1.1.0
+packageVersion: 1.2.0
 
 # Tool metadata helps future migrations and debugging.
 createdByTool: aerobeat-tool-content-authoring
 createdByToolVersion: 0.1.0
 createdAt: 2026-04-25T22:00:00Z
-updatedAt: 2026-04-27T13:00:00Z
+updatedAt: 2026-04-29T21:15:00Z
 
 # Optional author metadata is fine here because it is traceability, not discovery state.
 authorId: ab-author-docs-team
@@ -42,4 +43,5 @@ preview:
 # workout.yaml owns order only. The set files own the actual composition wiring.
 setOrder:
   - ab-set-neon-stride-opening-round
+  - ab-set-neon-stride-flow-round
   - ab-set-midnight-sprint-finish-round

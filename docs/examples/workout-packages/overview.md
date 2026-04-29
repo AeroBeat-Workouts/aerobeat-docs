@@ -10,8 +10,8 @@ If you are new to the package system, start here before reading the lower-level 
 - the song examples specifically show the cleaned-up licensing + metadata shape (`licenseType`, `streamingSafe`, `aiAssisted`, BCP 47 `language`, locked-enum `genres`, no song `tags`)
 - the package demonstrates the split between authored YAML, local `workouts.db`, and per-workout `leaderboard-cache.db`
 - authored YAML records carry the shared schema/provenance fields by default, with the documented disabled `coach-config.yaml` sentinel as the lone exception
-- the boxing charts model the locked flattened boxing `beats:` contract rather than older boxing-only shorthand/event payload fields
-- the locked Flow chart contract is documented in the Flow choreography and architecture docs, but this example package does not yet include a checked-in Flow chart file
+- the checked-in chart examples now include both locked flattened Boxing and Flow `beats:` examples
+- the package also demonstrates that one reusable song can back multiple exact playable charts and sets
 
 ## Start Here
 
@@ -22,9 +22,11 @@ If you are new to the package system, start here before reading the lower-level 
   - [`ab-song-midnight-sprint.yaml`](demo-neon-boxing-bootcamp/songs/ab-song-midnight-sprint.yaml)
 - Charts:
   - [`ab-chart-neon-stride-boxing-medium.yaml`](demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-boxing-medium.yaml)
+  - [`ab-chart-neon-stride-flow-medium.yaml`](demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-flow-medium.yaml)
   - [`ab-chart-midnight-sprint-boxing-hard.yaml`](demo-neon-boxing-bootcamp/charts/ab-chart-midnight-sprint-boxing-hard.yaml)
 - Sets:
   - [`ab-set-neon-stride-opening-round.yaml`](demo-neon-boxing-bootcamp/sets/ab-set-neon-stride-opening-round.yaml)
+  - [`ab-set-neon-stride-flow-round.yaml`](demo-neon-boxing-bootcamp/sets/ab-set-neon-stride-flow-round.yaml)
   - [`ab-set-midnight-sprint-finish-round.yaml`](demo-neon-boxing-bootcamp/sets/ab-set-midnight-sprint-finish-round.yaml)
 - [Coach config](demo-neon-boxing-bootcamp/coaches/coach-config.yaml)
 - Environments:
@@ -64,9 +66,10 @@ This demo package is aligned to the current package rules:
 
 1. Open [`workout.yaml`](demo-neon-boxing-bootcamp/workout.yaml) to see the package root and authored set order.
 2. Open the `sets/` files to follow the exact composition links.
-3. From each set, open the referenced `songs/`, `charts/`, `environments/`, and `assets/` files.
-4. Open [`coaches/coach-config.yaml`](demo-neon-boxing-bootcamp/coaches/coach-config.yaml) to see the single-package coaching domain.
-5. Open the two SQL files to see what belongs in local discovery/cache databases versus authored YAML.
+3. Compare the two `Neon Stride` sets to see how one song can back both a Boxing chart and a Flow chart without changing the package contract.
+4. From each set, open the referenced `songs/`, `charts/`, `environments/`, and `assets/` files.
+5. Open [`coaches/coach-config.yaml`](demo-neon-boxing-bootcamp/coaches/coach-config.yaml) to see the single-package coaching domain.
+6. Open the two SQL files to see what belongs in local discovery/cache databases versus authored YAML.
 
 ## Important scope note
 

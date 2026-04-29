@@ -13,7 +13,7 @@ When you author gameplay, you are usually creating or editing one or more reusab
 Because a Boxing workout is biomechanically different from a Step workout, AeroBeat provides specialized SDKs for each gameplay style.
 
 * **[Boxing Guide](boxing.md):** Optimized for arm reach, punches, and 360-degree spatial mapping.
-* **[Flow Guide](flow.md):** Optimized for continuous arm arcs and bat swing mechanics.
+* **[Flow Guide](flow.md):** Optimized for continuous arm arcs, sight-readable swing guidance, and body-movement prompts.
 * **[Step Guide](step.md):** Optimized for foot placement and balance (4-lane grid).
 * **[Dance Guide](dance.md):** Timeline-based gesture matching.
 
@@ -28,13 +28,13 @@ While the web studio is convenient for quick edits, **web browsers introduce var
 
 Your chart may be played on VR headsets (Portal View) and phones, tablets, or laptops (Track View).
 
-* **Portal View:** Targets fly at the athlete through 3D space.
-    *   **Automatic Portals:** Creators do not manually place portals, only targets and obstacles. The engine automatically opens and closes portals based on authored placement.
-    *   **Visual Cues:** When a new portal opens, a subtle particle trail guides the athlete's eye. In VR, this signals that they should rotate to face the new portal.
+* **Portal View:** Gameplay beats fly at the athlete through 3D space.
+    *   **Explicit portal authoring:** When a feature supports `portal`, creators author the concrete portal value directly in the chart. Runtime presentation can still add visual cues around those authored placements.
+    *   **Visual Cues:** When presentation emphasis shifts, a subtle trail or particle cue can guide the athlete's eye. In VR, this can signal that they should rotate to face the next authored portal.
 * **Track View:** Targets render in a linear 2D presentation.
     *   Depending on the gameplay mode, this may appear as upward-scrolling lanes, horizontally arranged tracks, or another compact lane-based rendering.
 
-> **Note:** The engine handles auto-optimizations for you. If you author a 360-degree Portal View chart, the runtime automatically folds rear targets to the front for Track View devices. You do not need to make separate portal and track charts by default.
+> **Note:** The runtime can still adapt one authored chart for multiple renderers, but that does not replace explicit chart authoring. If your chart uses portal-capable beats, keep the authored `portal` values in the source chart and let each renderer interpret them appropriately.
 
 ## 🚀 Step-by-Step Workflow
 
@@ -78,9 +78,9 @@ While the specific objects (targets vs arrows) differ by SDK, the core interface
 
 ### Phase 4: Validation & Publish
 
-The SDK includes a **Flow Validator**. Run this before uploading.
+The SDK should include feature-aware chart validation. Run it before uploading.
 
-1. **Check Parity:** Ensure no hand tangles or vision blocks.
+1. **Check Parity and readability:** Ensure no hand tangles, unreadable follow-through, or obvious vision blocks.
 2. **Prepare the Publishable Content:**
    * Finalize the set metadata and composition links.
    * Finalize the chart metadata for difficulty, interaction family, and any supported / validated input profiles.
