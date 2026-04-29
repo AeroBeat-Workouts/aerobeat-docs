@@ -5,58 +5,43 @@ recordVersion: 1
 createdByTool: aerobeat-tool-content-authoring
 createdByToolVersion: 0.1.0
 createdAt: 2026-04-25T22:00:00Z
-updatedAt: 2026-04-27T13:00:00Z
+updatedAt: 2026-04-29T09:40:00Z
 
 # Chart identity must be unique within the package.
 chartId: ab-chart-neon-stride-boxing-medium
 chartName: Neon Stride Medium Boxing
 
-# Charts stand alone as reusable playable slices.
-# They do not point back to songs or outward to sets.
-mode: boxing
+# Boxing charts declare the feature directly.
+feature: boxing
 
 # Difficulty belongs on the chart, not on the set.
 difficulty: medium
 
-# interactionFamily targets movement semantics rather than a specific hardware device.
-interactionFamily: gesture_2d
-
-# supportedInputProfiles lists intended compatibility targets.
-supportedInputProfiles:
-  - mediapipe_camera
-  - keyboard_debug
-
-# validatedInputProfiles lists the profiles the team has actually tested.
-validatedInputProfiles:
-  - mediapipe_camera
-
-# Timing and presentation hints shape playback without redefining global engine rules.
-timing:
-  resolution: 16
-presentationHints:
-  preferredViews:
-    - portal
-    - track
-scoringHints:
-  comboModel: standard
-
-# events is mode-specific payload data.
-# Boxing examples use the stronger structured payload fields instead of eventType/laneHint shorthand.
-events:
-  - beat: 8
-    type: strike
-    hand: left
-    strike: jab
-    zone: left_high
-    portal: center
-  - beat: 12
-    type: strike
-    hand: right
-    strike: jab
-    zone: right_high
-    portal: center
-  - beat: 16
+# Boxing beats are flat, human-readable authored entries.
+# start/end are beat-domain floats, end is inclusive when present,
+# type is the concrete move, and portal is an optional 0-11 target.
+beats:
+  - start: 8.0
+    type: jab
+  - start: 12.0
+    type: cross
+  - start: 16.0
+    end: 17.0
     type: guard
-    zone: center
-    portal: center
-    holdMs: 500
+  - start: 20.0
+    type: hook_left
+    portal: 9
+  - start: 24.0
+    type: hook_right
+    portal: 3
+  - start: 28.0
+    type: squat
+  - start: 32.0
+    end: 35.0
+    type: orthodox
+  - start: 36.0
+    type: knee_left
+    portal: 11
+  - start: 40.0
+    type: run_in_place
+    end: 43.0

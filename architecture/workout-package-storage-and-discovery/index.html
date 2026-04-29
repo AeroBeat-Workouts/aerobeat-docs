@@ -5519,10 +5519,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#canonical-field-direction_2" class="md-nav__link">
+  <a href="#canonical-boxing-field-direction-for-this-pass" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Canonical field direction
+        Canonical boxing field direction for this pass
       
     </span>
   </a>
@@ -5580,7 +5580,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#canonical-field-direction_3" class="md-nav__link">
+  <a href="#canonical-field-direction_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         Canonical field direction
@@ -6029,12 +6029,10 @@
 <h4 id="owns_2">Owns<a class="headerlink" href="#owns_2" title="Permanent link">&para;</a></h4>
 <ul>
 <li>chart identity</li>
-<li>gameplay <code>mode</code></li>
+<li>gameplay <code>feature</code></li>
 <li>exact difficulty slice</li>
-<li>interaction family target</li>
-<li>compatibility profile hints</li>
-<li>timing-aligned event payloads</li>
-<li>optional portable presentation/scoring hints</li>
+<li>boxing beat payloads aligned to song-owned timing</li>
+<li>any future cross-feature chart fields that are explicitly promoted into the shared contract later</li>
 </ul>
 <h4 id="must-not-own_2">Must not own<a class="headerlink" href="#must-not-own_2" title="Permanent link">&para;</a></h4>
 <ul>
@@ -6043,42 +6041,36 @@
 <li>environment/asset selections</li>
 <li>browse/discovery state</li>
 </ul>
-<h4 id="canonical-field-direction_2">Canonical field direction<a class="headerlink" href="#canonical-field-direction_2" title="Permanent link">&para;</a></h4>
+<h4 id="canonical-boxing-field-direction-for-this-pass">Canonical boxing field direction for this pass<a class="headerlink" href="#canonical-boxing-field-direction-for-this-pass" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">schemaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerobeat.chart.boxing.v1</span>
 <span class="nt">schemaVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="nt">recordVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="nt">createdByTool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerobeat-tool-content-authoring</span>
 <span class="nt">createdByToolVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1.0</span>
 <span class="nt">createdAt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2026-04-25T19:00:00Z</span>
-<span class="nt">updatedAt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2026-04-25T19:20:00Z</span>
+<span class="nt">updatedAt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2026-04-29T09:40:00Z</span>
 <span class="nt">chartId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
 <span class="nt">chartName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boxing</span>
+<span class="nt">feature</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boxing</span>
 <span class="nt">difficulty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span>
-<span class="nt">interactionFamily</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gesture_2d</span>
-<span class="nt">supportedInputProfiles</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mediapipe_camera</span>
-<span class="nt">validatedInputProfiles</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mediapipe_camera</span>
-<span class="nt">timing</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span>
-<span class="nt">presentationHints</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">preferredViews</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">portal</span>
-<span class="nt">scoringHints</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">comboModel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">standard</span>
-<span class="nt">events</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">beat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8</span>
-<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">strike</span>
-<span class="w">    </span><span class="nt">hand</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">left</span>
-<span class="w">    </span><span class="nt">strike</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jab</span>
-<span class="w">    </span><span class="nt">zone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">left_high</span>
-<span class="w">    </span><span class="nt">portal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">center</span>
+<span class="nt">beats</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.0</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jab</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12.0</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cross</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16.0</span>
+<span class="w">    </span><span class="nt">end</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">17.0</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">guard</span>
+<span class="w">    </span><span class="nt">portal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
 </code></pre></div>
 <h4 id="notes_2">Notes<a class="headerlink" href="#notes_2" title="Permanent link">&para;</a></h4>
 <ul>
 <li><code>charts/*.yaml</code> are intentionally reusable exact playable slices.</li>
-<li>Boxing chart examples should use structured event payload fields such as <code>type</code>, <code>hand</code>, <code>strike</code>, <code>zone</code>, and <code>portal</code> rather than legacy shorthand like <code>eventType</code> / <code>laneHint</code>.</li>
+<li>For boxing authoring in this pass, use <code>feature</code>, not <code>mode</code>.</li>
+<li>Boxing authored entries live under <code>beats</code>, not <code>events</code>.</li>
+<li>Each boxing beat has required float <code>start</code>, optional inclusive float <code>end</code>, required concrete <code>type</code>, and optional integer <code>portal</code> in <code>0-11</code> defaulting to <code>0</code>.</li>
+<li>Boxing charts do not author <code>zone</code>, symbolic portal strings, nested subtype payloads, or old boxing timing fields such as <code>holdMs</code> / <code>durationMs</code>.</li>
+<li>This document is only locking the boxing shape here; broader Flow/Dance/Step payload details remain follow-up work.</li>
 <li>They do not contain <code>songId</code>, <code>setId</code>, or older routine linkage fields.</li>
 <li>Set files provide the package-local wiring from chart ids to song/environment/coaching choices.</li>
 </ul>
@@ -6098,7 +6090,7 @@
 <li>chart event payloads</li>
 <li>raw file paths for linked song/chart/environment/asset/coaching content</li>
 </ul>
-<h4 id="canonical-field-direction_3">Canonical field direction<a class="headerlink" href="#canonical-field-direction_3" title="Permanent link">&para;</a></h4>
+<h4 id="canonical-field-direction_2">Canonical field direction<a class="headerlink" href="#canonical-field-direction_2" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">schemaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerobeat.set.v1</span>
 <span class="nt">schemaVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="nt">recordVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
@@ -6190,7 +6182,7 @@
 <p>The shared catalog core tables should continue to summarize package data such as:</p>
 <ul>
 <li>workout identity and description</li>
-<li>modes present in the workout (derived from referenced chart records)</li>
+<li>features present in the workout (derived from referenced chart records)</li>
 <li>difficulties present in the workout (derived from referenced chart records)</li>
 <li>songs present in the workout (derived from referenced set -&gt; song links)</li>
 <li>coaches present in the workout (derived from coach-config when enabled)</li>
@@ -6227,7 +6219,7 @@ A future remote/distribution catalog snapshot should reuse the same core tables 
 <p>The durable workout-package contract is now set-centered:</p>
 <ul>
 <li><code>songs/</code> own reusable music/licensing truth plus the package's canonical timing map (<code>anchorMs</code>, <code>tempoSegments</code>, <code>stopSegments</code>, <code>timeSignatureSegments</code>)</li>
-<li><code>charts/</code> own exact playable event payloads plus mode/difficulty semantics</li>
+<li><code>charts/</code> own exact playable authored payloads plus feature/difficulty semantics</li>
 <li><code>sets/</code> own package-local composition wiring through ids only</li>
 <li><code>workout.yaml</code> owns package metadata plus ordered <code>setId</code> references</li>
 <li><code>coaches/coach-config.yaml</code> owns the package's coaching roster/media registry</li>
@@ -6253,7 +6245,7 @@ A future remote/distribution catalog snapshot should reuse the same core tables 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 28, 2026 15:12:03 UTC">April 28, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 29, 2026 13:44:45 UTC">April 29, 2026</span>
   </span>
 
     

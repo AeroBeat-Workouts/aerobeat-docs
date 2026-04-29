@@ -2966,10 +2966,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mode-specific-payloads" class="md-nav__link">
+  <a href="#feature-specific-payloads" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mode-specific payloads
+        Feature-specific payloads
       
     </span>
   </a>
@@ -5734,10 +5734,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mode-specific-payloads" class="md-nav__link">
+  <a href="#feature-specific-payloads" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mode-specific payloads
+        Feature-specific payloads
       
     </span>
   </a>
@@ -5980,7 +5980,7 @@
 <li><code>Chart</code> records do not link to songs or sets.</li>
 <li>Athlete/device-specific timing calibration such as song offset does not belong in durable content data; it belongs in athlete/profile/device state.</li>
 <li>Workout coaching is owned by the package's single <code>coaches/coach-config.yaml</code>; enabled coaching requires roster + warmup + cooldown + an overlay registry whose records use <code>overlayId</code>, while set files reference that registry via <code>coachingOverlayId</code>.</li>
-<li>Boxing charts should be documented and exemplified with structured event payloads (<code>type</code>, <code>hand</code>, <code>strike</code>, <code>zone</code>, <code>portal</code>, etc.) rather than legacy shorthand fields such as <code>eventType</code> and <code>laneHint</code>.</li>
+<li>Boxing charts should be documented and exemplified with a flat <code>beats</code> list where each beat has <code>start</code>, optional inclusive <code>end</code>, concrete <code>type</code>, and optional integer <code>portal</code> (<code>0-11</code>) rather than legacy shorthand or nested boxing payload fields.</li>
 </ul>
 <h2 id="canonical-ownership">Canonical ownership<a class="headerlink" href="#canonical-ownership" title="Permanent link">&para;</a></h2>
 <p>The canonical contracts for <code>Song</code>, <code>Chart</code>, <code>Set</code>, <code>Workout</code>, the shared chart envelope, and shared content loading / validation interfaces live in <a href="https://github.com/AeroBeat-Workouts/aerobeat-content-core"><code>aerobeat-content-core</code></a>.</p>
@@ -6030,16 +6030,15 @@
 <ul>
 <li><code>chartId</code></li>
 <li><code>chartName</code></li>
-<li><code>mode</code></li>
+<li><code>feature</code></li>
 <li>difficulty</li>
-<li>interaction family target</li>
-<li>optional supported / validated input profiles</li>
-<li>beat-timed event stream authored against the song-owned canonical timing truth</li>
-<li>optional presentation hints needed to render the chart well only when those hints are truly part of durable content</li>
+<li>beat-timed authored content aligned to the song-owned canonical timing truth</li>
+<li>boxing-specific <code>beats</code> payloads for the current locked boxing pass</li>
+<li>any future cross-feature chart fields that are explicitly promoted into the shared contract later</li>
 </ul>
 <p>A chart represents <strong>one playable difficulty / compatibility slice</strong>, not an all-difficulties megafile.</p>
 <p>A chart does <strong>not</strong> point back to a song or forward to a set. That wiring belongs to the set layer.</p>
-<p>Mode-global tuning such as hit windows should not live in authored chart data. Those belong in feature/mode rules rather than in each chart record.</p>
+<p>Feature-global tuning such as hit windows should not live in authored chart data. Those belong in feature rules rather than in each chart record.</p>
 <h4 id="why-difficulty-belongs-here">Why difficulty belongs here<a class="headerlink" href="#why-difficulty-belongs-here" title="Permanent link">&para;</a></h4>
 <p>AeroBeat does not store all difficulties as peer event arrays inside one giant chart by default.</p>
 <p>Separate charts give us:</p>
@@ -6085,8 +6084,8 @@
 <p>When coaching is enabled, the package's single coach-config domain owns the coach roster, warmup video, cooldown video, and overlay-media registry. <code>workout.yaml</code> points at coach-config but does not own those media references directly.</p>
 <p>Workout runtime length is derived from the referenced content rather than stored as a separate authored duration field.</p>
 <h2 id="shared-chart-envelope">Shared chart envelope<a class="headerlink" href="#shared-chart-envelope" title="Permanent link">&para;</a></h2>
-<p>AeroBeat uses <strong>one shared chart envelope</strong> across gameplay modes, with <strong>mode-specific payloads</strong> inside it.</p>
-<p>This keeps tooling, loading, validation, and runtime contracts coherent without pretending that Boxing and Step are authored with the exact same event vocabulary.</p>
+<p>AeroBeat uses <strong>one shared chart envelope</strong> across gameplay features, with <strong>feature-specific payloads</strong> inside it.</p>
+<p>This keeps tooling, loading, validation, and runtime contracts coherent without pretending that Boxing and Step are authored with the exact same payload vocabulary.</p>
 <p>The shared chart envelope is owned by <code>aerobeat-content-core</code> because it is part of the durable authored-content contract. Feature repos consume it and interpret it.</p>
 <h3 id="shared-fields">Shared fields<a class="headerlink" href="#shared-fields" title="Permanent link">&para;</a></h3>
 <p>All charts expose a common envelope containing fields such as:</p>
@@ -6094,27 +6093,27 @@
 <li><code>schemaId</code></li>
 <li><code>chartId</code></li>
 <li><code>chartName</code></li>
-<li><code>mode</code></li>
+<li><code>feature</code></li>
 <li><code>difficulty</code></li>
-<li><code>interactionFamily</code></li>
-<li><code>supportedInputProfiles</code></li>
-<li><code>validatedInputProfiles</code></li>
-<li><code>timing</code> (chart-side timing details remain separate follow-up contract work; the song owns canonical timing truth now)</li>
-<li><code>presentationHints</code></li>
-<li><code>scoringHints</code></li>
-<li><code>events</code></li>
 </ul>
-<h3 id="mode-specific-payloads">Mode-specific payloads<a class="headerlink" href="#mode-specific-payloads" title="Permanent link">&para;</a></h3>
-<p>The meaning of <code>events</code> depends on the chart mode.</p>
-<p>Examples:</p>
+<p>For the current locked boxing pass, the authored gameplay payload lives under <code>beats</code>, not <code>events</code>, and each boxing beat uses the flat shape <code>start</code> / <code>end?</code> / <code>type</code> / <code>portal?</code>.</p>
+<h3 id="feature-specific-payloads">Feature-specific payloads<a class="headerlink" href="#feature-specific-payloads" title="Permanent link">&para;</a></h3>
+<p>The meaning of the authored gameplay payload depends on the chart feature.</p>
+<p>For <strong>Boxing</strong>, the current locked authored payload is a flat <code>beats</code> list using concrete move <code>type</code> values such as:</p>
 <ul>
-<li><strong>Boxing:</strong> strike, guard, obstacle, stance, knee, rotation cue</li>
-<li><strong>Dance:</strong> limb pose, direction, hold, travel, formation cue</li>
-<li><strong>Step:</strong> pad lane, hold, jump, mine, modifier</li>
-<li><strong>Flow:</strong> saber-style cut direction, lane, obstacle, path, gesture hold</li>
+<li><code>jab</code>, <code>cross</code></li>
+<li><code>hook_left</code>, <code>hook_right</code></li>
+<li><code>uppercut_left</code>, <code>uppercut_right</code></li>
+<li><code>guard</code></li>
+<li><code>orthodox</code>, <code>southpaw</code></li>
+<li><code>squat</code>, <code>lean_left</code>, <code>lean_right</code></li>
+<li><code>sidestep_left</code>, <code>sidestep_right</code></li>
+<li><code>knee_left</code>, <code>knee_right</code></li>
+<li><code>leg_lift_left</code>, <code>leg_lift_right</code></li>
+<li><code>run_in_place</code></li>
 </ul>
-<p>The loader contract is shared. The event schema is not identical across all modes.</p>
-<p>That is the correct compromise.</p>
+<p>Boxing does <strong>not</strong> author <code>zone</code>, symbolic portal strings, nested subtype payloads, or old boxing timing fields such as <code>holdMs</code> / <code>durationMs</code> in this pass.</p>
+<p>Dance, Step, and Flow payload details remain follow-up work. The loader contract is shared, but this document does not try to prematurely force their authored vocabularies to match boxing exactly.</p>
 <h2 id="interaction-families-not-raw-devices">Interaction families, not raw devices<a class="headerlink" href="#interaction-families-not-raw-devices" title="Permanent link">&para;</a></h2>
 <p>Charts target <strong>interaction semantics</strong>, not raw hardware bindings.</p>
 <p>Do <strong>not</strong> author charts directly against devices such as webcam, JoyCon, headset, or keyboard. Those are runtime input strategies and profiles, not durable content primitives.</p>
@@ -6193,7 +6192,7 @@
 <li>coaching overlay selection</li>
 </ul>
 <h3 id="chart-contract">Chart contract<a class="headerlink" href="#chart-contract" title="Permanent link">&para;</a></h3>
-<p>The <code>Chart</code> contract is responsible for one exact playable authored event stream for one mode/difficulty slice.</p>
+<p>The <code>Chart</code> contract is responsible for one exact playable authored sequence for one feature/difficulty slice.</p>
 <p>It is <strong>not</strong> responsible for:</p>
 <ul>
 <li>song lookup ownership</li>
@@ -6261,7 +6260,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 28, 2026 15:12:03 UTC">April 28, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 29, 2026 13:44:45 UTC">April 29, 2026</span>
   </span>
 
     
