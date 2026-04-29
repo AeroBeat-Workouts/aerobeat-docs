@@ -28,12 +28,12 @@ CREATE TABLE workout_tags (
   FOREIGN KEY (workout_id) REFERENCES workouts(workout_id) ON DELETE CASCADE
 );
 
--- Mode summary table so the client can filter without reparsing every chart file.
+-- Feature summary table so the client can filter without reparsing every chart file.
 -- Rows are derived from the charts referenced by authored set files.
-CREATE TABLE workout_modes (
+CREATE TABLE workout_features (
   workout_id TEXT NOT NULL,
-  mode TEXT NOT NULL,
-  PRIMARY KEY (workout_id, mode),
+  feature TEXT NOT NULL,
+  PRIMARY KEY (workout_id, feature),
   FOREIGN KEY (workout_id) REFERENCES workouts(workout_id) ON DELETE CASCADE
 );
 
@@ -113,7 +113,7 @@ CREATE TABLE workout_remote (
 -- Typical indexes for browse performance.
 CREATE INDEX idx_workouts_name ON workouts(workout_name);
 CREATE INDEX idx_workout_tags_tag ON workout_tags(tag);
-CREATE INDEX idx_workout_modes_mode ON workout_modes(mode);
+CREATE INDEX idx_workout_features_feature ON workout_features(feature);
 CREATE INDEX idx_workout_difficulties_difficulty ON workout_difficulties(difficulty);
 CREATE INDEX idx_workout_songs_name ON workout_songs(song_name);
 CREATE INDEX idx_workout_coaches_name ON workout_coaches(coach_name);
