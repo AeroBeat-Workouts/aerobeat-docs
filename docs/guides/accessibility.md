@@ -15,10 +15,10 @@ Our scoring system is designed to be permissive.
 
 Before starting a Workout, you can enable specific modifiers to tailor the session to your needs.
 
-*   **No Squats:** Disables obstacles (Walls/Bars) that force you to squat or duck.
+*   **No Squats:** Removes squat prompts, including `squat` beats in Flow Workouts.
 *   **No Knee Strikes:** Removes Knee Strike targets from Boxing Workouts.
-*   **No Leg Lifts:** Removes balancing obstacles from Flow Workouts.
-*   **No Obstacles:** Removes all walls and barriers entirely.
+*   **No Leg Lifts:** Removes `leg_lift_left` and `leg_lift_right` beats from Flow Workouts.
+*   **No Obstacles:** Removes body-movement prompts such as squats, leans, knee lifts, leg lifts, and run-in-place beats.
 *   **No Arrows:** Removes the directional requirement. You can hit targets from any angle (great for limited wrist mobility).
 *   **No Trails & Warnings:** Removes `trail_*` and `warn_*` guidance beats for athletes who want simpler primary swing reads.
 *   **Zen Mode:** Disables all targets and scoring. Just enjoy the music and the environment.
