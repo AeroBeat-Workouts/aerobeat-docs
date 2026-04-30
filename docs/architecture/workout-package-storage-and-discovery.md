@@ -514,7 +514,21 @@ The exact Environment v1 `type` enum is:
 
 ### `assets/<asset-id>.yaml`
 
-Asset records remain reusable package-local gameplay-facing asset records. They own asset identity, asset type, and the resource path for the asset payload, and they follow the shared authored-record schema/provenance field block described above.
+Asset records remain reusable package-local gameplay-facing asset records. Asset v1 keeps the authored record intentionally small. Beyond the shared authored-record schema/provenance block described above, the canonical fields are:
+
+- `assetId`
+- `assetName`
+- `type`
+- `resourcePath`
+
+The exact Asset v1 `type` enum is:
+
+- `gloves`
+- `targets`
+- `obstacles`
+- `trails`
+
+`resourcePath` stays package-local and points at the authored asset payload selected by `type`. Example-only fields such as `metadata` and `tags` should not be taught as part of the durable Asset v1 contract unless a later version explicitly promotes them.
 
 ## Validation tool ownership
 
@@ -546,7 +560,7 @@ At minimum, package validators should enforce:
 3. Each set must reference exactly one song in `songs/`.
 4. Each set must reference exactly one chart in `charts/`.
 5. Each set must reference exactly one environment in `environments/`.
-6. Every referenced asset id must exist in `assets/` and its `assetType` must match the key used in `assetSelections`.
+6. Every referenced asset id must exist in `assets/`, its `type` must match the key used in `assetSelections`, and each set may include at most one referenced asset per asset type.
 7. The single coach-config file may define multiple coaches.
 8. If coaching is disabled, set files must not require `coachingOverlayId`.
 9. If coaching is enabled, coach-config must include one warmup video, one cooldown video, and every set must reference exactly one valid overlay audio record by `coachingOverlayId`.

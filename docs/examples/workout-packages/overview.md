@@ -80,11 +80,10 @@ This demo package is aligned to the current package rules:
 - Packages are **self-contained** and are versioned by duplication/forking rather than inheritance/patch layering.
 - Local and remote catalog databases share the same **core catalog schema**; local install-only state lives in `workout_local`, and remote-only browse/distribution state lives in `workout_remote`.
 - Signing and integrity metadata are **deferred** from the v1 authored package contract.
-- The locked v1 `assetType` enum is:
-  - `gloves`
-  - `targets`
-  - `obstacles`
-  - `trails`
+- Asset records keep the locked small v1 shape: shared schema/provenance block plus `assetId`, `assetName`, `type`, and `resourcePath`.
+- The exact Asset v1 `type` enum is `gloves`, `targets`, `obstacles`, and `trails`.
+- A set may reference multiple asset records, but it may include at most one asset per asset type through `assetSelections`.
+- Example-only asset `metadata` / `tags` are intentionally not part of the canonical v1 contract.
 
 ## How to read the package
 

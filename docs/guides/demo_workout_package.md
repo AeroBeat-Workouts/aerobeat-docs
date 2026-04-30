@@ -141,7 +141,31 @@ The demo package keeps the creator guidance honest:
 - baseline `godot_scene` is intentionally absent from the v1 package contract
 - if AeroBeat later supports `godot_scene`, it should be treated as an advanced controlled-pipeline / build-managed path rather than a normal loose-package payload
 
-### 3b. Chart payload direction
+### 3b. Asset payload direction
+
+The checked-in asset examples now intentionally teach the locked small Asset v1 record shape:
+
+- shared schema/provenance block
+- `assetId`
+- `assetName`
+- `type`
+- `resourcePath`
+
+The exact Asset v1 `type` enum is:
+
+- `gloves`
+- `targets`
+- `obstacles`
+- `trails`
+
+The package/set composition rule is equally important:
+
+- a set may reference multiple asset records
+- a set may include at most one asset per asset type
+- the `assetSelections` key must match the referenced asset record's `type`
+- example-only `metadata` and `tags` are intentionally absent from the canonical v1 asset examples
+
+### 3c. Chart payload direction
 
 The checked-in demo charts now intentionally teach the locked flattened chart contracts used in this docs repo:
 

@@ -21,7 +21,7 @@ environmentId: ab-environment-neon-rooftop
 # coachingOverlayId points into coaches/coach-config.yaml, which owns the media registry.
 coachingOverlayId: ab-overlay-aria-neon-stride-cue
 
-# assetSelections picks zero-or-one asset per gameplay-facing asset type.
+# assetSelections may reference multiple assets, but at most one per gameplay-facing asset type.
 assetSelections:
   gloves: ab-asset-gloves-neon-pulse
   targets: ab-asset-targets-holo-rings

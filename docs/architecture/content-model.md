@@ -139,7 +139,7 @@ It owns the exact package-local wiring for one playable slice, including fields 
 - `assetSelections`
 - optional `coachingOverlayId`
 
-`assetSelections` is a keyed map by gameplay-facing asset type. The locked v1 `assetType` enum is intentionally narrow:
+`assetSelections` is a keyed map by gameplay-facing asset type. A set may reference multiple asset records through that map, but it may include **at most one** asset per asset type. The locked Asset v1 `type` enum is intentionally narrow:
 
 - `gloves`
 - `targets`

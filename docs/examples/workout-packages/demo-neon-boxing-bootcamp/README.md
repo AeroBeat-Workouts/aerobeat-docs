@@ -86,7 +86,9 @@ The package uses one shared coach config, a two-coach roster, two environments, 
 - the Flow example demonstrates explicit `portal`, `placement`, optional `direction`, and inherited `direction = placement` on supported beat families
 - the Dance example demonstrates the approved minimal row shape: required `start` + `type`, optional inclusive `end`, and optional `gold`
 - the Step example demonstrates the approved minimal row shape: required `start` + `type` + ordered unique `lanes`, with optional inclusive `end` only for holds
-- workout sets choose exactly one environment and zero-or-one asset per gameplay-facing asset type
+- workout sets choose exactly one environment and may reference multiple assets, but at most one per gameplay-facing asset type
+- asset records now teach the locked small v1 shape: shared schema/provenance block plus `assetId`, `assetName`, `type`, and `resourcePath`
+- the Asset v1 `type` enum is `gloves`, `targets`, `obstacles`, and `trails`, and example-only asset `metadata` / `tags` are intentionally absent from the canonical examples
 - environment records now teach the locked small v1 shape: shared schema/provenance block plus `environmentId`, `environmentName`, `type`, and `resourcePath`
 - the demo environment examples intentionally cover creator-facing `glb_environment` and `image_background` payloads, while `video_background` remains part of the locked enum even though this package does not need a third environment file
 - baseline `godot_scene` is intentionally absent from the v1 package contract shown here; if AeroBeat later supports it, that should be an advanced controlled-pipeline / build-managed path
