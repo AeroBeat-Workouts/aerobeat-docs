@@ -1,0 +1,43 @@
+# A third chart for the same song shows the approved first-pass Dance contract.
+schemaId: aerobeat.chart.dance.v1
+schemaVersion: 1
+recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-30T07:50:00Z
+updatedAt: 2026-04-30T07:50:00Z
+
+# Chart identity must still be unique within the package.
+chartId: ab-chart-neon-stride-dance-medium
+chartName: Neon Stride Medium Dance
+
+# Dance charts declare the feature directly.
+feature: dance
+
+# Difficulty belongs on the chart, not on the set.
+difficulty: medium
+
+# Dance beats stay flat like Boxing and Flow.
+# start/end are beat-domain floats, end is inclusive when present,
+# type is the expected move identifier, and gold is optional emphasis.
+beats:
+  - start: 8.0
+    type: step_touch
+  - start: 12.0
+    end: 15.0
+    type: hold_pose
+    gold: true
+  - start: 18.0
+    type: reach
+  - start: 20.0
+    type: spin
+  - start: 24.0
+    end: 27.0
+    type: groove
+  - start: 30.0
+    type: clap
+  - start: 32.0
+    type: jump
+  - start: 36.0
+    end: 39.0
+    type: hold_pose

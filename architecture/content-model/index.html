@@ -6133,7 +6133,15 @@
 <li><code>squat</code>, <code>lean_*</code>, <code>knee_*</code>, <code>leg_lift_*</code>, and <code>run_in_place</code> support neither</li>
 </ul>
 <p>For <code>swing_*</code>, <code>trail_*</code>, and <code>warn_*</code>, omitted <code>direction</code> inherits from <code>placement</code>.</p>
-<p>Dance and Step payload details remain follow-up work. The loader contract is shared, but this document does not try to prematurely force their authored vocabularies to match boxing or Flow exactly.</p>
+<p>For <strong>Dance</strong>, the current approved authored payload is also a flat <code>beats</code> list. Each beat uses required <code>start</code>, optional inclusive <code>end</code>, required <code>type</code>, and optional boolean <code>gold</code>.</p>
+<p>Dance field support is intentionally minimal:</p>
+<ul>
+<li>the chart stores the expected move id over time</li>
+<li><code>gold</code> marks authored highlight emphasis only</li>
+<li>scoring logic, classifier/runtime interpretation, coach behavior, pictograms/dance cards, cue systems, and move-performance semantics stay outside the chart row</li>
+<li><code>portal</code>, <code>placement</code>, and <code>direction</code> are not part of the first-pass Dance payload</li>
+</ul>
+<p>Step payload details remain follow-up work. The loader contract is shared, but this document does not try to prematurely force Step's authored vocabulary to match boxing, Flow, or Dance exactly.</p>
 <h2 id="interaction-families-not-raw-devices">Interaction families, not raw devices<a class="headerlink" href="#interaction-families-not-raw-devices" title="Permanent link">&para;</a></h2>
 <p>Charts target <strong>interaction semantics</strong>, not raw hardware bindings.</p>
 <p>Do <strong>not</strong> author charts directly against devices such as webcam, JoyCon, headset, or keyboard. Those are runtime input strategies and profiles, not durable content primitives.</p>
@@ -6268,7 +6276,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 29, 2026 20:25:15 UTC">April 29, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2026 11:45:40 UTC">April 30, 2026</span>
   </span>
 
     

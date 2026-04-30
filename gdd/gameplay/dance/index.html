@@ -1678,10 +1678,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#authored-chart-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authored chart contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mechanics" class="md-nav__link">
     <span class="md-ellipsis">
       
         Mechanics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contract-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contract boundary
       
     </span>
   </a>
@@ -1726,7 +1748,7 @@
   <a href="#3-joycon-phone-motion-controller" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Joycon / Phone (Motion Controller)
+        3. JoyCon / Phone (Motion Controller)
       
     </span>
   </a>
@@ -5361,10 +5383,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#authored-chart-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authored chart contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mechanics" class="md-nav__link">
     <span class="md-ellipsis">
       
         Mechanics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contract-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contract boundary
       
     </span>
   </a>
@@ -5409,7 +5453,7 @@
   <a href="#3-joycon-phone-motion-controller" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Joycon / Phone (Motion Controller)
+        3. JoyCon / Phone (Motion Controller)
       
     </span>
   </a>
@@ -5453,45 +5497,81 @@
 
 
 <h1 id="gameplay-core-dance">💃 Gameplay Core: "Dance"<a class="headerlink" href="#gameplay-core-dance" title="Permanent link">&para;</a></h1>
-<p>The "Dance" module brings the full-body choreography experience to AeroBeat.</p>
+<p>The <code>Dance</code> module brings full-body choreography matching to AeroBeat.</p>
+<p>This gameplay surface now assumes the approved first-pass Dance chart contract: authored charts store the expected move over time in a flat <code>beats:</code> list, while scoring/classifier logic, cue systems, and coach presentation stay outside the chart row.</p>
 <h3 id="the-loop">The Loop<a class="headerlink" href="#the-loop" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>The Beat:</strong> A virtual coach performs dance moves on screen in sync with the music.</li>
-<li><strong>The Action:</strong> The athlete mimics the movements of the coach as if looking in a mirror.</li>
-<li><strong>The Feedback:</strong> Motion matching algorithms score your pose accuracy and timing.</li>
-<li><strong>The Workout:</strong> Full-body cardio, coordination, and flexibility.</li>
+<li><strong>The Beat:</strong> The chart names the current expected Dance move for the active beat window.</li>
+<li><strong>The Action:</strong> A virtual coach performs the move and the athlete mirrors it.</li>
+<li><strong>The Feedback:</strong> Runtime motion matching evaluates accuracy and timing.</li>
+<li><strong>The Workout:</strong> Full-body cardio, coordination, rhythm, and flexibility.</li>
 </ol>
+<h3 id="authored-chart-contract">Authored chart contract<a class="headerlink" href="#authored-chart-contract" title="Permanent link">&para;</a></h3>
+<p>Dance charts follow the same shared envelope direction as Boxing and Flow:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">feature</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dance</span>
+<span class="nt">beats</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.0</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">step_touch</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12.0</span>
+<span class="w">    </span><span class="nt">end</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15.0</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hold_pose</span>
+<span class="w">    </span><span class="nt">gold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spin</span>
+</code></pre></div>
+<p>Per-row meaning is intentionally small:</p>
+<ul>
+<li><code>start</code> — required beat-domain start</li>
+<li><code>end</code> — optional inclusive sustained window end</li>
+<li><code>type</code> — required durable move identifier</li>
+<li><code>gold</code> — optional authored emphasis marker</li>
+</ul>
 <h3 id="mechanics">Mechanics<a class="headerlink" href="#mechanics" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>The Coach:</strong> A 3D avatar that demonstrates the current move.</li>
-<li><strong>Pictograms:</strong> Scrolling icons on the side of the screen preview the next move (e.g., "Spin", "Clap", "Slide").</li>
-<li><strong>Pose Matching:</strong> The core scoring mechanic. We compare your limb positions against the target pose.</li>
-<li><strong>Gold Moves:</strong> Special high-impact poses that trigger a "Yeah!" effect and bonus points if hit perfectly.</li>
+<li><strong>The Coach:</strong> A 3D avatar or equivalent presentation layer that demonstrates the current move.</li>
+<li><strong>Move Matching:</strong> Runtime systems compare the athlete's movement against the active move window.</li>
+<li><strong>Gold Moves:</strong> Rows marked with <code>gold: true</code> are specially highlighted moments.</li>
+<li><strong>Preview/Cues:</strong> Pictograms, dance cards, countdowns, and other read-ahead systems are presentation-layer features that consume chart data rather than expanding the chart row itself.</li>
+</ul>
+<h3 id="contract-boundary">Contract boundary<a class="headerlink" href="#contract-boundary" title="Permanent link">&para;</a></h3>
+<p>The Dance chart row owns only:</p>
+<ul>
+<li>expected move identity</li>
+<li>authored timing window</li>
+<li>optional Gold emphasis</li>
+</ul>
+<p>The Dance feature/runtime owns:</p>
+<ul>
+<li>classifier or pose-matching interpretation</li>
+<li>scoring thresholds and feedback logic</li>
+<li>coach behavior</li>
+<li>pictogram/cue systems</li>
+<li>media/camera/controller adaptation</li>
 </ul>
 <h3 id="input-methods">Input Methods<a class="headerlink" href="#input-methods" title="Permanent link">&para;</a></h3>
 <h4 id="1-camera-computer-vision-recommended">1. Camera / Computer Vision (Recommended)<a class="headerlink" href="#1-camera-computer-vision-recommended" title="Permanent link">&para;</a></h4>
-<p>For the most authentic experience, we recommend using a Webcam or Phone Camera.</p>
+<p>For the most authentic experience, use a Webcam or Phone Camera.</p>
 <ul>
-<li><strong>Technology:</strong> Uses MediaPipe Pose to track 33 body landmarks.</li>
-<li><strong>Requirement:</strong> <strong>Full Body View.</strong> Unlike Boxing (which only needs upper body), Dance requires the camera to see your feet and hands. Place the camera further back or higher up.</li>
-<li><strong>Feedback:</strong> You see a video feed of yourself next to the coach (Mirror Mode).</li>
+<li><strong>Technology:</strong> MediaPipe Pose or equivalent body-tracking runtime.</li>
+<li><strong>Requirement:</strong> <strong>Full Body View.</strong> Unlike Boxing, Dance expects the runtime to observe hands, torso, and feet well enough to interpret the active move.</li>
+<li><strong>Feedback:</strong> Mirror-mode athlete feedback can sit beside or under the coach presentation.</li>
 </ul>
 <h4 id="2-vr-immersive">2. VR (Immersive)<a class="headerlink" href="#2-vr-immersive" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Tracking:</strong> Uses Headset and Controllers to track Head and Hands.</li>
-<li><strong>Limitation:</strong> Without full-body trackers (Vive Trackers), we infer leg movement or ignore it for scoring.</li>
-<li><strong>Experience:</strong> You are on the dance floor with the coach.</li>
+<li><strong>Tracking:</strong> Headset, controllers, and optional extra body tracking.</li>
+<li><strong>Limitation:</strong> Runtime interpretation may need to infer lower-body fidelity when no dedicated trackers are present.</li>
+<li><strong>Experience:</strong> You stand in the scene with the coach while still following the same authored chart truth.</li>
 </ul>
-<h4 id="3-joycon-phone-motion-controller">3. Joycon / Phone (Motion Controller)<a class="headerlink" href="#3-joycon-phone-motion-controller" title="Permanent link">&para;</a></h4>
+<h4 id="3-joycon-phone-motion-controller">3. JoyCon / Phone (Motion Controller)<a class="headerlink" href="#3-joycon-phone-motion-controller" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Tracking:</strong> Uses the Accelerometer and Gyroscope in your hand.</li>
-<li><strong>Style:</strong> Similar to console dance games. We track the velocity and rotation of your right hand (or both).</li>
-<li><strong>Limitation:</strong> Less precise than Camera; focuses on timing and arm energy rather than full pose accuracy.</li>
+<li><strong>Tracking:</strong> Uses handheld IMU data.</li>
+<li><strong>Style:</strong> Similar to console dance-game controller modes.</li>
+<li><strong>Limitation:</strong> Runtime scoring may focus more on timing, rhythm, and arm energy than exact whole-body pose fidelity.</li>
 </ul>
 <h3 id="view-modes">View Modes<a class="headerlink" href="#view-modes" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Studio View (2D):</strong> The standard view. The Coach is center stage. Pictograms slide in from the right. Your camera feed (if enabled) appears in a picture-in-picture or split-screen overlay.</li>
-<li><strong>Stage View (VR):</strong> You stand on stage next to the coach. Pictograms appear as floating holograms.</li>
+<li><strong>Studio View (2D):</strong> The Coach is center stage, with optional preview/cue surfaces and athlete camera feedback.</li>
+<li><strong>Stage View (VR):</strong> The athlete shares the performance space with the coach while the same authored Dance move windows drive the experience.</li>
 </ul>
 
 
@@ -5513,7 +5593,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 22, 2026 17:27:51 UTC">January 22, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2026 11:45:40 UTC">April 30, 2026</span>
   </span>
 
     
