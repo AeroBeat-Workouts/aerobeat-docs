@@ -109,7 +109,7 @@ As with Environment v1, this should stay truthful and narrow. The contract shoul
 
 **Status:** ✅ Complete
 
-**Results:** Updated the docs surfaces that actively taught Asset v1 so they now consistently use `type` rather than `assetType`, describe the small canonical asset record shape, and state the Set composition rule as “multiple assets allowed, but at most one per asset type in a Set.” Refreshed the four checked-in demo asset YAML files to the locked v1 shape (`assetId`, `assetName`, `type`, `resourcePath` plus shared schema/provenance), removed canonical `metadata` / `tags` teaching from those examples, and updated the demo package walkthrough/overview/glossary/index references to match. Validation run: `python3 scripts/create_placeholders.py && .venv/bin/mkdocs build --strict` (pass). Commit: `8589503`.
+**Results:** Updated the docs surfaces that actively taught Asset v1 so they now consistently use `type` rather than `assetType`, describe the small canonical asset record shape, and state the Set composition rule as “multiple assets allowed, but at most one per asset type in a Set.” Refreshed the four checked-in demo asset YAML files to the locked v1 shape (`assetId`, `assetName`, `type`, `resourcePath` plus shared schema/provenance), removed canonical `metadata` / `tags` teaching from those examples, and updated the demo package walkthrough/overview/glossary/index references to match. Validation run: `python3 scripts/create_placeholders.py && .venv/bin/mkdocs build --strict` (pass). Implementation commit: `c8d6cb0`.
 
 ---
 
@@ -145,7 +145,7 @@ As with Environment v1, this should stay truthful and narrow. The contract shoul
 **Reference Check:** Task 3 now aligns the active docs/example surfaces with the approved contract direction documented from `REF-01` through `REF-06`: `type` replaced legacy `assetType`, the closed enum stayed at four gameplay-facing values, the Set composition rule is explicit, and runtime/marketplace/override scope stayed out of the v1 docs contract.
 
 **Commits:**
-- `8589503` - Lock Asset v1 docs and example package teaching
+- `c8d6cb0` - Lock Asset v1 docs and example package teaching
 
 **Lessons Learned:** Environment went smoothly because we forced the contract, examples, and validator to line up around a small truthful surface. Asset v1 should follow the same pattern instead of letting legacy field names or example-only metadata silently harden into policy.
 
