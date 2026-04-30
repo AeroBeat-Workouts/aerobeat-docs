@@ -46,7 +46,7 @@ The example models a single package with:
 
 - one root `workout.yaml`
 - two songs
-- four charts
+- five charts
 - three sets
 - one coaching domain file
 - two environments

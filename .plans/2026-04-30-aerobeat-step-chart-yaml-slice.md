@@ -171,29 +171,30 @@ Rationale: this proposal preserves exact envelope parity with Boxing / Flow / Da
 **Files Created/Deleted/Modified:**
 - implementation scope only
 
-**Status:** ⏳ In Progress
+**Status:** ✅ Complete
 
-**Results:** 2026-04-30 Derrick approved the first-pass Step contract proposal for execution. Environment/assets YAML files and asset links remain outside chart YAML and are linked through Sets at engine interpretation time. Coder implementation completed for docs/examples in this repo. Updated Step contract teaching in `docs/guides/choreography/step.md` and `docs/gdd/gameplay/step.md`; promoted the approved Step payload rules into `docs/architecture/content-model.md` and `docs/architecture/workout-package-storage-and-discovery.md`; refreshed example-package references in `docs/guides/demo_workout_package.md`, `docs/examples/workout-packages/overview.md`, `docs/examples/workout-packages/demo-neon-boxing-bootcamp/README.md`, and `docs/examples/workout-packages/demo-neon-boxing-bootcamp/workout.yaml`; and added the checked-in Step chart example `docs/examples/workout-packages/demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-step-medium.yaml`. Validation run: `python3 scripts/create_placeholders.py` and `./venv/bin/mkdocs build --strict` (passed). Commit hash: `335317b` (`docs: add first-pass step chart contract example`).
+**Results:** 2026-04-30 Derrick approved the first-pass Step contract proposal for execution. Environment/assets YAML files and asset links remain outside chart YAML and are linked through Sets at engine interpretation time. Coder implementation completed for docs/examples in this repo. Updated Step contract teaching in `docs/guides/choreography/step.md` and `docs/gdd/gameplay/step.md`; promoted the approved Step payload rules into `docs/architecture/content-model.md` and `docs/architecture/workout-package-storage-and-discovery.md`; refreshed example-package references in `docs/guides/demo_workout_package.md`, `docs/examples/workout-packages/overview.md`, `docs/examples/workout-packages/demo-neon-boxing-bootcamp/README.md`, and `docs/examples/workout-packages/demo-neon-boxing-bootcamp/workout.yaml`; and added the checked-in Step chart example `docs/examples/workout-packages/demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-step-medium.yaml`. Coder validation run: `python3 scripts/create_placeholders.py` and `./venv/bin/mkdocs build --strict` (passed). Commit hash: `335317b` (`docs: add first-pass step chart contract example`). QA independently re-ran `python3 scripts/create_placeholders.py` and `./venv/bin/mkdocs build --strict` (both passed), manually verified the Step example against the locked contract (`beats:` flat list; required `start` + `type` + `lanes`; inclusive `end` only on holds; `type` limited to `tap|hold|mine`; lane ids limited to `left|down|up|right` in canonical order; no runtime/presentation/environment asset semantics inline), and cross-checked the touched docs/example pages for consistency. QA found one user-visible docs inconsistency: `docs/guides/demo_workout_package.md` still claimed the demo package had "four charts" even though the checked-in example now has five (`boxing`, `flow`, `dance`, `step`, `boxing-hard`). QA corrected that trivial count bug to "five charts". Auditor independently re-checked the active plan, touched docs/examples, pending QA diff, current git state, and recent commits on `main`; re-ran `python3 scripts/create_placeholders.py` and `./venv/bin/mkdocs build --strict` (passed again); mechanically verified the checked-in Step example row-by-row against the approved contract; and confirmed the docs consistently teach the same first-pass boundary: flat shared `beats:` list, required `start` + `type` + `lanes`, inclusive `end` only on holds, `type` constrained to `tap|hold|mine`, canonical `left|down|up|right` lane ids, and no scoring/runtime/presentation/environment-asset semantics embedded in chart rows. Audit verdict: pass. Remaining known limitation: this docs repo still lacks a dedicated schema/contract linter for Step rows, so verification is build-backed plus explicit manual/mechanical contract inspection rather than validator-enforced. Final QA/audit cleanup commit: `7e67397` (`docs: record step chart audit and qa follow-up`).
 
 ---
 
 ## Final Results
 
-**Status:** ⚠️ Draft / Discussion only
+**Status:** ✅ Complete
 
-**What We Built:** Created the definition-first plan for the Step chart YAML slice. This plan assumes the shared AeroBeat chart envelope remains stable and that the next design work is about Step payload vocabulary: what note families exist, whether lane ownership is best represented in `type` names or small side fields, how holds and jumps should author cleanly, and which StepMania-style concepts should remain outside the durable chart contract.
+**What We Built:** Completed the first-pass `feature: step` docs/examples rollout on the shared AeroBeat chart envelope. The repo now documents and exemplifies Step charts as a flat shared `beats:` contract with required `start` + `type` + ordered unique `lanes`, optional inclusive `end` only for holds, `type` limited to `tap | hold | mine`, lane ids limited to `left | down | up | right` in canonical order, and no scoring/runtime/presentation/environment-assets semantics embedded in chart rows. The docs package now also includes a checked-in Step example chart for `Neon Stride`, and the surrounding package docs correctly describe the demo package as containing five charts.
 
 ### Session Resume — 2026-04-30
 
-Derrick approved the first-pass `feature: step` contract direction and added one more boundary clarification: environment/assets YAML files and asset links are responsible for customization and are connected via Sets when interpreted by the AeroBeat engine, so they do **not** belong in Step chart YAML directly. With that boundary locked, this slice can now move from research/proposal into the docs/examples execution phase.
+Derrick approved the first-pass `feature: step` contract direction and added one more boundary clarification: environment/assets YAML files and asset links are responsible for customization and are connected via Sets when interpreted by the AeroBeat engine, so they do **not** belong in Step chart YAML directly. With that boundary locked, this slice moved from research/proposal into docs/examples implementation, QA, and audit.
 
-**Reference Check:** Pending.
+**Reference Check:** `REF-05`, `REF-06`, `REF-07`, and `REF-08` now consistently teach the approved Step contract; `REF-02`, `REF-03`, and `REF-04` remain aligned as sibling shared-envelope examples; and the checked-in Step example/package docs were verified against the approved scope with no contract deviations.
 
 **Commits:**
-- `e417366` - docs: add historical plan files
+- `335317b` - docs: add first-pass step chart contract example
+- `7e67397` - docs: record step chart audit and qa follow-up
 
-**Lessons Learned:** Dance reinforced that the biggest risk is not the outer chart envelope but accidentally leaking feature/runtime semantics into chart rows. Step will likely be more structurally inspectable than Dance because of the open DDR / StepMania lineage, but it still needs the same authored-boundary discipline.
+**Lessons Learned:** The biggest risk on these chart-contract slices is not the outer envelope anymore; it is silent leakage of runtime, scoring, presentation, or package-composition semantics back into chart rows. Step’s open DDR / StepMania lineage makes authoring easier to reason about, but it still benefits from the same strict authored/runtime boundary discipline as Boxing, Flow, and Dance. A dedicated Step schema validator would improve confidence later, but the current docs/example pass is accurate and handoff-ready without expanding scope.
 
 ---
 
-*Completed on 2026-04-30 (draft for discussion)*
+*Completed on 2026-04-30*
