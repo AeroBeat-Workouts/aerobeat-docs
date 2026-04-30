@@ -6136,7 +6136,11 @@
 <li><code>squat</code>, <code>lean_left</code>, <code>lean_right</code>, <code>knee_left</code>, <code>knee_right</code>, <code>leg_lift_left</code>, <code>leg_lift_right</code>, and <code>run_in_place</code> support neither <code>placement</code> nor <code>direction</code>.</li>
 <li>For <code>swing_*</code>, <code>trail_*</code>, and <code>warn_*</code>, omitted <code>direction</code> inherits from <code>placement</code>.</li>
 <li>This document's inline examples focus on Boxing and Flow, but the shared chart direction now also includes the first-pass Dance shape: flat <code>beats</code> with required <code>start</code> + <code>type</code>, optional inclusive <code>end</code>, and optional boolean <code>gold</code>.</li>
-<li>Step payload details remain follow-up work.</li>
+<li>Step charts now follow the same flat <code>beats</code> pattern with required <code>start</code>, required <code>type</code>, required ordered unique <code>lanes</code>, and optional inclusive <code>end</code> only for holds.</li>
+<li>The first-pass Step <code>type</code> family is <code>tap | hold | mine</code>.</li>
+<li>Step <code>lanes</code> values are limited to <code>left | down | up | right</code> in canonical pad order.</li>
+<li><code>tap</code> and <code>mine</code> support lane count <code>1..2</code> with no <code>end</code>; <code>hold</code> requires exactly one lane plus <code>end</code>; triples/quads are invalid in v1.</li>
+<li>Environment/assets YAML and asset links remain outside chart YAML and are linked through Sets.</li>
 </ul>
 <h3 id="setsset-idyaml"><code>sets/&lt;set-id&gt;.yaml</code><a class="headerlink" href="#setsset-idyaml" title="Permanent link">&para;</a></h3>
 <h4 id="owns_3">Owns<a class="headerlink" href="#owns_3" title="Permanent link">&para;</a></h4>
@@ -6309,7 +6313,7 @@ A future remote/distribution catalog snapshot should reuse the same core tables 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2026 11:45:40 UTC">April 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2026 13:20:05 UTC">April 30, 2026</span>
   </span>
 
     

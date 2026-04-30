@@ -1039,6 +1039,78 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-step-chart-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 The Step chart contract
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 The Step chart contract">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-step-row-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required Step row fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allowed-type-values-in-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Allowed type values in v1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allowed-lanes-values-in-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Allowed lanes values in v1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-rules-that-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation rules that matter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-stays-out-of-step-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What stays out of Step rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-golden-rule-alternation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5389,6 +5461,78 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-step-chart-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 The Step chart contract
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 The Step chart contract">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-step-row-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required Step row fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allowed-type-values-in-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Allowed type values in v1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allowed-lanes-values-in-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Allowed lanes values in v1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-rules-that-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation rules that matter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-stays-out-of-step-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What stays out of Step rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-golden-rule-alternation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5518,6 +5662,88 @@
 <li><strong>Grid:</strong> 4 lanes (Left, Down, Up, Right).</li>
 <li><strong>Perspective:</strong> The editor defaults to a top-down receptor view, similar to standard VSRGs (Vertical Scrolling Rhythm Games).</li>
 </ul>
+<h2 id="the-step-chart-contract">📦 The Step chart contract<a class="headerlink" href="#the-step-chart-contract" title="Permanent link">&para;</a></h2>
+<p>Step uses the same shared chart envelope as Boxing, Flow, and Dance. The authored gameplay payload stays in one flat <code>beats:</code> list.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">schemaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerobeat.chart.step.v1</span>
+<span class="nt">schemaVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">recordVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">createdByTool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerobeat-tool-content-authoring</span>
+<span class="nt">createdByToolVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1.0</span>
+<span class="nt">createdAt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2026-04-30T12:00:00Z</span>
+<span class="nt">updatedAt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2026-04-30T12:00:00Z</span>
+<span class="nt">chartId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uid</span>
+<span class="nt">chartName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">feature</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">step</span>
+<span class="nt">difficulty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span>
+<span class="nt">beats</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.0</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tap</span>
+<span class="w">    </span><span class="nt">lanes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">left</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12.0</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tap</span>
+<span class="w">    </span><span class="nt">lanes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">left</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">right</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16.0</span>
+<span class="w">    </span><span class="nt">end</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">18.0</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hold</span>
+<span class="w">    </span><span class="nt">lanes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">down</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mine</span>
+<span class="w">    </span><span class="nt">lanes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">up</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<h3 id="required-step-row-fields">Required Step row fields<a class="headerlink" href="#required-step-row-fields" title="Permanent link">&para;</a></h3>
+<p>Every Step row in <code>beats:</code> uses:</p>
+<ul>
+<li><code>start</code> — required beat-domain float</li>
+<li><code>type</code> — required Step object family</li>
+<li><code>lanes</code> — required ordered unique lane list</li>
+<li><code>end</code> — optional inclusive beat-domain float used only for holds</li>
+</ul>
+<h3 id="allowed-type-values-in-v1">Allowed <code>type</code> values in v1<a class="headerlink" href="#allowed-type-values-in-v1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>tap</code></li>
+<li><code>hold</code></li>
+<li><code>mine</code></li>
+</ul>
+<h3 id="allowed-lanes-values-in-v1">Allowed <code>lanes</code> values in v1<a class="headerlink" href="#allowed-lanes-values-in-v1" title="Permanent link">&para;</a></h3>
+<p>Use only the stable 4-panel lane ids:</p>
+<ul>
+<li><code>left</code></li>
+<li><code>down</code></li>
+<li><code>up</code></li>
+<li><code>right</code></li>
+</ul>
+<p>Write simultaneous lanes in canonical pad order:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">lanes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">left</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">down</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">up</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">right</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>That means authored two-lane rows should appear as:</p>
+<ul>
+<li><code>[left, down]</code></li>
+<li><code>[left, up]</code></li>
+<li><code>[left, right]</code></li>
+<li><code>[down, up]</code></li>
+<li><code>[down, right]</code></li>
+<li><code>[up, right]</code></li>
+</ul>
+<h3 id="validation-rules-that-matter">Validation rules that matter<a class="headerlink" href="#validation-rules-that-matter" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>tap</code> supports <code>lanes</code> count <code>1..2</code> and must <strong>not</strong> include <code>end</code></li>
+<li><code>hold</code> requires exactly one lane and <strong>must</strong> include <code>end</code></li>
+<li><code>mine</code> supports <code>lanes</code> count <code>1..2</code> and must <strong>not</strong> include <code>end</code></li>
+<li>triples/quads are invalid in first-pass Step YAML</li>
+<li>overlapping holds on the same lane should be treated as invalid authored data</li>
+</ul>
+<h3 id="what-stays-out-of-step-rows">What stays out of Step rows<a class="headerlink" href="#what-stays-out-of-step-rows" title="Permanent link">&para;</a></h3>
+<p>Do <strong>not</strong> put these into chart rows:</p>
+<ul>
+<li>scoring logic or judgment windows</li>
+<li>footedness guidance</li>
+<li>crossover intent</li>
+<li>bracket / hand / jack / stream labels</li>
+<li>presentation or runtime hints</li>
+<li>environment or asset configuration</li>
+<li>engine interpretation details</li>
+</ul>
+<p>Environment and asset customization remains outside chart YAML and is linked through <strong>Sets</strong> at engine interpretation time.</p>
 <h2 id="the-golden-rule-alternation">🦶 The Golden Rule: Alternation<a class="headerlink" href="#the-golden-rule-alternation" title="Permanent link">&para;</a></h2>
 <p>The most fundamental rule of Step mapping is <strong>flow</strong>.
 Unless you are creating a specific jack (repeated tap) pattern, players should naturally alternate feet:
@@ -5533,6 +5759,7 @@ Unless you are creating a specific jack (repeated tap) pattern, players should n
 <li><strong>The Gallop:</strong> A rhythm pattern (1/16th triplet) that feels like a skip.</li>
 <li><em>Timing:</em> <code>1... a2... a3</code></li>
 <li><strong>Jumps:</strong> Two arrows at once.</li>
+<li><em>Authoring:</em> In AeroBeat v1, a jump is a <code>tap</code> row with two <code>lanes</code> values, not a separate <code>type</code>.</li>
 <li><em>Constraint:</em> Humans only have two feet. Never place 3 arrows at once unless you intentionally want advanced hand or bracket tech.</li>
 <li><em>Flow:</em> Avoid placing a jump immediately after a fast stream without a break.</li>
 </ol>
@@ -5553,9 +5780,9 @@ Unless you are creating a specific jack (repeated tap) pattern, players should n
 </ul>
 <h3 id="3-placing-notes">3. Placing Notes<a class="headerlink" href="#3-placing-notes" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Tap (Arrow):</strong> Standard step.</li>
-<li><strong>Hold (Freeze):</strong> Click and drag to extend. The athlete must keep weight on the panel.</li>
-<li><strong>Mine (Shock):</strong> The athlete must <em>avoid</em> the panel. Use these to force foot placement (for example, putting a mine on the Down arrow forces the athlete to keep their foot on Up).</li>
+<li><strong>Tap (Arrow):</strong> Standard step. One lane is a single step; two lanes at the same <code>start</code> are a jump.</li>
+<li><strong>Hold (Freeze):</strong> Click and drag to extend. In YAML this is one <code>hold</code> row with <code>start</code>, inclusive <code>end</code>, and exactly one lane.</li>
+<li><strong>Mine (Shock):</strong> The athlete must <em>avoid</em> the panel. Use these to force foot placement without turning them into runtime-only hazards.</li>
 </ul>
 <h2 id="difficulty-guidelines">📉 Difficulty Guidelines<a class="headerlink" href="#difficulty-guidelines" title="Permanent link">&para;</a></h2>
 <p>Step charts are rated by feet (intensity).</p>
@@ -5617,7 +5844,7 @@ Unless you are creating a specific jack (repeated tap) pattern, players should n
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2026 19:15:50 UTC">April 27, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2026 13:20:05 UTC">April 30, 2026</span>
   </span>
 
     

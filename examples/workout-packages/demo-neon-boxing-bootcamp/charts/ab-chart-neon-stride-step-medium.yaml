@@ -1,0 +1,52 @@
+# A fourth chart for the same song shows the approved first-pass Step contract.
+schemaId: aerobeat.chart.step.v1
+schemaVersion: 1
+recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-30T13:25:00Z
+updatedAt: 2026-04-30T13:25:00Z
+
+# Chart identity must still be unique within the package.
+chartId: ab-chart-neon-stride-step-medium
+chartName: Neon Stride Medium Step
+
+# Step charts declare the feature directly.
+feature: step
+
+# Difficulty belongs on the chart, not on the set.
+difficulty: medium
+
+# Step beats stay flat like Boxing, Flow, and Dance.
+# start/end are beat-domain floats, end is inclusive when present,
+# type is the Step object family, and lanes is an ordered unique lane list.
+beats:
+  - start: 8.0
+    type: tap
+    lanes: [left]
+  - start: 10.0
+    type: tap
+    lanes: [down]
+  - start: 12.0
+    type: tap
+    lanes: [left, right]
+  - start: 14.0
+    end: 16.0
+    type: hold
+    lanes: [up]
+  - start: 18.0
+    type: mine
+    lanes: [down]
+  - start: 20.0
+    type: tap
+    lanes: [down, up]
+  - start: 22.0
+    type: mine
+    lanes: [left, right]
+  - start: 24.0
+    end: 27.0
+    type: hold
+    lanes: [left]
+  - start: 30.0
+    type: tap
+    lanes: [right]
