@@ -392,7 +392,8 @@ beats:
 - `reward_left` and `reward_right` support `placement` only.
 - `squat`, `lean_left`, `lean_right`, `knee_left`, `knee_right`, `leg_lift_left`, `leg_lift_right`, and `run_in_place` support neither `placement` nor `direction`.
 - For `swing_*`, `trail_*`, and `warn_*`, omitted `direction` inherits from `placement`.
-- This document is only locking the boxing and Flow shapes here; broader Dance/Step payload details remain follow-up work.
+- This document's inline examples focus on Boxing and Flow, but the shared chart direction now also includes the first-pass Dance shape: flat `beats` with required `start` + `type`, optional inclusive `end`, and optional boolean `gold`.
+- Step payload details remain follow-up work.
 
 ### `sets/<set-id>.yaml`
 

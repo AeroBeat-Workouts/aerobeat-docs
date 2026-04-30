@@ -17,7 +17,8 @@ workoutName: Neon Boxing Bootcamp
 description: >-
   A docs-friendly mixed-feature workout package that demonstrates the current
   AeroBeat v1 set-centered package contract with matching ids, commented YAML,
-  and both Boxing and Flow chart examples.
+  composed Boxing/Flow sets, and checked-in Boxing, Flow, and Dance chart
+  examples.
 
 # Semantic version for the package payload itself.
 packageVersion: 1.2.0

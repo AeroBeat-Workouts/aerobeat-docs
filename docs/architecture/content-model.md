@@ -223,7 +223,16 @@ Flow field support is intentionally explicit:
 
 For `swing_*`, `trail_*`, and `warn_*`, omitted `direction` inherits from `placement`.
 
-Dance and Step payload details remain follow-up work. The loader contract is shared, but this document does not try to prematurely force their authored vocabularies to match boxing or Flow exactly.
+For **Dance**, the current approved authored payload is also a flat `beats` list. Each beat uses required `start`, optional inclusive `end`, required `type`, and optional boolean `gold`.
+
+Dance field support is intentionally minimal:
+
+- the chart stores the expected move id over time
+- `gold` marks authored highlight emphasis only
+- scoring logic, classifier/runtime interpretation, coach behavior, pictograms/dance cards, cue systems, and move-performance semantics stay outside the chart row
+- `portal`, `placement`, and `direction` are not part of the first-pass Dance payload
+
+Step payload details remain follow-up work. The loader contract is shared, but this document does not try to prematurely force Step's authored vocabulary to match boxing, Flow, or Dance exactly.
 
 ## Interaction families, not raw devices
 

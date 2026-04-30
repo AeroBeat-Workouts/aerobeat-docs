@@ -1,72 +1,163 @@
 # Creating Dance Choreography
 
-Dance mode is unique in AeroBeat. Instead of placing abstract targets, you are creating a **Performance**. The athlete's goal is to mimic your movements as if looking in a mirror.
+Dance authoring now follows the approved **first-pass Dance chart contract** for this repo.
 
-The **Dance Choreography Studio** allows you to be the choreographer, the motion capture actor, and the level designer all at once.
+Like Boxing and Flow, Dance charts keep a shared flat `beats:` list. The difference is the payload meaning: each Dance beat names the expected move over time rather than a target lane or portal pattern.
 
 ## 🛠️ The Dance Studio
 
 *   **Tool:** **Dance Choreography Studio**
-*   **Input:** Requires a Webcam (MediaPipe) or VR Headset for recording.
-*   **Output:** A timeline of `AeroDanceMove` resources and a Coach Animation track.
+*   **Authoring model:** flat `beats:` list under `feature: dance`
+*   **Core idea:** author **what move is expected when**, not how runtime scoring, cueing, or coaching should interpret it
 
-## 💃 The "Mirror" Concept
+## ✅ Canonical Dance chart shape
 
-When mapping for Dance, remember: **The Player is your Mirror.**
+Dance charts use the same top-level authored structure as the locked Boxing and Flow passes:
 
-*   If you (the Coach) step to the **Left**, the Player steps to their **Left** (which looks like your Right on screen).
-*   The SDK handles this mirroring automatically during the "Bake" process, but keep it in mind when designing flow.
+```yaml
+schemaId: aerobeat.chart.dance.v1
+schemaVersion: 1
+recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-30T11:30:00Z
+updatedAt: 2026-04-30T11:30:00Z
+chartId: uid
+chartName: string
+feature: dance
+difficulty: medium
+beats:
+  - start: 8.0
+    type: step_touch
+  - start: 12.0
+    end: 15.0
+    type: hold_pose
+    gold: true
+  - start: 20.0
+    type: spin
+```
 
-## 🚀 Workflow
+### Beat fields
 
-### Phase 1: Setup
+Each Dance beat has:
 
-1.  **Load Song:** Import your audio track via the Content Browser.
-2.  **Sync BPM:** Use Auto-Detect to set the grid.
-3.  **Select Avatar:** Choose a default Coach Avatar to visualize your moves.
+- `start` — required float
+- `end` — optional inclusive float
+- `type` — required Dance move identifier
+- `gold` — optional boolean
 
-### Phase 2: Motion Capture (Record Yourself)
+### Field meanings
 
-You don't need to manually animate 3D bones. You just need to dance.
+- `start` = the authored beat where the move window begins
+- `end` = the inclusive authored beat where a sustained move window ends
+- `type` = the durable Dance move identity expected during that window
+- `gold` = special authored emphasis for that move window
 
-1.  **Setup Input:** In the SDK, select **"Input Source"** -> **"Camera (MediaPipe)"**.
-2.  **Calibrate:** Stand back and ensure your full body is visible.
-3.  **Arm Record:** Press the red circle on the timeline. The music will start.
-4.  **Perform:** Dance to the music! The SDK records your skeletal data in real-time.
-    *   *Tip:* You don't have to do the whole song in one take. You can record section by section (Verse 1, Chorus, Bridge).
+## 💃 Dance move vocabulary direction
 
-### Phase 3: The Timeline Editor
+For this first pass, Dance move ids should stay durable, compact, and choreography-oriented.
 
-Once you have raw motion data, you need to turn it into gameplay.
+Representative approved direction includes families such as:
 
-1.  **Simplify (Quantize):** The raw data is messy. Use the **"Simplify"** tool to snap key poses to the nearest beat (1/4 or 1/8).
-2.  **Define Moves:**
-    *   Highlight a section of the timeline (e.g., a "Clap").
-    *   Right-Click -> **"Create Move"**.
-    *   This generates a scoring window where the game checks the player's pose against yours.
-3.  **Assign Pictograms:**
-    *   Select the Move.
-    *   Choose an icon from the library (e.g., "Spin Left", "Wave", "V-Step").
-    *   *Note:* Pictograms appear 2 beats before the move by default.
+- `step_touch`
+- `hold_pose`
+- `spin`
+- `pivot`
+- `reach`
+- `sweep`
+- `clap`
+- `jump`
+- `knee_lift`
+- `groove`
 
-### Phase 4: Polish
+This guide is **not** locking a giant franchise-style move catalog. The important contract rule is that the chart stores the expected move id only. The detailed semantics of how that move is taught, previewed, mirrored, or scored belong elsewhere.
 
-*   **Gold Moves:** Mark high-energy moments (like a final pose or a jump) as **"Gold"**. These trigger special effects and bonus points.
-*   **Parity Check:** Run the validator to ensure you haven't created impossible transitions (e.g., spinning 360 degrees in 0.5 seconds).
+## 🪙 Gold moves
 
-## 💡 Best Practices
+Use `gold: true` when the authored move should be specially highlighted.
 
-*   **Repetition is Good:** Dance is built on patterns. Create a "Chorus" block and copy-paste it every time the chorus plays. This helps players learn the routine.
-*   **Telegraphing:** Don't surprise the player. If a move requires a complex foot placement, give them a simple "Step Touch" before it to get ready.
-*   **Energy Curve:**
-    *   **Verse:** Low intensity, simple arm movements.
-    *   **Chorus:** High energy, full body jumps and spins.
-    *   **Bridge:** Cool down, focus on style.
+Gold means only that the move window is emphasized in authored content. It does **not** inline bonus-scoring rules, special VFX logic, or coach-reaction behavior into the chart row.
 
-## 🎥 Green Screen Coaching (Optional)
+## ⏱️ Span semantics
 
-If you prefer to be the coach yourself (video) instead of using a 3D Avatar:
+Dance uses the same timing philosophy as Boxing and Flow:
 
-1.  Record yourself dancing against a Green Screen.
-2.  Import the `.webm` video as a **Coaching Overlay**.
-3.  Use the SDK to manually place "Move" markers on the timeline that match your video performance.
+- omit `end` for an instantaneous authored move moment
+- include `end` for one continuous sustained move/pose window
+- keep `end` inclusive when present
+
+Use spans for holds, freezes, sustained poses, or other continuous windows where the athlete is expected to maintain one named move.
+
+## 🚫 What does not belong in Dance chart rows
+
+Do **not** add:
+
+- scoring thresholds or classifier tuning
+- runtime interpretation details
+- coach behavior or camera logic
+- pictogram names or asset paths
+- dance-card / cue-system metadata
+- inline move-performance semantics
+- `portal`, `placement`, or `direction` fields borrowed from other features
+- nested Dance-only payload objects
+
+If a move needs durable left/right specificity, encode that in the move identifier only when the authored intent truly requires it.
+
+## 📐 Mapping Best Practices
+
+### 1. Keep the chart contract minimal
+
+A Dance chart should read like a timed list of expected move ids.
+
+*   **Good:** `start`, optional `end`, `type`, optional `gold`
+*   **Bad:** rows bloated with cue art, scoring data, classifier paths, or coach presentation details
+
+### 2. Use spans only when the move is truly continuous
+
+*   Use a span for `hold_pose`, a sustained `groove`, or another intentional maintained window.
+*   Do not split one continuous pose into multiple rows unless the authored expectation actually changes.
+
+### 3. Prefer durable movement-function names
+
+*   Favor reusable move ids such as `step_touch`, `pivot`, or `reach`.
+*   Avoid song-specific or franchise-branded labels that do not generalize across charts.
+
+### 4. Telegraph complexity through sequencing, not schema bloat
+
+If a complex move needs setup, author a simpler move before it.
+
+*   Example: `step_touch` before `spin`
+*   Example: `reach` before `hold_pose`
+
+The chart should still stay flat and readable even when the choreography becomes more technical.
+
+## 🚀 Workflow Tips
+
+### Pattern ideas
+
+Useful flat-schema Dance phrases include:
+
+*   **Prep Into Turn:** `step_touch` -> `spin`
+*   **Accent Freeze:** `clap` -> `hold_pose` with `gold: true`
+*   **Travel Groove:** `travel` or `groove` span into a sharper accent move
+
+### Difficulty grading
+
+| Difficulty | Mechanics | Density |
+| :--- | :--- | :--- |
+| **Easy** | Clear move ids, short poses, simple prep beats. | Low |
+| **Medium** | More sustained windows, turns, and readable transitions. | Moderate |
+| **Hard** | Denser move changes, longer memorized phrases, faster transitions. | High |
+| **Pro** | Technical choreography, tighter timing, and sustained complex phrases. | Extreme |
+
+## 🛡️ Validation
+
+Before publishing a Dance chart, check that:
+
+*   every entry lives under `beats`
+*   every beat has `start` and `type`
+*   any `end` value is intentional, numeric, and inclusive
+*   any `gold` value is boolean
+*   rows stay sorted by ascending `start`
+*   sustained windows do not overlap
+*   no authored Dance beat adds scoring logic, pictogram/cue data, runtime classifier fields, or other extra Dance-only payload keys

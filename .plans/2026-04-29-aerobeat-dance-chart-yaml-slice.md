@@ -20,6 +20,21 @@ The main unresolved question for Dance is not the outer envelope but the move vo
 
 This slice stays definition-first. We should leave implementation edits, examples, validators, and cross-repo rollout for a follow-up execution phase after Derrick signs off on the proposed dance move list and the resulting first-pass YAML shape.
 
+### Session Resume — 2026-04-30
+
+Resuming from the 2026-04-29 research handoff. The immediate next decision is still Task 5: propose the first-pass authored `feature: dance` YAML shape. The key fork to resolve is whether Dance rows should stay mostly **timed named move spans + lightweight qualifiers** with interpretation delegated to a separate move/classifier library, or whether AeroBeat should author a somewhat richer explicit movement-semantic layer directly in chart content.
+
+Derrick reviewed the research and explicitly locked the direction:
+- Dance charts should store **what move is expected over time**, not how the move is performed.
+- Dance charts should include Gold-move emphasis where authored.
+- Scoring interpretation, classifier logic, input evaluation, instructor behavior, and dance-card / pictogram teaching systems are **feature-level concerns** and do **not** belong in the chart contract.
+- It is acceptable that Dance chart rows are less sight-readable than Boxing/Flow because the named move vocabulary represents memorized complex motions rather than instantly visual geometric targets.
+
+For today, the recommended flow is:
+1. review the research conclusions already captured in this plan and the four architecture notes,
+2. make the contract-shape decision explicitly,
+3. then, if approved, execute the docs/examples coder → QA → auditor loop in a follow-up bead.
+
 ---
 
 ## REFERENCES
@@ -298,7 +313,7 @@ Also added `docs/architecture/dance-motion-classifier-asset-resolution.md` as a 
 **SubAgent:** `primary` (for `research`)  
 **Role:** `research`  
 **References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-05`, `REF-06`  
-**Prompt:** Using the approved Boxing/Flow contract style plus the researched dance move vocabulary, the open-source dance-game inspiration pass, the JustDanceTools inspection, and the motion/classifier asset research, propose the first-pass authored YAML shape for `feature: dance`. Pressure-test whether Dance should stay on the same flattened `beats:` model or needs a different naming shape such as `moves:`. Recommend required/optional fields, span semantics, special scoring markers such as gold moves, and any validation rules that belong in the authored contract rather than runtime scoring code. Claim bead `aerobeat-docs-org` on start with `bd update aerobeat-docs-org --status in_progress --json` and close it on completion with `bd close aerobeat-docs-org --reason "Shape proposal complete" --json`.
+**Prompt:** Using the approved Boxing/Flow contract style plus the researched dance move vocabulary, the open-source dance-game inspiration pass, the JustDanceTools inspection, and the motion/classifier asset research, propose the first-pass authored YAML shape for `feature: dance`. Pressure-test whether Dance should stay on the same flattened `beats:` model or needs a different naming shape such as `moves:`. Recommend required/optional fields, span semantics, special scoring markers such as gold moves, and any validation rules that belong in the authored contract rather than runtime scoring code. Derrick has now explicitly locked the policy direction: the chart should store only the expected move over time and whether it is a gold move; move-performance semantics, scoring interpretation, classifier/runtime logic, instructor behavior, and dance-card / pictogram teaching systems are all outside the chart contract. Claim bead `aerobeat-docs-org` on start with `bd update aerobeat-docs-org --status in_progress --json` and close it on completion with `bd close aerobeat-docs-org --reason "Shape proposal complete" --json`.
 
 **Folders Created/Deleted/Modified:**
 - `.plans/`
@@ -307,9 +322,81 @@ Also added `docs/architecture/dance-motion-classifier-asset-resolution.md` as a 
 **Files Created/Deleted/Modified:**
 - This plan file unless separate notes are justified
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**Results:** Pending.
+**Results:** 2026-04-30 shape proposal completed and kept localized to this plan; no separate architecture note was needed.
+
+**Recommended first-pass authored shape:** keep Dance on the same shared flat `beats:` container as Boxing and Flow rather than introducing a Dance-only `moves:` container. The strongest reason is contract consistency: `beats:` is already the approved cross-feature authored event lane for one exact playable chart slice, and the external research did not justify a structurally different Dance envelope. The fact that Dance rows describe choreography move windows rather than lane targets is a payload-vocabulary difference, not an envelope difference.
+
+**Proposed Dance row shape (v1):**
+```yaml
+schemaId: aerobeat.chart.dance.v1
+schemaVersion: 1
+recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-30T11:30:00Z
+updatedAt: 2026-04-30T11:30:00Z
+chartId: ab-chart-example-dance-medium
+chartName: Example Medium Dance
+feature: dance
+difficulty: medium
+beats:
+  - start: 8.0
+    type: step_touch
+  - start: 12.0
+    end: 15.0
+    type: hold_pose
+    gold: true
+  - start: 20.0
+    type: spin
+```
+
+**Field recommendation:**
+- **Required chart-level fields:** same shared envelope as other charts: `schemaId`, `schemaVersion`, `recordVersion`, `createdByTool`, `createdByToolVersion`, `createdAt`, `updatedAt`, `chartId`, `chartName`, `feature`, `difficulty`.
+- **Required beat row fields:**
+  - `start` — beat-domain float
+  - `type` — durable Dance move identifier string
+- **Optional beat row fields:**
+  - `end` — inclusive beat-domain float for sustained move/pose windows
+  - `gold` — boolean highlight marker; when omitted, treat as `false`
+- **Not recommended for first-pass Dance rows:** `portal`, `placement`, `direction`, pictogram names, cue assets, coach IDs, classifier paths, scoring thresholds, stance/facing subfields, performance semantics, or teaching metadata. If a move needs left/right/facing specificity, prefer encoding that in the durable move identifier vocabulary itself only when genuinely required by authored intent.
+
+**Why `beats:` instead of `moves:`:**
+- Keeps the shared chart contract visually and structurally aligned across features (`REF-02`, `REF-03`, `REF-06`).
+- Avoids implying that Dance has a wholly separate chart system when the locked philosophy says only the payload meaning changes.
+- Leaves room for future adjacent timelines or Dance-specific supporting metadata without fragmenting the base authored contract prematurely.
+- The research supports separate neighboring systems for pictograms/coaching/classifiers, but not a different core chart container.
+
+**Span semantics recommendation:**
+- `start` and `end` stay in beat-domain floats, matching current chart style.
+- When `end` is omitted, the row is an instantaneous authored move hit at `start`.
+- When `end` is present, the row represents one sustained expected move window from `start` through inclusive `end`.
+- Use spans for holds, freezes, sustained poses, or sustained groove/motion windows only when the authored expectation is one continuous named move. Do not split the same sustained motion into multiple rows unless authored intent actually changes.
+
+**Gold-move handling recommendation:**
+- Keep Gold as an inline authored emphasis marker on the same row via `gold: true`.
+- Do **not** model Gold as its own move family, separate event lane, scoring field bundle, or classifier pointer.
+- Gold means only: “this authored move window is specially highlighted.” Bonus scoring logic, VFX, callouts, and coach reactions remain outside the chart contract.
+
+**Authored-contract boundary recommendation:**
+- **Chart owns:** expected move identity over time and whether that move is Gold.
+- **Dance feature repo / supporting metadata own:** move-library definitions, classifier/runtime resolution, scoring interpretation, pose-matching thresholds, camera/controller adaptation, coach behavior, pictograms/dance cards, cue lead-ins, and any preview-system defaults.
+- This intentionally keeps Dance chart rows less sight-readable than Boxing/Flow, which is acceptable because the durable move vocabulary is choreography-oriented rather than geometric-target-oriented.
+
+**Recommended validation rules (authored contract only):**
+- `feature` must equal `dance`.
+- `beats` must be a flat array of objects; no nested Dance-only sub-payloads.
+- Every row must include finite numeric `start` and non-empty string `type`.
+- If present, `end` must be finite and `end >= start`.
+- If present, `gold` must be boolean.
+- Reject unknown row fields in v1 to keep the contract tight.
+- Rows must be sorted by ascending `start`.
+- Rows must be non-overlapping in authored expectation; with inclusive span semantics, each next row should begin strictly after the prior row’s effective end.
+- `type` must resolve to a known durable Dance move identifier in the Dance feature’s move registry/library, but the chart should only reference the identifier, not inline its semantics.
+- The chart validator may warn on unusually tiny spans or obvious accidental duplicates, but should not invent runtime scoring rules such as transition feasibility or classifier fit.
+
+**Net proposal:** `feature: dance` should be the simplest chart payload AeroBeat can get away with while staying aligned to the approved Boxing/Flow shape: flat `beats`, required `start` + `type`, optional inclusive `end`, optional `gold`. Everything else belongs outside the durable chart contract unless a later authoring need proves otherwise.
 
 ---
 
@@ -327,24 +414,24 @@ Also added `docs/architecture/dance-motion-classifier-asset-resolution.md` as a 
 **Files Created/Deleted/Modified:**
 - implementation scope only
 
-**Status:** ⏳ Pending
+**Status:** ⏳ In Progress
 
-**Results:** Pending.
+**Results:** 2026-04-30 Derrick approved the first-pass Dance contract proposal for execution. Coder implementation updated the Dance teaching surfaces plus one checked-in example chart without broadening the composed workout walkthrough. Touched files so far: `docs/guides/choreography/dance.md`, `docs/gdd/gameplay/dance.md`, `docs/architecture/content-model.md`, `docs/architecture/workout-package-storage-and-discovery.md`, `docs/guides/demo_workout_package.md`, `docs/examples/workout-packages/overview.md`, `docs/examples/workout-packages/demo-neon-boxing-bootcamp/README.md`, `docs/examples/workout-packages/demo-neon-boxing-bootcamp/workout.yaml`, and new example chart `docs/examples/workout-packages/demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-dance-medium.yaml`. Validation run before commit: Dance chart contract smoke-check via repo venv Python (YAML parse + row-key/ordering/span/gold checks), stale-language grep sweep for removed pre-contract Dance wording, and `./venv/bin/mkdocs build --strict` which passed. Commit hash pending coder commit/push, then QA/audit follow-on will continue on this same bead.
 
 ---
 
 ## Final Results
 
-**Status:** ⚠️ Partial / Research slice complete, contract shape deferred to next session
+**Status:** ⚠️ Partial / Research slice complete, implementation/docs follow-up still pending
 
-**What We Built:** Completed the research groundwork for the Dance chart YAML slice without locking the authored contract yet. This session produced: (1) a Dance Central ↔ Just Dance move-vocabulary normalization pass, (2) an open-source dance-chart inspiration pass centered on OpenDance plus StepMania-family timing discipline, (3) a JustDanceTools ecosystem inspection showing that the surrounding authoring model is a split routine package rather than one friendly chart file, and (4) a focused motion/classifier asset pass showing that named moves resolve to external `.msm` / `.gesture` classifier assets under shared song-map `timeline/moves/` paths rather than embedding full choreography semantics directly in the chart row.
+**What We Built:** Completed the full research-and-shape proposal slice for the Dance chart YAML contract. This work produced: (1) a Dance Central ↔ Just Dance move-vocabulary normalization pass, (2) an open-source dance-chart inspiration pass centered on OpenDance plus StepMania-family timing discipline, (3) a JustDanceTools ecosystem inspection showing that the surrounding authoring model is a split routine package rather than one friendly chart file, (4) a focused motion/classifier asset pass showing that named moves resolve to external `.msm` / `.gesture` classifier assets under shared song-map `timeline/moves/` paths rather than embedding full choreography semantics directly in the chart row, and (5) a concrete first-pass contract recommendation: keep `feature: dance` on the same flat `beats:` envelope as Boxing/Flow with required `start` + `type`, optional inclusive `end`, and optional `gold`.
 
-**Reference Check:** Research phase only; no implementation examples or cross-repo contract/code changes landed yet.
+**Reference Check:** `REF-02`, `REF-03`, and `REF-06` support keeping the shared flat chart envelope; `REF-04` and `REF-05` support Gold moves and sustained pose/move windows; the supporting architecture notes justify pushing pictograms, classifier/runtime logic, and coaching systems outside the core chart row.
 
 **Commits:**
 - Pending
 
-**Lessons Learned:** Dance likely still wants the same flattened outer contract direction as Boxing/Flow, but the deciding design question is now very crisp: whether AeroBeat should store only timed named move spans plus lightweight qualifiers and let a separate move library / classifier layer carry interpretation, or whether it should author a somewhat richer explicit movement-semantic layer than the Just Dance/OpenDance ecosystem does. The external research strongly argues for keeping cue/picto/media/highlight systems adjacent to core move timing rather than stuffing them into the base move row.
+**Lessons Learned:** The research now supports a much tighter authored-boundary rule than the initial open question suggested. Dance does not currently need a richer inline semantic row or a separate `moves:` container. The durable chart can stay minimal and human-authored if the Dance feature repo owns move-library resolution, scoring interpretation, cue systems, and runtime presentation.
 
 ---
 
