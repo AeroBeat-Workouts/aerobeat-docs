@@ -71,6 +71,10 @@ This demo package is aligned to the current package rules:
 - When coaching is enabled, `coach-config.yaml` owns the warmup video, cooldown video, and overlay audio registry.
 - Workout sets select the right overlay through `coachingOverlayId`.
 - Workout sets select gameplay-facing assets through `assetSelections` only.
+- Workout sets also link exactly one environment record by `environmentId`.
+- Environment records keep the locked small v1 shape: shared schema/provenance block plus `environmentId`, `environmentName`, `type`, and `resourcePath`.
+- The exact Environment v1 `type` enum is `image_background`, `video_background`, and `glb_environment`.
+- `godot_scene` is intentionally not taught as part of the baseline v1 package contract; if it appears later, it should be treated as advanced controlled-pipeline work.
 - `workout.yaml` owns package metadata plus `setOrder`, not full set composition details inline.
 - Local discoverability belongs in **`workouts.db`**, not in package YAML.
 - Packages are **self-contained** and are versioned by duplication/forking rather than inheritance/patch layering.

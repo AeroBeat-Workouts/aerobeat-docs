@@ -2,6 +2,8 @@
 
 Environments in AeroBeat are more than just backgrounds; they are reactive light shows that immerse the athlete in the music.
 
+> **Scope note:** this page describes the deeper Godot-authored environment workflow, which should be treated as an advanced controlled-pipeline / build-managed path. The baseline Environment v1 package contract stays smaller: package YAML should point at `image_background`, `video_background`, or cleaned `glb_environment` payloads via `type` + `resourcePath`, and it should **not** teach loose `godot_scene` as the default community handoff.
+
 ## 🛠️ The Environment SDK
 
 *   **SDK:** `aerobeat-environments-*` (Template: `environments`)

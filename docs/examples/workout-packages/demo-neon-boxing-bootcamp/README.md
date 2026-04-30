@@ -46,7 +46,7 @@ demo-neon-boxing-bootcamp/
 │   ├── assets/
 │   ├── audio/
 │   ├── coaching/
-│   └── scenes/
+│   └── environments/
 └── sql/
     ├── leaderboard-cache.db.schema.sql
     └── workouts.db.schema.sql
@@ -56,9 +56,9 @@ demo-neon-boxing-bootcamp/
 
 This example package imagines a short mixed-feature workout with two songs and three exact playable sets:
 
-1. **Neon Stride Opening Round** — medium Boxing opener in a rooftop night environment
+1. **Neon Stride Opening Round** — medium Boxing opener using a cleaned GLB rooftop environment
 2. **Neon Stride Flow Round** — medium Flow follow-up that reuses the same song with a different chart
-3. **Midnight Sprint Finish Round** — harder Boxing finisher in a brighter studio environment
+3. **Midnight Sprint Finish Round** — harder Boxing finisher using a bright studio image background
 
 The package uses one shared coach config, a two-coach roster, two environments, four gameplay-facing asset selections, one warmup video, one cooldown video, and one overlay audio clip selected by each set. It also includes extra checked-in Dance and Step chart examples for the same `Neon Stride` song so the docs package can teach the approved Dance and Step contracts without broadening the composed workout walkthrough. Every authored YAML record in the enabled example also carries the shared schema/provenance fields; the only deliberate exception path in this contract is a disabled `coach-config.yaml` sentinel of just `enabled: false`.
 
@@ -86,7 +86,10 @@ The package uses one shared coach config, a two-coach roster, two environments, 
 - the Flow example demonstrates explicit `portal`, `placement`, optional `direction`, and inherited `direction = placement` on supported beat families
 - the Dance example demonstrates the approved minimal row shape: required `start` + `type`, optional inclusive `end`, and optional `gold`
 - the Step example demonstrates the approved minimal row shape: required `start` + `type` + ordered unique `lanes`, with optional inclusive `end` only for holds
-- workout sets choose one environment and zero-or-one asset per gameplay-facing asset type
+- workout sets choose exactly one environment and zero-or-one asset per gameplay-facing asset type
+- environment records now teach the locked small v1 shape: shared schema/provenance block plus `environmentId`, `environmentName`, `type`, and `resourcePath`
+- the demo environment examples intentionally cover creator-facing `glb_environment` and `image_background` payloads, while `video_background` remains part of the locked enum even though this package does not need a third environment file
+- baseline `godot_scene` is intentionally absent from the v1 package contract shown here; if AeroBeat later supports it, that should be an advanced controlled-pipeline / build-managed path
 - shared browse/discovery rows live in the catalog core tables, while local install-only state lives in `workout_local`
 - local leaderboard snapshots live in the package's disposable cache DB
 - no inheritance, patching, remote-only catalog companion fields, trigger graphs, or signing metadata appears in the authored package files

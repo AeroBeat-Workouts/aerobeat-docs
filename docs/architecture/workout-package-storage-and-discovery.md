@@ -495,7 +495,22 @@ enabled: false
 
 ### `environments/<environment-id>.yaml`
 
-Environment records remain reusable package-local presentation records. They own environment identity plus resource references needed to load the environment, and they follow the shared authored-record schema/provenance field block described above.
+Environment records remain reusable package-local presentation records selected by Sets. Each Set must link **exactly one** environment record by `environmentId`.
+
+Environment v1 keeps the record intentionally small. Beyond the shared authored-record schema/provenance block described above, the canonical fields are:
+
+- `environmentId`
+- `environmentName`
+- `type`
+- `resourcePath`
+
+The exact Environment v1 `type` enum is:
+
+- `image_background`
+- `video_background`
+- `glb_environment`
+
+`resourcePath` stays package-local and points at the environment payload selected by `type`. Creator guidance for the current v1 package contract should steer authors toward image backgrounds, video backgrounds, and cleaned GLB-based 3D environments. Baseline `godot_scene` is intentionally **not** part of this v1 package contract; if AeroBeat later supports it, it should be framed as future advanced controlled-pipeline / build-managed work rather than the default loose-package path.
 
 ### `assets/<asset-id>.yaml`
 

@@ -26,6 +26,9 @@ As of 2026-04-27, the current naming and shape direction is:
 - Authored YAML records should carry shared schema/provenance fields such as `schemaId`, `schemaVersion`, `recordVersion`, `createdByTool`, `createdByToolVersion`, `createdAt`, and `updatedAt`; the one deliberate exception is a disabled `coaches/coach-config.yaml` sentinel that may be only `enabled: false`.
 - `Chart` is the durable term for one concrete playable difficulty slice.
 - `Set` is the durable package-composition linker. It binds together exact referenced ids for one song, one chart, one environment selection, zero-or-one asset selection per gameplay-facing asset type, and optional coaching overlay media.
+- Environment records use the small shared shape `environmentId` / `environmentName` / `type` / `resourcePath` plus the shared schema/provenance fields.
+- The locked Environment v1 `type` enum is exactly `image_background`, `video_background`, and `glb_environment`.
+- `godot_scene` is intentionally **not** part of the baseline Environment v1 package contract; if AeroBeat later supports it, it should be framed as a controlled-pipeline / build-managed advanced path rather than a default loose-package handoff.
 - `Workout` resolves to an ordered list of `setId` values. It does not inline full composition details.
 - `Song` records do not link to charts, sets, or workouts.
 - `Chart` records do not link to songs or sets.
@@ -143,7 +146,26 @@ It owns the exact package-local wiring for one playable slice, including fields 
 - `obstacles`
 - `trails`
 
-A set is intentionally the **single source of truth for workout composition details**. That means the set record owns the id-to-id linking for song/chart/environment/assets/coaching overlay selection instead of duplicating that wiring in `workout.yaml`, song files, or chart files.
+A set is intentionally the **single source of truth for workout composition details**. That means the set record owns the id-to-id linking for song/chart/environment/assets/coaching overlay selection instead of duplicating that wiring in `workout.yaml`, song files, or chart files. Each set links **exactly one** environment record by `environmentId`.
+
+### 3a. Environment
+
+An `Environment` is a reusable package-local presentation record selected by a set.
+
+Environment v1 keeps the authored record intentionally small. Beyond the shared schema/provenance fields, it owns only:
+
+- `environmentId`
+- `environmentName`
+- `type`
+- `resourcePath`
+
+The locked Environment v1 `type` enum is:
+
+- `image_background`
+- `video_background`
+- `glb_environment`
+
+This docs contract deliberately does **not** teach baseline `godot_scene` as part of v1. If AeroBeat later supports a Godot-scene-backed environment path, that should be documented as future advanced controlled-pipeline / build-managed work, not as the default package payload contract.
 
 ### 4. Workout
 

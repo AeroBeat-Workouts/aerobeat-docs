@@ -117,7 +117,31 @@ The package shows the approved coaching rule clearly:
 - set files choose overlay clips by `coachingOverlayId`
 - workout roots do not carry reusable trigger graphs or per-set overlay lists
 
-### 3a. Chart payload direction
+### 3a. Environment payload direction
+
+The checked-in environment examples now intentionally teach the locked small Environment v1 record shape:
+
+- shared schema/provenance block
+- `environmentId`
+- `environmentName`
+- `type`
+- `resourcePath`
+
+The exact Environment v1 `type` enum is:
+
+- `image_background`
+- `video_background`
+- `glb_environment`
+
+The demo package keeps the creator guidance honest:
+
+- image and video backgrounds are valid first-pass package payloads
+- cleaned GLB is the recommended serious 3D package path
+- each set links exactly one environment record by `environmentId`
+- baseline `godot_scene` is intentionally absent from the v1 package contract
+- if AeroBeat later supports `godot_scene`, it should be treated as an advanced controlled-pipeline / build-managed path rather than a normal loose-package payload
+
+### 3b. Chart payload direction
 
 The checked-in demo charts now intentionally teach the locked flattened chart contracts used in this docs repo:
 
