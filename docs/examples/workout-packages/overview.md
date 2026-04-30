@@ -13,6 +13,24 @@ If you are new to the package system, start here before reading the lower-level 
 - the checked-in chart examples now include locked flattened Boxing, Flow, Dance, and Step `beats:` examples
 - the package also demonstrates that one reusable song can back multiple exact playable charts, while the composed sets stay intentionally scoped to the current Boxing/Flow workout walkthrough
 
+## Validate with the authoring repo, not this docs repo
+
+This example package is here so humans and tools have a canonical package fixture to inspect. The actual validator lives in [`aerobeat-tool-content-authoring`](https://github.com/AeroBeat-Workouts/aerobeat-tool-content-authoring).
+
+Current implemented validator scope:
+
+- validates the current YAML package records
+- validates the checked-in `sql/*.schema.sql` artifacts
+- supports full-package validation plus narrower subject-specific validation
+- does **not** yet validate a live SQLite `workouts.db` or `leaderboard-cache.db` file in this slice
+
+Current CLI surface in the authoring repo:
+
+- `validate <package_dir>`
+- `validate <subject> <package_dir> [--json]`
+
+Current subjects: `package`, `workout`, `songs`, `charts`, `sets`, `coaches`, `environments`, `assets`, `sql`.
+
 ## Start Here
 
 - [Demo package README](demo-neon-boxing-bootcamp/README.md)

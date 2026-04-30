@@ -93,4 +93,13 @@ The package uses one shared coach config, a two-coach roster, two environments, 
 
 ## Validation note
 
+Use [`aerobeat-tool-content-authoring`](https://github.com/AeroBeat-Workouts/aerobeat-tool-content-authoring) to validate this package. This docs repo is the fixture and explanation layer; it is not the validator.
+
+Current first-slice validator scope for this package:
+
+- validates the YAML records in this package
+- validates the checked-in `sql/*.schema.sql` files
+- supports a full-package pass plus subject-specific passes
+- does **not** yet validate a live SQLite `workouts.db` or `leaderboard-cache.db` file
+
 The `media/` tree in this docs example contains tiny placeholder files so file-existence validation examples have something real to point at. They are stand-ins for real package media, not production assets.

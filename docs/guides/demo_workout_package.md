@@ -10,6 +10,25 @@ The canonical docs example lives here:
 
 That folder is intentionally authored as a **teaching package** rather than a minimal fixture.
 
+## Validation belongs to the authoring tool
+
+This docs repo explains the package contract, but it does **not** perform package validation itself.
+
+For actual validation, use [`aerobeat-tool-content-authoring`](https://github.com/AeroBeat-Workouts/aerobeat-tool-content-authoring). The current implemented validator covers:
+
+- the authored YAML package records in the example package
+- the checked-in SQL schema files under `sql/`
+- either a full-package pass or narrower subject-specific passes
+
+Current CLI surface in the authoring repo:
+
+- `validate <package_dir>`
+- `validate <subject> <package_dir> [--json]`
+
+Current subjects: `package`, `workout`, `songs`, `charts`, `sets`, `coaches`, `environments`, `assets`, `sql`.
+
+Important scope note: this first slice validates the checked-in `.schema.sql` artifacts, not a live SQLite `workouts.db` or `leaderboard-cache.db` file.
+
 ## What to open first
 
 1. [`workout.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/workout.yaml)

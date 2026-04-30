@@ -501,6 +501,27 @@ Environment records remain reusable package-local presentation records. They own
 
 Asset records remain reusable package-local gameplay-facing asset records. They own asset identity, asset type, and the resource path for the asset payload, and they follow the shared authored-record schema/provenance field block described above.
 
+## Validation tool ownership
+
+Package validation belongs to [`aerobeat-tool-content-authoring`](https://github.com/AeroBeat-Workouts/aerobeat-tool-content-authoring), not to this docs repo.
+
+Use this docs repo to understand the package contract and inspect the example package shape. Use the authoring repo's validator to actually check a package.
+
+Current implemented validator scope for this first slice:
+
+- validates the current YAML package records under `workout.yaml`, `songs/`, `charts/`, `sets/`, `coaches/`, `environments/`, and `assets/`
+- validates the checked-in SQL schema artifacts under `sql/*.schema.sql`
+- supports both full-package validation and narrower per-subject validation passes
+- does **not** yet validate a live checked-in SQLite `workouts.db` or `leaderboard-cache.db` file as part of this slice
+- keeps environment/asset validation at the current structural/reference level rather than claiming deeper runtime semantics that are not designed yet
+
+The implemented CLI surface in that repo is:
+
+- `validate <package_dir>`
+- `validate <subject> <package_dir> [--json]`
+
+Current subjects: `package`, `workout`, `songs`, `charts`, `sets`, `coaches`, `environments`, `assets`, `sql`.
+
 ## Validation rules
 
 At minimum, package validators should enforce:

@@ -124,7 +124,7 @@ When coaching is disabled, validation should fail if authors try to leave behind
    - wire the warmup video reference
    - wire the cooldown video reference
    - add the overlay audio registry records
-4. **Validate:** Run package validation so every `coachingOverlayId` resolves and every referenced file exists.
+4. **Validate:** Run package validation with [`aerobeat-tool-content-authoring`](https://github.com/AeroBeat-Workouts/aerobeat-tool-content-authoring) so every `coachingOverlayId` resolves and every referenced file exists. In the current first slice, that validator checks the authored YAML package records plus the checked-in `.schema.sql` artifacts; live SQLite `.db` validation is still deferred.
 
 ## 💡 Best Practices
 
