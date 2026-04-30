@@ -967,10 +967,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3b-chart-payload-direction" class="md-nav__link">
+  <a href="#3b-asset-payload-direction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3b. Chart payload direction
+        3b. Asset payload direction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3c-chart-payload-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3c. Chart payload direction
       
     </span>
   </a>
@@ -5514,10 +5525,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3b-chart-payload-direction" class="md-nav__link">
+  <a href="#3b-asset-payload-direction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3b. Chart payload direction
+        3b. Asset payload direction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3c-chart-payload-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3c. Chart payload direction
       
     </span>
   </a>
@@ -5709,7 +5731,30 @@
 <li>baseline <code>godot_scene</code> is intentionally absent from the v1 package contract</li>
 <li>if AeroBeat later supports <code>godot_scene</code>, it should be treated as an advanced controlled-pipeline / build-managed path rather than a normal loose-package payload</li>
 </ul>
-<h3 id="3b-chart-payload-direction">3b. Chart payload direction<a class="headerlink" href="#3b-chart-payload-direction" title="Permanent link">&para;</a></h3>
+<h3 id="3b-asset-payload-direction">3b. Asset payload direction<a class="headerlink" href="#3b-asset-payload-direction" title="Permanent link">&para;</a></h3>
+<p>The checked-in asset examples now intentionally teach the locked small Asset v1 record shape:</p>
+<ul>
+<li>shared schema/provenance block</li>
+<li><code>assetId</code></li>
+<li><code>assetName</code></li>
+<li><code>type</code></li>
+<li><code>resourcePath</code></li>
+</ul>
+<p>The exact Asset v1 <code>type</code> enum is:</p>
+<ul>
+<li><code>gloves</code></li>
+<li><code>targets</code></li>
+<li><code>obstacles</code></li>
+<li><code>trails</code></li>
+</ul>
+<p>The package/set composition rule is equally important:</p>
+<ul>
+<li>a set may reference multiple asset records</li>
+<li>a set may include at most one asset per asset type</li>
+<li>the <code>assetSelections</code> key must match the referenced asset record's <code>type</code></li>
+<li>example-only <code>metadata</code> and <code>tags</code> are intentionally absent from the canonical v1 asset examples</li>
+</ul>
+<h3 id="3c-chart-payload-direction">3c. Chart payload direction<a class="headerlink" href="#3c-chart-payload-direction" title="Permanent link">&para;</a></h3>
 <p>The checked-in demo charts now intentionally teach the locked flattened chart contracts used in this docs repo:</p>
 <ul>
 <li>Boxing charts author flat <code>beats:</code> entries with required <code>start</code>, optional inclusive <code>end</code>, required concrete <code>type</code>, and optional integer <code>portal</code></li>
@@ -5768,7 +5813,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2026 18:08:34 UTC">April 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2026 19:08:54 UTC">April 30, 2026</span>
   </span>
 
     

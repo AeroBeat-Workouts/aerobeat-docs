@@ -5,18 +5,12 @@ recordVersion: 1
 createdByTool: aerobeat-tool-content-authoring
 createdByToolVersion: 0.1.0
 createdAt: 2026-04-25T22:00:00Z
-updatedAt: 2026-04-27T13:00:00Z
+updatedAt: 2026-04-30T15:05:00Z
 
 # Asset identity is what workout sets reference for the targets slot.
 assetId: ab-asset-targets-holo-rings
 assetName: Holo Ring Targets
 
 # targets is one of the locked v1 gameplay-facing asset types.
-assetType: targets
+type: targets
 resourcePath: media/assets/targets/holo-rings.glb
-metadata:
-  palette: electric-blue
-  style: holographic
-tags:
-  - targets
-  - holographic
