@@ -5,17 +5,9 @@ recordVersion: 1
 createdByTool: aerobeat-tool-content-authoring
 createdByToolVersion: 0.1.0
 createdAt: 2026-04-25T22:00:00Z
-updatedAt: 2026-04-27T13:00:00Z
+updatedAt: 2026-04-30T18:00:00Z
 
 environmentId: ab-environment-neon-rooftop
 environmentName: Neon Rooftop
-
-# Scene and lighting references stay package-local.
-scenePath: media/scenes/neon-rooftop.tscn
-lightingProfile: neon-night
-fogProfile: light-haze
-
-tags:
-  - cyber
-  - rooftop
-  - night
+type: glb_environment
+resourcePath: media/environments/neon-rooftop.glb

@@ -2927,6 +2927,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#3a-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3a. Environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#4-workout" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5695,6 +5706,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#3a-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3a. Environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#4-workout" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5975,6 +5997,9 @@
 <li>Authored YAML records should carry shared schema/provenance fields such as <code>schemaId</code>, <code>schemaVersion</code>, <code>recordVersion</code>, <code>createdByTool</code>, <code>createdByToolVersion</code>, <code>createdAt</code>, and <code>updatedAt</code>; the one deliberate exception is a disabled <code>coaches/coach-config.yaml</code> sentinel that may be only <code>enabled: false</code>.</li>
 <li><code>Chart</code> is the durable term for one concrete playable difficulty slice.</li>
 <li><code>Set</code> is the durable package-composition linker. It binds together exact referenced ids for one song, one chart, one environment selection, zero-or-one asset selection per gameplay-facing asset type, and optional coaching overlay media.</li>
+<li>Environment records use the small shared shape <code>environmentId</code> / <code>environmentName</code> / <code>type</code> / <code>resourcePath</code> plus the shared schema/provenance fields.</li>
+<li>The locked Environment v1 <code>type</code> enum is exactly <code>image_background</code>, <code>video_background</code>, and <code>glb_environment</code>.</li>
+<li><code>godot_scene</code> is intentionally <strong>not</strong> part of the baseline Environment v1 package contract; if AeroBeat later supports it, it should be framed as a controlled-pipeline / build-managed advanced path rather than a default loose-package handoff.</li>
 <li><code>Workout</code> resolves to an ordered list of <code>setId</code> values. It does not inline full composition details.</li>
 <li><code>Song</code> records do not link to charts, sets, or workouts.</li>
 <li><code>Chart</code> records do not link to songs or sets.</li>
@@ -6069,7 +6094,23 @@
 <li><code>obstacles</code></li>
 <li><code>trails</code></li>
 </ul>
-<p>A set is intentionally the <strong>single source of truth for workout composition details</strong>. That means the set record owns the id-to-id linking for song/chart/environment/assets/coaching overlay selection instead of duplicating that wiring in <code>workout.yaml</code>, song files, or chart files.</p>
+<p>A set is intentionally the <strong>single source of truth for workout composition details</strong>. That means the set record owns the id-to-id linking for song/chart/environment/assets/coaching overlay selection instead of duplicating that wiring in <code>workout.yaml</code>, song files, or chart files. Each set links <strong>exactly one</strong> environment record by <code>environmentId</code>.</p>
+<h3 id="3a-environment">3a. Environment<a class="headerlink" href="#3a-environment" title="Permanent link">&para;</a></h3>
+<p>An <code>Environment</code> is a reusable package-local presentation record selected by a set.</p>
+<p>Environment v1 keeps the authored record intentionally small. Beyond the shared schema/provenance fields, it owns only:</p>
+<ul>
+<li><code>environmentId</code></li>
+<li><code>environmentName</code></li>
+<li><code>type</code></li>
+<li><code>resourcePath</code></li>
+</ul>
+<p>The locked Environment v1 <code>type</code> enum is:</p>
+<ul>
+<li><code>image_background</code></li>
+<li><code>video_background</code></li>
+<li><code>glb_environment</code></li>
+</ul>
+<p>This docs contract deliberately does <strong>not</strong> teach baseline <code>godot_scene</code> as part of v1. If AeroBeat later supports a Godot-scene-backed environment path, that should be documented as future advanced controlled-pipeline / build-managed work, not as the default package payload contract.</p>
 <h3 id="4-workout">4. Workout<a class="headerlink" href="#4-workout" title="Permanent link">&para;</a></h3>
 <p>A <code>Workout</code> is a training program package root.</p>
 <p>It owns fields such as:</p>
@@ -6300,7 +6341,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2026 13:20:05 UTC">April 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2026 18:08:34 UTC">April 30, 2026</span>
   </span>
 
     

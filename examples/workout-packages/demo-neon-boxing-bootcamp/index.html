@@ -5330,7 +5330,7 @@
 │   ├── assets/
 │   ├── audio/
 │   ├── coaching/
-│   └── scenes/
+│   └── environments/
 └── sql/
     ├── leaderboard-cache.db.schema.sql
     └── workouts.db.schema.sql
@@ -5338,9 +5338,9 @@
 <h2 id="scenario-modeled-by-this-package">Scenario modeled by this package<a class="headerlink" href="#scenario-modeled-by-this-package" title="Permanent link">&para;</a></h2>
 <p>This example package imagines a short mixed-feature workout with two songs and three exact playable sets:</p>
 <ol>
-<li><strong>Neon Stride Opening Round</strong> — medium Boxing opener in a rooftop night environment</li>
+<li><strong>Neon Stride Opening Round</strong> — medium Boxing opener using a cleaned GLB rooftop environment</li>
 <li><strong>Neon Stride Flow Round</strong> — medium Flow follow-up that reuses the same song with a different chart</li>
-<li><strong>Midnight Sprint Finish Round</strong> — harder Boxing finisher in a brighter studio environment</li>
+<li><strong>Midnight Sprint Finish Round</strong> — harder Boxing finisher using a bright studio image background</li>
 </ol>
 <p>The package uses one shared coach config, a two-coach roster, two environments, four gameplay-facing asset selections, one warmup video, one cooldown video, and one overlay audio clip selected by each set. It also includes extra checked-in Dance and Step chart examples for the same <code>Neon Stride</code> song so the docs package can teach the approved Dance and Step contracts without broadening the composed workout walkthrough. Every authored YAML record in the enabled example also carries the shared schema/provenance fields; the only deliberate exception path in this contract is a disabled <code>coach-config.yaml</code> sentinel of just <code>enabled: false</code>.</p>
 <h2 id="reading-order">Reading order<a class="headerlink" href="#reading-order" title="Permanent link">&para;</a></h2>
@@ -5367,7 +5367,10 @@
 <li>the Flow example demonstrates explicit <code>portal</code>, <code>placement</code>, optional <code>direction</code>, and inherited <code>direction = placement</code> on supported beat families</li>
 <li>the Dance example demonstrates the approved minimal row shape: required <code>start</code> + <code>type</code>, optional inclusive <code>end</code>, and optional <code>gold</code></li>
 <li>the Step example demonstrates the approved minimal row shape: required <code>start</code> + <code>type</code> + ordered unique <code>lanes</code>, with optional inclusive <code>end</code> only for holds</li>
-<li>workout sets choose one environment and zero-or-one asset per gameplay-facing asset type</li>
+<li>workout sets choose exactly one environment and zero-or-one asset per gameplay-facing asset type</li>
+<li>environment records now teach the locked small v1 shape: shared schema/provenance block plus <code>environmentId</code>, <code>environmentName</code>, <code>type</code>, and <code>resourcePath</code></li>
+<li>the demo environment examples intentionally cover creator-facing <code>glb_environment</code> and <code>image_background</code> payloads, while <code>video_background</code> remains part of the locked enum even though this package does not need a third environment file</li>
+<li>baseline <code>godot_scene</code> is intentionally absent from the v1 package contract shown here; if AeroBeat later supports it, that should be an advanced controlled-pipeline / build-managed path</li>
 <li>shared browse/discovery rows live in the catalog core tables, while local install-only state lives in <code>workout_local</code></li>
 <li>local leaderboard snapshots live in the package's disposable cache DB</li>
 <li>no inheritance, patching, remote-only catalog companion fields, trigger graphs, or signing metadata appears in the authored package files</li>
@@ -5402,7 +5405,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2026 14:39:27 UTC">April 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2026 18:08:34 UTC">April 30, 2026</span>
   </span>
 
     
