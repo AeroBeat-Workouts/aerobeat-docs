@@ -393,7 +393,11 @@ beats:
 - `squat`, `lean_left`, `lean_right`, `knee_left`, `knee_right`, `leg_lift_left`, `leg_lift_right`, and `run_in_place` support neither `placement` nor `direction`.
 - For `swing_*`, `trail_*`, and `warn_*`, omitted `direction` inherits from `placement`.
 - This document's inline examples focus on Boxing and Flow, but the shared chart direction now also includes the first-pass Dance shape: flat `beats` with required `start` + `type`, optional inclusive `end`, and optional boolean `gold`.
-- Step payload details remain follow-up work.
+- Step charts now follow the same flat `beats` pattern with required `start`, required `type`, required ordered unique `lanes`, and optional inclusive `end` only for holds.
+- The first-pass Step `type` family is `tap | hold | mine`.
+- Step `lanes` values are limited to `left | down | up | right` in canonical pad order.
+- `tap` and `mine` support lane count `1..2` with no `end`; `hold` requires exactly one lane plus `end`; triples/quads are invalid in v1.
+- Environment/assets YAML and asset links remain outside chart YAML and are linked through Sets.
 
 ### `sets/<set-id>.yaml`
 

@@ -12,6 +12,99 @@ In AeroBeat's content model, a Step chart is a reusable **Chart** record, and a 
 * **Grid:** 4 lanes (Left, Down, Up, Right).
 * **Perspective:** The editor defaults to a top-down receptor view, similar to standard VSRGs (Vertical Scrolling Rhythm Games).
 
+## 📦 The Step chart contract
+
+Step uses the same shared chart envelope as Boxing, Flow, and Dance. The authored gameplay payload stays in one flat `beats:` list.
+
+```yaml
+schemaId: aerobeat.chart.step.v1
+schemaVersion: 1
+recordVersion: 1
+createdByTool: aerobeat-tool-content-authoring
+createdByToolVersion: 0.1.0
+createdAt: 2026-04-30T12:00:00Z
+updatedAt: 2026-04-30T12:00:00Z
+chartId: uid
+chartName: string
+feature: step
+difficulty: medium
+beats:
+  - start: 8.0
+    type: tap
+    lanes: [left]
+  - start: 12.0
+    type: tap
+    lanes: [left, right]
+  - start: 16.0
+    end: 18.0
+    type: hold
+    lanes: [down]
+  - start: 20.0
+    type: mine
+    lanes: [up]
+```
+
+### Required Step row fields
+
+Every Step row in `beats:` uses:
+
+- `start` — required beat-domain float
+- `type` — required Step object family
+- `lanes` — required ordered unique lane list
+- `end` — optional inclusive beat-domain float used only for holds
+
+### Allowed `type` values in v1
+
+- `tap`
+- `hold`
+- `mine`
+
+### Allowed `lanes` values in v1
+
+Use only the stable 4-panel lane ids:
+
+- `left`
+- `down`
+- `up`
+- `right`
+
+Write simultaneous lanes in canonical pad order:
+
+```yaml
+lanes: [left, down, up, right]
+```
+
+That means authored two-lane rows should appear as:
+
+- `[left, down]`
+- `[left, up]`
+- `[left, right]`
+- `[down, up]`
+- `[down, right]`
+- `[up, right]`
+
+### Validation rules that matter
+
+- `tap` supports `lanes` count `1..2` and must **not** include `end`
+- `hold` requires exactly one lane and **must** include `end`
+- `mine` supports `lanes` count `1..2` and must **not** include `end`
+- triples/quads are invalid in first-pass Step YAML
+- overlapping holds on the same lane should be treated as invalid authored data
+
+### What stays out of Step rows
+
+Do **not** put these into chart rows:
+
+- scoring logic or judgment windows
+- footedness guidance
+- crossover intent
+- bracket / hand / jack / stream labels
+- presentation or runtime hints
+- environment or asset configuration
+- engine interpretation details
+
+Environment and asset customization remains outside chart YAML and is linked through **Sets** at engine interpretation time.
+
 ## 🦶 The Golden Rule: Alternation
 
 The most fundamental rule of Step mapping is **flow**.
@@ -29,6 +122,7 @@ Unless you are creating a specific jack (repeated tap) pattern, players should n
 3. **The Gallop:** A rhythm pattern (1/16th triplet) that feels like a skip.
    * *Timing:* `1... a2... a3`
 4. **Jumps:** Two arrows at once.
+   * *Authoring:* In AeroBeat v1, a jump is a `tap` row with two `lanes` values, not a separate `type`.
    * *Constraint:* Humans only have two feet. Never place 3 arrows at once unless you intentionally want advanced hand or bracket tech.
    * *Flow:* Avoid placing a jump immediately after a fast stream without a break.
 
@@ -50,9 +144,9 @@ Unless you are creating a specific jack (repeated tap) pattern, players should n
 
 ### 3. Placing Notes
 
-* **Tap (Arrow):** Standard step.
-* **Hold (Freeze):** Click and drag to extend. The athlete must keep weight on the panel.
-* **Mine (Shock):** The athlete must *avoid* the panel. Use these to force foot placement (for example, putting a mine on the Down arrow forces the athlete to keep their foot on Up).
+* **Tap (Arrow):** Standard step. One lane is a single step; two lanes at the same `start` are a jump.
+* **Hold (Freeze):** Click and drag to extend. In YAML this is one `hold` row with `start`, inclusive `end`, and exactly one lane.
+* **Mine (Shock):** The athlete must *avoid* the panel. Use these to force foot placement without turning them into runtime-only hazards.
 
 ## 📉 Difficulty Guidelines
 

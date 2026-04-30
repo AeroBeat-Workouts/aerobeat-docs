@@ -232,7 +232,32 @@ Dance field support is intentionally minimal:
 - scoring logic, classifier/runtime interpretation, coach behavior, pictograms/dance cards, cue systems, and move-performance semantics stay outside the chart row
 - `portal`, `placement`, and `direction` are not part of the first-pass Dance payload
 
-Step payload details remain follow-up work. The loader contract is shared, but this document does not try to prematurely force Step's authored vocabulary to match boxing, Flow, or Dance exactly.
+For **Step**, the current approved authored payload is also a flat `beats` list. Each beat uses required `start`, optional inclusive `end`, required `type`, and required ordered unique `lanes`.
+
+The current approved Step type pool is:
+
+- `tap`
+- `hold`
+- `mine`
+
+Step field support is intentionally narrow:
+
+- `lanes` values may only be `left`, `down`, `up`, `right`
+- `lanes` must be written in canonical pad order: `left`, `down`, `up`, `right`
+- `tap` supports lane count `1..2` and must not include `end`
+- `hold` requires exactly one lane and requires inclusive `end`
+- `mine` supports lane count `1..2` and must not include `end`
+- triples/quads are invalid in first-pass Step payloads
+
+Step rows intentionally stay authored and compact:
+
+- a one-lane `tap` is a normal step
+- a two-lane `tap` is the authored equivalent of a jump
+- `hold` stores only one lane plus the shared `start` / `end` span
+- mines stay lane-local authored avoid objects
+- scoring logic, footedness, crossover intent, brackets/hands, jack or stream labels, and presentation/runtime hints stay outside the chart row
+
+Environment/assets YAML and asset links also stay outside Step chart YAML and are connected through Sets at engine interpretation time.
 
 ## Interaction families, not raw devices
 

@@ -10,7 +10,7 @@ It is designed for onboarding, code review, validation planning, and tool implem
 - which concerns belong in local SQLite databases instead
 - how the approved coaching model fits into the package
 - how one song can be reused by multiple exact playable charts
-- how the checked-in Boxing, Flow, and Dance chart examples differ while sharing the same package contract
+- how the checked-in Boxing, Flow, Dance, and Step chart examples differ while sharing the same package contract
 
 ## Package shape
 
@@ -25,7 +25,8 @@ demo-neon-boxing-bootcamp/
 │   ├── ab-chart-midnight-sprint-boxing-hard.yaml
 │   ├── ab-chart-neon-stride-boxing-medium.yaml
 │   ├── ab-chart-neon-stride-dance-medium.yaml
-│   └── ab-chart-neon-stride-flow-medium.yaml
+│   ├── ab-chart-neon-stride-flow-medium.yaml
+│   └── ab-chart-neon-stride-step-medium.yaml
 ├── sets/
 │   ├── ab-set-midnight-sprint-finish-round.yaml
 │   ├── ab-set-neon-stride-flow-round.yaml
@@ -59,14 +60,14 @@ This example package imagines a short mixed-feature workout with two songs and t
 2. **Neon Stride Flow Round** — medium Flow follow-up that reuses the same song with a different chart
 3. **Midnight Sprint Finish Round** — harder Boxing finisher in a brighter studio environment
 
-The package uses one shared coach config, a two-coach roster, two environments, four gameplay-facing asset selections, one warmup video, one cooldown video, and one overlay audio clip selected by each set. It also includes an extra checked-in Dance chart example for the same `Neon Stride` song so the docs package can teach the approved Dance contract without broadening the composed workout walkthrough. Every authored YAML record in the enabled example also carries the shared schema/provenance fields; the only deliberate exception path in this contract is a disabled `coach-config.yaml` sentinel of just `enabled: false`.
+The package uses one shared coach config, a two-coach roster, two environments, four gameplay-facing asset selections, one warmup video, one cooldown video, and one overlay audio clip selected by each set. It also includes extra checked-in Dance and Step chart examples for the same `Neon Stride` song so the docs package can teach the approved Dance and Step contracts without broadening the composed workout walkthrough. Every authored YAML record in the enabled example also carries the shared schema/provenance fields; the only deliberate exception path in this contract is a disabled `coach-config.yaml` sentinel of just `enabled: false`.
 
 ## Reading order
 
 - Start with [`workout.yaml`](workout.yaml).
 - Then follow the ordered set ids into `sets/`.
 - From each set, follow the ids into `songs/`, `charts/`, `environments/`, `assets/`, and `coaches/coach-config.yaml`.
-- Compare the two `Neon Stride` sets to see how one song can drive both Boxing and Flow chart slices without changing the package contract, then inspect the standalone `ab-chart-neon-stride-dance-medium.yaml` example to see the approved Dance row shape on that same shared chart envelope.
+- Compare the two `Neon Stride` sets to see how one song can drive both Boxing and Flow chart slices without changing the package contract, then inspect the standalone `ab-chart-neon-stride-dance-medium.yaml` and `ab-chart-neon-stride-step-medium.yaml` examples to see the approved Dance and Step row shapes on that same shared chart envelope.
 - Finish with [`sql/workouts.db.schema.sql`](sql/workouts.db.schema.sql) and [`sql/leaderboard-cache.db.schema.sql`](sql/leaderboard-cache.db.schema.sql).
 
 ## Intentional v1 boundaries shown here
@@ -81,9 +82,10 @@ The package uses one shared coach config, a two-coach roster, two environments, 
 - coaching stays inside the package's single `coaches/coach-config.yaml` file
 - warmup/cooldown references live in coach-config under the approved coaching model
 - each workout set maps to one overlay audio record through `coachingOverlayId`
-- the checked-in chart examples now show the locked flattened Boxing, Flow, and Dance `beats:` contracts
+- the checked-in chart examples now show the locked flattened Boxing, Flow, Dance, and Step `beats:` contracts
 - the Flow example demonstrates explicit `portal`, `placement`, optional `direction`, and inherited `direction = placement` on supported beat families
 - the Dance example demonstrates the approved minimal row shape: required `start` + `type`, optional inclusive `end`, and optional `gold`
+- the Step example demonstrates the approved minimal row shape: required `start` + `type` + ordered unique `lanes`, with optional inclusive `end` only for holds
 - workout sets choose one environment and zero-or-one asset per gameplay-facing asset type
 - shared browse/discovery rows live in the catalog core tables, while local install-only state lives in `workout_local`
 - local leaderboard snapshots live in the package's disposable cache DB

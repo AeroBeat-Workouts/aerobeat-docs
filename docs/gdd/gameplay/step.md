@@ -17,6 +17,39 @@ The "Step" module brings the classic arcade dance-pad experience to AeroBeat.
 * **Jumps:** Two arrows appear simultaneously, requiring a jump to hit both targets at once.
 * **Mines:** Avoid stepping on these zones when they pass the target line.
 
+### Authored chart contract
+
+Step now uses the same shared flat chart envelope as Boxing, Flow, and Dance.
+
+Each authored Step row lives inside `beats:` and supports:
+
+- required `start`
+- required `type`
+- required `lanes`
+- optional inclusive `end` only where needed for holds
+
+The first-pass Step `type` family is:
+
+- `tap`
+- `hold`
+- `mine`
+
+`lanes` values are limited to the 4-panel pad vocabulary:
+
+- `left`
+- `down`
+- `up`
+- `right`
+
+Authoring rules:
+
+- `tap` uses `lanes` count `1..2`
+- `hold` uses exactly one lane and requires `end`
+- `mine` uses `lanes` count `1..2`
+- triples/quads are invalid in v1
+
+Important boundary: jumps are **not** a separate durable chart `type`. A jump is authored as a `tap` row with two simultaneous lane values. Scoring logic, footedness, crossover intent, bracket/hands semantics, and runtime presentation stay outside chart rows.
+
 ### Input Methods
 
 #### 1. Dance Pad (Recommended)

@@ -10,7 +10,7 @@ If you are new to the package system, start here before reading the lower-level 
 - the song examples specifically show the cleaned-up licensing + metadata shape (`licenseType`, `streamingSafe`, `aiAssisted`, BCP 47 `language`, locked-enum `genres`, no song `tags`)
 - the package demonstrates the split between authored YAML, local `workouts.db`, and per-workout `leaderboard-cache.db`
 - authored YAML records carry the shared schema/provenance fields by default, with the documented disabled `coach-config.yaml` sentinel as the lone exception
-- the checked-in chart examples now include locked flattened Boxing, Flow, and Dance `beats:` examples
+- the checked-in chart examples now include locked flattened Boxing, Flow, Dance, and Step `beats:` examples
 - the package also demonstrates that one reusable song can back multiple exact playable charts, while the composed sets stay intentionally scoped to the current Boxing/Flow workout walkthrough
 
 ## Start Here
@@ -24,6 +24,7 @@ If you are new to the package system, start here before reading the lower-level 
   - [`ab-chart-neon-stride-boxing-medium.yaml`](demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-boxing-medium.yaml)
   - [`ab-chart-neon-stride-flow-medium.yaml`](demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-flow-medium.yaml)
   - [`ab-chart-neon-stride-dance-medium.yaml`](demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-dance-medium.yaml)
+  - [`ab-chart-neon-stride-step-medium.yaml`](demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-step-medium.yaml)
   - [`ab-chart-midnight-sprint-boxing-hard.yaml`](demo-neon-boxing-bootcamp/charts/ab-chart-midnight-sprint-boxing-hard.yaml)
 - Sets:
   - [`ab-set-neon-stride-opening-round.yaml`](demo-neon-boxing-bootcamp/sets/ab-set-neon-stride-opening-round.yaml)

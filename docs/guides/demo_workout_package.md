@@ -24,6 +24,7 @@ That folder is intentionally authored as a **teaching package** rather than a mi
    - [`ab-chart-neon-stride-boxing-medium.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-boxing-medium.yaml)
    - [`ab-chart-neon-stride-flow-medium.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-flow-medium.yaml)
    - [`ab-chart-neon-stride-dance-medium.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-dance-medium.yaml)
+   - [`ab-chart-neon-stride-step-medium.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-step-medium.yaml)
    - [`ab-chart-midnight-sprint-boxing-hard.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/charts/ab-chart-midnight-sprint-boxing-hard.yaml)
 5. [`coaches/coach-config.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/coaches/coach-config.yaml)
 6. Environment records:
@@ -64,7 +65,7 @@ The set files point to exact:
 
 That is the current v1 direction. Discovery happens elsewhere; package playback resolves exact ids.
 
-The paired `Neon Stride` sets show that one reusable song can support multiple exact playable charts across different features without changing the broader package shape, and the additional checked-in Dance chart shows the same contract direction without expanding the set walkthrough beyond Boxing/Flow.
+The paired `Neon Stride` sets show that one reusable song can support multiple exact playable charts across different features without changing the broader package shape, and the additional checked-in Dance and Step charts show the same contract direction without expanding the set walkthrough beyond Boxing/Flow.
 
 ### 2a. What the song examples are teaching
 
@@ -104,8 +105,9 @@ The checked-in demo charts now intentionally teach the locked flattened chart co
 - Boxing charts author flat `beats:` entries with required `start`, optional inclusive `end`, required concrete `type`, and optional integer `portal`
 - Flow charts author flat `beats:` entries with the same shared fields plus optional `placement` and optional `direction`
 - Dance charts author flat `beats:` entries with required `start`, optional inclusive `end`, required `type`, and optional boolean `gold`
+- Step charts author flat `beats:` entries with required `start`, required `type`, required ordered unique `lanes`, and optional inclusive `end` only for holds
 - For Flow `swing_*`, `trail_*`, and `warn_*` beats, omitted `direction` inherits from `placement`
-- Dance chart rows intentionally omit scoring logic, cue/pictogram data, classifier/runtime fields, and coach-behavior metadata
+- Dance and Step chart rows intentionally omit scoring logic, cue/pictogram data, classifier/runtime fields, coach-behavior metadata, and environment/asset linkage
 - Older boxing-only payload fields such as `hand`, `strike`, `zone`, `holdMs`, and `durationMs` are intentionally absent
 - Older Flow-only terminology that implied automatic portal generation or a separate obstacle lane is intentionally absent from this package example
 
