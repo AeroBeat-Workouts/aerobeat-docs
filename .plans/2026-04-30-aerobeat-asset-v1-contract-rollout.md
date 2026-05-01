@@ -132,7 +132,7 @@ As with Environment v1, this should stay truthful and narrow. The contract shoul
 
 **Status:** ⏳ Pending
 
-**Results:** Blocked on approval and docs rollout.
+**Results:** Docs rollout is complete, but the tool-side rollout is intentionally paused for session wrap-up. Before continuing next session, Derrick wants to re-review and explicitly confirm the current four-value Asset v1 enum set (`gloves`, `targets`, `obstacles`, `trails`) before we keep rolling the validator/tooling implementation + QA + audit loop.
 
 ---
 
@@ -140,7 +140,7 @@ As with Environment v1, this should stay truthful and narrow. The contract shoul
 
 **Status:** ⚠️ Partial
 
-**What We Built:** Completed the `aerobeat-docs` Asset v1 rollout slice: canonical docs now teach the locked small asset record (`assetId`, `assetName`, `type`, `resourcePath`), the exact four-value enum, and the Set/package composition rule; the checked-in demo asset YAMLs and package walkthrough now match that contract; and canonical example-only `metadata` / `tags` teaching was removed from the active asset examples.
+**What We Built:** Completed the `aerobeat-docs` Asset v1 rollout slice: canonical docs now teach the locked small asset record (`assetId`, `assetName`, `type`, `resourcePath`), the current four-value enum candidate, and the Set/package composition rule; the checked-in demo asset YAMLs and package walkthrough now match that contract; and canonical example-only `metadata` / `tags` teaching was removed from the active asset examples. The tool-side rollout was deliberately paused before implementation so Derrick can re-review and explicitly confirm the full Asset v1 enum set next session before we harden validator behavior around it.
 
 **Reference Check:** Task 3 now aligns the active docs/example surfaces with the approved contract direction documented from `REF-01` through `REF-06`: `type` replaced legacy `assetType`, the closed enum stayed at four gameplay-facing values, the Set composition rule is explicit, and runtime/marketplace/override scope stayed out of the v1 docs contract.
 
