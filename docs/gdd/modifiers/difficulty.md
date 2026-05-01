@@ -1,11 +1,13 @@
-# 🕹️ Difficulty Modifiers
+# Difficulty Modifiers
 
-These gameplay modifiers make the game easier or harder.
+These modifiers tune the challenge of the active gameplay features in this docs slice: **Boxing** and **Flow**.
 
-* **One Portal:** Forces choreography while in `portal` view to appear from a single forward facing `portal` in `boxing` and `flow` workouts.
-* **3-Portals:** Condenses choreography while in `portal` view to appear in three portals (left, center, right) ahead of you in `boxing` and `flow` workouts.
-* **Ghost Targets:** `targets` disappear as they get close to you in `boxing`, `flow`, and `step` gameplay.
-* **Speed Up:** `targets` and `obstacles` take less time to travel from `portals` and the bottom of the `track`. Available on `boxing`, `flow`, and `step` gameplay styles.
-* **Slow Down:**: `targets` and `obstacles` take more time to travel from `portals` and the bottom of the `track`. Available on `boxing`, `flow`, and `step` gameplay styles.
-* **Arcade Mode:** Adds a health system that depletes as you miss `targets`. Miss too many and you fail the song. Regain health as you destroy `targets` and dodge `obstacles`.
-* **Hardcore Mode:** Miss a `target`, or hit a `bomb` or `obstacle` to get sent back to the beginning of a song in a workout.
+- **One Portal:** condenses portal-capable choreography to a single forward-facing presentation.
+- **3 Portals:** condenses portal-capable choreography to three forward-facing positions.
+- **Ghost Targets:** targets disappear as they approach the athlete.
+- **Speed Up:** targets and obstacles travel faster.
+- **Slow Down:** targets and obstacles travel slower.
+- **Arcade Mode:** adds a fail-state health system.
+- **Hardcore Mode:** mistakes can restart the song or run.
+
+Future gameplay features may eventually define additional modifier behavior, but Step and Dance are not active gameplay modes in this docs slice.

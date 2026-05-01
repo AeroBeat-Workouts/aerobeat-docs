@@ -58,8 +58,6 @@ nav:
       - Overview: guides/choreography/overview.md
       - Boxing: guides/choreography/boxing.md
       - Flow: guides/choreography/flow.md
-      - Step: guides/choreography/step.md
-      - Dance: guides/choreography/dance.md
     - Environment Creation: guides/environment_creation.md
     - Skin Creation: guides/skins.md
     - Avatar Creation: guides/avatar_creation.md
@@ -76,8 +74,6 @@ nav:
     - Gameplay:
       - Boxing: gdd/gameplay/boxing.md
       - Flow: gdd/gameplay/flow.md
-      - Step: gdd/gameplay/step.md
-      - Dance: gdd/gameplay/dance.md
       - View Modes: gdd/gameplay/view-modes.md
     - Gamification:
       - Overview: gdd/gamification/overview.md
@@ -125,6 +121,7 @@ nav:
       - UGC Modding: architecture/ugc_modding.md
       - UI-UX Architecture: architecture/ui-ux.md
       - Workflow & Assets: architecture/workflow.md
+      - Workout Package Storage & Discovery: architecture/workout-package-storage-and-discovery.md
     - API:
       - Assembly:
         - Overview: api/assembly/index.md
@@ -135,8 +132,6 @@ nav:
       - Features:
         - Boxing: api/features/boxing/
         - Flow: api/features/flow/
-        - Dance: api/features/dance/
-        - Step: api/features/step/
       - Input Systems:
         - Camera (PC): api/inputs/mediapipe_python/
         - Camera (Mobile): api/inputs/mediapipe_native/

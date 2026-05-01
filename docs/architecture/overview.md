@@ -1,68 +1,76 @@
 # Technical Architecture Overview
 
-**Project:** AeroBeat Platform
-
-**Target Version:** 0.0.1 (Prototype)
-
-**Engine:** Godot 4.x
-
+**Project:** AeroBeat Platform  
+**Target Version:** Prototype toward v1  
+**Engine:** Godot 4.x  
 **Language:** GDScript (Primary), Python (CV Sidecar)
 
-**Organization:** AeroBeat-Workouts
+## Executive summary
 
-## Executive Summary
+AeroBeat keeps a modular lane-based architecture, but the active product scope is now intentionally narrower:
 
-AeroBeat is a modular rhythm platform. We strictly decouple **Input**, **Feature Runtime**, **Content**, **Assets**, **UI**, and **Tools**.
+- official v1 gameplay features: **Boxing** and **Flow**
+- official v1 gameplay input: **camera only**
+- release priority: **PC community first**, then **mobile**, then **VR**
 
-The platform is documented as a lane-based polyrepo architecture with six domain-specific core repos:
+The architecture should keep future-compatible seams without overstating current product promises.
 
-1. [`aerobeat-input-core`](https://github.com/AeroBeat-Workouts/aerobeat-input-core)
-2. [`aerobeat-feature-core`](https://github.com/AeroBeat-Workouts/aerobeat-feature-core)
-3. [`aerobeat-content-core`](https://github.com/AeroBeat-Workouts/aerobeat-content-core)
-4. [`aerobeat-asset-core`](https://github.com/AeroBeat-Workouts/aerobeat-asset-core)
-5. [`aerobeat-ui-core`](https://github.com/AeroBeat-Workouts/aerobeat-ui-core)
-6. [`aerobeat-tool-core`](https://github.com/AeroBeat-Workouts/aerobeat-tool-core)
+## Lane-based polyrepo topology
 
-AeroBeat no longer treats `aerobeat-core` as the long-term universal hub. The former shared input-facing core now lives at `aerobeat-input-core`, and each lane owns its own shared contracts so concrete repos depend only on the lanes they actually consume.
+AeroBeat is documented as six domain-specific lanes:
 
-## Technical Structure Overview
+1. `aerobeat-input-core`
+2. `aerobeat-feature-core`
+3. `aerobeat-content-core`
+4. `aerobeat-asset-core`
+5. `aerobeat-ui-core`
+6. `aerobeat-tool-core`
 
-Our architecture is built on four key pillars designed to maximize modularity and contributor safety.
+That topology remains valid. What changed is scope messaging, not the need for clean boundaries.
 
-### 1. Lane-based polyrepo topology
+## What the current docs should optimize for
 
-AeroBeat does not use a monolithic repository or a universal shared hub. Instead, each domain has one explicit core repo that owns that lane's stable contracts.
+### 1. Camera-first gameplay runtime
 
-- **Input core** owns provider abstractions and normalized input-facing contracts.
-- **Feature core** owns gameplay-mode/runtime rules that interpret athlete actions against authored content over time.
-- **Content core** owns durable authored-content contracts.
-- **Asset core** owns avatars, cosmetics, environments, and other asset-side definitions.
-- **UI core** owns shared UI abstractions.
-- **Tool core** owns shared tool-side contracts.
+The near-term runtime should make camera-driven Boxing and Flow excellent on PC rather than spreading equal effort across every possible device/input combination.
 
-Assembly repos such as `aerobeat-assembly-community` compose only the core repos and concrete packages they need through GodotEnv.
+### 2. Durable content contracts
 
-### 2. Input agnosticism (the provider pattern)
+The content model should stay centered on reusable authored records:
 
-Gameplay code never talks directly to hardware. It depends on normalized input contracts from `aerobeat-input-core`, allowing AeroBeat to swap between webcam tracking, XR controllers, JoyCons, keyboard, touch, or other providers without rewriting feature logic.
+- Song
+- Chart
+- Set
+- Workout
+- Coach Config
+- Environment
 
-### 3. Feature consumes content; it does not own content
+Package-local gameplay asset records are no longer part of the official workout-package concept for this slice.
 
-Feature means gameplay-mode/runtime rules that interpret authored content against athlete actions over time. That work belongs in `aerobeat-feature-core` and concrete `aerobeat-feature-*` repos.
+### 3. Honest future-facing docs
 
-The durable content model belongs in `aerobeat-content-core`.
+Future-facing repos and APIs can stay documented when they are genuinely useful, especially for:
 
-For playable fitness content, AeroBeat uses a layered model:
+- non-camera input providers
+- VR shells and presentation
+- platform-specific expansion after the first PC release
 
-- **Song:** Reusable audio and timing source.
-- **Chart:** One concrete playable difficulty / compatibility slice.
-- **Set:** Package-local composition record that links one song, one chart, optional environment / asset selections, and optional coaching overlay choices.
-- **Workout:** A program that assembles ordered sets into a session.
+Those surfaces should be labeled as future-platform or future-input work, not described as present-tense v1 parity.
 
-Charts share a common envelope for ids, timing, scoring, presentation hints, and metadata, while the event payload remains mode-specific. This preserves input agnosticism without forcing Boxing, Dance, Step, and Flow into a fake one-size-fits-all event schema.
+## Architectural implications of the downscope
 
-### 4. Data-driven content and asset safety
+- Feature docs and examples should focus on Boxing and Flow.
+- Input docs should treat camera as the only official gameplay path.
+- Workout package docs should retain environments and coaching while removing package-asset customization as a taught concept.
+- Release docs should stop implying simultaneous PC/mobile/VR parity.
 
-To support community modding safely, AeroBeat bans executable scripts in community asset packs. All content and assets load through strict resource definitions and validation contracts.
+## Still-valid future directions
 
-Asset-side contracts such as avatars, cosmetics, environments, and related reusable asset definitions belong in `aerobeat-asset-core`. Feature repos may consume those definitions, but they do not own them.
+The architecture still leaves room for:
+
+- mobile-native camera gameplay
+- VR re-entry
+- additional gameplay features beyond Boxing and Flow
+- deeper avatar/cosmetics systems
+
+Those are roadmap possibilities, not the baseline promise of the current product docs.

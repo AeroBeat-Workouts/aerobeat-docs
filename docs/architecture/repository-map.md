@@ -1,46 +1,49 @@
-# 🗺️ Repository Map (The Rigs)
+# Repository Map (The Rigs)
 
-Use this map to route work to the correct repository within the `~/aerobeat/` parent directory.
+Use this map to route work to the correct repository within the AeroBeat ecosystem.
 
 ## Core contract repos
 
-These six repos are the canonical lane owners for shared contracts and dependency-light base types.
-
-* **[`aerobeat-input-core`](https://github.com/AeroBeat-Workouts/aerobeat-input-core)**: Shared input abstractions, provider contracts, normalized input-facing enums, and input runtime interfaces.
-* **[`aerobeat-feature-core`](https://github.com/AeroBeat-Workouts/aerobeat-feature-core)**: Shared gameplay-mode and runtime-rule contracts that interpret athlete actions against authored content over time.
-* **[`aerobeat-content-core`](https://github.com/AeroBeat-Workouts/aerobeat-content-core)**: Canonical authored-content contracts, including `Song`, `Chart`, `Set`, `Workout`, shared chart-envelope types, and content loading / validation interfaces.
-* **[`aerobeat-asset-core`](https://github.com/AeroBeat-Workouts/aerobeat-asset-core)**: Shared asset-side contracts such as avatars, cosmetics, environments, and other reusable asset definitions.
-* **[`aerobeat-ui-core`](https://github.com/AeroBeat-Workouts/aerobeat-ui-core)**: Shared UI abstractions, signals, enums, and base types used across UI kits and shells.
-* **[`aerobeat-tool-core`](https://github.com/AeroBeat-Workouts/aerobeat-tool-core)**: Shared tool-side contracts for settings, backend/API integration, validation, and other common tooling models.
+- **[`aerobeat-input-core`](https://github.com/AeroBeat-Workouts/aerobeat-input-core)**: shared input abstractions and provider contracts
+- **[`aerobeat-feature-core`](https://github.com/AeroBeat-Workouts/aerobeat-feature-core)**: shared gameplay-mode/runtime-rule contracts
+- **[`aerobeat-content-core`](https://github.com/AeroBeat-Workouts/aerobeat-content-core)**: canonical authored-content contracts
+- **[`aerobeat-asset-core`](https://github.com/AeroBeat-Workouts/aerobeat-asset-core)**: shared account-level/avatar/cosmetics/environment asset-side contracts
+- **[`aerobeat-ui-core`](https://github.com/AeroBeat-Workouts/aerobeat-ui-core)**: shared UI abstractions
+- **[`aerobeat-tool-core`](https://github.com/AeroBeat-Workouts/aerobeat-tool-core)**: shared tool-side contracts
 
 ## Product and implementation repos
 
-* **`aerobeat-assembly-community`**: Community assembly repo. Composes only the core repos and concrete packages it needs through GodotEnv.
-* **`aerobeat-asset-prototypes`**: Prototyping assets used during development of AeroBeat.
-* **`aerobeat-docs`**: Public design and technical documentation in `mkdocs` format. Also contains shared template source files for new AeroBeat repositories.
-* **`aerobeat-feature-boxing`**: Boxing gameplay implementation built on `aerobeat-feature-core` and the content contracts it consumes.
-* **`aerobeat-feature-dance`**: Dance gameplay implementation built on `aerobeat-feature-core` and the content contracts it consumes.
-* **`aerobeat-feature-flow`**: Flow gameplay implementation built on `aerobeat-feature-core` and the content contracts it consumes.
-* **`aerobeat-feature-step`**: Step gameplay implementation built on `aerobeat-feature-core` and the content contracts it consumes.
-* **`aerobeat-input-gamepad`**: General controller support for AeroBeat via Godot's built-in controller detection.
-* **`aerobeat-input-joycon-hid`**: Dedicated Bluetooth driver for Switch controllers in AeroBeat. Uses gestures to simulate athlete actions.
-* **`aerobeat-input-keyboard`**: Generic keyboard support for AeroBeat via Godot's built-in keyboard input management.
-* **`aerobeat-input-mediapipe-native`**: Input system for CV-based controls in AeroBeat via a standard webcam. Runs MediaPipe via native API calls on mobile operating systems.
-* **`aerobeat-input-mediapipe-python`**: Input system for CV-based controls in AeroBeat via a standard webcam. Runs MediaPipe via Python and passes the data via UDP 3.0.
-* **`aerobeat-input-mouse`**: Maps mouse inputs to AeroBeat actions using Godot's built-in mouse management.
-* **`aerobeat-input-touch`**: Maps touch inputs to AeroBeat actions using Godot's built-in touch management.
-* **`aerobeat-input-xr`**: XR input management layer for the AeroBeat platform.
-* **`aerobeat-tool-api`**: Backend API client built on `aerobeat-tool-core` contracts.
-* **`aerobeat-tool-settings`**: User preferences and persistence management built on `aerobeat-tool-core` contracts.
-* **`aerobeat-tool-*` authoring products**: Concrete content-authoring, validation, migration, packaging, and ingestion tools. These depend on `aerobeat-content-core` and `aerobeat-tool-core`, and core content operations should be available through a headless/CLI surface even if the repo also ships an editor UI.
-* **`aerobeat-ui-kit-community`**: AeroBeat's default UI visual components used by the Community Edition.
-* **`aerobeat-ui-shell-desktop-community`**: AeroBeat's Community Edition desktop UI. Uses `aerobeat-ui-kit-community`.
-* **`aerobeat-ui-shell-mobile-community`**: AeroBeat's Community Edition mobile UI. Uses `aerobeat-ui-kit-community`.
-* **`aerobeat-ui-shell-web-community`**: AeroBeat's Community Edition web UI. Uses `aerobeat-ui-kit-community`.
-* **`aerobeat-ui-shell-xr-community`**: AeroBeat's Community Edition XR UI for 6DOF world-space 3D environments. Uses `aerobeat-ui-kit-community`.
+### Official current-focus repos
 
-## Ownership rule
+- `aerobeat-assembly-community`
+- `aerobeat-docs`
+- `aerobeat-feature-boxing`
+- `aerobeat-feature-flow`
+- `aerobeat-input-mediapipe-python`
+- `aerobeat-input-mediapipe-native`
 
-AeroBeat no longer treats `aerobeat-core` as the long-term universal hub. The platform is documented as a lane-based architecture with one core repo per domain. Concrete repos depend on the core repos for their lane and on any adjacent lane contracts they consume, especially `aerobeat-content-core` for authored playable content and `aerobeat-asset-core` for reusable asset definitions.
+### Future-support or future-platform repos still worth preserving
 
-Concrete authoring products belong in the Tool lane, not in the Content lane. Conversely, 2D lane renderers, 3D portal systems, and other runtime visual consumers of authored content belong in Feature repos, not in `aerobeat-content-core` or `aerobeat-tool-core`.
+- `aerobeat-feature-dance`
+- `aerobeat-feature-step`
+- `aerobeat-input-gamepad`
+- `aerobeat-input-joycon-hid`
+- `aerobeat-input-keyboard`
+- `aerobeat-input-mouse`
+- `aerobeat-input-touch`
+- `aerobeat-input-xr`
+- `aerobeat-ui-shell-mobile-community`
+- `aerobeat-ui-shell-web-community`
+- `aerobeat-ui-shell-xr-community`
+
+### Shared tool/UI repos
+
+- `aerobeat-tool-api`
+- `aerobeat-tool-settings`
+- `aerobeat-tool-*` authoring products
+- `aerobeat-ui-kit-community`
+- `aerobeat-ui-shell-desktop-community`
+
+## Scope note
+
+A repo existing in the ecosystem does **not** mean the feature/input/platform is official v1 product scope. The active product slice is camera-first Boxing + Flow on PC first.

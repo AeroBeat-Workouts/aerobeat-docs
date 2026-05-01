@@ -1,11 +1,28 @@
-# 🛠️ The "Skin" System (UGC)
+# User Content Overview
 
-To support the "YouTube" vision, visual content is strictly separated from game logic.
+AeroBeat separates workout logic from authored content so community contributions can stay inspectable and tool-friendly.
 
-* **Logic (The Skeleton):** A target is just a mathematical hitbox and a timestamp.
-* **Asset / Skin (The Visuals):** Artists can replace the default `targets`, `obstacles`, `trails`, and `gloves` to skin the game's visuals. In the locked v1 package model, those are typed package assets rather than loose portal/hand replacements.
-* **Environment:** Included environments can be replaced easily, transporting athletes anywhere from a *live concert stage* to the *moon*.
+## What workout packages currently own
 
-This allows the community to create total-conversion aesthetics without touching a line of code.
+- songs
+- charts
+- sets
+- workouts
+- coaching
+- environments
 
-Simply select a **Workout** in the content browser and the engine takes care of the rest.
+## What they no longer teach
+
+This docs pass removes the older package-local gameplay asset/skin model from the official workout-package concept.
+
+That means workout packages should no longer be described as bundles of swappable gloves, targets, obstacles, and trails.
+
+## Customization direction going forward
+
+Customization still matters, but the more likely product path is:
+
+- account-level avatar identity
+- cosmetics
+- progression and unlocks via workout points
+
+That direction is more controlled and store-friendly than the older freeform workout-package asset model.

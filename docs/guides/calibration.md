@@ -1,65 +1,31 @@
 # Calibration Wizard
 
-AeroBeat is an **Input Agnostic** platform. Because every device (Webcam, Bluetooth Headphones, TV) introduces different latency, calibration is critical for a good experience.
+AeroBeat calibration should now be read through a camera-first lens.
 
-## 1. Global Latency (Audio & Video)
+## Official gameplay calibration in this slice
 
-Before playing, every user should run the **AV Sync Wizard**. This compensates for hardware delays.
+The primary calibration flow is for **camera gameplay** plus normal audio/video sync.
 
-### Audio Offset (The "Hit Window")
+### Global latency
 
-*   **Problem:** Bluetooth headphones can add 200ms+ of delay. You hear the beat late.
-*   **The Test:** You will hear a rhythmic click. Tap/Click exactly when you *hear* the sound.
-*   **Result:** We calculate `user_audio_offset_ms`. The game subtracts this from your input timestamp.
+- audio offset calibration
+- video offset calibration
 
-### Video Offset (The "Travel Time")
+### Camera calibration
 
-*   **Problem:** TVs with post-processing can delay the image by 50ms+.
-*   **The Test:** A visual indicator bounces to a beat. Adjust the slider until the bounce hits the line exactly when the sound plays.
-*   **Result:** We calculate `user_video_offset_ms`. We spawn targets earlier so they arrive visually on time.
+- ensure face and hands are well lit
+- keep enough distance for upper-body framing
+- use a stable background when possible
+- calibrate reach/pose from the athlete's actual play position
 
----
+## Navigation vs gameplay
 
-## 2. Input-Specific Calibration
+UI navigation may still use mouse on PC and touch on mobile, but that is separate from the official v1 gameplay-input story.
 
-Once AV sync is set, you may need to calibrate your specific controller.
+## Future-input note
 
-### 📷 Camera (MediaPipe)
+JoyCon, gamepad, keyboard, and XR-specific calibration flows may still be worth documenting later, but they should be treated as future support rather than official v1 gameplay requirements.
 
-*   **Lighting:** Ensure your face and hands are well-lit. Avoid backlighting (windows behind you).
-*   **T-Pose:** Stand back until your full upper body is visible. Press "Calibrate" while holding a T-Pose to set your arm span.
-*   **Background:** A plain background works best. Remove moving objects (fans, pets).
+## Seated play
 
-### 🎮 Joycon & VR
-
-*   **Gyro Drift:** IMU sensors drift over time.
-*   **Reset:** Hold the controllers forward and press the **System Button** (Start/Home) to reset "Forward" direction.
-
-### 🕹️ Gamepad
-
-*   **Deadzones:** If your cursor drifts, increase the "Stick Deadzone" in Settings.
-*   **Mapping:** Use the "Remap Controls" menu if your generic controller has swapped buttons (A/B or X/Y).
-
-### ⌨️ Keyboard & Mouse
-
-*   **Sensitivity:** For Mouse input, adjust the X/Y sensitivity to match your screen size and arm movement preference.
-*   **Keybinds:** WASD / Arrow Keys are default, but fully remappable.
-
-### 📱 Touch
-
-*   **Surface Area:** On tablets, you may want to restrict the active input area to the bottom half of the screen for comfort.
-
-### 🪑 Seated Play
-
-If you are playing from a wheelchair or a chair:
-
-*   **Camera:** Perform the **T-Pose Calibration** while seated. The engine uses your head position relative to the frame to determine the "High" and "Low" target rows.
-*   **VR:** Use the "Recenter" function while seated. This sets your current head height as the "Standard" height, ensuring targets fly at your chest level rather than over your head.
-
----
-
-## 3. Troubleshooting
-
-*   **"I hit perfectly but get 'Miss'":** Your Audio Offset is likely wrong. Re-run the Audio Calibration.
-*   **"Targets stutter":** Check your frame rate. Rhythm games need stable 60fps. Lower graphics settings if needed.
-*   **"Camera loses my hands":** Move further back. Fast movements blur on cheap webcams; try smoother motions.
+Seated camera calibration remains important. Athletes should calibrate from the posture they will actually use during play so reach and head-position expectations stay comfortable.

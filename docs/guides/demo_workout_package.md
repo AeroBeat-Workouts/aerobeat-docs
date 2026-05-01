@@ -1,33 +1,10 @@
 # Demo Workout Package Guide
 
-If you want to understand the current AeroBeat v1 package contract by reading one concrete example instead of stitching it together from several architecture pages, this is the shortest path.
+This guide points to one concrete example of the current AeroBeat workout-package contract.
 
 ## Where the example lives
 
-The canonical docs example lives here:
-
 - [`docs/examples/workout-packages/demo-neon-boxing-bootcamp/`](../examples/workout-packages/demo-neon-boxing-bootcamp/README.md)
-
-That folder is intentionally authored as a **teaching package** rather than a minimal fixture.
-
-## Validation belongs to the authoring tool
-
-This docs repo explains the package contract, but it does **not** perform package validation itself.
-
-For actual validation, use [`aerobeat-tool-content-authoring`](https://github.com/AeroBeat-Workouts/aerobeat-tool-content-authoring). The current implemented validator covers:
-
-- the authored YAML package records in the example package
-- the checked-in SQL schema files under `sql/`
-- either a full-package pass or narrower subject-specific passes
-
-Current CLI surface in the authoring repo:
-
-- `validate <package_dir>`
-- `validate <subject> <package_dir> [--json]`
-
-Current subjects: `package`, `workout`, `songs`, `charts`, `sets`, `coaches`, `environments`, `assets`, `sql`.
-
-Important scope note: this first slice validates the checked-in `.schema.sql` artifacts, not a live SQLite `workouts.db` or `leaderboard-cache.db` file.
 
 ## What to open first
 
@@ -36,26 +13,13 @@ Important scope note: this first slice validates the checked-in `.schema.sql` ar
    - [`ab-set-neon-stride-opening-round.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/sets/ab-set-neon-stride-opening-round.yaml)
    - [`ab-set-neon-stride-flow-round.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/sets/ab-set-neon-stride-flow-round.yaml)
    - [`ab-set-midnight-sprint-finish-round.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/sets/ab-set-midnight-sprint-finish-round.yaml)
-3. Song records:
-   - [`ab-song-neon-stride.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/songs/ab-song-neon-stride.yaml)
-   - [`ab-song-midnight-sprint.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/songs/ab-song-midnight-sprint.yaml)
+3. Song records
 4. Chart records:
-   - [`ab-chart-neon-stride-boxing-medium.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-boxing-medium.yaml)
-   - [`ab-chart-neon-stride-flow-medium.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-flow-medium.yaml)
-   - [`ab-chart-neon-stride-dance-medium.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-dance-medium.yaml)
-   - [`ab-chart-neon-stride-step-medium.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/charts/ab-chart-neon-stride-step-medium.yaml)
-   - [`ab-chart-midnight-sprint-boxing-hard.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/charts/ab-chart-midnight-sprint-boxing-hard.yaml)
+   - Boxing
+   - Flow
 5. [`coaches/coach-config.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/coaches/coach-config.yaml)
-6. Environment records:
-   - [`ab-environment-neon-rooftop.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/environments/ab-environment-neon-rooftop.yaml)
-   - [`ab-environment-sunrise-studio.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/environments/ab-environment-sunrise-studio.yaml)
-7. Asset records:
-   - [`ab-asset-gloves-neon-pulse.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/assets/ab-asset-gloves-neon-pulse.yaml)
-   - [`ab-asset-targets-holo-rings.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/assets/ab-asset-targets-holo-rings.yaml)
-   - [`ab-asset-obstacles-light-walls.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/assets/ab-asset-obstacles-light-walls.yaml)
-   - [`ab-asset-trails-comet-streak.yaml`](../examples/workout-packages/demo-neon-boxing-bootcamp/assets/ab-asset-trails-comet-streak.yaml)
-8. [`sql/workouts.db.schema.sql`](../examples/workout-packages/demo-neon-boxing-bootcamp/sql/workouts.db.schema.sql)
-9. [`sql/leaderboard-cache.db.schema.sql`](../examples/workout-packages/demo-neon-boxing-bootcamp/sql/leaderboard-cache.db.schema.sql)
+6. Environment records
+7. SQL schema examples
 
 ## What the example demonstrates
 
@@ -65,144 +29,47 @@ The example models a single package with:
 
 - one root `workout.yaml`
 - two songs
-- five charts
+- three charts
 - three sets
 - one coaching domain file
 - two environments
-- four gameplay-facing asset records
-- authored-record provenance on the demo YAML records, with the documented disabled coach-config sentinel as the lone exception path
+- example SQL schema files
 
 ### 2. Exact ids, not loose lookup rules
 
-The set files point to exact:
+The set files point to exact ids for:
 
 - `songId`
 - `chartId`
 - `environmentId`
 - `coachingOverlayId`
-- gameplay-facing asset ids
 
-That is the current v1 direction. Discovery happens elsewhere; package playback resolves exact ids.
+Discovery happens elsewhere; package playback resolves exact ids.
 
-The paired `Neon Stride` sets show that one reusable song can support multiple exact playable charts across different features without changing the broader package shape, and the additional checked-in Dance and Step charts show the same contract direction without expanding the set walkthrough beyond Boxing/Flow.
-
-### 2a. What the song examples are teaching
-
-The two demo song YAML files also model the currently approved song-contract cleanup:
-
-- `licensing.licenseType` uses the locked enum-oriented contract
-- `licensing.streamingSafe` is a required boolean
-- `licensing.aiAssisted` is a required boolean
-- structured AI disclosure fields are only needed when `aiAssisted: true`
-- songs now own canonical timing truth through `timing.anchorMs`, `timing.tempoSegments`, `timing.stopSegments`, and `timing.timeSignatureSegments`
-- `timing.anchorMs` is the canonical beat-zero anchor in integer milliseconds
-- `timing.tempoSegments` is the single approved tempo-map form; there is no `timing.bpm` shortcut or parallel alternate tempo shape
-- `timing.stopSegments` explicitly encode deterministic timing-map holds
-- `timing.timeSignatureSegments` declare canonical musical meter and recommended authoring guidance, while chart/gameplay-mode-specific snap behavior remains later contract work
-- `audio.previewStartMs` remains on the song
-- `metadata.explicit` stays boolean
-- `metadata.language` should be a valid BCP 47 language tag, with base language codes preferred unless extra specificity matters
-- `metadata.genres` stays on the locked normalized lowercase enum
-- song-level `tags` are intentionally absent from the current demo contract
-
-### 3. The coaching split
-
-The package shows the approved coaching rule clearly:
+### 3. Coaching stays package-local
 
 - every package has exactly one `coaches/coach-config.yaml`
 - coaching is optional all-or-nothing
-- the minimal disabled exception is exactly `enabled: false`; once enabled, coach-config follows the normal schema/provenance rule
-- if coaching is enabled, warmup/cooldown media live in coach-config, not in `workout.yaml`
-- coach-config owns the overlay audio registry
-- set files choose overlay clips by `coachingOverlayId`
-- workout roots do not carry reusable trigger graphs or per-set overlay lists
+- enabled coaching owns warmup/cooldown media and the overlay registry
+- sets choose overlay clips by `coachingOverlayId`
 
-### 3a. Environment payload direction
+### 4. Environments remain part of the package model
 
-The checked-in environment examples now intentionally teach the locked small Environment v1 record shape:
+The checked-in environment examples teach the small Environment v1 record shape:
 
-- shared schema/provenance block
 - `environmentId`
 - `environmentName`
 - `type`
 - `resourcePath`
 
-The exact Environment v1 `type` enum is:
+### 5. What is intentionally gone from this example
 
-- `image_background`
-- `video_background`
-- `glb_environment`
+This docs pass removes the older package-local gameplay asset concept.
 
-The demo package keeps the creator guidance honest:
+If you are looking for long-term customization direction, think in terms of:
 
-- image and video backgrounds are valid first-pass package payloads
-- cleaned GLB is the recommended serious 3D package path
-- each set links exactly one environment record by `environmentId`
-- baseline `godot_scene` is intentionally absent from the v1 package contract
-- if AeroBeat later supports `godot_scene`, it should be treated as an advanced controlled-pipeline / build-managed path rather than a normal loose-package payload
+- avatar identity
+- cosmetics
+- workout-point unlock paths
 
-### 3b. Asset payload direction
-
-The checked-in asset examples now intentionally teach the locked small Asset v1 record shape:
-
-- shared schema/provenance block
-- `assetId`
-- `assetName`
-- `type`
-- `resourcePath`
-
-The exact Asset v1 `type` enum is:
-
-- `gloves`
-- `targets`
-- `obstacles`
-- `trails`
-
-The package/set composition rule is equally important:
-
-- a set may reference multiple asset records
-- a set may include at most one asset per asset type
-- the `assetSelections` key must match the referenced asset record's `type`
-- example-only `metadata` and `tags` are intentionally absent from the canonical v1 asset examples
-
-### 3c. Chart payload direction
-
-The checked-in demo charts now intentionally teach the locked flattened chart contracts used in this docs repo:
-
-- Boxing charts author flat `beats:` entries with required `start`, optional inclusive `end`, required concrete `type`, and optional integer `portal`
-- Flow charts author flat `beats:` entries with the same shared fields plus optional `placement` and optional `direction`
-- Dance charts author flat `beats:` entries with required `start`, optional inclusive `end`, required `type`, and optional boolean `gold`
-- Step charts author flat `beats:` entries with required `start`, required `type`, required ordered unique `lanes`, and optional inclusive `end` only for holds
-- For Flow `swing_*`, `trail_*`, and `warn_*` beats, omitted `direction` inherits from `placement`
-- Dance and Step chart rows intentionally omit scoring logic, cue/pictogram data, classifier/runtime fields, coach-behavior metadata, and environment/asset linkage
-- Older boxing-only payload fields such as `hand`, `strike`, `zone`, `holdMs`, and `durationMs` are intentionally absent
-- Older Flow-only terminology that implied automatic portal generation or a separate obstacle lane is intentionally absent from this package example
-
-### 4. SQLite authority boundaries
-
-The SQL examples show the difference between:
-
-- **authored package truth** in YAML
-- **shared catalog browse/search data** in the catalog core tables
-- **local install-only state** in `workout_local` when the catalog lives on disk as `workouts.db`
-- **remote catalog-only state** in `workout_remote` when the same core schema is used for a downloaded/bundled remote snapshot
-- **non-authoritative per-workout leaderboard cache data** in `leaderboard-cache.db`
-
-## Why this example matters
-
-This example is meant to be the easiest place for a new developer to answer questions like:
-
-- "What does a valid v1 workout package folder look like?"
-- "Where does coach config live?"
-- "Where do warmup/cooldown references live under the approved coaching model?"
-- "How does a set pick the right coaching overlay clip?"
-- "Where does browse metadata belong versus package metadata?"
-- "How should ids line up across package files?"
-- "How can one song be reused for Boxing and Flow without changing the package contract?"
-
-## Related docs
-
-- [Workout Package Storage and Discovery](../architecture/workout-package-storage-and-discovery.md)
-- [Content Model](../architecture/content-model.md)
-- [Project Glossary](../gdd/glossary/terms.md)
-- [Example package overview](../examples/workout-packages/overview.md)
+not freeform package-local asset swapping inside every workout.

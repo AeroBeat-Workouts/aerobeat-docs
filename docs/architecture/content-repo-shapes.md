@@ -83,7 +83,7 @@ The exact filenames can evolve, but the **shape categories should not**: contrac
   - audio/timing authority, metadata, licensing references, global tags
 - `data_types/set.gd`
   - canonical `Set` contract
-  - package-local composition links for one exact playable slice, including song/chart/environment selections and optional coaching overlay or asset selections
+  - package-local composition links for one exact playable slice, including song/chart/environment selections and optional coaching overlays
 - `data_types/chart.gd`
   - canonical `Chart` contract
   - difficulty, interaction family, input-profile compatibility fields, event stream envelope
@@ -131,7 +131,7 @@ The exact filenames can evolve, but the **shape categories should not**: contrac
 - `globals/aero_content_schema.gd`
   - schema ids, schema families, version constants, and compatibility helpers
 - `globals/content_feature.gd`
-  - stable feature ids such as `boxing`, `dance`, `step`, `flow`
+  - stable feature ids such as active `boxing` and `flow`, with room for future feature ids later
 - `globals/content_difficulty.gd`
   - canonical difficulty vocabulary
 - `globals/interaction_family.gd`

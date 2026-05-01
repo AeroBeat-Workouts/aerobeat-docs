@@ -1,54 +1,44 @@
 # Input Pipeline (Provider Pattern)
 
-AeroBeat uses the **Provider Pattern** for runtime input.
+AeroBeat uses the **Provider Pattern** for runtime input, but the current product scope is narrower than the full architecture surface.
 
-The public-facing abstraction is the **Input Provider**: a runtime bridge that turns hardware-specific signals into normalized gameplay data. Game logic never talks to a webcam, controller, keyboard, or tracker directly; it asks the **Input Provider** for normalized data.
+The public-facing abstraction is the **Input Provider**: a runtime bridge that turns hardware-specific signals into normalized gameplay data. Game logic never talks to a webcam, controller, keyboard, or tracker directly; it asks the Input Provider for normalized data.
 
-`Strategy` remains an implementation-detail term for how a concrete provider internally performs adaptation or switching. It is **not** the main public name for the overall input abstraction.
+## Official v1 stance
 
-* **Interface:** `AeroInputProvider` (defined in [`aerobeat-input-core`](https://github.com/AeroBeat-Workouts/aerobeat-input-core)).
-* **Contract:** Must return normalized `0.0 - 1.0` viewport coordinates or equivalent gameplay-space data for `LeftHand`, `RightHand`, and `Head`.
+**Official AeroBeat v1 gameplay input support is camera only.**
 
-## Supported Input Providers
+That means the provider architecture should currently be optimized around camera-driven Boxing and Flow. Other providers can remain documented and versioned as future work without being presented as equal-status shipping inputs.
 
-| Input Provider | Repository | Technology | Typical Target Platform |
-| :--- | :--- | :--- | :--- |
-| **MediaPipe Python Provider** | `aerobeat-input-mediapipe-python` | **Sidecar Process.** Launches a Python subprocess that pipes landmark data via UDP `localhost:8100`. | Windows, Linux, Mac |
-| **MediaPipe Native Provider** | `aerobeat-input-mediapipe-native` | **GDExtension / Plugin.** Runs MediaPipe directly in the application memory. | Android, iOS |
-| **JoyCon HID Provider** | `aerobeat-input-joycon-hid` | **Raw Bluetooth.** Connects directly to JoyCons to read high-speed gyro / accel data. | Windows, Linux, Android |
-| **Keyboard Provider** | `aerobeat-input-keyboard` | **Godot Native.** Maps WASD / Arrow keys to gameplay lanes or fallback gestures. | All |
-| **Mouse Provider** | `aerobeat-input-mouse` | **Godot Native.** Maps cursor X/Y to viewport coordinates. | Desktop / Web |
-| **Touch Provider** | `aerobeat-input-touch` | **Godot Native.** Maps touchscreen taps to viewport coordinates. | Mobile / Tablet |
-| **Gamepad Provider** | `aerobeat-input-gamepad` | **Godot Native.** Standard XInput / controller stick mapping. | All |
-| **XR Provider** | `aerobeat-input-xr` | **Tracked 6DOF controllers / hands.** Uses XR runtime pose data. | XR |
+## Current provider landscape
+
+| Provider | Status in docs | Typical role |
+| :--- | :--- | :--- |
+| MediaPipe Python Provider | Official v1 gameplay path | PC camera gameplay |
+| MediaPipe Native Provider | Near-future follow-on | Mobile camera gameplay |
+| JoyCon HID Provider | Future support | Future-input exploration |
+| Keyboard Provider | Future support | Debugging, tooling, experiments |
+| Mouse Provider | Future support for gameplay, valid for UI navigation | Pointer-driven navigation / experiments |
+| Touch Provider | Future support for gameplay, valid for UI navigation | Mobile UI navigation / future gameplay |
+| Gamepad Provider | Future support | Accessibility and platform exploration |
+| XR Provider | Future support | VR return path |
 
 ## Interaction family vs input profile
 
-AeroBeat docs distinguish between authored-content compatibility and concrete runtime/device targets.
+AeroBeat docs still distinguish between:
 
-* **Interaction Family:** The authored-content compatibility group, such as `gesture_2d`, `tracked_6dof`, or `hybrid`.
-* **Input Profile:** A concrete runtime/device compatibility target or validated profile, such as `mediapipe_camera`, `keyboard_debug`, or `gamepad_virtual_presence`.
+- **Interaction Family:** authored-content compatibility groups such as `gesture_2d` or `tracked_6dof`
+- **Input Profile:** concrete runtime/device targets such as `mediapipe_camera` or `keyboard_debug`
 
-Charts target **interaction families** first. They record **input profiles** as supported or validated compatibility notes.
+That model remains useful, but only `mediapipe_camera`-style camera paths should be described as official v1 gameplay support.
 
-## Provider grouping rationale
+## Why keep future providers documented
 
-We enforce a **one-repo-per-provider** policy, even for standard Godot inputs.
+The docs should preserve repo/API references for non-camera inputs because they help with:
 
-### The logic: granularity & quirks
+- future platform planning
+- accessibility research
+- debugging and tool-side workflows
+- eventual mobile and VR expansion
 
-1. **Isolation of quirks**
-   * While Godot handles generic gamepads well, specific controllers such as dance pads or flight sticks often report as generic devices but still require custom axis remapping, deadzone tuning, or timing logic.
-   * By isolating `aerobeat-input-gamepad`, AeroBeat can implement provider-specific adaptation without polluting keyboard or touch input code.
-
-2. **The driver tier (`input-mediapipe-*`, `input-joycon`, `input-xr`)**
-   * These providers require **heavy external dependencies** such as Python environments, Android `.aar` libraries, GDExtensions, vendor SDKs, or XR runtimes.
-   * **Isolation is safety:** keeping those providers in separate repos prevents unrelated contributors from needing every dependency stack just to fix a gameplay or UI issue.
-
-## Normalization flow
-
-1. **Raw data:** The concrete provider receives device-specific data (for example, MediaPipe landmarks such as `x: 0.54, y: 0.21, z: -0.1`).
-2. **Adaptation:** The provider applies technology-specific normalization, offsets, handedness correction, filtering, and coordinate transforms.
-3. **Delivery:** The provider exposes a stable gameplay contract such as `get_left_hand_transform()` to the game loop.
-
-Implementation details may still use strategy objects internally, but the public architectural contract remains the **Input Provider**.
+The important rule is wording: **documented does not mean committed for v1**.

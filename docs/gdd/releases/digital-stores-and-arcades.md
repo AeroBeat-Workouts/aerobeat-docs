@@ -1,19 +1,26 @@
-# 📱 Digital Stores & Arcade Editions
+# Digital Stores & Arcade Editions
 
-Porting AeroBeat to digital storefronts and Arcades requires the following changes from the community edition to be successful.
+These release paths remain valid planning spaces, but they are **not** the first shipping priority.
 
-### Licensing Strategy
-Unlike the Community Edition (GPLv3), these releases are **Commercial Products** licensed under a **Proprietary EULA**.
-*   **Why?** Publisher agreements for Top-40 music and IP collaborations require strict Digital Rights Management (DRM) and closed-source distribution to prevent asset extraction.
-*   **The Code:** These versions are built using the **Dual Licensing** model enabled by our CLA.
+## Current sequencing
 
-* **Top-40 Music:** - Publisher funding would be used to pay for the rights to popular music
-* **Choreography:** - Each song would be choreographed for our various difficulty levels as needed.
-* **Collaborations:** - Custom environments and assets would be created in collaborations with IP holders.
-* **Community Features:** - Generally unaccessible in these ports to prevent bad experiences with casual athletes.
+- PC community edition comes first
+- mobile store work comes after the PC community release
+- VR and deeper arcade variants come later
 
-Each version of AeroBeat across storefronts would have a unique selling point.
+## Commercial release direction
 
-* **Arcade:** - Quick jump-in and play of individual songs. Use a touch screen to choose your gameplay style, song, and start! Uses the `portal` view with high resolution environments. Allows two players if there's enough physical space.
-* **Mobile:** - Focuses on fitness goals with a stripped down version of our Community edition's user interface. Defaults to `track` view for small screens.
-* **Steam:** - Similar to the mobile release, but defaults to `portal` view and high-resolution environments.
+If AeroBeat later targets digital storefronts or arcades, those editions may diverge from the community build in licensing, content curation, and distribution requirements.
+
+Important wording note: app-store and mobile UGC constraints are real considerations, but the docs should keep them **soft** for now. They are planning pressures, not yet absolute blockers.
+
+## Likely differences from the community edition
+
+- more curated content pipelines
+- tighter commercial licensing for music and brand collaborations
+- platform-specific UX and packaging decisions
+- more controlled moderation/distribution surfaces
+
+## Product framing
+
+This page should be read as future release planning, not a promise of simultaneous storefront parity.

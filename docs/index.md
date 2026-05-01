@@ -1,119 +1,54 @@
 # Welcome to AeroBeat
 
-**AeroBeat** is an open-source, modular rhythm game platform designed to democratize fitness gaming. Think of it as the "YouTube of Workout Games"—a place where hardware inputs, gameplay mechanics, and community content can be mixed and matched freely.
+**AeroBeat** is an open-source rhythm workout platform currently focused on one official v1 gameplay-input combination: **camera-driven Boxing and Flow on PC first**.
 
-Unlike traditional rhythm games that are locked to specific hardware (VR headsets or consoles), AeroBeat is **Input Agnostic**. It runs on PC, Mobile, and VR, utilizing Computer Vision (CV) to turn standard webcams into motion controllers.
-
----
-
-## 🚀 The Vision
-
-We are building a platform, not just a game. Our architecture separates **Input** (How you move), **Logic** (The rules of the game), and **Content** (The music and visuals).
-
-* **Hardware Agnostic:** Play using a Webcam (MediaPipe), VR Controllers, JoyCons, or even a Keyboard.
-* **Modular Gameplay:** Swap the "Core Mechanic" instantly. Go from **Boxing** (punching targets) to **Flow** (Beat Saber style movement) without changing the engine.
-* **Community First:** Built for modding. Musicians can publish songs, choreographers can author charts and sets, artists can build package-local assets, and coders can write new input drivers.
+The broader long-term vision still matters, but this docs set now reflects the tighter product slice we are actually building first: webcam-based gameplay, community-authored workouts, and a release path that prioritizes **PC community**, then **mobile**, then **VR**.
 
 ---
 
-## 📚 Documentation Structure
+## What is in scope right now
 
-Our documentation is divided by role. Choose your path below:
+- **Official v1 gameplay features:** Boxing and Flow
+- **Official v1 gameplay input:** Camera only
+- **Primary release target:** PC community edition
+- **Workout package direction:** songs, charts, sets, workouts, coaching, and environments
+- **Customization direction:** profile/avatar/cosmetics progression and unlocks, not package-local gameplay asset swaps
 
-### 🥊 [Game Design (GDD)](gdd/concept.md)
+## What stays documented as future-looking work
 
-*For Designers and Visionaries.*
+These docs still keep useful references for later expansion, but they should be read as **future-platform or future-input support**, not current v1 commitments:
 
-* Read about the **Core Loop** and scoring logic.
-* Understand the fitness-first approach to difficulty.
-* Explore the roadmap for multiplayer and workshop features.
-* **Meta:** [Profile](gdd/meta/profile.md), [Preferences](gdd/meta/preferences.md), [Locker Room](gdd/meta/locker_room.md).
-* **Economy:** [Currency](gdd/economy/currency.md), [Supporter Perks](gdd/economy/supporter_perks.md).
-* **Social:** [Crews](gdd/social/crews.md).
-* **Gamification:** [Quests](gdd/gamification/quests.md).
+- mobile gameplay support after the PC community release
+- VR product work after mobile
+- non-camera gameplay input providers such as keyboard, gamepad, JoyCon, touch, mouse, and XR
+- broader runtime shells and platform-specific presentation work
 
-### 🛠️ [Technical Architecture](architecture/overview.md)
+## Documentation paths
 
-*For software engineers and system architects.*
+### [Game Design](gdd/concept.md)
 
-* Understand the **lane-based six-core** topology.
-* Learn how the six core repos divide contracts by lane, starting with `aerobeat-input-core`, `aerobeat-feature-core`, `aerobeat-content-core`, `aerobeat-asset-core`, `aerobeat-ui-core`, and `aerobeat-tool-core`.
-* Dive into platform concerns such as Cloud Baker, testing strategy, security, and performance.
-* Read the new [**Content Model**](architecture/content-model.md) doc for how Songs, Charts, Sets, and Workouts fit together.
-* Read [**Workout Package Storage and Discovery**](architecture/workout-package-storage-and-discovery.md) for the locked v1 package contract, including `coaches/coach-config.yaml`, the shared local/remote catalog schema (`workouts`, `workout_local`, `workout_remote`, and related browse tables), the strict Asset v1 `type` enum, and the self-contained package rules.
-* Read [**Content Repo Shapes**](architecture/content-repo-shapes.md) for the concrete day-one structure of `aerobeat-content-core` and `aerobeat-tool-content-authoring`.
-* **Key Tech:** Godot 4.x, GDScript, Python sidecars, and modular package boundaries.
+Use the GDD section for the product thesis, gameplay framing, release sequencing, and contributor-facing terminology.
 
-### 🧰 [Guides for Contributors](guides/contributing_workflow.md)
+### [Technical Architecture](architecture/overview.md)
 
-*For contributors who want practical setup and workflow guidance.*
+Use the architecture section for the current lane split, official v1 input stance, workout package contracts, and repo boundaries.
 
-* Start with the **Contributing Workflow** and **Feature Development** guides.
-* Read the [**Demo Workout Package Guide**](guides/demo_workout_package.md) if you want one concrete end-to-end package example with linked YAML and SQL files.
-* Use the calibration, accessibility, choreography, and content creation guides when working in specialized areas.
-* Follow the licensing and contribution docs before publishing shared work.
+### [Contributor Guides](guides/contributing_workflow.md)
 
-### 🎨 [Art Overview](gdd/art/overview.md)
+Use the guides for practical authoring and onboarding, including choreography guidance for Boxing and Flow, calibration, accessibility, and the demo workout package.
 
-*For artists looking to add new art assets.*
+### [Example Workout Package](examples/workout-packages/overview.md)
 
-* Learn how feature and UI-facing base scenes expose stable runtime contracts for skins, environments, and other asset packages.
-* Understand the difference between authored package assets and runtime/distribution artifacts.
-* Review licensing expectations for creative contributions.
-
-### 📘 Guides & Legal
-
-* **Development:** Feature Development.
-* **Creation:** Cosmetics Guide.
-* **Legal:** Refund Policy.
+Use the package example when you want one concrete end-to-end fixture for the current docs contract.
 
 ---
 
-## 📂 Repository Ecosystem
+## Current status
 
-AeroBeat uses a polyrepo repository structure to keep code clean and licenses decoupled.
+AeroBeat is still in prototype. This docs repo intentionally distinguishes between:
 
-* **Read More Here:** [Topology Documentation](./architecture/topology.md)
-* **Template Source Files:** The `templates/` folder in this repo is the source of truth for AeroBeat starter repositories.
+- **official v1 scope**
+- **valuable future research / future-platform work**
+- **removed concepts that are no longer part of the active product slice**
 
----
-
-## 🤝 Contributing
-
-We welcome contributions of all kinds. To ensure you have the best experience, choose the path that matches your skills and goals.
-
-### 👩‍💻 For Software Engineers
-*Looking to fix bugs, optimize the engine, or add new features?*
-
-1. Read the **Contributing Workflow** guide.
-2. Check the **Architecture Overview** to understand the system.
-3. Pick a repository (for example `aerobeat-input-core` or `aerobeat-feature-boxing`) and start coding.
-
-### 🎨 For Engine Artists
-*Looking to contribute official UI themes, icons, or core 3D assets to the open-source project?*
-
-1. Review the **Art Overview**.
-2. Understand our **Licensing for Creatives**.
-3. Join the discussion on our GitHub Discussions or Discord to coordinate with the art direction team.
-
-### 🖌️ For Modders (UGC)
-*Looking to create custom gloves, targets, obstacles, trails, environments, coaches, or full workout packages for yourself and the community?*
-
-1. Start from the relevant `aerobeat-template-*` repo or its generated descendant.
-2. Author a self-contained workout or asset package using the current YAML/package docs rather than treating `.pck` as the authored source of truth.
-3. If a future distribution pipeline emits `.pck` or other runtime bundles, treat those as build artifacts layered on top of the authored package contract.
-
-### 🎵 For Creators (Music & Fitness)
-*Are you a composer, choreographer, or coach? You don't need to download the game engine.*
-
-We provide specialized web-based tools for you:
-
-* **Musicians:** Upload tracks and get verified at **www.aerobeat-workouts.com/creators**.
-* **Choreographers:** Use the **Choreography Studio** to author charts and package-local sets that workouts sequence.
-* **Coaches:** Build optional workout-level coaching content around the package's single `coaches/coach-config.yaml` domain, with all-or-nothing enablement and one overlay audio clip per workout set when enabled.
-
-> **Current Status:** AeroBeat is currently in **Prototype (v0.0.1)**. We are actively building the six shared core lanes and the initial Boxing feature.
-
----
-
-*AeroBeat-Workouts &copy; 2026. "Move to the Beat."*
+If a page talks about non-camera gameplay input or VR, read it as future-looking unless that page explicitly says otherwise.

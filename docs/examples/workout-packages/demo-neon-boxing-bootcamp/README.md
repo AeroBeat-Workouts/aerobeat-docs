@@ -1,16 +1,12 @@
 # Demo Package: Neon Boxing Bootcamp
 
-`demo-neon-boxing-bootcamp` is the canonical docs example for the current AeroBeat v1 workout package contract.
+`demo-neon-boxing-bootcamp` is the canonical docs example for the current AeroBeat workout-package contract.
 
-It is designed for onboarding, code review, validation planning, and tool implementation. A new developer should be able to read the files in this folder and understand:
+It is intentionally aligned to the narrowed product slice:
 
-- what records exist in a package
-- how ids connect across files
-- which fields belong in package YAML versus set YAML
-- which concerns belong in local SQLite databases instead
-- how the approved coaching model fits into the package
-- how one song can be reused by multiple exact playable charts
-- how the checked-in Boxing, Flow, Dance, and Step chart examples differ while sharing the same package contract
+- official gameplay features in the example are **Boxing** and **Flow**
+- package-local **environments** remain in scope
+- package-local gameplay **assets** are no longer part of the taught contract
 
 ## Package shape
 
@@ -24,9 +20,7 @@ demo-neon-boxing-bootcamp/
 ├── charts/
 │   ├── ab-chart-midnight-sprint-boxing-hard.yaml
 │   ├── ab-chart-neon-stride-boxing-medium.yaml
-│   ├── ab-chart-neon-stride-dance-medium.yaml
-│   ├── ab-chart-neon-stride-flow-medium.yaml
-│   └── ab-chart-neon-stride-step-medium.yaml
+│   └── ab-chart-neon-stride-flow-medium.yaml
 ├── sets/
 │   ├── ab-set-midnight-sprint-finish-round.yaml
 │   ├── ab-set-neon-stride-flow-round.yaml
@@ -36,14 +30,8 @@ demo-neon-boxing-bootcamp/
 ├── environments/
 │   ├── ab-environment-neon-rooftop.yaml
 │   └── ab-environment-sunrise-studio.yaml
-├── assets/
-│   ├── ab-asset-gloves-neon-pulse.yaml
-│   ├── ab-asset-obstacles-light-walls.yaml
-│   ├── ab-asset-targets-holo-rings.yaml
-│   └── ab-asset-trails-comet-streak.yaml
 ├── media/
 │   ├── art/
-│   ├── assets/
 │   ├── audio/
 │   ├── coaching/
 │   └── environments/
@@ -54,57 +42,29 @@ demo-neon-boxing-bootcamp/
 
 ## Scenario modeled by this package
 
-This example package imagines a short mixed-feature workout with two songs and three exact playable sets:
+This package imagines a short three-set workout:
 
-1. **Neon Stride Opening Round** — medium Boxing opener using a cleaned GLB rooftop environment
-2. **Neon Stride Flow Round** — medium Flow follow-up that reuses the same song with a different chart
-3. **Midnight Sprint Finish Round** — harder Boxing finisher using a bright studio image background
+1. **Neon Stride Opening Round** — medium Boxing opener
+2. **Neon Stride Flow Round** — medium Flow follow-up reusing the same song
+3. **Midnight Sprint Finish Round** — harder Boxing finisher
 
-The package uses one shared coach config, a two-coach roster, two environments, four gameplay-facing asset selections, one warmup video, one cooldown video, and one overlay audio clip selected by each set. It also includes extra checked-in Dance and Step chart examples for the same `Neon Stride` song so the docs package can teach the approved Dance and Step contracts without broadening the composed workout walkthrough. Every authored YAML record in the enabled example also carries the shared schema/provenance fields; the only deliberate exception path in this contract is a disabled `coach-config.yaml` sentinel of just `enabled: false`.
+It uses one shared coach config, two environments, one warmup video, one cooldown video, and overlay audio cues selected per set.
 
 ## Reading order
 
 - Start with [`workout.yaml`](workout.yaml).
-- Then follow the ordered set ids into `sets/`.
-- From each set, follow the ids into `songs/`, `charts/`, `environments/`, `assets/`, and `coaches/coach-config.yaml`.
-- Compare the two `Neon Stride` sets to see how one song can drive both Boxing and Flow chart slices without changing the package contract, then inspect the standalone `ab-chart-neon-stride-dance-medium.yaml` and `ab-chart-neon-stride-step-medium.yaml` examples to see the approved Dance and Step row shapes on that same shared chart envelope.
-- Finish with [`sql/workouts.db.schema.sql`](sql/workouts.db.schema.sql) and [`sql/leaderboard-cache.db.schema.sql`](sql/leaderboard-cache.db.schema.sql).
+- Follow the set ids into `sets/`.
+- From each set, follow ids into `songs/`, `charts/`, `environments/`, and `coaches/coach-config.yaml`.
+- Finish with the SQL schema examples.
 
-## Intentional v1 boundaries shown here
+## Intentional boundaries shown here
 
-- discoverability/search metadata is not authored into `workout.yaml`
-- `workout.yaml` owns package metadata plus `setOrder`, not the full composition payload inline
-- `sets/*.yaml` are the single source of truth for song/chart/environment/asset/coaching-overlay links
-- song licensing uses the locked `licenseType` enum plus `streamingSafe` and `aiAssisted` booleans
-- the demo song records keep `audio.previewStartMs`, boolean `metadata.explicit`, BCP 47 `metadata.language`, and locked-enum `metadata.genres`
-- the demo song records now own canonical timing truth through `timing.anchorMs`, `timing.tempoSegments`, `timing.stopSegments`, and `timing.timeSignatureSegments`
-- `timing.bpm`, `timing.beatGrid.resolution`, `timing.beatGrid.anchors`, song-level `usageRights`, and freeform `tags` are intentionally absent from this slice
-- coaching stays inside the package's single `coaches/coach-config.yaml` file
-- warmup/cooldown references live in coach-config under the approved coaching model
-- each workout set maps to one overlay audio record through `coachingOverlayId`
-- the checked-in chart examples now show the locked flattened Boxing, Flow, Dance, and Step `beats:` contracts
-- the Flow example demonstrates explicit `portal`, `placement`, optional `direction`, and inherited `direction = placement` on supported beat families
-- the Dance example demonstrates the approved minimal row shape: required `start` + `type`, optional inclusive `end`, and optional `gold`
-- the Step example demonstrates the approved minimal row shape: required `start` + `type` + ordered unique `lanes`, with optional inclusive `end` only for holds
-- workout sets choose exactly one environment and may reference multiple assets, but at most one per gameplay-facing asset type
-- asset records now teach the locked small v1 shape: shared schema/provenance block plus `assetId`, `assetName`, `type`, and `resourcePath`
-- the Asset v1 `type` enum is `gloves`, `targets`, `obstacles`, and `trails`, and example-only asset `metadata` / `tags` are intentionally absent from the canonical examples
-- environment records now teach the locked small v1 shape: shared schema/provenance block plus `environmentId`, `environmentName`, `type`, and `resourcePath`
-- the demo environment examples intentionally cover creator-facing `glb_environment` and `image_background` payloads, while `video_background` remains part of the locked enum even though this package does not need a third environment file
-- baseline `godot_scene` is intentionally absent from the v1 package contract shown here; if AeroBeat later supports it, that should be an advanced controlled-pipeline / build-managed path
-- shared browse/discovery rows live in the catalog core tables, while local install-only state lives in `workout_local`
-- local leaderboard snapshots live in the package's disposable cache DB
-- no inheritance, patching, remote-only catalog companion fields, trigger graphs, or signing metadata appears in the authored package files
+- `workout.yaml` owns package metadata plus `setOrder`
+- `sets/*.yaml` are the single source of truth for song/chart/environment/coaching links
+- coaching stays inside the package's single `coaches/coach-config.yaml`
+- workout sets choose exactly one environment
+- the docs example no longer teaches package-local gameplay asset selection
 
 ## Validation note
 
-Use [`aerobeat-tool-content-authoring`](https://github.com/AeroBeat-Workouts/aerobeat-tool-content-authoring) to validate this package. This docs repo is the fixture and explanation layer; it is not the validator.
-
-Current first-slice validator scope for this package:
-
-- validates the YAML records in this package
-- validates the checked-in `sql/*.schema.sql` files
-- supports a full-package pass plus subject-specific passes
-- does **not** yet validate a live SQLite `workouts.db` or `leaderboard-cache.db` file
-
-The `media/` tree in this docs example contains tiny placeholder files so file-existence validation examples have something real to point at. They are stand-ins for real package media, not production assets.
+Use [`aerobeat-tool-content-authoring`](https://github.com/AeroBeat-Workouts/aerobeat-tool-content-authoring) to validate this package. This repo is the fixture and explanation layer.

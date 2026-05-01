@@ -1,88 +1,35 @@
 # Choreography Overview
 
-In AeroBeat, charting is the art of translating music into movement. A good chart does not just match the beat; it makes the athlete feel like they are dancing, boxing, stepping, or flowing with the song.
+In AeroBeat, charting is the art of translating music into movement.
 
-AeroBeat's content model is:
+## Active choreography scope
 
-* **Song → Chart → Set → Workout**
+The current docs set teaches choreography for the two retained gameplay features:
 
-When you author gameplay, you are usually creating or editing one or more reusable **Charts** for a Song, then wiring those charts into package-local **Sets** that a **Workout** can order.
+- [Boxing](boxing.md)
+- [Flow](flow.md)
 
-## 🛠️ The Choreography SDKs
+Dance and Step are no longer active gameplay features in this documentation slice.
 
-Because a Boxing workout is biomechanically different from a Step workout, AeroBeat provides specialized SDKs for each gameplay style.
+## Content model
 
-* **[Boxing Guide](boxing.md):** Optimized for arm reach, punches, and 360-degree spatial mapping.
-* **[Flow Guide](flow.md):** Optimized for continuous arm arcs, sight-readable swing guidance, and body-movement prompts.
-* **[Step Guide](step.md):** Optimized for foot placement and balance (4-lane grid).
-* **[Dance Guide](dance.md):** Timeline-based gesture matching.
+AeroBeat choreography still fits the same durable chain:
 
-### ⚠️ Web vs. Desktop: Audio Latency
+- **Song → Chart → Set → Workout**
 
-While the web studio is convenient for quick edits, **web browsers introduce variable audio latency** that makes precise rhythm mapping difficult.
+## View and platform guidance
 
-* **Risk:** Charts mapped entirely in the web browser may feel off-beat when played in the game engine because of browser audio-buffer drift.
-* **Recommendation:** Use the **desktop app** version of the choreography studio for final synchronization and timing checks. The desktop app uses the same low-latency audio driver as the game client.
+Creators should optimize first for the current official product slice:
 
-## 👁️ Designing for Multiple Views
+- camera-driven gameplay
+- PC-first release
 
-Your chart may be played on VR headsets (Portal View) and phones, tablets, or laptops (Track View).
+Portal-aware presentation and broader platform rendering can stay in mind as future-friendly design constraints, but they should not be documented as equal-status v1 product targets.
 
-* **Portal View:** Gameplay beats fly at the athlete through 3D space.
-    *   **Explicit portal authoring:** When a feature supports `portal`, creators author the concrete portal value directly in the chart. Runtime presentation can still add visual cues around those authored placements.
-    *   **Visual Cues:** When presentation emphasis shifts, a subtle trail or particle cue can guide the athlete's eye. In VR, this can signal that they should rotate to face the next authored portal.
-* **Track View:** Targets render in a linear 2D presentation.
-    *   Depending on the gameplay mode, this may appear as upward-scrolling lanes, horizontally arranged tracks, or another compact lane-based rendering.
+## Workflow
 
-> **Note:** The runtime can still adapt one authored chart for multiple renderers, but that does not replace explicit chart authoring. If your chart uses portal-capable beats, keep the authored `portal` values in the source chart and let each renderer interpret them appropriately.
-
-## 🚀 Step-by-Step Workflow
-
-### Phase 1: Song Selection
-
-You cannot map silence. You need a base audio track.
-
-1. **Open the Studio:** Launch the **Choreography Studio** app (web or desktop).
-2. **Content Browser:** Open the server-assets tab.
-3. **Select a Song:**
-   * **Remix:** Pick an existing song uploaded by a musician.
-   * **Upload:** If you are the musician, upload your `.ogg` file first as a `SONG` mod before using it here.
-
-### Phase 2: Setup & Analysis
-
-Before placing a single note, you must sync the grid and establish the chart / set structure.
-
-1. **Create or open a Chart:** Choose the gameplay mode and work inside one concrete playable difficulty / compatibility slice.
-2. **Create or open a Set:** Wire the selected Song and Chart together for one package-local workout slice.
-3. **Use the Set as the linker:** Keep song/chart composition on the set rather than back-linking charts to songs or workouts.
-4. **BPM & Offset:**
-   * **Auto-detect:** The SDK automatically scans the audio file to calculate BPM and offset when assigned.
-   * **Manual Override:** If detection is slightly off, type in the correct value or use the **Tap Tempo** button.
-   * *Tip:* The metronome click should align perfectly with the song's kick drum.
-
-### Phase 3: Mapping
-
-Open the **Editor View**. You will see a timeline and a gameplay-specific representation of the hit space.
-
-#### Accelerators (Work Smarter)
-
-* **Automapper:** Do not start from zero. Use the Generate from Audio button to create a rhythmic skeleton based on the song's BPM and intensity. It will not be perfect, but it saves hours of setup.
-* **Pattern Prefabs:** Use the predefined pattern libraries included with each SDK. Drag and drop common flows like Left-Right-Duck or 3-Hit Combo directly onto the timeline.
-
-#### The Editor Interface
-
-While the specific objects (targets vs arrows) differ by SDK, the core interface remains consistent:
-1. **Timeline:** The vertical scrolling grid representing time.
-2. **Object Library:** The palette of available moves / notes.
-3. **Properties Panel:** Fine-tune rotation, lane position, width, and presentation hints.
-
-### Phase 4: Validation & Publish
-
-The SDK should include feature-aware chart validation. Run it before uploading.
-
-1. **Check Parity and readability:** Ensure no hand tangles, unreadable follow-through, or obvious vision blocks.
-2. **Prepare the Publishable Content:**
-   * Finalize the set metadata and composition links.
-   * Finalize the chart metadata for difficulty, interaction family, and any supported / validated input profiles.
-   * Keep package composition explicit through set ids rather than loose song/difficulty matching.
-3. **Upload:** Use the uploader tab to publish your authored gameplay content.
+1. choose a song
+2. author or edit one Boxing or Flow chart
+3. wire that chart into a set
+4. validate readability, movement safety, and timing
+5. publish the package content through the appropriate tooling
