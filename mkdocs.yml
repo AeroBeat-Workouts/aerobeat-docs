@@ -134,13 +134,13 @@ nav:
         - Flow: api/features/flow/
       - Input Systems:
         - Camera (PC): api/inputs/mediapipe_python/
-        - Camera (Mobile): api/inputs/mediapipe_native/
-        - Joycon: api/inputs/joycon-hid/
-        - Keyboard: api/inputs/keyboard/
-        - Controller: api/inputs/gamepad/
-        - Mouse: api/inputs/mouse/
-        - Touch: api/inputs/touch/
-        - XR: api/inputs/xr/
+        - Camera (Mobile, future): api/inputs/mediapipe_native/
+        - Joycon (future): api/inputs/joycon-hid/
+        - Keyboard (future): api/inputs/keyboard/
+        - Controller (future): api/inputs/gamepad/
+        - Mouse (future): api/inputs/mouse/
+        - Touch (future): api/inputs/touch/
+        - XR (future): api/inputs/xr/
       - Tools:
         - Overview: api/tools/index.md
         - Backend API: api/tools/api/index.md
@@ -151,6 +151,6 @@ nav:
           - Kit: api/ui/kit-community/index.md
           - Shells:
             - Desktop: api/ui/shell-desktop-community/index.md
-            - Mobile: api/ui/shell-mobile-community/index.md
-            - Web: api/ui/shell-web-community/index.md
-            - XR: api/ui/shell-xr-community/index.md
+            - Mobile (future): api/ui/shell-mobile-community/index.md
+            - Web (future): api/ui/shell-web-community/index.md
+            - XR (future): api/ui/shell-xr-community/index.md

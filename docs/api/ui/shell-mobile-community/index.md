@@ -2,6 +2,6 @@
 
 🚧 **Work In Progress**
 
-This module has not been documented yet.
+This shell remains a **future platform path**. The current release priority is PC community first, with mobile following later.
 
 View the source code on GitHub: [https://github.com/AeroBeat-Workouts/aerobeat-ui-shell-mobile-community](https://github.com/AeroBeat-Workouts/aerobeat-ui-shell-mobile-community)

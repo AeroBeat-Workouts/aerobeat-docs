@@ -20,12 +20,10 @@ Use this map to route work to the correct repository within the AeroBeat ecosyst
 - `aerobeat-feature-boxing`
 - `aerobeat-feature-flow`
 - `aerobeat-input-mediapipe-python`
+
+### Future-input or future-platform repos still worth preserving
+
 - `aerobeat-input-mediapipe-native`
-
-### Future-support or future-platform repos still worth preserving
-
-- `aerobeat-feature-dance`
-- `aerobeat-feature-step`
 - `aerobeat-input-gamepad`
 - `aerobeat-input-joycon-hid`
 - `aerobeat-input-keyboard`
@@ -35,6 +33,11 @@ Use this map to route work to the correct repository within the AeroBeat ecosyst
 - `aerobeat-ui-shell-mobile-community`
 - `aerobeat-ui-shell-web-community`
 - `aerobeat-ui-shell-xr-community`
+
+### Parked non-v1 feature repos still present in the ecosystem
+
+- `aerobeat-feature-dance`
+- `aerobeat-feature-step`
 
 ### Shared tool/UI repos
 

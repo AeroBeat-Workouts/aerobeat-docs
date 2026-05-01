@@ -111,7 +111,7 @@ A second slice will follow later for the broader AeroBeat polyrepo, but this pla
 
 **Status:** ✅ Complete
 
-**Results:** Derrick approved the action list and supplied final decision packet: non-camera input docs stay but are future-labeled; VR docs stay but are future-labeled; old package asset customization docs should be deleted and future customization should point toward controlled avatar/cosmetics unlocks via workout points; app-store/mobile UGC constraints should stay soft for now pending further research. Coder pass applied the required deletions, rewrote the top-level scope/package/input/release docs around Boxing + Flow + camera-first v1, removed package-asset examples from the canonical workout package fixture, updated related gameplay/guides/repo-map wording, and confirmed the docs site still builds after the link/nav cleanup.
+**Results:** Derrick approved the action list and supplied final decision packet: non-camera input docs stay but are future-labeled; VR docs stay but are future-labeled; old package asset customization docs should be deleted and future customization should point toward controlled avatar/cosmetics unlocks via workout points; app-store/mobile UGC constraints should stay soft for now pending further research. Coder pass applied the required deletions, rewrote the top-level scope/package/input/release docs around Boxing + Flow + camera-first v1, removed package-asset examples from the canonical workout package fixture, updated related gameplay/guides/repo-map wording, and confirmed the docs site still builds after the link/nav cleanup. Validation passed with `mkdocs build --clean`. Changes were committed and pushed on `main` as `0cf4a27` (`Downscope AeroBeat docs to camera-first Boxing and Flow`). A pre-existing unrelated modified file remains in the repo: `.plans/2026-04-30-aerobeat-asset-v1-contract-rollout.md`.
 
 ---
 
@@ -131,9 +131,9 @@ A second slice will follow later for the broader AeroBeat polyrepo, but this pla
 - `docs/**`
 - `.plans/2026-05-01-aerobeat-downscope-audit.md`
 
-**Status:** ⏳ Pending
+**Status:** ⏳ In Progress
 
-**Results:** QA and auditor beads created and staged behind the coder pass.
+**Results:** QA pass completed and recommended auditor handoff. QA confirmed the main source-of-truth docs now frame official v1 as camera-driven Boxing + Flow with PC community first, mobile second, and VR third; confirmed Dance/Step were removed from active nav/gameplay/choreography surfaces; and confirmed the canonical workout package/docs removed package-local gameplay assets while keeping environments. QA found one meaningful contradiction: some future-only input and UI-shell pages/nav labels still read too actively. A minimal wording-only QA fix was applied to `mkdocs.yml`, the future input API placeholder pages, and the mobile/web/xr UI-shell placeholder pages. Validation passed again with `mkdocs build --clean`. Auditor handoff is approved; note that QA-left working-tree changes still need final audit review and inclusion in the eventual wrap-up commit.
 
 ---
 
@@ -141,14 +141,15 @@ A second slice will follow later for the broader AeroBeat polyrepo, but this pla
 
 **Status:** ⚠️ Partial
 
-**What We Built:** Draft plan created for the AeroBeat downscope audit and documentation-first cleanup sequence.
+**What We Built:** Completed the docs-first AeroBeat downscope audit/cleanup through coder → QA → auditor, with one final wrap-up commit still needed so the committed repo state includes the QA/audit follow-up wording fixes.
 
-**Reference Check:** Planning only so far; no repo audit or cleanup completed yet.
+**Reference Check:** Active docs now reflect the downscoped v1 story: Boxing + Flow only, camera-only official gameplay input, environments retained, package-assets removed, and non-camera/VR surfaces future-labeled.
 
 **Commits:**
-- None yet.
+- `0cf4a27` - Downscope AeroBeat docs to camera-first Boxing and Flow
+- `Pending` - Commit QA/audit follow-up wording fixes and plan updates
 
-**Lessons Learned:** Start with docs as the source of truth, then fan out to the wider polyrepo once the new product scope is locked in writing.
+**Lessons Learned:** Start with docs as the source of truth, then fan out to the wider polyrepo once the new product scope is locked in writing. Small QA/audit wording fixes should be wrapped into the committed truth immediately so the branch state matches the approved state.
 
 ---
 
