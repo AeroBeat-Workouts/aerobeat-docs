@@ -18,17 +18,9 @@ PLACEHOLDERS = {
         "title": "Boxing Feature",
         "repo": "https://github.com/AeroBeat-Workouts/aerobeat-feature-boxing"
     },
-    "docs/api/features/dance": {
-        "title": "Dance Feature",
-        "repo": "https://github.com/AeroBeat-Workouts/aerobeat-feature-dance"
-    },
-     "docs/api/features/flow": {
+    "docs/api/features/flow": {
         "title": "Flow Feature",
         "repo": "https://github.com/AeroBeat-Workouts/aerobeat-feature-flow"
-    },
-     "docs/api/features/step": {
-        "title": "Step Feature",
-        "repo": "https://github.com/AeroBeat-Workouts/aerobeat-feature-step"
     },
     "docs/api/inputs/gamepad": {
         "title": "Gamepad Input",

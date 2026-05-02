@@ -34,11 +34,6 @@ Use this map to route work to the correct repository within the AeroBeat ecosyst
 - `aerobeat-ui-shell-web-community`
 - `aerobeat-ui-shell-xr-community`
 
-### Parked non-v1 feature repos still present in the ecosystem
-
-- `aerobeat-feature-dance`
-- `aerobeat-feature-step`
-
 ### Shared tool/UI repos
 
 - `aerobeat-tool-api`
@@ -50,3 +45,5 @@ Use this map to route work to the correct repository within the AeroBeat ecosyst
 ## Scope note
 
 A repo existing in the ecosystem does **not** mean the feature/input/platform is official v1 product scope. The active product slice is camera-first Boxing + Flow on PC first.
+
+This routing map stays focused on active and future-facing lanes. Legacy Dance/Step feature repos are intentionally omitted from the current live map rather than treated as active routing targets.
