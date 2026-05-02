@@ -128,7 +128,7 @@ My current opinion on the repo shape is:
 
 **Commits:**
 - `4964e47` - Lock mod.io as current outer UGC shell
-- Pending final Task 2 commit
+- `964ac49` - Document UGC API manager topology
 
 **Lessons Learned:** The existing docs were already pointing toward `aerobeat-tool-api`; the missing piece was to make that routing explicit, name the provider-adapter seam concretely, and state the anti-patterns plainly enough that product repos do not drift into direct vendor coupling.
 
