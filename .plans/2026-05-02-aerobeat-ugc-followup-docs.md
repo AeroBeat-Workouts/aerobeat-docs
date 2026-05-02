@@ -118,7 +118,7 @@ These docs should stay aligned with the newly-audited distribution strategy and 
 **Commits:**
 - `5d86981` - Add UGC executive summary and hybrid architecture docs
 - `67194fc` - Document QA pass for UGC follow-up docs
-- `8482768` - Document audit pass for UGC follow-up docs
+- `f0aa2df` - Document audit pass for UGC follow-up docs
 
 **Lessons Learned:** The strategy doc already carried the decision cleanly; the follow-up docs succeeded by keeping the community/distribution shell separate from the AeroBeat-owned validation, artifact publication, and runtime trust core.
 
