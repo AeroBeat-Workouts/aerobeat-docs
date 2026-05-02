@@ -15,6 +15,8 @@ Our position is that AeroBeat should keep the **package contract**, **validation
 
 AeroBeat is not deciding between "community content" and "no community content." The project already assumes community-authored content matters. The real decision is how much of the UGC surface AeroBeat wants to own directly during the early release phases.
 
+That decision should stay grounded in the current product slice: **camera-first Boxing and Flow on PC community release first**. UGC distribution is there to support that near-term experience, not to broaden the official gameplay/input promise beyond the current scope.
+
 That choice affects:
 
 - account/auth complexity

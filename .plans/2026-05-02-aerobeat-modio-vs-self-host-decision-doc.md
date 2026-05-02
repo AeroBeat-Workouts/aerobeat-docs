@@ -94,9 +94,9 @@ This plan keeps the core AeroBeat content/import model first-party while evaluat
 - `mkdocs.yml`
 - `.plans/2026-05-02-aerobeat-modio-vs-self-host-decision-doc.md`
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**Results:** Pending.
+**Results:** QA pass confirmed the page clearly explains the mod.io-style third-party shell versus full self-hosting tradeoff, preserves first-party validation/runtime trust, and keeps Steam/mobile wording planning-oriented instead of claiming compliance guarantees. One small scope-alignment fix was applied so the page explicitly ties the UGC strategy to AeroBeat's current product slice: camera-first Boxing and Flow, PC community release first. Validation re-ran with `source venv/bin/activate && mkdocs build --clean` and succeeded with only the repo's pre-existing warnings about docs pages omitted from nav.
 
 ---
 
