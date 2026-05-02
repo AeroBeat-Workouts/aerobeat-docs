@@ -5426,15 +5426,15 @@
 <h2 id="the-gap-git-vs-pck">🏗️ The Gap: Git vs. PCK<a class="headerlink" href="#the-gap-git-vs-pck" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Internal Devs:</strong> Clone repos, edit in Godot Editor, commit to Git.</li>
-<li><strong>Community Creators:</strong> Download a specialized SDK, validate assets, and <strong>Upload directly to AeroBeat Servers</strong>.</li>
-<li><strong>Athletes:</strong> Browse the <strong>In-Game Content Browser</strong>, download content, and play. (Power users can still manually drop <code>.pck</code> files into <code>user://mods/</code>).</li>
+<li><strong>Community Creators:</strong> Download a specialized SDK, validate assets locally, and <strong>publish through an AeroBeat-authorized upload flow that currently uses mod.io as the outer community/distribution shell</strong>.</li>
+<li><strong>Athletes:</strong> Browse the <strong>In-Game Content Browser</strong>, download AeroBeat-approved content, and play. (Power users can still manually drop <code>.pck</code> files into <code>user://mods/</code>, but that remains distinct from the trusted online-distributed path.)</li>
 </ul>
 <h2 id="creator-tooling-strategy">🛠️ Creator Tooling Strategy<a class="headerlink" href="#creator-tooling-strategy" title="Permanent link">&para;</a></h2>
 <p>We utilize a <strong>Hybrid Tooling Strategy</strong> to match the technical comfort of different creator personas.</p>
 <h3 id="1-native-sdks-godot-editor">1. Native SDKs (Godot Editor)<a class="headerlink" href="#1-native-sdks-godot-editor" title="Permanent link">&para;</a></h3>
 <p>For <strong>3D Artists</strong> who need full control over materials, import settings, and baking.
 *   <strong>SDKs:</strong> <code>skins</code>, <code>avatars</code>, <code>cosmetics</code>, <code>environments</code>.
-*   <strong>Workflow:</strong> Download Godot -&gt; Open SDK -&gt; Import Assets -&gt; Upload.</p>
+*   <strong>Workflow:</strong> Download Godot -&gt; Open SDK -&gt; Import Assets -&gt; Submit through the AeroBeat-authorized publishing flow.</p>
 <h3 id="2-standalone-apps-web-desktop">2. Standalone Apps (Web / Desktop)<a class="headerlink" href="#2-standalone-apps-web-desktop" title="Permanent link">&para;</a></h3>
 <p>For <strong>Musicians, Coaches, and Choreographers</strong> who need a streamlined, focused interface without the complexity of a game engine. These are Godot projects exported as standalone applications.</p>
 <ul>
@@ -5464,7 +5464,7 @@
 <h3 id="2-server-side-the-gatekeeper">2. Server-Side (The Gatekeeper)<a class="headerlink" href="#2-server-side-the-gatekeeper" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Role:</strong> Security and Integrity.</li>
-<li><strong>Process:</strong> When a <code>.pck</code> is uploaded, the server spins up a headless validator.</li>
+<li><strong>Process:</strong> When a creator submission is linked into the AeroBeat ingest path, the server spins up a headless validator.</li>
 <li><strong>Checks:</strong><ul>
 <li><strong>Script Scanning:</strong> Greps all text resources (<code>.tres</code>, <code>.tscn</code>) for <code>[sub_resource type="GDScript"]</code> or <code>script/source</code>.</li>
 <li><strong>Extension Whitelist:</strong> Rejects any file ending in <code>.gd</code>, <code>.gdc</code>, <code>.dll</code>, <code>.so</code>, <code>.dylib</code>.</li>
@@ -5528,7 +5528,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 20:21:21 UTC">April 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 2, 2026 20:24:44 UTC">May 2, 2026</span>
   </span>
 
     

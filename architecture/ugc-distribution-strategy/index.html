@@ -3223,15 +3223,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#option-a-third-party-ugc-platform-as-the-distribution-shell" class="md-nav__link">
+  <a href="#current-chosen-path-modio-as-the-distribution-shell" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Option A: third-party UGC platform as the distribution shell
+        Current chosen path: mod.io as the distribution shell
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Option A: third-party UGC platform as the distribution shell">
+    <nav class="md-nav" aria-label="Current chosen path: mod.io as the distribution shell">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3280,10 +3280,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#useful-buffer-for-steam-oriented-community-distribution" class="md-nav__link">
+  <a href="#useful-buffer-for-pc-community-distribution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful buffer for Steam-oriented community distribution
+        Useful buffer for PC community distribution
       
     </span>
   </a>
@@ -3602,10 +3602,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#phase-1-first-party-package-contract-third-party-distribution-shell" class="md-nav__link">
+  <a href="#phase-1-first-party-package-contract-modio-distribution-shell" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase 1: first-party package contract, third-party distribution shell
+        Phase 1: first-party package contract, mod.io distribution shell
       
     </span>
   </a>
@@ -5695,15 +5695,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#option-a-third-party-ugc-platform-as-the-distribution-shell" class="md-nav__link">
+  <a href="#current-chosen-path-modio-as-the-distribution-shell" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Option A: third-party UGC platform as the distribution shell
+        Current chosen path: mod.io as the distribution shell
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Option A: third-party UGC platform as the distribution shell">
+    <nav class="md-nav" aria-label="Current chosen path: mod.io as the distribution shell">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5752,10 +5752,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#useful-buffer-for-steam-oriented-community-distribution" class="md-nav__link">
+  <a href="#useful-buffer-for-pc-community-distribution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful buffer for Steam-oriented community distribution
+        Useful buffer for PC community distribution
       
     </span>
   </a>
@@ -6074,10 +6074,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#phase-1-first-party-package-contract-third-party-distribution-shell" class="md-nav__link">
+  <a href="#phase-1-first-party-package-contract-modio-distribution-shell" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase 1: first-party package contract, third-party distribution shell
+        Phase 1: first-party package contract, mod.io distribution shell
       
     </span>
   </a>
@@ -6150,7 +6150,7 @@
 <li>a <strong>runtime trust authority</strong> that decides what packages the AeroBeat client is allowed to load</li>
 </ol>
 <p>For AeroBeat, those must stay separate.</p>
-<p>Our position is that AeroBeat should keep the <strong>package contract</strong>, <strong>validation pipeline</strong>, <strong>bake/signing authority</strong>, and <strong>runtime trust boundary</strong> first-party. A third-party UGC provider may still be useful, but as an optional outer shell for discovery and distribution rather than the canonical source of truth.</p>
+<p>Our position is that AeroBeat should keep the <strong>package contract</strong>, <strong>validation pipeline</strong>, <strong>bake/signing authority</strong>, and <strong>runtime trust boundary</strong> first-party. For the current AeroBeat path, <strong>mod.io is the chosen outer shell</strong> for community discovery and distribution, but it is still not the canonical source of truth.</p>
 <h2 id="why-this-decision-exists">Why this decision exists<a class="headerlink" href="#why-this-decision-exists" title="Permanent link">&para;</a></h2>
 <p>AeroBeat is not deciding between "community content" and "no community content." The project already assumes community-authored content matters. The real decision is how much of the UGC surface AeroBeat wants to own directly during the early release phases.</p>
 <p>That decision should stay grounded in the current product slice: <strong>camera-first Boxing and Flow on PC community release first</strong>. UGC distribution is there to support that near-term experience, not to broaden the official gameplay/input promise beyond the current scope.</p>
@@ -6187,8 +6187,8 @@
 <p>Internal references should prefer AeroBeat content IDs, versions, hashes, and manifests. External provider IDs can exist as mapping fields, not as the primary identity of the package.</p>
 <h3 id="aerobeat-preserves-re-bakable-source-truth">AeroBeat preserves re-bakable source truth<a class="headerlink" href="#aerobeat-preserves-re-bakable-source-truth" title="Permanent link">&para;</a></h3>
 <p>The long-lived asset of value is the authored package and its metadata, not only a vendor-hosted downloadable blob. This preserves re-validation, re-baking, migration, and future platform targeting.</p>
-<h2 id="option-a-third-party-ugc-platform-as-the-distribution-shell">Option A: third-party UGC platform as the distribution shell<a class="headerlink" href="#option-a-third-party-ugc-platform-as-the-distribution-shell" title="Permanent link">&para;</a></h2>
-<p>The most practical version of this option is to use a platform such as <strong>mod.io</strong> for the community-facing layer while AeroBeat keeps the package contract and trust boundary in-house.</p>
+<h2 id="current-chosen-path-modio-as-the-distribution-shell">Current chosen path: mod.io as the distribution shell<a class="headerlink" href="#current-chosen-path-modio-as-the-distribution-shell" title="Permanent link">&para;</a></h2>
+<p>AeroBeat's current outer-shell choice is <strong>mod.io</strong> for the community-facing layer while AeroBeat keeps the package contract and trust boundary in-house.</p>
 <p>Under this model, a third-party platform handles some or all of:</p>
 <ul>
 <li>public browsing and discovery</li>
@@ -6214,8 +6214,8 @@
 <p>Search, subscriptions, ratings, reporting, and creator pages are all real product work. Borrowing an existing distribution/community shell can pull that schedule forward.</p>
 <h4 id="better-moderation-ergonomics-early-on">Better moderation ergonomics early on<a class="headerlink" href="#better-moderation-ergonomics-early-on" title="Permanent link">&para;</a></h4>
 <p>Third-party admin tooling may provide helpful workflows for reports, visibility toggles, creator sanctions, and audit logs. That does not remove AeroBeat's responsibility, but it can reduce the amount of bespoke moderation UI needed in v1.</p>
-<h4 id="useful-buffer-for-steam-oriented-community-distribution">Useful buffer for Steam-oriented community distribution<a class="headerlink" href="#useful-buffer-for-steam-oriented-community-distribution" title="Permanent link">&para;</a></h4>
-<p>For a PC-first community release, a third-party shell can be a reasonable way to support creator discovery without immediately owning every account and content-ops surface.</p>
+<h4 id="useful-buffer-for-pc-community-distribution">Useful buffer for PC community distribution<a class="headerlink" href="#useful-buffer-for-pc-community-distribution" title="Permanent link">&para;</a></h4>
+<p>For the current PC-first community release, mod.io is a reasonable way to support creator discovery without immediately owning every account and content-ops surface.</p>
 <h2 id="limitations-of-the-third-party-shell-approach">Limitations of the third-party shell approach<a class="headerlink" href="#limitations-of-the-third-party-shell-approach" title="Permanent link">&para;</a></h2>
 <h3 id="it-does-not-remove-aerobeats-safety-obligations">It does not remove AeroBeat's safety obligations<a class="headerlink" href="#it-does-not-remove-aerobeats-safety-obligations" title="Permanent link">&para;</a></h3>
 <p>Even if the file is hosted elsewhere, AeroBeat still needs to validate packages, maintain trustable metadata, and decide what the client can load. A vendor-hosted download cannot be treated as implicitly safe.</p>
@@ -6338,8 +6338,8 @@
 </ul>
 <p>If AeroBeat ever leaves a provider, the goal should be to migrate the distribution shell without redefining content packages or breaking runtime trust assumptions.</p>
 <h2 id="recommended-phased-approach">Recommended phased approach<a class="headerlink" href="#recommended-phased-approach" title="Permanent link">&para;</a></h2>
-<h3 id="phase-1-first-party-package-contract-third-party-distribution-shell">Phase 1: first-party package contract, third-party distribution shell<a class="headerlink" href="#phase-1-first-party-package-contract-third-party-distribution-shell" title="Permanent link">&para;</a></h3>
-<p>For the near-term PC community release, AeroBeat should keep the package model and trust pipeline first-party while using a third-party platform as an optional community/distribution layer.</p>
+<h3 id="phase-1-first-party-package-contract-modio-distribution-shell">Phase 1: first-party package contract, mod.io distribution shell<a class="headerlink" href="#phase-1-first-party-package-contract-modio-distribution-shell" title="Permanent link">&para;</a></h3>
+<p>For the near-term PC community release, AeroBeat should keep the package model and trust pipeline first-party while using mod.io as the current community/distribution layer.</p>
 <p>This means:</p>
 <ul>
 <li>creators still target AeroBeat-defined packages</li>
@@ -6366,11 +6366,11 @@
 <p>The recommended direction is a <strong>hybrid model</strong>:</p>
 <ul>
 <li><strong>first-party</strong> package contract, validation, bake/signing authority, trust metadata, and runtime allow rules</li>
-<li><strong>optional third-party</strong> distribution/community shell for discovery, hosting, and moderation assistance</li>
+<li><strong>mod.io as the current outer</strong> distribution/community shell for discovery, hosting, and moderation assistance</li>
 <li><strong>vendor-neutral</strong> identifiers and package semantics so AeroBeat can migrate later without breaking content</li>
 </ul>
-<p>Concretely, using mod.io as the first external shell is a reasonable tactical choice if AeroBeat treats it as a replaceable delivery/community layer rather than the system that defines content truth.</p>
-<p>That gives AeroBeat the fastest path to useful community distribution while preserving the harder architectural requirement: AeroBeat decides what a valid package is and what the game is allowed to trust.</p>
+<p>Concretely, AeroBeat should treat mod.io as the current chosen delivery/community layer, but not as the system that defines content truth.</p>
+<p>That gives AeroBeat the fastest path to useful community distribution while preserving the harder architectural requirement: AeroBeat decides what a valid package is, what gets baked or signed, what enters quarantine, and what the game is allowed to trust.</p>
 
 
 
@@ -6391,7 +6391,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 2, 2026 18:39:31 UTC">May 2, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 2, 2026 20:24:44 UTC">May 2, 2026</span>
   </span>
 
     
