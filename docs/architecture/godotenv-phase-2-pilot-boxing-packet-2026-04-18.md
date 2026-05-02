@@ -472,9 +472,8 @@ Expected scope:
 
 Once Boxing passes coder → QA → auditor, the same migration pattern should be rolled across the other standard package repos that share the old bootstrap shape:
 
-- `aerobeat-feature-dance`
 - `aerobeat-feature-flow`
-- `aerobeat-feature-step`
+- the other parked feature-package repos that still share Boxing's old bootstrap shape
 - the low-complexity input/tool repos identified in the audit
 
 ### Follow-on 3: repo-shape cleanup bead for Boxing itself

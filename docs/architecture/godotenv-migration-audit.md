@@ -132,7 +132,7 @@ Impact:
 
 ## Feature repos
 
-`aerobeat-feature-boxing`, `aerobeat-feature-dance`, `aerobeat-feature-flow`, and `aerobeat-feature-step` all currently follow the same pattern:
+The standard feature-package repos in this older migration slice all currently follow the same pattern, including the still-relevant Boxing and Flow lanes plus the other parked feature-package repos from that family:
 
 - `setup_dev.py`,
 - `.testbed/`,
@@ -288,9 +288,8 @@ Impact:
 | `aerobeat-core` | contract/core | Foundational repo; `.testbed`; no `setup_dev.py`; consumed everywhere. [E-01][E-03] | First-class foundational package with clear version/tag policy and dev manifest. | Add normalized GodotEnv docs/metadata; establish tag discipline. |
 | `aerobeat-docs` | docs | No package manifest; publishes docs and owns template source-of-truth. [E-06][E-08] | New architecture docs and template guidance; not a runtime package consumer. | Update docs pages, contributor guidance, and template sources. |
 | `aerobeat-feature-boxing` | feature | `setup_dev.py`; `.testbed`; core + GUT clone; symlink `src`/`test`. [E-03] | `.testbed` manifest for dev deps; publishable addon package. | Replace/remove `setup_dev.py`; update feature dev docs. |
-| `aerobeat-feature-dance` | feature | Same pattern as Boxing. [E-03] | Same as Boxing. | Same cleanup as Boxing. |
 | `aerobeat-feature-flow` | feature | Same pattern as Boxing. [E-03] | Same as Boxing. | Same cleanup as Boxing. |
-| `aerobeat-feature-step` | feature | Same pattern as Boxing. [E-03] | Same as Boxing. | Same cleanup as Boxing. |
+| other parked feature-package repos from the same legacy family | feature | Same pattern as Boxing. [E-03] | Same as Boxing. | Same cleanup as Boxing. |
 | `aerobeat-input-gamepad` | input | `setup_dev.py`; `.testbed`; core + GUT clone. [E-03] | `.testbed` manifest for dev deps. | Remove `setup_dev.py`; align docs/template. |
 | `aerobeat-input-joycon-hid` | input | Same standard input pattern. [E-03] | Same as above. | Same cleanup. |
 | `aerobeat-input-keyboard` | input | Same standard input pattern. [E-03] | Same as above. | Same cleanup; good low-risk pilot. |

@@ -54,9 +54,8 @@ These are the most important mismatches because they affect the repo-local Godot
 
 - `aerobeat-asset-prototypes` — `.testbed/project.godot`
 - `aerobeat-feature-boxing` — `.testbed/project.godot`
-- `aerobeat-feature-dance` — `.testbed/project.godot`
 - `aerobeat-feature-flow` — `.testbed/project.godot`
-- `aerobeat-feature-step` — `.testbed/project.godot`
+- other parked feature-package repos from the same legacy package family — `.testbed/project.godot`
 - `aerobeat-input-gamepad` — `.testbed/project.godot`
 - `aerobeat-input-joycon-hid` — `.testbed/project.godot`
 - `aerobeat-input-keyboard` — `.testbed/project.godot`
