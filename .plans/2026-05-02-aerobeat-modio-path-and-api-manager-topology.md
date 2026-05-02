@@ -67,7 +67,7 @@ My current opinion on the repo shape is:
 
 **Status:** ✅ Complete
 
-**Results:** Updated the strategy, executive summary, and hybrid architecture docs so mod.io is no longer framed as merely one possible option; it now reads as AeroBeat's current chosen outer community/distribution shell while staying explicitly replaceable. Also aligned `ugc_modding.md` and `backend_api.md` so older docs no longer imply direct-to-AeroBeat-server uploads or vendor-owned runtime truth, and tightened `repository-map.md` to steer API-facing integration through `aerobeat-tool-api` instead of direct product-repo vendor coupling. Preserved the non-negotiable first-party trust boundary throughout: AeroBeat-owned package schema/IDs, validation, bake/signing authority, quarantine/revocation, and runtime allow/deny remain authoritative. Store/mobile wording remained cautious. Validation passed with `source venv/bin/activate && mkdocs build --clean` on 2026-05-02; build emitted only pre-existing nav omissions plus the existing MkDocs ecosystem warning. Committed Task 1 as `63d6b05` (`Lock mod.io as current outer UGC shell`).
+**Results:** Updated the strategy, executive summary, and hybrid architecture docs so mod.io is no longer framed as merely one possible option; it now reads as AeroBeat's current chosen outer community/distribution shell while staying explicitly replaceable. Also aligned `ugc_modding.md` and `backend_api.md` so older docs no longer imply direct-to-AeroBeat-server uploads or vendor-owned runtime truth, and tightened `repository-map.md` to steer API-facing integration through `aerobeat-tool-api` instead of direct product-repo vendor coupling. Preserved the non-negotiable first-party trust boundary throughout: AeroBeat-owned package schema/IDs, validation, bake/signing authority, quarantine/revocation, and runtime allow/deny remain authoritative. Store/mobile wording remained cautious. Validation passed with `source venv/bin/activate && mkdocs build --clean` on 2026-05-02; build emitted only pre-existing nav omissions plus the existing MkDocs ecosystem warning. Committed Task 1 as `4964e47` (`Lock mod.io as current outer UGC shell`).
 
 ---
 
@@ -127,7 +127,7 @@ My current opinion on the repo shape is:
 **Reference Check:** Task 1 satisfied `REF-02` through `REF-08` and updated `REF-01` with the actual implementation details. No topology conclusions beyond light routing guidance in `repository-map.md` were added ahead of Task 2.
 
 **Commits:**
-- `63d6b05` - Lock mod.io as current outer UGC shell
+- `4964e47` - Lock mod.io as current outer UGC shell
 
 **Lessons Learned:** The older `ugc_modding.md` and `backend_api.md` pages needed wording alignment so the newer strategy docs would not be undermined by legacy direct-upload/runtime-trust phrasing.
 
