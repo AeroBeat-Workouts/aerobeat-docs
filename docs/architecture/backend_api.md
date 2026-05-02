@@ -2,6 +2,8 @@
 
 This document defines the REST API endpoints used by the **Modding SDK** (for creators) and the **Game Client** (for athletes).
 
+These are **AeroBeat-owned API surfaces**. Even with **mod.io as the current outer community/distribution shell**, the client/runtime trust contract stays first-party: AeroBeat keeps package IDs, validation, bake/signing authority, quarantine/revocation state, and final install/mount policy.
+
 ## 🛡️ Security & Mitigation Strategy
 
 To protect the platform from abuse, we implement strict security measures for all User Generated Content (UGC).
@@ -50,7 +52,7 @@ To access the API as a guest, the client must first request a temporary session.
 
 ## 📤 Creator Endpoints (Modding SDK)
 
-These endpoints are used by the specialized SDKs (`aerobeat-skins-*`, `aerobeat-avatars-*`, etc.) to publish content.
+These endpoints are used by the specialized SDKs (`aerobeat-skins-*`, `aerobeat-avatars-*`, etc.) to publish content through AeroBeat-controlled trust flows, even when the outer community/listing surface is mod.io.
 
 ### 1. Check Quota
 
@@ -106,7 +108,7 @@ These endpoints are used by the specialized SDKs (`aerobeat-skins-*`, `aerobeat-
 
 ## 📥 Athlete Endpoints (In-Game Browser)
 
-These endpoints are used by the Game Client (`aerobeat-assembly-*`) to discover and download content.
+These endpoints are used by the Game Client (`aerobeat-assembly-*`) to discover and download AeroBeat-approved content. The game should integrate through AeroBeat API surfaces rather than treating mod.io as the runtime source of truth.
 
 ### 1. Browse Content
 
@@ -199,7 +201,7 @@ sequenceDiagram
 
 ## 🛠️ Client Implementation
 
-The Game Client interacts with these endpoints via the **`aerobeat-tool-api`** service. This tool handles:
+The Game Client interacts with these endpoints via the **`aerobeat-tool-api`** service. This tool is the AeroBeat-facing singleton/API-manager lane; product repos should consume it instead of talking to mod.io or other provider APIs directly. See [UGC API Manager Topology](ugc-api-manager-topology.md).
 
 *   **Authentication:** Automatically injects the Bearer Token into headers.
 *   **Resilience:** Implements exponential backoff for failed requests (429/5xx).

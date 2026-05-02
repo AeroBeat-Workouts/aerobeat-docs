@@ -7,8 +7,8 @@ This document outlines the architecture for the **Modding SDK** and the **Runtim
 ## 🏗️ The Gap: Git vs. PCK
 
 *   **Internal Devs:** Clone repos, edit in Godot Editor, commit to Git.
-*   **Community Creators:** Download a specialized SDK, validate assets, and **Upload directly to AeroBeat Servers**.
-*   **Athletes:** Browse the **In-Game Content Browser**, download content, and play. (Power users can still manually drop `.pck` files into `user://mods/`).
+*   **Community Creators:** Download a specialized SDK, validate assets locally, and **publish through an AeroBeat-authorized upload flow that currently uses mod.io as the outer community/distribution shell**.
+*   **Athletes:** Browse the **In-Game Content Browser**, download AeroBeat-approved content, and play. (Power users can still manually drop `.pck` files into `user://mods/`, but that remains distinct from the trusted online-distributed path.)
 
 ## 🛠️ Creator Tooling Strategy
 
@@ -17,7 +17,7 @@ We utilize a **Hybrid Tooling Strategy** to match the technical comfort of diffe
 ### 1. Native SDKs (Godot Editor)
 For **3D Artists** who need full control over materials, import settings, and baking.
 *   **SDKs:** `skins`, `avatars`, `cosmetics`, `environments`.
-*   **Workflow:** Download Godot -> Open SDK -> Import Assets -> Upload.
+*   **Workflow:** Download Godot -> Open SDK -> Import Assets -> Submit through the AeroBeat-authorized publishing flow.
 
 ### 2. Standalone Apps (Web / Desktop)
 For **Musicians, Coaches, and Choreographers** who need a streamlined, focused interface without the complexity of a game engine. These are Godot projects exported as standalone applications.
@@ -47,7 +47,7 @@ To prevent malicious code execution (RCE) and ensure performance, every asset un
 ### 2. Server-Side (The Gatekeeper)
 
 *   **Role:** Security and Integrity.
-*   **Process:** When a `.pck` is uploaded, the server spins up a headless validator.
+*   **Process:** When a creator submission is linked into the AeroBeat ingest path, the server spins up a headless validator.
 *   **Checks:**
     *   **Script Scanning:** Greps all text resources (`.tres`, `.tscn`) for `[sub_resource type="GDScript"]` or `script/source`.
     *   **Extension Whitelist:** Rejects any file ending in `.gd`, `.gdc`, `.dll`, `.so`, `.dylib`.

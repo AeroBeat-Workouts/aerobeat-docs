@@ -1,12 +1,12 @@
 # UGC Hybrid Integration Architecture
 
-This document describes a **hybrid UGC architecture** where a third-party community/distribution shell such as **mod.io** surrounds an **AeroBeat-owned trust core**.
+This document describes the current **hybrid UGC architecture** where **mod.io** is the chosen outer community/distribution shell around an **AeroBeat-owned trust core**.
 
 The key rule is simple:
 
 > A third-party provider may help users **discover**, **follow**, **download**, and **report** content, but **AeroBeat decides what packages are valid and what runtime artifacts the client is allowed to trust**.
 
-This document uses **mod.io as the concrete example**, but the architecture is intentionally **vendor-decoupled** so the outer shell can be replaced later.
+This document uses **mod.io as the current concrete provider**, but the architecture is intentionally **vendor-decoupled** so the outer shell can be replaced later.
 
 ## Scope and release framing
 
@@ -401,7 +401,7 @@ Those remain product, policy, and platform workstreams.
 
 For the current AeroBeat scope, the practical implementation stance is:
 
-- use a provider such as mod.io as a **replaceable community/distribution shell**
+- use **mod.io as the current chosen community/distribution shell**, while still keeping the architecture replaceable
 - keep validation, bake/sign, trust metadata, and runtime allow rules **inside AeroBeat-owned systems**
 - make the game client depend on **AeroBeat trust records**, not provider trust
 - optimize first for the **PC community release** supporting **camera-first Boxing + Flow**

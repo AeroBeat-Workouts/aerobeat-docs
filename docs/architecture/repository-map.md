@@ -36,11 +36,17 @@ Use this map to route work to the correct repository within the AeroBeat ecosyst
 
 ### Shared tool/UI repos
 
-- `aerobeat-tool-api`
+- `aerobeat-tool-api` (shared API-facing tool lane; keep AeroBeat-owned client/integration surfaces here rather than coupling product repos directly to vendor APIs)
 - `aerobeat-tool-settings`
 - `aerobeat-tool-*` authoring products
 - `aerobeat-ui-kit-community`
 - `aerobeat-ui-shell-desktop-community`
+
+### Planned UGC/API vendor lane
+
+- `aerobeat-tool-api` remains the AeroBeat-facing Godot-imported API manager singleton lane
+- `aerobeat-vendor-modio` is the preferred first provider adapter repo for the current outer-shell path
+- product repos should consume `aerobeat-tool-api`, not provider SDK/REST code directly
 
 ## Scope note
 

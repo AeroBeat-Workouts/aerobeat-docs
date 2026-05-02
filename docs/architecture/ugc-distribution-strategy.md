@@ -9,7 +9,7 @@ This matters because "UGC platform" can mean two very different things:
 
 For AeroBeat, those must stay separate.
 
-Our position is that AeroBeat should keep the **package contract**, **validation pipeline**, **bake/signing authority**, and **runtime trust boundary** first-party. A third-party UGC provider may still be useful, but as an optional outer shell for discovery and distribution rather than the canonical source of truth.
+Our position is that AeroBeat should keep the **package contract**, **validation pipeline**, **bake/signing authority**, and **runtime trust boundary** first-party. For the current AeroBeat path, **mod.io is the chosen outer shell** for community discovery and distribution, but it is still not the canonical source of truth.
 
 ## Why this decision exists
 
@@ -64,9 +64,9 @@ Internal references should prefer AeroBeat content IDs, versions, hashes, and ma
 
 The long-lived asset of value is the authored package and its metadata, not only a vendor-hosted downloadable blob. This preserves re-validation, re-baking, migration, and future platform targeting.
 
-## Option A: third-party UGC platform as the distribution shell
+## Current chosen path: mod.io as the distribution shell
 
-The most practical version of this option is to use a platform such as **mod.io** for the community-facing layer while AeroBeat keeps the package contract and trust boundary in-house.
+AeroBeat's current outer-shell choice is **mod.io** for the community-facing layer while AeroBeat keeps the package contract and trust boundary in-house.
 
 Under this model, a third-party platform handles some or all of:
 
@@ -100,9 +100,9 @@ Search, subscriptions, ratings, reporting, and creator pages are all real produc
 
 Third-party admin tooling may provide helpful workflows for reports, visibility toggles, creator sanctions, and audit logs. That does not remove AeroBeat's responsibility, but it can reduce the amount of bespoke moderation UI needed in v1.
 
-#### Useful buffer for Steam-oriented community distribution
+#### Useful buffer for PC community distribution
 
-For a PC-first community release, a third-party shell can be a reasonable way to support creator discovery without immediately owning every account and content-ops surface.
+For the current PC-first community release, mod.io is a reasonable way to support creator discovery without immediately owning every account and content-ops surface.
 
 ## Limitations of the third-party shell approach
 
@@ -268,9 +268,9 @@ If AeroBeat ever leaves a provider, the goal should be to migrate the distributi
 
 ## Recommended phased approach
 
-### Phase 1: first-party package contract, third-party distribution shell
+### Phase 1: first-party package contract, mod.io distribution shell
 
-For the near-term PC community release, AeroBeat should keep the package model and trust pipeline first-party while using a third-party platform as an optional community/distribution layer.
+For the near-term PC community release, AeroBeat should keep the package model and trust pipeline first-party while using mod.io as the current community/distribution layer.
 
 This means:
 
@@ -306,9 +306,9 @@ It also probably should **not** self-host the entire community/distribution stac
 The recommended direction is a **hybrid model**:
 
 - **first-party** package contract, validation, bake/signing authority, trust metadata, and runtime allow rules
-- **optional third-party** distribution/community shell for discovery, hosting, and moderation assistance
+- **mod.io as the current outer** distribution/community shell for discovery, hosting, and moderation assistance
 - **vendor-neutral** identifiers and package semantics so AeroBeat can migrate later without breaking content
 
-Concretely, using mod.io as the first external shell is a reasonable tactical choice if AeroBeat treats it as a replaceable delivery/community layer rather than the system that defines content truth.
+Concretely, AeroBeat should treat mod.io as the current chosen delivery/community layer, but not as the system that defines content truth.
 
-That gives AeroBeat the fastest path to useful community distribution while preserving the harder architectural requirement: AeroBeat decides what a valid package is and what the game is allowed to trust.
+That gives AeroBeat the fastest path to useful community distribution while preserving the harder architectural requirement: AeroBeat decides what a valid package is, what gets baked or signed, what enters quarantine, and what the game is allowed to trust.
