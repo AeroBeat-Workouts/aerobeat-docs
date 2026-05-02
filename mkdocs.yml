@@ -119,7 +119,9 @@ nav:
       - Tools: architecture/tool.md
       - Repository Topology: architecture/topology.md
       - UGC Modding: architecture/ugc_modding.md
+      - UGC Distribution Executive Summary: architecture/ugc-distribution-executive-summary.md
       - UGC Distribution Strategy: architecture/ugc-distribution-strategy.md
+      - UGC Hybrid Integration Architecture: architecture/ugc-hybrid-integration-architecture.md
       - UI-UX Architecture: architecture/ui-ux.md
       - Workflow & Assets: architecture/workflow.md
       - Workout Package Storage & Discovery: architecture/workout-package-storage-and-discovery.md
