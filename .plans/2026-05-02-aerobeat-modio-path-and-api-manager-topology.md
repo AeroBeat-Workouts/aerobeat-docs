@@ -114,7 +114,7 @@ My current opinion on the repo shape is:
 
 **Status:** ✅ Complete
 
-**Results:** QA independently verified that the core docs now consistently present mod.io as AeroBeat's current outer community/distribution shell, preserve AeroBeat-owned package/trust authority, justify `aerobeat-tool-api` as the Godot-imported API manager lane, and keep `aerobeat-vendor-modio` clearly separated as the provider adapter seam. The main wording drift found was in `backend_api.md`, which still over-specified direct S3 upload language in a way that could be read as bypassing the chosen provider-shell framing; that was corrected with the minimum necessary wording so upload targets are now described as brokered direct-upload endpoints compatible with either object storage or provider-backed flows, while keeping AeroBeat IDs and trust records canonical. Re-ran `source venv/bin/activate && mkdocs build --clean`; build passed with only the pre-existing MkDocs ecosystem warning and pre-existing nav omissions. QA fix committed as `34e9cc1` (`Clarify brokered upload wording for mod.io path`).
+**Results:** QA independently verified that the core docs now consistently present mod.io as AeroBeat's current outer community/distribution shell, preserve AeroBeat-owned package/trust authority, justify `aerobeat-tool-api` as the Godot-imported API manager lane, and keep `aerobeat-vendor-modio` clearly separated as the provider adapter seam. The main wording drift found was in `backend_api.md`, which still over-specified direct S3 upload language in a way that could be read as bypassing the chosen provider-shell framing; that was corrected with the minimum necessary wording so upload targets are now described as brokered direct-upload endpoints compatible with either object storage or provider-backed flows, while keeping AeroBeat IDs and trust records canonical. Re-ran `source venv/bin/activate && mkdocs build --clean`; build passed with only the pre-existing MkDocs ecosystem warning and pre-existing nav omissions. QA fix committed as `1b4fae5` (`Clarify brokered upload wording for mod.io path`).
 
 ---
 
@@ -129,7 +129,7 @@ My current opinion on the repo shape is:
 **Commits:**
 - `4964e47` - Lock mod.io as current outer UGC shell
 - `964ac49` - Document UGC API manager topology
-- `34e9cc1` - Clarify brokered upload wording for mod.io path
+- `1b4fae5` - Clarify brokered upload wording for mod.io path
 
 **Lessons Learned:** The existing docs were already pointing toward `aerobeat-tool-api`; the missing pieces were to make that routing explicit, name the provider-adapter seam concretely, and avoid seemingly small upload-flow wording that accidentally implied a narrower backend shape than the chosen provider-shell architecture.
 
