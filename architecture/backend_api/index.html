@@ -3472,6 +3472,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../ugc-api-manager-topology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UGC API Manager Topology
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../ui-ux/" class="md-nav__link">
         
   
@@ -5938,7 +5966,7 @@
         CDN--&gt;&gt;Client: Download Stream
     end</code></pre>
 <h2 id="client-implementation">🛠️ Client Implementation<a class="headerlink" href="#client-implementation" title="Permanent link">&para;</a></h2>
-<p>The Game Client interacts with these endpoints via the <strong><code>aerobeat-tool-api</code></strong> service. This tool is the AeroBeat-facing singleton/API-manager lane; product repos should consume it instead of talking to mod.io or other provider APIs directly. See <a href="ugc-api-manager-topology.md">UGC API Manager Topology</a>.</p>
+<p>The Game Client interacts with these endpoints via the <strong><code>aerobeat-tool-api</code></strong> service. This tool is the AeroBeat-facing singleton/API-manager lane; product repos should consume it instead of talking to mod.io or other provider APIs directly. See <a href="../ugc-api-manager-topology/">UGC API Manager Topology</a>.</p>
 <ul>
 <li><strong>Authentication:</strong> Automatically injects the Bearer Token into headers.</li>
 <li><strong>Resilience:</strong> Implements exponential backoff for failed requests (429/5xx).</li>

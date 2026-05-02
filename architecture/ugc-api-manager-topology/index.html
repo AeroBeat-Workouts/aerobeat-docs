@@ -8,31 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/api/ui/core/">
+        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/architecture/ugc-api-manager-topology/">
       
       
-        <link rel="prev" href="../../tools/settings/">
+        <link rel="prev" href="../ugc-hybrid-integration-architecture/">
       
       
-        <link rel="next" href="../kit-community/">
+        <link rel="next" href="../ui-ux/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Core - AeroBeat Documentation</title>
+        <title>UGC API Manager Topology - AeroBeat Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,7 +51,7 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ui-core" class="md-skip">
+        <a href="#ugc-api-manager-topology" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="AeroBeat Documentation" class="md-header__button md-logo" aria-label="AeroBeat Documentation" data-md-component="logo">
+    <a href="../.." title="AeroBeat Documentation" class="md-header__button md-logo" aria-label="AeroBeat Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Core
+              UGC API Manager Topology
             
           </span>
         </div>
@@ -200,7 +200,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="AeroBeat Documentation" class="md-nav__button md-logo" aria-label="AeroBeat Documentation" data-md-component="logo">
+    <a href="../.." title="AeroBeat Documentation" class="md-nav__button md-logo" aria-label="AeroBeat Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -230,7 +230,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -304,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/" class="md-nav__link">
+      <a href="../../licensing/" class="md-nav__link">
         
   
   
@@ -332,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/engineers/" class="md-nav__link">
+      <a href="../../licensing/engineers/" class="md-nav__link">
         
   
   
@@ -360,7 +360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/creative/" class="md-nav__link">
+      <a href="../../licensing/creative/" class="md-nav__link">
         
   
   
@@ -388,7 +388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/commercial/" class="md-nav__link">
+      <a href="../../licensing/commercial/" class="md-nav__link">
         
   
   
@@ -416,7 +416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/hardware/" class="md-nav__link">
+      <a href="../../licensing/hardware/" class="md-nav__link">
         
   
   
@@ -444,7 +444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/attribution/" class="md-nav__link">
+      <a href="../../licensing/attribution/" class="md-nav__link">
         
   
   
@@ -472,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/CLA/" class="md-nav__link">
+      <a href="../../licensing/CLA/" class="md-nav__link">
         
   
   
@@ -500,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/CONTRIBUTING/" class="md-nav__link">
+      <a href="../../licensing/CONTRIBUTING/" class="md-nav__link">
         
   
   
@@ -528,7 +528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../CODE_OF_CONDUCT/" class="md-nav__link">
+      <a href="../../CODE_OF_CONDUCT/" class="md-nav__link">
         
   
   
@@ -556,7 +556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../legal/refund_policy/" class="md-nav__link">
+      <a href="../../legal/refund_policy/" class="md-nav__link">
         
   
   
@@ -591,7 +591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../releases/changelog/" class="md-nav__link">
+      <a href="../../releases/changelog/" class="md-nav__link">
         
   
   
@@ -665,7 +665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/contributing_workflow/" class="md-nav__link">
+      <a href="../../guides/contributing_workflow/" class="md-nav__link">
         
   
   
@@ -693,7 +693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/feature_development/" class="md-nav__link">
+      <a href="../../guides/feature_development/" class="md-nav__link">
         
   
   
@@ -721,7 +721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/calibration/" class="md-nav__link">
+      <a href="../../guides/calibration/" class="md-nav__link">
         
   
   
@@ -749,7 +749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/accessibility/" class="md-nav__link">
+      <a href="../../guides/accessibility/" class="md-nav__link">
         
   
   
@@ -777,7 +777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/modding_quickstart/" class="md-nav__link">
+      <a href="../../guides/modding_quickstart/" class="md-nav__link">
         
   
   
@@ -805,7 +805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/demo_workout_package/" class="md-nav__link">
+      <a href="../../guides/demo_workout_package/" class="md-nav__link">
         
   
   
@@ -880,7 +880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/choreography/overview/" class="md-nav__link">
+      <a href="../../guides/choreography/overview/" class="md-nav__link">
         
   
   
@@ -908,7 +908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/choreography/boxing/" class="md-nav__link">
+      <a href="../../guides/choreography/boxing/" class="md-nav__link">
         
   
   
@@ -936,7 +936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/choreography/flow/" class="md-nav__link">
+      <a href="../../guides/choreography/flow/" class="md-nav__link">
         
   
   
@@ -972,7 +972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/environment_creation/" class="md-nav__link">
+      <a href="../../guides/environment_creation/" class="md-nav__link">
         
   
   
@@ -1000,7 +1000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/skins/" class="md-nav__link">
+      <a href="../../guides/skins/" class="md-nav__link">
         
   
   
@@ -1028,7 +1028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/avatar_creation/" class="md-nav__link">
+      <a href="../../guides/avatar_creation/" class="md-nav__link">
         
   
   
@@ -1056,7 +1056,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/cosmetics/" class="md-nav__link">
+      <a href="../../guides/cosmetics/" class="md-nav__link">
         
   
   
@@ -1084,7 +1084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/coaching/" class="md-nav__link">
+      <a href="../../guides/coaching/" class="md-nav__link">
         
   
   
@@ -1166,7 +1166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/concept/" class="md-nav__link">
+      <a href="../../gdd/concept/" class="md-nav__link">
         
   
   
@@ -1241,7 +1241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/art/overview/" class="md-nav__link">
+      <a href="../../gdd/art/overview/" class="md-nav__link">
         
   
   
@@ -1324,7 +1324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/economy/currency/" class="md-nav__link">
+      <a href="../../gdd/economy/currency/" class="md-nav__link">
         
   
   
@@ -1352,7 +1352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/economy/supporter_perks/" class="md-nav__link">
+      <a href="../../gdd/economy/supporter_perks/" class="md-nav__link">
         
   
   
@@ -1388,7 +1388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/glossary/terms/" class="md-nav__link">
+      <a href="../../gdd/glossary/terms/" class="md-nav__link">
         
   
   
@@ -1463,7 +1463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/gameplay/boxing/" class="md-nav__link">
+      <a href="../../gdd/gameplay/boxing/" class="md-nav__link">
         
   
   
@@ -1491,7 +1491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/gameplay/flow/" class="md-nav__link">
+      <a href="../../gdd/gameplay/flow/" class="md-nav__link">
         
   
   
@@ -1519,7 +1519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/gameplay/view-modes/" class="md-nav__link">
+      <a href="../../gdd/gameplay/view-modes/" class="md-nav__link">
         
   
   
@@ -1602,7 +1602,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/gamification/overview/" class="md-nav__link">
+      <a href="../../gdd/gamification/overview/" class="md-nav__link">
         
   
   
@@ -1630,7 +1630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/gamification/quests/" class="md-nav__link">
+      <a href="../../gdd/gamification/quests/" class="md-nav__link">
         
   
   
@@ -1713,7 +1713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/input-system/agnostic-input/" class="md-nav__link">
+      <a href="../../gdd/input-system/agnostic-input/" class="md-nav__link">
         
   
   
@@ -1796,7 +1796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/meta/profile/" class="md-nav__link">
+      <a href="../../gdd/meta/profile/" class="md-nav__link">
         
   
   
@@ -1824,7 +1824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/meta/preferences/" class="md-nav__link">
+      <a href="../../gdd/meta/preferences/" class="md-nav__link">
         
   
   
@@ -1852,7 +1852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/meta/locker_room/" class="md-nav__link">
+      <a href="../../gdd/meta/locker_room/" class="md-nav__link">
         
   
   
@@ -1935,7 +1935,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/modifiers/accessibility/" class="md-nav__link">
+      <a href="../../gdd/modifiers/accessibility/" class="md-nav__link">
         
   
   
@@ -1963,7 +1963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/modifiers/difficulty/" class="md-nav__link">
+      <a href="../../gdd/modifiers/difficulty/" class="md-nav__link">
         
   
   
@@ -2046,7 +2046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/releases/community/" class="md-nav__link">
+      <a href="../../gdd/releases/community/" class="md-nav__link">
         
   
   
@@ -2074,7 +2074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/releases/digital-stores-and-arcades/" class="md-nav__link">
+      <a href="../../gdd/releases/digital-stores-and-arcades/" class="md-nav__link">
         
   
   
@@ -2157,7 +2157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/roadmap/future-roadmap/" class="md-nav__link">
+      <a href="../../gdd/roadmap/future-roadmap/" class="md-nav__link">
         
   
   
@@ -2240,7 +2240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/social/crews/" class="md-nav__link">
+      <a href="../../gdd/social/crews/" class="md-nav__link">
         
   
   
@@ -2323,7 +2323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/user-content/overview/" class="md-nav__link">
+      <a href="../../gdd/user-content/overview/" class="md-nav__link">
         
   
   
@@ -2351,7 +2351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/user-content/community-creations/" class="md-nav__link">
+      <a href="../../gdd/user-content/community-creations/" class="md-nav__link">
         
   
   
@@ -2379,7 +2379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/user-content/policing-content/" class="md-nav__link">
+      <a href="../../gdd/user-content/policing-content/" class="md-nav__link">
         
   
   
@@ -2468,18 +2468,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -2500,7 +2502,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2518,7 +2520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -2546,7 +2548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/audio/" class="md-nav__link">
+      <a href="../audio/" class="md-nav__link">
         
   
   
@@ -2574,7 +2576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/backend_api/" class="md-nav__link">
+      <a href="../backend_api/" class="md-nav__link">
         
   
   
@@ -2602,7 +2604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/cloud_baker/" class="md-nav__link">
+      <a href="../cloud_baker/" class="md-nav__link">
         
   
   
@@ -2630,7 +2632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/coding-style/" class="md-nav__link">
+      <a href="../coding-style/" class="md-nav__link">
         
   
   
@@ -2658,7 +2660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/content-model/" class="md-nav__link">
+      <a href="../content-model/" class="md-nav__link">
         
   
   
@@ -2686,7 +2688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/content-repo-shapes/" class="md-nav__link">
+      <a href="../content-repo-shapes/" class="md-nav__link">
         
   
   
@@ -2714,7 +2716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/input/" class="md-nav__link">
+      <a href="../input/" class="md-nav__link">
         
   
   
@@ -2742,7 +2744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/multiplayer/" class="md-nav__link">
+      <a href="../multiplayer/" class="md-nav__link">
         
   
   
@@ -2770,7 +2772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/performance/" class="md-nav__link">
+      <a href="../performance/" class="md-nav__link">
         
   
   
@@ -2798,7 +2800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/repo-structure-reference/" class="md-nav__link">
+      <a href="../repo-structure-reference/" class="md-nav__link">
         
   
   
@@ -2826,7 +2828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/repository-map/" class="md-nav__link">
+      <a href="../repository-map/" class="md-nav__link">
         
   
   
@@ -2854,7 +2856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/security/" class="md-nav__link">
+      <a href="../security/" class="md-nav__link">
         
   
   
@@ -2882,7 +2884,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/state-management/" class="md-nav__link">
+      <a href="../state-management/" class="md-nav__link">
         
   
   
@@ -2910,7 +2912,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/telemetry/" class="md-nav__link">
+      <a href="../telemetry/" class="md-nav__link">
         
   
   
@@ -2938,7 +2940,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/testing/" class="md-nav__link">
+      <a href="../testing/" class="md-nav__link">
         
   
   
@@ -2966,7 +2968,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/tool/" class="md-nav__link">
+      <a href="../tool/" class="md-nav__link">
         
   
   
@@ -2994,7 +2996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/topology/" class="md-nav__link">
+      <a href="../topology/" class="md-nav__link">
         
   
   
@@ -3022,7 +3024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/ugc_modding/" class="md-nav__link">
+      <a href="../ugc_modding/" class="md-nav__link">
         
   
   
@@ -3050,7 +3052,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/ugc-distribution-executive-summary/" class="md-nav__link">
+      <a href="../ugc-distribution-executive-summary/" class="md-nav__link">
         
   
   
@@ -3078,7 +3080,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/ugc-distribution-strategy/" class="md-nav__link">
+      <a href="../ugc-distribution-strategy/" class="md-nav__link">
         
   
   
@@ -3106,7 +3108,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/ugc-hybrid-integration-architecture/" class="md-nav__link">
+      <a href="../ugc-hybrid-integration-architecture/" class="md-nav__link">
         
   
   
@@ -3131,10 +3133,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../architecture/ugc-api-manager-topology/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UGC API Manager Topology
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -3150,6 +3179,353 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#decision-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decision summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Decision summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-aerobeat-tool-api-should-be-the-godot-imported-api-manager-singleton" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. aerobeat-tool-api should be the Godot-imported API manager singleton
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-modio-specific-behavior-should-move-into-dedicated-adapter-repos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. mod.io-specific behavior should move into dedicated adapter repos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-a-separate-ugc-workflowdomain-repo-is-premature-right-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. A separate UGC workflow/domain repo is premature right now
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-repo-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended repo responsibilities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended repo responsibilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-tool-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aerobeat-tool-api
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-vendor-modio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aerobeat-vendor-modio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-tool-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aerobeat-tool-core
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#product-repos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product repos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependency-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency direction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependency direction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#day-one-dependency-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Day-one dependency graph
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expanded-directional-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expanded directional view
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-aerobeat-tool-api-is-the-cleanest-owner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why aerobeat-tool-api is the cleanest owner
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why aerobeat-tool-api is the cleanest owner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#it-matches-the-documented-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        It matches the documented architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#it-matches-godotenv-package-consumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        It matches GodotEnv package consumption
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#it-preserves-vendor-replaceability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        It preserves vendor replaceability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#it-keeps-public-contracts-aerobeat-shaped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        It keeps public contracts AeroBeat-shaped
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anti-patterns-aerobeat-should-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anti-patterns AeroBeat should avoid
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Anti-patterns AeroBeat should avoid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-direct-modio-calls-from-product-repos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Direct mod.io calls from product repos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-treating-provider-ids-as-canonical-content-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Treating provider IDs as canonical content IDs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-letting-provider-moderation-imply-runtime-trust" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Letting provider moderation imply runtime trust
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-smearing-network-policy-across-many-repos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Smearing network policy across many repos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-publishing-vendor-dtos-as-durable-product-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Publishing vendor DTOs as durable product contracts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-over-splitting-before-stable-seams-exist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Over-splitting before stable seams exist
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-public-shape-for-aerobeat-tool-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended public shape for aerobeat-tool-api
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repo-creation-recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repo-creation recommendation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final recommendation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3162,7 +3538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/ui-ux/" class="md-nav__link">
+      <a href="../ui-ux/" class="md-nav__link">
         
   
   
@@ -3190,7 +3566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/workflow/" class="md-nav__link">
+      <a href="../workflow/" class="md-nav__link">
         
   
   
@@ -3218,7 +3594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/workout-package-storage-and-discovery/" class="md-nav__link">
+      <a href="../workout-package-storage-and-discovery/" class="md-nav__link">
         
   
   
@@ -3251,20 +3627,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
         
           
           <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
@@ -3285,7 +3659,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3350,7 +3724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../assembly/" class="md-nav__link">
+      <a href="../../api/assembly/" class="md-nav__link">
         
   
   
@@ -3378,7 +3752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../assembly/community/" class="md-nav__link">
+      <a href="../../api/assembly/community/" class="md-nav__link">
         
   
   
@@ -3508,7 +3882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../assets/prototypes/" class="md-nav__link">
+      <a href="../../api/assets/prototypes/" class="md-nav__link">
         
   
   
@@ -3599,7 +3973,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../core/" class="md-nav__link">
+      <a href="../../api/core/" class="md-nav__link">
         
   
   
@@ -3729,7 +4103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../features/boxing/" class="md-nav__link">
+      <a href="../../api/features/boxing/" class="md-nav__link">
         
   
   
@@ -3812,7 +4186,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../features/flow/" class="md-nav__link">
+      <a href="../../api/features/flow/" class="md-nav__link">
         
   
   
@@ -3950,7 +4324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../inputs/mediapipe_python/" class="md-nav__link">
+      <a href="../../api/inputs/mediapipe_python/" class="md-nav__link">
         
   
   
@@ -4033,7 +4407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../inputs/mediapipe_native/" class="md-nav__link">
+      <a href="../../api/inputs/mediapipe_native/" class="md-nav__link">
         
   
   
@@ -4116,7 +4490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../inputs/joycon-hid/" class="md-nav__link">
+      <a href="../../api/inputs/joycon-hid/" class="md-nav__link">
         
   
   
@@ -4199,7 +4573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../inputs/keyboard/" class="md-nav__link">
+      <a href="../../api/inputs/keyboard/" class="md-nav__link">
         
   
   
@@ -4282,7 +4656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../inputs/gamepad/" class="md-nav__link">
+      <a href="../../api/inputs/gamepad/" class="md-nav__link">
         
   
   
@@ -4365,7 +4739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../inputs/mouse/" class="md-nav__link">
+      <a href="../../api/inputs/mouse/" class="md-nav__link">
         
   
   
@@ -4448,7 +4822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../inputs/touch/" class="md-nav__link">
+      <a href="../../api/inputs/touch/" class="md-nav__link">
         
   
   
@@ -4531,7 +4905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../inputs/xr/" class="md-nav__link">
+      <a href="../../api/inputs/xr/" class="md-nav__link">
         
   
   
@@ -4622,7 +4996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/" class="md-nav__link">
+      <a href="../../api/tools/" class="md-nav__link">
         
   
   
@@ -4650,7 +5024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/api/" class="md-nav__link">
+      <a href="../../api/tools/api/" class="md-nav__link">
         
   
   
@@ -4678,7 +5052,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/settings/" class="md-nav__link">
+      <a href="../../api/tools/settings/" class="md-nav__link">
         
   
   
@@ -4711,20 +5085,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_7" >
         
           
           <label class="md-nav__link" for="__nav_6_2_7" id="__nav_6_2_7_label" tabindex="0">
@@ -4745,7 +5117,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_2_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4760,19 +5132,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../api/ui/core/" class="md-nav__link">
         
   
   
@@ -4788,7 +5151,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -4848,7 +5210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kit-community/" class="md-nav__link">
+      <a href="../../api/ui/kit-community/" class="md-nav__link">
         
   
   
@@ -4923,7 +5285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../shell-desktop-community/" class="md-nav__link">
+      <a href="../../api/ui/shell-desktop-community/" class="md-nav__link">
         
   
   
@@ -4951,7 +5313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../shell-mobile-community/" class="md-nav__link">
+      <a href="../../api/ui/shell-mobile-community/" class="md-nav__link">
         
   
   
@@ -4979,7 +5341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../shell-web-community/" class="md-nav__link">
+      <a href="../../api/ui/shell-web-community/" class="md-nav__link">
         
   
   
@@ -5007,7 +5369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../shell-xr-community/" class="md-nav__link">
+      <a href="../../api/ui/shell-xr-community/" class="md-nav__link">
         
   
   
@@ -5087,6 +5449,341 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#decision-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decision summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Decision summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-aerobeat-tool-api-should-be-the-godot-imported-api-manager-singleton" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. aerobeat-tool-api should be the Godot-imported API manager singleton
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-modio-specific-behavior-should-move-into-dedicated-adapter-repos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. mod.io-specific behavior should move into dedicated adapter repos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-a-separate-ugc-workflowdomain-repo-is-premature-right-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. A separate UGC workflow/domain repo is premature right now
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-repo-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended repo responsibilities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended repo responsibilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-tool-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aerobeat-tool-api
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-vendor-modio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aerobeat-vendor-modio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-tool-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aerobeat-tool-core
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#product-repos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product repos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependency-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency direction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependency direction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#day-one-dependency-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Day-one dependency graph
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expanded-directional-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expanded directional view
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-aerobeat-tool-api-is-the-cleanest-owner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why aerobeat-tool-api is the cleanest owner
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why aerobeat-tool-api is the cleanest owner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#it-matches-the-documented-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        It matches the documented architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#it-matches-godotenv-package-consumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        It matches GodotEnv package consumption
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#it-preserves-vendor-replaceability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        It preserves vendor replaceability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#it-keeps-public-contracts-aerobeat-shaped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        It keeps public contracts AeroBeat-shaped
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anti-patterns-aerobeat-should-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anti-patterns AeroBeat should avoid
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Anti-patterns AeroBeat should avoid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-direct-modio-calls-from-product-repos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Direct mod.io calls from product repos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-treating-provider-ids-as-canonical-content-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Treating provider IDs as canonical content IDs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-letting-provider-moderation-imply-runtime-trust" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Letting provider moderation imply runtime trust
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-smearing-network-policy-across-many-repos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Smearing network policy across many repos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-publishing-vendor-dtos-as-durable-product-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Publishing vendor DTOs as durable product contracts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-over-splitting-before-stable-seams-exist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Over-splitting before stable seams exist
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-public-shape-for-aerobeat-tool-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended public shape for aerobeat-tool-api
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repo-creation-recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repo-creation recommendation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final recommendation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5105,10 +5802,279 @@
   
 
 
-<h1 id="ui-core">UI Core<a class="headerlink" href="#ui-core" title="Permanent link">&para;</a></h1>
-<p>🚧 <strong>Work In Progress</strong></p>
-<p>This module has not been documented yet.</p>
-<p>View the source code on GitHub: <a href="https://github.com/AeroBeat-Workouts/aerobeat-ui-core">https://github.com/AeroBeat-Workouts/aerobeat-ui-core</a></p>
+<h1 id="ugc-api-manager-topology">UGC API Manager Topology<a class="headerlink" href="#ugc-api-manager-topology" title="Permanent link">&para;</a></h1>
+<p>This document defines the recommended repo and package topology for AeroBeat's UGC API stack now that <strong>mod.io is the chosen outer-shell provider</strong> for the current PC community release path.</p>
+<p>The short version:</p>
+<ul>
+<li><strong>Yes:</strong> <code>aerobeat-tool-api</code> should be the Godot-imported API manager singleton repo.</li>
+<li><strong>No:</strong> product repos should not talk to mod.io directly.</li>
+<li><strong>Yes:</strong> provider-specific code should live behind explicit adapter repos.</li>
+<li><strong>No:</strong> a separate workflow/domain repo is not justified yet for the current scope.</li>
+</ul>
+<p>The goal is to keep AeroBeat's package contract, trust decisions, and client integration <strong>AeroBeat-owned</strong>, while making the mod.io path concrete enough to build now and replace later if needed.</p>
+<h2 id="decision-summary">Decision summary<a class="headerlink" href="#decision-summary" title="Permanent link">&para;</a></h2>
+<h3 id="1-aerobeat-tool-api-should-be-the-godot-imported-api-manager-singleton">1. <code>aerobeat-tool-api</code> should be the Godot-imported API manager singleton<a class="headerlink" href="#1-aerobeat-tool-api-should-be-the-godot-imported-api-manager-singleton" title="Permanent link">&para;</a></h3>
+<p><code>aerobeat-tool-api</code> is already the correct semantic lane for the client-facing API manager because it is:</p>
+<ul>
+<li>explicitly a <strong>Tool</strong> repo rather than a gameplay or product repo</li>
+<li>already documented as the official API access layer</li>
+<li>already shaped as a reusable Godot package meant to be imported into assemblies</li>
+<li>already aligned with <strong>GodotEnv package consumption</strong> from the repo root</li>
+<li>the right place for auth, retries, response parsing, caching/policy glue, and provider orchestration behind one AeroBeat-facing surface</li>
+</ul>
+<p>It should become the <strong>only repo that assemblies and other product-level Godot packages import for online UGC/API access</strong>.</p>
+<p>That means <code>aerobeat-assembly-community</code>, <code>aerobeat-feature-boxing</code>, <code>aerobeat-feature-flow</code>, and future UI shells should depend on <code>aerobeat-tool-api</code> for UGC/network behavior instead of embedding provider calls or bespoke HTTP glue.</p>
+<h3 id="2-modio-specific-behavior-should-move-into-dedicated-adapter-repos">2. mod.io-specific behavior should move into dedicated adapter repos<a class="headerlink" href="#2-modio-specific-behavior-should-move-into-dedicated-adapter-repos" title="Permanent link">&para;</a></h3>
+<p>Provider-specific behavior should not accumulate directly inside gameplay repos, UI repos, or creator-facing product repos.</p>
+<p>The minimum concrete provider repo needed now is:</p>
+<ul>
+<li><strong><code>aerobeat-vendor-modio</code></strong></li>
+<li>owns mod.io REST/auth/listing/upload/download mapping</li>
+<li>exposes provider DTOs and a provider adapter/service surface</li>
+<li>translates provider objects into AeroBeat-facing records used by <code>aerobeat-tool-api</code></li>
+</ul>
+<p>If upload/broker behavior later becomes large enough, AeroBeat may optionally split a second repo:</p>
+<ul>
+<li><strong><code>aerobeat-vendor-modio-creator</code></strong> <em>(future only, not day-one required)</em></li>
+<li>creator-publishing helpers, upload-session helpers, provider-side submission orchestration</li>
+</ul>
+<p>Right now, that second split is probably premature. Day one should prefer <strong>one mod.io adapter repo</strong> unless the creator and athlete/client flows prove materially different in code shape or release cadence.</p>
+<h3 id="3-a-separate-ugc-workflowdomain-repo-is-premature-right-now">3. A separate UGC workflow/domain repo is premature right now<a class="headerlink" href="#3-a-separate-ugc-workflowdomain-repo-is-premature-right-now" title="Permanent link">&para;</a></h3>
+<p>For the current stage, AeroBeat does <strong>not</strong> need a separate repo like:</p>
+<ul>
+<li><code>aerobeat-tool-ugc-workflows</code></li>
+<li><code>aerobeat-domain-ugc</code></li>
+<li><code>aerobeat-service-submissions</code></li>
+</ul>
+<p>Those names imply a layer that would mostly forward requests and spread responsibility across too many small repos before the stable seams are proven.</p>
+<p>Today the cleaner split is:</p>
+<ul>
+<li><strong>contracts</strong> stay in the appropriate core repos (<code>aerobeat-tool-core</code>, content/runtime cores as needed)</li>
+<li><strong>AeroBeat-facing online API manager</strong> lives in <code>aerobeat-tool-api</code></li>
+<li><strong>provider-specific mod.io implementation</strong> lives in <code>aerobeat-vendor-modio</code></li>
+<li><strong>product repos consume only the manager</strong></li>
+</ul>
+<p>A workflow/domain repo becomes justified only if AeroBeat later has at least one of these conditions:</p>
+<ul>
+<li>multiple external providers active at once beyond mod.io</li>
+<li>the same UGC workflow needing to serve non-Godot consumers cleanly</li>
+<li>large submission/review/publishing orchestration that no longer fits as tool-side client logic</li>
+<li>enough provider adapters that a shared orchestration lane clearly reduces duplication</li>
+</ul>
+<p>Until then, another repo would be architecture theater.</p>
+<h2 id="recommended-repo-responsibilities">Recommended repo responsibilities<a class="headerlink" href="#recommended-repo-responsibilities" title="Permanent link">&para;</a></h2>
+<h3 id="aerobeat-tool-api"><code>aerobeat-tool-api</code><a class="headerlink" href="#aerobeat-tool-api" title="Permanent link">&para;</a></h3>
+<p><strong>Role:</strong> AeroBeat-facing client API manager singleton imported into Godot consumers.</p>
+<p><strong>Owns:</strong></p>
+<ul>
+<li><code>AeroToolManager</code>-style singleton/autoload entrypoint</li>
+<li>auth/session handling for AeroBeat APIs</li>
+<li>request orchestration to AeroBeat-owned endpoints</li>
+<li>resilience behavior such as retry/backoff and rate-limit handling</li>
+<li>response parsing into AeroBeat-facing DTOs/resources</li>
+<li>install/download policy helpers for trusted content flows</li>
+<li>cache/library sync helpers used by assemblies</li>
+<li>provider selection only as configuration/composition, not vendor business logic</li>
+<li>interfaces for provider adapters when an AeroBeat endpoint delegates to provider-backed flows</li>
+</ul>
+<p><strong>Must not own:</strong></p>
+<ul>
+<li>raw mod.io DTOs as its primary public contract</li>
+<li>direct gameplay logic</li>
+<li>feature-specific UI flows</li>
+<li>content-schema ownership that belongs in content or feature core repos</li>
+<li>ad hoc one-off HTTP calls in random scenes/scripts</li>
+</ul>
+<h3 id="aerobeat-vendor-modio"><code>aerobeat-vendor-modio</code><a class="headerlink" href="#aerobeat-vendor-modio" title="Permanent link">&para;</a></h3>
+<p><strong>Role:</strong> replaceable provider adapter for mod.io.</p>
+<p><strong>Owns:</strong></p>
+<ul>
+<li>mod.io auth token/session exchange helpers as needed</li>
+<li>mod.io request construction and response parsing</li>
+<li>provider listing/search/subscription/upload/download mapping</li>
+<li>provider object ID ↔ AeroBeat mapping helpers where client-side mapping is required</li>
+<li>provider-specific error normalization for the manager layer</li>
+<li>mod.io-specific DTOs kept out of product repos</li>
+</ul>
+<p><strong>Must not own:</strong></p>
+<ul>
+<li>canonical AeroBeat package/trust decisions</li>
+<li>gameplay/runtime code</li>
+<li>direct assembly integration contracts</li>
+<li>the public product-facing singleton surface</li>
+</ul>
+<h3 id="aerobeat-tool-core"><code>aerobeat-tool-core</code><a class="headerlink" href="#aerobeat-tool-core" title="Permanent link">&para;</a></h3>
+<p><strong>Role:</strong> common tool-side contracts.</p>
+<p><strong>Owns:</strong></p>
+<ul>
+<li>shared tool/service abstractions</li>
+<li>shared request/result/progress DTO patterns where those are tool-common</li>
+<li>interfaces that <code>aerobeat-tool-api</code> or provider adapters may share</li>
+</ul>
+<p><strong>Must not own:</strong></p>
+<ul>
+<li>mod.io-specific implementation</li>
+<li>the concrete API manager singleton implementation</li>
+</ul>
+<h3 id="product-repos">Product repos<a class="headerlink" href="#product-repos" title="Permanent link">&para;</a></h3>
+<p>Examples:</p>
+<ul>
+<li><code>aerobeat-assembly-community</code></li>
+<li><code>aerobeat-feature-boxing</code></li>
+<li><code>aerobeat-feature-flow</code></li>
+<li><code>aerobeat-ui-shell-desktop-community</code></li>
+</ul>
+<p><strong>Role:</strong> consume trusted AeroBeat-facing API services.</p>
+<p><strong>Owns:</strong></p>
+<ul>
+<li>product UX</li>
+<li>feature/runtime behavior</li>
+<li>assembly wiring</li>
+<li>calling the manager's stable AeroBeat-facing interfaces</li>
+</ul>
+<p><strong>Must not own:</strong></p>
+<ul>
+<li>direct mod.io HTTP calls</li>
+<li>direct provider DTO usage as durable product contracts</li>
+<li>duplicated auth/retry/network policy stacks</li>
+</ul>
+<h2 id="dependency-direction">Dependency direction<a class="headerlink" href="#dependency-direction" title="Permanent link">&para;</a></h2>
+<p>The dependency rule should be simple and strict.</p>
+<h3 id="day-one-dependency-graph">Day-one dependency graph<a class="headerlink" href="#day-one-dependency-graph" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>product repos / assemblies / UI shells
+  -&gt; aerobeat-tool-api
+    -&gt; aerobeat-tool-core
+    -&gt; aerobeat-vendor-modio
+
+AeroBeat-owned backend APIs
+  &lt;- aerobeat-tool-api
+
+mod.io APIs
+  &lt;- aerobeat-vendor-modio
+</code></pre></div>
+<h3 id="expanded-directional-view">Expanded directional view<a class="headerlink" href="#expanded-directional-view" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>aerobeat-assembly-community
+  -&gt; aerobeat-tool-api
+  -&gt; aerobeat-feature-boxing
+  -&gt; aerobeat-feature-flow
+
+future product/UI repos
+  -&gt; aerobeat-tool-api
+
+`aerobeat-tool-api`
+  -&gt; `aerobeat-tool-core`
+  -&gt; `aerobeat-vendor-modio`
+
+`aerobeat-vendor-modio`
+  -&gt; provider SDK/HTTP client glue only
+
+never:
+  product repo -&gt; mod.io directly
+  feature repo -&gt; mod.io directly
+  UI shell -&gt; mod.io directly
+  product repo -&gt; vendor DTO repo as primary contract
+</code></pre></div>
+<h2 id="why-aerobeat-tool-api-is-the-cleanest-owner">Why <code>aerobeat-tool-api</code> is the cleanest owner<a class="headerlink" href="#why-aerobeat-tool-api-is-the-cleanest-owner" title="Permanent link">&para;</a></h2>
+<p>This decision lines up with both the current docs and the package model.</p>
+<h3 id="it-matches-the-documented-architecture">It matches the documented architecture<a class="headerlink" href="#it-matches-the-documented-architecture" title="Permanent link">&para;</a></h3>
+<p>The backend API document already says the game client interacts through <code>aerobeat-tool-api</code>. Making that repo the singleton manager is consistent with the existing stated direction rather than inventing a new lane.</p>
+<h3 id="it-matches-godotenv-package-consumption">It matches GodotEnv package consumption<a class="headerlink" href="#it-matches-godotenv-package-consumption" title="Permanent link">&para;</a></h3>
+<p><code>aerobeat-tool-api</code> is already set up as a repo-root-consumed package with a hidden <code>.testbed/</code> workbench for development. That is exactly the right shape for a reusable autoload/service package that multiple assemblies can install without importing gameplay baggage.</p>
+<h3 id="it-preserves-vendor-replaceability">It preserves vendor replaceability<a class="headerlink" href="#it-preserves-vendor-replaceability" title="Permanent link">&para;</a></h3>
+<p>If <code>aerobeat-tool-api</code> depends on a provider adapter instead of inlining mod.io concerns everywhere, AeroBeat can later:</p>
+<ul>
+<li>replace mod.io with another shell</li>
+<li>support a second provider in parallel</li>
+<li>shift more traffic back to first-party endpoints</li>
+</ul>
+<p>without rewriting product repos.</p>
+<h3 id="it-keeps-public-contracts-aerobeat-shaped">It keeps public contracts AeroBeat-shaped<a class="headerlink" href="#it-keeps-public-contracts-aerobeat-shaped" title="Permanent link">&para;</a></h3>
+<p>The manager's public surface should speak in AeroBeat concepts such as:</p>
+<ul>
+<li>content IDs</li>
+<li>approval/trust state</li>
+<li>library sync</li>
+<li>install/download intent</li>
+<li>creator submission state</li>
+</ul>
+<p>not raw provider-native field names or object lifecycles.</p>
+<h2 id="anti-patterns-aerobeat-should-avoid">Anti-patterns AeroBeat should avoid<a class="headerlink" href="#anti-patterns-aerobeat-should-avoid" title="Permanent link">&para;</a></h2>
+<h3 id="1-direct-modio-calls-from-product-repos">1. Direct mod.io calls from product repos<a class="headerlink" href="#1-direct-modio-calls-from-product-repos" title="Permanent link">&para;</a></h3>
+<p>This is the main architectural hiss point.</p>
+<p>Do <strong>not</strong> allow:</p>
+<ul>
+<li><code>aerobeat-assembly-community</code> to call mod.io REST directly</li>
+<li>feature repos to embed <code>HTTPRequest</code> logic for vendor APIs</li>
+<li>UI shells to parse provider responses as if they were product contracts</li>
+</ul>
+<p>That creates lock-in, duplicates auth/retry code, and makes provider exit expensive.</p>
+<h3 id="2-treating-provider-ids-as-canonical-content-ids">2. Treating provider IDs as canonical content IDs<a class="headerlink" href="#2-treating-provider-ids-as-canonical-content-ids" title="Permanent link">&para;</a></h3>
+<p>mod.io IDs should remain mappings, not the primary identity the runtime or trust system keys off.</p>
+<p>Canonical IDs stay AeroBeat-owned.</p>
+<h3 id="3-letting-provider-moderation-imply-runtime-trust">3. Letting provider moderation imply runtime trust<a class="headerlink" href="#3-letting-provider-moderation-imply-runtime-trust" title="Permanent link">&para;</a></h3>
+<p>A provider listing being visible or downloadable must not imply that the client is allowed to mount or trust it.</p>
+<p>AeroBeat trust decisions remain first-party.</p>
+<h3 id="4-smearing-network-policy-across-many-repos">4. Smearing network policy across many repos<a class="headerlink" href="#4-smearing-network-policy-across-many-repos" title="Permanent link">&para;</a></h3>
+<p>Retries, token handling, guest/session behavior, rate-limit handling, and error normalization should not be reimplemented in every product surface.</p>
+<h3 id="5-publishing-vendor-dtos-as-durable-product-contracts">5. Publishing vendor DTOs as durable product contracts<a class="headerlink" href="#5-publishing-vendor-dtos-as-durable-product-contracts" title="Permanent link">&para;</a></h3>
+<p>The public API consumed by assemblies should remain AeroBeat-shaped. Provider DTOs should stay behind adapter boundaries.</p>
+<h3 id="6-over-splitting-before-stable-seams-exist">6. Over-splitting before stable seams exist<a class="headerlink" href="#6-over-splitting-before-stable-seams-exist" title="Permanent link">&para;</a></h3>
+<p>Do not create five micro-repos for auth, uploads, submissions, discovery, and moderation until the real code pressure exists. One manager repo plus one provider adapter repo is the clean starting point.</p>
+<h2 id="recommended-public-shape-for-aerobeat-tool-api">Recommended public shape for <code>aerobeat-tool-api</code><a class="headerlink" href="#recommended-public-shape-for-aerobeat-tool-api" title="Permanent link">&para;</a></h2>
+<p>The manager should expose a small AeroBeat-facing surface, for example:</p>
+<ul>
+<li><code>auth/</code> or <code>services/auth/</code></li>
+<li><code>services/library/</code></li>
+<li><code>services/discovery/</code></li>
+<li><code>services/submissions/</code></li>
+<li><code>services/downloads/</code></li>
+<li><code>interfaces/provider_adapter.gd</code></li>
+<li><code>providers/</code> composition glue that wires the active adapter</li>
+<li><code>autoload/</code> or <code>src/AeroToolManager.gd</code> singleton entrypoint</li>
+</ul>
+<p>The singleton should coordinate services, not become a god object full of raw HTTP code.</p>
+<p>A healthy shape is:</p>
+<div class="highlight"><pre><span></span><code>aerobeat-tool-api/
+├── src/
+│   ├── AeroToolManager.gd
+│   ├── interfaces/
+│   │   └── ugc_provider_adapter.gd
+│   ├── services/
+│   │   ├── auth/
+│   │   ├── discovery/
+│   │   ├── library/
+│   │   ├── submissions/
+│   │   └── downloads/
+│   ├── models/
+│   └── providers/
+│       └── active_provider_registry.gd
+└── .testbed/
+</code></pre></div>
+<p>The mod.io-specific implementation should stay outside this repo unless kept behind extremely strict internal boundaries during an early bootstrap. Even then, the target state should remain an extracted adapter repo.</p>
+<h2 id="repo-creation-recommendation">Repo-creation recommendation<a class="headerlink" href="#repo-creation-recommendation" title="Permanent link">&para;</a></h2>
+<p>Recommended next repo-creation / hardening order:</p>
+<ol>
+<li><strong>Harden <code>aerobeat-tool-api</code> as the singleton manager repo</strong></li>
+<li>define public AeroBeat-facing service interfaces</li>
+<li>add provider-adapter seam</li>
+<li>keep package import shape GodotEnv-friendly</li>
+<li><strong>Create <code>aerobeat-vendor-modio</code></strong></li>
+<li>implement the first provider adapter behind that seam</li>
+<li>keep all mod.io DTOs and request logic there</li>
+<li><strong>Only then evaluate additional splits</strong></li>
+<li>only create <code>aerobeat-vendor-modio-creator</code> or a workflow/domain repo if code pressure proves it necessary</li>
+</ol>
+<p>If AeroBeat wants the smallest execution-ready move set, that is it.</p>
+<h2 id="final-recommendation">Final recommendation<a class="headerlink" href="#final-recommendation" title="Permanent link">&para;</a></h2>
+<p>For the current AeroBeat UGC stack:</p>
+<ul>
+<li>treat <strong><code>aerobeat-tool-api</code> as the Godot-imported API manager singleton repo</strong></li>
+<li>create <strong><code>aerobeat-vendor-modio</code> as the single provider adapter repo actually needed now</strong></li>
+<li><strong>do not</strong> create a separate UGC workflow/domain repo yet</li>
+<li>enforce dependency direction so <strong>product repos only consume <code>aerobeat-tool-api</code></strong></li>
+<li>prohibit direct mod.io integration from assemblies, features, and UI shells</li>
+</ul>
+<p>That keeps the current mod.io path practical without giving mod.io ownership over AeroBeat's long-term package or trust architecture.</p>
 
 
 
@@ -5129,7 +6095,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 27, 2026 15:42:39 UTC">January 27, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 2, 2026 20:26:13 UTC">May 2, 2026</span>
   </span>
 
     
@@ -5185,10 +6151,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
