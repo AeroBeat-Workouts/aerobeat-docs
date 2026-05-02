@@ -126,14 +126,14 @@ This plan keeps the core AeroBeat content/import model first-party while evaluat
 
 **Status:** ⏳ In Progress
 
-**What We Built:** Pending.
+**What We Built:** Coder pass completed: added `docs/architecture/ugc-distribution-strategy.md` and linked it into the Architecture nav in `mkdocs.yml`. The new page explains why the decision exists, separates distribution trust from runtime trust, compares third-party-shell and fully self-hosted approaches, covers auth/moderation/storefront implications, and recommends a phased hybrid strategy that preserves vendor-neutral package semantics.
 
-**Reference Check:** Pending.
+**Reference Check:** Coder pass aligns with `REF-02`, `REF-03`, and `REF-04` by keeping package validation, bake/signing, and runtime trust first-party; aligns with `REF-05` by keeping Steam/mobile/store language soft and planning-oriented rather than claiming compliance guarantees.
 
 **Commits:**
-- Pending
+- `1729818` - docs: add UGC distribution strategy
 
-**Lessons Learned:** Pending.
+**Lessons Learned:** Repo-local validation depends on the checked-in virtualenv here; `mkdocs` was unavailable on PATH, but the required build succeeded from `venv`.
 
 ---
 
