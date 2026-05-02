@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/architecture/godotenv-phase-1-execution-packet/">
+        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/architecture/ugc-distribution-strategy/">
       
       
+        <link rel="prev" href="../ugc_modding/">
+      
+      
+        <link rel="next" href="../ui-ux/">
       
       
         
@@ -21,7 +25,7 @@
     
     
       
-        <title>AeroBeat GodotEnv Phase 1 Execution Packet - AeroBeat Documentation</title>
+        <title>UGC Distribution Strategy - AeroBeat Documentation</title>
       
     
     
@@ -70,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aerobeat-godotenv-phase-1-execution-packet" class="md-skip">
+        <a href="#ugc-distribution-strategy" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              AeroBeat GodotEnv Phase 1 Execution Packet
+              UGC Distribution Strategy
             
           </span>
         </div>
@@ -2415,18 +2419,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -2447,7 +2453,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2462,18 +2468,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -2494,7 +2502,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3041,10 +3049,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../ugc-distribution-strategy/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UGC Distribution Strategy
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -3060,6 +3095,537 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-decision-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this decision exists
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-negotiable-architectural-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-negotiable architectural principles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Non-negotiable architectural principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-owns-the-package-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AeroBeat owns the package contract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-owns-validation-and-bake-authority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AeroBeat owns validation and bake authority
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-owns-runtime-trust" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AeroBeat owns runtime trust
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-keeps-vendor-neutral-identifiers-and-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AeroBeat keeps vendor-neutral identifiers and metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-preserves-re-bakable-source-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AeroBeat preserves re-bakable source truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-a-third-party-ugc-platform-as-the-distribution-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option A: third-party UGC platform as the distribution shell
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Option A: third-party UGC platform as the distribution shell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-this-option-is-good-at" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What this option is good at
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What this option is good at">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lower-early-operational-burden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lower early operational burden
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#faster-discovery-and-community-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Faster discovery and community features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#better-moderation-ergonomics-early-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Better moderation ergonomics early on
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#useful-buffer-for-steam-oriented-community-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful buffer for Steam-oriented community distribution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations-of-the-third-party-shell-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitations of the third-party shell approach
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Limitations of the third-party shell approach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#it-does-not-remove-aerobeats-safety-obligations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        It does not remove AeroBeat's safety obligations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identity-becomes-split-unless-designed-carefully" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity becomes split unless designed carefully
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#product-capabilities-may-follow-vendor-contours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product capabilities may follow vendor contours
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#store-and-mobile-implications-stay-uncertain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Store and mobile implications stay uncertain
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-b-fully-self-hosted-ugc-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option B: fully self-hosted UGC platform
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Option B: fully self-hosted UGC platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-self-hosting-is-good-at" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What self-hosting is good at
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What self-hosting is good at">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#maximum-product-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Maximum product control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cleanest-long-term-ownership-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cleanest long-term ownership model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strongest-alignment-between-authored-truth-and-distributed-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strongest alignment between authored truth and distributed truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#costs-of-full-self-hosting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Costs of full self-hosting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Costs of full self-hosting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#much-larger-backend-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Much larger backend scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#higher-moderation-and-takedown-burden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Higher moderation and takedown burden
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-release-risk-earlier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        More release risk earlier
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam-and-mobile-implications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steam and mobile implications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auth-and-account-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auth and account comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auth and account comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#third-party-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Third-party shell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fully-self-hosted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fully self-hosted
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moderation-and-takedown-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Moderation and takedown comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Moderation and takedown comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#third-party-shell_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Third-party shell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fully-self-hosted_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fully self-hosted
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-safety-and-trust-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package safety and trust boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vendor-lock-in-and-exit-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vendor lock-in and exit strategy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-phased-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended phased approach
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended phased approach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-first-party-package-contract-third-party-distribution-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1: first-party package contract, third-party distribution shell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-add-first-party-mirrors-and-metadata-authority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2: add first-party mirrors and metadata authority
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-keep-the-option-to-self-host-more-of-the-outer-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 3: keep the option to self-host more of the outer shell
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final recommendation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4990,10 +5556,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#purpose" class="md-nav__link">
+  <a href="#why-this-decision-exists" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Purpose
+        Why this decision exists
       
     </span>
   </a>
@@ -5001,10 +5567,338 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-phase-1-objective" class="md-nav__link">
+  <a href="#non-negotiable-architectural-principles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Phase 1 objective
+        Non-negotiable architectural principles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Non-negotiable architectural principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-owns-the-package-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AeroBeat owns the package contract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-owns-validation-and-bake-authority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AeroBeat owns validation and bake authority
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-owns-runtime-trust" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AeroBeat owns runtime trust
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-keeps-vendor-neutral-identifiers-and-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AeroBeat keeps vendor-neutral identifiers and metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-preserves-re-bakable-source-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AeroBeat preserves re-bakable source truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-a-third-party-ugc-platform-as-the-distribution-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option A: third-party UGC platform as the distribution shell
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Option A: third-party UGC platform as the distribution shell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-this-option-is-good-at" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What this option is good at
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What this option is good at">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lower-early-operational-burden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lower early operational burden
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#faster-discovery-and-community-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Faster discovery and community features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#better-moderation-ergonomics-early-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Better moderation ergonomics early on
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#useful-buffer-for-steam-oriented-community-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful buffer for Steam-oriented community distribution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations-of-the-third-party-shell-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitations of the third-party shell approach
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Limitations of the third-party shell approach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#it-does-not-remove-aerobeats-safety-obligations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        It does not remove AeroBeat's safety obligations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identity-becomes-split-unless-designed-carefully" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity becomes split unless designed carefully
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#product-capabilities-may-follow-vendor-contours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product capabilities may follow vendor contours
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#store-and-mobile-implications-stay-uncertain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Store and mobile implications stay uncertain
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-b-fully-self-hosted-ugc-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option B: fully self-hosted UGC platform
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Option B: fully self-hosted UGC platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-self-hosting-is-good-at" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What self-hosting is good at
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What self-hosting is good at">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#maximum-product-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Maximum product control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cleanest-long-term-ownership-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cleanest long-term ownership model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strongest-alignment-between-authored-truth-and-distributed-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strongest alignment between authored truth and distributed truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#costs-of-full-self-hosting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Costs of full self-hosting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Costs of full self-hosting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#much-larger-backend-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Much larger backend scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#higher-moderation-and-takedown-burden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Higher moderation and takedown burden
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-release-risk-earlier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        More release risk earlier
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam-and-mobile-implications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steam and mobile implications
       
     </span>
   </a>
@@ -5012,10 +5906,88 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-scope" class="md-nav__link">
+  <a href="#auth-and-account-comparison" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Scope
+        Auth and account comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auth and account comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#third-party-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Third-party shell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fully-self-hosted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fully self-hosted
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moderation-and-takedown-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Moderation and takedown comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Moderation and takedown comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#third-party-shell_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Third-party shell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fully-self-hosted_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fully self-hosted
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-safety-and-trust-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package safety and trust boundary
       
     </span>
   </a>
@@ -5023,10 +5995,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#in-scope" class="md-nav__link">
+  <a href="#vendor-lock-in-and-exit-strategy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        In scope
+        Vendor lock-in and exit strategy
       
     </span>
   </a>
@@ -5034,307 +6006,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#out-of-scope" class="md-nav__link">
+  <a href="#recommended-phased-approach" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Out of scope
+        Recommended phased approach
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended phased approach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-first-party-package-contract-third-party-distribution-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1: first-party package contract, third-party distribution shell
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3-readiness-criteria-before-phase-1-starts" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-add-first-party-mirrors-and-metadata-authority" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Readiness criteria before Phase 1 starts
+        Phase 2: add first-party mirrors and metadata authority
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#4-required-outcome-by-repo" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-keep-the-option-to-self-host-more-of-the-outer-shell" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Required outcome by repo
+        Phase 3: keep the option to self-host more of the outer shell
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#41-aerobeat-core" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.1 aerobeat-core
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#42-aerobeat-ui-core" class="md-nav__link">
+  <a href="#final-recommendation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2 aerobeat-ui-core
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#43-aerobeat-ui-kit-community" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.3 aerobeat-ui-kit-community
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#44-shared-phase-1-install-hygiene-rule" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.4 Shared Phase 1 install hygiene rule
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-recommended-sequencing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Recommended sequencing
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-1-normalize-aerobeat-core" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1 — Normalize aerobeat-core
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-2-normalize-aerobeat-ui-core" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2 — Normalize aerobeat-ui-core
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-normalize-aerobeat-ui-kit-community" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3 — Normalize aerobeat-ui-kit-community
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-suggested-bead-breakdown" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. Suggested bead breakdown
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#61-aerobeat-core" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6.1 aerobeat-core
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#62-aerobeat-ui-core" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6.2 aerobeat-ui-core
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#63-aerobeat-ui-kit-community" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6.3 aerobeat-ui-kit-community
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#64-cross-repo-audit-bead" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6.4 Cross-repo audit bead
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-per-repo-completion-checklist" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. Per-repo completion checklist
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#71-structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.1 Structure
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#72-documentation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.2 Documentation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#73-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.3 Validation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#74-release" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.4 Release
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-risks-and-handling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. Risks and handling
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#81-no-tag-habit-exists-yet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.1 No tag habit exists yet
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#82-aerobeat-ui-core-package-shape-may-be-less-normalized-than-the-others" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.2 aerobeat-ui-core package shape may be less normalized than the others
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#83-ui-kit-could-try-to-preserve-setup_devpy-for-convenience" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.3 UI kit could try to preserve setup_dev.py for convenience
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-exit-criteria-for-phase-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9. Exit criteria for Phase 1
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-explicit-closeout-rule-for-the-overall-migration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. Explicit closeout rule for the overall migration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#final-decision-summary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Final decision summary
+        Final recommendation
       
     </span>
   </a>
@@ -5361,271 +6086,234 @@
   
 
 
-<h1 id="aerobeat-godotenv-phase-1-execution-packet">AeroBeat GodotEnv Phase 1 Execution Packet<a class="headerlink" href="#aerobeat-godotenv-phase-1-execution-packet" title="Permanent link">&para;</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Transition note</p>
-<p>This execution packet was authored during the rename and topology split. Where it still says <code>aerobeat-core</code>, read that as the transition-era name for today's <code>aerobeat-input-core</code>; the current live architecture is the six-core model documented elsewhere in this repo.</p>
-</div>
-<p><em>Date: 2026-04-17</em>
-<em>Status: Phase 0 implementation packet for Phase 1</em></p>
-<h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
-<p>This packet translates the approved Phase 0 decisions into the first implementation wave.</p>
-<p>Phase 1 is intentionally narrow. It establishes the foundational contract and release discipline in the three repos every downstream migration depends on:</p>
+<h1 id="ugc-distribution-strategy">UGC Distribution Strategy<a class="headerlink" href="#ugc-distribution-strategy" title="Permanent link">&para;</a></h1>
+<p>AeroBeat needs a clear decision on <strong>where community content lives</strong>, <strong>who distributes it</strong>, and <strong>what trust boundary the game enforces at runtime</strong>.</p>
+<p>This matters because "UGC platform" can mean two very different things:</p>
 <ol>
-<li><code>aerobeat-core</code></li>
-<li><code>aerobeat-ui-core</code></li>
-<li><code>aerobeat-ui-kit-community</code></li>
+<li>a <strong>distribution and community surface</strong> where people browse, subscribe, rate, and report content</li>
+<li>a <strong>runtime trust authority</strong> that decides what packages the AeroBeat client is allowed to load</li>
 </ol>
-<p>Once Phase 0 is approved/landed, this packet is considered pre-authorized work. Later phases do not need fresh architectural approval unless they discover a conflict with the Phase 0 contract.</p>
-<hr />
-<h2 id="1-phase-1-objective">1. Phase 1 objective<a class="headerlink" href="#1-phase-1-objective" title="Permanent link">&para;</a></h2>
-<p>Normalize the foundational repo chain so downstream repos can stop guessing how GodotEnv should work.</p>
-<p>At the end of Phase 1, AeroBeat should have:</p>
+<p>For AeroBeat, those must stay separate.</p>
+<p>Our position is that AeroBeat should keep the <strong>package contract</strong>, <strong>validation pipeline</strong>, <strong>bake/signing authority</strong>, and <strong>runtime trust boundary</strong> first-party. A third-party UGC provider may still be useful, but as an optional outer shell for discovery and distribution rather than the canonical source of truth.</p>
+<h2 id="why-this-decision-exists">Why this decision exists<a class="headerlink" href="#why-this-decision-exists" title="Permanent link">&para;</a></h2>
+<p>AeroBeat is not deciding between "community content" and "no community content." The project already assumes community-authored content matters. The real decision is how much of the UGC surface AeroBeat wants to own directly during the early release phases.</p>
+<p>That choice affects:</p>
 <ul>
-<li>a real first-party <code>addons.jsonc</code> convention implemented in foundation repos</li>
-<li><code>.testbed/addons.jsonc</code> established as the package/foundation dev harness contract</li>
-<li>the first real first-party release tags for the foundation chain</li>
-<li><code>aerobeat-ui-kit-community</code> consuming the normalized core/UI core contract</li>
-<li>obsolete setup flow removed from the UI kit repo</li>
+<li>account/auth complexity</li>
+<li>moderation and takedown workflows</li>
+<li>bandwidth and storage operations</li>
+<li>storefront and mobile release flexibility</li>
+<li>vendor lock-in risk</li>
+<li>long-term package compatibility and migration paths</li>
 </ul>
-<p>Phase 1 does <strong>not</strong> migrate the whole family. It creates the stable base every later repo wave depends on.</p>
-<hr />
-<h2 id="2-scope">2. Scope<a class="headerlink" href="#2-scope" title="Permanent link">&para;</a></h2>
-<h2 id="in-scope">In scope<a class="headerlink" href="#in-scope" title="Permanent link">&para;</a></h2>
+<p>If AeroBeat ties its actual content model to a vendor's storage, identity, or package semantics too early, future platform work gets harder. If AeroBeat self-hosts everything from day one, the team takes on a much larger operational and legal burden before it has to.</p>
+<h2 id="non-negotiable-architectural-principles">Non-negotiable architectural principles<a class="headerlink" href="#non-negotiable-architectural-principles" title="Permanent link">&para;</a></h2>
+<p>These principles should hold regardless of which distribution layer AeroBeat uses.</p>
+<h3 id="aerobeat-owns-the-package-contract">AeroBeat owns the package contract<a class="headerlink" href="#aerobeat-owns-the-package-contract" title="Permanent link">&para;</a></h3>
+<p>The authored package shape, manifest rules, IDs, version semantics, and dependency model remain AeroBeat-defined. Third parties should transport packages, not redefine them.</p>
+<p>See also:</p>
 <ul>
-<li><code>aerobeat-core</code></li>
-<li><code>aerobeat-ui-core</code></li>
-<li><code>aerobeat-ui-kit-community</code></li>
-<li>repo-local docs/README changes required to explain the new dependency flow in those repos</li>
-<li>release/tag policy implementation for those repos</li>
+<li><a href="../ugc_modding/">UGC &amp; Modding Architecture</a></li>
+<li><a href="../cloud_baker/">Cloud Baker Architecture</a></li>
 </ul>
-<h2 id="out-of-scope">Out of scope<a class="headerlink" href="#out-of-scope" title="Permanent link">&para;</a></h2>
+<h3 id="aerobeat-owns-validation-and-bake-authority">AeroBeat owns validation and bake authority<a class="headerlink" href="#aerobeat-owns-validation-and-bake-authority" title="Permanent link">&para;</a></h3>
+<p>Any uploaded package must be validated by AeroBeat-controlled tooling before it becomes trusted for runtime distribution. That includes package-shape checks, script scanning, reference checks, and any later bake/export steps.</p>
+<h3 id="aerobeat-owns-runtime-trust">AeroBeat owns runtime trust<a class="headerlink" href="#aerobeat-owns-runtime-trust" title="Permanent link">&para;</a></h3>
+<p>The game client should trust <strong>AeroBeat-approved artifacts</strong>, not "whatever a community platform returned." A package being downloadable is not the same thing as a package being safe to mount.</p>
+<p>This is the critical distinction:</p>
 <ul>
-<li>assembly repo migration</li>
-<li>UI shell migration</li>
-<li>template repo sweep</li>
-<li>broad feature/input/tool migration</li>
-<li>final family closeout audit</li>
+<li><strong>distribution trust</strong> = whether a platform is allowed to host or list a file</li>
+<li><strong>runtime trust</strong> = whether the AeroBeat client is allowed to install, mount, or execute the resulting artifact</li>
 </ul>
-<p>Those belong to later phases, but this packet sets them up.</p>
-<hr />
-<h2 id="3-readiness-criteria-before-phase-1-starts">3. Readiness criteria before Phase 1 starts<a class="headerlink" href="#3-readiness-criteria-before-phase-1-starts" title="Permanent link">&para;</a></h2>
-<p>Phase 1 should not start until all of these are true:</p>
-<ol>
-<li><strong>Phase 0 docs are landed or otherwise accepted as the active contract.</strong></li>
-<li><strong>Developers know the canonical manifest locations.</strong></li>
-<li><code>.testbed/addons.jsonc</code> for package/foundation repos</li>
-<li>root <code>addons.jsonc</code> for assembly repos</li>
-<li><strong>The initial first-party tag format is agreed.</strong></li>
-<li><code>v0.x.y</code> during migration</li>
-<li><strong>GodotEnv is available in the developer environment(s) that will perform the work.</strong></li>
-<li><strong>Each repo's expected addon identity/subfolder is confirmed.</strong></li>
-<li>first-party AeroBeat repos default to repo-root import with <code>subfolder: "/"</code></li>
-<li>any narrower published subfolder must be documented before tagging anything meant for downstream use</li>
-<li><strong>The work is understood as a clean break.</strong></li>
-<li>no "keep <code>setup_dev.py</code> for now" hedging inside Phase 1</li>
-</ol>
-<p>If any readiness item is missing, Phase 1 should pause and fix that first.</p>
-<hr />
-<h2 id="4-required-outcome-by-repo">4. Required outcome by repo<a class="headerlink" href="#4-required-outcome-by-repo" title="Permanent link">&para;</a></h2>
-<h2 id="41-aerobeat-core">4.1 <code>aerobeat-core</code><a class="headerlink" href="#41-aerobeat-core" title="Permanent link">&para;</a></h2>
-<p>Phase 1 must leave <code>aerobeat-core</code> in a state where it is an explicitly releasable foundational addon.</p>
-<p><strong>Required outcomes</strong></p>
+<p>AeroBeat may delegate parts of distribution trust. It should not delegate runtime trust.</p>
+<h3 id="aerobeat-keeps-vendor-neutral-identifiers-and-metadata">AeroBeat keeps vendor-neutral identifiers and metadata<a class="headerlink" href="#aerobeat-keeps-vendor-neutral-identifiers-and-metadata" title="Permanent link">&para;</a></h3>
+<p>Internal references should prefer AeroBeat content IDs, versions, hashes, and manifests. External provider IDs can exist as mapping fields, not as the primary identity of the package.</p>
+<h3 id="aerobeat-preserves-re-bakable-source-truth">AeroBeat preserves re-bakable source truth<a class="headerlink" href="#aerobeat-preserves-re-bakable-source-truth" title="Permanent link">&para;</a></h3>
+<p>The long-lived asset of value is the authored package and its metadata, not only a vendor-hosted downloadable blob. This preserves re-validation, re-baking, migration, and future platform targeting.</p>
+<h2 id="option-a-third-party-ugc-platform-as-the-distribution-shell">Option A: third-party UGC platform as the distribution shell<a class="headerlink" href="#option-a-third-party-ugc-platform-as-the-distribution-shell" title="Permanent link">&para;</a></h2>
+<p>The most practical version of this option is to use a platform such as <strong>mod.io</strong> for the community-facing layer while AeroBeat keeps the package contract and trust boundary in-house.</p>
+<p>Under this model, a third-party platform handles some or all of:</p>
 <ul>
-<li><code>.testbed/addons.jsonc</code> exists and is the only dev/test dependency contract</li>
-<li><code>.gitignore</code> reflects GodotEnv-managed testbed install/cache paths</li>
-<li>repo docs explain the GodotEnv-based dev/test flow directly</li>
-<li>the repo has an initial SemVer-style tag for downstream consumption</li>
-<li>downstream repos can reference it in <code>tag</code> mode</li>
+<li>public browsing and discovery</li>
+<li>subscriptions/follows</li>
+<li>ratings, comments, and reporting UX</li>
+<li>creator profiles and community identity</li>
+<li>file hosting and CDN delivery</li>
+<li>moderation tooling and admin dashboards</li>
 </ul>
-<p><strong>Boundary check</strong></p>
+<p>AeroBeat still keeps control of:</p>
 <ul>
-<li>must remain the bottom of the first-party dependency stack</li>
-<li>Phase 1 must not introduce feature/UI-shell dependencies into core</li>
+<li>creator package specification</li>
+<li>upload validation rules</li>
+<li>package approval policy</li>
+<li>bake/sign pipeline</li>
+<li>trusted-runtime artifact generation</li>
+<li>final client-side allow/deny rules</li>
 </ul>
-<h2 id="42-aerobeat-ui-core">4.2 <code>aerobeat-ui-core</code><a class="headerlink" href="#42-aerobeat-ui-core" title="Permanent link">&para;</a></h2>
-<p>Phase 1 must leave <code>aerobeat-ui-core</code> as a releasable UI logic contract on top of core.</p>
-<p><strong>Required outcomes</strong></p>
+<h3 id="what-this-option-is-good-at">What this option is good at<a class="headerlink" href="#what-this-option-is-good-at" title="Permanent link">&para;</a></h3>
+<h4 id="lower-early-operational-burden">Lower early operational burden<a class="headerlink" href="#lower-early-operational-burden" title="Permanent link">&para;</a></h4>
+<p>A mature UGC platform can reduce the amount of community plumbing AeroBeat needs to build before shipping a PC community edition.</p>
+<h4 id="faster-discovery-and-community-features">Faster discovery and community features<a class="headerlink" href="#faster-discovery-and-community-features" title="Permanent link">&para;</a></h4>
+<p>Search, subscriptions, ratings, reporting, and creator pages are all real product work. Borrowing an existing distribution/community shell can pull that schedule forward.</p>
+<h4 id="better-moderation-ergonomics-early-on">Better moderation ergonomics early on<a class="headerlink" href="#better-moderation-ergonomics-early-on" title="Permanent link">&para;</a></h4>
+<p>Third-party admin tooling may provide helpful workflows for reports, visibility toggles, creator sanctions, and audit logs. That does not remove AeroBeat's responsibility, but it can reduce the amount of bespoke moderation UI needed in v1.</p>
+<h4 id="useful-buffer-for-steam-oriented-community-distribution">Useful buffer for Steam-oriented community distribution<a class="headerlink" href="#useful-buffer-for-steam-oriented-community-distribution" title="Permanent link">&para;</a></h4>
+<p>For a PC-first community release, a third-party shell can be a reasonable way to support creator discovery without immediately owning every account and content-ops surface.</p>
+<h2 id="limitations-of-the-third-party-shell-approach">Limitations of the third-party shell approach<a class="headerlink" href="#limitations-of-the-third-party-shell-approach" title="Permanent link">&para;</a></h2>
+<h3 id="it-does-not-remove-aerobeats-safety-obligations">It does not remove AeroBeat's safety obligations<a class="headerlink" href="#it-does-not-remove-aerobeats-safety-obligations" title="Permanent link">&para;</a></h3>
+<p>Even if the file is hosted elsewhere, AeroBeat still needs to validate packages, maintain trustable metadata, and decide what the client can load. A vendor-hosted download cannot be treated as implicitly safe.</p>
+<h3 id="identity-becomes-split-unless-designed-carefully">Identity becomes split unless designed carefully<a class="headerlink" href="#identity-becomes-split-unless-designed-carefully" title="Permanent link">&para;</a></h3>
+<p>If creator identity, subscriptions, or ownership live entirely in the vendor platform, AeroBeat becomes dependent on that vendor's auth and account semantics. That increases migration cost later.</p>
+<h3 id="product-capabilities-may-follow-vendor-contours">Product capabilities may follow vendor contours<a class="headerlink" href="#product-capabilities-may-follow-vendor-contours" title="Permanent link">&para;</a></h3>
+<p>Search, taxonomy, review flows, collection behavior, and moderation features may be constrained by what the provider offers. That is acceptable for a shell, but not ideal as a permanent architectural center of gravity.</p>
+<h3 id="store-and-mobile-implications-stay-uncertain">Store and mobile implications stay uncertain<a class="headerlink" href="#store-and-mobile-implications-stay-uncertain" title="Permanent link">&para;</a></h3>
+<p>A third-party platform may help operationally, but it does not guarantee acceptance for any future storefront or mobile policy environment. Those release paths should still be treated as planning-sensitive and potentially more curated.</p>
+<p>AeroBeat should therefore avoid language such as "this solves app store compliance" or "this makes mobile UGC safe by default." It may help, but it is not a blanket guarantee.</p>
+<h2 id="option-b-fully-self-hosted-ugc-platform">Option B: fully self-hosted UGC platform<a class="headerlink" href="#option-b-fully-self-hosted-ugc-platform" title="Permanent link">&para;</a></h2>
+<p>Under this model, AeroBeat owns the full stack:</p>
 <ul>
-<li><code>.testbed/addons.jsonc</code> exists and expresses its dev/test dependency story</li>
-<li>any dependency on <code>aerobeat-core</code> is represented via the new manifest contract</li>
-<li><code>.gitignore</code> reflects GodotEnv-managed testbed install/cache paths</li>
-<li>repo docs explain the new flow directly</li>
-<li>the repo has an initial SemVer-style tag for downstream consumption</li>
+<li>creator and athlete accounts</li>
+<li>upload APIs</li>
+<li>moderation/reporting systems</li>
+<li>content search and browsing</li>
+<li>library/subscription state</li>
+<li>storage/CDN setup</li>
+<li>admin tooling and takedown workflows</li>
+<li>validation/bake/sign pipeline</li>
+<li>trusted distribution and runtime decisions</li>
 </ul>
-<p><strong>Boundary check</strong></p>
+<h3 id="what-self-hosting-is-good-at">What self-hosting is good at<a class="headerlink" href="#what-self-hosting-is-good-at" title="Permanent link">&para;</a></h3>
+<h4 id="maximum-product-control">Maximum product control<a class="headerlink" href="#maximum-product-control" title="Permanent link">&para;</a></h4>
+<p>AeroBeat can shape identity, discovery, moderation, subscriptions, and package semantics around the exact product vision.</p>
+<h4 id="cleanest-long-term-ownership-model">Cleanest long-term ownership model<a class="headerlink" href="#cleanest-long-term-ownership-model" title="Permanent link">&para;</a></h4>
+<p>There is no vendor dependency for community reach, metadata, or file delivery. Migration concerns are reduced because AeroBeat already owns the whole stack.</p>
+<h4 id="strongest-alignment-between-authored-truth-and-distributed-truth">Strongest alignment between authored truth and distributed truth<a class="headerlink" href="#strongest-alignment-between-authored-truth-and-distributed-truth" title="Permanent link">&para;</a></h4>
+<p>When done well, the same first-party system can manage authored submissions, validation state, approved runtime artifacts, and athlete library sync.</p>
+<h2 id="costs-of-full-self-hosting">Costs of full self-hosting<a class="headerlink" href="#costs-of-full-self-hosting" title="Permanent link">&para;</a></h2>
+<h3 id="much-larger-backend-scope">Much larger backend scope<a class="headerlink" href="#much-larger-backend-scope" title="Permanent link">&para;</a></h3>
+<p>AeroBeat would need to own not just package validation, but also all surrounding product surfaces: auth, quotas, abuse prevention, moderation tools, discovery UX, support flows, and legal/ops processes.</p>
+<h3 id="higher-moderation-and-takedown-burden">Higher moderation and takedown burden<a class="headerlink" href="#higher-moderation-and-takedown-burden" title="Permanent link">&para;</a></h3>
+<p>Owning the whole platform means owning the whole incident surface. Copyright complaints, abuse reports, impersonation, illegal content, and account enforcement become directly AeroBeat's operational problem.</p>
+<h3 id="more-release-risk-earlier">More release risk earlier<a class="headerlink" href="#more-release-risk-earlier" title="Permanent link">&para;</a></h3>
+<p>For the current AeroBeat sequencing, self-hosting everything up front is likely more ambitious than necessary for the first community-focused release.</p>
+<h2 id="steam-and-mobile-implications">Steam and mobile implications<a class="headerlink" href="#steam-and-mobile-implications" title="Permanent link">&para;</a></h2>
+<p>AeroBeat's current release sequencing keeps PC community edition first, with mobile and deeper commercial/storefront paths later. That matters here.</p>
+<p>For the near term:</p>
 <ul>
-<li>must depend on <code>aerobeat-core</code> only as needed for contracts</li>
-<li>must not absorb concrete kit visuals or shell-specific layout logic</li>
+<li>PC community distribution can tolerate a more open UGC posture</li>
+<li>future mobile/store editions will likely need a more curated content surface</li>
+<li>arcade/commercial variants may want tighter licensing and moderation controls than the community build</li>
 </ul>
-<h2 id="43-aerobeat-ui-kit-community">4.3 <code>aerobeat-ui-kit-community</code><a class="headerlink" href="#43-aerobeat-ui-kit-community" title="Permanent link">&para;</a></h2>
-<p>Phase 1 must leave <code>aerobeat-ui-kit-community</code> as the first real consumer of the normalized foundation chain.</p>
-<p><strong>Required outcomes</strong></p>
+<p>The important takeaway is not that one option is automatically "store-safe." It is that a <strong>vendor-neutral package contract plus first-party validation</strong> keeps AeroBeat better positioned to adapt if future platform policies require a more curated or tightly controlled ingestion path.</p>
+<h2 id="auth-and-account-comparison">Auth and account comparison<a class="headerlink" href="#auth-and-account-comparison" title="Permanent link">&para;</a></h2>
+<h3 id="third-party-shell">Third-party shell<a class="headerlink" href="#third-party-shell" title="Permanent link">&para;</a></h3>
+<p>Pros:</p>
 <ul>
-<li><code>.testbed/addons.jsonc</code> exists and declares required dev/test deps</li>
-<li>the repo no longer relies on <code>setup_dev.py</code></li>
-<li><code>.gitignore</code> reflects GodotEnv-managed testbed install/cache paths</li>
-<li>repo docs explain the new flow directly</li>
-<li>the repo is tagged for downstream shell consumption</li>
+<li>less first-party account system pressure early on</li>
+<li>existing creator/community identity primitives may be available</li>
+<li>potentially simpler community onboarding for PC release</li>
 </ul>
-<p><strong>Boundary check</strong></p>
+<p>Cons:</p>
 <ul>
-<li>must remain a kit, not a shell</li>
-<li>must depend on <code>aerobeat-ui-core</code> as the logic base</li>
-<li>must not reintroduce a second sync mechanism</li>
+<li>split identity between AeroBeat and vendor can create user confusion</li>
+<li>subscription/library semantics may not map cleanly to AeroBeat's long-term account model</li>
+<li>migration gets harder if vendor IDs become canonical anywhere</li>
 </ul>
-<h2 id="44-shared-phase-1-install-hygiene-rule">4.4 Shared Phase 1 install hygiene rule<a class="headerlink" href="#44-shared-phase-1-install-hygiene-rule" title="Permanent link">&para;</a></h2>
-<p>Every Phase 1 first-party repo must satisfy the same GodotEnv consumption rule before QA/audit handoff:</p>
+<h3 id="fully-self-hosted">Fully self-hosted<a class="headerlink" href="#fully-self-hosted" title="Permanent link">&para;</a></h3>
+<p>Pros:</p>
 <ul>
-<li>downstream GodotEnv consumers intentionally import the repo from repo root unless that repo documents an exception</li>
-<li>dot-prefixed folders inside that repo-root payload are acceptable because Godot hides them</li>
-<li>installed addons are immutable/disposable payloads, not a place for durable manual edits</li>
-<li>any required Godot-generated <code>.uid</code> files are committed before cutting a release tag intended for GodotEnv consumption</li>
+<li>one identity model for creators and athletes</li>
+<li>easier long-term control of library sync, permissions, and entitlements</li>
+<li>no dependency on outside auth/account roadmap</li>
 </ul>
-<hr />
-<h2 id="5-recommended-sequencing">5. Recommended sequencing<a class="headerlink" href="#5-recommended-sequencing" title="Permanent link">&para;</a></h2>
-<p>Phase 1 should execute in dependency order, not alphabetically.</p>
-<h2 id="step-1-normalize-aerobeat-core">Step 1 — Normalize <code>aerobeat-core</code><a class="headerlink" href="#step-1-normalize-aerobeat-core" title="Permanent link">&para;</a></h2>
-<p>Do this first because everything else depends on it conceptually or directly.</p>
-<p><strong>Why first</strong></p>
+<p>Cons:</p>
 <ul>
-<li>it is the lowest-level contract repo</li>
-<li>later tags in <code>ui-core</code> and <code>ui-kit-community</code> depend on knowing how core is packaged and versioned</li>
+<li>much larger implementation scope</li>
+<li>more support and abuse-prevention work from day one</li>
+<li>higher burden for secure account recovery, bans, rate limits, and compliance operations</li>
 </ul>
-<h2 id="step-2-normalize-aerobeat-ui-core">Step 2 — Normalize <code>aerobeat-ui-core</code><a class="headerlink" href="#step-2-normalize-aerobeat-ui-core" title="Permanent link">&para;</a></h2>
-<p>Do this second because <code>aerobeat-ui-kit-community</code> should consume the normalized UI logic contract, not a moving target.</p>
-<p><strong>Why second</strong></p>
+<h2 id="moderation-and-takedown-comparison">Moderation and takedown comparison<a class="headerlink" href="#moderation-and-takedown-comparison" title="Permanent link">&para;</a></h2>
+<h3 id="third-party-shell_1">Third-party shell<a class="headerlink" href="#third-party-shell_1" title="Permanent link">&para;</a></h3>
+<p>Pros:</p>
 <ul>
-<li>it establishes the UI-facing foundational layer</li>
-<li>it clarifies the dependency edge from kits to UI logic</li>
+<li>existing report flows and moderation dashboards may reduce early tooling work</li>
+<li>provider may absorb part of the community-management overhead</li>
 </ul>
-<h2 id="step-3-normalize-aerobeat-ui-kit-community">Step 3 — Normalize <code>aerobeat-ui-kit-community</code><a class="headerlink" href="#step-3-normalize-aerobeat-ui-kit-community" title="Permanent link">&para;</a></h2>
-<p>Do this third because it proves the foundational chain is usable by a real downstream consumer.</p>
-<p><strong>Why third</strong></p>
+<p>Cons:</p>
 <ul>
-<li>it is the first practical integration proof of the new convention</li>
-<li>it removes a real <code>setup_dev.py</code> from the critical path</li>
-<li>it creates the release surface shells will later pin to</li>
+<li>AeroBeat still needs its own policy decisions and escalation paths</li>
+<li>takedown coordination can become multi-system and slower</li>
+<li>provider tooling may not match AeroBeat's exact moderation model</li>
 </ul>
-<hr />
-<h2 id="6-suggested-bead-breakdown">6. Suggested bead breakdown<a class="headerlink" href="#6-suggested-bead-breakdown" title="Permanent link">&para;</a></h2>
-<p>Use repo-local Beads in each owning repo for implementation, QA, and audit. The titles below are the suggested minimum breakdown; exact IDs can be created during execution.</p>
-<h2 id="61-aerobeat-core">6.1 <code>aerobeat-core</code><a class="headerlink" href="#61-aerobeat-core" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Define core package layout and testbed manifest</strong></li>
-<li>add <code>.testbed/addons.jsonc</code></li>
-<li>update ignore rules</li>
-<li>document dev/test flow</li>
-<li><strong>Validate core repo as a releasable foundational addon</strong></li>
-<li>run repo-local validation/test path</li>
-<li>verify clean-clone GodotEnv restore</li>
-<li><strong>Cut initial core release tag</strong></li>
-<li>create first SemVer-style tag for downstream use</li>
-</ol>
-<h2 id="62-aerobeat-ui-core">6.2 <code>aerobeat-ui-core</code><a class="headerlink" href="#62-aerobeat-ui-core" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Define UI core manifest and dependency on core</strong></li>
-<li>add <code>.testbed/addons.jsonc</code></li>
-<li>encode any required core dependency explicitly</li>
-<li>update ignore rules/docs</li>
-<li><strong>Validate UI core contract shape</strong></li>
-<li>run repo-local validation/test path</li>
-<li>verify no kit/shell logic has leaked in</li>
-<li><strong>Cut initial UI core release tag</strong></li>
-<li>create first SemVer-style tag for downstream use</li>
-</ol>
-<h2 id="63-aerobeat-ui-kit-community">6.3 <code>aerobeat-ui-kit-community</code><a class="headerlink" href="#63-aerobeat-ui-kit-community" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Replace setup script with manifest-driven testbed flow</strong></li>
-<li>add <code>.testbed/addons.jsonc</code></li>
-<li>remove <code>setup_dev.py</code></li>
-<li>update ignore rules/docs</li>
-<li><strong>Validate UI kit against tagged foundations</strong></li>
-<li>confirm it installs/works against tagged core and UI core releases</li>
-<li><strong>Cut initial UI kit release tag</strong></li>
-<li>create first SemVer-style tag for shell consumption</li>
-</ol>
-<h2 id="64-cross-repo-audit-bead">6.4 Cross-repo audit bead<a class="headerlink" href="#64-cross-repo-audit-bead" title="Permanent link">&para;</a></h2>
-<p>After the three repo-specific waves, create one cross-repo truth-check bead to confirm:</p>
+<h3 id="fully-self-hosted_1">Fully self-hosted<a class="headerlink" href="#fully-self-hosted_1" title="Permanent link">&para;</a></h3>
+<p>Pros:</p>
 <ul>
-<li>tag names line up with committed manifests</li>
-<li>first-party repos are intentionally consumed from repo root unless a documented exception says otherwise</li>
-<li>dot-prefixed folders in repo-root payloads are not being misclassified as package-shape failures</li>
-<li>required <code>.uid</code> files ship in tagged first-party source so installed addons stay clean after editor open</li>
-<li>docs match the implemented flow</li>
-<li><code>aerobeat-ui-kit-community</code> really consumes the normalized foundation chain</li>
+<li>complete control over visibility, sanctions, appeals, and takedown handling</li>
+<li>one source of operational truth</li>
 </ul>
-<hr />
-<h2 id="7-per-repo-completion-checklist">7. Per-repo completion checklist<a class="headerlink" href="#7-per-repo-completion-checklist" title="Permanent link">&para;</a></h2>
-<p>Every foundational repo in Phase 1 should clear this checklist before it is considered done.</p>
-<h2 id="71-structure">7.1 Structure<a class="headerlink" href="#71-structure" title="Permanent link">&para;</a></h2>
+<p>Cons:</p>
 <ul>
-<li>[ ] canonical manifest exists in the correct location</li>
-<li>[ ] legacy dependency bootstrap script is gone where applicable</li>
-<li>[ ] ignore rules match GodotEnv-managed install/cache locations</li>
+<li>full legal/ops burden lands on AeroBeat</li>
+<li>moderation tooling becomes a product requirement, not a future nice-to-have</li>
 </ul>
-<h2 id="72-documentation">7.2 Documentation<a class="headerlink" href="#72-documentation" title="Permanent link">&para;</a></h2>
+<h2 id="package-safety-and-trust-boundary">Package safety and trust boundary<a class="headerlink" href="#package-safety-and-trust-boundary" title="Permanent link">&para;</a></h2>
+<p>This is the core architectural red line.</p>
+<p>AeroBeat should treat third-party-hosted files as <strong>untrusted input</strong> until they pass first-party validation and any required bake/signing steps.</p>
+<p>That means:</p>
 <ul>
-<li>[ ] README or repo-local docs point directly to GodotEnv</li>
-<li>[ ] no surviving instruction tells contributors to use the old flow</li>
+<li>packages must still match AeroBeat's authored contract</li>
+<li>script-bearing or engine-overwriting content remains disallowed</li>
+<li>validation should run in AeroBeat-controlled isolated infrastructure</li>
+<li>the client should prefer AeroBeat-approved artifacts and metadata</li>
+<li>hashes, versions, and approval state should be tracked in AeroBeat systems</li>
 </ul>
-<h2 id="73-validation">7.3 Validation<a class="headerlink" href="#73-validation" title="Permanent link">&para;</a></h2>
+<p>In short: a vendor can help distribute content, but AeroBeat must decide what becomes runnable game content.</p>
+<h2 id="vendor-lock-in-and-exit-strategy">Vendor lock-in and exit strategy<a class="headerlink" href="#vendor-lock-in-and-exit-strategy" title="Permanent link">&para;</a></h2>
+<p>AeroBeat should assume that any third-party UGC platform may become too expensive, too limiting, unavailable on some targets, or strategically misaligned later.</p>
+<p>To preserve an exit path:</p>
 <ul>
-<li>[ ] clean-clone dependency restore works</li>
-<li>[ ] repo-local validation/test path works after restore</li>
-<li>[ ] no tracked-file mutation is required after install because required first-party <code>.uid</code> files already ship in source</li>
-<li>[ ] installed addons are treated as immutable/disposable payloads; fixes land in source repos, not installed copies</li>
+<li>keep AeroBeat IDs canonical</li>
+<li>store provider IDs as secondary mappings</li>
+<li>keep authored packages and metadata exportable</li>
+<li>avoid provider-specific package semantics inside the game/runtime contract</li>
+<li>keep validation, bake, and signing first-party</li>
+<li>design library/subscription sync so it can be reimplemented later</li>
 </ul>
-<h2 id="74-release">7.4 Release<a class="headerlink" href="#74-release" title="Permanent link">&para;</a></h2>
+<p>If AeroBeat ever leaves a provider, the goal should be to migrate the distribution shell without redefining content packages or breaking runtime trust assumptions.</p>
+<h2 id="recommended-phased-approach">Recommended phased approach<a class="headerlink" href="#recommended-phased-approach" title="Permanent link">&para;</a></h2>
+<h3 id="phase-1-first-party-package-contract-third-party-distribution-shell">Phase 1: first-party package contract, third-party distribution shell<a class="headerlink" href="#phase-1-first-party-package-contract-third-party-distribution-shell" title="Permanent link">&para;</a></h3>
+<p>For the near-term PC community release, AeroBeat should keep the package model and trust pipeline first-party while using a third-party platform as an optional community/distribution layer.</p>
+<p>This means:</p>
 <ul>
-<li>[ ] repo has a SemVer-style release tag</li>
-<li>[ ] downstream consumers can reference that tag in <code>checkout</code></li>
-<li>[ ] the release tag ships the intended repo-root payload (unless a documented exception says otherwise) with required <code>.uid</code> files already committed</li>
+<li>creators still target AeroBeat-defined packages</li>
+<li>AeroBeat validation remains mandatory</li>
+<li>AeroBeat can bake/sign trusted runtime artifacts</li>
+<li>a third-party service can host community pages, downloads, ratings, and reporting UX</li>
+<li>the game client integrates through AeroBeat-controlled trust decisions rather than directly inheriting vendor trust</li>
 </ul>
-<hr />
-<h2 id="8-risks-and-handling">8. Risks and handling<a class="headerlink" href="#8-risks-and-handling" title="Permanent link">&para;</a></h2>
-<h2 id="81-no-tag-habit-exists-yet">8.1 No tag habit exists yet<a class="headerlink" href="#81-no-tag-habit-exists-yet" title="Permanent link">&para;</a></h2>
-<p><strong>Risk:</strong> the family has not been operating on release tags.</p>
-<p><strong>Handling:</strong> make "cut the first real tag" part of Phase 1, not a later nicety.</p>
-<h2 id="82-aerobeat-ui-core-package-shape-may-be-less-normalized-than-the-others">8.2 <code>aerobeat-ui-core</code> package shape may be less normalized than the others<a class="headerlink" href="#82-aerobeat-ui-core-package-shape-may-be-less-normalized-than-the-others" title="Permanent link">&para;</a></h2>
-<p><strong>Risk:</strong> UI core may need more explicit package-shape cleanup before it behaves like a clean addon dependency.</p>
-<p><strong>Handling:</strong> keep the Phase 1 scope focused on manifest/release normalization, not on broad redesign.</p>
-<h2 id="83-ui-kit-could-try-to-preserve-setup_devpy-for-convenience">8.3 UI kit could try to preserve <code>setup_dev.py</code> for convenience<a class="headerlink" href="#83-ui-kit-could-try-to-preserve-setup_devpy-for-convenience" title="Permanent link">&para;</a></h2>
-<p><strong>Risk:</strong> partial migration that keeps the old script around.</p>
-<p><strong>Handling:</strong> reject it. Phase 1 is explicitly clean-break work for the targeted repos.</p>
-<hr />
-<h2 id="9-exit-criteria-for-phase-1">9. Exit criteria for Phase 1<a class="headerlink" href="#9-exit-criteria-for-phase-1" title="Permanent link">&para;</a></h2>
-<p>Phase 1 is complete only when all of the following are true:</p>
-<ol>
-<li><code>aerobeat-core</code> is normalized and tagged</li>
-<li><code>aerobeat-ui-core</code> is normalized and tagged</li>
-<li><code>aerobeat-ui-kit-community</code> is normalized, no longer depends on <code>setup_dev.py</code>, and is tagged</li>
-<li>repo docs in those three repos describe the GodotEnv flow directly</li>
-<li>at least one audit pass confirms the three-repo chain matches the Phase 0 contract</li>
-</ol>
-<hr />
-<h2 id="10-explicit-closeout-rule-for-the-overall-migration">10. Explicit closeout rule for the overall migration<a class="headerlink" href="#10-explicit-closeout-rule-for-the-overall-migration" title="Permanent link">&para;</a></h2>
-<p>Phase 1 does <strong>not</strong> satisfy final migration closeout on its own.</p>
-<p>The overall GodotEnv migration is not complete until AeroBeat performs and records a <strong>full-family re-audit</strong> after later phases finish.</p>
-<p>That final re-audit must verify at minimum:</p>
+<h3 id="phase-2-add-first-party-mirrors-and-metadata-authority">Phase 2: add first-party mirrors and metadata authority<a class="headerlink" href="#phase-2-add-first-party-mirrors-and-metadata-authority" title="Permanent link">&para;</a></h3>
+<p>As the ecosystem matures, AeroBeat should strengthen first-party control over:</p>
 <ul>
-<li>no first-party repo still relies on legacy dependency bootstrap artifacts</li>
-<li>manifest placement rules match the Phase 0 contract across the repo family</li>
-<li>foundational repos are being consumed via the intended tag/branch/symlink rules</li>
-<li>assembly repos use root <code>addons.jsonc</code></li>
-<li>package and UI shell repos use <code>.testbed/addons.jsonc</code></li>
-<li>templates/docs/CI no longer regenerate or teach the obsolete workflow</li>
+<li>canonical package metadata</li>
+<li>approval status and trust records</li>
+<li>library sync and user entitlements where needed</li>
+<li>archival of authored source packages and approved artifacts</li>
 </ul>
-<p><strong>Closeout rule:</strong> no parent migration bead, epic, or plan may be marked fully complete until that final family-wide re-audit is done.</p>
-<hr />
-<h2 id="final-decision-summary">Final decision summary<a class="headerlink" href="#final-decision-summary" title="Permanent link">&para;</a></h2>
+<p>This reduces dependency on any single provider while preserving the convenience of a third-party shell.</p>
+<h3 id="phase-3-keep-the-option-to-self-host-more-of-the-outer-shell">Phase 3: keep the option to self-host more of the outer shell<a class="headerlink" href="#phase-3-keep-the-option-to-self-host-more-of-the-outer-shell" title="Permanent link">&para;</a></h3>
+<p>If product scale, platform requirements, or economics justify it later, AeroBeat can pull more of discovery, identity, and moderation in-house without rewriting the package contract.</p>
+<p>That is the key advantage of the phased approach: the migration path is architectural, not emergency surgery.</p>
+<h2 id="final-recommendation">Final recommendation<a class="headerlink" href="#final-recommendation" title="Permanent link">&para;</a></h2>
+<p>AeroBeat should <strong>not</strong> build its core UGC architecture around any third-party platform.</p>
+<p>It also probably should <strong>not</strong> self-host the entire community/distribution stack on day one.</p>
+<p>The recommended direction is a <strong>hybrid model</strong>:</p>
 <ul>
-<li>Phase 1 is the foundation wave: <code>aerobeat-core</code> -&gt; <code>aerobeat-ui-core</code> -&gt; <code>aerobeat-ui-kit-community</code>.</li>
-<li>The goal is not broad migration; it is stable contract and tag discipline.</li>
-<li>Each repo must end with the canonical manifest, updated ignore/docs, clean validation, and a real release tag.</li>
-<li><code>aerobeat-ui-kit-community</code> is the proof that the normalized foundation chain is actually consumable.</li>
-<li>The overall migration still closes only after a later full-family re-audit.</li>
+<li><strong>first-party</strong> package contract, validation, bake/signing authority, trust metadata, and runtime allow rules</li>
+<li><strong>optional third-party</strong> distribution/community shell for discovery, hosting, and moderation assistance</li>
+<li><strong>vendor-neutral</strong> identifiers and package semantics so AeroBeat can migrate later without breaking content</li>
 </ul>
+<p>Concretely, using mod.io as the first external shell is a reasonable tactical choice if AeroBeat treats it as a replaceable delivery/community layer rather than the system that defines content truth.</p>
+<p>That gives AeroBeat the fastest path to useful community distribution while preserving the harder architectural requirement: AeroBeat decides what a valid package is and what the game is allowed to trust.</p>
 
 
 
@@ -5646,7 +6334,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 20:21:21 UTC">April 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 2, 2026 18:36:04 UTC">May 2, 2026</span>
   </span>
 
     
