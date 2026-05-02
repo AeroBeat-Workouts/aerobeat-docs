@@ -122,14 +122,15 @@ My current opinion on the repo shape is:
 
 **Status:** ⚠️ Partial
 
-**What We Built:** Task 1 is complete: the live UGC docs now treat mod.io as AeroBeat's current outer-shell community/distribution path while keeping all package/trust authority first-party. Tasks 2 and 3 remain pending in this plan.
+**What We Built:** Task 1 and Task 2 are complete. The live UGC docs now treat mod.io as AeroBeat's current outer-shell community/distribution path while keeping all package/trust authority first-party, and the new topology doc records the recommended repo split: `aerobeat-tool-api` as the Godot-imported singleton/API-manager lane, `aerobeat-vendor-modio` as the first provider adapter repo, and no extra workflow/domain repo yet.
 
-**Reference Check:** Task 1 satisfied `REF-02` through `REF-08` and updated `REF-01` with the actual implementation details. No topology conclusions beyond light routing guidance in `repository-map.md` were added ahead of Task 2.
+**Reference Check:** Task 1 satisfied `REF-02` through `REF-08`. Task 2 satisfied `REF-04`, `REF-05`, `REF-08`, and `REF-09`, and updated `REF-01` with the actual topology recommendation and touched files.
 
 **Commits:**
 - `4964e47` - Lock mod.io as current outer UGC shell
+- Pending final Task 2 commit
 
-**Lessons Learned:** The older `ugc_modding.md` and `backend_api.md` pages needed wording alignment so the newer strategy docs would not be undermined by legacy direct-upload/runtime-trust phrasing.
+**Lessons Learned:** The existing docs were already pointing toward `aerobeat-tool-api`; the missing piece was to make that routing explicit, name the provider-adapter seam concretely, and state the anti-patterns plainly enough that product repos do not drift into direct vendor coupling.
 
 ---
 
