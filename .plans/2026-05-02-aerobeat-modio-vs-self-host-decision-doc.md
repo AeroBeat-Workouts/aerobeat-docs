@@ -116,24 +116,24 @@ This plan keeps the core AeroBeat content/import model first-party while evaluat
 - `mkdocs.yml`
 - `.plans/2026-05-02-aerobeat-modio-vs-self-host-decision-doc.md`
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**Results:** Pending.
+**Results:** Auditor pass confirmed the final `ugc-distribution-strategy.md` recommendation is technically coherent and still matches the active plan plus adjacent architecture docs. The page stays aligned with the current product slice — camera-first Boxing and Flow, PC community release first — while keeping store/mobile wording explicitly planning-oriented instead of promising compliance outcomes. It also keeps AeroBeat package IDs, validation, bake/signing authority, and runtime trust first-party, with mod.io framed only as an optional outer distribution/community shell. Independent validation re-ran with `source venv/bin/activate && mkdocs build --clean` and succeeded with only the repo's pre-existing nav omissions and third-party MkDocs ecosystem warnings.
 
 ---
 
 ## Final Results
 
-**Status:** ⏳ In Progress
+**Status:** ✅ Complete
 
-**What We Built:** Coder pass completed: added `docs/architecture/ugc-distribution-strategy.md` and linked it into the Architecture nav in `mkdocs.yml`. The new page explains why the decision exists, separates distribution trust from runtime trust, compares third-party-shell and fully self-hosted approaches, covers auth/moderation/storefront implications, and recommends a phased hybrid strategy that preserves vendor-neutral package semantics.
+**What We Built:** Added `docs/architecture/ugc-distribution-strategy.md` and linked it into the Architecture nav in `mkdocs.yml`. The final page explains why the decision exists, separates distribution trust from runtime trust, compares third-party-shell and fully self-hosted approaches, covers auth/moderation/storefront implications, and recommends a phased hybrid strategy that preserves vendor-neutral package semantics.
 
-**Reference Check:** Coder pass aligns with `REF-02`, `REF-03`, and `REF-04` by keeping package validation, bake/signing, and runtime trust first-party; aligns with `REF-05` by keeping Steam/mobile/store language soft and planning-oriented rather than claiming compliance guarantees.
+**Reference Check:** Final audited result aligns with `REF-02`, `REF-03`, and `REF-04` by keeping package validation, bake/signing, authored package truth, and runtime trust first-party; aligns with `REF-05` by keeping Steam/mobile/store language soft and planning-oriented rather than claiming compliance guarantees; aligns with current community-release framing by explicitly scoping the strategy to camera-first Boxing and Flow on the PC-first path.
 
 **Commits:**
 - `1729818` - docs: add UGC distribution strategy
 
-**Lessons Learned:** Repo-local validation depends on the checked-in virtualenv here; `mkdocs` was unavailable on PATH, but the required build succeeded from `venv`.
+**Lessons Learned:** Repo-local validation depends on the checked-in virtualenv here; `mkdocs` was unavailable on PATH, but the required build succeeded from `venv`. The audit confirmed the current doc can describe a mod.io-style shell without coupling the core package/runtime contract to that vendor.
 
 ---
 
