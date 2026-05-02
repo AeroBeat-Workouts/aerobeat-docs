@@ -2737,10 +2737,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-request-upload-pre-signed-url" class="md-nav__link">
+  <a href="#2-request-upload-brokered-upload-target" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Request Upload (Pre-Signed URL)
+        2. Request Upload (Brokered Upload Target)
       
     </span>
   </a>
@@ -5519,10 +5519,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-request-upload-pre-signed-url" class="md-nav__link">
+  <a href="#2-request-upload-brokered-upload-target" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Request Upload (Pre-Signed URL)
+        2. Request Upload (Brokered Upload Target)
       
     </span>
   </a>
@@ -5741,7 +5741,7 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>DDoS / Bandwidth Exhaustion</strong></td>
-<td style="text-align: left;"><strong>Pre-Signed URLs.</strong> Uploads go directly to Cloud Storage (S3), bypassing API servers.</td>
+<td style="text-align: left;"><strong>Brokered direct uploads.</strong> Uploads go directly to an authorized storage/provider target (for example S3 or a mod.io-backed target), bypassing API servers.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Storage Exhaustion</strong></td>
@@ -5811,7 +5811,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="2-request-upload-pre-signed-url">2. Request Upload (Pre-Signed URL)<a class="headerlink" href="#2-request-upload-pre-signed-url" title="Permanent link">&para;</a></h3>
+<h3 id="2-request-upload-brokered-upload-target">2. Request Upload (Brokered Upload Target)<a class="headerlink" href="#2-request-upload-brokered-upload-target" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Endpoint:</strong> <code>POST /api/v1/mods/upload-request</code></li>
 <li><strong>Body:</strong><ul>
@@ -5822,7 +5822,7 @@
 </ul>
 </li>
 <li><strong>Response:</strong><ul>
-<li><code>upload_url</code>: The S3 Pre-Signed URL (PUT).</li>
+<li><code>upload_url</code>: The authorized direct-upload target (for example a pre-signed object-storage URL or a provider-brokered upload URL).</li>
 <li><code>upload_id</code>: Temporary transaction ID.</li>
 <li><code>expires_in</code>: Seconds until URL expires (e.g., 900).</li>
 </ul>
@@ -5844,8 +5844,8 @@
 </ul>
 </li>
 <li><strong>Response:</strong><ul>
-<li><code>202 Accepted</code>: Validation job queued.</li>
-<li><code>mod_id</code>: The permanent ID of the new mod.</li>
+<li><code>202 Accepted</code>: Validation job queued after AeroBeat links the uploaded source package to its submission record and any required provider mapping.</li>
+<li><code>mod_id</code>: The permanent AeroBeat ID of the new mod.</li>
 </ul>
 </li>
 </ul>
@@ -5993,7 +5993,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 2, 2026 20:24:44 UTC">May 2, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 2, 2026 20:28:51 UTC">May 2, 2026</span>
   </span>
 
     
