@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/architecture/cloud_baker/">
+        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/architecture/ugc-hybrid-integration-architecture/">
       
       
-        <link rel="prev" href="../backend_api/">
+        <link rel="prev" href="../ugc-distribution-strategy/">
       
       
-        <link rel="next" href="../coding-style/">
+        <link rel="next" href="../ui-ux/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Cloud Baker - AeroBeat Documentation</title>
+        <title>UGC Hybrid Integration Architecture - AeroBeat Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cloud-baker-architecture" class="md-skip">
+        <a href="#ugc-hybrid-integration-architecture" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Cloud Baker
+              UGC Hybrid Integration Architecture
             
           </span>
         </div>
@@ -2601,37 +2601,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Cloud Baker
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../cloud_baker/" class="md-nav__link">
         
   
   
@@ -2647,109 +2620,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#the-pipeline" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🏗️ The Pipeline
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🏗️ The Pipeline">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#stage-1-validation-the-gatekeeper" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Stage 1: Validation (The Gatekeeper)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stage-2-optimization-the-crunch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Stage 2: Optimization (The Crunch)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stage-3-packaging-the-baker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Stage 3: Packaging (The Baker)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#infrastructure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ☁️ Infrastructure
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#re-baking-strategy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔄 Re-Baking Strategy
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#security-measures" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🛡️ Security Measures
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3235,10 +3105,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../ugc-hybrid-integration-architecture/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UGC Hybrid Integration Architecture
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -3254,6 +3151,498 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scope-and-release-framing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope and release framing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-boundary-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System boundary summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System boundary summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#third-party-ugc-shell-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Third-party UGC shell responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AeroBeat responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trust-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trust boundaries
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trust boundaries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boundary-1-provider-hosted-submissions-are-untrusted-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boundary 1: provider-hosted submissions are untrusted input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boundary-2-aerobeat-approved-artifacts-are-the-only-runtime-trustable-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boundary 2: AeroBeat-approved artifacts are the only runtime-trustable artifacts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boundary-3-provider-identity-is-advisory-aerobeat-identity-is-canonical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boundary 3: provider identity is advisory, AeroBeat identity is canonical
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logical-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logical components
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-to-end-content-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End-to-end content flow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="End-to-end content flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-authentication-and-identity-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Authentication and identity flow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Authentication and identity flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creator-auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creator auth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#athlete-auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Athlete auth
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-discovery-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Discovery flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-submission-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Submission flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-moderation-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Moderation boundary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Moderation boundary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#provider-moderation-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provider moderation boundary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-moderation-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AeroBeat moderation boundary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-aerobeat-validator-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. AeroBeat validator flow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. AeroBeat validator flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validator-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validator inputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validator-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validator checks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validator-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validator outputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-cloud-baker-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Cloud baker flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-signed-artifact-publication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Signed artifact publication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-install-update-and-cache-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Install, update, and cache behavior
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Install, update, and cache behavior">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cache behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-offline-and-runtime-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Offline and runtime behavior
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-failure-and-quarantine-flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Failure and quarantine flows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Failure and quarantine flows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#submission-time-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submission-time failures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-publication-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Post-publication failures
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-telemetry-and-audit-trail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Telemetry and audit trail
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-vendor-exit-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Vendor-exit strategy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Vendor-exit strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#design-rules-that-preserve-exit-ability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design rules that preserve exit ability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migration-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migration path
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-what-this-architecture-does-not-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. What this architecture does not claim
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-near-term-implementation-stance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended near-term implementation stance
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -5184,22 +5573,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-pipeline" class="md-nav__link">
+  <a href="#scope-and-release-framing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🏗️ The Pipeline
+        Scope and release framing
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🏗️ The Pipeline">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-boundary-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System boundary summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System boundary summary">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#stage-1-validation-the-gatekeeper" class="md-nav__link">
+  <a href="#third-party-ugc-shell-responsibilities" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stage 1: Validation (The Gatekeeper)
+        Third-party UGC shell responsibilities
       
     </span>
   </a>
@@ -5207,21 +5607,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#stage-2-optimization-the-crunch" class="md-nav__link">
+  <a href="#aerobeat-responsibilities" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stage 2: Optimization (The Crunch)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stage-3-packaging-the-baker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Stage 3: Packaging (The Baker)
+        AeroBeat responsibilities
       
     </span>
   </a>
@@ -5234,10 +5623,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#infrastructure" class="md-nav__link">
+  <a href="#trust-boundaries" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ☁️ Infrastructure
+        Trust boundaries
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trust boundaries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boundary-1-provider-hosted-submissions-are-untrusted-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boundary 1: provider-hosted submissions are untrusted input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boundary-2-aerobeat-approved-artifacts-are-the-only-runtime-trustable-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boundary 2: AeroBeat-approved artifacts are the only runtime-trustable artifacts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boundary-3-provider-identity-is-advisory-aerobeat-identity-is-canonical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boundary 3: provider identity is advisory, AeroBeat identity is canonical
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logical-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logical components
       
     </span>
   </a>
@@ -5245,10 +5684,66 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#re-baking-strategy" class="md-nav__link">
+  <a href="#end-to-end-content-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔄 Re-Baking Strategy
+        End-to-end content flow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="End-to-end content flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-authentication-and-identity-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Authentication and identity flow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Authentication and identity flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creator-auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creator auth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#athlete-auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Athlete auth
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-discovery-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Discovery flow
       
     </span>
   </a>
@@ -5256,10 +5751,293 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#security-measures" class="md-nav__link">
+  <a href="#3-submission-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛡️ Security Measures
+        3. Submission flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-moderation-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Moderation boundary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Moderation boundary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#provider-moderation-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provider moderation boundary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-moderation-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AeroBeat moderation boundary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-aerobeat-validator-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. AeroBeat validator flow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. AeroBeat validator flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validator-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validator inputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validator-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validator checks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validator-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validator outputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-cloud-baker-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Cloud baker flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-signed-artifact-publication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Signed artifact publication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-install-update-and-cache-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Install, update, and cache behavior
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Install, update, and cache behavior">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cache behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-offline-and-runtime-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Offline and runtime behavior
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-failure-and-quarantine-flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Failure and quarantine flows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Failure and quarantine flows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#submission-time-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submission-time failures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-publication-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Post-publication failures
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-telemetry-and-audit-trail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Telemetry and audit trail
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-vendor-exit-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Vendor-exit strategy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Vendor-exit strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#design-rules-that-preserve-exit-ability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design rules that preserve exit ability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migration-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migration path
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-what-this-architecture-does-not-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. What this architecture does not claim
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-near-term-implementation-stance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended near-term implementation stance
       
     </span>
   </a>
@@ -5286,75 +6064,351 @@
   
 
 
-<h1 id="cloud-baker-architecture">Cloud Baker Architecture<a class="headerlink" href="#cloud-baker-architecture" title="Permanent link">&para;</a></h1>
-<p>The <strong>Cloud Baker</strong> is the server-side pipeline responsible for validating, optimizing, and packaging User Generated Content (UGC). It ensures that raw creator submissions are safe and performant before they reach athletes' devices.</p>
+<h1 id="ugc-hybrid-integration-architecture">UGC Hybrid Integration Architecture<a class="headerlink" href="#ugc-hybrid-integration-architecture" title="Permanent link">&para;</a></h1>
+<p>This document describes a <strong>hybrid UGC architecture</strong> where a third-party community/distribution shell such as <strong>mod.io</strong> surrounds an <strong>AeroBeat-owned trust core</strong>.</p>
+<p>The key rule is simple:</p>
 <blockquote>
-<p><strong>Package-contract boundary:</strong> The Cloud Baker is a future distribution/build pipeline concern. It does <strong>not</strong> redefine the authored workout-package contract. The canonical authored truth remains the self-contained package folders/YAML described in the package docs. If this pipeline later emits <code>.pck</code> files or signed bundles, those are distribution artifacts layered on top of the authored package model.</p>
+<p>A third-party provider may help users <strong>discover</strong>, <strong>follow</strong>, <strong>download</strong>, and <strong>report</strong> content, but <strong>AeroBeat decides what packages are valid and what runtime artifacts the client is allowed to trust</strong>.</p>
 </blockquote>
-<h2 id="the-pipeline">🏗️ The Pipeline<a class="headerlink" href="#the-pipeline" title="Permanent link">&para;</a></h2>
-<p>The pipeline is triggered via a webhook when a file lands in the S3 "Uploads" bucket.</p>
-<h3 id="stage-1-validation-the-gatekeeper">Stage 1: Validation (The Gatekeeper)<a class="headerlink" href="#stage-1-validation-the-gatekeeper" title="Permanent link">&para;</a></h3>
+<p>This document uses <strong>mod.io as the concrete example</strong>, but the architecture is intentionally <strong>vendor-decoupled</strong> so the outer shell can be replaced later.</p>
+<h2 id="scope-and-release-framing">Scope and release framing<a class="headerlink" href="#scope-and-release-framing" title="Permanent link">&para;</a></h2>
+<p>This architecture is aimed at the current AeroBeat release sequence:</p>
 <ul>
-<li><strong>Environment:</strong> Ephemeral Docker Container (Network Isolated).</li>
-<li><strong>Input:</strong> Authored workout packages or raw source assets destined for a later build step.</li>
-<li><strong>Checks:</strong><ol>
-<li><strong>Package Shape Check:</strong> Does the submission match the expected package/domain layout and parse cleanly?</li>
-<li><strong>Script Scan:</strong> Grep for <code>script/source</code> or <code>type="GDScript"</code> in any submitted runtime resources. <strong>Fail immediately if found.</strong></li>
-<li><strong>Reference Check:</strong> Ensure paths and ids resolve inside the package boundary and do not attempt to overwrite engine/addon/runtime-owned paths.</li>
-</ol>
-</li>
+<li><strong>camera-first Boxing + Flow</strong></li>
+<li><strong>PC community-first</strong> release</li>
+<li>future mobile/storefront/arcade paths treated as planning-sensitive, not already solved by this design</li>
 </ul>
-<h3 id="stage-2-optimization-the-crunch">Stage 2: Optimization (The Crunch)<a class="headerlink" href="#stage-2-optimization-the-crunch" title="Permanent link">&para;</a></h3>
+<p>The goal is to support community content quickly without giving away the package contract, the approval pipeline, or the runtime trust boundary.</p>
+<h2 id="system-boundary-summary">System boundary summary<a class="headerlink" href="#system-boundary-summary" title="Permanent link">&para;</a></h2>
+<h3 id="third-party-ugc-shell-responsibilities">Third-party UGC shell responsibilities<a class="headerlink" href="#third-party-ugc-shell-responsibilities" title="Permanent link">&para;</a></h3>
+<p>A provider such as mod.io may handle:</p>
 <ul>
-<li><strong>Texture Compression:</strong><ul>
-<li>Convert raw PNG/JPG to <strong>WebP</strong> (Lossless) for UI when appropriate.</li>
-<li>Convert textures to <strong>ASTC</strong> (4x4 block) for Mobile/VR performance when packaging runtime artifacts.</li>
+<li>public browsing and search UX</li>
+<li>creator pages and social/community identity</li>
+<li>subscriptions/follows</li>
+<li>ratings, comments, and reports</li>
+<li>file hosting and CDN delivery for submitted source packages</li>
+<li>moderation tooling for the outer community surface</li>
 </ul>
-</li>
-<li><strong>Audio Conversion:</strong><ul>
-<li>Convert WAV/MP3 to <strong>Ogg Vorbis</strong> (Quality 7) for streaming.</li>
-</ul>
-</li>
-<li><strong>Mesh LODs:</strong><ul>
-<li>Generate LOD1 and LOD2 meshes automatically using Godot's mesh optimizer.</li>
-</ul>
-</li>
-</ul>
-<h3 id="stage-3-packaging-the-baker">Stage 3: Packaging (The Baker)<a class="headerlink" href="#stage-3-packaging-the-baker" title="Permanent link">&para;</a></h3>
+<h3 id="aerobeat-responsibilities">AeroBeat responsibilities<a class="headerlink" href="#aerobeat-responsibilities" title="Permanent link">&para;</a></h3>
+<p>AeroBeat remains the authority for:</p>
 <ul>
-<li><strong>Tool:</strong> Headless Godot Editor or other packaging/runtime build steps.</li>
-<li><strong>Action:</strong><ol>
-<li>Import the validated package into a temporary build environment.</li>
-<li>Generate runtime/distribution artifacts such as exported packs if the target platform needs them.</li>
-<li>Optionally sign the <strong>distribution artifact</strong> with AeroBeat-controlled keys.</li>
-</ol>
-</li>
+<li>package specification and manifest schema</li>
+<li>canonical content IDs, versions, hashes, and metadata mappings</li>
+<li>creator upload authorization rules</li>
+<li>server-side validation and security scanning</li>
+<li>approval and rejection policy for runnable content</li>
+<li>cloud bake/sign pipeline</li>
+<li>trusted artifact publication metadata</li>
+<li>client install, cache, allow/deny, and quarantine behavior</li>
+<li>runtime mounting rules</li>
+<li>telemetry and auditability</li>
+<li>migration/export strategy away from any provider</li>
 </ul>
-<p>Signing and integrity metadata here are a transport/distribution hardening concern. They are intentionally separate from the v1 authored package YAML contract.</p>
-<h2 id="infrastructure">☁️ Infrastructure<a class="headerlink" href="#infrastructure" title="Permanent link">&para;</a></h2>
+<h2 id="trust-boundaries">Trust boundaries<a class="headerlink" href="#trust-boundaries" title="Permanent link">&para;</a></h2>
+<h3 id="boundary-1-provider-hosted-submissions-are-untrusted-input">Boundary 1: provider-hosted submissions are untrusted input<a class="headerlink" href="#boundary-1-provider-hosted-submissions-are-untrusted-input" title="Permanent link">&para;</a></h3>
+<p>Anything uploaded to a third-party shell is treated as <strong>untrusted</strong> until AeroBeat validates it.</p>
+<p>A file being visible, downloadable, or even moderator-approved on the provider side does <strong>not</strong> make it runtime-safe.</p>
+<h3 id="boundary-2-aerobeat-approved-artifacts-are-the-only-runtime-trustable-artifacts">Boundary 2: AeroBeat-approved artifacts are the only runtime-trustable artifacts<a class="headerlink" href="#boundary-2-aerobeat-approved-artifacts-are-the-only-runtime-trustable-artifacts" title="Permanent link">&para;</a></h3>
+<p>The AeroBeat client should install and mount only artifacts that:</p>
 <ul>
-<li><strong>Orchestrator:</strong> AWS Step Functions / Temporal.</li>
-<li><strong>Compute:</strong> AWS Fargate (Serverless Containers).</li>
-<li><strong>Storage:</strong><ul>
-<li><code>s3://aerobeat-uploads/</code>: Raw, untrusted files (Lifecycle: 24h).</li>
-<li><code>s3://aerobeat-assets/</code>: Processed, public artifacts (CDN backed).</li>
+<li>map to an AeroBeat content ID and version</li>
+<li>passed AeroBeat validation</li>
+<li>were baked by the AeroBeat pipeline when required</li>
+<li>carry AeroBeat-published integrity metadata</li>
+<li>remain in a non-revoked trust state</li>
 </ul>
-</li>
-</ul>
-<h2 id="re-baking-strategy">🔄 Re-Baking Strategy<a class="headerlink" href="#re-baking-strategy" title="Permanent link">&para;</a></h2>
-<p>One of the biggest risks in Godot development is <strong>Binary Compatibility</strong>. A runtime bundle exported in one Godot version might not load correctly in another.</p>
-<p>To solve this, we store the <strong>authored package/source assets</strong>, not just the final exported artifact.</p>
-<ul>
-<li><strong>Trigger:</strong> When AeroBeat upgrades the engine version or its packaging pipeline.</li>
-<li><strong>Action:</strong> The Cloud Baker spins up workers to re-import and re-export active content using the new toolchain.</li>
-<li><strong>Result:</strong> Athletes download refreshed runtime artifacts without creators having to re-author the package contract itself.</li>
-</ul>
-<h2 id="security-measures">🛡️ Security Measures<a class="headerlink" href="#security-measures" title="Permanent link">&para;</a></h2>
+<h3 id="boundary-3-provider-identity-is-advisory-aerobeat-identity-is-canonical">Boundary 3: provider identity is advisory, AeroBeat identity is canonical<a class="headerlink" href="#boundary-3-provider-identity-is-advisory-aerobeat-identity-is-canonical" title="Permanent link">&para;</a></h3>
+<p>Provider object IDs, user IDs, and listing URLs are useful integration fields, but they are <strong>secondary mappings</strong>.</p>
+<p>The game runtime, internal APIs, and long-lived metadata should key off AeroBeat-owned identifiers.</p>
+<h2 id="logical-components">Logical components<a class="headerlink" href="#logical-components" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>Creator Tools
+  -&gt; AeroBeat Upload Broker / Mapping API
+  -&gt; Third-Party UGC Shell (mod.io example)
+  -&gt; AeroBeat Submission Ingest
+  -&gt; AeroBeat Validator
+  -&gt; AeroBeat Cloud Baker
+  -&gt; AeroBeat Trust Metadata + Artifact Registry
+  -&gt; AeroBeat Download/Policy API
+  -&gt; AeroBeat Game Client
+</code></pre></div>
+<h2 id="end-to-end-content-flow">End-to-end content flow<a class="headerlink" href="#end-to-end-content-flow" title="Permanent link">&para;</a></h2>
+<h3 id="1-authentication-and-identity-flow">1. Authentication and identity flow<a class="headerlink" href="#1-authentication-and-identity-flow" title="Permanent link">&para;</a></h3>
+<h4 id="creator-auth">Creator auth<a class="headerlink" href="#creator-auth" title="Permanent link">&para;</a></h4>
+<p>Creators should authenticate with AeroBeat first.</p>
+<p>Recommended pattern:</p>
 <ol>
-<li><strong>Sandboxing:</strong> The Baker runs with <strong>No Outbound Internet Access</strong>. It cannot phone home or download malware.</li>
-<li><strong>Resource Limits:</strong> Strict RAM (2GB) and CPU limits prevent "Zip Bomb" attacks from crashing the cluster.</li>
-<li><strong>Timeout:</strong> Any job taking &gt; 5 minutes is hard-killed.</li>
+<li>Creator signs into AeroBeat in the SDK or creator portal.</li>
+<li>AeroBeat decides whether that account may publish the requested content type.</li>
+<li>AeroBeat either:</li>
+<li>issues a short-lived provider delegation token, or</li>
+<li>performs the provider-side upload orchestration on the creator's behalf.</li>
+<li>AeroBeat stores the mapping between:</li>
+<li>AeroBeat creator ID</li>
+<li>provider user/project/mod ID</li>
+<li>AeroBeat content ID candidate / submission record</li>
 </ol>
+<p>This keeps publish permissions and future migration logic anchored to AeroBeat accounts, not only provider accounts.</p>
+<h4 id="athlete-auth">Athlete auth<a class="headerlink" href="#athlete-auth" title="Permanent link">&para;</a></h4>
+<p>For browsing/downloading in the game client:</p>
+<ul>
+<li>the athlete authenticates with AeroBeat or uses AeroBeat guest access where allowed</li>
+<li>the client talks to <strong>AeroBeat APIs</strong> for trustable metadata, library sync, and policy decisions</li>
+<li>direct provider access by the client should be minimized and treated as a delivery optimization, not as the source of truth</li>
+</ul>
+<h2 id="2-discovery-flow">2. Discovery flow<a class="headerlink" href="#2-discovery-flow" title="Permanent link">&para;</a></h2>
+<p>The provider shell may remain the main community-facing discovery surface for early PC release, but the client should still consume <strong>AeroBeat-curated metadata views</strong>.</p>
+<p>Recommended pattern:</p>
+<ol>
+<li>Provider stores the public listing, screenshots, description, tags, and community reactions.</li>
+<li>AeroBeat mirrors or indexes the subset of metadata needed for in-game browsing.</li>
+<li>AeroBeat adds first-party fields such as:</li>
+<li>trust status</li>
+<li>approved artifact version</li>
+<li>feature compatibility (<code>boxing</code>, <code>flow</code>)</li>
+<li>package/runtime compatibility</li>
+<li>quarantine or takedown state</li>
+<li>The game client browses through an AeroBeat endpoint that can join provider metadata with AeroBeat trust metadata.</li>
+</ol>
+<p>This allows AeroBeat to hide content that is publicly visible on the provider but not approved for runtime use.</p>
+<h2 id="3-submission-flow">3. Submission flow<a class="headerlink" href="#3-submission-flow" title="Permanent link">&para;</a></h2>
+<p>A concrete hybrid submission flow can look like this:</p>
+<ol>
+<li>Creator packages content using AeroBeat SDK rules.</li>
+<li>SDK performs local validation for fast feedback.</li>
+<li>SDK requests an AeroBeat upload session.</li>
+<li>AeroBeat creates a submission record with:</li>
+<li>AeroBeat submission ID</li>
+<li>creator ID</li>
+<li>expected checksum</li>
+<li>declared package type</li>
+<li>target feature/mode</li>
+<li>AeroBeat authorizes upload to the third-party shell or receives a provider upload callback.</li>
+<li>Provider stores the raw file as community-hosted source input.</li>
+<li>AeroBeat ingest receives the provider file reference, checksum, and listing mapping.</li>
+<li>AeroBeat queues the submission into the validation pipeline.</li>
+</ol>
+<p>This keeps the creator-facing workflow compatible with a mod.io-style shell while ensuring validation begins from AeroBeat-owned records.</p>
+<h2 id="4-moderation-boundary">4. Moderation boundary<a class="headerlink" href="#4-moderation-boundary" title="Permanent link">&para;</a></h2>
+<p>Moderation is split on purpose.</p>
+<h3 id="provider-moderation-boundary">Provider moderation boundary<a class="headerlink" href="#provider-moderation-boundary" title="Permanent link">&para;</a></h3>
+<p>The provider may moderate the <strong>community surface</strong>, such as:</p>
+<ul>
+<li>public visibility</li>
+<li>comments and ratings</li>
+<li>creator account sanctions inside that service</li>
+<li>report triage for the listing experience</li>
+</ul>
+<h3 id="aerobeat-moderation-boundary">AeroBeat moderation boundary<a class="headerlink" href="#aerobeat-moderation-boundary" title="Permanent link">&para;</a></h3>
+<p>AeroBeat moderates the <strong>runtime trust decision</strong>, including:</p>
+<ul>
+<li>whether the submission enters validation</li>
+<li>whether a validated package is approved for baking/publication</li>
+<li>whether an already published artifact is revoked, quarantined, or hidden in-client</li>
+<li>how takedown decisions affect existing installs and library sync</li>
+</ul>
+<p>A provider allowing a listing to stay up does not require AeroBeat to trust it.
+AeroBeat revoking trust does not require the provider listing to disappear immediately, though the systems should coordinate.</p>
+<h2 id="5-aerobeat-validator-flow">5. AeroBeat validator flow<a class="headerlink" href="#5-aerobeat-validator-flow" title="Permanent link">&para;</a></h2>
+<p>The validator is the first hard trust gate.</p>
+<h3 id="validator-inputs">Validator inputs<a class="headerlink" href="#validator-inputs" title="Permanent link">&para;</a></h3>
+<ul>
+<li>provider file reference or fetched source blob</li>
+<li>AeroBeat submission metadata</li>
+<li>declared package type and target feature</li>
+<li>expected checksum and size</li>
+</ul>
+<h3 id="validator-checks">Validator checks<a class="headerlink" href="#validator-checks" title="Permanent link">&para;</a></h3>
+<p>The validator should run in AeroBeat-controlled isolated infrastructure and perform checks such as:</p>
+<ul>
+<li>package shape and manifest schema validation</li>
+<li>path normalization and package-boundary enforcement</li>
+<li>script scanning / executable payload rejection</li>
+<li>forbidden extension checks (<code>.gd</code>, <code>.dll</code>, <code>.so</code>, etc.)</li>
+<li>reference validation for internal asset links</li>
+<li>file size / decompression / zip-bomb controls</li>
+<li>compatibility checks for current supported package/runtime versions</li>
+<li>feature targeting checks for current product scope (camera-first Boxing + Flow on PC)</li>
+</ul>
+<h3 id="validator-outputs">Validator outputs<a class="headerlink" href="#validator-outputs" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>approved_for_bake</code></li>
+<li><code>rejected</code></li>
+<li><code>quarantined_for_review</code></li>
+<li>machine-readable error report</li>
+<li>normalized extracted metadata for downstream systems</li>
+</ul>
+<h2 id="6-cloud-baker-flow">6. Cloud baker flow<a class="headerlink" href="#6-cloud-baker-flow" title="Permanent link">&para;</a></h2>
+<p>If validation passes, the submission moves into the AeroBeat cloud baker.</p>
+<p>The baker may:</p>
+<ul>
+<li>import the validated package into a controlled build environment</li>
+<li>transcode or optimize assets where the runtime artifact format requires it</li>
+<li>generate engine/runtime-ready output bundles</li>
+<li>attach versioned integrity metadata</li>
+<li>optionally sign the resulting runtime artifact with AeroBeat-controlled keys</li>
+</ul>
+<p>The important separation is:</p>
+<ul>
+<li><strong>source submission</strong> = creator-authored, untrusted until validated</li>
+<li><strong>approved artifact</strong> = AeroBeat-generated or AeroBeat-approved runtime payload</li>
+</ul>
+<h2 id="7-signed-artifact-publication">7. Signed artifact publication<a class="headerlink" href="#7-signed-artifact-publication" title="Permanent link">&para;</a></h2>
+<p>After baking, AeroBeat publishes an approved artifact record.</p>
+<p>That record should include:</p>
+<ul>
+<li>AeroBeat content ID</li>
+<li>version</li>
+<li>provider mapping(s)</li>
+<li>source checksum</li>
+<li>baked artifact checksum</li>
+<li>package/runtime compatibility version</li>
+<li>trust state</li>
+<li>publication timestamp</li>
+<li>revocation/quarantine flags</li>
+<li>download location(s)</li>
+</ul>
+<p>Download locations may include:</p>
+<ul>
+<li>AeroBeat-controlled CDN URLs</li>
+<li>provider-hosted mirrors</li>
+<li>later first-party mirrors for migration resilience</li>
+</ul>
+<p>The client should trust the <strong>AeroBeat publication record</strong>, not the storage vendor.</p>
+<h2 id="8-install-update-and-cache-behavior">8. Install, update, and cache behavior<a class="headerlink" href="#8-install-update-and-cache-behavior" title="Permanent link">&para;</a></h2>
+<h3 id="install-flow">Install flow<a class="headerlink" href="#install-flow" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Client browses AeroBeat metadata.</li>
+<li>Client requests install for a specific AeroBeat content ID/version.</li>
+<li>AeroBeat returns the currently approved artifact record and authorized download location.</li>
+<li>Client downloads the artifact.</li>
+<li>Client verifies checksum/signature/integrity metadata.</li>
+<li>Client installs into a managed cache.</li>
+<li>Client registers the content only after verification succeeds.</li>
+</ol>
+<h3 id="update-flow">Update flow<a class="headerlink" href="#update-flow" title="Permanent link">&para;</a></h3>
+<p>Updates should be versioned and explicit.</p>
+<ul>
+<li>Published binaries should be immutable per version.</li>
+<li>A creator update becomes a new version, not an overwrite.</li>
+<li>Auto-update should only move the athlete to a newer version when AeroBeat marks it approved and compatible.</li>
+</ul>
+<h3 id="cache-behavior">Cache behavior<a class="headerlink" href="#cache-behavior" title="Permanent link">&para;</a></h3>
+<p>Recommended client cache layers:</p>
+<ul>
+<li><strong>download cache</strong> for recently fetched artifacts</li>
+<li><strong>installed content cache</strong> for verified artifacts available to mount</li>
+<li><strong>quarantine area</strong> for failed or revoked payloads that should not mount</li>
+</ul>
+<p>Client cache records should store:</p>
+<ul>
+<li>AeroBeat content ID/version</li>
+<li>artifact hash</li>
+<li>install state</li>
+<li>last verification time</li>
+<li>origin location used for download</li>
+</ul>
+<h2 id="9-offline-and-runtime-behavior">9. Offline and runtime behavior<a class="headerlink" href="#9-offline-and-runtime-behavior" title="Permanent link">&para;</a></h2>
+<p>Downloaded and previously verified artifacts should remain usable offline within AeroBeat policy.</p>
+<p>Recommended runtime rules:</p>
+<ul>
+<li>offline play may use already verified installed content</li>
+<li>first-time installs require online trust metadata unless explicitly bundled otherwise</li>
+<li>the client mounts only previously verified artifacts from managed install locations</li>
+<li>unsigned or unrecognized files manually dropped into cache paths should not auto-mount as trusted content</li>
+</ul>
+<p>For advanced PC users, AeroBeat may still support manual side-loading as a separate mode, but that should be clearly differentiated from trusted online-distributed content.</p>
+<h2 id="10-failure-and-quarantine-flows">10. Failure and quarantine flows<a class="headerlink" href="#10-failure-and-quarantine-flows" title="Permanent link">&para;</a></h2>
+<p>Not every failure is the same.</p>
+<h3 id="submission-time-failures">Submission-time failures<a class="headerlink" href="#submission-time-failures" title="Permanent link">&para;</a></h3>
+<p>Examples:</p>
+<ul>
+<li>malformed package</li>
+<li>checksum mismatch</li>
+<li>forbidden script/executable content</li>
+<li>unsupported asset type</li>
+<li>validator timeout/resource abuse</li>
+</ul>
+<p>Actions:</p>
+<ul>
+<li>mark submission <code>rejected</code> or <code>quarantined_for_review</code></li>
+<li>preserve structured error output for the creator</li>
+<li>avoid publishing any runtime artifact record</li>
+</ul>
+<h3 id="post-publication-failures">Post-publication failures<a class="headerlink" href="#post-publication-failures" title="Permanent link">&para;</a></h3>
+<p>Examples:</p>
+<ul>
+<li>later policy takedown</li>
+<li>newly discovered security issue</li>
+<li>broken dependency/runtime regression</li>
+<li>provider mirror corruption</li>
+</ul>
+<p>Actions:</p>
+<ul>
+<li>mark artifact <code>revoked</code> or <code>quarantined</code></li>
+<li>stop new installs</li>
+<li>optionally hide in discovery surfaces</li>
+<li>decide policy for existing local installs:</li>
+<li>allow existing offline use temporarily</li>
+<li>warn and disable online matchmaking compatibility</li>
+<li>hard-disable only when security/legal reasons require it</li>
+</ul>
+<p>The key is that quarantine and revocation are first-party states managed by AeroBeat.</p>
+<h2 id="11-telemetry-and-audit-trail">11. Telemetry and audit trail<a class="headerlink" href="#11-telemetry-and-audit-trail" title="Permanent link">&para;</a></h2>
+<p>AeroBeat should log enough to reconstruct trust decisions and operational failures.</p>
+<p>Useful telemetry/events include:</p>
+<ul>
+<li>submission created</li>
+<li>provider upload linked</li>
+<li>validation started/completed/failed</li>
+<li>bake started/completed/failed</li>
+<li>artifact published</li>
+<li>artifact installed</li>
+<li>artifact verification failed</li>
+<li>artifact revoked/quarantined</li>
+<li>client mount denied</li>
+<li>provider sync mismatch</li>
+</ul>
+<p>Keep the audit trail keyed by AeroBeat IDs, with provider IDs as related fields.</p>
+<h2 id="12-vendor-exit-strategy">12. Vendor-exit strategy<a class="headerlink" href="#12-vendor-exit-strategy" title="Permanent link">&para;</a></h2>
+<p>The architecture should assume the outer shell may be replaced.</p>
+<h3 id="design-rules-that-preserve-exit-ability">Design rules that preserve exit ability<a class="headerlink" href="#design-rules-that-preserve-exit-ability" title="Permanent link">&para;</a></h3>
+<ul>
+<li>keep AeroBeat content IDs canonical</li>
+<li>persist provider IDs only as mappings</li>
+<li>keep authored submissions exportable</li>
+<li>keep trust metadata, approval state, and artifact registry first-party</li>
+<li>avoid provider-specific package semantics in the runtime contract</li>
+<li>keep client install/update behavior driven by AeroBeat APIs</li>
+<li>support publishing the same approved artifact to multiple mirrors/CDNs later</li>
+</ul>
+<h3 id="migration-path">Migration path<a class="headerlink" href="#migration-path" title="Permanent link">&para;</a></h3>
+<p>If AeroBeat later leaves mod.io or another provider, the migration should mostly involve:</p>
+<ul>
+<li>swapping the discovery/community shell</li>
+<li>re-pointing upload orchestration</li>
+<li>re-mirroring approved artifacts</li>
+<li>rebuilding metadata connectors</li>
+</ul>
+<p>It should <strong>not</strong> require redefining package manifests, changing runtime trust rules, or invalidating installed content formats.</p>
+<h2 id="13-what-this-architecture-does-not-claim">13. What this architecture does not claim<a class="headerlink" href="#13-what-this-architecture-does-not-claim" title="Permanent link">&para;</a></h2>
+<p>This design helps AeroBeat preserve control and future flexibility, but it does <strong>not</strong> automatically guarantee:</p>
+<ul>
+<li>mobile storefront approval</li>
+<li>console/platform-holder acceptance</li>
+<li>legal sufficiency for all copyright/moderation cases</li>
+<li>permanent compatibility across all future runtime targets without re-baking or curation</li>
+</ul>
+<p>Those remain product, policy, and platform workstreams.</p>
+<h2 id="recommended-near-term-implementation-stance">Recommended near-term implementation stance<a class="headerlink" href="#recommended-near-term-implementation-stance" title="Permanent link">&para;</a></h2>
+<p>For the current AeroBeat scope, the practical implementation stance is:</p>
+<ul>
+<li>use a provider such as mod.io as a <strong>replaceable community/distribution shell</strong></li>
+<li>keep validation, bake/sign, trust metadata, and runtime allow rules <strong>inside AeroBeat-owned systems</strong></li>
+<li>make the game client depend on <strong>AeroBeat trust records</strong>, not provider trust</li>
+<li>optimize first for the <strong>PC community release</strong> supporting <strong>camera-first Boxing + Flow</strong></li>
+</ul>
+<p>That gives AeroBeat a concrete path to ship community content quickly without giving away the architectural parts that are hardest to recover later.</p>
 
 
 
@@ -5375,7 +6429,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2026 21:27:37 UTC">April 25, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 2, 2026 18:51:56 UTC">May 2, 2026</span>
   </span>
 
     
