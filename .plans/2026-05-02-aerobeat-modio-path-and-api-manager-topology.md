@@ -112,25 +112,26 @@ My current opinion on the repo shape is:
 - impacted docs under `docs/architecture/`
 - `.plans/2026-05-02-aerobeat-modio-path-and-api-manager-topology.md`
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**Results:** Pending.
+**Results:** QA independently verified that the core docs now consistently present mod.io as AeroBeat's current outer community/distribution shell, preserve AeroBeat-owned package/trust authority, justify `aerobeat-tool-api` as the Godot-imported API manager lane, and keep `aerobeat-vendor-modio` clearly separated as the provider adapter seam. The main wording drift found was in `backend_api.md`, which still over-specified direct S3 upload language in a way that could be read as bypassing the chosen provider-shell framing; that was corrected with the minimum necessary wording so upload targets are now described as brokered direct-upload endpoints compatible with either object storage or provider-backed flows, while keeping AeroBeat IDs and trust records canonical. Re-ran `source venv/bin/activate && mkdocs build --clean`; build passed with only the pre-existing MkDocs ecosystem warning and pre-existing nav omissions. QA fix committed as `34e9cc1` (`Clarify brokered upload wording for mod.io path`).
 
 ---
 
 ## Final Results
 
-**Status:** ⚠️ Partial
+**Status:** ✅ Complete
 
-**What We Built:** Task 1 and Task 2 are complete. The live UGC docs now treat mod.io as AeroBeat's current outer-shell community/distribution path while keeping all package/trust authority first-party, and the new topology doc records the recommended repo split: `aerobeat-tool-api` as the Godot-imported singleton/API-manager lane, `aerobeat-vendor-modio` as the first provider adapter repo, and no extra workflow/domain repo yet.
+**What We Built:** The live UGC docs now treat mod.io as AeroBeat's current outer-shell community/distribution path while keeping all package/trust authority first-party, and the new topology doc records the recommended repo split: `aerobeat-tool-api` as the Godot-imported singleton/API-manager lane, `aerobeat-vendor-modio` as the first provider adapter repo, and no extra workflow/domain repo yet. QA also tightened one remaining backend wording mismatch so the upload path description now matches the mod.io-outer-shell decision without implying vendor-owned runtime truth.
 
-**Reference Check:** Task 1 satisfied `REF-02` through `REF-08`. Task 2 satisfied `REF-04`, `REF-05`, `REF-08`, and `REF-09`, and updated `REF-01` with the actual topology recommendation and touched files.
+**Reference Check:** Task 1 satisfied `REF-02` through `REF-08`. Task 2 satisfied `REF-04`, `REF-05`, `REF-08`, and `REF-09`, and updated `REF-01` with the actual topology recommendation and touched files. Task 3 verified `REF-01` through `REF-09`, with a minimum necessary fix in `REF-08` to keep the upload-flow wording aligned with the chosen mod.io path and AeroBeat-owned trust boundary.
 
 **Commits:**
 - `4964e47` - Lock mod.io as current outer UGC shell
 - `964ac49` - Document UGC API manager topology
+- `34e9cc1` - Clarify brokered upload wording for mod.io path
 
-**Lessons Learned:** The existing docs were already pointing toward `aerobeat-tool-api`; the missing piece was to make that routing explicit, name the provider-adapter seam concretely, and state the anti-patterns plainly enough that product repos do not drift into direct vendor coupling.
+**Lessons Learned:** The existing docs were already pointing toward `aerobeat-tool-api`; the missing pieces were to make that routing explicit, name the provider-adapter seam concretely, and avoid seemingly small upload-flow wording that accidentally implied a narrower backend shape than the chosen provider-shell architecture.
 
 ---
 

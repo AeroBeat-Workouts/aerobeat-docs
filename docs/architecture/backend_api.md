@@ -10,7 +10,7 @@ To protect the platform from abuse, we implement strict security measures for al
 
 | Risk | Mitigation Strategy |
 | :--- | :--- |
-| **DDoS / Bandwidth Exhaustion** | **Pre-Signed URLs.** Uploads go directly to Cloud Storage (S3), bypassing API servers. |
+| **DDoS / Bandwidth Exhaustion** | **Brokered direct uploads.** Uploads go directly to an authorized storage/provider target (for example S3 or a mod.io-backed target), bypassing API servers. |
 | **Storage Exhaustion** | **User Quotas.** Strict limits per user (e.g., 2GB total). |
 | **Zip Bombs** | **Stream Inspection.** Validators check uncompressed size before extraction. |
 | **RCE (Remote Code Execution)** | **Sandboxing.** Validation runs in ephemeral, network-isolated containers. |
@@ -62,7 +62,7 @@ These endpoints are used by the specialized SDKs (`aerobeat-skins-*`, `aerobeat-
     *   `limit_bytes`: Maximum allowed storage.
     *   `remaining_bytes`: Available space.
 
-### 2. Request Upload (Pre-Signed URL)
+### 2. Request Upload (Brokered Upload Target)
 
 *   **Endpoint:** `POST /api/v1/mods/upload-request`
 *   **Body:**
@@ -71,7 +71,7 @@ These endpoints are used by the specialized SDKs (`aerobeat-skins-*`, `aerobeat-
     *   `checksum`: SHA256 hash of the file.
     *   `type`: `SKIN` (or `SONG`, `COACHING`, `WORKOUT`, `AVATAR`, `COSMETIC`, `ENVIRONMENT`)
 *   **Response:**
-    *   `upload_url`: The S3 Pre-Signed URL (PUT).
+    *   `upload_url`: The authorized direct-upload target (for example a pre-signed object-storage URL or a provider-brokered upload URL).
     *   `upload_id`: Temporary transaction ID.
     *   `expires_in`: Seconds until URL expires (e.g., 900).
 *   **Errors:**
@@ -87,8 +87,8 @@ These endpoints are used by the specialized SDKs (`aerobeat-skins-*`, `aerobeat-
     *   `upload_id`: The ID from step 2.
     *   `manifest`: JSON representation of `AeroModManifest` (for indexing).
 *   **Response:**
-    *   `202 Accepted`: Validation job queued.
-    *   `mod_id`: The permanent ID of the new mod.
+    *   `202 Accepted`: Validation job queued after AeroBeat links the uploaded source package to its submission record and any required provider mapping.
+    *   `mod_id`: The permanent AeroBeat ID of the new mod.
 
 ### 4. Check Validation Status
 
