@@ -123,7 +123,7 @@ Execution will happen in a controlled sequence: first verify current repo state 
 **Reference Check:** `REF-01` satisfied by the successful local clone and SSH remote verification for `aerobeat-vendor-modio`. `REF-02` satisfied by the workspace-root clone and scoped top-level sync. `REF-03` satisfied by preserving the GodotEnv-linked nested repo shapes and excluding linked/mirror addon repos from the family sync pass.
 
 **Commits:**
-- Pending final coordination commit in `aerobeat-docs`
+- `b91d07e` - Add AeroBeat vendor modio intake and mainline sync plan
 
 **Lessons Learned:** For AeroBeat family-wide maintenance, top-level repos must be treated separately from GodotEnv-linked nested checkouts and local mirror addon repos. The only actionable blockers in this pass were the three dirty top-level repos, and the SSH remote normalization rule is now effectively a no-op for the current AeroBeat family because all top-level origins are already SSH.
 
