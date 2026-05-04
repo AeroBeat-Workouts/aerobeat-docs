@@ -75,5 +75,6 @@ AeroBeat still uses a shared chart envelope with feature-specific payload meanin
 
 - Boxing uses a flat `beats` list with `start`, optional `end`, required `type`, and optional `portal`; straight punches should use `punch_left` / `punch_right`, `guard` is canonical wording, and `orthodox` / `southpaw` remain authored stance semantics rather than tracked input events
 - Flow uses the same base shape with Flow-specific `placement` and optional `direction`, where `placement` is the pass-through location and `direction` is follow-through guidance
+- Legacy `events` / `interactionFamily` chart-envelope wording is not part of the canonical v1 authored contract in this docs slice
 
 Dance and Step are no longer active gameplay features in this docs set.
