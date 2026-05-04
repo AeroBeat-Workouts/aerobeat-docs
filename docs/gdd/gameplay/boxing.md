@@ -17,8 +17,8 @@ Boxing is one of the two official AeroBeat v1 gameplay features.
 
 ## Current mechanics emphasis
 
-- directional punches such as jabs, crosses, hooks, and uppercuts
-- guards, stance cues, and body-movement prompts
+- directional punches such as `punch_left`, `punch_right`, hooks, and uppercuts
+- `guard` prompts, authored stance semantics, and body-movement prompts
 - authored portal placement where it improves choreography readability
 - readable Track View and Portal View presentation options
 
@@ -28,4 +28,6 @@ When describing Boxing, prefer language that supports the current product thesis
 
 - camera-first gameplay
 - PC-first release
+- `punch_left` / `punch_right` are the canonical input-truth Boxing punch labels
+- `orthodox` / `southpaw` are authored stance semantics, not tracked input events
 - future VR/non-camera possibilities without presenting them as current parity

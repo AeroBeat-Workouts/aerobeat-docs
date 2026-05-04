@@ -5,7 +5,7 @@ Flow is the second official AeroBeat v1 gameplay feature.
 ## Core loop
 
 1. Flow charts author a flat `beats:` list under `feature: flow`.
-2. The athlete swings through beats using the authored `type`, `placement`, and optional `direction` guidance.
+2. The athlete swings through beats using the authored `type`, `placement`, and optional `direction` guidance. `placement` means where the beat passes; `direction` means follow-through guidance for max-score correctness.
 3. Successful hits maintain combo and support a smooth full-body workout rhythm.
 4. The feature emphasizes shoulder mobility, core rotation, and movement continuity.
 
@@ -19,5 +19,5 @@ Flow is the second official AeroBeat v1 gameplay feature.
 
 - continuous arm arcs and follow-through
 - body-movement prompts such as squats and leans
-- authored placement/direction cues when they improve readability
+- authored placement/direction cues when they improve readability, without blurring pass-through location vs follow-through guidance
 - presentations that remain understandable on the PC-first camera product path

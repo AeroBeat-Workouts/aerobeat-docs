@@ -73,7 +73,7 @@ That keeps the workout package focused on workout content while leaving room for
 
 AeroBeat still uses a shared chart envelope with feature-specific payload meaning. For the active gameplay docs slice, the important authored features are Boxing and Flow.
 
-- Boxing uses a flat `beats` list with `start`, optional `end`, required `type`, and optional `portal`
-- Flow uses the same base shape with Flow-specific `placement` and optional `direction`
+- Boxing uses a flat `beats` list with `start`, optional `end`, required `type`, and optional `portal`; straight punches should use `punch_left` / `punch_right`, `guard` is canonical wording, and `orthodox` / `southpaw` remain authored stance semantics rather than tracked input events
+- Flow uses the same base shape with Flow-specific `placement` and optional `direction`, where `placement` is the pass-through location and `direction` is follow-through guidance
 
 Dance and Step are no longer active gameplay features in this docs set.

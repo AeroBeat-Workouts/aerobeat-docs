@@ -65,6 +65,13 @@ It uses one shared coach config, two environments, one warmup video, one cooldow
 - workout sets choose exactly one environment
 - the docs example no longer teaches package-local gameplay asset selection
 
+## Boxing / Flow contract notes
+
+- Boxing straight punches use `punch_left` / `punch_right` in the example charts.
+- `guard` is the canonical guard wording.
+- `orthodox` / `southpaw` remain authored chart semantics and should not be read as tracked input events.
+- Flow keeps `placement` and `direction` separate: `placement` is where the beat passes, while `direction` guides follow-through.
+
 ## Validation note
 
 Use [`aerobeat-tool-content-authoring`](https://github.com/AeroBeat-Workouts/aerobeat-tool-content-authoring) to validate this package. This repo is the fixture and explanation layer.

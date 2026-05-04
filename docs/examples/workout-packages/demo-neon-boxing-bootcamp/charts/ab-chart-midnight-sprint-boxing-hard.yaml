@@ -18,11 +18,13 @@ feature: boxing
 difficulty: hard
 
 # Short sample beat list for readability.
+# Straight punches use input-truth labels (`punch_left` / `punch_right`).
+# `southpaw` below is an authored stance cue, not a tracked input event.
 beats:
   - start: 6.0
-    type: jab
+    type: punch_left
   - start: 8.0
-    type: cross
+    type: punch_right
   - start: 10.0
     end: 11.0
     type: squat

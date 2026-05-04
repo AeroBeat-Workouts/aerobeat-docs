@@ -22,6 +22,11 @@ Each beat may include:
 - optional `placement`
 - optional `direction`
 
+When both are present, keep their semantics separate:
+
+- `placement` = where the beat passes
+- `direction` = follow-through guidance for max-score correctness
+
 ## Scope note
 
 Flow's future adaptability across renderers and platforms is still useful, but the official product docs should stay grounded in camera-based gameplay first.

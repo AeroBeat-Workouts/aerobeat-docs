@@ -20,6 +20,12 @@ Each boxing beat uses:
 - required concrete `type`
 - optional integer `portal`
 
+For current chart truth:
+
+- use `punch_left` / `punch_right` for straight punches, not `jab` / `cross`
+- use `guard` for guard holds/prompts
+- treat `orthodox` / `southpaw` as authored stance semantics, not tracked input events
+
 ## Scope note
 
 Portal-aware presentation remains valid in the docs, but it should not be read as a promise that VR or non-camera Boxing is official v1 scope.
