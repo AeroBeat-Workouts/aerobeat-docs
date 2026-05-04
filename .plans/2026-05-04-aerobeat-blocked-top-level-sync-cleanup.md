@@ -91,7 +91,7 @@ The execution order is: inspect each blocked repo to classify the local dirt; pr
 
 **Status:** ✅ Complete
 
-**Results:** Preserved and committed the durable coordination artifact `.plans/2026-05-04-aerobeat-blocked-top-level-sync-cleanup.md` in `aerobeat-docs`, with `origin` already on SSH. Pushed three commits without force and without needing a rebase: `f9c63417a7c8d8caf8d33c963d8d78ca6353be09` (`docs: add blocked repo cleanup coordination plan`), `01489740bcf24923a93b87f89e43ea9fc8a5e923` (`docs: update blocked repo cleanup task status`), and `941cb68e01fd48a50a5e351cfa05ee51fce38685` (`docs: clarify blocked repo cleanup plan results`). Final state: branch `main`, clean working tree, and `HEAD == origin/main` at `941cb68e01fd48a50a5e351cfa05ee51fce38685`. References validated: `REF-01`, `REF-02`.
+**Results:** Preserved and committed the durable coordination artifact `.plans/2026-05-04-aerobeat-blocked-top-level-sync-cleanup.md` in `aerobeat-docs`, with `origin` already on SSH. Pushed four commits without force and without needing a rebase: `f9c63417a7c8d8caf8d33c963d8d78ca6353be09` (`docs: add blocked repo cleanup coordination plan`), `01489740bcf24923a93b87f89e43ea9fc8a5e923` (`docs: update blocked repo cleanup task status`), `941cb68e01fd48a50a5e351cfa05ee51fce38685` (`docs: clarify blocked repo cleanup plan results`), and `2b05489409f763d19ecc5f2b85e3d055d4d7640d` (`docs: finalize blocked repo cleanup plan`). Final state: branch `main`, clean working tree, and `HEAD == origin/main` at `2b05489409f763d19ecc5f2b85e3d055d4d7640d`. References validated: `REF-01`, `REF-02`.
 
 ---
 
@@ -112,7 +112,7 @@ The execution order is: inspect each blocked repo to classify the local dirt; pr
 
 **Status:** ✅ Complete
 
-**Results:** Independent QA/audit ultimately confirmed all three previously blocked top-level repos were brought to a clean, current `main` state after the final plan truth-up in `aerobeat-docs`. Verified `aerobeat-feature-boxing` at `fb99b2194494644dc77e8706375a28804560ccae`, `aerobeat-ui-kit-community` at `a148a76ec455ef8ced6b02fd0b39feaa1602baca`, and `aerobeat-docs` current on `main` after the final clarification commit. Confirmed no nested addon repos were touched during this cleanup pass and no force reset was used. References validated: `REF-01`, `REF-02`, `REF-03`.
+**Results:** Independent QA/audit confirmed all three previously blocked top-level repos were brought to a clean, current `main` state after the final plan truth-up in `aerobeat-docs`. Verified `aerobeat-feature-boxing` at `fb99b2194494644dc77e8706375a28804560ccae`, `aerobeat-ui-kit-community` at `a148a76ec455ef8ced6b02fd0b39feaa1602baca`, and `aerobeat-docs` current on `main` at `2b05489409f763d19ecc5f2b85e3d055d4d7640d`. Confirmed no nested addon repos were touched during this cleanup pass and no force reset was used. References validated: `REF-01`, `REF-02`, `REF-03`.
 
 ---
 
@@ -120,7 +120,7 @@ The execution order is: inspect each blocked repo to classify the local dirt; pr
 
 **Status:** ✅ Complete
 
-**What We Built:** Cleared the three blocked top-level AeroBeat repos from the earlier sync pass and brought all three to a truthful, clean, current `main` state. `aerobeat-feature-boxing` and `aerobeat-ui-kit-community` were unblocked by restoring a deleted tracked `.uid` file in each repo, then fast-forwarding to latest `origin/main`. `aerobeat-docs` preserved and pushed the cleanup coordination record, then received a final clarification commit so the repo and plan ended fully in sync.
+**What We Built:** Cleared the three blocked top-level AeroBeat repos from the earlier sync pass and brought all three to a truthful, clean, current `main` state. `aerobeat-feature-boxing` and `aerobeat-ui-kit-community` were unblocked by restoring a deleted tracked `.uid` file in each repo, then fast-forwarding to latest `origin/main`. `aerobeat-docs` preserved and pushed the cleanup coordination record, then received final clarification/finalization commits so the repo and plan ended fully in sync.
 
 **Reference Check:** `REF-01` satisfied by preserving continuity with the earlier top-level sync coordination record. `REF-02` satisfied by direct verification and cleanup of the three targeted top-level AeroBeat repos in the workspace root. `REF-03` satisfied by keeping the cleanup scoped to top-level repos only and not touching nested GodotEnv-linked addon checkouts or local mirror addon repos.
 
@@ -128,6 +128,7 @@ The execution order is: inspect each blocked repo to classify the local dirt; pr
 - `f9c63417a7c8d8caf8d33c963d8d78ca6353be09` - docs: add blocked repo cleanup coordination plan
 - `01489740bcf24923a93b87f89e43ea9fc8a5e923` - docs: update blocked repo cleanup task status
 - `941cb68e01fd48a50a5e351cfa05ee51fce38685` - docs: clarify blocked repo cleanup plan results
+- `2b05489409f763d19ecc5f2b85e3d055d4d7640d` - docs: finalize blocked repo cleanup plan
 
 **Lessons Learned:** When closing a repo-cleanliness task, the coordination plan itself can easily reintroduce dirt if its final truth-up happens after a push. The safe pattern is to treat the plan as part of the final mutable state, then do one last clean/current verification after the final coordination commit lands.
 
