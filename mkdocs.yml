@@ -107,6 +107,7 @@ nav:
       - Coding Style: architecture/coding-style.md
       - Content Model: architecture/content-model.md
       - Content Repo Shapes: architecture/content-repo-shapes.md
+      - mod.io Tag Mapping: architecture/modio-tag-mapping.md
       - Input: architecture/input.md
       - Multiplayer: architecture/multiplayer.md
       - Performance: architecture/performance.md

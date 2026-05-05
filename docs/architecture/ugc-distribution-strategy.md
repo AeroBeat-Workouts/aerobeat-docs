@@ -77,6 +77,8 @@ Under this model, a third-party platform handles some or all of:
 - file hosting and CDN delivery
 - moderation tooling and admin dashboards
 
+The storefront taxonomy should still stay lean and AeroBeat-shaped. See also [AeroBeat mod.io Tag Mapping](modio-tag-mapping.md) for the current launch proposal covering which metadata becomes public mod.io tags versus what remains first-party/internal.
+
 AeroBeat still keeps control of:
 
 - creator package specification
