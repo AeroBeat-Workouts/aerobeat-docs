@@ -314,7 +314,7 @@ Those may matter operationally, but they should only become mod.io categories if
 **Reference Check:** `REF-01` through `REF-05` satisfied for this docs slice. The final mapping aligns with the existing workout/discovery contract (`feature`, `difficulty`, `genre`, `duration_ms`, coaching, environments), preserves the first-party trust boundary established by the UGC strategy docs, and records the remaining decisions that still need human lock-in instead of pretending they are settled.
 
 **Commits:**
-- Pending.
+- `bb88c17` - Document AeroBeat mod.io tag mapping
 
 **Lessons Learned:** The durable handoff point for mod.io work is not the earlier proposal prose alone; future tooling needs an explicit mapping document that states both the positive mapping rules and the intentional non-mappings so provider taxonomy does not drift into a mirror of every authored field.
 
