@@ -18,6 +18,11 @@ This architecture is aimed at the current AeroBeat release sequence:
 
 The goal is to support community content quickly without giving away the package contract, the approval pipeline, or the runtime trust boundary.
 
+For current team reference, the canonical AeroBeat mod.io pages are:
+
+- **Sandbox / test server page:** <https://test.mod.io/g/aerobeat>
+- **Live page:** <https://mod.io/g/aerobeat>
+
 ## System boundary summary
 
 ### Third-party UGC shell responsibilities

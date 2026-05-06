@@ -79,6 +79,11 @@ Under this model, a third-party platform handles some or all of:
 
 The storefront taxonomy should still stay lean and AeroBeat-shaped. See also [AeroBeat mod.io Tag Mapping](modio-tag-mapping.md) for the current launch proposal covering which metadata becomes public mod.io tags versus what remains first-party/internal.
 
+For current team reference, the canonical AeroBeat storefront/listing URLs are:
+
+- **Sandbox / test page:** <https://test.mod.io/g/aerobeat>
+- **Live page:** <https://mod.io/g/aerobeat>
+
 AeroBeat still keeps control of:
 
 - creator package specification
