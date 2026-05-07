@@ -160,24 +160,30 @@ To align the rest of the docs with that decision, updated `docs/gdd/gamification
 - `.plans/2026-05-07-aerobeat-free-to-play-account-and-ugc-strategy.md`
 - docs/repo files only if minimum necessary follow-up is required
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**Results:** Pending.
+**Results:** Independently re-audited the revised strategy docs plus the `aerobeat-tool-api` framing against `REF-01` through `REF-11`. The docs now consistently describe AeroBeat as a **free-to-play app** with **free workouts** and **premium workouts**, keep **mod.io as the current premium/community/distribution shell**, and preserve an explicit **AeroBeat-owned account / identity / entitlement architecture** for retention and long-term product truth. The boundary is clear in the core architecture docs: AeroBeat owns athlete identity, entitlement vocabulary, trust/install policy, and product-facing library state, while vendor-specific account-linking, ownership sync, raw DTOs, and transport mechanics stay conceptually inside the mod.io vendor seam (`REF-02` through `REF-05`).
+
+The premium-governance pass also holds up under audit. `docs/architecture/premium-workout-governance.md` is realistic about the actual risks: open-source does not imply free premium files, DRM cannot be the core protection model, premium UGC must be review-gated and creator-enrolled, pricing should use moderated bands, and accessibility/difficulty coverage plus moderation/takedown policy are part of the v1 product contract rather than optional polish. The v1-vs-future phasing also reads coherently against the concept/community/roadmap docs: v1 is account identity + entitlement/library recovery + WP + simple weekly goals/streaks, while leaderboards/social/multiplayer/premium-currency layers remain explicitly post-v1. I found no contradiction severe enough to block `aerobeat-tool-api` implementation planning.
+
+Validation rerun in `aerobeat-docs`: `source venv/bin/activate && mkdocs build --clean` completed successfully. The only output beyond normal build noise was the existing MkDocs ecosystem warning plus the existing note that some docs pages are not included in nav. In `aerobeat-tool-api`, a stronger repo-local validation path turned out to exist after restoring the hidden workbench dependencies: `cd .testbed && godotenv addons install`, then `godot --headless --path .testbed --import`, then `godot --headless --path .testbed --script addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gexit` all completed successfully. The only test warning is that `.testbed/tests/test_AeroToolManager.gd` exists but does not extend `GutTest`; the active test suite still passed (`2/2`).
+
+Minimum durable fixes made during audit: corrected the visible typo `phaseing` → `phasing` in `docs/architecture/account-identity-and-entitlements.md`, and updated this plan with the audit outcome. Remaining caveat, but not a blocker for `aerobeat-tool-api` planning: some older future-feature docs outside the changed strategy set (for example crews/supporter perks) still read in present tense and should eventually be resliced or relabeled so they cannot be mistaken for locked v1 scope.
 
 ---
 
 ## Final Results
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**What We Built:** Pending.
+**What We Built:** Locked the strategy/docs set needed before `aerobeat-tool-api` implementation planning: free-to-play framing, free + premium workout access model, AeroBeat-owned account/identity/entitlement architecture, premium-governance guardrails, and explicit v1-vs-future retention phasing. The final QA/audit pass confirms that the revised docs and the `aerobeat-tool-api` repo framing are coherent enough to guide implementation planning without drifting back into a generic-wrapper interpretation.
 
-**Reference Check:** Task 1 and Task 2 conclusions remain intact. The Task 3 additions explicitly preserve the AeroBeat-vs-mod.io split from `REF-04`/`REF-05`, keep the free-to-play + free/premium framing from `REF-06`/`REF-07`/`REF-08`, and convert the earlier unresolved question in Task 1 about account rollout phasing into a concrete v1-vs-later decision.
+**Reference Check:** Task 1 and Task 2 conclusions remain intact. The Task 3 additions preserve the AeroBeat-vs-mod.io split from `REF-04`/`REF-05`, keep the free-to-play + free/premium framing from `REF-06`/`REF-07`/`REF-08`, and convert the earlier unresolved question in Task 1 about account rollout phasing into a concrete v1-vs-later decision. Task 4 revalidated all of that, confirmed `REF-10` is now aligned with the docs, and found no blocker strong enough to stop `aerobeat-tool-api` planning.
 
 **Commits:**
-- None yet.
+- Pending Task 4 audit commit.
 
-**Lessons Learned:** Pending.
+**Lessons Learned:** The original assumption that `aerobeat-tool-api` had no reliable repo-local validation path was too pessimistic; once the hidden GodotEnv testbed dependencies were restored, headless import and GUT smoke tests provided a useful framing check. The remaining cleanup need is mostly editorial: some older future-feature docs still read like present-tense product commitments and should eventually be relabeled or resliced so they cannot be confused with locked v1 scope.
 
 ---
 

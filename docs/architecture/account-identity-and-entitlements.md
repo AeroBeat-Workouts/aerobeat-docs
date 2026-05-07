@@ -217,7 +217,7 @@ For launch-vs-later product slicing, see [Account and Retention Feature Phasing]
 
 These are intentionally left visible for follow-up work rather than hand-waved away:
 
-1. **Account rollout phaseing:** how much of the AeroBeat-owned end-user account experience must ship in v1 versus exist only as backend/architecture readiness?
+1. **Account rollout phasing:** how much of the AeroBeat-owned end-user account experience must ship in v1 versus exist only as backend/architecture readiness?
 2. **Cross-platform recovery UX:** what is the exact athlete experience for linking multiple platform identities to one durable AeroBeat identity and recovering premium purchases across devices/platforms?
 3. **Entitlement reconciliation policy:** when AeroBeat account truth, platform purchase truth, and provider purchase truth disagree temporarily, which system wins for client UX and runtime access?
 4. **Guest conversion rules:** which free-to-play behaviors remain available to guests, and which premium/community flows require sign-in?
