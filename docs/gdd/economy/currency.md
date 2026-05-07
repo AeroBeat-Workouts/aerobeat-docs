@@ -35,7 +35,14 @@ WP is calculated at the end of every completed Workout.
 
 ## 3. Spending WP (The Sink)
 
-WP is spent in the **Locker Room** to unlock cosmetic items for the Avatar.
+WP is spent in the **Locker Room** to unlock official cosmetic items for the Avatar.
+
+V1 scope note:
+
+- WP should ship as the **single launch progression currency**
+- AeroBeat does **not** need a broad live-ops shop, premium-currency exchange, or battle-pass economy in v1
+- a **small curated set of official unlocks** is enough for launch if content supply is ready
+- larger sinks such as weekly rotations or consumable boosters are future options, not launch requirements
 
 ### Pricing Tiers
 

@@ -1,9 +1,22 @@
 # 🔮 Future Roadmap
 
-These will likely change as production continues, but they are our best guess based on the current priorities for the project.
+These will likely change as production continues, but they reflect the current product priorities more accurately than the older broad roadmap.
 
-* **Phase 1 (Prototype):** PC Build + Python CV + Basic Boxing Core + 1 Song - Get community feedback.
-* **Phase 2 (Mobile):** Native Android/iOS Port + On-Device CV - Test agnostic platform concepts.
-* **Phase 3 (Platform):** Support for downloading community Workouts and creations - Test community creation system.
-* **Phase 4 (Multiplayer):** Real-time multiplayer with other athletes or compete against ghost data.
-* **Phase 5 (Additional Gameplay):** Support additional gameplay cores as requested by the community.
+## Launch path
+
+* **Phase 1 (Community Launch):** PC-first free-to-play release with camera-based Boxing + Flow, free workouts, premium workouts, AeroBeat-owned account identity, entitlement/library sync, Workout Points, and simple weekly goals/streaks.
+
+## Recommended post-launch order
+
+* **Phase 2 (Async Retention):** scoped leaderboards, personal-best comparison, and other low-risk asynchronous competition layers.
+* **Phase 3 (Light Social):** friends/following, challenge sharing, and lightweight accountability features.
+* **Phase 4 (Progression Expansion):** deeper official cosmetic unlocks and stronger Workout Points sinks once earn/spend balance is validated.
+* **Phase 5 (Group Features):** crews or similar group-accountability systems.
+* **Phase 6 (Multiplayer):** real-time multiplayer or ghost competition after the solo and async loops are proven.
+* **Phase 7 (Live Ops Layers):** premium currency, seasonal progression, battle passes, and rotating stores only if the product has the audience and cadence to justify them.
+
+## Still future-facing
+
+* mobile and VR platform expansion
+* additional gameplay cores beyond Boxing and Flow
+* stricter platform-specific premium UGC variants for console, arcade, or commercial deployments

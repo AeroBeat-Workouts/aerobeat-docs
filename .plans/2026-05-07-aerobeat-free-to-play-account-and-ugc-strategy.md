@@ -126,11 +126,22 @@ Updated `docs/gdd/releases/community.md` and `docs/gdd/user-content/community-cr
 
 **Files Created/Deleted/Modified:**
 - `.plans/2026-05-07-aerobeat-free-to-play-account-and-ugc-strategy.md`
-- feature-priority/account-strategy docs TBD
+- `docs/architecture/account-retention-phasing.md`
+- `docs/architecture/account-identity-and-entitlements.md`
+- `docs/gdd/gamification/overview.md`
+- `docs/gdd/economy/currency.md`
+- `docs/gdd/roadmap/future-roadmap.md`
+- `mkdocs.yml`
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**Results:** Pending.
+**Results:** Added `docs/architecture/account-retention-phasing.md` as the decision anchor for what account-driven systems belong in launch versus later. The strongest recommendation is a disciplined v1 cut: **AeroBeat-owned account identity + guest conversion + linked-account recovery, entitlement/library sync, basic profile/preferences/history, Workout Points, and simple weekly goals/streaks**. The doc explicitly argues that this is enough to make AeroBeat compelling at launch because it solves the two product questions that matter most: "why trust this as my long-term workout library?" and "why come back next week?"
+
+The same doc also draws a hard line against overbuilding v1. It recommends deferring **leaderboards, friends/following, crews, real-time multiplayer, premium currency, battle passes, seasonal progression, and rotating shop layers**. Those are not called bad ideas; they are called the wrong launch priorities. The recommended post-v1 order is: (1) scoped leaderboards/async competition, (2) lightweight social accountability, (3) expanded WP sinks and official cosmetics, (4) crews/group features, (5) multiplayer/ghost competition, and only then (6) premium-currency/live-ops systems.
+
+The doc also separates design depth clearly. Items that must be fully designed now: canonical athlete identity, guest conversion, linked-account recovery, entitlement and library truth, workout-completion event model, WP ledger/grant rules, weekly goal + streak semantics, and minimum profile/history scope. Items that should be lightly designed now then heavily deferred: leaderboard schemas, future social graph/privacy seams, and official cosmetic inventory modeling. Items that can safely wait: premium-currency wallets, battle passes, seasonal tracks, rotating premium shops, gifting, and real-time multiplayer implementation details.
+
+To align the rest of the docs with that decision, updated `docs/gdd/gamification/overview.md` so the v1 retention loop is now explicitly WP + weekly goals + streaks rather than an open-ended live-service bundle; updated `docs/gdd/economy/currency.md` so WP reads as the single launch progression currency instead of implying a broad v1 store economy; updated `docs/gdd/roadmap/future-roadmap.md` so the post-launch order matches the new retention strategy; linked the new phasing doc from `docs/architecture/account-identity-and-entitlements.md`; and added the new page to `mkdocs.yml` navigation.
 
 ---
 
@@ -161,7 +172,7 @@ Updated `docs/gdd/releases/community.md` and `docs/gdd/user-content/community-cr
 
 **What We Built:** Pending.
 
-**Reference Check:** Pending.
+**Reference Check:** Task 1 and Task 2 conclusions remain intact. The Task 3 additions explicitly preserve the AeroBeat-vs-mod.io split from `REF-04`/`REF-05`, keep the free-to-play + free/premium framing from `REF-06`/`REF-07`/`REF-08`, and convert the earlier unresolved question in Task 1 about account rollout phasing into a concrete v1-vs-later decision.
 
 **Commits:**
 - None yet.

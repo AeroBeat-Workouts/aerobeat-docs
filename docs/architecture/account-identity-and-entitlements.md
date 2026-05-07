@@ -211,6 +211,8 @@ Near-term implementation planning should assume:
 4. **mod.io remains the current premium UGC/community layer**, not the long-term product center of gravity.
 5. **`aerobeat-tool-api` should become the client-facing identity/access/entitlement manager**, with provider details staying in the vendor seam.
 
+For launch-vs-later product slicing, see [Account and Retention Feature Phasing](account-retention-phasing.md).
+
 ## Explicit unresolved questions
 
 These are intentionally left visible for follow-up work rather than hand-waved away:
