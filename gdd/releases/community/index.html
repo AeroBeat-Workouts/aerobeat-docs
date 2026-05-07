@@ -2143,10 +2143,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#supporter-model" class="md-nav__link">
+  <a href="#workout-access-model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Supporter model
+        Workout access model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workout access model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#free-workouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Free workouts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#premium-workouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Premium workouts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funding-and-progression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Funding and progression
       
     </span>
   </a>
@@ -2647,6 +2686,34 @@
     
   
     Audio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/account-identity-and-entitlements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Account, Identity, and Entitlements
   
 
     
@@ -5234,10 +5301,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#supporter-model" class="md-nav__link">
+  <a href="#workout-access-model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Supporter model
+        Workout access model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workout access model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#free-workouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Free workouts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#premium-workouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Premium workouts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funding-and-progression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Funding and progression
       
     </span>
   </a>
@@ -5274,12 +5380,13 @@
 </ol>
 <h2 id="community-edition-scope-for-this-slice">Community Edition scope for this slice<a class="headerlink" href="#community-edition-scope-for-this-slice" title="Permanent link">&para;</a></h2>
 <ul>
-<li>free-to-start community distribution from AeroBeat-controlled channels</li>
+<li><strong>free-to-play</strong> app distribution</li>
 <li>official gameplay features: <strong>Boxing</strong> and <strong>Flow</strong></li>
 <li>official gameplay input: <strong>camera only</strong></li>
-<li>offline-capable installed workouts</li>
+<li>a workout catalog containing both <strong>free workouts</strong> and <strong>premium workouts</strong></li>
+<li>offline-capable installed workouts once trust/access rules are satisfied</li>
 <li>workout browsing, favorites, recommendations, and progression surfaces</li>
-<li>supporter-driven funding and perks</li>
+<li>AeroBeat-owned account architecture for profile/progression/library systems, even if some end-user account UX is phased</li>
 </ul>
 <h2 id="platform-wording">Platform wording<a class="headerlink" href="#platform-wording" title="Permanent link">&para;</a></h2>
 <p>The docs should stop implying present-tense parity across PC, mobile, and VR.</p>
@@ -5288,14 +5395,24 @@
 <li><strong>mobile</strong> remains an important follow-on target</li>
 <li><strong>VR</strong> remains a later platform return, not the lead product shape</li>
 </ul>
-<h2 id="supporter-model">Supporter model<a class="headerlink" href="#supporter-model" title="Permanent link">&para;</a></h2>
-<p>AeroBeat plans to use a supporter model to help fund development. Supporter perks may include:</p>
+<h2 id="workout-access-model">Workout access model<a class="headerlink" href="#workout-access-model" title="Permanent link">&para;</a></h2>
+<h3 id="free-workouts">Free workouts<a class="headerlink" href="#free-workouts" title="Permanent link">&para;</a></h3>
+<p>Free workouts are the on-ramp for the community edition. They should be discoverable without requiring the premium purchase path, while still respecting AeroBeat trust, compatibility, and install policy.</p>
+<h3 id="premium-workouts">Premium workouts<a class="headerlink" href="#premium-workouts" title="Permanent link">&para;</a></h3>
+<p>Premium workouts are paid content within the community ecosystem.</p>
+<p>For the current strategy:</p>
 <ul>
-<li>Discord/community perks</li>
-<li>account flair</li>
-<li>early builds</li>
-<li>supporter-only polls</li>
-<li>additional profile or cosmetics-related unlock opportunities</li>
+<li>purchases must follow <strong>official platform/store</strong> paths</li>
+<li>mod.io remains the current <strong>community/distribution layer</strong> for premium UGC</li>
+<li>provider-side ownership synchronization should only rely on <strong>official, non-deprecated surfaces</strong> we can legitimately support</li>
+<li>the athlete-facing product should still speak in <strong>AeroBeat ownership/access</strong> terms rather than raw provider wallet terminology</li>
+</ul>
+<h2 id="funding-and-progression">Funding and progression<a class="headerlink" href="#funding-and-progression" title="Permanent link">&para;</a></h2>
+<p>AeroBeat may still use supporter/community programs where helpful, but the main product framing should no longer imply that paid access is only a generic supporter status. The docs now need to distinguish between:</p>
+<ul>
+<li>supporter/community perks</li>
+<li>premium workout access</li>
+<li>long-term account-driven progression such as workout points, profile state, and cosmetics unlocks</li>
 </ul>
 <p>Future customization should point toward controlled avatar/cosmetics progression via workout points rather than old package-asset mod examples.</p>
 
@@ -5318,7 +5435,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 1, 2026 13:58:33 UTC">May 1, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 7, 2026 13:45:29 UTC">May 7, 2026</span>
   </span>
 
     

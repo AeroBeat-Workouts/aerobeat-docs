@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/licensing/attribution/">
+        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/architecture/account-identity-and-entitlements/">
       
       
-        <link rel="prev" href="../hardware/">
+        <link rel="prev" href="../audio/">
       
       
-        <link rel="next" href="../CLA/">
+        <link rel="next" href="../backend_api/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Attribution Guide - AeroBeat Documentation</title>
+        <title>Account, Identity, and Entitlements - AeroBeat Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#attribution-guide" class="md-skip">
+        <a href="#account-identity-and-entitlements-strategy" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Attribution Guide
+              Account, Identity, and Entitlements
             
           </span>
         </div>
@@ -254,20 +254,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -288,7 +286,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -306,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../licensing/" class="md-nav__link">
         
   
   
@@ -334,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../engineers/" class="md-nav__link">
+      <a href="../../licensing/engineers/" class="md-nav__link">
         
   
   
@@ -362,7 +360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../creative/" class="md-nav__link">
+      <a href="../../licensing/creative/" class="md-nav__link">
         
   
   
@@ -390,7 +388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../commercial/" class="md-nav__link">
+      <a href="../../licensing/commercial/" class="md-nav__link">
         
   
   
@@ -418,7 +416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/" class="md-nav__link">
+      <a href="../../licensing/hardware/" class="md-nav__link">
         
   
   
@@ -443,37 +441,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Attribution Guide
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../licensing/attribution/" class="md-nav__link">
         
   
   
@@ -489,48 +460,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-in-your-source-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. In Your Source Code
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-in-your-game-client" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. In Your Game Client
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -543,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CLA/" class="md-nav__link">
+      <a href="../../licensing/CLA/" class="md-nav__link">
         
   
   
@@ -571,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CONTRIBUTING/" class="md-nav__link">
+      <a href="../../licensing/CONTRIBUTING/" class="md-nav__link">
         
   
   
@@ -2490,18 +2419,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -2522,7 +2453,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2537,18 +2468,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -2569,7 +2502,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2587,7 +2520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -2615,7 +2548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/audio/" class="md-nav__link">
+      <a href="../audio/" class="md-nav__link">
         
   
   
@@ -2640,10 +2573,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/account-identity-and-entitlements/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Account, Identity, and Entitlements
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2659,6 +2619,248 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#product-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product truth
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-aerobeat-owned-accounts-matter-even-before-the-full-account-product-ships" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why AeroBeat-owned accounts matter even before the full account product ships
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#canonical-identity-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical identity model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Canonical identity model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#canonical-aerobeat-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical AeroBeat records
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-identity-mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        External identity mappings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-model-free-workouts-vs-premium-workouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Access model: free workouts vs premium workouts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Access model: free workouts vs premium workouts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#free-workouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Free workouts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#premium-workouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Premium workouts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#purchase-and-entitlement-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purchase and entitlement rules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Purchase and entitlement rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rule-1-platform-compliant-commerce-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 1: platform-compliant commerce only
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-2-modio-may-act-as-the-current-purchaseownership-server-only-after-official-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 2: mod.io may act as the current purchase/ownership server only after official sync
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#responsibility-split" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responsibility split
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Responsibility split">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-owns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AeroBeat owns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modio-currently-owns-or-assists-with" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mod.io currently owns or assists with
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-aerobeat-tool-api-should-be" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What aerobeat-tool-api should be
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vendor-seam-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vendor seam rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-near-term-implementation-stance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended near-term implementation stance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explicit-unresolved-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicit unresolved questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2671,7 +2873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/backend_api/" class="md-nav__link">
+      <a href="../backend_api/" class="md-nav__link">
         
   
   
@@ -2699,7 +2901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/cloud_baker/" class="md-nav__link">
+      <a href="../cloud_baker/" class="md-nav__link">
         
   
   
@@ -2727,7 +2929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/coding-style/" class="md-nav__link">
+      <a href="../coding-style/" class="md-nav__link">
         
   
   
@@ -2755,7 +2957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/content-model/" class="md-nav__link">
+      <a href="../content-model/" class="md-nav__link">
         
   
   
@@ -2783,7 +2985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/content-repo-shapes/" class="md-nav__link">
+      <a href="../content-repo-shapes/" class="md-nav__link">
         
   
   
@@ -2811,7 +3013,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/modio-tag-mapping/" class="md-nav__link">
+      <a href="../modio-tag-mapping/" class="md-nav__link">
         
   
   
@@ -2839,7 +3041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/input/" class="md-nav__link">
+      <a href="../input/" class="md-nav__link">
         
   
   
@@ -2867,7 +3069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/multiplayer/" class="md-nav__link">
+      <a href="../multiplayer/" class="md-nav__link">
         
   
   
@@ -2895,7 +3097,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/performance/" class="md-nav__link">
+      <a href="../performance/" class="md-nav__link">
         
   
   
@@ -2923,7 +3125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/repo-structure-reference/" class="md-nav__link">
+      <a href="../repo-structure-reference/" class="md-nav__link">
         
   
   
@@ -2951,7 +3153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/repository-map/" class="md-nav__link">
+      <a href="../repository-map/" class="md-nav__link">
         
   
   
@@ -2979,7 +3181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/security/" class="md-nav__link">
+      <a href="../security/" class="md-nav__link">
         
   
   
@@ -3007,7 +3209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/state-management/" class="md-nav__link">
+      <a href="../state-management/" class="md-nav__link">
         
   
   
@@ -3035,7 +3237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/telemetry/" class="md-nav__link">
+      <a href="../telemetry/" class="md-nav__link">
         
   
   
@@ -3063,7 +3265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/testing/" class="md-nav__link">
+      <a href="../testing/" class="md-nav__link">
         
   
   
@@ -3091,7 +3293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/tool/" class="md-nav__link">
+      <a href="../tool/" class="md-nav__link">
         
   
   
@@ -3119,7 +3321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/topology/" class="md-nav__link">
+      <a href="../topology/" class="md-nav__link">
         
   
   
@@ -3147,7 +3349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/ugc_modding/" class="md-nav__link">
+      <a href="../ugc_modding/" class="md-nav__link">
         
   
   
@@ -3175,7 +3377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/ugc-distribution-executive-summary/" class="md-nav__link">
+      <a href="../ugc-distribution-executive-summary/" class="md-nav__link">
         
   
   
@@ -3203,7 +3405,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/ugc-distribution-strategy/" class="md-nav__link">
+      <a href="../ugc-distribution-strategy/" class="md-nav__link">
         
   
   
@@ -3231,7 +3433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/ugc-hybrid-integration-architecture/" class="md-nav__link">
+      <a href="../ugc-hybrid-integration-architecture/" class="md-nav__link">
         
   
   
@@ -3259,7 +3461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/ugc-api-manager-topology/" class="md-nav__link">
+      <a href="../ugc-api-manager-topology/" class="md-nav__link">
         
   
   
@@ -3287,7 +3489,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/ui-ux/" class="md-nav__link">
+      <a href="../ui-ux/" class="md-nav__link">
         
   
   
@@ -3315,7 +3517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/workflow/" class="md-nav__link">
+      <a href="../workflow/" class="md-nav__link">
         
   
   
@@ -3343,7 +3545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/workout-package-storage-and-discovery/" class="md-nav__link">
+      <a href="../workout-package-storage-and-discovery/" class="md-nav__link">
         
   
   
@@ -5205,10 +5407,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-in-your-source-code" class="md-nav__link">
+  <a href="#product-truth" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. In Your Source Code
+        Product truth
       
     </span>
   </a>
@@ -5216,10 +5418,210 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-in-your-game-client" class="md-nav__link">
+  <a href="#why-aerobeat-owned-accounts-matter-even-before-the-full-account-product-ships" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. In Your Game Client
+        Why AeroBeat-owned accounts matter even before the full account product ships
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#canonical-identity-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical identity model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Canonical identity model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#canonical-aerobeat-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical AeroBeat records
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-identity-mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        External identity mappings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-model-free-workouts-vs-premium-workouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Access model: free workouts vs premium workouts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Access model: free workouts vs premium workouts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#free-workouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Free workouts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#premium-workouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Premium workouts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#purchase-and-entitlement-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purchase and entitlement rules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Purchase and entitlement rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rule-1-platform-compliant-commerce-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 1: platform-compliant commerce only
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-2-modio-may-act-as-the-current-purchaseownership-server-only-after-official-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 2: mod.io may act as the current purchase/ownership server only after official sync
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#responsibility-split" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responsibility split
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Responsibility split">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aerobeat-owns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AeroBeat owns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modio-currently-owns-or-assists-with" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mod.io currently owns or assists with
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-aerobeat-tool-api-should-be" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What aerobeat-tool-api should be
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vendor-seam-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vendor seam rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-near-term-implementation-stance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended near-term implementation stance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explicit-unresolved-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicit unresolved questions
       
     </span>
   </a>
@@ -5246,22 +5648,193 @@
   
 
 
-<h1 id="attribution-guide">Attribution Guide<a class="headerlink" href="#attribution-guide" title="Permanent link">&para;</a></h1>
-<p>If you fork AeroBeat or use our assets, you must provide proper credit. Here is how to do it correctly.</p>
-<h3 id="1-in-your-source-code">1. In Your Source Code<a class="headerlink" href="#1-in-your-source-code" title="Permanent link">&para;</a></h3>
+<h1 id="account-identity-and-entitlements-strategy">Account, Identity, and Entitlements Strategy<a class="headerlink" href="#account-identity-and-entitlements-strategy" title="Permanent link">&para;</a></h1>
+<p>This document locks the current AeroBeat strategy for <strong>accounts</strong>, <strong>identity</strong>, <strong>workout access</strong>, and the boundary between <strong>AeroBeat-owned product truth</strong> and the current <strong>mod.io provider shell</strong>.</p>
+<p>The short version:</p>
 <ul>
-<li><strong>Do Not Remove Headers:</strong> You must keep the existing copyright headers in all source files (GPLv3/MPL 2.0 requirement).</li>
-<li><strong>Add Your Own:</strong> If you modify a file, add your own copyright line below ours.
-    <div class="highlight"><pre><span></span><code><span class="c1"># Copyright (c) 2026 AeroBeat-Workouts</span>
-<span class="c1"># Copyright (c) 2027 Your Name/Company</span>
-</code></pre></div></li>
+<li><strong>AeroBeat is explicitly free-to-play.</strong></li>
+<li>The product supports both <strong>free workouts</strong> and <strong>premium workouts</strong>.</li>
+<li><strong>Platform-compliant purchase flows</strong> are mandatory for premium access.</li>
+<li><strong>mod.io remains the current community/distribution layer</strong> for premium UGC and related ownership/discovery flows.</li>
+<li><strong>AeroBeat still needs its own account architecture</strong> as a first-class design concern for retention, product progression, and future portability.</li>
+<li><strong><code>aerobeat-tool-api</code> is the AeroBeat-facing identity/access/entitlement layer</strong>, not a thin mod.io wrapper.</li>
 </ul>
-<h3 id="2-in-your-game-client">2. In Your Game Client<a class="headerlink" href="#2-in-your-game-client" title="Permanent link">&para;</a></h3>
-<p>If you release a build (even a non-commercial one), you must credit AeroBeat in the user interface.</p>
+<h2 id="product-truth">Product truth<a class="headerlink" href="#product-truth" title="Permanent link">&para;</a></h2>
+<p>AeroBeat should now be described as a <strong>free-to-play rhythm workout platform</strong>.</p>
+<p>That means the base app can be installed and used without an up-front purchase, while the content model supports multiple access tiers:</p>
 <ul>
-<li><strong>Credits Screen:</strong> Include "Powered by AeroBeat" or "Based on AeroBeat Platform".</li>
-<li><strong>Assets:</strong> If you use our CC BY-NC 4.0 assets, list "AeroBeat-Workouts" in your art credits.</li>
+<li><strong>free workouts</strong></li>
+<li><strong>premium workouts</strong></li>
+<li>future account-driven progression, cosmetics, and social systems</li>
 </ul>
+<p>The important architectural consequence is that <strong>workout access is no longer equivalent to simple community download access</strong>. Some content is free, some content is premium, and the runtime needs a durable way to answer:</p>
+<ul>
+<li>who is this athlete?</li>
+<li>what devices/platform identities are linked?</li>
+<li>what workouts does this athlete own or have access to?</li>
+<li>which access came from free catalog policy vs paid entitlement?</li>
+<li>which content is currently trusted, compatible, and installable?</li>
+</ul>
+<h2 id="why-aerobeat-owned-accounts-matter-even-before-the-full-account-product-ships">Why AeroBeat-owned accounts matter even before the full account product ships<a class="headerlink" href="#why-aerobeat-owned-accounts-matter-even-before-the-full-account-product-ships" title="Permanent link">&para;</a></h2>
+<p>Even if AeroBeat phases the end-user account product over time, the architecture cannot assume that mod.io identity alone is the long-term product center.</p>
+<p>AeroBeat needs an <strong>AeroBeat-owned account model</strong> because the product roadmap already implies first-party state such as:</p>
+<ul>
+<li>workout points</li>
+<li>streaks and goals</li>
+<li>athlete profile and preferences</li>
+<li>cosmetics and locker-room progression</li>
+<li>recommendations and retention systems</li>
+<li>social features and crews</li>
+<li>future multiplayer and competitive state</li>
+<li>cross-platform continuity expectations</li>
+</ul>
+<p>Those are AeroBeat product systems, not vendor features.</p>
+<p>So the strategy is:</p>
+<ol>
+<li><strong>Design AeroBeat identity now</strong> as a first-class architecture concern.</li>
+<li><strong>Allow phased rollout</strong> of the end-user account experience if product sequencing demands it.</li>
+<li><strong>Do not let vendor account semantics become canonical</strong> for long-lived product state.</li>
+</ol>
+<h2 id="canonical-identity-model">Canonical identity model<a class="headerlink" href="#canonical-identity-model" title="Permanent link">&para;</a></h2>
+<p>AeroBeat should treat its own athlete/account identity as canonical.</p>
+<h3 id="canonical-aerobeat-records">Canonical AeroBeat records<a class="headerlink" href="#canonical-aerobeat-records" title="Permanent link">&para;</a></h3>
+<p>AeroBeat-owned systems should be the source of truth for:</p>
+<ul>
+<li><code>athlete_id</code></li>
+<li>account status / guest vs signed-in state</li>
+<li>linked identity records per platform/provider</li>
+<li>profile and progression state</li>
+<li>entitlement summaries expressed in AeroBeat terms</li>
+<li>library sync state expressed in AeroBeat terms</li>
+<li>trust/approval/install policy metadata for workouts</li>
+</ul>
+<h3 id="external-identity-mappings">External identity mappings<a class="headerlink" href="#external-identity-mappings" title="Permanent link">&para;</a></h3>
+<p>External identity mappings remain important, but secondary:</p>
+<ul>
+<li>platform account identity (Steam, mobile store identity, console identity, etc.)</li>
+<li>provider identity such as mod.io user/account linkage</li>
+<li>provider content/listing/mod IDs</li>
+</ul>
+<p>Those should be stored as mappings, not as the primary product identity.</p>
+<h2 id="access-model-free-workouts-vs-premium-workouts">Access model: free workouts vs premium workouts<a class="headerlink" href="#access-model-free-workouts-vs-premium-workouts" title="Permanent link">&para;</a></h2>
+<p>AeroBeat needs a stable product vocabulary for access.</p>
+<h3 id="free-workouts">Free workouts<a class="headerlink" href="#free-workouts" title="Permanent link">&para;</a></h3>
+<p>Free workouts are content the athlete may acquire or install without a paid entitlement.</p>
+<p>They may still require:</p>
+<ul>
+<li>compatibility checks</li>
+<li>trust approval</li>
+<li>catalog visibility policy</li>
+<li>library sync or favorite/subscription state</li>
+<li>guest-vs-account access policy decisions</li>
+</ul>
+<p>But they do <strong>not</strong> require a premium purchase entitlement.</p>
+<h3 id="premium-workouts">Premium workouts<a class="headerlink" href="#premium-workouts" title="Permanent link">&para;</a></h3>
+<p>Premium workouts are content whose access depends on a recognized entitlement path.</p>
+<p>For the current strategy:</p>
+<ul>
+<li>purchases must flow through <strong>official platform/store surfaces</strong></li>
+<li>mod.io can remain the current <strong>premium UGC/community/distribution layer</strong></li>
+<li>AeroBeat should treat premium access as an <strong>AeroBeat-facing entitlement decision</strong> even if some transport/ownership synchronization is provider-backed</li>
+</ul>
+<p>The runtime and docs should therefore talk about <strong>premium workout access</strong> or <strong>owned premium workouts</strong>, not about raw provider wallet semantics.</p>
+<h2 id="purchase-and-entitlement-rules">Purchase and entitlement rules<a class="headerlink" href="#purchase-and-entitlement-rules" title="Permanent link">&para;</a></h2>
+<h3 id="rule-1-platform-compliant-commerce-only">Rule 1: platform-compliant commerce only<a class="headerlink" href="#rule-1-platform-compliant-commerce-only" title="Permanent link">&para;</a></h3>
+<p>AeroBeat should assume premium purchases originate through official platform-compliant paths.</p>
+<p>Examples include:</p>
+<ul>
+<li>Steam or other PC storefront purchase flows</li>
+<li>mobile store purchase flows</li>
+<li>platform-holder compliant commerce on future platforms</li>
+</ul>
+<p>AeroBeat should <strong>not</strong> architect around unofficial direct-billing shortcuts that would create platform-policy risk.</p>
+<h3 id="rule-2-modio-may-act-as-the-current-purchaseownership-server-only-after-official-sync">Rule 2: mod.io may act as the current purchase/ownership server only after official sync<a class="headerlink" href="#rule-2-modio-may-act-as-the-current-purchaseownership-server-only-after-official-sync" title="Permanent link">&para;</a></h3>
+<p>The currently acceptable strategy is:</p>
+<ol>
+<li>user purchases through the official platform/store path</li>
+<li>the game authenticates through legitimate supported identity surfaces</li>
+<li>ownership/entitlement is synchronized to the provider where officially supported</li>
+<li>mod.io may then act as the current ownership/purchased-content server for the premium UGC layer</li>
+<li>AeroBeat still exposes the resulting access in AeroBeat terms</li>
+</ol>
+<p>Important constraint:</p>
+<blockquote>
+<p>AeroBeat should rely only on <strong>official, non-deprecated, legitimately supportable provider/platform surfaces</strong>.</p>
+</blockquote>
+<p>If a workflow is not clearly supported by official documentation or supportable product surfaces, the docs should not present it as a guaranteed implementation path.</p>
+<h2 id="responsibility-split">Responsibility split<a class="headerlink" href="#responsibility-split" title="Permanent link">&para;</a></h2>
+<h3 id="aerobeat-owns">AeroBeat owns<a class="headerlink" href="#aerobeat-owns" title="Permanent link">&para;</a></h3>
+<p>AeroBeat owns the long-term product contract for:</p>
+<ul>
+<li>athlete identity</li>
+<li>linked-account model</li>
+<li>entitlement vocabulary</li>
+<li>free vs premium workout access policy</li>
+<li>profile/progression/retention systems</li>
+<li>trusted content IDs and compatibility policy</li>
+<li>install/mount/runtime trust decisions</li>
+<li>library experience as a product concept</li>
+<li>future migration path away from any one provider</li>
+</ul>
+<h3 id="modio-currently-owns-or-assists-with">mod.io currently owns or assists with<a class="headerlink" href="#modio-currently-owns-or-assists-with" title="Permanent link">&para;</a></h3>
+<p>mod.io is the current provider seam for:</p>
+<ul>
+<li>community/discovery shell</li>
+<li>premium UGC listing and distribution support</li>
+<li>provider-side ownership/purchase state after official sync where supported</li>
+<li>provider transport details such as account-linking mechanics, purchase sync mechanics, and owned-content queries</li>
+</ul>
+<p>Those concerns should stay conceptually inside the <strong>vendor seam</strong>, not leak into long-lived AeroBeat product contracts.</p>
+<h2 id="what-aerobeat-tool-api-should-be">What <code>aerobeat-tool-api</code> should be<a class="headerlink" href="#what-aerobeat-tool-api-should-be" title="Permanent link">&para;</a></h2>
+<p><code>aerobeat-tool-api</code> should be described as the <strong>AeroBeat-facing identity, access, and entitlement layer</strong> used by game clients and related product surfaces.</p>
+<p>It should expose AeroBeat-shaped capabilities such as:</p>
+<ul>
+<li>guest/session bootstrap</li>
+<li>athlete sign-in and linked-account status</li>
+<li>content discovery views shaped for AeroBeat</li>
+<li>free vs premium access checks</li>
+<li>owned-workout/library sync</li>
+<li>install/download authorization for trusted content</li>
+<li>submission/status flows for creators</li>
+<li>normalized entitlement/access status for UI and runtime policy</li>
+</ul>
+<p>It should <strong>not</strong> become:</p>
+<ul>
+<li>a raw mod.io DTO dump</li>
+<li>a generic REST wrapper for arbitrary provider endpoints</li>
+<li>the place where provider-specific account-linking mechanics become public contract</li>
+<li>a thin SDK clone whose vocabulary is just vendor terminology with AeroBeat branding pasted on top</li>
+</ul>
+<h2 id="vendor-seam-rule">Vendor seam rule<a class="headerlink" href="#vendor-seam-rule" title="Permanent link">&para;</a></h2>
+<p>All mod.io-specific transport and account-linking mechanics should stay inside the provider seam conceptually and, where possible, in provider-specific repos such as <code>aerobeat-vendor-modio</code>.</p>
+<p>That includes details such as:</p>
+<ul>
+<li>provider auth exchange mechanics</li>
+<li>provider account-link requirements</li>
+<li>provider purchase-sync calls</li>
+<li>provider wallet/purchased-content transport</li>
+<li>provider ID formats and raw DTOs</li>
+</ul>
+<p><code>aerobeat-tool-api</code> should consume those capabilities indirectly and expose <strong>AeroBeat-shaped results</strong>.</p>
+<h2 id="recommended-near-term-implementation-stance">Recommended near-term implementation stance<a class="headerlink" href="#recommended-near-term-implementation-stance" title="Permanent link">&para;</a></h2>
+<p>Near-term implementation planning should assume:</p>
+<ol>
+<li><strong>AeroBeat account architecture must be designed now</strong>, even if the athlete-facing account product is phased.</li>
+<li><strong>Free-to-play with free + premium workouts is the baseline product framing.</strong></li>
+<li><strong>Platform-native purchase flows remain the commerce origin.</strong></li>
+<li><strong>mod.io remains the current premium UGC/community layer</strong>, not the long-term product center of gravity.</li>
+<li><strong><code>aerobeat-tool-api</code> should become the client-facing identity/access/entitlement manager</strong>, with provider details staying in the vendor seam.</li>
+</ol>
+<h2 id="explicit-unresolved-questions">Explicit unresolved questions<a class="headerlink" href="#explicit-unresolved-questions" title="Permanent link">&para;</a></h2>
+<p>These are intentionally left visible for follow-up work rather than hand-waved away:</p>
+<ol>
+<li><strong>Account rollout phaseing:</strong> how much of the AeroBeat-owned end-user account experience must ship in v1 versus exist only as backend/architecture readiness?</li>
+<li><strong>Cross-platform recovery UX:</strong> what is the exact athlete experience for linking multiple platform identities to one durable AeroBeat identity and recovering premium purchases across devices/platforms?</li>
+<li><strong>Entitlement reconciliation policy:</strong> when AeroBeat account truth, platform purchase truth, and provider purchase truth disagree temporarily, which system wins for client UX and runtime access?</li>
+<li><strong>Guest conversion rules:</strong> which free-to-play behaviors remain available to guests, and which premium/community flows require sign-in?</li>
+<li><strong>Catalog policy:</strong> what content classes can ever be premium at launch, and what catalog-quality/moderation rules apply before premium publication?</li>
+</ol>
+<p>Those should be handled in later strategy tasks rather than hidden inside this Task 1 docs pass.</p>
 
 
 
@@ -5282,7 +5855,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 23, 2026 03:19:55 UTC">January 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 7, 2026 13:45:29 UTC">May 7, 2026</span>
   </span>
 
     

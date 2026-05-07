@@ -1251,6 +1251,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#free-to-play-without-identity-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Free-to-play without identity drift
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#accessibility-first-through-camera-play" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1277,6 +1288,17 @@
     <span class="md-ellipsis">
       
         Community-first release order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#free-premium-workout-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Free + premium workout catalog
       
     </span>
   </a>
@@ -2706,6 +2728,34 @@
     
   
     Audio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/account-identity-and-entitlements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Account, Identity, and Entitlements
   
 
     
@@ -5283,6 +5333,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#free-to-play-without-identity-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Free-to-play without identity drift
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#accessibility-first-through-camera-play" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5309,6 +5370,17 @@
     <span class="md-ellipsis">
       
         Community-first release order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#free-premium-workout-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Free + premium workout catalog
       
     </span>
   </a>
@@ -5385,20 +5457,24 @@
 
 
 <h1 id="aerobeat-concept-overview">AeroBeat: Concept Overview<a class="headerlink" href="#aerobeat-concept-overview" title="Permanent link">&para;</a></h1>
-<p>AeroBeat is an open-source rhythm workout platform with a deliberately narrowed v1: <strong>camera-based Boxing and Flow, shipped to the PC community first</strong>.</p>
+<p>AeroBeat is an open-source <strong>free-to-play</strong> rhythm workout platform with a deliberately narrowed v1: <strong>camera-based Boxing and Flow, shipped to the PC community first</strong>.</p>
 <p>Older docs described AeroBeat as broadly gameplay-agnostic, hardware-agnostic, and ready to launch across many devices at once. That is no longer the official v1 product claim. The current product thesis is narrower on purpose so the team can ship a strong, coherent first experience.</p>
 <h2 id="high-concept">High concept<a class="headerlink" href="#high-concept" title="Permanent link">&para;</a></h2>
 <blockquote>
-<p><strong>Accessible rhythm workouts through a standard camera, with community-first content on PC.</strong></p>
+<p><strong>Accessible free-to-play rhythm workouts through a standard camera, with community-first content on PC.</strong></p>
 </blockquote>
 <p>AeroBeat still keeps a modular architecture, but the v1 product promise is now specific:</p>
 <ol>
+<li><strong>Business model:</strong> free-to-play app with <strong>free workouts</strong> and <strong>premium workouts</strong></li>
 <li><strong>Input:</strong> official gameplay support is camera tracking</li>
 <li><strong>Gameplay:</strong> official v1 features are Boxing and Flow</li>
 <li><strong>Content:</strong> community-authored songs, charts, sets, workouts, coaching, and environments</li>
-<li><strong>Progression:</strong> profile, workout points, and controlled avatar/cosmetics customization</li>
+<li><strong>Progression:</strong> AeroBeat-owned profile, workout points, and controlled avatar/cosmetics customization</li>
 </ol>
 <h2 id="product-pillars-for-this-slice">Product pillars for this slice<a class="headerlink" href="#product-pillars-for-this-slice" title="Permanent link">&para;</a></h2>
+<h3 id="free-to-play-without-identity-drift">Free-to-play without identity drift<a class="headerlink" href="#free-to-play-without-identity-drift" title="Permanent link">&para;</a></h3>
+<p>AeroBeat is not just a free download. It is a free-to-play product that needs a clear long-term answer for athlete identity, progression, and workout access.</p>
+<p>That means the architecture cannot quietly collapse into vendor-owned identity just because mod.io is the current community/distribution layer. AeroBeat needs an AeroBeat-owned account architecture as a first-class design concern, even if the full end-user account product is phased.</p>
 <h3 id="accessibility-first-through-camera-play">Accessibility first through camera play<a class="headerlink" href="#accessibility-first-through-camera-play" title="Permanent link">&para;</a></h3>
 <p>The first launch should let athletes start with hardware they already own: a laptop or desktop plus a camera. UI navigation may still use mouse on PC and touch on mobile surfaces, but official gameplay support is camera-first.</p>
 <h3 id="fitness-first-choreography">Fitness-first choreography<a class="headerlink" href="#fitness-first-choreography" title="Permanent link">&para;</a></h3>
@@ -5411,6 +5487,13 @@
 <li><strong>VR third</strong></li>
 </ol>
 <p>That order should shape planning language throughout the docs. Mobile and VR remain meaningful future targets, but they are not current parity promises.</p>
+<h3 id="free-premium-workout-catalog">Free + premium workout catalog<a class="headerlink" href="#free-premium-workout-catalog" title="Permanent link">&para;</a></h3>
+<p>The content model now needs to support both:</p>
+<ul>
+<li><strong>free workouts</strong> that keep the product approachable and discoverable</li>
+<li><strong>premium workouts</strong> that follow platform-compliant purchase rules</li>
+</ul>
+<p>mod.io remains the current premium UGC/community/distribution layer, but official purchases should still flow through legitimate platform/store paths. AeroBeat should describe the resulting access in AeroBeat product terms rather than letting provider-specific purchase mechanics become the public product vocabulary.</p>
 <h3 id="modular-architecture-scoped-promises">Modular architecture, scoped promises<a class="headerlink" href="#modular-architecture-scoped-promises" title="Permanent link">&para;</a></h3>
 <p>AeroBeat still benefits from modular content, input, and feature boundaries. The key change is marketing and product truthfulness: future-compatible architecture does <strong>not</strong> mean every feature, device, or platform is official v1 scope.</p>
 <h2 id="explicitly-out-of-current-gameplay-scope">Explicitly out of current gameplay scope<a class="headerlink" href="#explicitly-out-of-current-gameplay-scope" title="Permanent link">&para;</a></h2>
@@ -5457,7 +5540,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 1, 2026 13:58:33 UTC">May 1, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 7, 2026 13:45:29 UTC">May 7, 2026</span>
   </span>
 
     

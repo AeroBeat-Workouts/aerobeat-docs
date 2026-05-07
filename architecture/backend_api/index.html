@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/architecture/backend_api/">
       
       
-        <link rel="prev" href="../audio/">
+        <link rel="prev" href="../account-identity-and-entitlements/">
       
       
         <link rel="next" href="../cloud_baker/">
@@ -2573,6 +2573,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../account-identity-and-entitlements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Account, Identity, and Entitlements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -2636,10 +2664,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#security-mitigation-strategy" class="md-nav__link">
+  <a href="#strategic-framing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛡️ Security &amp; Mitigation Strategy
+        Strategic framing
       
     </span>
   </a>
@@ -2647,22 +2675,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-integrity-versioning" class="md-nav__link">
+  <a href="#security-mitigation-strategy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📦 Data Integrity &amp; Versioning
+        🛡️ Security &amp; mitigation strategy
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📦 Data Integrity &amp; Versioning">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-integrity-trust-and-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 Data integrity, trust, and versioning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 Data integrity, trust, and versioning">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1-immutable-versioning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Immutable Versioning
+        1. Immutable versioning
       
     </span>
   </a>
@@ -2673,7 +2712,18 @@
   <a href="#2-soft-delete-policy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Soft Delete Policy
+        2. Soft-delete policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-first-party-runtime-trust" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. First-party runtime trust
       
     </span>
   </a>
@@ -2686,22 +2736,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#authentication-guest-access" class="md-nav__link">
+  <a href="#authentication-and-actor-model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔐 Authentication &amp; Guest Access
+        🔐 Authentication and actor model
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🔐 Authentication &amp; Guest Access">
+    <nav class="md-nav" aria-label="🔐 Authentication and actor model">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentication-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication principles
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#guest-handshake" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Guest Handshake
+        Guest handshake
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linked-account-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linked-account status
       
     </span>
   </a>
@@ -2714,94 +2786,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#creator-endpoints-modding-sdk" class="md-nav__link">
+  <a href="#athlete-facing-endpoints" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📤 Creator Endpoints (Modding SDK)
+        👤 Athlete-facing endpoints
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📤 Creator Endpoints (Modding SDK)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-check-quota" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Check Quota
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-request-upload-brokered-upload-target" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Request Upload (Brokered Upload Target)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-complete-upload" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Complete Upload
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-check-validation-status" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Check Validation Status
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-search-assets-sdk-browser" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Search Assets (SDK Browser)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#athlete-endpoints-in-game-browser" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📥 Athlete Endpoints (In-Game Browser)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📥 Athlete Endpoints (In-Game Browser)">
+    <nav class="md-nav" aria-label="👤 Athlete-facing endpoints">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1-browse-content" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Browse Content
+        1. Browse content
       
     </span>
   </a>
@@ -2809,10 +2809,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-download-mod" class="md-nav__link">
+  <a href="#2-get-workout-detail" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Download Mod
+        2. Get workout detail
       
     </span>
   </a>
@@ -2823,7 +2823,40 @@
   <a href="#3-sync-library" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Sync Library
+        3. Sync library
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-get-entitlementaccess-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Get entitlement/access summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-resolve-installdownload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Resolve install/download
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-favorites-subscriptions-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Favorites / subscriptions / recommendations
       
     </span>
   </a>
@@ -2836,22 +2869,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#billing-supporter-endpoints" class="md-nav__link">
+  <a href="#creator-facing-endpoints" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💳 Billing &amp; Supporter Endpoints
+        🧰 Creator-facing endpoints
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="💳 Billing &amp; Supporter Endpoints">
+    <nav class="md-nav" aria-label="🧰 Creator-facing endpoints">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-create-checkout-session" class="md-nav__link">
+  <a href="#1-check-quota" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Create Checkout Session
+        1. Check quota
       
     </span>
   </a>
@@ -2859,10 +2892,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-webhook-handler-server-to-server" class="md-nav__link">
+  <a href="#2-request-upload" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Webhook Handler (Server-to-Server)
+        2. Request upload
       
     </span>
   </a>
@@ -2870,10 +2903,82 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-get-supporter-status" class="md-nav__link">
+  <a href="#3-complete-upload" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Get Supporter Status
+        3. Complete upload
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-check-submission-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Check submission status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-creator-catalog-owned-listings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Creator catalog / owned listings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#premium-workout-purchase-and-ownership-flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💳 Premium workout purchase and ownership flows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💳 Premium workout purchase and ownership flows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-start-purchase-handoff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Start purchase handoff
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sync-ownership-after-purchase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sync ownership after purchase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-check-ownership-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Check ownership status
       
     </span>
   </a>
@@ -2889,19 +2994,30 @@
   <a href="#sequence-diagrams" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📊 Sequence Diagrams
+        📊 Sequence diagrams
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📊 Sequence Diagrams">
+    <nav class="md-nav" aria-label="📊 Sequence diagrams">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#guest-download-flow" class="md-nav__link">
+  <a href="#guest-signed-in-browse-and-install-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Guest Download Flow
+        Guest / signed-in browse and install flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#premium-purchase-reconciliation-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Premium purchase reconciliation flow
       
     </span>
   </a>
@@ -2917,7 +3033,7 @@
   <a href="#client-implementation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ Client Implementation
+        🛠️ Client implementation
       
     </span>
   </a>
@@ -5446,10 +5562,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#security-mitigation-strategy" class="md-nav__link">
+  <a href="#strategic-framing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛡️ Security &amp; Mitigation Strategy
+        Strategic framing
       
     </span>
   </a>
@@ -5457,22 +5573,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-integrity-versioning" class="md-nav__link">
+  <a href="#security-mitigation-strategy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📦 Data Integrity &amp; Versioning
+        🛡️ Security &amp; mitigation strategy
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📦 Data Integrity &amp; Versioning">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-integrity-trust-and-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 Data integrity, trust, and versioning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 Data integrity, trust, and versioning">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1-immutable-versioning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Immutable Versioning
+        1. Immutable versioning
       
     </span>
   </a>
@@ -5483,7 +5610,18 @@
   <a href="#2-soft-delete-policy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Soft Delete Policy
+        2. Soft-delete policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-first-party-runtime-trust" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. First-party runtime trust
       
     </span>
   </a>
@@ -5496,22 +5634,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#authentication-guest-access" class="md-nav__link">
+  <a href="#authentication-and-actor-model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔐 Authentication &amp; Guest Access
+        🔐 Authentication and actor model
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🔐 Authentication &amp; Guest Access">
+    <nav class="md-nav" aria-label="🔐 Authentication and actor model">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentication-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication principles
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#guest-handshake" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Guest Handshake
+        Guest handshake
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linked-account-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linked-account status
       
     </span>
   </a>
@@ -5524,94 +5684,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#creator-endpoints-modding-sdk" class="md-nav__link">
+  <a href="#athlete-facing-endpoints" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📤 Creator Endpoints (Modding SDK)
+        👤 Athlete-facing endpoints
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📤 Creator Endpoints (Modding SDK)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-check-quota" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Check Quota
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-request-upload-brokered-upload-target" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Request Upload (Brokered Upload Target)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-complete-upload" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Complete Upload
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-check-validation-status" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Check Validation Status
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-search-assets-sdk-browser" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Search Assets (SDK Browser)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#athlete-endpoints-in-game-browser" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📥 Athlete Endpoints (In-Game Browser)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📥 Athlete Endpoints (In-Game Browser)">
+    <nav class="md-nav" aria-label="👤 Athlete-facing endpoints">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1-browse-content" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Browse Content
+        1. Browse content
       
     </span>
   </a>
@@ -5619,10 +5707,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-download-mod" class="md-nav__link">
+  <a href="#2-get-workout-detail" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Download Mod
+        2. Get workout detail
       
     </span>
   </a>
@@ -5633,7 +5721,40 @@
   <a href="#3-sync-library" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Sync Library
+        3. Sync library
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-get-entitlementaccess-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Get entitlement/access summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-resolve-installdownload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Resolve install/download
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-favorites-subscriptions-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Favorites / subscriptions / recommendations
       
     </span>
   </a>
@@ -5646,22 +5767,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#billing-supporter-endpoints" class="md-nav__link">
+  <a href="#creator-facing-endpoints" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💳 Billing &amp; Supporter Endpoints
+        🧰 Creator-facing endpoints
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="💳 Billing &amp; Supporter Endpoints">
+    <nav class="md-nav" aria-label="🧰 Creator-facing endpoints">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-create-checkout-session" class="md-nav__link">
+  <a href="#1-check-quota" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Create Checkout Session
+        1. Check quota
       
     </span>
   </a>
@@ -5669,10 +5790,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-webhook-handler-server-to-server" class="md-nav__link">
+  <a href="#2-request-upload" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Webhook Handler (Server-to-Server)
+        2. Request upload
       
     </span>
   </a>
@@ -5680,10 +5801,82 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-get-supporter-status" class="md-nav__link">
+  <a href="#3-complete-upload" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Get Supporter Status
+        3. Complete upload
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-check-submission-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Check submission status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-creator-catalog-owned-listings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Creator catalog / owned listings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#premium-workout-purchase-and-ownership-flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💳 Premium workout purchase and ownership flows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💳 Premium workout purchase and ownership flows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-start-purchase-handoff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Start purchase handoff
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sync-ownership-after-purchase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sync ownership after purchase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-check-ownership-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Check ownership status
       
     </span>
   </a>
@@ -5699,19 +5892,30 @@
   <a href="#sequence-diagrams" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📊 Sequence Diagrams
+        📊 Sequence diagrams
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📊 Sequence Diagrams">
+    <nav class="md-nav" aria-label="📊 Sequence diagrams">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#guest-download-flow" class="md-nav__link">
+  <a href="#guest-signed-in-browse-and-install-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Guest Download Flow
+        Guest / signed-in browse and install flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#premium-purchase-reconciliation-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Premium purchase reconciliation flow
       
     </span>
   </a>
@@ -5727,7 +5931,7 @@
   <a href="#client-implementation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ Client Implementation
+        🛠️ Client implementation
       
     </span>
   </a>
@@ -5755,10 +5959,20 @@
 
 
 <h1 id="backend-api-specification">Backend API Specification<a class="headerlink" href="#backend-api-specification" title="Permanent link">&para;</a></h1>
-<p>This document defines the REST API endpoints used by the <strong>Modding SDK</strong> (for creators) and the <strong>Game Client</strong> (for athletes).</p>
-<p>These are <strong>AeroBeat-owned API surfaces</strong>. Even with <strong>mod.io as the current outer community/distribution shell</strong>, the client/runtime trust contract stays first-party: AeroBeat keeps package IDs, validation, bake/signing authority, quarantine/revocation state, and final install/mount policy.</p>
-<h2 id="security-mitigation-strategy">🛡️ Security &amp; Mitigation Strategy<a class="headerlink" href="#security-mitigation-strategy" title="Permanent link">&para;</a></h2>
-<p>To protect the platform from abuse, we implement strict security measures for all User Generated Content (UGC).</p>
+<p>This document defines the high-level AeroBeat-owned REST API surfaces used by both the <strong>game client</strong> (for athletes) and the <strong>creator-side tooling</strong>.</p>
+<p>These are <strong>AeroBeat-owned API surfaces</strong>. Even with <strong>mod.io as the current outer community/distribution shell</strong> for free and premium workout distribution, the client/runtime trust contract stays first-party: AeroBeat keeps athlete identity, package IDs, validation, bake/signing authority, entitlement vocabulary, quarantine/revocation state, and final install/mount policy.</p>
+<p>This document is intentionally <strong>AeroBeat-shaped</strong>, not a provider pass-through contract.</p>
+<h2 id="strategic-framing">Strategic framing<a class="headerlink" href="#strategic-framing" title="Permanent link">&para;</a></h2>
+<p>The API should now be read through the current product strategy:</p>
+<ul>
+<li><strong>AeroBeat is free-to-play</strong></li>
+<li>the catalog includes <strong>free workouts</strong> and <strong>premium workouts</strong></li>
+<li>premium purchases must flow through <strong>official platform/store paths</strong></li>
+<li>mod.io may serve as the current premium UGC/community/distribution layer and purchased-content server <strong>after official platform-originated sync where legitimately supported</strong></li>
+<li><code>aerobeat-tool-api</code> is the client-facing identity/access/entitlement manager, not a raw mod.io wrapper</li>
+</ul>
+<h2 id="security-mitigation-strategy">🛡️ Security &amp; mitigation strategy<a class="headerlink" href="#security-mitigation-strategy" title="Permanent link">&para;</a></h2>
+<p>To protect the platform from abuse, AeroBeat should implement strict security measures for all UGC and workout distribution flows.</p>
 <table>
 <thead>
 <tr>
@@ -5768,239 +5982,273 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>DDoS / Bandwidth Exhaustion</strong></td>
-<td style="text-align: left;"><strong>Brokered direct uploads.</strong> Uploads go directly to an authorized storage/provider target (for example S3 or a mod.io-backed target), bypassing API servers.</td>
+<td style="text-align: left;"><strong>DDoS / bandwidth exhaustion</strong></td>
+<td style="text-align: left;"><strong>Brokered direct uploads.</strong> Uploads go directly to an authorized storage/provider target, bypassing API servers.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Storage Exhaustion</strong></td>
-<td style="text-align: left;"><strong>User Quotas.</strong> Strict limits per user (e.g., 2GB total).</td>
+<td style="text-align: left;"><strong>Storage exhaustion</strong></td>
+<td style="text-align: left;"><strong>User quotas.</strong> Strict limits per creator/user.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Zip Bombs</strong></td>
-<td style="text-align: left;"><strong>Stream Inspection.</strong> Validators check uncompressed size before extraction.</td>
+<td style="text-align: left;"><strong>Zip bombs</strong></td>
+<td style="text-align: left;"><strong>Stream inspection.</strong> Validators check uncompressed size before extraction.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>RCE (Remote Code Execution)</strong></td>
 <td style="text-align: left;"><strong>Sandboxing.</strong> Validation runs in ephemeral, network-isolated containers.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Scraping / Leeching</strong></td>
-<td style="text-align: left;"><strong>Guest Rate Limits.</strong> Unverified users have strict download caps (e.g., 20 items/day).</td>
+<td style="text-align: left;"><strong>Scraping / leeching</strong></td>
+<td style="text-align: left;"><strong>Guest and low-trust rate limits.</strong> Unverified users have strict browse/download caps.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Entitlement abuse</strong></td>
+<td style="text-align: left;"><strong>Platform-linked purchase verification and reconciliation.</strong> Premium access is derived from official purchase paths plus provider/first-party sync where supported.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="data-integrity-versioning">📦 Data Integrity &amp; Versioning<a class="headerlink" href="#data-integrity-versioning" title="Permanent link">&para;</a></h2>
-<p>To prevent <strong>Dependency Rot</strong> (where a Workout breaks because a referenced Song, Set-linked Chart, Environment, or Skin was deleted or changed), the API enforces strict immutability rules.</p>
-<h3 id="1-immutable-versioning">1. Immutable Versioning<a class="headerlink" href="#1-immutable-versioning" title="Permanent link">&para;</a></h3>
+<h2 id="data-integrity-trust-and-versioning">📦 Data integrity, trust, and versioning<a class="headerlink" href="#data-integrity-trust-and-versioning" title="Permanent link">&para;</a></h2>
+<p>To prevent dependency rot, broken libraries, or trust confusion, the API should enforce strict versioning and runtime-trust rules.</p>
+<h3 id="1-immutable-versioning">1. Immutable versioning<a class="headerlink" href="#1-immutable-versioning" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Policy:</strong> Once an asset (Skin, Song, Environment) is published, its binary content (<code>.pck</code>) is <strong>Immutable</strong>. It can never be overwritten.</li>
-<li><strong>Updates:</strong> When a creator updates a mod, the API generates a new version (e.g., <code>v2</code>).</li>
-<li><strong>References:</strong> Workouts and other dependent assets reference specific versions (e.g., <code>mod_id@v1</code>). This ensures that even if <code>v2</code> changes the art style completely, the original workout using <code>v1</code> remains visually consistent.</li>
+<li>once an asset or workout version is published, its binary content is <strong>immutable</strong></li>
+<li>updates create a new version rather than overwriting the old one</li>
+<li>dependent content references exact versions where necessary</li>
 </ul>
-<h3 id="2-soft-delete-policy">2. Soft Delete Policy<a class="headerlink" href="#2-soft-delete-policy" title="Permanent link">&para;</a></h3>
+<h3 id="2-soft-delete-policy">2. Soft-delete policy<a class="headerlink" href="#2-soft-delete-policy" title="Permanent link">&para;</a></h3>
+<p>Public content should prefer unlist/archive behavior over hard deletion, except where legal or security policy requires stronger action.</p>
+<h3 id="3-first-party-runtime-trust">3. First-party runtime trust<a class="headerlink" href="#3-first-party-runtime-trust" title="Permanent link">&para;</a></h3>
+<p>A provider listing being available is not the same thing as the content being runtime-trusted.</p>
+<p>AeroBeat-owned systems should track:</p>
 <ul>
-<li><strong>Risk:</strong> If a creator deletes a popular Song, every Workout using that song would break.</li>
-<li><strong>Policy:</strong> The API does not support "Hard Deletes" for public content.</li>
-<li><strong>Action:</strong> When a creator "deletes" a mod:<ol>
-<li><strong>Unlisted:</strong> It is removed from Search and the "New Releases" feed.</li>
-<li><strong>Archived:</strong> It remains on the CDN.</li>
-<li><strong>Available:</strong> Existing workouts referencing the ID can still download and play it.</li>
-</ol>
-</li>
-<li><strong>Exception:</strong> DMCA Takedowns or Illegal Content result in a "Hard Delete" (or replacement with a placeholder), which <em>will</em> break dependencies. This is unavoidable for legal compliance.</li>
+<li>canonical content ID/version</li>
+<li>approval state</li>
+<li>compatibility state</li>
+<li>quarantine/revocation state</li>
+<li>allowed install/download target</li>
+<li>access class (<code>free</code>, <code>premium</code>, or future variants)</li>
 </ul>
-<h2 id="authentication-guest-access">🔐 Authentication &amp; Guest Access<a class="headerlink" href="#authentication-guest-access" title="Permanent link">&para;</a></h2>
-<p>We support two tiers of access to balance friction vs. security.</p>
+<h2 id="authentication-and-actor-model">🔐 Authentication and actor model<a class="headerlink" href="#authentication-and-actor-model" title="Permanent link">&para;</a></h2>
+<p>AeroBeat should support at least these actor classes:</p>
 <ol>
-<li><strong>Verified Athlete:</strong> Signed in. Full access (Upload, Rate, Sync). High rate limits.</li>
-<li>
-<p><strong>Guest Athlete:</strong> No account. Read-only access. Strict rate limits.</p>
-</li>
-<li>
-<p><strong>Header:</strong> <code>Authorization: Bearer &lt;token&gt;</code> (Required for <strong>ALL</strong> requests, including Guests).</p>
-</li>
+<li><strong>Guest athlete</strong> — read-only or limited-access user without a durable AeroBeat account session</li>
+<li><strong>Signed-in athlete</strong> — AeroBeat account holder with linked identity and library/progression state</li>
+<li><strong>Creator</strong> — signed-in account permitted to publish/manage community content</li>
 </ol>
-<h3 id="guest-handshake">Guest Handshake<a class="headerlink" href="#guest-handshake" title="Permanent link">&para;</a></h3>
-<p>To access the API as a guest, the client must first request a temporary session.</p>
+<h3 id="authentication-principles">Authentication principles<a class="headerlink" href="#authentication-principles" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Endpoint:</strong> <code>POST /api/v1/auth/guest</code></li>
-<li><strong>Body:</strong> <code>{"device_id": "uuid"}</code> (Used for fingerprinting abuse).</li>
-<li><strong>Response:</strong> Returns a short-lived JWT (e.g., 24 hours) with <code>scope: guest</code>.</li>
+<li><code>Authorization: Bearer &lt;token&gt;</code> remains the default transport</li>
+<li>tokens represent <strong>AeroBeat session truth</strong>, even if upstream identity/provider linkage participates underneath</li>
+<li>provider-specific account-linking mechanics should remain inside the vendor seam</li>
 </ul>
-<h2 id="creator-endpoints-modding-sdk">📤 Creator Endpoints (Modding SDK)<a class="headerlink" href="#creator-endpoints-modding-sdk" title="Permanent link">&para;</a></h2>
-<p>These endpoints are used by the specialized SDKs (<code>aerobeat-skins-*</code>, <code>aerobeat-avatars-*</code>, etc.) to publish content through AeroBeat-controlled trust flows, even when the outer community/listing surface is mod.io.</p>
-<h3 id="1-check-quota">1. Check Quota<a class="headerlink" href="#1-check-quota" title="Permanent link">&para;</a></h3>
+<h3 id="guest-handshake">Guest handshake<a class="headerlink" href="#guest-handshake" title="Permanent link">&para;</a></h3>
+<p><strong>Endpoint:</strong> <code>POST /api/v1/auth/guest</code></p>
+<p><strong>Purpose:</strong> request a temporary guest session for limited browse/download access.</p>
+<p><strong>Body:</strong></p>
 <ul>
-<li><strong>Endpoint:</strong> <code>GET /api/v1/user/quota</code></li>
-<li><strong>Response:</strong><ul>
-<li><code>used_bytes</code>: Total bytes used by this user.</li>
-<li><code>limit_bytes</code>: Maximum allowed storage.</li>
-<li><code>remaining_bytes</code>: Available space.</li>
+<li><code>device_id</code>: device fingerprint or equivalent abuse-control identifier</li>
 </ul>
-</li>
-</ul>
-<h3 id="2-request-upload-brokered-upload-target">2. Request Upload (Brokered Upload Target)<a class="headerlink" href="#2-request-upload-brokered-upload-target" title="Permanent link">&para;</a></h3>
+<p><strong>Response:</strong></p>
 <ul>
-<li><strong>Endpoint:</strong> <code>POST /api/v1/mods/upload-request</code></li>
-<li><strong>Body:</strong><ul>
-<li><code>filename</code>: "my_skin.pck"</li>
-<li><code>size_bytes</code>: 10485760</li>
-<li><code>checksum</code>: SHA256 hash of the file.</li>
-<li><code>type</code>: <code>SKIN</code> (or <code>SONG</code>, <code>COACHING</code>, <code>WORKOUT</code>, <code>AVATAR</code>, <code>COSMETIC</code>, <code>ENVIRONMENT</code>)</li>
+<li>short-lived token</li>
+<li>actor scope such as <code>guest</code></li>
+<li>optional access-policy summary for client UX</li>
 </ul>
-</li>
-<li><strong>Response:</strong><ul>
-<li><code>upload_url</code>: The authorized direct-upload target (for example a pre-signed object-storage URL or a provider-brokered upload URL).</li>
-<li><code>upload_id</code>: Temporary transaction ID.</li>
-<li><code>expires_in</code>: Seconds until URL expires (e.g., 900).</li>
-</ul>
-</li>
-<li><strong>Errors:</strong><ul>
-<li><code>403 Forbidden</code>: User not verified.</li>
-<li><code>413 Payload Too Large</code>: File exceeds type limit (e.g., Skin &gt; 50MB).</li>
-<li><code>429 Too Many Requests</code>: Rate limit exceeded.</li>
-<li><code>507 Insufficient Storage</code>: User quota exceeded.</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-complete-upload">3. Complete Upload<a class="headerlink" href="#3-complete-upload" title="Permanent link">&para;</a></h3>
+<h3 id="linked-account-status">Linked-account status<a class="headerlink" href="#linked-account-status" title="Permanent link">&para;</a></h3>
+<p><strong>Endpoint:</strong> <code>GET /api/v1/account/links</code></p>
+<p><strong>Purpose:</strong> return the athlete's linked account/provider/platform status in AeroBeat terms.</p>
+<p><strong>Response example fields:</strong></p>
 <ul>
-<li><strong>Endpoint:</strong> <code>POST /api/v1/mods/upload-complete</code></li>
-<li><strong>Body:</strong><ul>
-<li><code>upload_id</code>: The ID from step 2.</li>
-<li><code>manifest</code>: JSON representation of <code>AeroModManifest</code> (for indexing).</li>
+<li><code>athlete_id</code></li>
+<li><code>has_aerobeat_account</code></li>
+<li><code>linked_platforms</code></li>
+<li><code>linked_provider_accounts</code></li>
+<li><code>requires_relink</code> flags when relevant</li>
 </ul>
-</li>
-<li><strong>Response:</strong><ul>
-<li><code>202 Accepted</code>: Validation job queued after AeroBeat links the uploaded source package to its submission record and any required provider mapping.</li>
-<li><code>mod_id</code>: The permanent AeroBeat ID of the new mod.</li>
-</ul>
-</li>
-</ul>
-<h3 id="4-check-validation-status">4. Check Validation Status<a class="headerlink" href="#4-check-validation-status" title="Permanent link">&para;</a></h3>
+<p>This endpoint should not expose raw provider-link flow details as the long-term public contract.</p>
+<h2 id="athlete-facing-endpoints">👤 Athlete-facing endpoints<a class="headerlink" href="#athlete-facing-endpoints" title="Permanent link">&para;</a></h2>
+<p>These endpoints serve the free-to-play game client and should be consumed through <code>aerobeat-tool-api</code>.</p>
+<h3 id="1-browse-content">1. Browse content<a class="headerlink" href="#1-browse-content" title="Permanent link">&para;</a></h3>
+<p><strong>Endpoint:</strong> <code>GET /api/v1/catalog/workouts</code></p>
+<p><strong>Purpose:</strong> browse AeroBeat-approved workouts with enough metadata for in-game discovery.</p>
+<p><strong>Query params may include:</strong></p>
 <ul>
-<li><strong>Endpoint:</strong> <code>GET /api/v1/mods/{mod_id}/status</code></li>
-<li><strong>Response:</strong><ul>
-<li><code>status</code>: <code>PENDING</code>, <code>VALIDATING</code>, <code>APPROVED</code>, <code>REJECTED</code>.</li>
-<li><code>errors</code>: List of validation errors (e.g., "Script detected in resource X").</li>
+<li><code>access</code>: <code>free</code>, <code>premium</code>, <code>all</code></li>
+<li><code>feature</code>: <code>boxing</code>, <code>flow</code></li>
+<li><code>sort</code>: <code>popular</code>, <code>newest</code>, <code>rating</code>, <code>recommended</code></li>
+<li><code>page</code></li>
 </ul>
-</li>
-</ul>
-<h3 id="5-search-assets-sdk-browser">5. Search Assets (SDK Browser)<a class="headerlink" href="#5-search-assets-sdk-browser" title="Permanent link">&para;</a></h3>
+<p><strong>Response should remain AeroBeat-shaped</strong>, for example:</p>
 <ul>
-<li><strong>Endpoint:</strong> <code>GET /api/v1/assets/search</code></li>
-<li><strong>Query Params:</strong><ul>
-<li><code>q</code>: Search query string (Title, Artist, Tag).</li>
-<li><code>type</code>: <code>SONG</code>, <code>WORKOUT</code> (Filter by asset type).</li>
-<li><code>page</code>: Pagination cursor.</li>
+<li><code>workout_id</code></li>
+<li><code>title</code></li>
+<li><code>author</code></li>
+<li><code>access_class</code></li>
+<li><code>is_owned</code></li>
+<li><code>trust_state</code></li>
+<li><code>thumbnail_url</code></li>
 </ul>
-</li>
-<li><strong>Response:</strong> JSON list of Asset Summaries (ID, Title, Author, Metadata).</li>
-</ul>
-<h2 id="athlete-endpoints-in-game-browser">📥 Athlete Endpoints (In-Game Browser)<a class="headerlink" href="#athlete-endpoints-in-game-browser" title="Permanent link">&para;</a></h2>
-<p>These endpoints are used by the Game Client (<code>aerobeat-assembly-*</code>) to discover and download AeroBeat-approved content. The game should integrate through AeroBeat API surfaces rather than treating mod.io as the runtime source of truth.</p>
-<h3 id="1-browse-content">1. Browse Content<a class="headerlink" href="#1-browse-content" title="Permanent link">&para;</a></h3>
+<h3 id="2-get-workout-detail">2. Get workout detail<a class="headerlink" href="#2-get-workout-detail" title="Permanent link">&para;</a></h3>
+<p><strong>Endpoint:</strong> <code>GET /api/v1/catalog/workouts/{workout_id}</code></p>
+<p><strong>Purpose:</strong> fetch trusted detail for one workout including access and compatibility status.</p>
+<p><strong>Response may include:</strong></p>
 <ul>
-<li><strong>Endpoint:</strong> <code>GET /api/v1/mods</code></li>
-<li><strong>Query Params:</strong><ul>
-<li><code>type</code>: <code>SKIN</code>, <code>SONG</code>, <code>ENVIRONMENT</code>, <code>COACHING</code>, <code>WORKOUT</code>, <code>AVATAR</code>, <code>COSMETIC</code></li>
-<li><code>feature</code>: <code>boxing</code>, <code>flow</code> (Filter by gameplay mode)</li>
-<li><code>sort</code>: <code>popular</code>, <code>newest</code>, <code>rating</code></li>
-<li><code>page</code>: Pagination cursor.</li>
+<li>content metadata</li>
+<li>exact version / approved artifact summary</li>
+<li><code>access_class</code></li>
+<li><code>ownership_state</code></li>
+<li>compatibility flags</li>
+<li>revocation/quarantine warnings when relevant</li>
 </ul>
-</li>
-<li><strong>Response:</strong> JSON list of Mod Summaries (Thumbnail URL, Title, Author).</li>
-</ul>
-<h3 id="2-download-mod">2. Download Mod<a class="headerlink" href="#2-download-mod" title="Permanent link">&para;</a></h3>
+<h3 id="3-sync-library">3. Sync library<a class="headerlink" href="#3-sync-library" title="Permanent link">&para;</a></h3>
+<p><strong>Endpoint:</strong> <code>GET /api/v1/user/library</code></p>
+<p><strong>Purpose:</strong> return the athlete's current library in AeroBeat terms.</p>
+<p>This should unify the client view of:</p>
 <ul>
-<li><strong>Endpoint:</strong> <code>GET /api/v1/mods/{mod_id}/download</code></li>
-<li><strong>Response:</strong><ul>
-<li><code>429 Too Many Requests</code>: Guest quota exceeded (Prompt user to Sign Up).</li>
-<li><code>302 Redirect</code>: Redirects to CDN URL (S3/CloudFront) for the <code>.pck</code> file.</li>
-<li><strong>Headers:</strong> <code>Content-Disposition: attachment; filename="mod_id_v1.pck"</code></li>
+<li>free acquired/subscribed workouts</li>
+<li>premium owned workouts</li>
+<li>installable versions</li>
+<li>hidden/revoked entries where policy requires disclosure</li>
 </ul>
-</li>
-</ul>
-<h3 id="3-sync-library">3. Sync Library<a class="headerlink" href="#3-sync-library" title="Permanent link">&para;</a></h3>
+<h3 id="4-get-entitlementaccess-summary">4. Get entitlement/access summary<a class="headerlink" href="#4-get-entitlementaccess-summary" title="Permanent link">&para;</a></h3>
+<p><strong>Endpoint:</strong> <code>GET /api/v1/user/entitlements</code></p>
+<p><strong>Purpose:</strong> return an AeroBeat-facing summary of workout/content access.</p>
+<p><strong>Response may include:</strong></p>
 <ul>
-<li><strong>Endpoint:</strong> <code>GET /api/v1/user/library</code></li>
-<li><strong>Purpose:</strong> Returns a list of all mods the user has "subscribed" to, allowing the game to auto-download them on a new device.</li>
+<li>owned premium workout IDs</li>
+<li>free access grants</li>
+<li>pending reconciliation states</li>
+<li>linked-account requirements</li>
 </ul>
-<h2 id="billing-supporter-endpoints">💳 Billing &amp; Supporter Endpoints<a class="headerlink" href="#billing-supporter-endpoints" title="Permanent link">&para;</a></h2>
-<p>These endpoints handle the "Supporter" status transactions. We use a Merchant of Record (e.g., Stripe) to handle actual credit card processing.</p>
-<h3 id="1-create-checkout-session">1. Create Checkout Session<a class="headerlink" href="#1-create-checkout-session" title="Permanent link">&para;</a></h3>
+<p>This endpoint is intentionally safer than making client contracts depend on raw provider wallet or purchase-record semantics.</p>
+<h3 id="5-resolve-installdownload">5. Resolve install/download<a class="headerlink" href="#5-resolve-installdownload" title="Permanent link">&para;</a></h3>
+<p><strong>Endpoint:</strong> <code>POST /api/v1/workouts/{workout_id}/install-request</code></p>
+<p><strong>Purpose:</strong> resolve whether the athlete may install a trusted workout version and where to fetch it.</p>
+<p><strong>Response may include:</strong></p>
 <ul>
-<li><strong>Endpoint:</strong> <code>POST /api/v1/billing/checkout</code></li>
-<li><strong>Auth:</strong> Verified User Only.</li>
-<li><strong>Body:</strong><ul>
-<li><code>tier_id</code>: Enum (<code>1_month</code>, <code>1_year</code>, etc.) matching the pricing plan.</li>
+<li>approved artifact/version</li>
+<li>checksum/signature metadata</li>
+<li>authorized download target</li>
+<li>access denial reason if blocked (<code>not_owned</code>, <code>not_approved</code>, <code>relink_required</code>, <code>guest_restricted</code>, etc.)</li>
 </ul>
-</li>
-<li><strong>Response:</strong><ul>
-<li><code>checkout_url</code>: The URL to redirect the user's browser to (Stripe Hosted Page).</li>
-<li><code>session_id</code>: The transaction ID.</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-webhook-handler-server-to-server">2. Webhook Handler (Server-to-Server)<a class="headerlink" href="#2-webhook-handler-server-to-server" title="Permanent link">&para;</a></h3>
+<h3 id="6-favorites-subscriptions-recommendations">6. Favorites / subscriptions / recommendations<a class="headerlink" href="#6-favorites-subscriptions-recommendations" title="Permanent link">&para;</a></h3>
+<p>These may remain separate endpoints or be folded into library/profile APIs, but they should still speak in AeroBeat product terms rather than provider-native vocabulary.</p>
+<h2 id="creator-facing-endpoints">🧰 Creator-facing endpoints<a class="headerlink" href="#creator-facing-endpoints" title="Permanent link">&para;</a></h2>
+<p>These endpoints are used by creator tooling and SDKs to publish content through AeroBeat-controlled trust flows.</p>
+<h3 id="1-check-quota">1. Check quota<a class="headerlink" href="#1-check-quota" title="Permanent link">&para;</a></h3>
+<p><strong>Endpoint:</strong> <code>GET /api/v1/user/quota</code></p>
+<h3 id="2-request-upload">2. Request upload<a class="headerlink" href="#2-request-upload" title="Permanent link">&para;</a></h3>
+<p><strong>Endpoint:</strong> <code>POST /api/v1/submissions/upload-request</code></p>
+<p><strong>Body may include:</strong></p>
 <ul>
-<li><strong>Endpoint:</strong> <code>POST /api/v1/billing/webhook</code></li>
-<li><strong>Auth:</strong> Webhook Signature Verification (Stripe-Signature header).</li>
-<li><strong>Purpose:</strong> Receives asynchronous payment confirmation from the provider.</li>
-<li><strong>Action:</strong><ul>
-<li>Verifies signature.</li>
-<li>Finds user associated with the session.</li>
-<li>Updates <code>supporter_expiry</code> timestamp in the database (handling stacking logic).</li>
+<li>filename</li>
+<li>size/checksum</li>
+<li>content type (<code>SONG</code>, <code>WORKOUT</code>, <code>COACHING</code>, <code>ENVIRONMENT</code>, etc.)</li>
+<li>target feature (<code>boxing</code>, <code>flow</code>)</li>
 </ul>
-</li>
-</ul>
-<h3 id="3-get-supporter-status">3. Get Supporter Status<a class="headerlink" href="#3-get-supporter-status" title="Permanent link">&para;</a></h3>
+<p><strong>Response may include:</strong></p>
 <ul>
-<li><strong>Endpoint:</strong> <code>GET /api/v1/user/status</code></li>
-<li><strong>Auth:</strong> Verified User.</li>
-<li><strong>Response:</strong><ul>
-<li><code>is_supporter</code>: Boolean.</li>
-<li><code>supporter_expiry</code>: ISO 8601 Timestamp (or null).</li>
-<li><code>active_perks</code>: List of strings (e.g., <code>["crew_creation", "extended_history"]</code>).</li>
+<li>authorized upload target</li>
+<li>upload transaction/submission ID</li>
+<li>expiry</li>
 </ul>
-</li>
+<p>The upload target may be first-party storage or a provider-brokered target. That transport detail stays behind the AeroBeat contract.</p>
+<h3 id="3-complete-upload">3. Complete upload<a class="headerlink" href="#3-complete-upload" title="Permanent link">&para;</a></h3>
+<p><strong>Endpoint:</strong> <code>POST /api/v1/submissions/upload-complete</code></p>
+<p><strong>Purpose:</strong> confirm upload success and attach the manifest/metadata needed for validation.</p>
+<h3 id="4-check-submission-status">4. Check submission status<a class="headerlink" href="#4-check-submission-status" title="Permanent link">&para;</a></h3>
+<p><strong>Endpoint:</strong> <code>GET /api/v1/submissions/{submission_id}</code></p>
+<p><strong>Response should use AeroBeat statuses</strong>, such as:</p>
+<ul>
+<li><code>PENDING</code></li>
+<li><code>VALIDATING</code></li>
+<li><code>APPROVED</code></li>
+<li><code>REJECTED</code></li>
+<li><code>QUARANTINED</code></li>
+<li><code>PUBLISHED</code></li>
 </ul>
-<h2 id="sequence-diagrams">📊 Sequence Diagrams<a class="headerlink" href="#sequence-diagrams" title="Permanent link">&para;</a></h2>
-<h3 id="guest-download-flow">Guest Download Flow<a class="headerlink" href="#guest-download-flow" title="Permanent link">&para;</a></h3>
+<h3 id="5-creator-catalog-owned-listings">5. Creator catalog / owned listings<a class="headerlink" href="#5-creator-catalog-owned-listings" title="Permanent link">&para;</a></h3>
+<p><strong>Endpoint example:</strong> <code>GET /api/v1/creator/content</code></p>
+<p><strong>Purpose:</strong> return the creator's content in AeroBeat terms, even if the outer listing/distribution surface is currently mod.io.</p>
+<h2 id="premium-workout-purchase-and-ownership-flows">💳 Premium workout purchase and ownership flows<a class="headerlink" href="#premium-workout-purchase-and-ownership-flows" title="Permanent link">&para;</a></h2>
+<p>AeroBeat should frame premium access around <strong>platform-compliant purchases</strong> plus <strong>AeroBeat-shaped entitlement results</strong>.</p>
+<h3 id="1-start-purchase-handoff">1. Start purchase handoff<a class="headerlink" href="#1-start-purchase-handoff" title="Permanent link">&para;</a></h3>
+<p><strong>Endpoint:</strong> <code>POST /api/v1/premium/workouts/{workout_id}/purchase-intent</code></p>
+<p><strong>Purpose:</strong> return the appropriate official platform/store handoff for purchasing this premium workout.</p>
+<p><strong>Response may include:</strong></p>
+<ul>
+<li>platform/store route information</li>
+<li>SKU/product identifier</li>
+<li>client instructions for the current platform</li>
+</ul>
+<p>This endpoint should not imply AeroBeat is the merchant of record when platform rules require otherwise.</p>
+<h3 id="2-sync-ownership-after-purchase">2. Sync ownership after purchase<a class="headerlink" href="#2-sync-ownership-after-purchase" title="Permanent link">&para;</a></h3>
+<p><strong>Endpoint:</strong> <code>POST /api/v1/user/entitlements/sync</code></p>
+<p><strong>Purpose:</strong> reconcile official purchase state into AeroBeat-visible entitlement state.</p>
+<p>Depending on platform/provider capabilities, this may involve:</p>
+<ul>
+<li>platform-authenticated verification</li>
+<li>provider-side sync through official supported surfaces</li>
+<li>first-party entitlement refresh</li>
+</ul>
+<p>The client should see only the resulting AeroBeat access state.</p>
+<h3 id="3-check-ownership-status">3. Check ownership status<a class="headerlink" href="#3-check-ownership-status" title="Permanent link">&para;</a></h3>
+<p><strong>Endpoint:</strong> <code>GET /api/v1/user/entitlements/{workout_id}</code></p>
+<p><strong>Purpose:</strong> return whether the athlete currently has access to that premium workout and whether any action is required.</p>
+<p><strong>Possible states:</strong></p>
+<ul>
+<li><code>owned</code></li>
+<li><code>not_owned</code></li>
+<li><code>sync_required</code></li>
+<li><code>relink_required</code></li>
+<li><code>temporarily_unavailable</code></li>
+</ul>
+<h2 id="sequence-diagrams">📊 Sequence diagrams<a class="headerlink" href="#sequence-diagrams" title="Permanent link">&para;</a></h2>
+<h3 id="guest-signed-in-browse-and-install-flow">Guest / signed-in browse and install flow<a class="headerlink" href="#guest-signed-in-browse-and-install-flow" title="Permanent link">&para;</a></h3>
 <pre class="mermaid"><code>sequenceDiagram
-    participant Client as Game Client (Guest)
+    participant Client as Game Client
     participant API as AeroBeat API
-    participant DB as Database (Redis)
-    participant CDN as Cloud Storage (S3)
+    participant Provider as mod.io / provider seam
+    participant CDN as Trusted artifact host
 
-    Note over Client, API: 1. Guest Handshake
-    Client-&gt;&gt;API: POST /api/v1/auth/guest {device_id}
-    API-&gt;&gt;DB: Check Device Fingerprint
-    DB--&gt;&gt;API: OK (Not Banned)
-    API--&gt;&gt;Client: 200 OK { token: "guest_jwt" }
+    Client-&gt;&gt;API: GET /api/v1/catalog/workouts
+    API--&gt;&gt;Client: AeroBeat-shaped catalog (free + premium metadata)
 
-    Note over Client, API: 2. Download Attempt
-    Client-&gt;&gt;API: GET /api/v1/mods/{id}/download (Auth: guest_jwt)
-    API-&gt;&gt;DB: Check Guest Quota (Rate Limit)
+    Client-&gt;&gt;API: POST /api/v1/workouts/{id}/install-request
+    API-&gt;&gt;Provider: Resolve provider-side mapping only if needed
+    Provider--&gt;&gt;API: Provider result / ownership mapping
+    API--&gt;&gt;Client: Approved artifact + access decision
 
-    alt Quota Exceeded
-        DB--&gt;&gt;API: Limit Reached (e.g. 20/20)
-        API--&gt;&gt;Client: 429 Too Many Requests
-        Note right of Client: UI Prompts "Sign Up to Continue"
-    else Quota Available
-        DB--&gt;&gt;API: OK (Increment Count)
-        API--&gt;&gt;Client: 302 Redirect (Signed CDN URL)
-        Client-&gt;&gt;CDN: GET /content/{id}.pck
-        CDN--&gt;&gt;Client: Download Stream
+    alt Access allowed
+        Client-&gt;&gt;CDN: GET trusted artifact
+        CDN--&gt;&gt;Client: Download stream
+    else Access denied
+        API--&gt;&gt;Client: Access reason (not_owned / relink_required / etc.)
     end</code></pre>
-<h2 id="client-implementation">🛠️ Client Implementation<a class="headerlink" href="#client-implementation" title="Permanent link">&para;</a></h2>
-<p>The Game Client interacts with these endpoints via the <strong><code>aerobeat-tool-api</code></strong> service. This tool is the AeroBeat-facing singleton/API-manager lane; product repos should consume it instead of talking to mod.io or other provider APIs directly. See <a href="../ugc-api-manager-topology/">UGC API Manager Topology</a>.</p>
+<h3 id="premium-purchase-reconciliation-flow">Premium purchase reconciliation flow<a class="headerlink" href="#premium-purchase-reconciliation-flow" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Client as Game Client
+    participant Store as Official Platform Store
+    participant API as AeroBeat API
+    participant Provider as mod.io / provider seam
+
+    Client-&gt;&gt;Store: Purchase premium workout through official store flow
+    Store--&gt;&gt;Client: Purchase success
+    Client-&gt;&gt;API: POST /api/v1/user/entitlements/sync
+    API-&gt;&gt;Provider: Sync ownership only via official supported provider surfaces
+    Provider--&gt;&gt;API: Ownership / purchased-content result
+    API--&gt;&gt;Client: AeroBeat entitlement state updated</code></pre>
+<h2 id="client-implementation">🛠️ Client implementation<a class="headerlink" href="#client-implementation" title="Permanent link">&para;</a></h2>
+<p>The game client should consume these capabilities via <strong><code>aerobeat-tool-api</code></strong>.</p>
+<p>That tool is the AeroBeat-facing singleton/API-manager lane for:</p>
 <ul>
-<li><strong>Authentication:</strong> Automatically injects the Bearer Token into headers.</li>
-<li><strong>Resilience:</strong> Implements exponential backoff for failed requests (429/5xx).</li>
-<li><strong>Type Safety:</strong> Parses JSON responses into strict GDScript Dictionary or Resource objects.
-```</li>
+<li>athlete identity and linked-account status</li>
+<li>discovery and library sync</li>
+<li>free vs premium workout access checks</li>
+<li>trusted install/download policy</li>
+<li>creator submission/status flows</li>
 </ul>
+<p>Product repos should consume <code>aerobeat-tool-api</code> instead of talking to mod.io or other provider APIs directly. See <a href="../ugc-api-manager-topology/">UGC API Manager Topology</a> and <a href="../account-identity-and-entitlements/">Account, Identity, and Entitlements Strategy</a>.</p>
 
 
 
@@ -6021,7 +6269,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 2, 2026 20:28:51 UTC">May 2, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 7, 2026 13:45:29 UTC">May 7, 2026</span>
   </span>
 
     
