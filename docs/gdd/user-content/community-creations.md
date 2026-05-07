@@ -13,12 +13,30 @@ AeroBeat still aims to support community-created workout content, but the curren
 
 - **Songs**
 - **Charts / Sets** for Boxing and Flow
+- **Workouts**
 - **Environments**
 - **Coaching** inside the package's single `coaches/coach-config.yaml`
+
+## Free vs premium community workouts
+
+AeroBeat is now explicitly a **free-to-play** product, so community workout distribution should be understood through two catalog lanes:
+
+- **free workouts**
+- **premium workouts**
+
+mod.io remains the current outer community/distribution layer for this ecosystem, including premium UGC/community distribution, but it is not the canonical source of AeroBeat identity, runtime trust, or long-term entitlement vocabulary.
+
+Premium publication should assume:
+
+- platform-compliant purchase flows
+- AeroBeat-owned trust and compatibility decisions
+- provider-side ownership/distribution mechanics staying behind the vendor seam
 
 ## What changed
 
 Older docs taught package-local gameplay assets as a first-class workout authoring concept. That is being removed from the official v1 package story.
+
+Older framing also risked implying that community distribution alone described the business/access model. That is no longer sufficient: workout publishing and discovery now live inside a broader free-to-play product with both free and premium access paths.
 
 Future customization direction should instead point toward:
 

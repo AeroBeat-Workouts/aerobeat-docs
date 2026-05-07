@@ -102,6 +102,7 @@ nav:
     - Architecture:
       - Overview: architecture/overview.md
       - Audio: architecture/audio.md
+      - Account, Identity, and Entitlements: architecture/account-identity-and-entitlements.md
       - Backend API: architecture/backend_api.md
       - Cloud Baker: architecture/cloud_baker.md
       - Coding Style: architecture/coding-style.md

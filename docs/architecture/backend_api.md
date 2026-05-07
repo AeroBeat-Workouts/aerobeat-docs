@@ -1,209 +1,346 @@
 # Backend API Specification
 
-This document defines the REST API endpoints used by the **Modding SDK** (for creators) and the **Game Client** (for athletes).
+This document defines the high-level AeroBeat-owned REST API surfaces used by both the **game client** (for athletes) and the **creator-side tooling**.
 
-These are **AeroBeat-owned API surfaces**. Even with **mod.io as the current outer community/distribution shell**, the client/runtime trust contract stays first-party: AeroBeat keeps package IDs, validation, bake/signing authority, quarantine/revocation state, and final install/mount policy.
+These are **AeroBeat-owned API surfaces**. Even with **mod.io as the current outer community/distribution shell** for free and premium workout distribution, the client/runtime trust contract stays first-party: AeroBeat keeps athlete identity, package IDs, validation, bake/signing authority, entitlement vocabulary, quarantine/revocation state, and final install/mount policy.
 
-## 🛡️ Security & Mitigation Strategy
+This document is intentionally **AeroBeat-shaped**, not a provider pass-through contract.
 
-To protect the platform from abuse, we implement strict security measures for all User Generated Content (UGC).
+## Strategic framing
+
+The API should now be read through the current product strategy:
+
+- **AeroBeat is free-to-play**
+- the catalog includes **free workouts** and **premium workouts**
+- premium purchases must flow through **official platform/store paths**
+- mod.io may serve as the current premium UGC/community/distribution layer and purchased-content server **after official platform-originated sync where legitimately supported**
+- `aerobeat-tool-api` is the client-facing identity/access/entitlement manager, not a raw mod.io wrapper
+
+## 🛡️ Security & mitigation strategy
+
+To protect the platform from abuse, AeroBeat should implement strict security measures for all UGC and workout distribution flows.
 
 | Risk | Mitigation Strategy |
 | :--- | :--- |
-| **DDoS / Bandwidth Exhaustion** | **Brokered direct uploads.** Uploads go directly to an authorized storage/provider target (for example S3 or a mod.io-backed target), bypassing API servers. |
-| **Storage Exhaustion** | **User Quotas.** Strict limits per user (e.g., 2GB total). |
-| **Zip Bombs** | **Stream Inspection.** Validators check uncompressed size before extraction. |
+| **DDoS / bandwidth exhaustion** | **Brokered direct uploads.** Uploads go directly to an authorized storage/provider target, bypassing API servers. |
+| **Storage exhaustion** | **User quotas.** Strict limits per creator/user. |
+| **Zip bombs** | **Stream inspection.** Validators check uncompressed size before extraction. |
 | **RCE (Remote Code Execution)** | **Sandboxing.** Validation runs in ephemeral, network-isolated containers. |
-| **Scraping / Leeching** | **Guest Rate Limits.** Unverified users have strict download caps (e.g., 20 items/day). |
+| **Scraping / leeching** | **Guest and low-trust rate limits.** Unverified users have strict browse/download caps. |
+| **Entitlement abuse** | **Platform-linked purchase verification and reconciliation.** Premium access is derived from official purchase paths plus provider/first-party sync where supported. |
 
-## 📦 Data Integrity & Versioning
+## 📦 Data integrity, trust, and versioning
 
-To prevent **Dependency Rot** (where a Workout breaks because a referenced Song, Set-linked Chart, Environment, or Skin was deleted or changed), the API enforces strict immutability rules.
+To prevent dependency rot, broken libraries, or trust confusion, the API should enforce strict versioning and runtime-trust rules.
 
-### 1. Immutable Versioning
-*   **Policy:** Once an asset (Skin, Song, Environment) is published, its binary content (`.pck`) is **Immutable**. It can never be overwritten.
-*   **Updates:** When a creator updates a mod, the API generates a new version (e.g., `v2`).
-*   **References:** Workouts and other dependent assets reference specific versions (e.g., `mod_id@v1`). This ensures that even if `v2` changes the art style completely, the original workout using `v1` remains visually consistent.
+### 1. Immutable versioning
 
-### 2. Soft Delete Policy
-*   **Risk:** If a creator deletes a popular Song, every Workout using that song would break.
-*   **Policy:** The API does not support "Hard Deletes" for public content.
-*   **Action:** When a creator "deletes" a mod:
-    1.  **Unlisted:** It is removed from Search and the "New Releases" feed.
-    2.  **Archived:** It remains on the CDN.
-    3.  **Available:** Existing workouts referencing the ID can still download and play it.
-*   **Exception:** DMCA Takedowns or Illegal Content result in a "Hard Delete" (or replacement with a placeholder), which *will* break dependencies. This is unavoidable for legal compliance.
+- once an asset or workout version is published, its binary content is **immutable**
+- updates create a new version rather than overwriting the old one
+- dependent content references exact versions where necessary
 
-## 🔐 Authentication & Guest Access
+### 2. Soft-delete policy
 
-We support two tiers of access to balance friction vs. security.
+Public content should prefer unlist/archive behavior over hard deletion, except where legal or security policy requires stronger action.
 
-1.  **Verified Athlete:** Signed in. Full access (Upload, Rate, Sync). High rate limits.
-2.  **Guest Athlete:** No account. Read-only access. Strict rate limits.
+### 3. First-party runtime trust
 
-*   **Header:** `Authorization: Bearer <token>` (Required for **ALL** requests, including Guests).
+A provider listing being available is not the same thing as the content being runtime-trusted.
 
-### Guest Handshake
-To access the API as a guest, the client must first request a temporary session.
+AeroBeat-owned systems should track:
 
-*   **Endpoint:** `POST /api/v1/auth/guest`
-*   **Body:** `{"device_id": "uuid"}` (Used for fingerprinting abuse).
-*   **Response:** Returns a short-lived JWT (e.g., 24 hours) with `scope: guest`.
+- canonical content ID/version
+- approval state
+- compatibility state
+- quarantine/revocation state
+- allowed install/download target
+- access class (`free`, `premium`, or future variants)
 
-## 📤 Creator Endpoints (Modding SDK)
+## 🔐 Authentication and actor model
 
-These endpoints are used by the specialized SDKs (`aerobeat-skins-*`, `aerobeat-avatars-*`, etc.) to publish content through AeroBeat-controlled trust flows, even when the outer community/listing surface is mod.io.
+AeroBeat should support at least these actor classes:
 
-### 1. Check Quota
+1. **Guest athlete** — read-only or limited-access user without a durable AeroBeat account session
+2. **Signed-in athlete** — AeroBeat account holder with linked identity and library/progression state
+3. **Creator** — signed-in account permitted to publish/manage community content
 
-*   **Endpoint:** `GET /api/v1/user/quota`
-*   **Response:**
-    *   `used_bytes`: Total bytes used by this user.
-    *   `limit_bytes`: Maximum allowed storage.
-    *   `remaining_bytes`: Available space.
+### Authentication principles
 
-### 2. Request Upload (Brokered Upload Target)
+- `Authorization: Bearer <token>` remains the default transport
+- tokens represent **AeroBeat session truth**, even if upstream identity/provider linkage participates underneath
+- provider-specific account-linking mechanics should remain inside the vendor seam
 
-*   **Endpoint:** `POST /api/v1/mods/upload-request`
-*   **Body:**
-    *   `filename`: "my_skin.pck"
-    *   `size_bytes`: 10485760
-    *   `checksum`: SHA256 hash of the file.
-    *   `type`: `SKIN` (or `SONG`, `COACHING`, `WORKOUT`, `AVATAR`, `COSMETIC`, `ENVIRONMENT`)
-*   **Response:**
-    *   `upload_url`: The authorized direct-upload target (for example a pre-signed object-storage URL or a provider-brokered upload URL).
-    *   `upload_id`: Temporary transaction ID.
-    *   `expires_in`: Seconds until URL expires (e.g., 900).
-*   **Errors:**
-    *   `403 Forbidden`: User not verified.
-    *   `413 Payload Too Large`: File exceeds type limit (e.g., Skin > 50MB).
-    *   `429 Too Many Requests`: Rate limit exceeded.
-    *   `507 Insufficient Storage`: User quota exceeded.
+### Guest handshake
 
-### 3. Complete Upload
+**Endpoint:** `POST /api/v1/auth/guest`
 
-*   **Endpoint:** `POST /api/v1/mods/upload-complete`
-*   **Body:**
-    *   `upload_id`: The ID from step 2.
-    *   `manifest`: JSON representation of `AeroModManifest` (for indexing).
-*   **Response:**
-    *   `202 Accepted`: Validation job queued after AeroBeat links the uploaded source package to its submission record and any required provider mapping.
-    *   `mod_id`: The permanent AeroBeat ID of the new mod.
+**Purpose:** request a temporary guest session for limited browse/download access.
 
-### 4. Check Validation Status
+**Body:**
 
-*   **Endpoint:** `GET /api/v1/mods/{mod_id}/status`
-*   **Response:**
-    *   `status`: `PENDING`, `VALIDATING`, `APPROVED`, `REJECTED`.
-    *   `errors`: List of validation errors (e.g., "Script detected in resource X").
+- `device_id`: device fingerprint or equivalent abuse-control identifier
 
-### 5. Search Assets (SDK Browser)
+**Response:**
 
-*   **Endpoint:** `GET /api/v1/assets/search`
-*   **Query Params:**
-    *   `q`: Search query string (Title, Artist, Tag).
-    *   `type`: `SONG`, `WORKOUT` (Filter by asset type).
-    *   `page`: Pagination cursor.
-*   **Response:** JSON list of Asset Summaries (ID, Title, Author, Metadata).
+- short-lived token
+- actor scope such as `guest`
+- optional access-policy summary for client UX
 
-## 📥 Athlete Endpoints (In-Game Browser)
+### Linked-account status
 
-These endpoints are used by the Game Client (`aerobeat-assembly-*`) to discover and download AeroBeat-approved content. The game should integrate through AeroBeat API surfaces rather than treating mod.io as the runtime source of truth.
+**Endpoint:** `GET /api/v1/account/links`
 
-### 1. Browse Content
+**Purpose:** return the athlete's linked account/provider/platform status in AeroBeat terms.
 
-*   **Endpoint:** `GET /api/v1/mods`
-*   **Query Params:**
-    *   `type`: `SKIN`, `SONG`, `ENVIRONMENT`, `COACHING`, `WORKOUT`, `AVATAR`, `COSMETIC`
-    *   `feature`: `boxing`, `flow` (Filter by gameplay mode)
-    *   `sort`: `popular`, `newest`, `rating`
-    *   `page`: Pagination cursor.
-*   **Response:** JSON list of Mod Summaries (Thumbnail URL, Title, Author).
+**Response example fields:**
 
-### 2. Download Mod
+- `athlete_id`
+- `has_aerobeat_account`
+- `linked_platforms`
+- `linked_provider_accounts`
+- `requires_relink` flags when relevant
 
-*   **Endpoint:** `GET /api/v1/mods/{mod_id}/download`
-*   **Response:**
-    *   `429 Too Many Requests`: Guest quota exceeded (Prompt user to Sign Up).
-    *   `302 Redirect`: Redirects to CDN URL (S3/CloudFront) for the `.pck` file.
-    *   **Headers:** `Content-Disposition: attachment; filename="mod_id_v1.pck"`
+This endpoint should not expose raw provider-link flow details as the long-term public contract.
 
-### 3. Sync Library
+## 👤 Athlete-facing endpoints
 
-*   **Endpoint:** `GET /api/v1/user/library`
-*   **Purpose:** Returns a list of all mods the user has "subscribed" to, allowing the game to auto-download them on a new device.
+These endpoints serve the free-to-play game client and should be consumed through `aerobeat-tool-api`.
 
-## 💳 Billing & Supporter Endpoints
+### 1. Browse content
 
-These endpoints handle the "Supporter" status transactions. We use a Merchant of Record (e.g., Stripe) to handle actual credit card processing.
+**Endpoint:** `GET /api/v1/catalog/workouts`
 
-### 1. Create Checkout Session
+**Purpose:** browse AeroBeat-approved workouts with enough metadata for in-game discovery.
 
-*   **Endpoint:** `POST /api/v1/billing/checkout`
-*   **Auth:** Verified User Only.
-*   **Body:**
-    *   `tier_id`: Enum (`1_month`, `1_year`, etc.) matching the pricing plan.
-*   **Response:**
-    *   `checkout_url`: The URL to redirect the user's browser to (Stripe Hosted Page).
-    *   `session_id`: The transaction ID.
+**Query params may include:**
 
-### 2. Webhook Handler (Server-to-Server)
+- `access`: `free`, `premium`, `all`
+- `feature`: `boxing`, `flow`
+- `sort`: `popular`, `newest`, `rating`, `recommended`
+- `page`
 
-*   **Endpoint:** `POST /api/v1/billing/webhook`
-*   **Auth:** Webhook Signature Verification (Stripe-Signature header).
-*   **Purpose:** Receives asynchronous payment confirmation from the provider.
-*   **Action:**
-    *   Verifies signature.
-    *   Finds user associated with the session.
-    *   Updates `supporter_expiry` timestamp in the database (handling stacking logic).
+**Response should remain AeroBeat-shaped**, for example:
 
-### 3. Get Supporter Status
+- `workout_id`
+- `title`
+- `author`
+- `access_class`
+- `is_owned`
+- `trust_state`
+- `thumbnail_url`
 
-*   **Endpoint:** `GET /api/v1/user/status`
-*   **Auth:** Verified User.
-*   **Response:**
-    *   `is_supporter`: Boolean.
-    *   `supporter_expiry`: ISO 8601 Timestamp (or null).
-    *   `active_perks`: List of strings (e.g., `["crew_creation", "extended_history"]`).
+### 2. Get workout detail
 
-## 📊 Sequence Diagrams
+**Endpoint:** `GET /api/v1/catalog/workouts/{workout_id}`
 
-### Guest Download Flow
+**Purpose:** fetch trusted detail for one workout including access and compatibility status.
+
+**Response may include:**
+
+- content metadata
+- exact version / approved artifact summary
+- `access_class`
+- `ownership_state`
+- compatibility flags
+- revocation/quarantine warnings when relevant
+
+### 3. Sync library
+
+**Endpoint:** `GET /api/v1/user/library`
+
+**Purpose:** return the athlete's current library in AeroBeat terms.
+
+This should unify the client view of:
+
+- free acquired/subscribed workouts
+- premium owned workouts
+- installable versions
+- hidden/revoked entries where policy requires disclosure
+
+### 4. Get entitlement/access summary
+
+**Endpoint:** `GET /api/v1/user/entitlements`
+
+**Purpose:** return an AeroBeat-facing summary of workout/content access.
+
+**Response may include:**
+
+- owned premium workout IDs
+- free access grants
+- pending reconciliation states
+- linked-account requirements
+
+This endpoint is intentionally safer than making client contracts depend on raw provider wallet or purchase-record semantics.
+
+### 5. Resolve install/download
+
+**Endpoint:** `POST /api/v1/workouts/{workout_id}/install-request`
+
+**Purpose:** resolve whether the athlete may install a trusted workout version and where to fetch it.
+
+**Response may include:**
+
+- approved artifact/version
+- checksum/signature metadata
+- authorized download target
+- access denial reason if blocked (`not_owned`, `not_approved`, `relink_required`, `guest_restricted`, etc.)
+
+### 6. Favorites / subscriptions / recommendations
+
+These may remain separate endpoints or be folded into library/profile APIs, but they should still speak in AeroBeat product terms rather than provider-native vocabulary.
+
+## 🧰 Creator-facing endpoints
+
+These endpoints are used by creator tooling and SDKs to publish content through AeroBeat-controlled trust flows.
+
+### 1. Check quota
+
+**Endpoint:** `GET /api/v1/user/quota`
+
+### 2. Request upload
+
+**Endpoint:** `POST /api/v1/submissions/upload-request`
+
+**Body may include:**
+
+- filename
+- size/checksum
+- content type (`SONG`, `WORKOUT`, `COACHING`, `ENVIRONMENT`, etc.)
+- target feature (`boxing`, `flow`)
+
+**Response may include:**
+
+- authorized upload target
+- upload transaction/submission ID
+- expiry
+
+The upload target may be first-party storage or a provider-brokered target. That transport detail stays behind the AeroBeat contract.
+
+### 3. Complete upload
+
+**Endpoint:** `POST /api/v1/submissions/upload-complete`
+
+**Purpose:** confirm upload success and attach the manifest/metadata needed for validation.
+
+### 4. Check submission status
+
+**Endpoint:** `GET /api/v1/submissions/{submission_id}`
+
+**Response should use AeroBeat statuses**, such as:
+
+- `PENDING`
+- `VALIDATING`
+- `APPROVED`
+- `REJECTED`
+- `QUARANTINED`
+- `PUBLISHED`
+
+### 5. Creator catalog / owned listings
+
+**Endpoint example:** `GET /api/v1/creator/content`
+
+**Purpose:** return the creator's content in AeroBeat terms, even if the outer listing/distribution surface is currently mod.io.
+
+## 💳 Premium workout purchase and ownership flows
+
+AeroBeat should frame premium access around **platform-compliant purchases** plus **AeroBeat-shaped entitlement results**.
+
+### 1. Start purchase handoff
+
+**Endpoint:** `POST /api/v1/premium/workouts/{workout_id}/purchase-intent`
+
+**Purpose:** return the appropriate official platform/store handoff for purchasing this premium workout.
+
+**Response may include:**
+
+- platform/store route information
+- SKU/product identifier
+- client instructions for the current platform
+
+This endpoint should not imply AeroBeat is the merchant of record when platform rules require otherwise.
+
+### 2. Sync ownership after purchase
+
+**Endpoint:** `POST /api/v1/user/entitlements/sync`
+
+**Purpose:** reconcile official purchase state into AeroBeat-visible entitlement state.
+
+Depending on platform/provider capabilities, this may involve:
+
+- platform-authenticated verification
+- provider-side sync through official supported surfaces
+- first-party entitlement refresh
+
+The client should see only the resulting AeroBeat access state.
+
+### 3. Check ownership status
+
+**Endpoint:** `GET /api/v1/user/entitlements/{workout_id}`
+
+**Purpose:** return whether the athlete currently has access to that premium workout and whether any action is required.
+
+**Possible states:**
+
+- `owned`
+- `not_owned`
+- `sync_required`
+- `relink_required`
+- `temporarily_unavailable`
+
+## 📊 Sequence diagrams
+
+### Guest / signed-in browse and install flow
 
 ```mermaid
 sequenceDiagram
-    participant Client as Game Client (Guest)
+    participant Client as Game Client
     participant API as AeroBeat API
-    participant DB as Database (Redis)
-    participant CDN as Cloud Storage (S3)
+    participant Provider as mod.io / provider seam
+    participant CDN as Trusted artifact host
 
-    Note over Client, API: 1. Guest Handshake
-    Client->>API: POST /api/v1/auth/guest {device_id}
-    API->>DB: Check Device Fingerprint
-    DB-->>API: OK (Not Banned)
-    API-->>Client: 200 OK { token: "guest_jwt" }
+    Client->>API: GET /api/v1/catalog/workouts
+    API-->>Client: AeroBeat-shaped catalog (free + premium metadata)
 
-    Note over Client, API: 2. Download Attempt
-    Client->>API: GET /api/v1/mods/{id}/download (Auth: guest_jwt)
-    API->>DB: Check Guest Quota (Rate Limit)
-    
-    alt Quota Exceeded
-        DB-->>API: Limit Reached (e.g. 20/20)
-        API-->>Client: 429 Too Many Requests
-        Note right of Client: UI Prompts "Sign Up to Continue"
-    else Quota Available
-        DB-->>API: OK (Increment Count)
-        API-->>Client: 302 Redirect (Signed CDN URL)
-        Client->>CDN: GET /content/{id}.pck
-        CDN-->>Client: Download Stream
+    Client->>API: POST /api/v1/workouts/{id}/install-request
+    API->>Provider: Resolve provider-side mapping only if needed
+    Provider-->>API: Provider result / ownership mapping
+    API-->>Client: Approved artifact + access decision
+
+    alt Access allowed
+        Client->>CDN: GET trusted artifact
+        CDN-->>Client: Download stream
+    else Access denied
+        API-->>Client: Access reason (not_owned / relink_required / etc.)
     end
 ```
 
-## 🛠️ Client Implementation
+### Premium purchase reconciliation flow
 
-The Game Client interacts with these endpoints via the **`aerobeat-tool-api`** service. This tool is the AeroBeat-facing singleton/API-manager lane; product repos should consume it instead of talking to mod.io or other provider APIs directly. See [UGC API Manager Topology](ugc-api-manager-topology.md).
+```mermaid
+sequenceDiagram
+    participant Client as Game Client
+    participant Store as Official Platform Store
+    participant API as AeroBeat API
+    participant Provider as mod.io / provider seam
 
-*   **Authentication:** Automatically injects the Bearer Token into headers.
-*   **Resilience:** Implements exponential backoff for failed requests (429/5xx).
-*   **Type Safety:** Parses JSON responses into strict GDScript Dictionary or Resource objects.
+    Client->>Store: Purchase premium workout through official store flow
+    Store-->>Client: Purchase success
+    Client->>API: POST /api/v1/user/entitlements/sync
+    API->>Provider: Sync ownership only via official supported provider surfaces
+    Provider-->>API: Ownership / purchased-content result
+    API-->>Client: AeroBeat entitlement state updated
 ```
+
+## 🛠️ Client implementation
+
+The game client should consume these capabilities via **`aerobeat-tool-api`**.
+
+That tool is the AeroBeat-facing singleton/API-manager lane for:
+
+- athlete identity and linked-account status
+- discovery and library sync
+- free vs premium workout access checks
+- trusted install/download policy
+- creator submission/status flows
+
+Product repos should consume `aerobeat-tool-api` instead of talking to mod.io or other provider APIs directly. See [UGC API Manager Topology](ugc-api-manager-topology.md) and [Account, Identity, and Entitlements Strategy](account-identity-and-entitlements.md).

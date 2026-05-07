@@ -10,12 +10,13 @@ The Community Edition is the first public-facing AeroBeat product path.
 
 ## Community Edition scope for this slice
 
-- free-to-start community distribution from AeroBeat-controlled channels
+- **free-to-play** app distribution
 - official gameplay features: **Boxing** and **Flow**
 - official gameplay input: **camera only**
-- offline-capable installed workouts
+- a workout catalog containing both **free workouts** and **premium workouts**
+- offline-capable installed workouts once trust/access rules are satisfied
 - workout browsing, favorites, recommendations, and progression surfaces
-- supporter-driven funding and perks
+- AeroBeat-owned account architecture for profile/progression/library systems, even if some end-user account UX is phased
 
 ## Platform wording
 
@@ -25,14 +26,29 @@ The docs should stop implying present-tense parity across PC, mobile, and VR.
 - **mobile** remains an important follow-on target
 - **VR** remains a later platform return, not the lead product shape
 
-## Supporter model
+## Workout access model
 
-AeroBeat plans to use a supporter model to help fund development. Supporter perks may include:
+### Free workouts
 
-- Discord/community perks
-- account flair
-- early builds
-- supporter-only polls
-- additional profile or cosmetics-related unlock opportunities
+Free workouts are the on-ramp for the community edition. They should be discoverable without requiring the premium purchase path, while still respecting AeroBeat trust, compatibility, and install policy.
+
+### Premium workouts
+
+Premium workouts are paid content within the community ecosystem.
+
+For the current strategy:
+
+- purchases must follow **official platform/store** paths
+- mod.io remains the current **community/distribution layer** for premium UGC
+- provider-side ownership synchronization should only rely on **official, non-deprecated surfaces** we can legitimately support
+- the athlete-facing product should still speak in **AeroBeat ownership/access** terms rather than raw provider wallet terminology
+
+## Funding and progression
+
+AeroBeat may still use supporter/community programs where helpful, but the main product framing should no longer imply that paid access is only a generic supporter status. The docs now need to distinguish between:
+
+- supporter/community perks
+- premium workout access
+- long-term account-driven progression such as workout points, profile state, and cosmetics unlocks
 
 Future customization should point toward controlled avatar/cosmetics progression via workout points rather than old package-asset mod examples.
