@@ -8,31 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/gdd/input-system/agnostic-input/">
+        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/architecture/v1-account-retention-behavior/">
       
       
-        <link rel="prev" href="../../gamification/quests/">
+        <link rel="prev" href="../account-retention-phasing/">
       
       
-        <link rel="next" href="../../meta/profile/">
+        <link rel="next" href="../backend_api/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Overview - AeroBeat Documentation</title>
+        <title>V1 Account and Retention Behavior - AeroBeat Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,7 +51,7 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#input-strategy" class="md-skip">
+        <a href="#v1-account-and-retention-behavior" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="AeroBeat Documentation" class="md-header__button md-logo" aria-label="AeroBeat Documentation" data-md-component="logo">
+    <a href="../.." title="AeroBeat Documentation" class="md-header__button md-logo" aria-label="AeroBeat Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              V1 Account and Retention Behavior
             
           </span>
         </div>
@@ -200,7 +200,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="AeroBeat Documentation" class="md-nav__button md-logo" aria-label="AeroBeat Documentation" data-md-component="logo">
+    <a href="../.." title="AeroBeat Documentation" class="md-nav__button md-logo" aria-label="AeroBeat Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -230,7 +230,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -304,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/" class="md-nav__link">
+      <a href="../../licensing/" class="md-nav__link">
         
   
   
@@ -332,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/engineers/" class="md-nav__link">
+      <a href="../../licensing/engineers/" class="md-nav__link">
         
   
   
@@ -360,7 +360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/creative/" class="md-nav__link">
+      <a href="../../licensing/creative/" class="md-nav__link">
         
   
   
@@ -388,7 +388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/commercial/" class="md-nav__link">
+      <a href="../../licensing/commercial/" class="md-nav__link">
         
   
   
@@ -416,7 +416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/hardware/" class="md-nav__link">
+      <a href="../../licensing/hardware/" class="md-nav__link">
         
   
   
@@ -444,7 +444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/attribution/" class="md-nav__link">
+      <a href="../../licensing/attribution/" class="md-nav__link">
         
   
   
@@ -472,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/CLA/" class="md-nav__link">
+      <a href="../../licensing/CLA/" class="md-nav__link">
         
   
   
@@ -500,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/CONTRIBUTING/" class="md-nav__link">
+      <a href="../../licensing/CONTRIBUTING/" class="md-nav__link">
         
   
   
@@ -528,7 +528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../CODE_OF_CONDUCT/" class="md-nav__link">
+      <a href="../../CODE_OF_CONDUCT/" class="md-nav__link">
         
   
   
@@ -556,7 +556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../legal/refund_policy/" class="md-nav__link">
+      <a href="../../legal/refund_policy/" class="md-nav__link">
         
   
   
@@ -591,7 +591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../releases/changelog/" class="md-nav__link">
+      <a href="../../releases/changelog/" class="md-nav__link">
         
   
   
@@ -665,7 +665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/contributing_workflow/" class="md-nav__link">
+      <a href="../../guides/contributing_workflow/" class="md-nav__link">
         
   
   
@@ -693,7 +693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/feature_development/" class="md-nav__link">
+      <a href="../../guides/feature_development/" class="md-nav__link">
         
   
   
@@ -721,7 +721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/calibration/" class="md-nav__link">
+      <a href="../../guides/calibration/" class="md-nav__link">
         
   
   
@@ -749,7 +749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/accessibility/" class="md-nav__link">
+      <a href="../../guides/accessibility/" class="md-nav__link">
         
   
   
@@ -777,7 +777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/modding_quickstart/" class="md-nav__link">
+      <a href="../../guides/modding_quickstart/" class="md-nav__link">
         
   
   
@@ -805,7 +805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/demo_workout_package/" class="md-nav__link">
+      <a href="../../guides/demo_workout_package/" class="md-nav__link">
         
   
   
@@ -880,7 +880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/choreography/overview/" class="md-nav__link">
+      <a href="../../guides/choreography/overview/" class="md-nav__link">
         
   
   
@@ -908,7 +908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/choreography/boxing/" class="md-nav__link">
+      <a href="../../guides/choreography/boxing/" class="md-nav__link">
         
   
   
@@ -936,7 +936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/choreography/flow/" class="md-nav__link">
+      <a href="../../guides/choreography/flow/" class="md-nav__link">
         
   
   
@@ -972,7 +972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/environment_creation/" class="md-nav__link">
+      <a href="../../guides/environment_creation/" class="md-nav__link">
         
   
   
@@ -1000,7 +1000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/skins/" class="md-nav__link">
+      <a href="../../guides/skins/" class="md-nav__link">
         
   
   
@@ -1028,7 +1028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/avatar_creation/" class="md-nav__link">
+      <a href="../../guides/avatar_creation/" class="md-nav__link">
         
   
   
@@ -1056,7 +1056,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/cosmetics/" class="md-nav__link">
+      <a href="../../guides/cosmetics/" class="md-nav__link">
         
   
   
@@ -1084,7 +1084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/coaching/" class="md-nav__link">
+      <a href="../../guides/coaching/" class="md-nav__link">
         
   
   
@@ -1116,20 +1116,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -1150,7 +1148,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1168,7 +1166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concept/" class="md-nav__link">
+      <a href="../../gdd/concept/" class="md-nav__link">
         
   
   
@@ -1243,7 +1241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../art/overview/" class="md-nav__link">
+      <a href="../../gdd/art/overview/" class="md-nav__link">
         
   
   
@@ -1326,7 +1324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../economy/currency/" class="md-nav__link">
+      <a href="../../gdd/economy/currency/" class="md-nav__link">
         
   
   
@@ -1354,7 +1352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../economy/supporter_perks/" class="md-nav__link">
+      <a href="../../gdd/economy/supporter_perks/" class="md-nav__link">
         
   
   
@@ -1390,7 +1388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../glossary/terms/" class="md-nav__link">
+      <a href="../../gdd/glossary/terms/" class="md-nav__link">
         
   
   
@@ -1465,7 +1463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gameplay/boxing/" class="md-nav__link">
+      <a href="../../gdd/gameplay/boxing/" class="md-nav__link">
         
   
   
@@ -1493,7 +1491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gameplay/flow/" class="md-nav__link">
+      <a href="../../gdd/gameplay/flow/" class="md-nav__link">
         
   
   
@@ -1521,7 +1519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gameplay/view-modes/" class="md-nav__link">
+      <a href="../../gdd/gameplay/view-modes/" class="md-nav__link">
         
   
   
@@ -1604,7 +1602,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gamification/overview/" class="md-nav__link">
+      <a href="../../gdd/gamification/overview/" class="md-nav__link">
         
   
   
@@ -1632,7 +1630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gamification/quests/" class="md-nav__link">
+      <a href="../../gdd/gamification/quests/" class="md-nav__link">
         
   
   
@@ -1665,20 +1663,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
         
           
           <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
@@ -1699,7 +1695,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1714,37 +1710,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../gdd/input-system/agnostic-input/" class="md-nav__link">
         
   
   
@@ -1760,98 +1729,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#official-v1-gameplay-input" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Official v1 gameplay input
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-the-architecture-still-stays-modular" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why the architecture still stays modular
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#current-input-tiers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Current input tiers
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Current input tiers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tier-1-official-gameplay-support" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tier 1: Official gameplay support
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tier-2-future-input-support-worth-preserving-in-docs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tier 2: Future-input support worth preserving in docs
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#navigation-vs-gameplay" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Navigation vs gameplay
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1919,7 +1796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../meta/profile/" class="md-nav__link">
+      <a href="../../gdd/meta/profile/" class="md-nav__link">
         
   
   
@@ -1947,7 +1824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../meta/preferences/" class="md-nav__link">
+      <a href="../../gdd/meta/preferences/" class="md-nav__link">
         
   
   
@@ -1975,7 +1852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../meta/locker_room/" class="md-nav__link">
+      <a href="../../gdd/meta/locker_room/" class="md-nav__link">
         
   
   
@@ -2058,7 +1935,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modifiers/accessibility/" class="md-nav__link">
+      <a href="../../gdd/modifiers/accessibility/" class="md-nav__link">
         
   
   
@@ -2086,7 +1963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modifiers/difficulty/" class="md-nav__link">
+      <a href="../../gdd/modifiers/difficulty/" class="md-nav__link">
         
   
   
@@ -2169,7 +2046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../releases/community/" class="md-nav__link">
+      <a href="../../gdd/releases/community/" class="md-nav__link">
         
   
   
@@ -2197,7 +2074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../releases/digital-stores-and-arcades/" class="md-nav__link">
+      <a href="../../gdd/releases/digital-stores-and-arcades/" class="md-nav__link">
         
   
   
@@ -2280,7 +2157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../roadmap/future-roadmap/" class="md-nav__link">
+      <a href="../../gdd/roadmap/future-roadmap/" class="md-nav__link">
         
   
   
@@ -2363,7 +2240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../social/crews/" class="md-nav__link">
+      <a href="../../gdd/social/crews/" class="md-nav__link">
         
   
   
@@ -2446,7 +2323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../user-content/overview/" class="md-nav__link">
+      <a href="../../gdd/user-content/overview/" class="md-nav__link">
         
   
   
@@ -2474,7 +2351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../user-content/community-creations/" class="md-nav__link">
+      <a href="../../gdd/user-content/community-creations/" class="md-nav__link">
         
   
   
@@ -2502,7 +2379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../user-content/policing-content/" class="md-nav__link">
+      <a href="../../gdd/user-content/policing-content/" class="md-nav__link">
         
   
   
@@ -2542,18 +2419,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -2574,7 +2453,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2589,18 +2468,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -2621,7 +2502,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2639,7 +2520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -2667,7 +2548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/audio/" class="md-nav__link">
+      <a href="../audio/" class="md-nav__link">
         
   
   
@@ -2695,7 +2576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/account-identity-and-entitlements/" class="md-nav__link">
+      <a href="../account-identity-and-entitlements/" class="md-nav__link">
         
   
   
@@ -2723,7 +2604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/account-retention-phasing/" class="md-nav__link">
+      <a href="../account-retention-phasing/" class="md-nav__link">
         
   
   
@@ -2748,10 +2629,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../architecture/v1-account-retention-behavior/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    V1 Account and Retention Behavior
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2767,6 +2675,412 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#product-stance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product stance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-aerobeat-account-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. AeroBeat account identity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-in-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does in v1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-not-do-yet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not do yet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules-and-edge-cases-that-matter-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules and edge cases that matter now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-guest-to-account-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Guest-to-account conversion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-in-v1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does in v1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-not-do-yet_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not do yet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules-and-edge-cases-that-matter-now_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules and edge cases that matter now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-premium-ownership-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Premium ownership recovery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-in-v1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does in v1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-not-do-yet_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not do yet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules-and-edge-cases-that-matter-now_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules and edge cases that matter now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-basic-profile-preferences-history-and-stats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Basic profile, preferences, history, and stats
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-in-v1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does in v1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What it does in v1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloud-backed-profile-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud-backed profile fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preferences-split" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preferences split
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workout-history-and-lifetime-stats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workout history and lifetime stats
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-not-do-yet_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not do yet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules-and-edge-cases-that-matter-now_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules and edge cases that matter now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-workout-points-wp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Workout Points (WP)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-in-v1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does in v1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What it does in v1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grant-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grant model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-not-do-yet_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not do yet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules-and-edge-cases-that-matter-now_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules and edge cases that matter now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-weekly-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Weekly goals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-in-v1_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does in v1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-not-do-yet_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not do yet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules-and-edge-cases-that-matter-now_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules and edge cases that matter now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-streaks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Streaks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-in-v1_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does in v1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-not-do-yet_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not do yet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules-and-edge-cases-that-matter-now_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules and edge cases that matter now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final recommendation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2779,7 +3093,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/backend_api/" class="md-nav__link">
+      <a href="../backend_api/" class="md-nav__link">
         
   
   
@@ -2807,7 +3121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/cloud_baker/" class="md-nav__link">
+      <a href="../cloud_baker/" class="md-nav__link">
         
   
   
@@ -2835,7 +3149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/coding-style/" class="md-nav__link">
+      <a href="../coding-style/" class="md-nav__link">
         
   
   
@@ -2863,7 +3177,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/content-model/" class="md-nav__link">
+      <a href="../content-model/" class="md-nav__link">
         
   
   
@@ -2891,7 +3205,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/content-repo-shapes/" class="md-nav__link">
+      <a href="../content-repo-shapes/" class="md-nav__link">
         
   
   
@@ -2919,7 +3233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/modio-tag-mapping/" class="md-nav__link">
+      <a href="../modio-tag-mapping/" class="md-nav__link">
         
   
   
@@ -2947,7 +3261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/input/" class="md-nav__link">
+      <a href="../input/" class="md-nav__link">
         
   
   
@@ -2975,7 +3289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/multiplayer/" class="md-nav__link">
+      <a href="../multiplayer/" class="md-nav__link">
         
   
   
@@ -3003,7 +3317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/performance/" class="md-nav__link">
+      <a href="../performance/" class="md-nav__link">
         
   
   
@@ -3031,7 +3345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/premium-workout-governance/" class="md-nav__link">
+      <a href="../premium-workout-governance/" class="md-nav__link">
         
   
   
@@ -3059,7 +3373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/repo-structure-reference/" class="md-nav__link">
+      <a href="../repo-structure-reference/" class="md-nav__link">
         
   
   
@@ -3087,7 +3401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/repository-map/" class="md-nav__link">
+      <a href="../repository-map/" class="md-nav__link">
         
   
   
@@ -3115,7 +3429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/security/" class="md-nav__link">
+      <a href="../security/" class="md-nav__link">
         
   
   
@@ -3143,7 +3457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/state-management/" class="md-nav__link">
+      <a href="../state-management/" class="md-nav__link">
         
   
   
@@ -3171,7 +3485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/telemetry/" class="md-nav__link">
+      <a href="../telemetry/" class="md-nav__link">
         
   
   
@@ -3199,7 +3513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/testing/" class="md-nav__link">
+      <a href="../testing/" class="md-nav__link">
         
   
   
@@ -3227,7 +3541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/tool/" class="md-nav__link">
+      <a href="../tool/" class="md-nav__link">
         
   
   
@@ -3255,7 +3569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/topology/" class="md-nav__link">
+      <a href="../topology/" class="md-nav__link">
         
   
   
@@ -3283,7 +3597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/ugc_modding/" class="md-nav__link">
+      <a href="../ugc_modding/" class="md-nav__link">
         
   
   
@@ -3311,7 +3625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/ugc-distribution-executive-summary/" class="md-nav__link">
+      <a href="../ugc-distribution-executive-summary/" class="md-nav__link">
         
   
   
@@ -3339,7 +3653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/ugc-distribution-strategy/" class="md-nav__link">
+      <a href="../ugc-distribution-strategy/" class="md-nav__link">
         
   
   
@@ -3367,7 +3681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/ugc-hybrid-integration-architecture/" class="md-nav__link">
+      <a href="../ugc-hybrid-integration-architecture/" class="md-nav__link">
         
   
   
@@ -3395,7 +3709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/ugc-api-manager-topology/" class="md-nav__link">
+      <a href="../ugc-api-manager-topology/" class="md-nav__link">
         
   
   
@@ -3423,7 +3737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/ui-ux/" class="md-nav__link">
+      <a href="../ui-ux/" class="md-nav__link">
         
   
   
@@ -3451,7 +3765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/workflow/" class="md-nav__link">
+      <a href="../workflow/" class="md-nav__link">
         
   
   
@@ -3479,7 +3793,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/workout-package-storage-and-discovery/" class="md-nav__link">
+      <a href="../workout-package-storage-and-discovery/" class="md-nav__link">
         
   
   
@@ -3609,7 +3923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/assembly/" class="md-nav__link">
+      <a href="../../api/assembly/" class="md-nav__link">
         
   
   
@@ -3637,7 +3951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/assembly/community/" class="md-nav__link">
+      <a href="../../api/assembly/community/" class="md-nav__link">
         
   
   
@@ -3767,7 +4081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/assets/prototypes/" class="md-nav__link">
+      <a href="../../api/assets/prototypes/" class="md-nav__link">
         
   
   
@@ -3858,7 +4172,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/core/" class="md-nav__link">
+      <a href="../../api/core/" class="md-nav__link">
         
   
   
@@ -3988,7 +4302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/features/boxing/" class="md-nav__link">
+      <a href="../../api/features/boxing/" class="md-nav__link">
         
   
   
@@ -4071,7 +4385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/features/flow/" class="md-nav__link">
+      <a href="../../api/features/flow/" class="md-nav__link">
         
   
   
@@ -4209,7 +4523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/inputs/mediapipe_python/" class="md-nav__link">
+      <a href="../../api/inputs/mediapipe_python/" class="md-nav__link">
         
   
   
@@ -4292,7 +4606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/inputs/mediapipe_native/" class="md-nav__link">
+      <a href="../../api/inputs/mediapipe_native/" class="md-nav__link">
         
   
   
@@ -4375,7 +4689,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/inputs/joycon-hid/" class="md-nav__link">
+      <a href="../../api/inputs/joycon-hid/" class="md-nav__link">
         
   
   
@@ -4458,7 +4772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/inputs/keyboard/" class="md-nav__link">
+      <a href="../../api/inputs/keyboard/" class="md-nav__link">
         
   
   
@@ -4541,7 +4855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/inputs/gamepad/" class="md-nav__link">
+      <a href="../../api/inputs/gamepad/" class="md-nav__link">
         
   
   
@@ -4624,7 +4938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/inputs/mouse/" class="md-nav__link">
+      <a href="../../api/inputs/mouse/" class="md-nav__link">
         
   
   
@@ -4707,7 +5021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/inputs/touch/" class="md-nav__link">
+      <a href="../../api/inputs/touch/" class="md-nav__link">
         
   
   
@@ -4790,7 +5104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/inputs/xr/" class="md-nav__link">
+      <a href="../../api/inputs/xr/" class="md-nav__link">
         
   
   
@@ -4881,7 +5195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/tools/" class="md-nav__link">
+      <a href="../../api/tools/" class="md-nav__link">
         
   
   
@@ -4909,7 +5223,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/tools/api/" class="md-nav__link">
+      <a href="../../api/tools/api/" class="md-nav__link">
         
   
   
@@ -4937,7 +5251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/tools/settings/" class="md-nav__link">
+      <a href="../../api/tools/settings/" class="md-nav__link">
         
   
   
@@ -5020,7 +5334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/ui/core/" class="md-nav__link">
+      <a href="../../api/ui/core/" class="md-nav__link">
         
   
   
@@ -5095,7 +5409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/ui/kit-community/" class="md-nav__link">
+      <a href="../../api/ui/kit-community/" class="md-nav__link">
         
   
   
@@ -5170,7 +5484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/ui/shell-desktop-community/" class="md-nav__link">
+      <a href="../../api/ui/shell-desktop-community/" class="md-nav__link">
         
   
   
@@ -5198,7 +5512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/ui/shell-mobile-community/" class="md-nav__link">
+      <a href="../../api/ui/shell-mobile-community/" class="md-nav__link">
         
   
   
@@ -5226,7 +5540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/ui/shell-web-community/" class="md-nav__link">
+      <a href="../../api/ui/shell-web-community/" class="md-nav__link">
         
   
   
@@ -5254,7 +5568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../api/ui/shell-xr-community/" class="md-nav__link">
+      <a href="../../api/ui/shell-xr-community/" class="md-nav__link">
         
   
   
@@ -5341,10 +5655,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#official-v1-gameplay-input" class="md-nav__link">
+  <a href="#product-stance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Official v1 gameplay input
+        Product stance
       
     </span>
   </a>
@@ -5352,10 +5666,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-the-architecture-still-stays-modular" class="md-nav__link">
+  <a href="#1-aerobeat-account-identity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why the architecture still stays modular
+        1. AeroBeat account identity
       
     </span>
   </a>
@@ -5363,22 +5677,154 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#current-input-tiers" class="md-nav__link">
+  <a href="#what-it-does-in-v1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Current input tiers
+        What it does in v1
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Current input tiers">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-not-do-yet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not do yet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules-and-edge-cases-that-matter-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules and edge cases that matter now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-guest-to-account-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Guest-to-account conversion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-in-v1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does in v1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-not-do-yet_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not do yet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules-and-edge-cases-that-matter-now_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules and edge cases that matter now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-premium-ownership-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Premium ownership recovery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-in-v1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does in v1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-not-do-yet_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not do yet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules-and-edge-cases-that-matter-now_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules and edge cases that matter now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-basic-profile-preferences-history-and-stats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Basic profile, preferences, history, and stats
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-in-v1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does in v1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What it does in v1">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#tier-1-official-gameplay-support" class="md-nav__link">
+  <a href="#cloud-backed-profile-fields" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tier 1: Official gameplay support
+        Cloud-backed profile fields
       
     </span>
   </a>
@@ -5386,10 +5832,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tier-2-future-input-support-worth-preserving-in-docs" class="md-nav__link">
+  <a href="#preferences-split" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tier 2: Future-input support worth preserving in docs
+        Preferences split
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workout-history-and-lifetime-stats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workout history and lifetime stats
       
     </span>
   </a>
@@ -5402,10 +5859,181 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#navigation-vs-gameplay" class="md-nav__link">
+  <a href="#what-it-does-not-do-yet_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Navigation vs gameplay
+        What it does not do yet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules-and-edge-cases-that-matter-now_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules and edge cases that matter now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-workout-points-wp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Workout Points (WP)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-in-v1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does in v1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What it does in v1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grant-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grant model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-not-do-yet_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not do yet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules-and-edge-cases-that-matter-now_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules and edge cases that matter now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-weekly-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Weekly goals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-in-v1_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does in v1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-not-do-yet_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not do yet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules-and-edge-cases-that-matter-now_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules and edge cases that matter now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-streaks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Streaks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-in-v1_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does in v1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-not-do-yet_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not do yet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules-and-edge-cases-that-matter-now_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules and edge cases that matter now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final recommendation
       
     </span>
   </a>
@@ -5432,44 +6060,303 @@
   
 
 
-<h1 id="input-strategy">Input Strategy<a class="headerlink" href="#input-strategy" title="Permanent link">&para;</a></h1>
-<p>AeroBeat still uses a normalized input architecture, but the product messaging is now more specific than the older "input agnostic" framing.</p>
-<h2 id="official-v1-gameplay-input">Official v1 gameplay input<a class="headerlink" href="#official-v1-gameplay-input" title="Permanent link">&para;</a></h2>
-<p><strong>Camera is the only official AeroBeat v1 gameplay input.</strong></p>
-<p>That applies to the current Boxing and Flow product slice. The game should be documented, validated, and marketed around camera-driven gameplay first.</p>
-<h2 id="why-the-architecture-still-stays-modular">Why the architecture still stays modular<a class="headerlink" href="#why-the-architecture-still-stays-modular" title="Permanent link">&para;</a></h2>
-<p>Keeping an input-provider architecture is still useful because it lets the platform:</p>
+<h1 id="v1-account-and-retention-behavior">V1 Account and Retention Behavior<a class="headerlink" href="#v1-account-and-retention-behavior" title="Permanent link">&para;</a></h1>
+<p>This document turns the retained v1 account/retention feature list into a concrete launch product contract.</p>
+<p>It is intentionally narrow.</p>
+<p>The goal is to make AeroBeat feel durable and worth returning to <strong>without</strong> bloating v1 into a half-built social platform or a manipulative live-ops shell.</p>
+<p>See also:</p>
 <ul>
-<li>isolate camera implementation details from gameplay logic</li>
-<li>keep room for future accessibility and platform work</li>
-<li>preserve future paths for mobile-native camera, XR, JoyCon, keyboard, gamepad, mouse, and touch experiments</li>
+<li><a href="../account-identity-and-entitlements/">Account, Identity, and Entitlements Strategy</a></li>
+<li><a href="../account-retention-phasing/">Account and Retention Feature Phasing</a></li>
+<li><a href="../../gdd/economy/currency/">Workout Points (WP) Economy</a></li>
+<li><a href="../../gdd/gamification/overview/">Gamification &amp; Habit Building</a></li>
 </ul>
-<p>That architectural flexibility should not be mistaken for current shipping parity.</p>
-<h2 id="current-input-tiers">Current input tiers<a class="headerlink" href="#current-input-tiers" title="Permanent link">&para;</a></h2>
-<h3 id="tier-1-official-gameplay-support">Tier 1: Official gameplay support<a class="headerlink" href="#tier-1-official-gameplay-support" title="Permanent link">&para;</a></h3>
+<h2 id="product-stance">Product stance<a class="headerlink" href="#product-stance" title="Permanent link">&para;</a></h2>
+<p>AeroBeat v1 should answer two launch questions clearly:</p>
+<ol>
+<li><strong>Can I trust this as my long-term workout library and progress record?</strong></li>
+<li><strong>Do I have a simple reason to come back next week?</strong></li>
+</ol>
+<p>The retained v1 features exist to answer those questions, not to maximize feature count.</p>
+<h2 id="1-aerobeat-account-identity">1. AeroBeat account identity<a class="headerlink" href="#1-aerobeat-account-identity" title="Permanent link">&para;</a></h2>
+<h2 id="what-it-does-in-v1">What it does in v1<a class="headerlink" href="#what-it-does-in-v1" title="Permanent link">&para;</a></h2>
+<p>AeroBeat has two actor states in v1:</p>
 <ul>
-<li><strong>Camera on PC</strong> via MediaPipe or successor camera tracking stacks</li>
-<li><strong>Camera on mobile</strong> remains a planned follow-on path, not the first release priority</li>
+<li><strong>Guest athlete</strong> — local, device-scoped, fast entry for free workouts</li>
+<li><strong>Signed-in athlete</strong> — durable AeroBeat account with cloud-backed progression and entitlement recovery</li>
 </ul>
-<h3 id="tier-2-future-input-support-worth-preserving-in-docs">Tier 2: Future-input support worth preserving in docs<a class="headerlink" href="#tier-2-future-input-support-worth-preserving-in-docs" title="Permanent link">&para;</a></h3>
-<p>These inputs may remain documented at the repo/API level because they are useful future work:</p>
+<p>The canonical long-lived identity is the AeroBeat <code>athlete_id</code>.</p>
+<p>In v1:</p>
 <ul>
-<li>JoyCon</li>
-<li>keyboard</li>
-<li>gamepad</li>
-<li>mouse</li>
-<li>touch</li>
-<li>XR</li>
+<li>guests can launch quickly and play the allowed free/trusted content path</li>
+<li>signed-in athletes get a durable <code>athlete_id</code></li>
+<li>signed-in athletes have linked identity records for supported platform/provider surfaces</li>
+<li>product-facing state such as profile, history, WP, weekly goals, and streaks belongs to the signed-in AeroBeat account</li>
 </ul>
-<p>For now, treat them as <strong>future support</strong>, testing hooks, accessibility experiments, or platform exploration rather than official v1 gameplay promises.</p>
-<h2 id="navigation-vs-gameplay">Navigation vs gameplay<a class="headerlink" href="#navigation-vs-gameplay" title="Permanent link">&para;</a></h2>
-<p>AeroBeat now draws a clearer line between menu navigation and gameplay input:</p>
+<p>AeroBeat display names do <strong>not</strong> need to be globally unique in v1.
+A stable internal <code>athlete_id</code> matters more than username scarcity friction.</p>
+<h2 id="what-it-does-not-do-yet">What it does not do yet<a class="headerlink" href="#what-it-does-not-do-yet" title="Permanent link">&para;</a></h2>
+<p>V1 does <strong>not</strong> need:</p>
 <ul>
-<li><strong>Gameplay:</strong> camera only for official v1</li>
-<li><strong>UI navigation on PC:</strong> mouse is fine</li>
-<li><strong>UI navigation on mobile:</strong> touch is fine</li>
+<li>a public social profile graph</li>
+<li>searchable athlete directories</li>
+<li>friend codes</li>
+<li>crews/guilds/clubs</li>
+<li>in-app chat or DMs</li>
+<li>advanced account roles beyond normal athlete/admin support needs</li>
 </ul>
-<p>That distinction lets the docs stay honest without pretending every pointer or controller path is a first-class workout experience today.</p>
+<h2 id="rules-and-edge-cases-that-matter-now">Rules and edge cases that matter now<a class="headerlink" href="#rules-and-edge-cases-that-matter-now" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Guest is not durable.</strong> Guest progress should be treated as local-only until converted. The UI should say that plainly before premium purchase, library sync, or reinstall-risk moments.</li>
+<li><strong>Device reinstall risk is real.</strong> If a guest uninstalls or changes devices before conversion, their guest progress may be lost.</li>
+<li><strong>Cloud truth only starts at account level.</strong> Do not pretend guest state is recoverable unless it has been explicitly converted.</li>
+<li><strong>Provider identities are linked mappings, not product identity.</strong> Steam/mod.io/etc. stay secondary to the AeroBeat <code>athlete_id</code>.</li>
+</ul>
+<h2 id="2-guest-to-account-conversion">2. Guest-to-account conversion<a class="headerlink" href="#2-guest-to-account-conversion" title="Permanent link">&para;</a></h2>
+<h2 id="what-it-does-in-v1_1">What it does in v1<a class="headerlink" href="#what-it-does-in-v1_1" title="Permanent link">&para;</a></h2>
+<p>Guest-to-account conversion is the bridge from casual tryout to durable ownership.</p>
+<p>V1 conversion should happen when the athlete:</p>
+<ul>
+<li>explicitly chooses <strong>Create Account / Sign In</strong></li>
+<li>attempts a premium purchase flow</li>
+<li>attempts ownership recovery on a new device</li>
+<li>attempts a feature that requires durable account state</li>
+</ul>
+<p>When converting a guest to a <strong>new</strong> AeroBeat account, v1 should migrate these retained local values into the new signed-in account:</p>
+<ul>
+<li>display name</li>
+<li>selected avatar / basic customization</li>
+<li>synced preferences that are account-scoped</li>
+<li>workout history</li>
+<li>lifetime stats</li>
+<li>WP balance and lifetime WP earned</li>
+<li>current weekly goal configuration</li>
+<li>current streak state</li>
+</ul>
+<h2 id="what-it-does-not-do-yet_1">What it does not do yet<a class="headerlink" href="#what-it-does-not-do-yet_1" title="Permanent link">&para;</a></h2>
+<p>V1 should <strong>not</strong> attempt a complicated universal merge engine.</p>
+<p>Avoid:</p>
+<ul>
+<li>multi-account merge tooling</li>
+<li>hidden background merging between unrelated accounts</li>
+<li>conflict resolution across several previous devices</li>
+<li>support-heavy “combine everything” recovery promises</li>
+</ul>
+<h2 id="rules-and-edge-cases-that-matter-now_1">Rules and edge cases that matter now<a class="headerlink" href="#rules-and-edge-cases-that-matter-now_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>New-account upgrade is the happy path.</strong> If the athlete creates a brand-new account from a guest session, import the guest state automatically.</li>
+<li><strong>Existing-account sign-in should not silently merge guest data.</strong> If the athlete signs into an existing account on a device that has guest progress, default to the cloud account and offer a clear one-time import prompt only when safe.</li>
+<li><strong>Safe import rule:</strong> if the existing cloud account already has meaningful history/progression, do not auto-merge the guest profile in v1. That is where data corruption and support pain start.</li>
+<li><strong>One-way conversion:</strong> once guest data has been successfully imported into a new AeroBeat account, treat the signed-in account as canonical and stop advancing the old guest profile.</li>
+<li><strong>Device-specific settings stay local.</strong> Camera calibration, graphics/performance settings, and similar hardware-specific settings should not be part of guest-to-account migration.</li>
+</ul>
+<h2 id="3-premium-ownership-recovery">3. Premium ownership recovery<a class="headerlink" href="#3-premium-ownership-recovery" title="Permanent link">&para;</a></h2>
+<h2 id="what-it-does-in-v1_2">What it does in v1<a class="headerlink" href="#what-it-does-in-v1_2" title="Permanent link">&para;</a></h2>
+<p>Premium ownership recovery is a launch requirement.</p>
+<p>In v1, a signed-in athlete should be able to:</p>
+<ul>
+<li>link the required platform/provider identities</li>
+<li>sync owned premium workouts into their AeroBeat library</li>
+<li>install previously owned trusted premium workouts on a new device</li>
+<li>recover cloud-backed progression after sign-in</li>
+</ul>
+<p>The athlete-facing recovery path should be simple:</p>
+<ol>
+<li>sign into AeroBeat</li>
+<li>relink or verify the required platform/provider identities if needed</li>
+<li>run <strong>Restore Purchases / Sync Library</strong></li>
+<li>regain the owned premium library in AeroBeat terms</li>
+</ol>
+<h2 id="what-it-does-not-do-yet_2">What it does not do yet<a class="headerlink" href="#what-it-does-not-do-yet_2" title="Permanent link">&para;</a></h2>
+<p>V1 does <strong>not</strong> need:</p>
+<ul>
+<li>gifting</li>
+<li>family sharing policy complexity</li>
+<li>cross-account ownership transfers</li>
+<li>resale/trading</li>
+<li>support-issued manual entitlement codes as a normal product path</li>
+</ul>
+<h2 id="rules-and-edge-cases-that-matter-now_2">Rules and edge cases that matter now<a class="headerlink" href="#rules-and-edge-cases-that-matter-now_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Premium access requires account-level identity.</strong> Guests can browse premium catalog surfaces but should not be able to complete premium ownership flows as anonymous users.</li>
+<li><strong>Downloads require current or recently verified ownership.</strong> New premium installs should require a valid entitlement check.</li>
+<li><strong>Offline should be tolerated, not fully trusted.</strong> If a premium workout was already installed and ownership was successfully verified recently on this device, allow offline play during a short cache/grace window. A 7-day entitlement cache is a practical v1 default.</li>
+<li><strong>Recovery lag should degrade gracefully.</strong> If store/provider sync is temporarily delayed, show a clear “ownership sync pending” state instead of hard-failing with a vague error.</li>
+<li><strong>No new premium downloads during unresolved entitlement state.</strong> Previously verified installed content may still work within the cache window, but new installs should wait for reconciliation.</li>
+<li><strong>Entitlement disagreement should fail soft first.</strong> If AeroBeat, store, and provider truth disagree temporarily, preserve the athlete’s existing installed library access when recently verified, then reconcile rather than immediately yanking access.</li>
+</ul>
+<h2 id="4-basic-profile-preferences-history-and-stats">4. Basic profile, preferences, history, and stats<a class="headerlink" href="#4-basic-profile-preferences-history-and-stats" title="Permanent link">&para;</a></h2>
+<h2 id="what-it-does-in-v1_3">What it does in v1<a class="headerlink" href="#what-it-does-in-v1_3" title="Permanent link">&para;</a></h2>
+<p>The v1 profile is a practical continuity layer, not a social network.</p>
+<h3 id="cloud-backed-profile-fields">Cloud-backed profile fields<a class="headerlink" href="#cloud-backed-profile-fields" title="Permanent link">&para;</a></h3>
+<p>V1 should keep the cloud-backed account profile narrow:</p>
+<ul>
+<li>display name</li>
+<li>join date</li>
+<li>avatar / official cosmetic selections</li>
+<li>preferred mode (Boxing or Flow)</li>
+<li>preferred difficulty</li>
+<li>comfort/accessibility preferences that affect cross-device gameplay experience</li>
+<li>account timezone for weekly-goal/streak calculations</li>
+</ul>
+<h3 id="preferences-split">Preferences split<a class="headerlink" href="#preferences-split" title="Permanent link">&para;</a></h3>
+<p>Preferences should be split deliberately:</p>
+<p><strong>Sync across devices:</strong></p>
+<ul>
+<li>preferred mode</li>
+<li>preferred difficulty</li>
+<li>accessibility / comfort toggles that shape the intended workout experience</li>
+<li>profile cosmetics and titles if those exist at launch</li>
+</ul>
+<p><strong>Stay device-local:</strong></p>
+<ul>
+<li>camera calibration</li>
+<li>graphics quality</li>
+<li>input/device-specific tuning</li>
+<li>local audio/video settings</li>
+</ul>
+<h3 id="workout-history-and-lifetime-stats">Workout history and lifetime stats<a class="headerlink" href="#workout-history-and-lifetime-stats" title="Permanent link">&para;</a></h3>
+<p>V1 should provide enough history to make the account feel real:</p>
+<ul>
+<li>recent workout history list</li>
+<li>lifetime completed workouts</li>
+<li>lifetime active minutes</li>
+<li>lifetime WP earned</li>
+<li>current WP balance</li>
+<li>current weekly goal progress</li>
+<li>current streak</li>
+<li>best-effort summaries by Boxing vs Flow if available without major extra scope</li>
+</ul>
+<h2 id="what-it-does-not-do-yet_3">What it does not do yet<a class="headerlink" href="#what-it-does-not-do-yet_3" title="Permanent link">&para;</a></h2>
+<p>V1 should avoid:</p>
+<ul>
+<li>deep performance analytics</li>
+<li>coach heatmaps</li>
+<li>social showcase profiles</li>
+<li>profile bios/comments</li>
+<li>health-provider integrations</li>
+<li>CSV exports</li>
+<li>weight/body-measurement storage</li>
+<li>“supporter-only analytics” complexity</li>
+</ul>
+<h2 id="rules-and-edge-cases-that-matter-now_3">Rules and edge cases that matter now<a class="headerlink" href="#rules-and-edge-cases-that-matter-now_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Keep private fitness data narrow.</strong> AeroBeat does not need sensitive health/biometric storage to make v1 sticky.</li>
+<li><strong>History should be append-only from completed workouts.</strong> Do not let casual menu actions or test sessions pollute the history feed.</li>
+<li><strong>Stats should be understandable.</strong> Avoid a giant wall of counters; show a few trustworthy numbers.</li>
+<li><strong>Timezone is product logic, not decoration.</strong> Weekly-goal and streak calculations should use the account timezone, not whichever device timezone happened to be active mid-travel.</li>
+</ul>
+<h2 id="5-workout-points-wp">5. Workout Points (WP)<a class="headerlink" href="#5-workout-points-wp" title="Permanent link">&para;</a></h2>
+<h2 id="what-it-does-in-v1_4">What it does in v1<a class="headerlink" href="#what-it-does-in-v1_4" title="Permanent link">&para;</a></h2>
+<p>WP is the single launch progression currency.</p>
+<p>Its v1 jobs are simple:</p>
+<ul>
+<li>reward completed workouts</li>
+<li>make improvement and consistency visible</li>
+<li>optionally unlock a small curated set of official profile/cosmetic rewards if content supply is ready</li>
+</ul>
+<p>V1 should keep both:</p>
+<ul>
+<li><strong>current WP balance</strong></li>
+<li><strong>lifetime WP earned</strong></li>
+</ul>
+<p>Those are different and both matter.</p>
+<h3 id="grant-model">Grant model<a class="headerlink" href="#grant-model" title="Permanent link">&para;</a></h3>
+<p>V1 WP grants should remain simple and predictable:</p>
+<ul>
+<li>award WP only for completed workouts</li>
+<li>base the grant primarily on workout duration and selected difficulty</li>
+<li>allow a modest performance/completion bonus if it stays legible</li>
+<li>grant a separate weekly-goal completion bonus if that feature ships with a reward</li>
+</ul>
+<p>The existing formula in the economy doc is a reasonable v1 starting point if implementation wants a concrete first pass.</p>
+<h2 id="what-it-does-not-do-yet_4">What it does not do yet<a class="headerlink" href="#what-it-does-not-do-yet_4" title="Permanent link">&para;</a></h2>
+<p>V1 should <strong>not</strong> turn WP into:</p>
+<ul>
+<li>a cash-adjacent premium wallet</li>
+<li>a creator payout currency</li>
+<li>a trading currency</li>
+<li>an energy system</li>
+<li>a battle-pass progression layer</li>
+<li>a giant rotating store dependency</li>
+</ul>
+<h2 id="rules-and-edge-cases-that-matter-now_4">Rules and edge cases that matter now<a class="headerlink" href="#rules-and-edge-cases-that-matter-now_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Server authority for grants.</strong> WP grants should come from an authoritative workout-complete event path, not from a trusted local counter alone.</li>
+<li><strong>Idempotent completion IDs are required.</strong> Retried uploads, duplicate submissions, or reconnects must not double-pay WP.</li>
+<li><strong>No quit/retry farming.</strong> Incomplete or abandoned workouts should not generate normal WP grants.</li>
+<li><strong>Core gameplay should never be paywalled by WP.</strong> WP is for progression and optional unlocks, not access to Boxing/Flow basics.</li>
+<li><strong>Spend scope stays curated.</strong> In v1, WP should only unlock official items or official profile rewards, not arbitrary UGC goods.</li>
+<li><strong>Balance corrections need an admin path.</strong> If grants were duplicated or revoked, AeroBeat needs an explicit correction mechanism rather than hidden save edits.</li>
+</ul>
+<h2 id="6-weekly-goals">6. Weekly goals<a class="headerlink" href="#6-weekly-goals" title="Permanent link">&para;</a></h2>
+<h2 id="what-it-does-in-v1_5">What it does in v1<a class="headerlink" href="#what-it-does-in-v1_5" title="Permanent link">&para;</a></h2>
+<p>Weekly goals are the main habit loop in v1.</p>
+<p>The recommended launch shape is:</p>
+<ul>
+<li>the athlete chooses a <strong>weekly workout-days goal</strong></li>
+<li>the default goal is <strong>3 workout days per week</strong></li>
+<li>supported goal choices are a small curated set such as <strong>2, 3, or 5 days</strong></li>
+<li>a day counts when the athlete completes at least one qualifying workout session that day</li>
+</ul>
+<p>For v1, a qualifying workout day should require at least <strong>10 minutes of completed workout time</strong> across one or more completed sessions that day.</p>
+<p>This keeps the system aligned with real habit-building and reduces ultra-short session gaming.</p>
+<p>If rewards are used, weekly-goal completion should auto-grant a modest one-time WP bonus for that week.</p>
+<h2 id="what-it-does-not-do-yet_5">What it does not do yet<a class="headerlink" href="#what-it-does-not-do-yet_5" title="Permanent link">&para;</a></h2>
+<p>V1 does <strong>not</strong> need:</p>
+<ul>
+<li>a giant library of rotating challenges</li>
+<li>coach-authored goal templates</li>
+<li>minute-based personalized plans</li>
+<li>social/shared group goals</li>
+<li>premium-only goal tracks</li>
+</ul>
+<h2 id="rules-and-edge-cases-that-matter-now_5">Rules and edge cases that matter now<a class="headerlink" href="#rules-and-edge-cases-that-matter-now_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Use account timezone.</strong> Weeks should reset Monday 00:00 in the athlete’s account timezone.</li>
+<li><strong>Goal changes should apply next week, not retroactively.</strong> Otherwise athletes can lower the target on Sunday and instantly “complete” the week.</li>
+<li><strong>Show progress transparently.</strong> “2 of 3 workout days completed” is better than opaque scoring.</li>
+<li><strong>One completion reward per week.</strong> Do not repeatedly reward the same weekly goal after it is hit.</li>
+<li><strong>Qualifying day logic should tolerate split sessions.</strong> Two shorter completed sessions on the same day can combine toward the 10-minute threshold.</li>
+</ul>
+<h2 id="7-streaks">7. Streaks<a class="headerlink" href="#7-streaks" title="Permanent link">&para;</a></h2>
+<h2 id="what-it-does-in-v1_6">What it does in v1<a class="headerlink" href="#what-it-does-in-v1_6" title="Permanent link">&para;</a></h2>
+<p>V1 streaks should measure <strong>weekly consistency</strong>, not daily login obedience.</p>
+<p>Recommended rule:</p>
+<ul>
+<li>a streak increments when the athlete completes that week’s weekly goal</li>
+<li>a streak breaks when the week ends without the goal being completed</li>
+<li>the first successful week starts a streak at <code>1</code></li>
+</ul>
+<p>This makes the streak about actual workout habit, not app-open compulsion.</p>
+<h2 id="what-it-does-not-do-yet_6">What it does not do yet<a class="headerlink" href="#what-it-does-not-do-yet_6" title="Permanent link">&para;</a></h2>
+<p>V1 should avoid:</p>
+<ul>
+<li>daily login streaks</li>
+<li>monetized streak repair</li>
+<li>paid streak shields/freezes</li>
+<li>streak competitions between athletes</li>
+<li>multiple parallel streak types</li>
+</ul>
+<h2 id="rules-and-edge-cases-that-matter-now_6">Rules and edge cases that matter now<a class="headerlink" href="#rules-and-edge-cases-that-matter-now_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>The streak rule must match the weekly-goal rule.</strong> Do not run a hidden second consistency system.</li>
+<li><strong>Late sync tolerance matters.</strong> If a workout finished before the weekly cutoff but uploads slightly later because of connectivity, allow a short reconciliation window so legitimate sessions are counted.</li>
+<li><strong>Streak state should be explainable.</strong> Athletes should be able to see why the streak continued or broke.</li>
+<li><strong>Changing next week’s goal should not rewrite last week’s streak result.</strong></li>
+</ul>
+<h2 id="final-recommendation">Final recommendation<a class="headerlink" href="#final-recommendation" title="Permanent link">&para;</a></h2>
+<p>For v1, AeroBeat should be opinionated:</p>
+<ul>
+<li>guests can try the product fast</li>
+<li>durable value starts at account conversion</li>
+<li>premium ownership recovery must be reliable</li>
+<li>profile/history/stats should feel useful, not bloated</li>
+<li>WP should stay simple and authoritative</li>
+<li>weekly goals should optimize for realistic consistency</li>
+<li>streaks should reward meeting those weekly goals, not punish normal life</li>
+</ul>
+<p>That cut is strong enough to support launch trust and retention without pretending AeroBeat already needs a full social/live-ops stack.</p>
 
 
 
@@ -5490,7 +6377,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 1, 2026 13:58:33 UTC">May 1, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 7, 2026 16:30:52 UTC">May 7, 2026</span>
   </span>
 
     
@@ -5546,10 +6433,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
