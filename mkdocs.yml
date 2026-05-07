@@ -104,6 +104,7 @@ nav:
       - Audio: architecture/audio.md
       - Account, Identity, and Entitlements: architecture/account-identity-and-entitlements.md
       - Account and Retention Feature Phasing: architecture/account-retention-phasing.md
+      - V1 Account and Retention Behavior: architecture/v1-account-retention-behavior.md
       - Backend API: architecture/backend_api.md
       - Cloud Baker: architecture/cloud_baker.md
       - Coding Style: architecture/coding-style.md

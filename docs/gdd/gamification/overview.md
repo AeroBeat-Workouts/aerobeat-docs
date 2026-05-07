@@ -10,7 +10,10 @@ For the launch product, the retention loop should stay narrow and honest:
 
 That is enough to make progress visible without turning v1 into a premature live-service treadmill.
 
-See also: [Account and Retention Feature Phasing](../../architecture/account-retention-phasing.md).
+See also:
+
+- [Account and Retention Feature Phasing](../../architecture/account-retention-phasing.md)
+- [V1 Account and Retention Behavior](../../architecture/v1-account-retention-behavior.md)
 
 ## V1 retention loop
 

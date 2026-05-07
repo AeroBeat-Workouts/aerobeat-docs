@@ -9,6 +9,7 @@ The goal is not to list every sticky feature AeroBeat could someday support. The
 See also:
 
 - [Account, Identity, and Entitlements Strategy](account-identity-and-entitlements.md)
+- [V1 Account and Retention Behavior](v1-account-retention-behavior.md)
 - [Premium Workout Governance](premium-workout-governance.md)
 - [Backend API Specification](backend_api.md)
 

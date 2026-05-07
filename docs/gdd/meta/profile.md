@@ -1,102 +1,95 @@
 # Athlete Profile Hub
 
-The Athlete Profile is the central dashboard for player identity, progress tracking, and goal management. It serves as the "Digital Mirror" of the athlete.
+The Athlete Profile is the v1 home for **identity, continuity, and simple progress visibility**.
 
-## 1. Overview
+It should feel useful the first week without pretending AeroBeat already ships a full social platform or premium analytics suite.
 
-*   **Role:** Central hub for stats, goals, and identity.
-*   **Access:** Accessible via the "Profile Badge" in the top-right corner of the Main Menu.
-*   **Philosophy:** "The Mirror" — It reflects the effort put in (Stats) and the style chosen (Avatar).
+See also:
 
-## 2. The Profile Badge (HUD)
+- [V1 Account and Retention Behavior](../../architecture/v1-account-retention-behavior.md)
+- [Gamification & Habit Building](../gamification/overview.md)
+- [Athlete Preferences & Overrides](preferences.md)
 
-A persistent UI element visible on the Main Menu and Song Select screens.
+## V1 role
 
-*   **Visuals:**
-    *   Mini-Avatar Headshot (Circle crop).
-    *   Username.
-    *   Current Level / Total WP.
-    *   Streak Flame Icon (Active/Inactive).
-*   **Interaction:** Clicking the badge opens the **Profile Hub Overlay**.
+The profile hub exists to answer three practical questions:
 
-## 3. Profile Hub Layout
+1. **Who am I in AeroBeat?**
+2. **What have I done recently?**
+3. **Am I on track this week?**
 
-The Hub is a modal overlay composed of modular widgets.
+## V1 contents
 
-### A. Identity Card (Left Panel)
+### Identity card
 
-Focuses on "Who I Am".
+V1 should show:
 
-*   **Avatar:** Full-body 3D render of the current avatar (Idle animation).
-*   **Name:** Player Username.
-*   **Title:** Unlockable titles (e.g., "Speed Demon", "Early Riser").
-*   **Join Date:** "Member since [Year]".
-*   **Edit Button:** Shortcut to the **Locker Room**.
+- display name
+- join date
+- current avatar / equipped official cosmetics
+- current WP balance
+- current streak
 
-### B. The "Workout Stats" (Center Panel)
+V1 does **not** need public bio fields, social follow counts, or searchable profile pages.
 
-Focuses on "What I've Done".
+### Weekly progress card
 
-*   **Weekly Goal:** Displays the current week's Stamp Card (see [Gamification](../gamification/overview.md)).
-*   **Streak:** Current active weeks count.
-*   **Total WP:** Lifetime Workout Points earned.
-*   **Play Time:** Total hours spent in active gameplay.
+V1 should show:
 
-#### Supporter Enhancements (Pro Stats)
+- current weekly goal target
+- progress toward that goal
+- whether this week is already complete
+- current weekly-consistency streak
 
-Active Supporters gain access to deeper analytics in this panel:
+The progress state should be legible in plain language, such as:
 
-*   **Heatmaps:** A visual overlay showing accuracy per lane (e.g., "Weakness: Low-Left").
-*   **Trend Graphs:** Toggle between Weekly, Monthly, and Yearly progress (Free users are limited to Weekly).
+- `2 / 3 workout days completed`
+- `Weekly goal complete`
+- `4-week streak`
 
-### C. Settings & Preferences (Center Panel)
+### Lifetime stats card
 
-Allows athletes to adjust their targets and customize their experience.
+V1 should keep the stat set narrow and trustworthy:
 
-*   **Frequency Slider:** "I want to workout [X] days a week." (Range: 1-7).
-*   **Difficulty Preference:** "Preferred Difficulty: [Pro]."
-    *   *Usage:* Used by the "Workout Browser" to auto-filter difficulty.
+- lifetime completed workouts
+- lifetime active minutes
+- lifetime WP earned
+- recent Boxing vs Flow mix if cheap to compute
 
-#### Preferences & Overrides
+Avoid trying to impress with a giant dashboard.
 
-*   **Visuals:** Force specific Environments or Skins (e.g., for accessibility or comfort).
-*   **Gameplay:** Set default Mode (Boxing/Flow) and View Type (Portal/Track).
-*   **Menu:** Customize the Main Menu background (Supporter Feature).
+### Recent history
 
-#### Connected Athlete (Supporter Only)
+V1 should show a recent activity list with entries like:
 
-*   **Health Sync:** Toggle to enable auto-upload to Strava, Apple Health, or Google Fit.
-*   **Data Export:** Button to download full CSV history.
+- date/time
+- workout name
+- mode
+- duration
+- WP earned
 
-### D. Workout History (Right Panel)
+A short recent list is enough for launch. The point is continuity, not forensic analytics.
 
-A scrollable list of recent activity.
+### Preferences entry points
 
-*   **Capacity:** Last 10 sessions (Unlimited for Supporters).
-*   **Columns:**
-    *   *Date:* (e.g., "Today", "Yesterday").
-    *   *Content:* Song or Workout Name.
-    *   *Stats:* Duration, WP Earned, Accuracy %.
+The profile hub can link to preferences and the locker room, but it should not become a dumping ground for every settings category.
 
-## 4. UI Flows
+## Explicit v1 exclusions
 
-### Viewing Progress
+Do **not** treat these as launch requirements:
 
-1.  **User** clicks the Profile Badge on the Main Menu.
-2.  **System** opens the `ProfileHub` modal.
-3.  **User** reviews the Stamp Card to see if they hit their weekly goal.
+- supporter-only analytics panes
+- health-platform sync
+- CSV export
+- public profile sharing
+- coach heatmaps
+- year/month trend graphs
+- body metrics tracking
 
-### Changing Goals
+Those may become useful later, but they are not part of the retained v1 contract.
 
-1.  **User** opens `ProfileHub`.
-2.  **User** clicks the "Settings" tab.
-3.  **User** adjusts the "Days per Week" slider from 3 to 5.
-4.  **User** clicks "Save".
-5.  **System** updates the local `AeroUserProfile` and syncs with the server.
+## UX notes
 
-## 5. Technical Integration
-
-*   **Data Source:** `AeroUserProfile` (Resource).
-*   **Persistence:** **`aerobeat-tool-settings`** (Saves profile to disk).
-*   **Sync:** **`aerobeat-tool-api`** (Syncs profile to cloud).
-*   **3D Avatar:** The Hub instantiates a `SubViewport` to render the 3D Avatar scene separately from the UI, ensuring high fidelity.
+- The profile should be reachable from the main menu and other obvious non-gameplay surfaces.
+- It should load quickly and degrade gracefully if cloud sync is delayed.
+- If the athlete is still a guest, the profile should make the benefits of account conversion obvious without blocking basic free use.
