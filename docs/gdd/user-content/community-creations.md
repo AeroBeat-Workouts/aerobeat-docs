@@ -31,6 +31,11 @@ Premium publication should assume:
 - platform-compliant purchase flows
 - AeroBeat-owned trust and compatibility decisions
 - provider-side ownership/distribution mechanics staying behind the vendor seam
+- creator enrollment plus pre-publication review before sale
+- pricing-band policy rather than arbitrary creator-set pricing
+- minimum difficulty/accessibility coverage expectations for sellable content
+
+For the current recommended guardrails, see [Premium Workout Governance](../../architecture/premium-workout-governance.md).
 
 ## What changed
 

@@ -42,6 +42,10 @@ For the current strategy:
 - mod.io remains the current **community/distribution layer** for premium UGC
 - provider-side ownership synchronization should only rely on **official, non-deprecated surfaces** we can legitimately support
 - the athlete-facing product should still speak in **AeroBeat ownership/access** terms rather than raw provider wallet terminology
+- premium workouts should launch on a **review-gated premium lane**, not as arbitrary paid uploads
+- PC is the safe launch surface; mobile/console/arcade should be treated as stricter future policy lanes
+
+See also: [Premium Workout Governance](../../architecture/premium-workout-governance.md).
 
 ## Funding and progression
 

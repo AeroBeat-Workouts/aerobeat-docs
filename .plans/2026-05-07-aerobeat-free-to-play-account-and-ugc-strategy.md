@@ -94,11 +94,20 @@ In `/home/derrick/.openclaw/workspace/projects/aerobeat/aerobeat-tool-api`, rewr
 
 **Files Created/Deleted/Modified:**
 - `.plans/2026-05-07-aerobeat-free-to-play-account-and-ugc-strategy.md`
-- strategy doc(s) TBD from research
+- `docs/architecture/premium-workout-governance.md`
+- `docs/gdd/releases/community.md`
+- `docs/gdd/user-content/community-creations.md`
+- `mkdocs.yml`
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**Results:** Pending.
+**Results:** Added `docs/architecture/premium-workout-governance.md` to pressure-test whether the free-to-play + free/premium workout strategy still holds under open-source, mod.io-backed premium UGC, and AeroBeat-owned account/entitlement architecture. The strongest conclusion is that the strategy is still viable, but only if AeroBeat treats premium workouts as a **review-gated governed product lane** rather than "community mods, but paid." The new doc explicitly separates what is safe to lock now, what is still risky/policy-sensitive, and what should be v1-safe versus later refinement.
+
+Safe-to-lock conclusions recorded in the doc: AeroBeat can remain open-source while selling premium workouts; premium content protection must be framed as licensing/trust/moderation rather than magical DRM; premium workouts should launch only on a **creator-enrolled, pre-reviewed premium lane**; AeroBeat must own canonical approval/entitlement/trust state even while mod.io remains the current outer community/distribution shell; and **PC is the sane launch lane** for premium UGC while mobile/console/arcade should be treated as stricter future policy variants.
+
+Concrete product/policy recommendations recorded in the doc: require premium creator enrollment; require first-publication and material-update review for premium workouts; use **pricing bands** rather than arbitrary creator-set prices in v1; require minimum metadata honesty, licensing attestation, and difficulty/accessibility coverage for sellable premium content; and explicitly assume premium cloning/reposting attempts will happen, so provenance tracking, duplicate review, rapid delisting, and creator sanctions matter more than file secrecy. The doc also recommends limiting v1 premium sale classes to **whole workouts or tightly scoped workout packs**, not fragmented micro-items like premium environments or coaching fragments.
+
+Updated `docs/gdd/releases/community.md` and `docs/gdd/user-content/community-creations.md` to point at the new premium governance stance so the community release framing no longer implies that paid uploads can be a loosely moderated extension of free UGC. Added the new architecture doc to `mkdocs.yml`. Validation: `source venv/bin/activate && mkdocs build --clean` completed successfully; the only output beyond the normal build was the existing upstream plugin warning about future MkDocs 2 / ProperDocs risk plus the usual note about some docs pages not being included in nav.
 
 ---
 

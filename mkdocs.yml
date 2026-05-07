@@ -112,6 +112,7 @@ nav:
       - Input: architecture/input.md
       - Multiplayer: architecture/multiplayer.md
       - Performance: architecture/performance.md
+      - Premium Workout Governance: architecture/premium-workout-governance.md
       - Repo Structure Reference: architecture/repo-structure-reference.md
       - Repository Map: architecture/repository-map.md
       - Security: architecture/security.md
