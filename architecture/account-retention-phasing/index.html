@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/guides/feature_development/">
+        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/architecture/account-retention-phasing/">
       
       
-        <link rel="prev" href="../contributing_workflow/">
+        <link rel="prev" href="../account-identity-and-entitlements/">
       
       
-        <link rel="next" href="../calibration/">
+        <link rel="next" href="../backend_api/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Feature Development - AeroBeat Documentation</title>
+        <title>Account and Retention Feature Phasing - AeroBeat Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#feature-development-guide" class="md-skip">
+        <a href="#account-and-retention-feature-phasing" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Feature Development
+              Account and Retention Feature Phasing
             
           </span>
         </div>
@@ -615,20 +615,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -649,7 +647,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -667,7 +665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../contributing_workflow/" class="md-nav__link">
+      <a href="../../guides/contributing_workflow/" class="md-nav__link">
         
   
   
@@ -692,37 +690,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Feature Development
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../guides/feature_development/" class="md-nav__link">
         
   
   
@@ -738,59 +709,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#current-product-focus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Current product focus
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-a-feature-owns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What a feature owns
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#stability-rule" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Stability rule
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -803,7 +721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../calibration/" class="md-nav__link">
+      <a href="../../guides/calibration/" class="md-nav__link">
         
   
   
@@ -831,7 +749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../accessibility/" class="md-nav__link">
+      <a href="../../guides/accessibility/" class="md-nav__link">
         
   
   
@@ -859,7 +777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modding_quickstart/" class="md-nav__link">
+      <a href="../../guides/modding_quickstart/" class="md-nav__link">
         
   
   
@@ -887,7 +805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../demo_workout_package/" class="md-nav__link">
+      <a href="../../guides/demo_workout_package/" class="md-nav__link">
         
   
   
@@ -962,7 +880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../choreography/overview/" class="md-nav__link">
+      <a href="../../guides/choreography/overview/" class="md-nav__link">
         
   
   
@@ -990,7 +908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../choreography/boxing/" class="md-nav__link">
+      <a href="../../guides/choreography/boxing/" class="md-nav__link">
         
   
   
@@ -1018,7 +936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../choreography/flow/" class="md-nav__link">
+      <a href="../../guides/choreography/flow/" class="md-nav__link">
         
   
   
@@ -1054,7 +972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../environment_creation/" class="md-nav__link">
+      <a href="../../guides/environment_creation/" class="md-nav__link">
         
   
   
@@ -1082,7 +1000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../skins/" class="md-nav__link">
+      <a href="../../guides/skins/" class="md-nav__link">
         
   
   
@@ -1110,7 +1028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../avatar_creation/" class="md-nav__link">
+      <a href="../../guides/avatar_creation/" class="md-nav__link">
         
   
   
@@ -1138,7 +1056,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cosmetics/" class="md-nav__link">
+      <a href="../../guides/cosmetics/" class="md-nav__link">
         
   
   
@@ -1166,7 +1084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../coaching/" class="md-nav__link">
+      <a href="../../guides/coaching/" class="md-nav__link">
         
   
   
@@ -2501,18 +2419,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -2533,7 +2453,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2548,18 +2468,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -2580,7 +2502,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2598,7 +2520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -2626,7 +2548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/audio/" class="md-nav__link">
+      <a href="../audio/" class="md-nav__link">
         
   
   
@@ -2654,7 +2576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/account-identity-and-entitlements/" class="md-nav__link">
+      <a href="../account-identity-and-entitlements/" class="md-nav__link">
         
   
   
@@ -2679,10 +2601,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/account-retention-phasing/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Account and Retention Feature Phasing
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2698,6 +2647,485 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#strategic-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategic conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-success-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launch success criteria
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v1-feature-cut" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v1 feature cut
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ship-in-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ship in v1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ship in v1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-aerobeat-account-identity-guest-conversion-and-linked-account-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. AeroBeat account identity, guest conversion, and linked-account recovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-entitlements-library-sync-and-install-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Entitlements, library sync, and install authorization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-basic-profile-preferences-workout-history-and-lifetime-stats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Basic profile, preferences, workout history, and lifetime stats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-workout-points-wp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Workout Points (WP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-weekly-goals-and-streaks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Weekly goals and streaks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defer-from-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Defer from v1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Defer from v1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#leaderboards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leaderboards
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#friends-following-crews" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Friends / following / crews
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#real-time-multiplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Real-time multiplayer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unlockable-cosmetics-environments-avatars-as-a-large-catalog-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unlockable cosmetics / environments / avatars as a large catalog system
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#premium-currency-earnable-premium-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Premium currency / earnable premium loops
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#battle-pass-seasonal-progression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Battle pass / seasonal progression
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotating-point-shop-premium-shop-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotating point shop / premium shop layers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-depth-what-must-be-fully-designed-now-vs-lightly-designed-now-vs-safely-wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design depth: what must be fully designed now vs lightly designed now vs safely wait
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#must-be-fully-designed-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Must be fully designed now
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Must be fully designed now">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#account-identity-and-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Account identity and recovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entitlements-and-library-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entitlements and library truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workout-completion-event-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workout completion event model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wp-ledger-and-grant-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP ledger and grant rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weekly-goal-and-streak-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weekly goal and streak semantics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profilepreferenceshistory-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Profile/preferences/history scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#should-be-lightly-designed-now-then-heavily-deferred" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Should be lightly designed now, then heavily deferred
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Should be lightly designed now, then heavily deferred">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#leaderboards_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leaderboards
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#friends-social-graph-crews" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Friends / social graph / crews
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cosmetic-inventory-and-unlock-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cosmetic inventory and unlock catalog
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-safely-wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can safely wait
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-post-v1-priority-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended post-v1 priority order
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended post-v1 priority order">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-scoped-leaderboards-and-async-competition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Scoped leaderboards and async competition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-friends-following-and-lightweight-social-accountability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Friends / following and lightweight social accountability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-expanded-wp-sinks-and-official-cosmetic-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Expanded WP sinks and official cosmetic inventory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-crews-group-accountability-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Crews / group accountability features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-real-time-multiplayer-or-ghost-competition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Real-time multiplayer or ghost competition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-premium-currency-seasonal-progression-battle-pass-rotating-premium-shop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Premium currency, seasonal progression, battle pass, rotating premium shop
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explicit-feature-by-feature-decision-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicit feature-by-feature decision summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final recommendation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2710,7 +3138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/backend_api/" class="md-nav__link">
+      <a href="../backend_api/" class="md-nav__link">
         
   
   
@@ -2738,7 +3166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/cloud_baker/" class="md-nav__link">
+      <a href="../cloud_baker/" class="md-nav__link">
         
   
   
@@ -2766,7 +3194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/coding-style/" class="md-nav__link">
+      <a href="../coding-style/" class="md-nav__link">
         
   
   
@@ -2794,7 +3222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/content-model/" class="md-nav__link">
+      <a href="../content-model/" class="md-nav__link">
         
   
   
@@ -2822,7 +3250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/content-repo-shapes/" class="md-nav__link">
+      <a href="../content-repo-shapes/" class="md-nav__link">
         
   
   
@@ -2850,7 +3278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/modio-tag-mapping/" class="md-nav__link">
+      <a href="../modio-tag-mapping/" class="md-nav__link">
         
   
   
@@ -2878,7 +3306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/input/" class="md-nav__link">
+      <a href="../input/" class="md-nav__link">
         
   
   
@@ -2906,7 +3334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/multiplayer/" class="md-nav__link">
+      <a href="../multiplayer/" class="md-nav__link">
         
   
   
@@ -2934,7 +3362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/performance/" class="md-nav__link">
+      <a href="../performance/" class="md-nav__link">
         
   
   
@@ -2962,7 +3390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/premium-workout-governance/" class="md-nav__link">
+      <a href="../premium-workout-governance/" class="md-nav__link">
         
   
   
@@ -2990,7 +3418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/repo-structure-reference/" class="md-nav__link">
+      <a href="../repo-structure-reference/" class="md-nav__link">
         
   
   
@@ -3018,7 +3446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/repository-map/" class="md-nav__link">
+      <a href="../repository-map/" class="md-nav__link">
         
   
   
@@ -3046,7 +3474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/security/" class="md-nav__link">
+      <a href="../security/" class="md-nav__link">
         
   
   
@@ -3074,7 +3502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/state-management/" class="md-nav__link">
+      <a href="../state-management/" class="md-nav__link">
         
   
   
@@ -3102,7 +3530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/telemetry/" class="md-nav__link">
+      <a href="../telemetry/" class="md-nav__link">
         
   
   
@@ -3130,7 +3558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/testing/" class="md-nav__link">
+      <a href="../testing/" class="md-nav__link">
         
   
   
@@ -3158,7 +3586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/tool/" class="md-nav__link">
+      <a href="../tool/" class="md-nav__link">
         
   
   
@@ -3186,7 +3614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/topology/" class="md-nav__link">
+      <a href="../topology/" class="md-nav__link">
         
   
   
@@ -3214,7 +3642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/ugc_modding/" class="md-nav__link">
+      <a href="../ugc_modding/" class="md-nav__link">
         
   
   
@@ -3242,7 +3670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/ugc-distribution-executive-summary/" class="md-nav__link">
+      <a href="../ugc-distribution-executive-summary/" class="md-nav__link">
         
   
   
@@ -3270,7 +3698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/ugc-distribution-strategy/" class="md-nav__link">
+      <a href="../ugc-distribution-strategy/" class="md-nav__link">
         
   
   
@@ -3298,7 +3726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/ugc-hybrid-integration-architecture/" class="md-nav__link">
+      <a href="../ugc-hybrid-integration-architecture/" class="md-nav__link">
         
   
   
@@ -3326,7 +3754,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/ugc-api-manager-topology/" class="md-nav__link">
+      <a href="../ugc-api-manager-topology/" class="md-nav__link">
         
   
   
@@ -3354,7 +3782,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/ui-ux/" class="md-nav__link">
+      <a href="../ui-ux/" class="md-nav__link">
         
   
   
@@ -3382,7 +3810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/workflow/" class="md-nav__link">
+      <a href="../workflow/" class="md-nav__link">
         
   
   
@@ -3410,7 +3838,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/workout-package-storage-and-discovery/" class="md-nav__link">
+      <a href="../workout-package-storage-and-discovery/" class="md-nav__link">
         
   
   
@@ -5272,10 +5700,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#current-product-focus" class="md-nav__link">
+  <a href="#strategic-conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Current product focus
+        Strategic conclusion
       
     </span>
   </a>
@@ -5283,10 +5711,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-a-feature-owns" class="md-nav__link">
+  <a href="#launch-success-criteria" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What a feature owns
+        Launch success criteria
       
     </span>
   </a>
@@ -5294,10 +5722,436 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stability-rule" class="md-nav__link">
+  <a href="#v1-feature-cut" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stability rule
+        v1 feature cut
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ship-in-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ship in v1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ship in v1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-aerobeat-account-identity-guest-conversion-and-linked-account-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. AeroBeat account identity, guest conversion, and linked-account recovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-entitlements-library-sync-and-install-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Entitlements, library sync, and install authorization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-basic-profile-preferences-workout-history-and-lifetime-stats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Basic profile, preferences, workout history, and lifetime stats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-workout-points-wp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Workout Points (WP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-weekly-goals-and-streaks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Weekly goals and streaks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defer-from-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Defer from v1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Defer from v1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#leaderboards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leaderboards
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#friends-following-crews" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Friends / following / crews
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#real-time-multiplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Real-time multiplayer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unlockable-cosmetics-environments-avatars-as-a-large-catalog-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unlockable cosmetics / environments / avatars as a large catalog system
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#premium-currency-earnable-premium-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Premium currency / earnable premium loops
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#battle-pass-seasonal-progression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Battle pass / seasonal progression
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotating-point-shop-premium-shop-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotating point shop / premium shop layers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-depth-what-must-be-fully-designed-now-vs-lightly-designed-now-vs-safely-wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design depth: what must be fully designed now vs lightly designed now vs safely wait
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#must-be-fully-designed-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Must be fully designed now
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Must be fully designed now">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#account-identity-and-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Account identity and recovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entitlements-and-library-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entitlements and library truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workout-completion-event-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workout completion event model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wp-ledger-and-grant-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP ledger and grant rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weekly-goal-and-streak-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weekly goal and streak semantics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profilepreferenceshistory-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Profile/preferences/history scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#should-be-lightly-designed-now-then-heavily-deferred" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Should be lightly designed now, then heavily deferred
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Should be lightly designed now, then heavily deferred">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#leaderboards_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leaderboards
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#friends-social-graph-crews" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Friends / social graph / crews
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cosmetic-inventory-and-unlock-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cosmetic inventory and unlock catalog
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-safely-wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can safely wait
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-post-v1-priority-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended post-v1 priority order
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended post-v1 priority order">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-scoped-leaderboards-and-async-competition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Scoped leaderboards and async competition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-friends-following-and-lightweight-social-accountability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Friends / following and lightweight social accountability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-expanded-wp-sinks-and-official-cosmetic-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Expanded WP sinks and official cosmetic inventory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-crews-group-accountability-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Crews / group accountability features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-real-time-multiplayer-or-ghost-competition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Real-time multiplayer or ghost competition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-premium-currency-seasonal-progression-battle-pass-rotating-premium-shop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Premium currency, seasonal progression, battle pass, rotating premium shop
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explicit-feature-by-feature-decision-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicit feature-by-feature decision summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final recommendation
       
     </span>
   </a>
@@ -5324,26 +6178,524 @@
   
 
 
-<h1 id="feature-development-guide">Feature Development Guide<a class="headerlink" href="#feature-development-guide" title="Permanent link">&para;</a></h1>
-<p>This guide is for gameplay engineers building AeroBeat features.</p>
-<h2 id="current-product-focus">Current product focus<a class="headerlink" href="#current-product-focus" title="Permanent link">&para;</a></h2>
-<p>The active product slice is centered on:</p>
+<h1 id="account-and-retention-feature-phasing">Account and Retention Feature Phasing<a class="headerlink" href="#account-and-retention-feature-phasing" title="Permanent link">&para;</a></h1>
+<p>This document defines which <strong>account-driven product systems</strong> belong in the AeroBeat <strong>launch product (v1)</strong> versus later releases.</p>
+<p>It is intentionally opinionated.</p>
+<p>The goal is not to list every sticky feature AeroBeat could someday support. The goal is to decide what must exist for the first <strong>PC-first free-to-play launch</strong> to feel compelling, recoverable, and worth returning to without bloating v1 into a half-built social platform.</p>
+<p>See also:</p>
 <ul>
-<li><strong>Boxing</strong></li>
-<li><strong>Flow</strong></li>
-<li><strong>camera-first gameplay</strong></li>
+<li><a href="../account-identity-and-entitlements/">Account, Identity, and Entitlements Strategy</a></li>
+<li><a href="../premium-workout-governance/">Premium Workout Governance</a></li>
+<li><a href="../backend_api/">Backend API Specification</a></li>
 </ul>
-<p>The architecture may still support future features later, but feature-development docs should not imply Dance or Step are active product modes today.</p>
-<h2 id="what-a-feature-owns">What a feature owns<a class="headerlink" href="#what-a-feature-owns" title="Permanent link">&para;</a></h2>
-<p>A feature is a self-contained library that provides:</p>
+<h2 id="strategic-conclusion">Strategic conclusion<a class="headerlink" href="#strategic-conclusion" title="Permanent link">&para;</a></h2>
+<p>AeroBeat v1 should ship with a <strong>narrow first-party account and retention loop</strong>:</p>
 <ol>
-<li>gameplay logic</li>
-<li>stable runtime/view-facing scenes or resources</li>
-<li>choreography parsing for that feature's authored charts</li>
+<li><strong>AeroBeat-owned account identity and linked-account recovery</strong></li>
+<li><strong>free vs premium workout entitlement + library sync</strong></li>
+<li><strong>basic profile/preferences + workout history</strong></li>
+<li><strong>Workout Points (WP) as the single launch progression currency</strong></li>
+<li><strong>simple weekly goals and streaks</strong></li>
 </ol>
-<p>It does <strong>not</strong> provide main-menu UI, hardware input providers, or player-profile storage.</p>
-<h2 id="stability-rule">Stability rule<a class="headerlink" href="#stability-rule" title="Permanent link">&para;</a></h2>
-<p>Feature-facing contracts should stay stable enough that downstream visuals and tooling do not break when implementation details change.</p>
+<p>That is enough to support the launch promise:</p>
+<ul>
+<li>the app is free-to-play</li>
+<li>athletes can discover free workouts and buy premium workouts</li>
+<li>progress survives device changes</li>
+<li>the product has a reason to come back next week</li>
+</ul>
+<p>AeroBeat does <strong>not</strong> need friends, global social graphs, real-time multiplayer, premium currency, a battle pass, or a rotating live-ops shop to be compelling at launch.</p>
+<p>Trying to ship all of those at once would create a broad but fragile product. AeroBeat needs a strong workout loop first, not a bloated meta-game.</p>
+<h2 id="launch-success-criteria">Launch success criteria<a class="headerlink" href="#launch-success-criteria" title="Permanent link">&para;</a></h2>
+<p>For this strategy, v1 is successful if a new athlete can:</p>
+<ol>
+<li>install the game for free</li>
+<li>start quickly, including with a guest path for free content</li>
+<li>create or link an AeroBeat account when they want durable progression or premium ownership recovery</li>
+<li>browse trusted free and premium workouts</li>
+<li>buy a premium workout through platform-compliant commerce and see ownership sync reliably</li>
+<li>complete workouts and see meaningful progress accumulate</li>
+<li>feel a clear reason to come back later this week</li>
+</ol>
+<p>The launch retention loop therefore needs to answer two practical questions:</p>
+<ul>
+<li><strong>Why should I trust this as my long-term workout library?</strong></li>
+<li><strong>Why should I come back tomorrow or next week?</strong></li>
+</ul>
+<p>The first answer is account identity + entitlements + history.
+The second answer is WP + simple goals + streaks.</p>
+<h2 id="v1-feature-cut">v1 feature cut<a class="headerlink" href="#v1-feature-cut" title="Permanent link">&para;</a></h2>
+<h2 id="ship-in-v1">Ship in v1<a class="headerlink" href="#ship-in-v1" title="Permanent link">&para;</a></h2>
+<h3 id="1-aerobeat-account-identity-guest-conversion-and-linked-account-recovery">1. AeroBeat account identity, guest conversion, and linked-account recovery<a class="headerlink" href="#1-aerobeat-account-identity-guest-conversion-and-linked-account-recovery" title="Permanent link">&para;</a></h3>
+<p>This is a <strong>hard requirement</strong>.</p>
+<p>V1 should support:</p>
+<ul>
+<li>guest entry for limited free-play onboarding</li>
+<li>sign-in / account creation for durable progression</li>
+<li>linked platform/provider identity records</li>
+<li>recovery of owned premium workouts and cloud-backed progression on a new device</li>
+<li>explicit guest-to-account conversion rules</li>
+</ul>
+<p>Why it belongs in v1:</p>
+<ul>
+<li>premium workout ownership without recovery is a support nightmare</li>
+<li>free-to-play products need a clean path from casual tryout to durable identity</li>
+<li>this architecture is already required by the entitlement strategy</li>
+</ul>
+<h3 id="2-entitlements-library-sync-and-install-authorization">2. Entitlements, library sync, and install authorization<a class="headerlink" href="#2-entitlements-library-sync-and-install-authorization" title="Permanent link">&para;</a></h3>
+<p>This is also a <strong>hard requirement</strong>.</p>
+<p>V1 should support:</p>
+<ul>
+<li>free vs premium workout access checks</li>
+<li>owned workout library sync in AeroBeat terms</li>
+<li>install/download authorization for trusted content</li>
+<li>resync/relink UX when ownership cannot be verified</li>
+</ul>
+<p>Why it belongs in v1:</p>
+<ul>
+<li>it is the product contract behind free + premium workouts</li>
+<li>it is necessary for official premium access to feel legitimate and recoverable</li>
+</ul>
+<h3 id="3-basic-profile-preferences-workout-history-and-lifetime-stats">3. Basic profile, preferences, workout history, and lifetime stats<a class="headerlink" href="#3-basic-profile-preferences-workout-history-and-lifetime-stats" title="Permanent link">&para;</a></h3>
+<p>V1 should include a practical profile layer, not a giant social identity layer.</p>
+<p>V1 should support:</p>
+<ul>
+<li>athlete display identity in AeroBeat terms</li>
+<li>saved preferences relevant to workout selection and comfort</li>
+<li>recent workout history</li>
+<li>simple lifetime stats such as total sessions, total minutes, and lifetime WP earned</li>
+</ul>
+<p>Why it belongs in v1:</p>
+<ul>
+<li>athletes need visible continuity for a fitness product</li>
+<li>this makes the account feel useful even before deeper social features exist</li>
+</ul>
+<h3 id="4-workout-points-wp">4. Workout Points (WP)<a class="headerlink" href="#4-workout-points-wp" title="Permanent link">&para;</a></h3>
+<p><strong>Workout Points should ship in v1.</strong></p>
+<p>WP should be the only meaningful progression currency at launch.</p>
+<p>V1 expectations:</p>
+<ul>
+<li>award WP after completed workouts</li>
+<li>keep the grant model simple and understandable</li>
+<li>store WP in a first-party authoritative ledger</li>
+<li>expose current balance and lifetime earned totals</li>
+<li>support a small curated set of official cosmetic/profile unlock sinks if enough launch content exists</li>
+</ul>
+<p>Why it belongs in v1:</p>
+<ul>
+<li>AeroBeat already frames WP as the core progression language</li>
+<li>it creates a durable, low-complexity reward loop without introducing premium-currency pressure</li>
+<li>it gives the product a sense of growth even before deeper content cadence systems exist</li>
+</ul>
+<p>Important constraint:</p>
+<blockquote>
+<p>V1 should ship <strong>WP</strong>, not a full economy platform.</p>
+</blockquote>
+<p>That means no complicated exchange systems, no multiple soft currencies, and no live-ops-heavy store dependency.</p>
+<h3 id="5-weekly-goals-and-streaks">5. Weekly goals and streaks<a class="headerlink" href="#5-weekly-goals-and-streaks" title="Permanent link">&para;</a></h3>
+<p><strong>Simple weekly goals and streaks should ship in v1.</strong></p>
+<p>Recommended v1 shape:</p>
+<ul>
+<li>athlete chooses or receives a simple weekly target such as workout days or sessions</li>
+<li>the game shows progress toward that target</li>
+<li>the product tracks a streak based on completed weekly goals or another clearly defined consistency rule</li>
+<li>the rule is transparent and forgiving enough for a fitness product</li>
+</ul>
+<p>Why it belongs in v1:</p>
+<ul>
+<li>fitness retention depends more on consistency than on score-chasing alone</li>
+<li>WP without a cadence loop becomes a generic points counter</li>
+<li>weekly framing is better aligned with workout habit-building than a punitive daily-only loop</li>
+</ul>
+<p>Important constraint:</p>
+<blockquote>
+<p>V1 should use <strong>simple, transparent streak logic</strong>, not manipulative live-ops pressure.</p>
+</blockquote>
+<p>Recommended posture:</p>
+<ul>
+<li>prefer a <strong>weekly consistency streak</strong> over a brittle daily log-in streak</li>
+<li>avoid monetized streak repair mechanics in v1</li>
+</ul>
+<h2 id="defer-from-v1">Defer from v1<a class="headerlink" href="#defer-from-v1" title="Permanent link">&para;</a></h2>
+<h3 id="leaderboards">Leaderboards<a class="headerlink" href="#leaderboards" title="Permanent link">&para;</a></h3>
+<p><strong>Do not make leaderboards a v1 requirement.</strong></p>
+<p>They are valuable, but they are not necessary to prove the core product.</p>
+<p>Why defer:</p>
+<ul>
+<li>score integrity and anti-cheat posture are non-trivial in a camera-based workout product</li>
+<li>leaderboards favor the more competitive slice of the audience, while launch must first prove broad workout appeal</li>
+<li>v1 already has enough account complexity from premium entitlements and progression</li>
+</ul>
+<p>Recommended first deferred priority:</p>
+<ul>
+<li>start with <strong>asynchronous, scoped leaderboard concepts</strong> later, not a giant global competition stack on day one</li>
+</ul>
+<h3 id="friends-following-crews">Friends / following / crews<a class="headerlink" href="#friends-following-crews" title="Permanent link">&para;</a></h3>
+<p><strong>Do not ship a full social graph in v1.</strong></p>
+<p>Why defer:</p>
+<ul>
+<li>social graphs multiply moderation, privacy, safety, and notification complexity</li>
+<li>they are more valuable after the base content/progression loop is stable</li>
+<li>crews especially imply private leaderboards, activity feeds, invites, and moderation tooling</li>
+</ul>
+<p>Recommended posture:</p>
+<ul>
+<li>defer the full feature</li>
+<li>reserve only the minimal identity primitives needed for later relationship models</li>
+</ul>
+<h3 id="real-time-multiplayer">Real-time multiplayer<a class="headerlink" href="#real-time-multiplayer" title="Permanent link">&para;</a></h3>
+<p><strong>Real-time multiplayer should be firmly post-v1.</strong></p>
+<p>Why defer:</p>
+<ul>
+<li>networking, session orchestration, and anti-abuse are substantial systems on their own</li>
+<li>multiplayer is attractive but not required for the first compelling workout product</li>
+<li>the launch product should prove that solo workout retention and premium content access work first</li>
+</ul>
+<h3 id="unlockable-cosmetics-environments-avatars-as-a-large-catalog-system">Unlockable cosmetics / environments / avatars as a large catalog system<a class="headerlink" href="#unlockable-cosmetics-environments-avatars-as-a-large-catalog-system" title="Permanent link">&para;</a></h3>
+<p><strong>Controlled customization matters, but a large cosmetic program is not a v1 blocker.</strong></p>
+<p>Recommended v1 posture:</p>
+<ul>
+<li>ship only a modest set of official unlockables if content supply is ready</li>
+<li>do not require a broad cosmetic catalog, rotating storefront, or complex rarity economy</li>
+</ul>
+<h3 id="premium-currency-earnable-premium-loops">Premium currency / earnable premium loops<a class="headerlink" href="#premium-currency-earnable-premium-loops" title="Permanent link">&para;</a></h3>
+<p><strong>Do not ship premium currency in v1.</strong></p>
+<p>Why defer:</p>
+<ul>
+<li>it introduces pricing, wallet, refund, fraud, and live-ops complexity that the launch product does not need</li>
+<li>AeroBeat already has premium workouts as the launch monetization lane</li>
+<li>WP already covers the non-cash progression loop</li>
+</ul>
+<h3 id="battle-pass-seasonal-progression">Battle pass / seasonal progression<a class="headerlink" href="#battle-pass-seasonal-progression" title="Permanent link">&para;</a></h3>
+<p><strong>Do not ship a battle pass in v1.</strong></p>
+<p>Why defer:</p>
+<ul>
+<li>battle-pass systems require content cadence, reward planning, season operations, and expiration policy</li>
+<li>shipping one too early often creates an obligation treadmill before the product loop is proven</li>
+<li>AeroBeat should first prove that workouts themselves drive repeat engagement</li>
+</ul>
+<h3 id="rotating-point-shop-premium-shop-layers">Rotating point shop / premium shop layers<a class="headerlink" href="#rotating-point-shop-premium-shop-layers" title="Permanent link">&para;</a></h3>
+<p><strong>Do not make rotating shops a v1 dependency.</strong></p>
+<p>Why defer:</p>
+<ul>
+<li>they create live-ops pressure and content hunger</li>
+<li>they are more appropriate once WP sink behavior and cosmetic demand are known</li>
+</ul>
+<h2 id="design-depth-what-must-be-fully-designed-now-vs-lightly-designed-now-vs-safely-wait">Design depth: what must be fully designed now vs lightly designed now vs safely wait<a class="headerlink" href="#design-depth-what-must-be-fully-designed-now-vs-lightly-designed-now-vs-safely-wait" title="Permanent link">&para;</a></h2>
+<h2 id="must-be-fully-designed-now">Must be fully designed now<a class="headerlink" href="#must-be-fully-designed-now" title="Permanent link">&para;</a></h2>
+<p>These directly affect the launch product contract and should not be left fuzzy.</p>
+<h3 id="account-identity-and-recovery">Account identity and recovery<a class="headerlink" href="#account-identity-and-recovery" title="Permanent link">&para;</a></h3>
+<p>Must be designed now:</p>
+<ul>
+<li>canonical <code>athlete_id</code></li>
+<li>guest vs signed-in actor model</li>
+<li>guest-to-account upgrade path</li>
+<li>linked-account model for platform/provider identities</li>
+<li>recovery/relink flows for premium ownership and progression</li>
+</ul>
+<h3 id="entitlements-and-library-truth">Entitlements and library truth<a class="headerlink" href="#entitlements-and-library-truth" title="Permanent link">&para;</a></h3>
+<p>Must be designed now:</p>
+<ul>
+<li>free vs premium access vocabulary</li>
+<li>owned library shape in AeroBeat terms</li>
+<li>entitlement sync/reconciliation states</li>
+<li>install authorization decisions</li>
+<li>offline/cached premium access policy</li>
+</ul>
+<h3 id="workout-completion-event-model">Workout completion event model<a class="headerlink" href="#workout-completion-event-model" title="Permanent link">&para;</a></h3>
+<p>Must be designed now:</p>
+<ul>
+<li>what counts as a completed workout</li>
+<li>what event is recorded locally vs server-side</li>
+<li>idempotency / replay protection for progression grants</li>
+<li>minimum anti-abuse posture for points and streaks</li>
+</ul>
+<h3 id="wp-ledger-and-grant-rules">WP ledger and grant rules<a class="headerlink" href="#wp-ledger-and-grant-rules" title="Permanent link">&para;</a></h3>
+<p>Must be designed now:</p>
+<ul>
+<li>authoritative grant path</li>
+<li>base earn formula or equivalent rule set</li>
+<li>balance vs lifetime-earned semantics</li>
+<li>rollback/correction policy for bad grants</li>
+</ul>
+<h3 id="weekly-goal-and-streak-semantics">Weekly goal and streak semantics<a class="headerlink" href="#weekly-goal-and-streak-semantics" title="Permanent link">&para;</a></h3>
+<p>Must be designed now:</p>
+<ul>
+<li>whether goals are days, sessions, minutes, or a simple chosen weekly target</li>
+<li>when a week resets and in which timezone context</li>
+<li>what breaks or preserves a streak</li>
+<li>whether streaks are derived or stored</li>
+</ul>
+<h3 id="profilepreferenceshistory-scope">Profile/preferences/history scope<a class="headerlink" href="#profilepreferenceshistory-scope" title="Permanent link">&para;</a></h3>
+<p>Must be designed now:</p>
+<ul>
+<li>minimum cloud-backed profile fields</li>
+<li>which preferences are product-critical</li>
+<li>workout history retention shape for UI</li>
+<li>privacy posture for personal workout history</li>
+</ul>
+<h2 id="should-be-lightly-designed-now-then-heavily-deferred">Should be lightly designed now, then heavily deferred<a class="headerlink" href="#should-be-lightly-designed-now-then-heavily-deferred" title="Permanent link">&para;</a></h2>
+<p>These need enough design now to avoid boxing the architecture into a corner, but not enough to force v1 implementation.</p>
+<h3 id="leaderboards_1">Leaderboards<a class="headerlink" href="#leaderboards_1" title="Permanent link">&para;</a></h3>
+<p>Lightly design now:</p>
+<ul>
+<li>canonical workout/run identifiers</li>
+<li>score/result schema</li>
+<li>basic anti-cheat stance</li>
+<li>privacy/display-name implications</li>
+</ul>
+<p>Defer:</p>
+<ul>
+<li>global ranking UX</li>
+<li>crew/friend filters</li>
+<li>seasonal ladder operations</li>
+</ul>
+<h3 id="friends-social-graph-crews">Friends / social graph / crews<a class="headerlink" href="#friends-social-graph-crews" title="Permanent link">&para;</a></h3>
+<p>Lightly design now:</p>
+<ul>
+<li>whether the account model should allow future friend/follow relationships</li>
+<li>basic privacy/block/report assumptions</li>
+<li>notification/event model seams</li>
+</ul>
+<p>Defer:</p>
+<ul>
+<li>invites</li>
+<li>feeds</li>
+<li>chat</li>
+<li>crew roles and moderation tooling</li>
+</ul>
+<h3 id="cosmetic-inventory-and-unlock-catalog">Cosmetic inventory and unlock catalog<a class="headerlink" href="#cosmetic-inventory-and-unlock-catalog" title="Permanent link">&para;</a></h3>
+<p>Lightly design now:</p>
+<ul>
+<li>whether official unlockables use first-party inventory IDs</li>
+<li>how WP-owned unlocks differ from premium workout entitlements</li>
+<li>how official cosmetics stay separate from UGC cosmetics</li>
+</ul>
+<p>Defer:</p>
+<ul>
+<li>large catalog plans</li>
+<li>rarity ladders</li>
+<li>rotating availability logic</li>
+</ul>
+<h2 id="can-safely-wait">Can safely wait<a class="headerlink" href="#can-safely-wait" title="Permanent link">&para;</a></h2>
+<p>These do not need meaningful v1 design depth beyond a note that they exist.</p>
+<ul>
+<li>premium currency wallets</li>
+<li>earnable premium-currency loops</li>
+<li>battle passes</li>
+<li>seasonal progression tracks</li>
+<li>rotating premium shops</li>
+<li>real-time multiplayer parties/lobbies/matchmaking</li>
+<li>broad social feeds</li>
+<li>gifting systems</li>
+<li>creator patronage/subscription systems</li>
+</ul>
+<p>Those should be designed only after AeroBeat has real usage data and a stable content cadence.</p>
+<h2 id="recommended-post-v1-priority-order">Recommended post-v1 priority order<a class="headerlink" href="#recommended-post-v1-priority-order" title="Permanent link">&para;</a></h2>
+<p>If AeroBeat launches successfully, the recommended order is:</p>
+<h3 id="1-scoped-leaderboards-and-async-competition">1. Scoped leaderboards and async competition<a class="headerlink" href="#1-scoped-leaderboards-and-async-competition" title="Permanent link">&para;</a></h3>
+<p>Why first:</p>
+<ul>
+<li>high motivational upside</li>
+<li>lower complexity than full social graphs or multiplayer</li>
+<li>fits the workout-and-improvement fantasy well</li>
+</ul>
+<p>Recommended shape:</p>
+<ul>
+<li>workout-specific leaderboards</li>
+<li>personal-best comparisons</li>
+<li>possibly time-boxed challenge boards later</li>
+</ul>
+<h3 id="2-friends-following-and-lightweight-social-accountability">2. Friends / following and lightweight social accountability<a class="headerlink" href="#2-friends-following-and-lightweight-social-accountability" title="Permanent link">&para;</a></h3>
+<p>Why second:</p>
+<ul>
+<li>social accountability can materially improve retention</li>
+<li>works well once rankings and shareable progress already exist</li>
+</ul>
+<p>Recommended shape:</p>
+<ul>
+<li>add friends/follows</li>
+<li>simple activity visibility or challenge sharing</li>
+<li>avoid full chat/community-platform sprawl at first</li>
+</ul>
+<h3 id="3-expanded-wp-sinks-and-official-cosmetic-inventory">3. Expanded WP sinks and official cosmetic inventory<a class="headerlink" href="#3-expanded-wp-sinks-and-official-cosmetic-inventory" title="Permanent link">&para;</a></h3>
+<p>Why third:</p>
+<ul>
+<li>once WP earn rates are validated, expand reasons to spend it</li>
+<li>lets AeroBeat deepen progression without yet introducing cash-wallet complexity</li>
+</ul>
+<p>Recommended shape:</p>
+<ul>
+<li>more official unlockables</li>
+<li>profile titles/badges</li>
+<li>limited rotating WP-only offers if content supply exists</li>
+</ul>
+<h3 id="4-crews-group-accountability-features">4. Crews / group accountability features<a class="headerlink" href="#4-crews-group-accountability-features" title="Permanent link">&para;</a></h3>
+<p>Why fourth:</p>
+<ul>
+<li>valuable, but only once friend/accountability primitives already work</li>
+<li>requires more moderation and privacy tooling than simple following</li>
+</ul>
+<p>Recommended shape:</p>
+<ul>
+<li>small crews/groups</li>
+<li>group goals</li>
+<li>scoped group leaderboards</li>
+</ul>
+<h3 id="5-real-time-multiplayer-or-ghost-competition">5. Real-time multiplayer or ghost competition<a class="headerlink" href="#5-real-time-multiplayer-or-ghost-competition" title="Permanent link">&para;</a></h3>
+<p>Why fifth:</p>
+<ul>
+<li>attractive and stream-friendly, but technically expensive</li>
+<li>should follow proof that async social retention is worth extending</li>
+</ul>
+<p>Recommended shape:</p>
+<ul>
+<li>consider ghost competition before full live lobbies if the product needs a cheaper intermediate step</li>
+</ul>
+<h3 id="6-premium-currency-seasonal-progression-battle-pass-rotating-premium-shop">6. Premium currency, seasonal progression, battle pass, rotating premium shop<a class="headerlink" href="#6-premium-currency-seasonal-progression-battle-pass-rotating-premium-shop" title="Permanent link">&para;</a></h3>
+<p>Why last:</p>
+<ul>
+<li>these are live-ops multipliers, not launch necessities</li>
+<li>they are easiest to justify after AeroBeat has DAU, retention data, and a dependable premium content pipeline</li>
+</ul>
+<h2 id="explicit-feature-by-feature-decision-summary">Explicit feature-by-feature decision summary<a class="headerlink" href="#explicit-feature-by-feature-decision-summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>v1?</th>
+<th>Design now?</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AeroBeat account identity</td>
+<td>Yes</td>
+<td>Full</td>
+<td>Canonical product identity</td>
+</tr>
+<tr>
+<td>Guest path + conversion</td>
+<td>Yes</td>
+<td>Full</td>
+<td>Required for free-to-play onboarding</td>
+</tr>
+<tr>
+<td>Linked account recovery</td>
+<td>Yes</td>
+<td>Full</td>
+<td>Required for premium/library recovery</td>
+</tr>
+<tr>
+<td>Free/premium entitlements</td>
+<td>Yes</td>
+<td>Full</td>
+<td>Core launch contract</td>
+</tr>
+<tr>
+<td>Library sync</td>
+<td>Yes</td>
+<td>Full</td>
+<td>Core launch contract</td>
+</tr>
+<tr>
+<td>Profile/preferences/history</td>
+<td>Yes</td>
+<td>Full</td>
+<td>Minimum continuity layer</td>
+</tr>
+<tr>
+<td>Workout Points</td>
+<td>Yes</td>
+<td>Full</td>
+<td>Single launch progression currency</td>
+</tr>
+<tr>
+<td>Weekly goals</td>
+<td>Yes</td>
+<td>Full</td>
+<td>Keep simple</td>
+</tr>
+<tr>
+<td>Streaks</td>
+<td>Yes</td>
+<td>Full</td>
+<td>Prefer weekly consistency framing</td>
+</tr>
+<tr>
+<td>Leaderboards</td>
+<td>No</td>
+<td>Light</td>
+<td>First strong post-v1 candidate</td>
+</tr>
+<tr>
+<td>Friends/following</td>
+<td>No</td>
+<td>Light</td>
+<td>Defer implementation</td>
+</tr>
+<tr>
+<td>Crews</td>
+<td>No</td>
+<td>Light</td>
+<td>Future group accountability layer</td>
+</tr>
+<tr>
+<td>Unlockable cosmetics catalog</td>
+<td>Partial at most</td>
+<td>Light</td>
+<td>Small official set only if content ready</td>
+</tr>
+<tr>
+<td>Premium currency</td>
+<td>No</td>
+<td>Wait</td>
+<td>Unneeded v1 complexity</td>
+</tr>
+<tr>
+<td>Earnable premium loops</td>
+<td>No</td>
+<td>Wait</td>
+<td>Same as above</td>
+</tr>
+<tr>
+<td>Battle pass</td>
+<td>No</td>
+<td>Wait</td>
+<td>Needs live-ops cadence</td>
+</tr>
+<tr>
+<td>Seasonal progression</td>
+<td>No</td>
+<td>Wait</td>
+<td>Needs retention proof and cadence</td>
+</tr>
+<tr>
+<td>Rotating point shop</td>
+<td>No</td>
+<td>Wait</td>
+<td>Optional later WP sink</td>
+</tr>
+<tr>
+<td>Real-time multiplayer</td>
+<td>No</td>
+<td>Wait</td>
+<td>Large technical scope</td>
+</tr>
+</tbody>
+</table>
+<h2 id="final-recommendation">Final recommendation<a class="headerlink" href="#final-recommendation" title="Permanent link">&para;</a></h2>
+<p>AeroBeat should launch with a <strong>disciplined account-and-retention cut</strong>:</p>
+<ul>
+<li>first-party account identity</li>
+<li>premium entitlement recovery</li>
+<li>profile/history continuity</li>
+<li>Workout Points</li>
+<li>simple weekly goals and streaks</li>
+</ul>
+<p>Everything else should earn its way in later.</p>
+<p>That cut keeps the launch product credible as a free-to-play workout platform without turning v1 into an underpowered imitation of a mature live-service game.</p>
 
 
 
@@ -5364,7 +6716,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 1, 2026 13:58:33 UTC">May 1, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 7, 2026 13:55:59 UTC">May 7, 2026</span>
   </span>
 
     
