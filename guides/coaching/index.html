@@ -834,6 +834,34 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../workout-submission-checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workout Submission Checklist
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -843,10 +871,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
         
           
-          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
             
   
   
@@ -864,8 +892,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1196,6 +1224,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#content-rating-posture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧭 Content-rating posture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#technical-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1242,10 +1281,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#warmup-cooldown-video" class="md-nav__link">
+  <a href="#warm-up-cool-down-video" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Warmup / Cooldown Video
+        Warm-up / Cool-down Video
       
     </span>
   </a>
@@ -3137,6 +3176,34 @@
     
   
     Premium Workout Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/v1-ugc-submission-and-review-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    V1 UGC Submission and Review Policy
   
 
     
@@ -5489,6 +5556,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#content-rating-posture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧭 Content-rating posture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#technical-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5535,10 +5613,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#warmup-cooldown-video" class="md-nav__link">
+  <a href="#warm-up-cool-down-video" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Warmup / Cooldown Video
+        Warm-up / Cool-down Video
       
     </span>
   </a>
@@ -5640,7 +5718,7 @@
 <p>The best coaching content feels authentic because the coach is physically engaged during the recording.</p>
 <ul>
 <li><strong>Do not just read a script.</strong> Get your heart rate up. Let the athlete hear the effort.</li>
-<li><strong>Tell a Story.</strong> If you include warmup or cooldown video, use them to set the workout tone and close it out well.</li>
+<li><strong>Tell a Story.</strong> If you include warm-up or cool-down video, use them to set the workout tone and close it out well.</li>
 <li><strong>Match the song energy.</strong> High-intensity tracks need sharper encouragement. Flow tracks need calmer guidance.</li>
 </ul>
 <h2 id="the-approved-v1-coaching-contract">📦 The Approved v1 Coaching Contract<a class="headerlink" href="#the-approved-v1-coaching-contract" title="Permanent link">&para;</a></h2>
@@ -5657,8 +5735,8 @@
 <li><code>createdByTool</code>, <code>createdByToolVersion</code>, <code>createdAt</code>, <code>updatedAt</code></li>
 <li><code>enabled: true</code></li>
 <li>a coach roster with one or more <code>coachId</code> + <code>coachName</code> entries</li>
-<li>one required warmup video reference</li>
-<li>one required cooldown video reference</li>
+<li>one required warm-up video reference</li>
+<li>one required cool-down video reference</li>
 <li>an overlay audio registry whose records use <code>overlayId</code>; workout sets choose entries from that registry through <code>coachingOverlayId</code></li>
 </ul>
 <h3 id="enabled-example">Enabled example<a class="headerlink" href="#enabled-example" title="Permanent link">&para;</a></h3>
@@ -5697,15 +5775,29 @@
 <p>When coaching is enabled, validation should fail if <strong>any</strong> of the following are true:</p>
 <ul>
 <li>the roster is missing</li>
-<li>the warmup video reference is missing</li>
-<li>the cooldown video reference is missing</li>
+<li>the warm-up video reference is missing</li>
+<li>the cool-down video reference is missing</li>
+<li>the warm-up video is shorter than <strong>1:00</strong> or longer than <strong>5:00</strong></li>
+<li>the cool-down video is shorter than <strong>1:00</strong> or longer than <strong>5:00</strong></li>
 <li>any workout set is missing its one referenced overlay audio clip</li>
+<li>any workout set reuses another set's VO clip instead of providing its own unique file</li>
+<li>the VO content is random, misleading, or clearly unrelated to the set it accompanies</li>
 <li>any referenced file path does not exist on disk inside the package</li>
 </ul>
 <p>When coaching is disabled, validation should fail if authors try to leave behind dormant roster/media sections. Disabled means disabled.</p>
+<h2 id="content-rating-posture">🧭 Content-rating posture<a class="headerlink" href="#content-rating-posture" title="Permanent link">&para;</a></h2>
+<p>Coaching content should use a <strong>self-declared ESRB-style maturity/content model</strong>.</p>
+<p>Self-declaration does <strong>not</strong> permit:</p>
+<ul>
+<li>illegal content</li>
+<li>abusive or hateful content</li>
+<li>deceptive content</li>
+<li>infringing content</li>
+<li>unsafe instruction that clearly violates platform policy</li>
+</ul>
 <h2 id="technical-requirements">🛠️ Technical Requirements<a class="headerlink" href="#technical-requirements" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Warmup / cooldown video:</strong> package-local video files such as <code>.mp4</code> or <code>.webm</code></li>
+<li><strong>Warm-up / cool-down video:</strong> package-local video files such as <code>.mp4</code> or <code>.webm</code></li>
 <li><strong>Overlay coaching clips:</strong> package-local audio files such as <code>.ogg</code></li>
 <li><strong>Tools:</strong></li>
 <li><strong>Recording:</strong> OBS Studio (video), Audacity / Reaper (audio)</li>
@@ -5716,14 +5808,15 @@
 <ol>
 <li><strong>Select Base Content:</strong> Start from the workout package you are coaching.</li>
 <li><strong>Learn the Set Flow:</strong> Know each workout set and where the athlete will need support.</li>
-<li><strong>Plan the Coaching Pass:</strong> Write the warmup, the cooldown, and exactly one overlay audio cue that each workout set will reference by <code>coachingOverlayId</code>.</li>
+<li><strong>Plan the Coaching Pass:</strong> Write the warm-up, the cool-down, and exactly one overlay audio cue that each workout set will reference by <code>coachingOverlayId</code>.</li>
 </ol>
 <h3 id="phase-2-recording">Phase 2: Recording<a class="headerlink" href="#phase-2-recording" title="Permanent link">&para;</a></h3>
-<h4 id="warmup-cooldown-video">Warmup / Cooldown Video<a class="headerlink" href="#warmup-cooldown-video" title="Permanent link">&para;</a></h4>
+<h4 id="warm-up-cool-down-video">Warm-up / Cool-down Video<a class="headerlink" href="#warm-up-cool-down-video" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Lighting:</strong> Ensure you are well lit.</li>
 <li><strong>Background:</strong> Keep it clean or use a green screen.</li>
-<li><strong>Action:</strong> Record the package warmup and cooldown videos.</li>
+<li><strong>Action:</strong> Record the package warm-up and cool-down videos.</li>
+<li><strong>Bounds:</strong> Keep each one between <strong>1:00 and 5:00 inclusive</strong>.</li>
 <li><strong>Export:</strong> Render as package-local video files.</li>
 </ul>
 <h4 id="set-overlay-audio">Set Overlay Audio<a class="headerlink" href="#set-overlay-audio" title="Permanent link">&para;</a></h4>
@@ -5732,22 +5825,23 @@
 <li><strong>Action:</strong> Perform the workout while recording. Speak to the athlete as if they are next to you.</li>
 <li><strong>Export:</strong> Save the vocal track only. Do not include the music.</li>
 <li><strong>Scope rule:</strong> Record one final overlay clip per workout set. Do not author multiple competing overlay clips for the same set under the current v1 contract.</li>
+<li><strong>Relevance rule:</strong> Each clip should actually match the set it accompanies.</li>
 </ul>
 <h3 id="phase-3-package-authoring">Phase 3: Package Authoring<a class="headerlink" href="#phase-3-package-authoring" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Open the workout package authoring flow.</strong></li>
-<li><strong>Import Files:</strong> Add the warmup video, cooldown video, and overlay audio files to package-local <code>media/</code> folders.</li>
+<li><strong>Import Files:</strong> Add the warm-up video, cool-down video, and overlay audio files to package-local <code>media/</code> folders.</li>
 <li><strong>Update <code>coaches/coach-config.yaml</code>:</strong></li>
 <li>set <code>enabled: true</code></li>
 <li>define the coach roster</li>
-<li>wire the warmup video reference</li>
-<li>wire the cooldown video reference</li>
+<li>wire the warm-up video reference</li>
+<li>wire the cool-down video reference</li>
 <li>add the overlay audio registry records</li>
 <li><strong>Validate:</strong> Run package validation with <a href="https://github.com/AeroBeat-Workouts/aerobeat-tool-content-authoring"><code>aerobeat-tool-content-authoring</code></a> so every <code>coachingOverlayId</code> resolves and every referenced file exists. In the current first slice, that validator checks the authored YAML package records plus the checked-in <code>.schema.sql</code> artifacts; live SQLite <code>.db</code> validation is still deferred.</li>
 </ol>
 <h2 id="best-practices">💡 Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Feel the Vibe:</strong> You do not need to talk constantly. Speak when motivation or guidance matters.</li>
+<li><strong>Feel the vibe:</strong> You do not need to talk constantly. Speak when motivation or guidance matters.</li>
 <li><strong>Keep it specific:</strong> Because each set picks one <code>coachingOverlayId</code>, you can tailor each cue to the exact workout slice the athlete is playing.</li>
 <li><strong>Keep packages self-contained:</strong> Do not rely on cross-package inheritance, hidden defaults, or external coaching bundles.</li>
 <li><strong>Be explicit:</strong> If a package is not coached, ship the minimal disabled file. If it is coached, fully wire every required section.</li>
@@ -5760,10 +5854,12 @@
 <li><strong>Flow - Leg Lifts &amp; Run In Place:</strong> Remind athletes that modification is better than risking injury.</li>
 </ul>
 <h2 id="coaching-faq">❓ Coaching FAQ<a class="headerlink" href="#coaching-faq" title="Permanent link">&para;</a></h2>
-<p><strong>Q: Can I use green-screen video?</strong>
-<strong>A:</strong> Yes. That is a great fit for warmup and cooldown media.</p>
-<p><strong>Q: Can I remix an existing workout?</strong>
+<p><strong>Q: Can I use green-screen video?</strong><br />
+<strong>A:</strong> Yes. That is a great fit for warm-up and cool-down media.</p>
+<p><strong>Q: Can I remix an existing workout?</strong><br />
 <strong>A:</strong> Yes. Duplicate or fork the workout package, then author that package's single <code>coaches/coach-config.yaml</code> file for the new revision.</p>
+<p><strong>Q: Is coaching required for premium workouts?</strong><br />
+<strong>A:</strong> No. Coaching is optional for both free and premium workouts, but if you enable it the package must include the full warm-up / cool-down / per-set unique VO set.</p>
 
 
 
@@ -5784,7 +5880,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2026 14:39:27 UTC">April 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 8, 2026 16:37:56 UTC">May 8, 2026</span>
   </span>
 
     

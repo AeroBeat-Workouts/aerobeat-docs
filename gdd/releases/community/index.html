@@ -832,6 +832,34 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../guides/workout-submission-checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workout Submission Checklist
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -841,10 +869,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
         
           
-          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
             
   
   
@@ -862,8 +890,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2182,6 +2210,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#public-release-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Public release gate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lane-conversion-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lane conversion rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#funding-and-progression" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3050,6 +3100,34 @@
     
   
     Premium Workout Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/v1-ugc-submission-and-review-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    V1 UGC Submission and Review Policy
   
 
     
@@ -5424,6 +5502,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#public-release-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Public release gate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lane-conversion-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lane conversion rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#funding-and-progression" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5484,18 +5584,34 @@
 <p>Free workouts are the on-ramp for the community edition. They should be discoverable without requiring the premium purchase path, while still respecting AeroBeat trust, compatibility, and install policy.</p>
 <h3 id="premium-workouts">Premium workouts<a class="headerlink" href="#premium-workouts" title="Permanent link">&para;</a></h3>
 <p>Premium workouts are paid content within the community ecosystem.</p>
-<p>For the current strategy:</p>
+<p>For the locked v1 strategy:</p>
 <ul>
 <li>purchases must follow <strong>official platform/store</strong> paths</li>
-<li>mod.io remains the current <strong>community/distribution layer</strong> for premium UGC</li>
-<li>provider-side ownership synchronization should only rely on <strong>official, non-deprecated surfaces</strong> we can legitimately support</li>
-<li>the athlete-facing product should still speak in <strong>AeroBeat ownership/access</strong> terms rather than raw provider wallet terminology</li>
-<li>premium workouts should launch on a <strong>review-gated premium lane</strong>, not as arbitrary paid uploads</li>
-<li>PC is the safe launch surface; mobile/console/arcade should be treated as stricter future policy lanes</li>
+<li>mod.io remains the current <strong>community/distribution layer</strong></li>
+<li>athlete-facing UX should still speak in <strong>AeroBeat ownership/access</strong> terms rather than raw provider wallet language</li>
+<li>every premium package is <strong>one difficulty only</strong></li>
+<li>premium pricing follows <strong>$1 per 10 minutes, rounded up to the nearest whole dollar</strong></li>
+<li>counted runtime includes coaching media when coaching is enabled</li>
 </ul>
-<p>See also: <a href="../../../architecture/premium-workout-governance/">Premium Workout Governance</a>.</p>
+<h2 id="public-release-gate">Public release gate<a class="headerlink" href="#public-release-gate" title="Permanent link">&para;</a></h2>
+<p>For launch, <strong>all public UGC — free and premium — goes through mod.io Full Curation before release</strong>.</p>
+<p>That means:</p>
+<ul>
+<li>creators do not publish directly to the public catalog without review</li>
+<li>review is expected for first publication</li>
+<li>review is also expected again for <strong>material updates</strong></li>
+<li>the approved live version stays up while a replacement version is under review unless the live version itself is under investigation</li>
+</ul>
+<h2 id="lane-conversion-rules">Lane conversion rules<a class="headerlink" href="#lane-conversion-rules" title="Permanent link">&para;</a></h2>
+<p>Free/premium lane conversion is not allowed in place.</p>
+<ul>
+<li>free → premium must be submitted as a <strong>new premium item</strong></li>
+<li>premium → free must be submitted as a <strong>new free item</strong></li>
+</ul>
+<p>If the new submission is effectively the same workout as the prior opposite-lane listing, reviewers may require the old version to be removed.</p>
+<p>See also: <a href="../../../architecture/premium-workout-governance/">Premium Workout Governance</a> and <a href="../../../architecture/v1-ugc-submission-and-review-policy/">V1 UGC Submission and Review Policy</a>.</p>
 <h2 id="funding-and-progression">Funding and progression<a class="headerlink" href="#funding-and-progression" title="Permanent link">&para;</a></h2>
-<p>AeroBeat may still use supporter/community programs where helpful, but the main product framing should no longer imply that paid access is only a generic supporter status. The docs now need to distinguish between:</p>
+<p>AeroBeat may still use supporter/community programs where helpful, but the main product framing should distinguish between:</p>
 <ul>
 <li>supporter/community perks</li>
 <li>premium workout access</li>
@@ -5522,7 +5638,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 7, 2026 13:50:34 UTC">May 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 8, 2026 16:37:56 UTC">May 8, 2026</span>
   </span>
 
     
