@@ -36,20 +36,40 @@ Free workouts are the on-ramp for the community edition. They should be discover
 
 Premium workouts are paid content within the community ecosystem.
 
-For the current strategy:
+For the locked v1 strategy:
 
 - purchases must follow **official platform/store** paths
-- mod.io remains the current **community/distribution layer** for premium UGC
-- provider-side ownership synchronization should only rely on **official, non-deprecated surfaces** we can legitimately support
-- the athlete-facing product should still speak in **AeroBeat ownership/access** terms rather than raw provider wallet terminology
-- premium workouts should launch on a **review-gated premium lane**, not as arbitrary paid uploads
-- PC is the safe launch surface; mobile/console/arcade should be treated as stricter future policy lanes
+- mod.io remains the current **community/distribution layer**
+- athlete-facing UX should still speak in **AeroBeat ownership/access** terms rather than raw provider wallet language
+- every premium package is **one difficulty only**
+- premium pricing follows **$1 per 10 minutes, rounded up to the nearest whole dollar**
+- counted runtime includes coaching media when coaching is enabled
 
-See also: [Premium Workout Governance](../../architecture/premium-workout-governance.md).
+## Public release gate
+
+For launch, **all public UGC — free and premium — goes through mod.io Full Curation before release**.
+
+That means:
+
+- creators do not publish directly to the public catalog without review
+- review is expected for first publication
+- review is also expected again for **material updates**
+- the approved live version stays up while a replacement version is under review unless the live version itself is under investigation
+
+## Lane conversion rules
+
+Free/premium lane conversion is not allowed in place.
+
+- free → premium must be submitted as a **new premium item**
+- premium → free must be submitted as a **new free item**
+
+If the new submission is effectively the same workout as the prior opposite-lane listing, reviewers may require the old version to be removed.
+
+See also: [Premium Workout Governance](../../architecture/premium-workout-governance.md) and [V1 UGC Submission and Review Policy](../../architecture/v1-ugc-submission-and-review-policy.md).
 
 ## Funding and progression
 
-AeroBeat may still use supporter/community programs where helpful, but the main product framing should no longer imply that paid access is only a generic supporter status. The docs now need to distinguish between:
+AeroBeat may still use supporter/community programs where helpful, but the main product framing should distinguish between:
 
 - supporter/community perks
 - premium workout access

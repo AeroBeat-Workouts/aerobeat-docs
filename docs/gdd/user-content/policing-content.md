@@ -1,28 +1,61 @@
 # Policing Content
 
-AeroBeat is an open platform, but it is not a lawless one. We employ a mix of **Automated AI** and **Human Moderation** to keep the ecosystem safe and legal.
+AeroBeat is an open platform, but it is not a lawless one. The locked v1 moderation posture is **mod.io curation plus human review**, with automation used as advisory support rather than as an AI-first public gate.
 
-## 🤖 Automated Moderation (The First Line)
+## V1 moderation posture
 
-Before any content appears in the "New Releases" feed, it passes through our AI filters.
+For launch:
 
-*   **Text Analysis:** Titles, Descriptions, and Author Names are scanned for hate speech, slurs, and toxic language.
-*   **Image Analysis:** Thumbnails and texture maps are scanned (using tools like AWS Rekognition) for NSFW content or gore.
-*   **Action:** Flagged content is held in a "Pending Review" state and hidden from the public until a human moderator approves it.
+- **all public UGC** must pass review before release
+- the operational gate is **mod.io Full Curation**
+- human reviewers remain responsible for approval decisions
+- automation may help surface risks, but it should not be treated as the only authority
 
-## ⚖️ DMCA & Copyright
+This means v1 moderation is intentionally lower-scope than a custom AeroBeat-owned review platform.
 
-We respect intellectual property rights.
+## What review is trying to catch
 
-*   **The Rule:** If you upload a song or character you do not own, you must have permission.
-*   **Takedown Process:** Rights holders can submit a DMCA Takedown Request via our web portal.
-*   **Action:** Valid requests result in the immediate removal of the content.
-*   **Strikes:** Repeat offenders will have their Creator privileges revoked.
+Review is meant to catch:
 
-### Streamer Mode
-To protect content creators on Twitch/YouTube, the game includes a **"Streamer Mode"** toggle.
-*   **Effect:** Mutes all UGC audio and replaces UGC skins with default assets, ensuring the broadcast is safe from copyright strikes.
+- malformed or broken packages
+- missing required assets
+- misleading metadata, thumbnails, or storefront claims
+- free/premium lane rule violations
+- clone or near-duplicate abuse
+- rights / licensing self-attestation problems
+- illegal, abusive, unsafe, deceptive, or otherwise disallowed content
 
-## Reporting Content
+Review should **not** be framed as a vague aesthetic-quality gate.
 
-Athletes can report content directly from the in-game browser.
+## Rights, copyright, and takedowns
+
+Creators must self-attest that they hold the necessary rights for all included content and assets.
+
+The v1 posture is:
+
+- no proof-of-rights documentation required in the normal submission path
+- copyright / DMCA / takedown handling routes through **mod.io's reporting and moderation system**
+- repeat or severe abuse may still lead to creator sanctions or removal from trusted lanes
+
+## Suspensions and post-publication action
+
+The v1 policy vocabulary still needs a conceptual **`suspended`** state for high-risk cases after release.
+
+Examples include:
+
+- DMCA / rights complaints
+- fraud or bait-and-switch behavior
+- serious safety or trust concerns
+- severe clone / abuse concerns
+
+In v1, that concept maps to **mod.io `deactivated`** rather than a separate AeroBeat-owned moderation state machine.
+
+## Reporting content
+
+Athletes should be able to report content from the in-game browser or from the mod.io-facing listing/reporting flows.
+
+Human review remains the durable decision layer for escalations, ambiguous policy calls, and repeat-offender handling.
+
+## Streamer mode note
+
+Streamer-mode and copyright-safe playback ideas may still be useful product features, but they are separate from the locked v1 moderation gate. They should not be confused with the public submission/review policy.

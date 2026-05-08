@@ -35,7 +35,13 @@ The example models a single package with:
 - two environments
 - example SQL schema files
 
-### 2. Exact ids, not loose lookup rules
+### 2. One public difficulty per package
+
+The v1 publishing model treats each public package as **one difficulty only**.
+
+That means this example should be read as a package-contract example, not as proof that multiple public difficulties should be bundled into one store item. Alternate difficulties should be split into separate public packages.
+
+### 3. Exact ids, not loose lookup rules
 
 The set files point to exact ids for:
 
@@ -46,14 +52,15 @@ The set files point to exact ids for:
 
 Discovery happens elsewhere; package playback resolves exact ids.
 
-### 3. Coaching stays package-local
+### 4. Coaching stays package-local and optional
 
 - every package has exactly one `coaches/coach-config.yaml`
 - coaching is optional all-or-nothing
-- enabled coaching owns warmup/cooldown media and the overlay registry
+- enabled coaching owns warm-up/cool-down media and the overlay registry
 - sets choose overlay clips by `coachingOverlayId`
+- when coaching is enabled, each set needs its own unique VO file
 
-### 4. Environments remain part of the package model
+### 5. Environments remain part of the package model
 
 The checked-in environment examples teach the small Environment v1 record shape:
 
@@ -62,7 +69,13 @@ The checked-in environment examples teach the small Environment v1 record shape:
 - `type`
 - `resourcePath`
 
-### 5. What is intentionally gone from this example
+For public publishing, every set needs an environment, and a **static 2D background image** is an acceptable minimum.
+
+### 6. Cover art is still required
+
+The environment payload does **not** replace storefront art. Public packages still need a **thumbnail / cover-art asset**.
+
+### 7. What is intentionally gone from this example
 
 This docs pass removes the older package-local gameplay asset concept.
 

@@ -11,7 +11,7 @@ Our coaching system is designed to feel like a real trainer working out beside t
 The best coaching content feels authentic because the coach is physically engaged during the recording.
 
 - **Do not just read a script.** Get your heart rate up. Let the athlete hear the effort.
-- **Tell a Story.** If you include warmup or cooldown video, use them to set the workout tone and close it out well.
+- **Tell a Story.** If you include warm-up or cool-down video, use them to set the workout tone and close it out well.
 - **Match the song energy.** High-intensity tracks need sharper encouragement. Flow tracks need calmer guidance.
 
 ## 📦 The Approved v1 Coaching Contract
@@ -31,8 +31,8 @@ enabled: false
   - `createdByTool`, `createdByToolVersion`, `createdAt`, `updatedAt`
   - `enabled: true`
   - a coach roster with one or more `coachId` + `coachName` entries
-  - one required warmup video reference
-  - one required cooldown video reference
+  - one required warm-up video reference
+  - one required cool-down video reference
   - an overlay audio registry whose records use `overlayId`; workout sets choose entries from that registry through `coachingOverlayId`
 
 ### Enabled example
@@ -75,16 +75,32 @@ overlayAudio:
 When coaching is enabled, validation should fail if **any** of the following are true:
 
 - the roster is missing
-- the warmup video reference is missing
-- the cooldown video reference is missing
+- the warm-up video reference is missing
+- the cool-down video reference is missing
+- the warm-up video is shorter than **1:00** or longer than **5:00**
+- the cool-down video is shorter than **1:00** or longer than **5:00**
 - any workout set is missing its one referenced overlay audio clip
+- any workout set reuses another set's VO clip instead of providing its own unique file
+- the VO content is random, misleading, or clearly unrelated to the set it accompanies
 - any referenced file path does not exist on disk inside the package
 
 When coaching is disabled, validation should fail if authors try to leave behind dormant roster/media sections. Disabled means disabled.
 
+## 🧭 Content-rating posture
+
+Coaching content should use a **self-declared ESRB-style maturity/content model**.
+
+Self-declaration does **not** permit:
+
+- illegal content
+- abusive or hateful content
+- deceptive content
+- infringing content
+- unsafe instruction that clearly violates platform policy
+
 ## 🛠️ Technical Requirements
 
-- **Warmup / cooldown video:** package-local video files such as `.mp4` or `.webm`
+- **Warm-up / cool-down video:** package-local video files such as `.mp4` or `.webm`
 - **Overlay coaching clips:** package-local audio files such as `.ogg`
 - **Tools:**
   - **Recording:** OBS Studio (video), Audacity / Reaper (audio)
@@ -96,15 +112,16 @@ When coaching is disabled, validation should fail if authors try to leave behind
 
 1. **Select Base Content:** Start from the workout package you are coaching.
 2. **Learn the Set Flow:** Know each workout set and where the athlete will need support.
-3. **Plan the Coaching Pass:** Write the warmup, the cooldown, and exactly one overlay audio cue that each workout set will reference by `coachingOverlayId`.
+3. **Plan the Coaching Pass:** Write the warm-up, the cool-down, and exactly one overlay audio cue that each workout set will reference by `coachingOverlayId`.
 
 ### Phase 2: Recording
 
-#### Warmup / Cooldown Video
+#### Warm-up / Cool-down Video
 
 - **Lighting:** Ensure you are well lit.
 - **Background:** Keep it clean or use a green screen.
-- **Action:** Record the package warmup and cooldown videos.
+- **Action:** Record the package warm-up and cool-down videos.
+- **Bounds:** Keep each one between **1:00 and 5:00 inclusive**.
 - **Export:** Render as package-local video files.
 
 #### Set Overlay Audio
@@ -113,22 +130,23 @@ When coaching is disabled, validation should fail if authors try to leave behind
 - **Action:** Perform the workout while recording. Speak to the athlete as if they are next to you.
 - **Export:** Save the vocal track only. Do not include the music.
 - **Scope rule:** Record one final overlay clip per workout set. Do not author multiple competing overlay clips for the same set under the current v1 contract.
+- **Relevance rule:** Each clip should actually match the set it accompanies.
 
 ### Phase 3: Package Authoring
 
 1. **Open the workout package authoring flow.**
-2. **Import Files:** Add the warmup video, cooldown video, and overlay audio files to package-local `media/` folders.
+2. **Import Files:** Add the warm-up video, cool-down video, and overlay audio files to package-local `media/` folders.
 3. **Update `coaches/coach-config.yaml`:**
    - set `enabled: true`
    - define the coach roster
-   - wire the warmup video reference
-   - wire the cooldown video reference
+   - wire the warm-up video reference
+   - wire the cool-down video reference
    - add the overlay audio registry records
 4. **Validate:** Run package validation with [`aerobeat-tool-content-authoring`](https://github.com/AeroBeat-Workouts/aerobeat-tool-content-authoring) so every `coachingOverlayId` resolves and every referenced file exists. In the current first slice, that validator checks the authored YAML package records plus the checked-in `.schema.sql` artifacts; live SQLite `.db` validation is still deferred.
 
 ## 💡 Best Practices
 
-- **Feel the Vibe:** You do not need to talk constantly. Speak when motivation or guidance matters.
+- **Feel the vibe:** You do not need to talk constantly. Speak when motivation or guidance matters.
 - **Keep it specific:** Because each set picks one `coachingOverlayId`, you can tailor each cue to the exact workout slice the athlete is playing.
 - **Keep packages self-contained:** Do not rely on cross-package inheritance, hidden defaults, or external coaching bundles.
 - **Be explicit:** If a package is not coached, ship the minimal disabled file. If it is coached, fully wire every required section.
@@ -143,8 +161,11 @@ Not every athlete can perform high-impact moves. Acknowledge that and offer alte
 
 ## ❓ Coaching FAQ
 
-**Q: Can I use green-screen video?**
-**A:** Yes. That is a great fit for warmup and cooldown media.
+**Q: Can I use green-screen video?**  
+**A:** Yes. That is a great fit for warm-up and cool-down media.
 
-**Q: Can I remix an existing workout?**
+**Q: Can I remix an existing workout?**  
 **A:** Yes. Duplicate or fork the workout package, then author that package's single `coaches/coach-config.yaml` file for the new revision.
+
+**Q: Is coaching required for premium workouts?**  
+**A:** No. Coaching is optional for both free and premium workouts, but if you enable it the package must include the full warm-up / cool-down / per-set unique VO set.

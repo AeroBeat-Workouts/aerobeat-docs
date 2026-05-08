@@ -8,18 +8,27 @@ Environments remain part of the official workout-package concept.
 
 The current product slice keeps environments because they meaningfully shape the workout atmosphere without reopening the older package-asset customization model.
 
-## Environment goals
+## Locked v1 requirements
 
-- readable workout presentation
-- good performance on the PC-first community target
-- future portability to mobile and later VR where feasible
+For public workout publishing in v1:
+
+- **every set must have an environment layer**
+- the minimum acceptable environment is a **static 2D background image**
+- higher-fidelity video and 3D/GLB environments are optional upgrades
+- every package still needs a separate **thumbnail / cover-art asset**; the environment does not replace cover art
 
 ## Current authoring guidance
 
 - prefer clean, lightweight authored backgrounds or GLB environments
 - optimize for readability first, spectacle second
-- keep runtime assumptions conservative for the first community release
+- keep runtime assumptions conservative for the PC-first community target
 - avoid teaching loose `godot_scene` as the default community handoff
+
+## AeroBeat default-environment workflow note
+
+To lower creator burden, the intended creator-tool workflow is that AeroBeat may provide a curated set of default environments.
+
+If a creator selects one of those defaults, the tool should copy the needed environment asset payload into the exported package before validation/zip/export. Public packages should not depend on a hidden editor-only reference to a shared environment library.
 
 ## Product note
 

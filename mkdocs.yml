@@ -54,6 +54,7 @@ nav:
     - Accessibility Guide: guides/accessibility.md
     - Modding Quickstart: guides/modding_quickstart.md
     - Demo Workout Package: guides/demo_workout_package.md
+    - Workout Submission Checklist: guides/workout-submission-checklist.md
     - Choreography:
       - Overview: guides/choreography/overview.md
       - Boxing: guides/choreography/boxing.md
@@ -115,6 +116,7 @@ nav:
       - Multiplayer: architecture/multiplayer.md
       - Performance: architecture/performance.md
       - Premium Workout Governance: architecture/premium-workout-governance.md
+      - V1 UGC Submission and Review Policy: architecture/v1-ugc-submission-and-review-policy.md
       - Repo Structure Reference: architecture/repo-structure-reference.md
       - Repository Map: architecture/repository-map.md
       - Security: architecture/security.md
