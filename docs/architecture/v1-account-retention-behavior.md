@@ -36,6 +36,9 @@ The canonical long-lived identity is the AeroBeat `athlete_id`.
 In v1:
 
 - guests can launch quickly and play the allowed free/trusted content path
+- guests use the generic `Guest` identity and do not get a durable display-name/profile layer
+- guests do **not** earn WP, build streaks, appear on leaderboards, use multiplayer, purchase premium content, or accumulate cloud-backed history/stats
+- guest preferences/settings save locally only
 - signed-in athletes get a durable `athlete_id`
 - signed-in athletes have linked identity records for supported platform/provider surfaces
 - product-facing state such as profile, history, WP, weekly goals, and streaks belongs to the signed-in AeroBeat account
@@ -74,16 +77,19 @@ V1 conversion should happen when the athlete:
 - attempts ownership recovery on a new device
 - attempts a feature that requires durable account state
 
-When converting a guest to a **new** AeroBeat account, v1 should migrate these retained local values into the new signed-in account:
+When converting a guest to a **new** AeroBeat account, v1 should carry forward only the small local values that make the transition feel smooth:
 
-- display name
-- selected avatar / basic customization
-- synced preferences that are account-scoped
+- selected local preferences that are safe to reuse for the new account
+- selected avatar / basic customization only if guest mode exposes any local cosmetic choice at all
+
+Account-tracked systems start fresh at conversion time. Guest-mode activity before sign-in does **not** retroactively become:
+
 - workout history
 - lifetime stats
-- WP balance and lifetime WP earned
-- current weekly goal configuration
-- current streak state
+- WP balance or lifetime WP earned
+- weekly goal progress
+- streak progress
+- leaderboard history
 
 ## What it does not do yet
 
@@ -98,10 +104,10 @@ Avoid:
 
 ## Rules and edge cases that matter now
 
-- **New-account upgrade is the happy path.** If the athlete creates a brand-new account from a guest session, import the guest state automatically.
-- **Existing-account sign-in should not silently merge guest data.** If the athlete signs into an existing account on a device that has guest progress, default to the cloud account and offer a clear one-time import prompt only when safe.
-- **Safe import rule:** if the existing cloud account already has meaningful history/progression, do not auto-merge the guest profile in v1. That is where data corruption and support pain start.
-- **One-way conversion:** once guest data has been successfully imported into a new AeroBeat account, treat the signed-in account as canonical and stop advancing the old guest profile.
+- **New-account upgrade is the happy path.** Guest mode is a local-only tryout path; creating an account is a clean step into durable identity.
+- **Existing-account sign-in should not silently merge guest activity.** Default to the signed-in cloud account and ignore guest progression/history because guest mode does not accumulate those systems in v1.
+- **This is not a merge engine.** The transition is intentionally simple: local guest settings may carry forward, but account progression starts when the account exists.
+- **One-way conversion:** once the athlete signs in or creates an account, the signed-in account becomes canonical for all durable systems.
 - **Device-specific settings stay local.** Camera calibration, graphics/performance settings, and similar hardware-specific settings should not be part of guest-to-account migration.
 
 ## 3. Premium ownership recovery
@@ -138,10 +144,11 @@ V1 does **not** need:
 
 - **Premium access requires account-level identity.** Guests can browse premium catalog surfaces but should not be able to complete premium ownership flows as anonymous users.
 - **Downloads require current or recently verified ownership.** New premium installs should require a valid entitlement check.
-- **Offline should be tolerated, not fully trusted.** If a premium workout was already installed and ownership was successfully verified recently on this device, allow offline play during a short cache/grace window. A 7-day entitlement cache is a practical v1 default.
+- **Offline play is allowed for already-downloaded premium workouts only.** If entitlement was previously verified and the premium workout is already installed on the device, the athlete may still play it while offline.
+- **Offline behaves like guest mode for progression.** Offline workouts do not award WP, do not advance weekly goals or streaks, do not create leaderboard records, and do not reconcile retroactively into account progression later.
 - **Recovery lag should degrade gracefully.** If store/provider sync is temporarily delayed, show a clear “ownership sync pending” state instead of hard-failing with a vague error.
-- **No new premium downloads during unresolved entitlement state.** Previously verified installed content may still work within the cache window, but new installs should wait for reconciliation.
-- **Entitlement disagreement should fail soft first.** If AeroBeat, store, and provider truth disagree temporarily, preserve the athlete’s existing installed library access when recently verified, then reconcile rather than immediately yanking access.
+- **No new premium downloads during unresolved entitlement state.** Previously verified installed content may still work offline if already present, but new installs should wait for reconciliation.
+- **Entitlement disagreement should fail soft first.** Preserve access to already-installed previously verified premium content during temporary disagreement, but block new premium installs until truth is re-established.
 
 ## 4. Basic profile, preferences, history, and stats
 
@@ -271,15 +278,14 @@ Weekly goals are the main habit loop in v1.
 The recommended launch shape is:
 
 - the athlete chooses a **weekly workout-days goal**
+- the supported goal range is **1 through 7 days per week**
 - the default goal is **3 workout days per week**
-- supported goal choices are a small curated set such as **2, 3, or 5 days**
-- a day counts when the athlete completes at least one qualifying workout session that day
+- a day counts when the athlete completes any workout that day
+- higher weekly-goal targets should pay a larger one-time WP reward when completed
 
-For v1, a qualifying workout day should require at least **10 minutes of completed workout time** across one or more completed sessions that day.
+This keeps the system extremely legible: work out on a day, and that day counts.
 
-This keeps the system aligned with real habit-building and reduces ultra-short session gaming.
-
-If rewards are used, weekly-goal completion should auto-grant a modest one-time WP bonus for that week.
+Weekly-goal completion should auto-grant a one-time WP bonus for that week.
 
 ## What it does not do yet
 
@@ -297,7 +303,7 @@ V1 does **not** need:
 - **Goal changes should apply next week, not retroactively.** Otherwise athletes can lower the target on Sunday and instantly “complete” the week.
 - **Show progress transparently.** “2 of 3 workout days completed” is better than opaque scoring.
 - **One completion reward per week.** Do not repeatedly reward the same weekly goal after it is hit.
-- **Qualifying day logic should tolerate split sessions.** Two shorter completed sessions on the same day can combine toward the 10-minute threshold.
+- **Keep the day-count rule obvious.** If a signed-in athlete completes any workout that day, the day counts.
 
 ## 7. Streaks
 

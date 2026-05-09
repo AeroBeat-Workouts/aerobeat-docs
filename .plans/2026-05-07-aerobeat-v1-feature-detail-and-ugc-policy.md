@@ -154,7 +154,7 @@ Finally, the lane-conversion duplicate rule is now explicit: if a creator submit
 
 **Status:** ⏳ Pending
 
-**Results:** Pending.
+**Results:** Formal independent QA/auditor closure is still pending, but the practical codification and fallout-alignment work landed this session. `aerobeat-docs` now contains the locked v1 UGC submission/review policy and creator checklist, `mkdocs build --strict` passed there, and the immediate cross-repo fallout cleanup also landed in the affected AeroBeat repos. Remaining work is primarily the explicit QA/audit bead plus the deferred workout-creation-tool design beads rather than unresolved launch-policy questions.
 
 ---
 
@@ -235,6 +235,16 @@ The implementation scope is now explicitly phased in the same general way as the
 
 **Cross-repo audit bead:** `aerobeat-docs-kop4`
 
+### Cross-repo cleanup execution opened from the audit
+
+The audit fallout is now converted into executable follow-up work for this same session:
+- `aerobeat-tool-api-rnf` in `aerobeat-tool-api` — realign repo charter/docs to the locked v1 UGC policy
+- `oc-hvtv` in `aerobeat-vendor-modio` — separate provider capability from approved v1 product surface
+- `oc-3pn` in `aerobeat-content-core` — align content package docs and validator with the current `workout.yaml` contract
+- `aerobeat-tool-content-authoring-xyj` in `aerobeat-tool-content-authoring` — decide and clean up the legacy manifest compatibility path
+
+These are execution beads, distinct from the later deferred Phase 4 taxonomy/design work.
+
 **Suggested title:** `Phase 4 Follow-on: Difficulty Taxonomy, Coaching Standards, and Advisory Validation Design`
 
 **Goal:** Define the deeper design-system work intentionally deferred from the v1 policy lock: boxing and flow beat-prefab taxonomy, exact difficulty-tag rules, creator-tool recommendation UX, future optional heuristics beyond prefab-based recommendation, richer coaching standards/examples, and v2+ Peanut Gallery advisory workflows.
@@ -258,16 +268,20 @@ The implementation scope is now explicitly phased in the same general way as the
 
 ## Final Results
 
-**Status:** ⏳ Pending
+**Status:** ⚠️ Partial
 
-**What We Built:** Pending.
+**What We Built:** Locked the AeroBeat v1 UGC policy end-to-end for pricing, packaging, coaching optionality, review gates, conversion rules, update/re-review rules, rights posture, and the advisory-only Phase 4 recommendation philosophy. Codified those decisions into `aerobeat-docs`, added a canonical v1 submission/review policy doc plus creator submission checklist, and then cleaned up the most obvious cross-repo drift so the surrounding AeroBeat repos no longer overstate v1 scope or silently imply older package-truth paths are current.
 
-**Reference Check:** Pending.
+**Reference Check:** `REF-01` through `REF-10` informed the policy lock and docs updates. The core codification pass updated the referenced governance/community/coaching docs directly, and the resulting `aerobeat-docs` build passed `mkdocs build --strict`. Remaining validation still needed is the explicit independent QA/auditor bead for the full docs set.
 
 **Commits:**
-- None yet.
+- `60763a6` - `docs: codify v1 ugc submission and review policy`
+- `fb8b449` - `docs: align tool api scope to locked v1 UGC policy`
+- `2dceeb1` - `Clarify v1 product boundary in mod.io docs`
+- `e3afcdc` - `Clarify legacy manifest validator status`
+- `8dee256` - `Quarantine legacy manifest chart authoring`
 
-**Lessons Learned:** Pending.
+**Lessons Learned:** Locking product policy first made the docs and repo fallout pass much cleaner. The biggest latent drift was not only in docs, but in legacy package-validator/authoring seams that still looked current until explicitly quarantined. The main deferred work is now well isolated: the workout-creation-tool design beads for prefab-based difficulty recommendation, coaching standards/examples, and eventual advisory tooling belong in the next session rather than being mixed back into the v1 launch-policy slice.
 
 ---
 
