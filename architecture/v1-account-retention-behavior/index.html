@@ -6145,6 +6145,9 @@
 <p>In v1:</p>
 <ul>
 <li>guests can launch quickly and play the allowed free/trusted content path</li>
+<li>guests use the generic <code>Guest</code> identity and do not get a durable display-name/profile layer</li>
+<li>guests do <strong>not</strong> earn WP, build streaks, appear on leaderboards, use multiplayer, purchase premium content, or accumulate cloud-backed history/stats</li>
+<li>guest preferences/settings save locally only</li>
 <li>signed-in athletes get a durable <code>athlete_id</code></li>
 <li>signed-in athletes have linked identity records for supported platform/provider surfaces</li>
 <li>product-facing state such as profile, history, WP, weekly goals, and streaks belongs to the signed-in AeroBeat account</li>
@@ -6178,16 +6181,19 @@ A stable internal <code>athlete_id</code> matters more than username scarcity fr
 <li>attempts ownership recovery on a new device</li>
 <li>attempts a feature that requires durable account state</li>
 </ul>
-<p>When converting a guest to a <strong>new</strong> AeroBeat account, v1 should migrate these retained local values into the new signed-in account:</p>
+<p>When converting a guest to a <strong>new</strong> AeroBeat account, v1 should carry forward only the small local values that make the transition feel smooth:</p>
 <ul>
-<li>display name</li>
-<li>selected avatar / basic customization</li>
-<li>synced preferences that are account-scoped</li>
+<li>selected local preferences that are safe to reuse for the new account</li>
+<li>selected avatar / basic customization only if guest mode exposes any local cosmetic choice at all</li>
+</ul>
+<p>Account-tracked systems start fresh at conversion time. Guest-mode activity before sign-in does <strong>not</strong> retroactively become:</p>
+<ul>
 <li>workout history</li>
 <li>lifetime stats</li>
-<li>WP balance and lifetime WP earned</li>
-<li>current weekly goal configuration</li>
-<li>current streak state</li>
+<li>WP balance or lifetime WP earned</li>
+<li>weekly goal progress</li>
+<li>streak progress</li>
+<li>leaderboard history</li>
 </ul>
 <h2 id="what-it-does-not-do-yet_1">What it does not do yet<a class="headerlink" href="#what-it-does-not-do-yet_1" title="Permanent link">&para;</a></h2>
 <p>V1 should <strong>not</strong> attempt a complicated universal merge engine.</p>
@@ -6200,10 +6206,10 @@ A stable internal <code>athlete_id</code> matters more than username scarcity fr
 </ul>
 <h2 id="rules-and-edge-cases-that-matter-now_1">Rules and edge cases that matter now<a class="headerlink" href="#rules-and-edge-cases-that-matter-now_1" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>New-account upgrade is the happy path.</strong> If the athlete creates a brand-new account from a guest session, import the guest state automatically.</li>
-<li><strong>Existing-account sign-in should not silently merge guest data.</strong> If the athlete signs into an existing account on a device that has guest progress, default to the cloud account and offer a clear one-time import prompt only when safe.</li>
-<li><strong>Safe import rule:</strong> if the existing cloud account already has meaningful history/progression, do not auto-merge the guest profile in v1. That is where data corruption and support pain start.</li>
-<li><strong>One-way conversion:</strong> once guest data has been successfully imported into a new AeroBeat account, treat the signed-in account as canonical and stop advancing the old guest profile.</li>
+<li><strong>New-account upgrade is the happy path.</strong> Guest mode is a local-only tryout path; creating an account is a clean step into durable identity.</li>
+<li><strong>Existing-account sign-in should not silently merge guest activity.</strong> Default to the signed-in cloud account and ignore guest progression/history because guest mode does not accumulate those systems in v1.</li>
+<li><strong>This is not a merge engine.</strong> The transition is intentionally simple: local guest settings may carry forward, but account progression starts when the account exists.</li>
+<li><strong>One-way conversion:</strong> once the athlete signs in or creates an account, the signed-in account becomes canonical for all durable systems.</li>
 <li><strong>Device-specific settings stay local.</strong> Camera calibration, graphics/performance settings, and similar hardware-specific settings should not be part of guest-to-account migration.</li>
 </ul>
 <h2 id="3-premium-ownership-recovery">3. Premium ownership recovery<a class="headerlink" href="#3-premium-ownership-recovery" title="Permanent link">&para;</a></h2>
@@ -6236,10 +6242,11 @@ A stable internal <code>athlete_id</code> matters more than username scarcity fr
 <ul>
 <li><strong>Premium access requires account-level identity.</strong> Guests can browse premium catalog surfaces but should not be able to complete premium ownership flows as anonymous users.</li>
 <li><strong>Downloads require current or recently verified ownership.</strong> New premium installs should require a valid entitlement check.</li>
-<li><strong>Offline should be tolerated, not fully trusted.</strong> If a premium workout was already installed and ownership was successfully verified recently on this device, allow offline play during a short cache/grace window. A 7-day entitlement cache is a practical v1 default.</li>
+<li><strong>Offline play is allowed for already-downloaded premium workouts only.</strong> If entitlement was previously verified and the premium workout is already installed on the device, the athlete may still play it while offline.</li>
+<li><strong>Offline behaves like guest mode for progression.</strong> Offline workouts do not award WP, do not advance weekly goals or streaks, do not create leaderboard records, and do not reconcile retroactively into account progression later.</li>
 <li><strong>Recovery lag should degrade gracefully.</strong> If store/provider sync is temporarily delayed, show a clear “ownership sync pending” state instead of hard-failing with a vague error.</li>
-<li><strong>No new premium downloads during unresolved entitlement state.</strong> Previously verified installed content may still work within the cache window, but new installs should wait for reconciliation.</li>
-<li><strong>Entitlement disagreement should fail soft first.</strong> If AeroBeat, store, and provider truth disagree temporarily, preserve the athlete’s existing installed library access when recently verified, then reconcile rather than immediately yanking access.</li>
+<li><strong>No new premium downloads during unresolved entitlement state.</strong> Previously verified installed content may still work offline if already present, but new installs should wait for reconciliation.</li>
+<li><strong>Entitlement disagreement should fail soft first.</strong> Preserve access to already-installed previously verified premium content during temporary disagreement, but block new premium installs until truth is re-established.</li>
 </ul>
 <h2 id="4-basic-profile-preferences-history-and-stats">4. Basic profile, preferences, history, and stats<a class="headerlink" href="#4-basic-profile-preferences-history-and-stats" title="Permanent link">&para;</a></h2>
 <h2 id="what-it-does-in-v1_3">What it does in v1<a class="headerlink" href="#what-it-does-in-v1_3" title="Permanent link">&para;</a></h2>
@@ -6351,13 +6358,13 @@ A stable internal <code>athlete_id</code> matters more than username scarcity fr
 <p>The recommended launch shape is:</p>
 <ul>
 <li>the athlete chooses a <strong>weekly workout-days goal</strong></li>
+<li>the supported goal range is <strong>1 through 7 days per week</strong></li>
 <li>the default goal is <strong>3 workout days per week</strong></li>
-<li>supported goal choices are a small curated set such as <strong>2, 3, or 5 days</strong></li>
-<li>a day counts when the athlete completes at least one qualifying workout session that day</li>
+<li>a day counts when the athlete completes any workout that day</li>
+<li>higher weekly-goal targets should pay a larger one-time WP reward when completed</li>
 </ul>
-<p>For v1, a qualifying workout day should require at least <strong>10 minutes of completed workout time</strong> across one or more completed sessions that day.</p>
-<p>This keeps the system aligned with real habit-building and reduces ultra-short session gaming.</p>
-<p>If rewards are used, weekly-goal completion should auto-grant a modest one-time WP bonus for that week.</p>
+<p>This keeps the system extremely legible: work out on a day, and that day counts.</p>
+<p>Weekly-goal completion should auto-grant a one-time WP bonus for that week.</p>
 <h2 id="what-it-does-not-do-yet_5">What it does not do yet<a class="headerlink" href="#what-it-does-not-do-yet_5" title="Permanent link">&para;</a></h2>
 <p>V1 does <strong>not</strong> need:</p>
 <ul>
@@ -6373,7 +6380,7 @@ A stable internal <code>athlete_id</code> matters more than username scarcity fr
 <li><strong>Goal changes should apply next week, not retroactively.</strong> Otherwise athletes can lower the target on Sunday and instantly “complete” the week.</li>
 <li><strong>Show progress transparently.</strong> “2 of 3 workout days completed” is better than opaque scoring.</li>
 <li><strong>One completion reward per week.</strong> Do not repeatedly reward the same weekly goal after it is hit.</li>
-<li><strong>Qualifying day logic should tolerate split sessions.</strong> Two shorter completed sessions on the same day can combine toward the 10-minute threshold.</li>
+<li><strong>Keep the day-count rule obvious.</strong> If a signed-in athlete completes any workout that day, the day counts.</li>
 </ul>
 <h2 id="7-streaks">7. Streaks<a class="headerlink" href="#7-streaks" title="Permanent link">&para;</a></h2>
 <h2 id="what-it-does-in-v1_6">What it does in v1<a class="headerlink" href="#what-it-does-in-v1_6" title="Permanent link">&para;</a></h2>
@@ -6433,7 +6440,7 @@ A stable internal <code>athlete_id</code> matters more than username scarcity fr
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 7, 2026 16:30:52 UTC">May 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 9, 2026 17:59:22 UTC">May 9, 2026</span>
   </span>
 
     
