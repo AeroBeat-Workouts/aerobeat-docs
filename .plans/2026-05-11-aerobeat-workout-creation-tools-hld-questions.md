@@ -53,7 +53,7 @@ The remaining work for this session is not implementation. It is product-shaping
 
 **Status:** ✅ Complete
 
-**Results:** Initial coder pass drafted `docs/architecture/workout-creation-tools-architecture.md` as the canonical decisions doc for the workout creation product and added a bounded `mkdocs.yml` nav entry. After QA flagged two scoped consistency leaks, the retry pass fixed both surgically: this active plan's canonical coaching-video filename example now uses the locked `.ogv` suffix, and `docs/guides/coaching.md` now explicitly distinguishes accepted source video import formats from the normalized canonical package-stored coaching video format `.ogv`, consistent with the architecture doc.
+**Results:** Initial coder pass drafted `docs/architecture/workout-creation-tools-architecture.md` as the canonical decisions doc for the workout creation product and added a bounded `mkdocs.yml` nav entry. After QA flagged two scoped consistency leaks, the retry pass fixed both surgically: this active plan's canonical coaching-video filename example now uses the locked `.ogv` suffix, and `docs/guides/coaching.md` now explicitly distinguishes accepted source video import formats from the normalized canonical package-stored coaching video format `.ogv`, consistent with the architecture doc. A later retry also reconciled the architecture doc's implementation-posture section with `docs/architecture/workout-creation-tools-implementation-order.md` so repo/shared-service/headless CLI foundations are now explicitly ordered ahead of Penpot-driven scene work.
 
 ---
 
@@ -295,7 +295,7 @@ The remaining work for this session is not implementation. It is product-shaping
 
 **Status:** ✅ Complete
 
-**Results:** Added `docs/architecture/workout-creation-tools-implementation-order.md` as the canonical staged implementation-order doc for the workout creation tools repo. The doc stays bounded to milestones, milestone dependencies, and rationale; starts with repo foundations, package-root validation/orchestration, repair, import, and packaging before any Penpot-dependent GUI scene implementation; treats the chart editor as the heavyweight later slice; and places embedded assembly integration after the standalone product path is coherent. Added one bounded nav entry in `mkdocs.yml`.
+**Results:** Initial implementation-order doc landed in `docs/architecture/workout-creation-tools-implementation-order.md` and correctly put headless CLI/package/import/validation work before Penpot-dependent GUI work. QA then found a real contradiction in the older `docs/architecture/workout-creation-tools-architecture.md` doc: its stale “Recommended implementation posture” still front-loaded Penpot screen/design work before repo/shared-service foundations. The retry pass resolved that contradiction surgically by rewriting the architecture doc's implementation-posture section to match the implementation-order doc: repo/shared-service/headless CLI foundations now come first, Penpot remains a dependency for polished GUI work rather than a gate for starting the repo, and the later scene/editor ordering remains unchanged.
 
 ---
 

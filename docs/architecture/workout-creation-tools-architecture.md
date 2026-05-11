@@ -361,11 +361,12 @@ The current workout creation tools architecture does **not** promise:
 
 Implementation should proceed in this order:
 
-1. finalize Penpot screen/design work for the first-pass scenes and package-home flow
-2. stand up the separate tool repo with shared workflow services plus separate CLI surfaces per domain
-3. land package-home (`workout.yaml`) orchestration flows first so package validation/repair/import boundaries stay clean
-4. stand up the simpler form scenes (`song`, `set`, `coach-config`, `environment`) against shared services
-5. build the heavyweight chart editor scene with waveform/timeline/preview/test-entry support
-6. integrate the repo into `aerobeat-assembly-community` via GodotEnv for embedded access
+1. stand up the separate tool repo with shared workflow services plus separate CLI surfaces per domain
+2. land package-home (`workout.yaml`) orchestration flows first so package validation/repair/import boundaries stay clean
+3. ship the lower-risk headless workflow foundations across validation, inspect, fix, migrate, import, and packaging before scene work tries to own that logic
+4. use Penpot to finalize the first-pass package-home and simpler form scene designs before polished GUI implementation begins
+5. stand up the simpler form scenes (`song`, `set`, `coach-config`, `environment`) against the already-shipped shared services
+6. build the heavyweight chart editor scene with waveform/timeline/preview/test-entry support
+7. integrate the repo into `aerobeat-assembly-community` via GodotEnv for embedded access
 
-That order preserves the full-package product goal while acknowledging that chart editing is the deepest specialized slice.
+That order preserves the full-package product goal while keeping repo/shared-service/headless foundations ahead of GUI work, while still treating Penpot as an important dependency for polished scene implementation.
