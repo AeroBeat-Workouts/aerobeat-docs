@@ -315,9 +315,9 @@ The remaining work for this session is not implementation. It is product-shaping
 - `docs/architecture/<implementation-order-doc>.md`
 - `.plans/2026-05-11-aerobeat-workout-creation-tools-hld-questions.md`
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**Results:** Pending.
+**Results:** QA rerun passed after the architecture doc's stale Penpot-first implementation-posture wording was reconciled with the new implementation-order doc. Verified that the docs set now consistently starts with safe headless CLI/package/import/validation foundations before Penpot-dependent GUI work, keeps the chart editor as the heavyweight later slice, stays milestone-level rather than over-specified sprint management, and does not reopen KTX2/Draco or broader scope debates. Validation passed with `git diff --check` and `.venv/bin/mkdocs build --strict`.
 
 ---
 
@@ -347,16 +347,18 @@ The remaining work for this session is not implementation. It is product-shaping
 
 **Status:** ⚠️ Partial
 
-**What We Built:** Created the living plan for this AeroBeat workout-creation-tool design slice, captured Derrick's locked high-level product decisions, landed the canonical workout-creation-tools architecture doc, corrected the coaching-video canonical-format wording, and then landed the two safe follow-on docs that do not depend on Penpot GUI design: the accepted import format matrix per slot and the CLI surface spec. The next safe extension is now the implementation-order doc for the tool repo.
+**What We Built:** Created the living plan for this AeroBeat workout-creation-tool design slice, captured Derrick's locked high-level product decisions, landed the canonical workout-creation-tools architecture doc, corrected the coaching-video canonical-format wording, landed the accepted import format matrix per slot and the CLI surface spec, and then landed the implementation-order doc for the tool repo. The implementation-order slice also required one surgical cross-doc reconciliation so the older architecture doc's implementation-posture guidance no longer contradicted the new headless-first milestone order.
 
-**Reference Check:** Discussion and resulting docs align strongly with `REF-01`, `REF-02`, `REF-03`, and `REF-04`; the current docs package now covers the product boundary, accepted-vs-stored asset rules, and separate-CLI surface direction without reopening deferred optimization or GUI-implementation work.
+**Reference Check:** Discussion and resulting docs align strongly with `REF-01`, `REF-02`, `REF-03`, and `REF-04`; the current docs package now covers the product boundary, accepted-vs-stored asset rules, separate-CLI surface direction, and headless-first implementation order without reopening deferred optimization or GUI-implementation work.
 
 **Commits:**
 - `a9383fb` - `docs: add workout creation tools architecture`
 - `035eb82` - `docs: fix coaching video canonical format wording`
 - `4e8be59` - `docs: add workout creation tool specs`
+- `6852db9` - `docs: add workout creation tools implementation order`
+- `99e654d` - `docs: align workout tool implementation posture`
 
-**Lessons Learned:** The content/package contracts are much more settled than the actual authoring-product workflow, so the next useful conversation should stay focused on tool scope and UX/workflow boundaries rather than reopening schema debates. Also, once parallel coder/QA passes converge on the same bounded docs batch, the plan file must be updated immediately so audit is checking truth instead of stale task prose.
+**Lessons Learned:** The content/package contracts are much more settled than the actual authoring-product workflow, so the next useful conversation should stay focused on tool scope and UX/workflow boundaries rather than reopening schema debates. Also, once parallel coder/QA passes converge on the same bounded docs batch, the plan file must be updated immediately so audit is checking truth instead of stale task prose. Cross-doc “recommended posture” sections are especially easy to leave stale when a newer canonical sequencing doc lands, so they need explicit reconciliation rather than assuming consistency by implication.
 
 ---
 
