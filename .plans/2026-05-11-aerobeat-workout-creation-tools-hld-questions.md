@@ -1,7 +1,7 @@
 # AeroBeat Workout Creation Tools
 
-**Date:** 2026-05-11  
-**Status:** In Progress  
+**Date:** 2026-05-11
+**Status:** In Progress
 **Agent:** Chip 🐱‍💻
 
 ---
@@ -36,10 +36,10 @@ The remaining work for this session is not implementation. It is product-shaping
 
 ### Task 1: Draft canonical workout creation tools architecture decisions doc
 
-**Bead ID:** `aerobeat-docs-3tl2`  
-**SubAgent:** `primary`  
-**Role:** `coder`  
-**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-05`  
+**Bead ID:** `aerobeat-docs-3tl2`
+**SubAgent:** `primary`
+**Role:** `coder`
+**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-05`
 **Prompt:** Draft the canonical AeroBeat workout creation tools architecture/design doc in `aerobeat-docs`. Claim bead `aerobeat-docs-3tl2` on start with `bd update aerobeat-docs-3tl2 --status in_progress --json` and close it on completion. Capture the now-locked decisions: separate CLI tools by YAML domain, package-wide workout validation as orchestrator, one-scene-per-YAML GUI structure with `workout.yaml` as package-home, chart editor as the heavyweight specialized scene, FFmpeg-backed asset normalization, explicit repair confirmation flow in GUI delegating to full package `--fix`, CLI `--fix` / `--fix-*` philosophy, embedded assembly integration via GodotEnv, accepted-vs-stored format distinction, and current canonical stored formats (`.ogg`, `.ogv`, `.png`, vanilla `.glb`). Also note explicitly deferred optimization work (KTX2/Draco) without reopening it.
 
 **Folders Created/Deleted/Modified:**
@@ -59,10 +59,10 @@ The remaining work for this session is not implementation. It is product-shaping
 
 ### Task 2: QA the workout creation tools architecture decisions doc
 
-**Bead ID:** `aerobeat-docs-2hvf`  
-**SubAgent:** `primary`  
-**Role:** `qa`  
-**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-05`  
+**Bead ID:** `aerobeat-docs-2hvf`
+**SubAgent:** `primary`
+**Role:** `qa`
+**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-05`
 **Prompt:** Independently QA the new workout creation tools architecture/design doc after the coder lands it. Claim bead `aerobeat-docs-2hvf` on start with `bd update aerobeat-docs-2hvf --status in_progress --json`. Verify the doc truthfully captures Derrick's decisions from this planning session, stays lane-correct with the existing content/tool/package docs, clearly separates accepted vs stored formats, and does not accidentally promise KTX2/Draco or broader optimization support. Run appropriate docs validation if available. Close the bead only if the QA pass is genuinely clean; otherwise leave clear failure notes.
 
 **Folders Created/Deleted/Modified:**
@@ -81,10 +81,10 @@ The remaining work for this session is not implementation. It is product-shaping
 
 ### Task 3: Audit the workout creation tools architecture decisions doc
 
-**Bead ID:** `aerobeat-docs-zsg8`  
-**SubAgent:** `primary`  
-**Role:** `auditor`  
-**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-05`  
+**Bead ID:** `aerobeat-docs-zsg8`
+**SubAgent:** `primary`
+**Role:** `auditor`
+**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-05`
 **Prompt:** Perform an independent audit of the finalized workout creation tools architecture/design doc after QA passes. Claim bead `aerobeat-docs-zsg8` on start with `bd update aerobeat-docs-zsg8 --status in_progress --json`. Truth-check the doc against the plan, the prior architecture docs, and Derrick's locked decisions from this session. Confirm the scope is appropriately bounded to workout creation tooling and that deferred optimization work remains clearly deferred. Close the bead only if the work is genuinely complete; otherwise record the exact gap.
 
 **Folders Created/Deleted/Modified:**
@@ -144,16 +144,150 @@ The remaining work for this session is not implementation. It is product-shaping
 - **Environment editor future scope:** image preview/cropping is in scope; video preview is desirable; future GLB environments will need preview plus scale/rotation/orientation controls.
 - **Assembly integration model:** embedded tool mode inside the main build, with scene-based transitions into the creation tools and a way back to the main game.
 
+### Task 4: Define accepted import format matrix per slot
+
+**Bead ID:** `aerobeat-docs-hg6q`
+**SubAgent:** `primary`
+**Role:** `coder`
+**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-05`
+**Prompt:** Draft the canonical accepted import format matrix for the AeroBeat workout creation tools. Claim bead `aerobeat-docs-hg6q` on start with `bd update aerobeat-docs-hg6q --status in_progress --json` and close it on completion. Produce a bounded docs pass that clearly maps accepted source/import formats vs stored canonical formats for each relevant slot/domain in the workout package (songs, coaching audio/video, environment image/video, GLB environments, and any immediately relevant image/art slots), staying consistent with the locked architecture decisions and current Godot/mod.io constraints.
+
+**Folders Created/Deleted/Modified:**
+- `docs/architecture/`
+- `.plans/`
+
+**Files Created/Deleted/Modified:**
+- `docs/architecture/workout-creation-tools-import-format-matrix.md`
+- `mkdocs.yml`
+- `.plans/2026-05-11-aerobeat-workout-creation-tools-hld-questions.md`
+
+**Status:** ✅ Complete
+
+**Results:** Added `docs/architecture/workout-creation-tools-import-format-matrix.md` as the canonical slot-by-slot import/storage matrix for workout creation tooling. The doc clearly separates accepted source/import formats from stored package formats, covers the in-scope package slots (song audio, coaching audio/video, environment image/video, GLB, and package art image), stays aligned with the locked `.ogg` / `.ogv` / `.png` / `.glb` storage decisions, and adds actionable validation/canonicalization rules for future CLI and GUI import flows. Added one bounded nav entry in `mkdocs.yml`.
+
+---
+
+### Task 5: QA the accepted import format matrix per slot
+
+**Bead ID:** `aerobeat-docs-5sxf`
+**SubAgent:** `primary`
+**Role:** `qa`
+**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-05`
+**Prompt:** Independently QA the accepted import format matrix doc after the coder lands it. Claim bead `aerobeat-docs-5sxf` on start with `bd update aerobeat-docs-5sxf --status in_progress --json`. Verify that the matrix truthfully matches the already-locked workout creation architecture, correctly reflects current Godot/mod.io constraints, clearly distinguishes accepted import formats from stored canonical formats, and does not quietly reopen optimization or GUI-scope debates. Close the bead only if the QA pass is genuinely clean.
+
+**Folders Created/Deleted/Modified:**
+- `docs/architecture/`
+- `.plans/`
+
+**Files Created/Deleted/Modified:**
+- `docs/architecture/<matrix-doc>.md`
+- `.plans/2026-05-11-aerobeat-workout-creation-tools-hld-questions.md`
+
+**Status:** ⏳ Pending
+
+**Results:** Pending.
+
+---
+
+### Task 6: Audit the accepted import format matrix per slot
+
+**Bead ID:** `aerobeat-docs-bizl`
+**SubAgent:** `primary`
+**Role:** `auditor`
+**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-05`
+**Prompt:** Perform an independent audit of the accepted import format matrix doc after QA passes. Claim bead `aerobeat-docs-bizl` on start with `bd update aerobeat-docs-bizl --status in_progress --json`. Truth-check the matrix against the architecture doc, workout package storage rules, coaching guidance, and Derrick's locked decisions from this session. Confirm the matrix is complete for current scope and stays bounded to workout-creation tooling. Close the bead only if the audit is genuinely clean.
+
+**Folders Created/Deleted/Modified:**
+- `docs/architecture/`
+- `.plans/`
+
+**Files Created/Deleted/Modified:**
+- `docs/architecture/<matrix-doc>.md`
+- `.plans/2026-05-11-aerobeat-workout-creation-tools-hld-questions.md`
+
+**Status:** ⏳ Pending
+
+**Results:** Pending.
+
+---
+
+### Task 7: Define CLI surface spec for workout creation tools repo
+
+**Bead ID:** `aerobeat-docs-eqoh`
+**SubAgent:** `primary`
+**Role:** `coder`
+**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-05`
+**Prompt:** Draft the canonical CLI surface spec for the AeroBeat workout creation tools repo. Claim bead `aerobeat-docs-eqoh` on start with `bd update aerobeat-docs-eqoh --status in_progress --json` and close it on completion. Capture the separate-CLI direction per YAML/workflow domain, the `workout` package-orchestrator behavior, baseline commands like validate / fix / inspect / migrate / package where appropriate, and the intended boundary between per-domain tools and shared internal libraries/services. Keep the spec bounded and consistent with the locked architecture decisions.
+
+**Folders Created/Deleted/Modified:**
+- `docs/architecture/`
+- `.plans/`
+
+**Files Created/Deleted/Modified:**
+- `docs/architecture/<cli-spec-doc>.md`
+- `.plans/2026-05-11-aerobeat-workout-creation-tools-hld-questions.md`
+
+**Status:** ✅ Complete
+
+**Results:** Added `docs/architecture/workout-creation-tools-cli-surface.md` as the bounded canonical CLI surface spec for the workout creation tools repo. The doc keeps the locked separate-tool direction explicit, defines `aerobeat-workout` as the package-wide orchestrator, assigns baseline command categories per relevant tool (`validate`, `fix`, `inspect`, `migrate`, `package`, and justified `import` flows), and clarifies the boundary between public CLI tools and shared internal workflow services. Added a bounded `mkdocs.yml` nav entry for the new architecture doc.
+
+---
+
+### Task 8: QA the CLI surface spec for workout creation tools repo
+
+**Bead ID:** `aerobeat-docs-qs12`
+**SubAgent:** `primary`
+**Role:** `qa`
+**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-05`
+**Prompt:** Independently QA the CLI surface spec doc after the coder lands it. Claim bead `aerobeat-docs-qs12` on start with `bd update aerobeat-docs-qs12 --status in_progress --json`. Verify that the CLI surface remains faithful to Derrick's locked direction of separate tools, does not collapse back into a single primary CLI, keeps package-wide orchestration on the `workout` surface, and stays lane-correct with the tool/content architecture. Close the bead only if the QA pass is genuinely clean.
+
+**Folders Created/Deleted/Modified:**
+- `docs/architecture/`
+- `.plans/`
+
+**Files Created/Deleted/Modified:**
+- `docs/architecture/<cli-spec-doc>.md`
+- `.plans/2026-05-11-aerobeat-workout-creation-tools-hld-questions.md`
+
+**Status:** ⏳ Pending
+
+**Results:** Pending.
+
+---
+
+### Task 9: Audit the CLI surface spec for workout creation tools repo
+
+**Bead ID:** `aerobeat-docs-ra0l`
+**SubAgent:** `primary`
+**Role:** `auditor`
+**References:** `REF-01`, `REF-02`, `REF-03`, `REF-04`, `REF-05`
+**Prompt:** Perform an independent audit of the CLI surface spec doc after QA passes. Claim bead `aerobeat-docs-ra0l` on start with `bd update aerobeat-docs-ra0l --status in_progress --json`. Truth-check the CLI surface against the architecture doc, the active plan, and Derrick's locked product decisions. Confirm the spec is actionable without drifting into premature implementation detail or violating the separate-tool direction. Close the bead only if the audit is genuinely clean.
+
+**Folders Created/Deleted/Modified:**
+- `docs/architecture/`
+- `.plans/`
+
+**Files Created/Deleted/Modified:**
+- `docs/architecture/<cli-spec-doc>.md`
+- `.plans/2026-05-11-aerobeat-workout-creation-tools-hld-questions.md`
+
+**Status:** ⏳ Pending
+
+**Results:** Pending.
+
+---
+
 ## Final Results
 
 **Status:** ⚠️ Partial
 
-**What We Built:** Created the living plan for the next AeroBeat workout-creation-tool design slice and captured Derrick's high-level product decisions around separate CLI validators, package-vs-file validation boundaries, one-scene-per-YAML GUI structure, FFmpeg-backed asset normalization/import, GUI-vs-CLI fixup policy, chart-editor boundaries, and embedded assembly integration.
+**What We Built:** Created the living plan for the next AeroBeat workout-creation-tool design slice and captured Derrick's high-level product decisions around separate CLI validators, package-vs-file validation boundaries, one-scene-per-YAML GUI structure, FFmpeg-backed asset normalization/import, GUI-vs-CLI fixup policy, chart-editor boundaries, embedded assembly integration, and the first canonical workout-creation-tools architecture doc. This slice is now extending into two safe follow-on docs: the accepted import format matrix per slot and the CLI surface spec.
 
-**Reference Check:** Discussion aligns strongly with `REF-01`, `REF-02`, `REF-03`, and `REF-04`; the biggest remaining work is translating these product decisions into a formal tool architecture and a concrete implementation order.
+**Reference Check:** Discussion aligns strongly with `REF-01`, `REF-02`, `REF-03`, and `REF-04`; the current safe next work is detailed tool-surface and import-format documentation that does not depend on Penpot GUI design.
 
 **Commits:**
-- None yet.
+- `a9383fb` - `docs: add workout creation tools architecture`
+- `035eb82` - `docs: fix coaching video canonical format wording`
 
 **Lessons Learned:** The content/package contracts are much more settled than the actual authoring-product workflow, so the next useful conversation should stay focused on tool scope and UX/workflow boundaries rather than reopening schema debates.
 
