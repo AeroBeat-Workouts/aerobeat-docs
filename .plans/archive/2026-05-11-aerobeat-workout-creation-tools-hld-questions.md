@@ -205,9 +205,9 @@ The remaining work for this session is not implementation. It is product-shaping
 - `docs/architecture/<matrix-doc>.md`
 - `.plans/2026-05-11-aerobeat-workout-creation-tools-hld-questions.md`
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**Results:** Pending.
+**Results:** Audit rerun passed after the plan bookkeeping was corrected to reflect the already-closed QA bead. Verified that `docs/architecture/workout-creation-tools-import-format-matrix.md` is complete and internally consistent with the architecture doc, coaching guide, nav wiring, and active plan; that accepted-vs-stored format distinctions are taught consistently; and that KTX2/Draco remain explicitly deferred. Validation passed with `git diff --check` and `.venv/bin/mkdocs build --strict`.
 
 ---
 
@@ -271,9 +271,9 @@ The remaining work for this session is not implementation. It is product-shaping
 - `docs/architecture/<cli-spec-doc>.md`
 - `.plans/2026-05-11-aerobeat-workout-creation-tools-hld-questions.md`
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**Results:** Pending.
+**Results:** Audit rerun passed after the plan summary/final-results section was corrected to reflect the landed CLI and import-matrix docs. Verified that `docs/architecture/workout-creation-tools-cli-surface.md` remains internally consistent with the architecture and import-matrix docs, keeps `aerobeat-workout` as the package-wide orchestrator, preserves the separate-public-tool direction, and clearly teaches the public-CLI vs shared-internal-service boundary. Validation passed with `git diff --check` and `.venv/bin/mkdocs build --strict`.
 
 ---
 
@@ -337,15 +337,15 @@ The remaining work for this session is not implementation. It is product-shaping
 - `docs/architecture/<implementation-order-doc>.md`
 - `.plans/2026-05-11-aerobeat-workout-creation-tools-hld-questions.md`
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**Results:** Pending.
+**Results:** Audit rerun passed after the plan was updated to truthfully record the implementation-order slice, the contradiction fix, and the landed commits. Verified that `docs/architecture/workout-creation-tools-implementation-order.md` is complete and internally consistent with the architecture, import-format matrix, and CLI surface docs; that the docs set now consistently puts safe headless/shared-service/package foundations before Penpot-dependent GUI work; and that the chart editor remains the heavyweight later slice. Validation passed with `git diff --check` and `.venv/bin/mkdocs build --strict`.
 
 ---
 
 ## Final Results
 
-**Status:** ⚠️ Partial
+**Status:** ✅ Complete
 
 **What We Built:** Created the living plan for this AeroBeat workout-creation-tool design slice, captured Derrick's locked high-level product decisions, landed the canonical workout-creation-tools architecture doc, corrected the coaching-video canonical-format wording, landed the accepted import format matrix per slot and the CLI surface spec, and then landed the implementation-order doc for the tool repo. The implementation-order slice also required one surgical cross-doc reconciliation so the older architecture doc's implementation-posture guidance no longer contradicted the new headless-first milestone order.
 
