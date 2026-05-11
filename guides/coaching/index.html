@@ -5785,10 +5785,10 @@
 <span class="w">    </span><span class="nt">coachName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Coach Blaze</span>
 <span class="nt">warmupVideo</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">mediaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ab-warmup-breathing-intro</span>
-<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/coaching/warmup-breathing-intro.mp4</span>
+<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/coaching/coaching-warm-up-video-49189afea.ogv</span>
 <span class="nt">cooldownVideo</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">mediaId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ab-cooldown-stretch-outro</span>
-<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/coaching/cooldown-stretch-outro.mp4</span>
+<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">media/coaching/coaching-cool-down-video-49189afea.ogv</span>
 <span class="nt">overlayAudio</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">overlayId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ab-overlay-aria-neon-stride-cue</span>
 <span class="w">    </span><span class="nt">coachId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ab-coach-aria</span>
@@ -5825,8 +5825,9 @@
 </ul>
 <h2 id="technical-requirements">🛠️ Technical Requirements<a class="headerlink" href="#technical-requirements" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Warm-up / cool-down video:</strong> package-local video files such as <code>.mp4</code> or <code>.webm</code></li>
-<li><strong>Overlay coaching clips:</strong> package-local audio files such as <code>.ogg</code></li>
+<li><strong>Warm-up / cool-down video import:</strong> authors may start from accepted source video files such as <code>.mp4</code> or <code>.webm</code></li>
+<li><strong>Warm-up / cool-down video storage:</strong> after import/normalization, the package should store the canonical coaching video files as <code>.ogv</code></li>
+<li><strong>Overlay coaching clips:</strong> package-local audio files stored as <code>.ogg</code></li>
 <li><strong>Tools:</strong></li>
 <li><strong>Recording:</strong> OBS Studio (video), Audacity / Reaper (audio)</li>
 <li><strong>Authoring:</strong> a future AeroBeat package authoring workflow built on the shared package contracts</li>
@@ -5845,7 +5846,7 @@
 <li><strong>Background:</strong> Keep it clean or use a green screen.</li>
 <li><strong>Action:</strong> Record the package warm-up and cool-down videos.</li>
 <li><strong>Bounds:</strong> Keep each one between <strong>1:00 and 5:00 inclusive</strong>.</li>
-<li><strong>Export:</strong> Render as package-local video files.</li>
+<li><strong>Export:</strong> Record from any accepted source workflow, but expect the authoring/import flow to normalize the package-stored warm-up and cool-down files to canonical <code>.ogv</code>.</li>
 </ul>
 <h4 id="set-overlay-audio">Set Overlay Audio<a class="headerlink" href="#set-overlay-audio" title="Permanent link">&para;</a></h4>
 <ul>
@@ -5858,7 +5859,7 @@
 <h3 id="phase-3-package-authoring">Phase 3: Package Authoring<a class="headerlink" href="#phase-3-package-authoring" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Open the workout package authoring flow.</strong></li>
-<li><strong>Import Files:</strong> Add the warm-up video, cool-down video, and overlay audio files to package-local <code>media/</code> folders.</li>
+<li><strong>Import Files:</strong> Add the warm-up video, cool-down video, and overlay audio files through the package authoring/import flow. Accepted source video formats may be converted during import, but the package should keep the normalized warm-up and cool-down video assets as canonical <code>.ogv</code> files under package-local <code>media/</code> folders.</li>
 <li><strong>Update <code>coaches/coach-config.yaml</code>:</strong></li>
 <li>set <code>enabled: true</code></li>
 <li>define the coach roster</li>
@@ -5908,7 +5909,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 8, 2026 16:37:56 UTC">May 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 11, 2026 15:28:29 UTC">May 11, 2026</span>
   </span>
 
     
