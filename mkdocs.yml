@@ -124,6 +124,7 @@ nav:
       - Telemetry & Privacy: architecture/telemetry.md
       - Testing Strategy: architecture/testing.md
       - Tools: architecture/tool.md
+      - Workout Creation Tools Architecture: architecture/workout-creation-tools-architecture.md
       - Repository Topology: architecture/topology.md
       - UGC Modding: architecture/ugc_modding.md
       - UGC Distribution Executive Summary: architecture/ugc-distribution-executive-summary.md
