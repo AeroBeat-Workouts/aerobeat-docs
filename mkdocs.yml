@@ -127,6 +127,7 @@ nav:
       - Workout Creation Tools Architecture: architecture/workout-creation-tools-architecture.md
       - Workout Creation Tools CLI Surface: architecture/workout-creation-tools-cli-surface.md
       - Workout Creation Tools Import Format Matrix: architecture/workout-creation-tools-import-format-matrix.md
+      - Workout Creation Tools Implementation Order: architecture/workout-creation-tools-implementation-order.md
       - Repository Topology: architecture/topology.md
       - UGC Modding: architecture/ugc_modding.md
       - UGC Distribution Executive Summary: architecture/ugc-distribution-executive-summary.md
