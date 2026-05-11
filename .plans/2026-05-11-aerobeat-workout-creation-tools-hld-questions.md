@@ -53,7 +53,7 @@ The remaining work for this session is not implementation. It is product-shaping
 
 **Status:** ✅ Complete
 
-**Results:** Drafted `docs/architecture/workout-creation-tools-architecture.md` as the canonical decisions doc for the workout creation product. The doc captures the locked split to a separate tool repo imported into `aerobeat-assembly-community` via GodotEnv, separate CLI tools per YAML/workflow domain, package-wide validation/repair orchestration from the `workout` surface, one-scene-per-YAML GUI structure with `workout.yaml` as package-home, the chart editor as the heavyweight specialized scene, FFmpeg-backed media normalization/import, explicit GUI confirmation before full package repair, CLI `--fix` / `--fix-*` philosophy, the accepted-vs-stored format distinction, currently locked stored canonical formats (`.ogg`, `.ogv`, `.png`, vanilla `.glb`), and explicit deferral of KTX2/Draco/broader runtime-asset optimization work. Also added a bounded `mkdocs.yml` nav entry for the new architecture doc. Commit/push and validation pending in this task handoff.
+**Results:** Initial coder pass drafted `docs/architecture/workout-creation-tools-architecture.md` as the canonical decisions doc for the workout creation product and added a bounded `mkdocs.yml` nav entry. After QA flagged two scoped consistency leaks, the retry pass fixed both surgically: this active plan's canonical coaching-video filename example now uses the locked `.ogv` suffix, and `docs/guides/coaching.md` now explicitly distinguishes accepted source video import formats from the normalized canonical package-stored coaching video format `.ogv`, consistent with the architecture doc.
 
 ---
 
@@ -73,9 +73,9 @@ The remaining work for this session is not implementation. It is product-shaping
 - `docs/architecture/<new-doc>.md`
 - `.plans/2026-05-11-aerobeat-workout-creation-tools-hld-questions.md`
 
-**Status:** ⏳ Pending
+**Status:** ❌ Failed
 
-**Results:** Pending.
+**Results:** QA failed the first pass. The new architecture doc was broadly correct, but scoped consistency review found two follow-up fixes needed before QA can pass: (1) this active plan still used a coaching-video canonical filename example ending in `.ogg` instead of `.ogv`, and (2) `docs/guides/coaching.md` still described package-local coaching videos in terms of accepted source formats rather than the locked stored canonical `.ogv` format after import/normalization.
 
 ---
 
@@ -123,7 +123,7 @@ The remaining work for this session is not implementation. It is product-shaping
 - **Validation boundary:** validating one YAML must not imply full-package validation; `workout` validation is the package-wide orchestrator that calls into the specific validators for the referenced package parts.
 - **Repo/integration boundary:** the editor and CLI tools live in their own repo and are imported into `aerobeat-assembly-community` via GodotEnv.
 - **Asset replacement rule:** when a user replaces a slotted file, the old package file is deleted and the new validated canonical asset is copied in.
-- **Canonical asset naming:** imported/generated media should be renamed to a normalized schema ending with a uid plus extension (example: `coaching-warm-up-video-49189afea.ogg`).
+- **Canonical asset naming:** imported/generated media should be renamed to a normalized schema ending with a uid plus extension (example: `coaching-warm-up-video-49189afea.ogv`).
 - **Media pipeline dependency:** `ffmpeg` should be a dependency of the workout creation tools.
 - **Audio/video normalization:** accepted source formats may be converted into canonical Godot-friendly forms before being copied into the package; current locked canonical media directions are song audio `.ogg`, coaching audio `.ogg`, coaching video `.ogv`, and environment video `.ogv`, with target optimization direction up to `1080p 60fps` for video and up to `24-bit/96kHz` for audio.
 - **Image import workflow:** near-valid images should use an aspect-ratio marquee/crop flow before canonical conversion/storage rather than failing outright for size mismatch.

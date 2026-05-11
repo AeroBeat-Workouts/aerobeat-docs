@@ -55,10 +55,10 @@ featuredCoaches:
     coachName: Coach Blaze
 warmupVideo:
   mediaId: ab-warmup-breathing-intro
-  path: media/coaching/warmup-breathing-intro.mp4
+  path: media/coaching/coaching-warm-up-video-49189afea.ogv
 cooldownVideo:
   mediaId: ab-cooldown-stretch-outro
-  path: media/coaching/cooldown-stretch-outro.mp4
+  path: media/coaching/coaching-cool-down-video-49189afea.ogv
 overlayAudio:
   - overlayId: ab-overlay-aria-neon-stride-cue
     coachId: ab-coach-aria
@@ -100,8 +100,9 @@ Self-declaration does **not** permit:
 
 ## 🛠️ Technical Requirements
 
-- **Warm-up / cool-down video:** package-local video files such as `.mp4` or `.webm`
-- **Overlay coaching clips:** package-local audio files such as `.ogg`
+- **Warm-up / cool-down video import:** authors may start from accepted source video files such as `.mp4` or `.webm`
+- **Warm-up / cool-down video storage:** after import/normalization, the package should store the canonical coaching video files as `.ogv`
+- **Overlay coaching clips:** package-local audio files stored as `.ogg`
 - **Tools:**
   - **Recording:** OBS Studio (video), Audacity / Reaper (audio)
   - **Authoring:** a future AeroBeat package authoring workflow built on the shared package contracts
@@ -122,7 +123,7 @@ Self-declaration does **not** permit:
 - **Background:** Keep it clean or use a green screen.
 - **Action:** Record the package warm-up and cool-down videos.
 - **Bounds:** Keep each one between **1:00 and 5:00 inclusive**.
-- **Export:** Render as package-local video files.
+- **Export:** Record from any accepted source workflow, but expect the authoring/import flow to normalize the package-stored warm-up and cool-down files to canonical `.ogv`.
 
 #### Set Overlay Audio
 
@@ -135,7 +136,7 @@ Self-declaration does **not** permit:
 ### Phase 3: Package Authoring
 
 1. **Open the workout package authoring flow.**
-2. **Import Files:** Add the warm-up video, cool-down video, and overlay audio files to package-local `media/` folders.
+2. **Import Files:** Add the warm-up video, cool-down video, and overlay audio files through the package authoring/import flow. Accepted source video formats may be converted during import, but the package should keep the normalized warm-up and cool-down video assets as canonical `.ogv` files under package-local `media/` folders.
 3. **Update `coaches/coach-config.yaml`:**
    - set `enabled: true`
    - define the coach roster
