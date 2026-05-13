@@ -2787,10 +2787,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#rule-2-modio-may-act-as-the-current-purchaseownership-server-only-after-official-sync" class="md-nav__link">
+  <a href="#rule-2-modio-may-act-as-the-current-intended-purchaseownership-server-only-after-official-sync" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rule 2: mod.io may act as the current purchase/ownership server only after official sync
+        Rule 2: mod.io may act as the current intended purchase/ownership server only after official sync
       
     </span>
   </a>
@@ -5782,10 +5782,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#rule-2-modio-may-act-as-the-current-purchaseownership-server-only-after-official-sync" class="md-nav__link">
+  <a href="#rule-2-modio-may-act-as-the-current-intended-purchaseownership-server-only-after-official-sync" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rule 2: mod.io may act as the current purchase/ownership server only after official sync
+        Rule 2: mod.io may act as the current intended purchase/ownership server only after official sync
       
     </span>
   </a>
@@ -5907,7 +5907,7 @@
 <li><strong>AeroBeat is explicitly free-to-play.</strong></li>
 <li>The product supports both <strong>free workouts</strong> and <strong>premium workouts</strong>.</li>
 <li><strong>Platform-compliant purchase flows</strong> are mandatory for premium access.</li>
-<li><strong>mod.io remains the current community/distribution layer</strong> for premium UGC and related ownership/discovery flows.</li>
+<li><strong>mod.io remains the current intended community/distribution layer</strong> for premium UGC and related ownership/discovery flows, pending firmer provider/legal confirmation on the full paid-workout posture.</li>
 <li><strong>AeroBeat still needs its own account architecture</strong> as a first-class design concern for retention, product progression, and future portability.</li>
 <li><strong><code>aerobeat-tool-api</code> is the AeroBeat-facing identity/access/entitlement layer</strong>, not a thin mod.io wrapper.</li>
 </ul>
@@ -6000,20 +6000,21 @@
 <li>platform-holder compliant commerce on future platforms</li>
 </ul>
 <p>AeroBeat should <strong>not</strong> architect around unofficial direct-billing shortcuts that would create platform-policy risk.</p>
-<h3 id="rule-2-modio-may-act-as-the-current-purchaseownership-server-only-after-official-sync">Rule 2: mod.io may act as the current purchase/ownership server only after official sync<a class="headerlink" href="#rule-2-modio-may-act-as-the-current-purchaseownership-server-only-after-official-sync" title="Permanent link">&para;</a></h3>
-<p>The currently acceptable strategy is:</p>
+<h3 id="rule-2-modio-may-act-as-the-current-intended-purchaseownership-server-only-after-official-sync">Rule 2: mod.io may act as the current intended purchase/ownership server only after official sync<a class="headerlink" href="#rule-2-modio-may-act-as-the-current-intended-purchaseownership-server-only-after-official-sync" title="Permanent link">&para;</a></h3>
+<p>The current intended strategy is:</p>
 <ol>
 <li>user purchases through the official platform/store path</li>
 <li>the game authenticates through legitimate supported identity surfaces</li>
 <li>ownership/entitlement is synchronized to the provider where officially supported</li>
-<li>mod.io may then act as the current ownership/purchased-content server for the premium UGC layer</li>
+<li>mod.io may then act as the current ownership/purchased-content server for the premium UGC layer where that workflow is officially supported and provider/legal posture remains acceptable</li>
 <li>AeroBeat still exposes the resulting access in AeroBeat terms</li>
 </ol>
-<p>Important constraint:</p>
+<p>Important constraints:</p>
 <blockquote>
 <p>AeroBeat should rely only on <strong>official, non-deprecated, legitimately supportable provider/platform surfaces</strong>.</p>
 </blockquote>
 <p>If a workflow is not clearly supported by official documentation or supportable product surfaces, the docs should not present it as a guaranteed implementation path.</p>
+<p>This is also an intended provider seam, not a final legal conclusion about the paid-workout model. The current architecture assumes provider-backed ownership sync can support the premium UGC lane, but the exact DMCA / safe-harbor sufficiency of that paid-workout posture is still pending firmer confirmation.</p>
 <h2 id="responsibility-split">Responsibility split<a class="headerlink" href="#responsibility-split" title="Permanent link">&para;</a></h2>
 <h3 id="aerobeat-owns">AeroBeat owns<a class="headerlink" href="#aerobeat-owns" title="Permanent link">&para;</a></h3>
 <p>AeroBeat owns the long-term product contract for:</p>
@@ -6086,6 +6087,7 @@
 <li><strong>Entitlement reconciliation policy:</strong> when AeroBeat account truth, platform purchase truth, and provider purchase truth disagree temporarily, which system wins for client UX and runtime access?</li>
 <li><strong>Guest conversion rules:</strong> which free-to-play behaviors remain available to guests, and which premium/community flows require sign-in?</li>
 <li><strong>Catalog policy:</strong> what content classes can ever be premium at launch, and what catalog-quality/moderation rules apply before premium publication?</li>
+<li><strong>Paid-workout provider/legal posture:</strong> does the current provider-backed premium workflow remain acceptable once mod.io legal finishes reviewing the DMCA / safe-harbor questions for paid creator workouts?</li>
 </ol>
 <p>Those should be handled in later strategy tasks rather than hidden inside this Task 1 docs pass.</p>
 
@@ -6108,7 +6110,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 7, 2026 14:01:03 UTC">May 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 13, 2026 17:58:16 UTC">May 13, 2026</span>
   </span>
 
     
