@@ -172,8 +172,10 @@ Creators self-attest that they have the rights needed for all submitted content 
 In v1:
 
 - AeroBeat does **not** require proof-of-rights documents in standard submission flow
-- copyright / DMCA / takedown routing should use **mod.io's reporting and moderation system**
+- the current operational route for copyright / DMCA / takedown intake is **mod.io's reporting and moderation system**
 - repeat or severe abuse may lead to removal, deactivation, or creator sanctions
+
+This is the current v1 operating posture, not a claim that the broader DMCA / safe-harbor analysis is fully settled. AeroBeat may still need additional provider-aligned or AeroBeat-side escalation steps if mod.io legal guidance comes back narrower than the current working assumption.
 
 ## Explicitly out of scope for this policy
 

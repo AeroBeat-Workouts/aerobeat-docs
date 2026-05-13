@@ -6,7 +6,7 @@ For the compact canonical launch policy, see [V1 UGC Submission and Review Polic
 
 ## Strategic conclusion
 
-AeroBeat can support both free and premium community workouts in v1, but only if premium publication is treated as a governed lane with clear rules for:
+AeroBeat's current v1 direction is to support both free and premium community workouts, but only if premium publication is treated as a governed lane with clear rules for:
 
 - package scope
 - pricing
@@ -156,7 +156,13 @@ Creators self-attest that they have the rights needed for all submitted assets a
 
 V1 does **not** require proof-of-rights documents in the standard workflow.
 
-DMCA / copyright / takedown handling should route through **mod.io's reporting and moderation system**, with AeroBeat retaining the policy vocabulary for creator sanctions and lane trust decisions.
+The current operational route for DMCA / copyright / takedown handling is **mod.io's reporting and moderation system**, with AeroBeat retaining the policy vocabulary for creator sanctions and lane trust decisions.
+
+### 12. Paid-workout legal posture is still pending firmer confirmation
+
+The governance rules in this document describe the **current intended v1 operating model** for premium community workouts.
+
+They do **not** claim that the broader DMCA / safe-harbor posture for paid creator workouts is already finally confirmed. AeroBeat is currently operating on the working assumption that creator self-attestation, review-gated publication, restrained promotion, and mod.io-centered reporting/takedown routing may be sufficient, but firmer provider/legal confirmation is still pending.
 
 ## Recommended workflow consequences
 
@@ -195,4 +201,4 @@ AeroBeat should launch premium UGC in v1 with a **small, explicit, review-gated 
 7. re-review for material changes
 8. deactivated-as-suspended handling for high-risk issues
 
-That posture is realistic, supportable, and aligned with the now-locked v1 product policy.
+That posture is realistic and aligned with the now-locked v1 product policy as the current operating model, while the exact paid-workout legal sufficiency still awaits firmer provider/legal confirmation.

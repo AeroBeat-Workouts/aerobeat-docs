@@ -7,7 +7,7 @@ The short version:
 - **AeroBeat is explicitly free-to-play.**
 - The product supports both **free workouts** and **premium workouts**.
 - **Platform-compliant purchase flows** are mandatory for premium access.
-- **mod.io remains the current community/distribution layer** for premium UGC and related ownership/discovery flows.
+- **mod.io remains the current intended community/distribution layer** for premium UGC and related ownership/discovery flows, pending firmer provider/legal confirmation on the full paid-workout posture.
 - **AeroBeat still needs its own account architecture** as a first-class design concern for retention, product progression, and future portability.
 - **`aerobeat-tool-api` is the AeroBeat-facing identity/access/entitlement layer**, not a thin mod.io wrapper.
 
@@ -122,21 +122,23 @@ Examples include:
 
 AeroBeat should **not** architect around unofficial direct-billing shortcuts that would create platform-policy risk.
 
-### Rule 2: mod.io may act as the current purchase/ownership server only after official sync
+### Rule 2: mod.io may act as the current intended purchase/ownership server only after official sync
 
-The currently acceptable strategy is:
+The current intended strategy is:
 
 1. user purchases through the official platform/store path
 2. the game authenticates through legitimate supported identity surfaces
 3. ownership/entitlement is synchronized to the provider where officially supported
-4. mod.io may then act as the current ownership/purchased-content server for the premium UGC layer
+4. mod.io may then act as the current ownership/purchased-content server for the premium UGC layer where that workflow is officially supported and provider/legal posture remains acceptable
 5. AeroBeat still exposes the resulting access in AeroBeat terms
 
-Important constraint:
+Important constraints:
 
 > AeroBeat should rely only on **official, non-deprecated, legitimately supportable provider/platform surfaces**.
 
 If a workflow is not clearly supported by official documentation or supportable product surfaces, the docs should not present it as a guaranteed implementation path.
+
+This is also an intended provider seam, not a final legal conclusion about the paid-workout model. The current architecture assumes provider-backed ownership sync can support the premium UGC lane, but the exact DMCA / safe-harbor sufficiency of that paid-workout posture is still pending firmer confirmation.
 
 ## Responsibility split
 
@@ -222,5 +224,6 @@ These are intentionally left visible for follow-up work rather than hand-waved a
 3. **Entitlement reconciliation policy:** when AeroBeat account truth, platform purchase truth, and provider purchase truth disagree temporarily, which system wins for client UX and runtime access?
 4. **Guest conversion rules:** which free-to-play behaviors remain available to guests, and which premium/community flows require sign-in?
 5. **Catalog policy:** what content classes can ever be premium at launch, and what catalog-quality/moderation rules apply before premium publication?
+6. **Paid-workout provider/legal posture:** does the current provider-backed premium workflow remain acceptable once mod.io legal finishes reviewing the DMCA / safe-harbor questions for paid creator workouts?
 
 Those should be handled in later strategy tasks rather than hidden inside this Task 1 docs pass.

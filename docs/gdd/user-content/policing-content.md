@@ -34,8 +34,10 @@ Creators must self-attest that they hold the necessary rights for all included c
 The v1 posture is:
 
 - no proof-of-rights documentation required in the normal submission path
-- copyright / DMCA / takedown handling routes through **mod.io's reporting and moderation system**
+- the current operational route for copyright / DMCA / takedown handling is **mod.io's reporting and moderation system**
 - repeat or severe abuse may still lead to creator sanctions or removal from trusted lanes
+
+This describes the current review/takedown workflow, not a final legal conclusion that the full DMCA / safe-harbor posture is settled. Depending on final provider/legal guidance, AeroBeat may still need additional escalation or response duties when likely infringement is reported or independently discovered.
 
 ## Suspensions and post-publication action
 
