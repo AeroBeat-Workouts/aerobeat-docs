@@ -1,7 +1,7 @@
 # AeroBeat mod.io DMCA / Safe-Harbor Documentation Audit
 
 **Date:** 2026-05-13  
-**Status:** In Progress  
+**Status:** Complete  
 **Agent:** Chip 🐱‍💻
 
 ---
@@ -281,9 +281,52 @@ Optional fifth file only if Derrick wants the API layer to carry the same cautio
 - `.plans/2026-05-13-aerobeat-modio-dmca-doc-audit.md`
 - follow-on files TBD
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**Results:** Pending.
+**Results:**
+
+**Task 4 adjacent-repo audit — concise recommendation list**
+
+I audited the two primary adjacent repos for wording drift related to the 2026-05-13 mod.io / DMCA discussion, focusing on: (a) legal-certainty or safe-harbor overstatement, (b) DMCA / takedown routing language, (c) premium/paid-workout posture sounding more settled than it is, and (d) provider-role vs AeroBeat-role boundary drift. I did not find an additional AeroBeat repo with an obvious enough hotspot to widen scope further.
+
+### 1. `aerobeat-vendor-modio` — **immediate docs work**
+
+**Why:** this repo is still mostly boundary-honest, but it contains the clearest adjacent follow-on drift because its README and monetization research notes can now read a little too settled about the paid-workout / checkout / entitlement model.
+
+**Main hotspots**
+- `/home/derrick/.openclaw/workspace/projects/aerobeat/aerobeat-vendor-modio/README.md`
+  - Strong on provider-boundary caveats overall, but the monetization sections still read as though direct checkout, purchased-state, entitlements, and monetization-team routes are simply part of the understood seam rather than a seam whose AeroBeat product/legal posture is still only conditionally accepted.
+  - The line that says public UGC release is governed by AeroBeat review policy with mod.io as the v1 curation/gate system is operationally fine, but the surrounding monetization wording should more explicitly say that **adapter coverage does not imply settled paid-workout legal approval or final provider/legal confirmation**.
+  - The direct-checkout wording should be softened from sounding like an established product-policy conclusion to sounding like a **current technical/provider capability description plus current AeroBeat working assumption**.
+- `/home/derrick/.openclaw/workspace/projects/aerobeat/aerobeat-vendor-modio/docs/modio-monetization-follow-up-2026-05-04.md`
+  - This note is useful research, but phrases like mod.io "appears to support both" direct wallet/checkout and platform-sync flows, or that certain store paths are "realistic targets," now need an extra qualifier that this is **technical/product interpretation, not final DMCA/legal clearance for AeroBeat's paid-workout posture**.
+  - The bottom-line recommendations should explicitly distinguish:
+    - provider capability,
+    - probable store-policy fit,
+    - and the still-pending AeroBeat/mod.io legal-position question.
+
+**Net recommendation for this repo:** make a narrow docs-only follow-up soon. Keep the repo's provider-seam framing intact, but add one explicit caution layer anywhere monetization/checkout/entitlement coverage could be mistaken for settled AeroBeat legal or launch-policy approval.
+
+### 2. `aerobeat-tool-api` — **later work**
+
+**Why:** the repo only showed one meaningful wording surface right now — `README.md` — and it is already mostly careful about AeroBeat owning the product contract while mod.io remains a provider seam. The drift is real but modest.
+
+**Main hotspot**
+- `/home/derrick/.openclaw/workspace/projects/aerobeat/aerobeat-tool-api/README.md`
+  - The "Current strategic framing" section says AeroBeat supports free and premium workouts, that all public UGC must pass review before release, and that premium purchases must flow through official platform/store paths.
+  - None of that is wildly off, but after the 2026-05-13 discussion it would be safer for this README to say this is the **current intended v1 posture** and that the exact paid-workout / provider-legal posture is **still pending firmer mod.io legal confirmation**.
+  - The repo should also keep reinforcing that `aerobeat-tool-api` owns the AeroBeat-side identity/access contract, while **copyright/takedown intake and primary public-gate behavior currently route through mod.io** rather than through an AeroBeat-owned moderation authority.
+
+**Net recommendation for this repo:** no urgent fix needed before other docs work lands, but the next README truth-alignment pass should add a short caution note so the premium/public-UGC posture does not sound more settled than the current meeting understanding supports.
+
+### 3. Additional adjacent AeroBeat repos — **no change**
+
+I did not find an obviously relevant third repo that justified widening scope during this task. The strongest wording hotspots were already captured in `aerobeat-vendor-modio` and `aerobeat-tool-api`, so keeping the follow-on set tight is the right call.
+
+**Bottom line:**
+- `aerobeat-vendor-modio` → **immediate docs work**
+- `aerobeat-tool-api` → **later work**
+- additional repos → **no change**
 
 ---
 
@@ -303,24 +346,62 @@ Optional fifth file only if Derrick wants the API layer to carry the same cautio
 - `.plans/2026-05-13-aerobeat-modio-dmca-doc-audit.md`
 - touched files only if QA/audit finds minimum necessary fixes
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**Results:** Pending.
+**Results:**
+
+- Performed an independent QA/audit pass across:
+  - `docs/architecture/v1-ugc-submission-and-review-policy.md`
+  - `docs/gdd/user-content/policing-content.md`
+  - `docs/architecture/premium-workout-governance.md`
+  - `docs/architecture/account-identity-and-entitlements.md`
+  - the plan itself, including Task 4 follow-on recommendations.
+- Re-ran repo validation with `source venv/bin/activate && python scripts/create_placeholders.py && mkdocs build --strict`.
+  - Result: **pass** (`exit 0`).
+  - Notes: build still reports pre-existing nav omissions, but those are informational and were already present; they do not undermine this doc pass.
+- Verified the wording now consistently reflects the **current operational posture** rather than claiming settled legal certainty:
+  - mod.io remains the current operational route for DMCA/takedown intake,
+  - creator rights remain self-attested rather than proof-verified,
+  - premium/community workflow remains the current intended v1 model,
+  - and the paid-workout DMCA/safe-harbor question is clearly marked as pending firmer mod.io legal confirmation.
+- Verified there is **no product-policy drift** beyond the intended wording softening:
+  - no new proof-of-rights requirement was introduced,
+  - no first-party AeroBeat moderation cockpit was invented,
+  - no change was made to the one-difficulty-per-package, formula-pricing, or review-gated release policy.
+- Verified the four touched docs remain coherent with each other. The same distinctions appear consistently across compact policy, moderation, premium governance, and account/entitlement architecture.
+- Reviewed Task 4 adjacent-repo recommendations and found them **sensible and proportionate**:
+  - `aerobeat-vendor-modio` is the right immediate follow-up because monetization/provider-seam wording could be mistaken for settled paid-workout legal approval.
+  - `aerobeat-tool-api` as later work is proportionate because its README is already mostly boundary-honest and only needs a lighter truth-alignment pass.
+  - not broadening beyond those repos is appropriate.
+- No defects were found that required code/doc changes during QA. No additional commit was needed.
+- Final audit conclusion: **pass**.
 
 ---
 
 ## Final Results
 
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
-**What We Built:** Pending.
+**What We Built:**
+- A documentation truth-alignment pass that softens AeroBeat's DMCA/mod.io wording to match the current operational understanding without overstating legal certainty.
+- Updated canonical policy, moderation, premium-governance, and identity/entitlement docs so they clearly distinguish:
+  - current v1 operating posture,
+  - current working assumptions,
+  - and pending firmer mod.io legal confirmation for the paid-workout safe-harbor question.
+- A narrow adjacent-repo recommendation set that keeps follow-on work focused on the real wording hotspots instead of broad repo churn.
 
-**Reference Check:** Pending.
+**Reference Check:**
+- `REF-02`, `REF-03`, `REF-04`, and `REF-07` were re-audited and are now internally coherent.
+- The updated wording remains aligned with the Task 1 synthesis of `REF-01` and does not overclaim beyond the posture described there.
+- Task 4 recommendations remain consistent with `REF-05`, `REF-06`, `REF-08`, and `REF-09`: immediate caution-layer follow-up in `aerobeat-vendor-modio`, later lighter README truth-alignment in `aerobeat-tool-api`.
 
 **Commits:**
-- Pending
+- `f74760b` - `docs: soften mod.io DMCA posture wording`
+- No additional QA/audit commit required.
 
-**Lessons Learned:** Pending.
+**Lessons Learned:**
+- The main risk here was tonal, not architectural: small wording choices can accidentally imply legal certainty the product does not yet have.
+- Keeping "current operational route" and "pending firmer provider/legal confirmation" language synchronized across policy, moderation, premium, and entitlement docs prevents quiet product-policy drift.
 
 ---
 
