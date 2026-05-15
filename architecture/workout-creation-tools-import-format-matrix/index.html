@@ -5939,7 +5939,7 @@
 <li><strong>environment video:</strong> <code>.ogv</code></li>
 <li><strong>package/workout/environment images:</strong> <code>.png</code></li>
 <li><strong>3D environment:</strong> vanilla <code>.glb</code></li>
-<li><strong>controlled advanced Gaussian splat environment:</strong> one validated splat payload in a currently supported runtime format such as <code>.ply</code>, <code>.compressed.ply</code>, <code>.splat</code>, or <code>.sog</code>, stored self-contained inside the package</li>
+<li><strong>controlled advanced Gaussian splat environment:</strong> one validated splat payload stored self-contained inside the package; AeroBeat should prefer <code>.compressed.ply</code> as the official recommended package format, while <code>.ply</code>, <code>.splat</code>, and <code>.sog</code> remain compatibility-supported through GDGS</li>
 </ul>
 <p>These are package-storage rules for the current workout-creation-tools slice.</p>
 <h2 id="canonical-matrix">Canonical matrix<a class="headerlink" href="#canonical-matrix" title="Permanent link">&para;</a></h2>
@@ -6022,10 +6022,10 @@
 <tr>
 <td>Gaussian splat environment (controlled advanced path)</td>
 <td><code>media/environments/</code></td>
-<td><code>.ply</code>, <code>.compressed.ply</code>, <code>.splat</code>, <code>.sog</code></td>
-<td>Preserve one validated supported splat payload as-is inside the package</td>
+<td><code>.compressed.ply</code>, <code>.ply</code>, <code>.splat</code>, <code>.sog</code></td>
+<td>Prefer <code>.compressed.ply</code> as the official recommended package format; otherwise preserve one validated GDGS-compatible splat payload as-is inside the package</td>
 <td>Copy as-is after format validation</td>
-<td>Official package type is <code>splat</code>, but current support stays a controlled advanced lane. Exported workouts must remain self-contained, and the current validated runtime path is desktop / Forward Plus / compute-bound rather than a broad cross-device guarantee.</td>
+<td>Official package type is <code>splat</code>, but current support stays a controlled advanced lane. <code>.ply</code>, <code>.splat</code>, and <code>.sog</code> remain compatibility-supported through GDGS. Exported workouts must remain self-contained, and the current validated runtime path is desktop / Forward Plus / compute-bound rather than a broad cross-device guarantee.</td>
 </tr>
 </tbody>
 </table>
@@ -6099,7 +6099,9 @@
 <p>Tooling expectations:</p>
 <ul>
 <li>use <code>type: splat</code> for the record</li>
-<li>accept only the currently validated runtime-loader payload families: <code>.ply</code>, <code>.compressed.ply</code>, <code>.splat</code>, and <code>.sog</code></li>
+<li>accept only the currently validated GDGS runtime-loader payload families: <code>.compressed.ply</code>, <code>.ply</code>, <code>.splat</code>, and <code>.sog</code></li>
+<li>treat <code>.compressed.ply</code> as the official recommended AeroBeat splat payload when authors have a choice</li>
+<li>keep <code>.ply</code>, <code>.splat</code>, and <code>.sog</code> as compatibility-supported through GDGS rather than preferred package targets</li>
 <li>keep the stored package payload self-contained under <code>media/environments/</code> rather than relying on a remote catalog fetch</li>
 <li>validate and document that the current runtime path is desktop / Forward Plus / compute-bound</li>
 <li>avoid silently advertising splats as a cross-device baseline until broader runtime support is proven</li>
@@ -6185,7 +6187,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 15, 2026 00:21:36 UTC">May 15, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 15, 2026 13:36:50 UTC">May 15, 2026</span>
   </span>
 
     
