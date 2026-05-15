@@ -69,6 +69,8 @@ The checked-in environment examples teach the small Environment v1 record shape:
 - `type`
 - `resourcePath`
 
+The current official environment `type` values are `image_background`, `video_background`, `glb_environment`, and the controlled advanced `splat` path. This checked-in demo package still only shows the more mainstream image + GLB lanes; it does not try to present splat as the default beginner example.
+
 For public publishing, every set needs an environment, and a **static 2D background image** is an acceptable minimum.
 
 ### 6. Cover art is still required

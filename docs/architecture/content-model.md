@@ -57,6 +57,9 @@ Locked `type` values:
 - `image_background`
 - `video_background`
 - `glb_environment`
+- `splat`
+
+`image_background`, `video_background`, and `glb_environment` remain the broad creator-friendly lanes. `splat` is now an official package type too, but it should be treated as a controlled advanced environment path: exported workouts still stay self-contained, while the current validated runtime path is desktop-oriented and depends on Forward Plus plus compute-capable GPU support.
 
 ## Customization direction after asset-package removal
 

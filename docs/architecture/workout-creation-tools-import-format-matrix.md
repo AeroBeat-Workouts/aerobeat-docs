@@ -25,6 +25,7 @@ It covers the currently relevant package media slots:
 - environment background image
 - environment background video
 - 3D environment GLB
+- controlled advanced Gaussian splat environment payloads
 - workout/package art images that logically belong in the current package scope
 
 ## Core rule
@@ -46,6 +47,7 @@ The current package-storage decisions remain locked:
 - **environment video:** `.ogv`
 - **package/workout/environment images:** `.png`
 - **3D environment:** vanilla `.glb`
+- **controlled advanced Gaussian splat environment:** one validated splat payload in a currently supported runtime format such as `.ply`, `.compressed.ply`, `.splat`, or `.sog`, stored self-contained inside the package
 
 These are package-storage rules for the current workout-creation-tools slice.
 
@@ -61,6 +63,7 @@ These are package-storage rules for the current workout-creation-tools slice.
 | Workout/package art image | `media/art/` | `.png`, `.jpg`, `.jpeg`, `.webp` | `.png` | Copy if already-valid `.png`; otherwise convert to canonical `.png`; allow crop/resize flow before final write when needed | This covers immediately relevant package-scoped art such as a workout cover/thumbnail-style image stored inside the package. Keep the package canonical as `.png` even if downstream publishing surfaces later derive `.jpg` uploads. |
 | Environment background video | `media/environments/` | `.ogv`, `.mp4`, `.webm`, `.mov` | `.ogv` | Copy if already-valid `.ogv`; otherwise transcode to canonical `.ogv` | Environment videos may loop if shorter than set playback. Longer videos are acceptable because the set ends the playback window. |
 | 3D environment | `media/environments/` | `.glb` | `.glb` | Copy as-is after validation | Only accept **vanilla `.glb`** for the current package scope. Reject `.gltf` + sidecar asset sets to preserve self-contained package behavior. Reject Draco/KTX2 optimization requirements in this slice; those remain deferred. |
+| Gaussian splat environment (controlled advanced path) | `media/environments/` | `.ply`, `.compressed.ply`, `.splat`, `.sog` | Preserve one validated supported splat payload as-is inside the package | Copy as-is after format validation | Official package type is `splat`, but current support stays a controlled advanced lane. Exported workouts must remain self-contained, and the current validated runtime path is desktop / Forward Plus / compute-bound rather than a broad cross-device guarantee. |
 
 ## Slot-by-slot implementation rules
 
@@ -142,6 +145,18 @@ Tooling expectations:
 - validate that the file is self-contained and readable
 - reject `.gltf` plus loose textures/buffers for the current package contract
 - reject optimization-side transformations as a baseline requirement
+
+### 8. Gaussian splat environment
+
+Gaussian splats are now an official package-facing environment type, but not a default beginner lane.
+
+Tooling expectations:
+
+- use `type: splat` for the record
+- accept only the currently validated runtime-loader payload families: `.ply`, `.compressed.ply`, `.splat`, and `.sog`
+- keep the stored package payload self-contained under `media/environments/` rather than relying on a remote catalog fetch
+- validate and document that the current runtime path is desktop / Forward Plus / compute-bound
+- avoid silently advertising splats as a cross-device baseline until broader runtime support is proven
 
 ## Actionable validation rules for future CLI/GUI tooling
 

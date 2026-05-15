@@ -108,8 +108,9 @@ The locked Environment v1 `type` enum remains:
 - `image_background`
 - `video_background`
 - `glb_environment`
+- `splat`
 
-Baseline `godot_scene` should still be treated as an advanced future controlled-pipeline path, not a default loose-package handoff.
+Baseline `godot_scene` should still be treated as an advanced future controlled-pipeline path, not a default loose-package handoff. `splat` is now an official package-facing environment type, but it remains a controlled advanced path: the exported workout still copies the chosen splat payload into `media/environments/` so the package stays self-contained, and the currently validated runtime path is desktop / Forward Plus / compute-bound rather than a broad cross-device guarantee.
 
 ## Coaching direction
 
