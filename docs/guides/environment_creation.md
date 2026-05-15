@@ -21,6 +21,7 @@ For public workout publishing in v1:
 
 - prefer clean, lightweight authored backgrounds or GLB environments for the default creator path
 - treat `splat` as a controlled advanced option, not the baseline recommendation
+- if a splat package is used, prefer `.compressed.ply` as the official recommended AeroBeat payload while keeping `.ply`, `.splat`, and `.sog` as GDGS compatibility paths
 - optimize for readability first, spectacle second
 - keep runtime assumptions conservative for the PC-first community target
 - avoid teaching loose `godot_scene` as the default community handoff
@@ -39,6 +40,8 @@ If you are looking for customization beyond environments, the likely future dire
 If you ship a `splat` environment record, keep the docs and package behavior honest:
 
 - the final exported workout should still copy the chosen splat payload into the package so playback stays self-contained
+- `.compressed.ply` is the official recommended AeroBeat splat payload when authors have a choice
+- `.ply`, `.splat`, and `.sog` remain compatibility-supported through GDGS
 - the current validated runtime path is desktop-focused and depends on Godot Forward Plus plus compute-capable GPU support
 - this is not yet the broad creator-friendly cross-device path; it is the advanced lane validated through the environment-community/tool/vendor stack
 

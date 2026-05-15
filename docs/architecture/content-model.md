@@ -59,7 +59,7 @@ Locked `type` values:
 - `glb_environment`
 - `splat`
 
-`image_background`, `video_background`, and `glb_environment` remain the broad creator-friendly lanes. `splat` is now an official package type too, but it should be treated as a controlled advanced environment path: exported workouts still stay self-contained, while the current validated runtime path is desktop-oriented and depends on Forward Plus plus compute-capable GPU support.
+`image_background`, `video_background`, and `glb_environment` remain the broad creator-friendly lanes. `splat` is now an official package type too, but it should be treated as a controlled advanced environment path: AeroBeat should prefer `.compressed.ply` as the official recommended splat payload, while `.ply`, `.splat`, and `.sog` remain compatibility-supported through GDGS. Exported workouts still stay self-contained, while the current validated runtime path is desktop-oriented and depends on Forward Plus plus compute-capable GPU support.
 
 ## Customization direction after asset-package removal
 
