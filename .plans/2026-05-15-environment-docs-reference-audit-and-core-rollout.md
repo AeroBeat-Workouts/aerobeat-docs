@@ -107,7 +107,7 @@ This likely touches the repo inventory / repository-map material first, but it m
 **Reference Check:** `REF-03`, `REF-04`, and `REF-05` were updated directly as the source-of-truth pages, and `REF-06` was checked against the live environment repos/templates to keep the docs aligned with reality. `REF-01` remained clean of active old-name docs references after the sweep. The rollout remained consistent with the broader family direction recorded in `REF-02`.
 
 **Commits:**
-- `9960e74` - `docs: document environment family rollout`
+- `d0293ce` - `docs: document environment family rollout`
 
 **Lessons Learned:** Repo-family renames are only really complete once the source-of-truth docs explain the new boundaries clearly and explicitly state whether a renamed family is a new architecture lane versus a concrete package family layered on an existing core.
 
