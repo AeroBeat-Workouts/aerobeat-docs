@@ -23,6 +23,7 @@ AeroBeat uses **GodotEnv** as the dependency composition contract.
 * **Input repos** depend on [`aerobeat-input-core`](https://github.com/AeroBeat-Workouts/aerobeat-input-core).
 * **Feature repos** depend on [`aerobeat-feature-core`](https://github.com/AeroBeat-Workouts/aerobeat-feature-core) and consume [`aerobeat-content-core`](https://github.com/AeroBeat-Workouts/aerobeat-content-core).
 * **Tool repos** depend on [`aerobeat-tool-core`](https://github.com/AeroBeat-Workouts/aerobeat-tool-core) and consume content and asset contracts as needed. Concrete authoring products should use the `aerobeat-tool-*` naming family and expose core content operations through a headless/CLI surface even when they also ship an interactive editor.
+* **Environment repos** use the `aerobeat-environment-*` family for reusable internal environment packages and runtime loading helpers. `aerobeat-environment-core` is a concrete internal environment package baseline built on [`aerobeat-asset-core`](https://github.com/AeroBeat-Workouts/aerobeat-asset-core), while specialized runtime helpers such as `aerobeat-environment-loader` and `aerobeat-environment-gaussian-splat` should keep their adjacent dependencies explicit instead of implying a new universal core lane.
 * **UI kits and shells** depend on [`aerobeat-ui-core`](https://github.com/AeroBeat-Workouts/aerobeat-ui-core) plus any concrete UI kits/assets they need.
 * **Asset repos** depend on [`aerobeat-asset-core`](https://github.com/AeroBeat-Workouts/aerobeat-asset-core).
 
@@ -44,8 +45,9 @@ When creating or updating playable content contracts:
 2. Put gameplay-mode/runtime rule changes and mode-specific payload validation in [`aerobeat-feature-core`](https://github.com/AeroBeat-Workouts/aerobeat-feature-core) or a concrete `aerobeat-feature-*` repo.
 3. Put import/export jobs, ingestion flows, publishing workflows, and other tool-side operational models in [`aerobeat-tool-core`](https://github.com/AeroBeat-Workouts/aerobeat-tool-core) or a concrete `aerobeat-tool-*` repo. Treat headless/CLI execution for validation, migration, packaging, import/export, and automation-friendly authoring tasks as a first-class requirement, not a later convenience.
 4. Put asset-side shared definitions for avatars, cosmetics, environments, and similar reusable assets in [`aerobeat-asset-core`](https://github.com/AeroBeat-Workouts/aerobeat-asset-core).
-5. Put 2D lanes, 3D portals, and other content-consuming runtime visuals in [`aerobeat-feature-core`](https://github.com/AeroBeat-Workouts/aerobeat-feature-core) or a concrete `aerobeat-feature-*` repo, even when they consume presentation hints defined by content contracts.
-6. Update assemblies to consume only the packages they need through GodotEnv.
+5. Put concrete internal environment packages and reusable environment-scene/resource bundles in the `aerobeat-environment-*` family. Use `aerobeat-environment-core` as the baseline internal environment package shape, and keep any runtime loader/helper repos such as `aerobeat-environment-loader` or `aerobeat-environment-gaussian-splat` narrowly scoped to environment fulfillment rather than treating them as broad asset-lane replacements.
+6. Put 2D lanes, 3D portals, and other content-consuming runtime visuals in [`aerobeat-feature-core`](https://github.com/AeroBeat-Workouts/aerobeat-feature-core) or a concrete `aerobeat-feature-*` repo, even when they consume presentation hints defined by content contracts.
+7. Update assemblies to consume only the packages they need through GodotEnv.
 
 ## Asset pipeline
 

@@ -42,6 +42,12 @@ Use this map to route work to the correct repository within the AeroBeat ecosyst
 - `aerobeat-ui-kit-community`
 - `aerobeat-ui-shell-desktop-community`
 
+### Shared environment repos
+
+- `aerobeat-environment-core` (internal environment package family baseline; reusable environment scenes/resources built on `aerobeat-asset-core` rather than a new seventh core lane)
+- `aerobeat-environment-loader` (generic runtime environment loader/bridge for official package-facing environment kinds such as image, video, GLB, and controlled splat requests)
+- `aerobeat-environment-gaussian-splat` (specialized Gaussian-splat fulfillment/runtime wrapper consumed by the loader or sibling repos that need the lower splat runtime directly)
+
 ### Planned UGC/API vendor lane
 
 - `aerobeat-tool-api` remains the AeroBeat-facing Godot-imported API manager singleton lane

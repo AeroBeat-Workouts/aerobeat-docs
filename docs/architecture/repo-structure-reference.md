@@ -88,7 +88,80 @@ Concrete authoring tools do not live under `aerobeat-content-*`. They live under
 
 Concrete content-consuming visuals also do not live in `aerobeat-content-core`. 2D lanes, 3D portals, and similar runtime presentation systems belong in `aerobeat-feature-*` repos because they are feature/runtime implementations, not durable authored-content contracts.
 
-## G. Concrete implementation repo examples
+## G. Environment family repo examples
+
+The `aerobeat-environment-*` family is a concrete package family, not a replacement for the six core lanes. Shared environment contracts still live in `aerobeat-asset-core`; the environment-family repos package reusable internal environments and narrowly scoped environment-loading/runtime helpers on top of that foundation.
+
+### Internal environment package repo (`aerobeat-environment-core`)
+
+```text
+aerobeat-environment-core/
+├── assets/
+│   ├── environments/   # Internal environment scenes/resources
+│   ├── lighting/       # Lighting rigs, sky/fog/material helpers
+│   └── reactive/       # Optional reactive presentation resources
+├── .testbed/
+│   ├── addons.jsonc
+│   ├── project.godot
+│   └── tests/
+├── plugin.cfg
+├── LICENSE.md
+└── README.md
+```
+
+`aerobeat-environment-core` is the baseline internal environment package shape. It should stay dependency-light, build on `aerobeat-asset-core`, and avoid pretending that generic environment content itself defines a new platform-wide core lane.
+
+### Runtime environment loader repo (`aerobeat-environment-loader`)
+
+```text
+aerobeat-environment-loader/
+├── src/
+│   ├── AeroToolManager.gd                 # Runtime environment load/swap entrypoint
+│   ├── AeroWorkoutYamlEnvironmentBridge.gd
+│   └── AeroSimpleYamlParser.gd
+├── .testbed/
+│   ├── addons.jsonc
+│   ├── assets/
+│   ├── fixtures/
+│   ├── scenes/
+│   ├── scripts/
+│   ├── src/
+│   └── tests/
+├── plugin.cfg
+├── LICENSE.md
+└── README.md
+```
+
+`aerobeat-environment-loader` is the generic environment-fulfillment wrapper for official package-facing environment kinds such as image, video, GLB, and controlled splat requests. It should keep adjacent dependencies explicit rather than inheriting a fake universal asset/environment bundle.
+
+### Specialized splat runtime repo (`aerobeat-environment-gaussian-splat`)
+
+```text
+aerobeat-environment-gaussian-splat/
+├── src/
+│   ├── AeroGaussianSplatManager.gd
+│   ├── AeroGaussianSplatBackgroundLoader.gd
+│   ├── AeroGaussianSplatBackgroundReadWorker.gd
+│   └── AeroToolManager.gd
+├── addons/
+│   └── aerobeat-environment-gaussian-splat-fulfillment/
+├── scripts/
+│   └── restore-testbed-addons.sh
+├── .testbed/
+│   ├── addons.jsonc
+│   ├── assets/
+│   ├── scenes/
+│   ├── scripts/
+│   ├── src/
+│   └── tests/
+├── plugin.cfg
+├── LICENSE.md
+└── README.md
+```
+
+`aerobeat-environment-gaussian-splat` is the specialized Gaussian-splat fulfillment/runtime wrapper. Downstream repos should consume it for splat-specific support rather than talking to third-party decoders directly.
+
+## H. Concrete implementation repo examples
 
 ### Input provider repo (`aerobeat-input-mediapipe-python`)
 
@@ -134,6 +207,6 @@ aerobeat-ui-kit-community/
 └── sync_manifest.json
 ```
 
-## H. Assembly composition rule
+## I. Assembly composition rule
 
 Assembly repos such as `aerobeat-assembly-community` compose only the core repos and concrete repos they actually need via GodotEnv. They do not inherit the entire platform by default.
