@@ -3122,15 +3122,65 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#g-concrete-implementation-repo-examples" class="md-nav__link">
+  <a href="#g-environment-family-repo-examples" class="md-nav__link">
     <span class="md-ellipsis">
       
-        G. Concrete implementation repo examples
+        G. Environment family repo examples
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="G. Concrete implementation repo examples">
+    <nav class="md-nav" aria-label="G. Environment family repo examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internal-environment-package-repo-aerobeat-environment-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal environment package repo (aerobeat-environment-core)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime-environment-loader-repo-aerobeat-environment-loader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime environment loader repo (aerobeat-environment-loader)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specialized-splat-runtime-repo-aerobeat-environment-gaussian-splat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specialized splat runtime repo (aerobeat-environment-gaussian-splat)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#h-concrete-implementation-repo-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        H. Concrete implementation repo examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="H. Concrete implementation repo examples">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3172,10 +3222,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#h-assembly-composition-rule" class="md-nav__link">
+  <a href="#i-assembly-composition-rule" class="md-nav__link">
     <span class="md-ellipsis">
       
-        H. Assembly composition rule
+        I. Assembly composition rule
       
     </span>
   </a>
@@ -5630,15 +5680,65 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#g-concrete-implementation-repo-examples" class="md-nav__link">
+  <a href="#g-environment-family-repo-examples" class="md-nav__link">
     <span class="md-ellipsis">
       
-        G. Concrete implementation repo examples
+        G. Environment family repo examples
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="G. Concrete implementation repo examples">
+    <nav class="md-nav" aria-label="G. Environment family repo examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internal-environment-package-repo-aerobeat-environment-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal environment package repo (aerobeat-environment-core)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime-environment-loader-repo-aerobeat-environment-loader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime environment loader repo (aerobeat-environment-loader)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specialized-splat-runtime-repo-aerobeat-environment-gaussian-splat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specialized splat runtime repo (aerobeat-environment-gaussian-splat)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#h-concrete-implementation-repo-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        H. Concrete implementation repo examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="H. Concrete implementation repo examples">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5680,10 +5780,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#h-assembly-composition-rule" class="md-nav__link">
+  <a href="#i-assembly-composition-rule" class="md-nav__link">
     <span class="md-ellipsis">
       
-        H. Assembly composition rule
+        I. Assembly composition rule
       
     </span>
   </a>
@@ -5774,7 +5874,66 @@
 </code></pre></div>
 <p>Concrete authoring tools do not live under <code>aerobeat-content-*</code>. They live under <code>aerobeat-tool-*</code> and depend on <code>aerobeat-content-core</code> for durable content contracts. Any interactive/editor UX in those repos should sit on top of the same services that power a headless/CLI surface.</p>
 <p>Concrete content-consuming visuals also do not live in <code>aerobeat-content-core</code>. 2D lanes, 3D portals, and similar runtime presentation systems belong in <code>aerobeat-feature-*</code> repos because they are feature/runtime implementations, not durable authored-content contracts.</p>
-<h2 id="g-concrete-implementation-repo-examples">G. Concrete implementation repo examples<a class="headerlink" href="#g-concrete-implementation-repo-examples" title="Permanent link">&para;</a></h2>
+<h2 id="g-environment-family-repo-examples">G. Environment family repo examples<a class="headerlink" href="#g-environment-family-repo-examples" title="Permanent link">&para;</a></h2>
+<p>The <code>aerobeat-environment-*</code> family is a concrete package family, not a replacement for the six core lanes. Shared environment contracts still live in <code>aerobeat-asset-core</code>; the environment-family repos package reusable internal environments and narrowly scoped environment-loading/runtime helpers on top of that foundation.</p>
+<h3 id="internal-environment-package-repo-aerobeat-environment-core">Internal environment package repo (<code>aerobeat-environment-core</code>)<a class="headerlink" href="#internal-environment-package-repo-aerobeat-environment-core" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>aerobeat-environment-core/
+├── assets/
+│   ├── environments/   # Internal environment scenes/resources
+│   ├── lighting/       # Lighting rigs, sky/fog/material helpers
+│   └── reactive/       # Optional reactive presentation resources
+├── .testbed/
+│   ├── addons.jsonc
+│   ├── project.godot
+│   └── tests/
+├── plugin.cfg
+├── LICENSE.md
+└── README.md
+</code></pre></div>
+<p><code>aerobeat-environment-core</code> is the baseline internal environment package shape. It should stay dependency-light, build on <code>aerobeat-asset-core</code>, and avoid pretending that generic environment content itself defines a new platform-wide core lane.</p>
+<h3 id="runtime-environment-loader-repo-aerobeat-environment-loader">Runtime environment loader repo (<code>aerobeat-environment-loader</code>)<a class="headerlink" href="#runtime-environment-loader-repo-aerobeat-environment-loader" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>aerobeat-environment-loader/
+├── src/
+│   ├── AeroToolManager.gd                 # Runtime environment load/swap entrypoint
+│   ├── AeroWorkoutYamlEnvironmentBridge.gd
+│   └── AeroSimpleYamlParser.gd
+├── .testbed/
+│   ├── addons.jsonc
+│   ├── assets/
+│   ├── fixtures/
+│   ├── scenes/
+│   ├── scripts/
+│   ├── src/
+│   └── tests/
+├── plugin.cfg
+├── LICENSE.md
+└── README.md
+</code></pre></div>
+<p><code>aerobeat-environment-loader</code> is the generic environment-fulfillment wrapper for official package-facing environment kinds such as image, video, GLB, and controlled splat requests. It should keep adjacent dependencies explicit rather than inheriting a fake universal asset/environment bundle.</p>
+<h3 id="specialized-splat-runtime-repo-aerobeat-environment-gaussian-splat">Specialized splat runtime repo (<code>aerobeat-environment-gaussian-splat</code>)<a class="headerlink" href="#specialized-splat-runtime-repo-aerobeat-environment-gaussian-splat" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>aerobeat-environment-gaussian-splat/
+├── src/
+│   ├── AeroGaussianSplatManager.gd
+│   ├── AeroGaussianSplatBackgroundLoader.gd
+│   ├── AeroGaussianSplatBackgroundReadWorker.gd
+│   └── AeroToolManager.gd
+├── addons/
+│   └── aerobeat-environment-gaussian-splat-fulfillment/
+├── scripts/
+│   └── restore-testbed-addons.sh
+├── .testbed/
+│   ├── addons.jsonc
+│   ├── assets/
+│   ├── scenes/
+│   ├── scripts/
+│   ├── src/
+│   └── tests/
+├── plugin.cfg
+├── LICENSE.md
+└── README.md
+</code></pre></div>
+<p><code>aerobeat-environment-gaussian-splat</code> is the specialized Gaussian-splat fulfillment/runtime wrapper. Downstream repos should consume it for splat-specific support rather than talking to third-party decoders directly.</p>
+<h2 id="h-concrete-implementation-repo-examples">H. Concrete implementation repo examples<a class="headerlink" href="#h-concrete-implementation-repo-examples" title="Permanent link">&para;</a></h2>
 <h3 id="input-provider-repo-aerobeat-input-mediapipe-python">Input provider repo (<code>aerobeat-input-mediapipe-python</code>)<a class="headerlink" href="#input-provider-repo-aerobeat-input-mediapipe-python" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>aerobeat-input-mediapipe-python/
 ├── python_mediapipe/   # CV sidecar code
@@ -5810,7 +5969,7 @@
 │   │   └── SongCard_Test.tscn
 └── sync_manifest.json
 </code></pre></div>
-<h2 id="h-assembly-composition-rule">H. Assembly composition rule<a class="headerlink" href="#h-assembly-composition-rule" title="Permanent link">&para;</a></h2>
+<h2 id="i-assembly-composition-rule">I. Assembly composition rule<a class="headerlink" href="#i-assembly-composition-rule" title="Permanent link">&para;</a></h2>
 <p>Assembly repos such as <code>aerobeat-assembly-community</code> compose only the core repos and concrete repos they actually need via GodotEnv. They do not inherit the entire platform by default.</p>
 
 
@@ -5832,7 +5991,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2026 17:55:39 UTC">April 27, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 16, 2026 02:26:39 UTC">May 16, 2026</span>
   </span>
 
     
