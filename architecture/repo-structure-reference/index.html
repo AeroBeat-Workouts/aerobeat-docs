@@ -6014,20 +6014,30 @@
 <h2 id="h-spatial-ui-family-reference">H. Spatial UI family reference<a class="headerlink" href="#h-spatial-ui-family-reference" title="Permanent link">&para;</a></h2>
 <h3 id="spatial-ui-core-aerobeat-spatial-ui-core">Spatial UI core (<code>aerobeat-spatial-ui-core</code>)<a class="headerlink" href="#spatial-ui-core-aerobeat-spatial-ui-core" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>aerobeat-spatial-ui-core/
-├── interfaces/         # Spatial interaction and bridge/resolver contracts
-├── runtime/            # Shared world-space or pointer interaction runtime pieces
-├── globals/            # Shared spatial UI constants/signals
-└── utils/              # Small spatial UI helpers
+├── src/
+│   └── helpers/
+│       ├── aero_spatial_ui_core_manifest.gd
+│       ├── policies/
+│       │   └── aero_spatial_hover_capture_policy.gd
+│       ├── providers/
+│       │   ├── aero_spatial_projection_helper.gd
+│       │   ├── aero_spatial_rect_target_resolver.gd
+│       │   └── aero_spatial_target_resolver_base.gd
+│       └── surfaces/
+│           ├── aero_spatial_surface_descriptor.gd
+│           └── aero_spatial_target_resolution_result.gd
 </code></pre></div>
-<p><code>aerobeat-spatial-ui-core</code> is the shared bridge layer for packaged spatial interaction. It is not the owner of concrete mouse, touch, or XR extraction.</p>
+<p><code>aerobeat-spatial-ui-core</code> is a shared helper layer for spatial/world UI adapters. It is not the owner of the canonical UI interaction contract, the native 2D bridge, or concrete mouse, touch, or XR extraction.</p>
 <h3 id="spatial-ui-provider-aerobeat-spatial-ui-mouse">Spatial UI provider (<code>aerobeat-spatial-ui-mouse</code>)<a class="headerlink" href="#spatial-ui-provider-aerobeat-spatial-ui-mouse" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>aerobeat-spatial-ui-mouse/
-├── providers/          # Concrete mouse-backed spatial interaction implementation
-├── adapters/           # Translation into spatial-ui-core contracts
-├── tests/
-└── plugin.cfg
+├── src/
+│   └── providers/
+│       └── mouse/
+│           ├── aero_spatial_ui_mouse_provider.gd
+│           ├── aero_spatial_ui_mouse_provider_config.gd
+│           └── aero_spatial_ui_mouse_runtime_boundary.gd
 </code></pre></div>
-<p><code>aerobeat-spatial-ui-mouse</code> is the first concrete packaged provider lane. Future touch and XR packages should follow the same pattern in their own repos rather than being folded into this one.</p>
+<p><code>aerobeat-spatial-ui-mouse</code> is the first concrete packaged mouse provider lane. Future touch and XR packages should follow the same pattern in their own repos rather than being folded into this one.</p>
 <h2 id="i-concrete-implementation-repo-examples">I. Concrete implementation repo examples<a class="headerlink" href="#i-concrete-implementation-repo-examples" title="Permanent link">&para;</a></h2>
 <h3 id="input-provider-repo-aerobeat-input-mediapipe-python">Input provider repo (<code>aerobeat-input-mediapipe-python</code>)<a class="headerlink" href="#input-provider-repo-aerobeat-input-mediapipe-python" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>aerobeat-input-mediapipe-python/
@@ -6086,7 +6096,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 23, 2026 15:23:46 UTC">May 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 23, 2026 15:34:31 UTC">May 23, 2026</span>
   </span>
 
     

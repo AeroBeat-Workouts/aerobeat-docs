@@ -5745,14 +5745,15 @@
 <li><strong>Tool repos</strong> depend on <a href="https://github.com/AeroBeat-Workouts/aerobeat-tool-core"><code>aerobeat-tool-core</code></a> and consume content and asset contracts as needed. Concrete authoring products should use the <code>aerobeat-tool-*</code> naming family and expose core content operations through a headless/CLI surface even when they also ship an interactive editor.</li>
 <li><strong>Environment repos</strong> use the <code>aerobeat-environment-*</code> family for reusable internal environment packages and runtime loading helpers. <code>aerobeat-environment-core</code> is a concrete internal environment package baseline built on <a href="https://github.com/AeroBeat-Workouts/aerobeat-asset-core"><code>aerobeat-asset-core</code></a>, while specialized runtime helpers such as <code>aerobeat-environment-loader</code> and <code>aerobeat-environment-gaussian-splat</code> should keep their adjacent dependencies explicit instead of implying a new universal core lane.</li>
 <li><strong>UI kits and shells</strong> depend on <a href="https://github.com/AeroBeat-Workouts/aerobeat-ui-core"><code>aerobeat-ui-core</code></a> plus any concrete UI kits/assets they need.</li>
-<li><strong>Spatial UI repos</strong> depend on the smallest honest package chain: <code>aerobeat-ui-core</code> for UI contracts, <code>aerobeat-spatial-ui-core</code> for the shared bridge layer, and only the concrete <code>aerobeat-spatial-ui-*</code> provider packages actually needed by the consumer.</li>
+<li><strong>Spatial UI repos</strong> depend on the smallest honest package chain: <code>aerobeat-input-core</code> for the canonical UI interaction contract / native 2D bridge path, <code>aerobeat-spatial-ui-core</code> for shared helper-layer code, and only the concrete <code>aerobeat-spatial-ui-*</code> provider packages actually needed by the consumer.</li>
 <li><strong>Asset repos</strong> depend on <a href="https://github.com/AeroBeat-Workouts/aerobeat-asset-core"><code>aerobeat-asset-core</code></a>.</li>
 </ul>
 <h3 id="packaged-spatial-ui-resolver-flow">Packaged spatial UI resolver flow<a class="headerlink" href="#packaged-spatial-ui-resolver-flow" title="Permanent link">&para;</a></h3>
 <p>The spatial UI lane should be installed and resolved as packages, not improvised inside one proof host:</p>
 <ol>
-<li>consumer shell or assembly installs <code>aerobeat-ui-core</code>, any needed UI kit, <code>aerobeat-spatial-ui-core</code>, and an optional concrete <code>aerobeat-spatial-ui-*</code> provider through GodotEnv</li>
-<li><code>aerobeat-spatial-ui-core</code> resolves the packaged provider lane at runtime</li>
+<li>consumer shell or assembly installs <code>aerobeat-input-core</code>, any needed UI kit/contracts, <code>aerobeat-spatial-ui-core</code>, and an optional concrete <code>aerobeat-spatial-ui-*</code> provider through GodotEnv</li>
+<li><code>aerobeat-spatial-ui-core</code> contributes the packaged helper layer the provider reuses</li>
+<li>the concrete provider publishes into the canonical <code>aerobeat-input-core</code> UI interaction contract / native bridge path</li>
 <li>the shell wires the resolved interaction output into its menus/widgets</li>
 <li>future touch or XR support should arrive as their own provider packages, not as hidden branches inside the mouse lane</li>
 </ol>
@@ -5820,7 +5821,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 23, 2026 15:23:46 UTC">May 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 23, 2026 15:34:31 UTC">May 23, 2026</span>
   </span>
 
     

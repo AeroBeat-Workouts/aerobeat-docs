@@ -5730,15 +5730,15 @@
 </ul>
 <h2 id="2-spatial-ui-core-aerobeat-spatial-ui-core">2. Spatial UI Core (<code>aerobeat-spatial-ui-core</code>)<a class="headerlink" href="#2-spatial-ui-core-aerobeat-spatial-ui-core" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Role:</strong> the shared runtime bridge for spatial UI interaction.</li>
-<li><strong>Content:</strong> packaged resolver-facing bridge code, shared world-space/pointer interaction contracts, and reusable spatial UI runtime pieces.</li>
-<li><strong>Goal:</strong> let consumer shells resolve a packaged spatial interaction implementation without baking provider-specific behavior directly into <code>aerobeat-ui-core</code> or a proof-host app.</li>
+<li><strong>Role:</strong> the shared helper layer for spatial UI interaction.</li>
+<li><strong>Content:</strong> reusable helper-layer code under <code>src/helpers/...</code>, including spatial surface descriptors, rect-target resolution helpers, projection helpers, and hover/capture policy scaffolding.</li>
+<li><strong>Goal:</strong> let concrete spatial provider packages share helper infrastructure without turning this repo into a second contract owner or native 2D bridge owner.</li>
 </ul>
 <h2 id="3-spatial-ui-providers-aerobeat-spatial-ui-">3. Spatial UI Providers (<code>aerobeat-spatial-ui-*</code>)<a class="headerlink" href="#3-spatial-ui-providers-aerobeat-spatial-ui-" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Role:</strong> concrete packaged implementations for spatial interaction sources.</li>
 <li><strong>Current audited example:</strong> <code>aerobeat-spatial-ui-mouse</code>.</li>
-<li><strong>Responsibility:</strong> translate a concrete source into the spatial UI core contract.</li>
+<li><strong>Responsibility:</strong> translate a concrete source into the existing <code>aerobeat-input-core</code> UI interaction contract while reusing helper-layer pieces from <code>aerobeat-spatial-ui-core</code> when useful.</li>
 </ul>
 <p>Current policy:</p>
 <ul>
@@ -5772,9 +5772,9 @@
 <p>The audited package split implies this runtime flow:</p>
 <ol>
 <li>the consumer shell installs packaged dependencies through GodotEnv</li>
-<li><code>aerobeat-ui-core</code> supplies the UI-facing contract surface</li>
-<li><code>aerobeat-spatial-ui-core</code> provides the resolver/bridge layer for spatial interaction</li>
-<li>a concrete provider package such as <code>aerobeat-spatial-ui-mouse</code> plugs into that bridge</li>
+<li><code>aerobeat-input-core</code> supplies the canonical UI interaction contract and native 2D bridge lane</li>
+<li><code>aerobeat-spatial-ui-core</code> contributes the shared helper-layer pieces a provider can reuse</li>
+<li>a concrete provider package such as <code>aerobeat-spatial-ui-mouse</code> plugs those helpers into real mouse-backed spatial behavior</li>
 <li><code>aerobeat-ui-kit-community</code> renders the widgets that receive the interaction output</li>
 <li>the shell wires those widgets into the assembly/runtime</li>
 </ol>
@@ -5789,7 +5789,7 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">normalized gameplay/provider contracts</td>
+<td style="text-align: left;">normalized gameplay/provider contracts plus canonical UI interaction contract / native 2D bridge</td>
 <td style="text-align: left;"><code>aerobeat-input-core</code></td>
 </tr>
 <tr>
@@ -5797,7 +5797,7 @@
 <td style="text-align: left;"><code>aerobeat-ui-core</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">spatial UI bridge/resolver contracts</td>
+<td style="text-align: left;">shared spatial helper-layer code</td>
 <td style="text-align: left;"><code>aerobeat-spatial-ui-core</code></td>
 </tr>
 <tr>
@@ -5832,7 +5832,7 @@
 <td style="text-align: left;"><strong>Spatial UI Core</strong></td>
 <td style="text-align: left;"><code>aerobeat-spatial-ui-core</code></td>
 <td style="text-align: left;"><strong>Allowed when spatial interaction is needed</strong></td>
-<td style="text-align: left;">Shared bridge/resolver layer for world-space or pointer-style UI.</td>
+<td style="text-align: left;">Shared helper layer for world-space or pointer-style UI providers.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Spatial UI Provider</strong></td>
@@ -5876,7 +5876,7 @@
 <p>To support white-label partners and distinct platform shells, AeroBeat separates <strong>structure</strong> from <strong>style</strong>.</p>
 <ol>
 <li><strong>Multiple kits are allowed.</strong> AeroBeat does not force one global visual identity.</li>
-<li><strong>Shared interaction contracts stay shared.</strong> Fixes in <code>aerobeat-ui-core</code> or <code>aerobeat-spatial-ui-core</code> should benefit every consuming kit or shell.</li>
+<li><strong>Shared interaction contracts stay shared.</strong> Fixes in <code>aerobeat-ui-core</code>, <code>aerobeat-input-core</code>, or the helper layer in <code>aerobeat-spatial-ui-core</code> should benefit every consuming kit or shell.</li>
 <li><strong>Shells choose the package set they need.</strong> A desktop shell may consume the mouse spatial provider; a future touch or XR shell should consume its own provider lane instead of inheriting hidden desktop assumptions.</li>
 </ol>
 <h2 id="ui-licensing-and-assets">UI licensing and assets<a class="headerlink" href="#ui-licensing-and-assets" title="Permanent link">&para;</a></h2>
@@ -5914,7 +5914,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 23, 2026 15:23:46 UTC">May 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 23, 2026 15:34:31 UTC">May 23, 2026</span>
   </span>
 
     

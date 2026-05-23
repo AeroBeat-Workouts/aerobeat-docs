@@ -3107,10 +3107,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#resolver-flow" class="md-nav__link">
+  <a href="#packaged-resolver-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Resolver flow
+        Packaged resolver flow
       
     </span>
   </a>
@@ -5582,10 +5582,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#resolver-flow" class="md-nav__link">
+  <a href="#packaged-resolver-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Resolver flow
+        Packaged resolver flow
       
     </span>
   </a>
@@ -5704,7 +5704,7 @@
 <p>Use this map to route work to the correct repository within the AeroBeat ecosystem.</p>
 <h2 id="core-contract-repos">Core contract repos<a class="headerlink" href="#core-contract-repos" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong><a href="https://github.com/AeroBeat-Workouts/aerobeat-input-core"><code>aerobeat-input-core</code></a></strong>: shared gameplay-facing input abstractions, normalized provider payloads, and provider contracts</li>
+<li><strong><a href="https://github.com/AeroBeat-Workouts/aerobeat-input-core"><code>aerobeat-input-core</code></a></strong>: shared gameplay-facing input abstractions, normalized provider payloads, provider contracts, and the canonical UI interaction contract / native 2D bridge lane</li>
 <li><strong><a href="https://github.com/AeroBeat-Workouts/aerobeat-feature-core"><code>aerobeat-feature-core</code></a></strong>: shared gameplay-mode/runtime-rule contracts</li>
 <li><strong><a href="https://github.com/AeroBeat-Workouts/aerobeat-content-core"><code>aerobeat-content-core</code></a></strong>: canonical authored-content contracts</li>
 <li><strong><a href="https://github.com/AeroBeat-Workouts/aerobeat-asset-core"><code>aerobeat-asset-core</code></a></strong>: shared account-level/avatar/cosmetics/environment asset-side contracts</li>
@@ -5714,19 +5714,19 @@
 <h2 id="spatial-ui-ownership-split">Spatial UI ownership split<a class="headerlink" href="#spatial-ui-ownership-split" title="Permanent link">&para;</a></h2>
 <p>The audited spatial UI lane is a <strong>small family of repos</strong>, not one catch-all package.</p>
 <ul>
-<li><strong><code>aerobeat-input-core</code></strong> owns normalized input/provider contracts that gameplay and UI can both consume.</li>
+<li><strong><code>aerobeat-input-core</code></strong> owns normalized input/provider contracts that gameplay and UI can both consume, including the canonical UI interaction contract and native 2D bridge path.</li>
 <li><strong><code>aerobeat-ui-core</code></strong> owns UI-facing contracts and reusable base behavior, but not concrete spatial pointer extraction.</li>
-<li><strong><code>aerobeat-spatial-ui-core</code></strong> owns the shared spatial-UI runtime layer: packaged bridge components, resolver-facing glue, and reusable world-space/pointer interaction contracts.</li>
-<li><strong><code>aerobeat-spatial-ui-mouse</code></strong> is the first concrete spatial provider lane for desktop pointer input. It packages the mouse-backed implementation that plugs into <code>aerobeat-spatial-ui-core</code>.</li>
+<li><strong><code>aerobeat-spatial-ui-core</code></strong> is a shared <strong>helper layer</strong> for spatial/world UI adapters: reusable surface descriptors, target-resolution helpers, projection helpers, and hover/capture policy scaffolding.</li>
+<li><strong><code>aerobeat-spatial-ui-mouse</code></strong> is the first concrete spatial provider lane for desktop pointer input. It packages the mouse-backed implementation that consumes the shared helper layer and publishes into the existing input contract.</li>
 <li><strong><code>aerobeat-ui-kit-community</code></strong> owns the presentational community widgets and scenes that consume the shared UI contracts; it is not the owner of input extraction or provider-specific pointer logic.</li>
 </ul>
-<h3 id="resolver-flow">Resolver flow<a class="headerlink" href="#resolver-flow" title="Permanent link">&para;</a></h3>
+<h3 id="packaged-resolver-flow">Packaged resolver flow<a class="headerlink" href="#packaged-resolver-flow" title="Permanent link">&para;</a></h3>
 <p>The intended packaged flow is:</p>
 <ol>
 <li>consumer app or shell installs the required addon packages through GodotEnv</li>
-<li><code>aerobeat-ui-core</code> provides the UI contract surface</li>
-<li><code>aerobeat-spatial-ui-core</code> provides the resolver/bridge layer that looks up packaged spatial UI implementations</li>
-<li>a concrete provider package such as <code>aerobeat-spatial-ui-mouse</code> supplies the actual pointer extraction/runtime behavior</li>
+<li><code>aerobeat-input-core</code> provides the canonical UI interaction contract and native 2D bridge lane</li>
+<li><code>aerobeat-spatial-ui-core</code> provides reusable helper-layer pieces that concrete spatial providers can share</li>
+<li>a concrete provider package such as <code>aerobeat-spatial-ui-mouse</code> supplies the actual mouse-backed pointer extraction/runtime behavior</li>
 <li><code>aerobeat-ui-kit-community</code> renders the widgets that receive those resolved interactions</li>
 </ol>
 <p>This keeps the dependency graph honest: provider-specific extraction ships in explicit packages instead of being hidden in proof-host-only glue.</p>
@@ -5798,7 +5798,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 23, 2026 15:23:46 UTC">May 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 23, 2026 15:34:31 UTC">May 23, 2026</span>
   </span>
 
     
