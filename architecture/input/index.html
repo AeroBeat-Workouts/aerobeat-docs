@@ -2949,6 +2949,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ownership-split-for-spatial-ui-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ownership split for spatial UI inputs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mouse-touch-and-xr-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mouse, touch, and XR policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#why-keep-future-providers-documented" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5514,6 +5536,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ownership-split-for-spatial-ui-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ownership split for spatial UI inputs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mouse-touch-and-xr-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mouse, touch, and XR policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#why-keep-future-providers-documented" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5609,6 +5653,23 @@
 <li><strong>Input Profile:</strong> concrete runtime/device targets such as <code>mediapipe_camera</code> or <code>keyboard_debug</code></li>
 </ul>
 <p>That model remains useful, but only <code>mediapipe_camera</code>-style camera paths should be described as official v1 gameplay support.</p>
+<h2 id="ownership-split-for-spatial-ui-inputs">Ownership split for spatial UI inputs<a class="headerlink" href="#ownership-split-for-spatial-ui-inputs" title="Permanent link">&para;</a></h2>
+<p>The audited spatial UI work clarified that gameplay input ownership and spatial UI ownership are related but distinct:</p>
+<ul>
+<li><strong><code>aerobeat-input-core</code></strong> owns normalized provider contracts and shared input-facing vocabulary.</li>
+<li><strong><code>aerobeat-spatial-ui-core</code></strong> owns reusable spatial UI bridge/runtime contracts for pointer-style interaction.</li>
+<li><strong><code>aerobeat-spatial-ui-mouse</code></strong> is the concrete packaged mouse lane that feeds desktop pointer data into that spatial UI bridge.</li>
+<li><strong><code>aerobeat-ui-core</code></strong> owns menu/UI contracts that consume those interactions, not the extraction logic itself.</li>
+</ul>
+<p>This matters because not every non-camera signal should be modeled as a gameplay provider first. Some signals are better treated as <strong>UI-provider lanes</strong> until AeroBeat intentionally promotes them into gameplay-facing contracts.</p>
+<h2 id="mouse-touch-and-xr-policy">Mouse, touch, and XR policy<a class="headerlink" href="#mouse-touch-and-xr-policy" title="Permanent link">&para;</a></h2>
+<p>The current docs should describe these lanes carefully:</p>
+<ul>
+<li><strong>Mouse:</strong> valid as a concrete spatial UI provider lane and a future gameplay experiment, but not an official v1 gameplay promise.</li>
+<li><strong>Touch:</strong> should be extracted through its own provider/repo lane rather than hidden behind desktop proof-host glue or silently folded into the mouse package.</li>
+<li><strong>XR:</strong> should likewise arrive as its own provider lane with XR-specific extraction and runtime semantics, not as an undocumented branch inside another package.</li>
+</ul>
+<p>In other words: <strong>touch and XR belong in explicit provider lanes when they happen.</strong> The public docs should not imply that the current mouse-backed proof path secretly covers those surfaces already.</p>
 <h2 id="why-keep-future-providers-documented">Why keep future providers documented<a class="headerlink" href="#why-keep-future-providers-documented" title="Permanent link">&para;</a></h2>
 <p>The docs should preserve repo/API references for non-camera inputs because they help with:</p>
 <ul>
@@ -5638,7 +5699,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 1, 2026 13:58:33 UTC">May 1, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 23, 2026 15:23:46 UTC">May 23, 2026</span>
   </span>
 
     
