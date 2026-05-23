@@ -32,6 +32,27 @@ AeroBeat docs still distinguish between:
 
 That model remains useful, but only `mediapipe_camera`-style camera paths should be described as official v1 gameplay support.
 
+## Ownership split for spatial UI inputs
+
+The audited spatial UI work clarified that gameplay input ownership and spatial UI ownership are related but distinct:
+
+- **`aerobeat-input-core`** owns normalized provider contracts and shared input-facing vocabulary.
+- **`aerobeat-spatial-ui-core`** owns reusable spatial UI bridge/runtime contracts for pointer-style interaction.
+- **`aerobeat-spatial-ui-mouse`** is the concrete packaged mouse lane that feeds desktop pointer data into that spatial UI bridge.
+- **`aerobeat-ui-core`** owns menu/UI contracts that consume those interactions, not the extraction logic itself.
+
+This matters because not every non-camera signal should be modeled as a gameplay provider first. Some signals are better treated as **UI-provider lanes** until AeroBeat intentionally promotes them into gameplay-facing contracts.
+
+## Mouse, touch, and XR policy
+
+The current docs should describe these lanes carefully:
+
+- **Mouse:** valid as a concrete spatial UI provider lane and a future gameplay experiment, but not an official v1 gameplay promise.
+- **Touch:** should be extracted through its own provider/repo lane rather than hidden behind desktop proof-host glue or silently folded into the mouse package.
+- **XR:** should likewise arrive as its own provider lane with XR-specific extraction and runtime semantics, not as an undocumented branch inside another package.
+
+In other words: **touch and XR belong in explicit provider lanes when they happen.** The public docs should not imply that the current mouse-backed proof path secretly covers those surfaces already.
+
 ## Why keep future providers documented
 
 The docs should preserve repo/API references for non-camera inputs because they help with:

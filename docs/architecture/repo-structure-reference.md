@@ -161,7 +161,33 @@ aerobeat-environment-gaussian-splat/
 
 `aerobeat-environment-gaussian-splat` is the specialized Gaussian-splat fulfillment/runtime wrapper. Downstream repos should consume it for splat-specific support rather than talking to third-party decoders directly.
 
-## H. Concrete implementation repo examples
+## H. Spatial UI family reference
+
+### Spatial UI core (`aerobeat-spatial-ui-core`)
+
+```text
+aerobeat-spatial-ui-core/
+├── interfaces/         # Spatial interaction and bridge/resolver contracts
+├── runtime/            # Shared world-space or pointer interaction runtime pieces
+├── globals/            # Shared spatial UI constants/signals
+└── utils/              # Small spatial UI helpers
+```
+
+`aerobeat-spatial-ui-core` is the shared bridge layer for packaged spatial interaction. It is not the owner of concrete mouse, touch, or XR extraction.
+
+### Spatial UI provider (`aerobeat-spatial-ui-mouse`)
+
+```text
+aerobeat-spatial-ui-mouse/
+├── providers/          # Concrete mouse-backed spatial interaction implementation
+├── adapters/           # Translation into spatial-ui-core contracts
+├── tests/
+└── plugin.cfg
+```
+
+`aerobeat-spatial-ui-mouse` is the first concrete packaged provider lane. Future touch and XR packages should follow the same pattern in their own repos rather than being folded into this one.
+
+## I. Concrete implementation repo examples
 
 ### Input provider repo (`aerobeat-input-mediapipe-python`)
 
@@ -207,6 +233,6 @@ aerobeat-ui-kit-community/
 └── sync_manifest.json
 ```
 
-## I. Assembly composition rule
+## J. Assembly composition rule
 
 Assembly repos such as `aerobeat-assembly-community` compose only the core repos and concrete repos they actually need via GodotEnv. They do not inherit the entire platform by default.

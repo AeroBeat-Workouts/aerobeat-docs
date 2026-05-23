@@ -7,7 +7,7 @@ To ensure license compliance and correct file structure, always start new reposi
 Examples:
 
 * **Assembly / Feature / UI Shell:** GPLv3
-* **Input Core / Feature Core / Content Core / Asset Core / UI Core / Tool Core / Input / Tool / UI Kit:** MPL 2.0
+* **Input Core / Feature Core / Content Core / Asset Core / UI Core / Tool Core / Input / Tool / UI Kit / Spatial UI package:** MPL 2.0
 * **Skins / Avatars / Cosmetics / Environments:** CC BY-NC 4.0
 
 ## Dependency management
@@ -25,7 +25,19 @@ AeroBeat uses **GodotEnv** as the dependency composition contract.
 * **Tool repos** depend on [`aerobeat-tool-core`](https://github.com/AeroBeat-Workouts/aerobeat-tool-core) and consume content and asset contracts as needed. Concrete authoring products should use the `aerobeat-tool-*` naming family and expose core content operations through a headless/CLI surface even when they also ship an interactive editor.
 * **Environment repos** use the `aerobeat-environment-*` family for reusable internal environment packages and runtime loading helpers. `aerobeat-environment-core` is a concrete internal environment package baseline built on [`aerobeat-asset-core`](https://github.com/AeroBeat-Workouts/aerobeat-asset-core), while specialized runtime helpers such as `aerobeat-environment-loader` and `aerobeat-environment-gaussian-splat` should keep their adjacent dependencies explicit instead of implying a new universal core lane.
 * **UI kits and shells** depend on [`aerobeat-ui-core`](https://github.com/AeroBeat-Workouts/aerobeat-ui-core) plus any concrete UI kits/assets they need.
+* **Spatial UI repos** depend on the smallest honest package chain: `aerobeat-ui-core` for UI contracts, `aerobeat-spatial-ui-core` for the shared bridge layer, and only the concrete `aerobeat-spatial-ui-*` provider packages actually needed by the consumer.
 * **Asset repos** depend on [`aerobeat-asset-core`](https://github.com/AeroBeat-Workouts/aerobeat-asset-core).
+
+### Packaged spatial UI resolver flow
+
+The spatial UI lane should be installed and resolved as packages, not improvised inside one proof host:
+
+1. consumer shell or assembly installs `aerobeat-ui-core`, any needed UI kit, `aerobeat-spatial-ui-core`, and an optional concrete `aerobeat-spatial-ui-*` provider through GodotEnv
+2. `aerobeat-spatial-ui-core` resolves the packaged provider lane at runtime
+3. the shell wires the resolved interaction output into its menus/widgets
+4. future touch or XR support should arrive as their own provider packages, not as hidden branches inside the mouse lane
+
+This keeps provider ownership explicit and keeps future extraction work auditable.
 
 ## The `.testbed` pattern
 
@@ -57,7 +69,7 @@ When creating or updating playable content contracts:
 
 ## Versioning (`plugin.cfg`)
 
-All modular repositories (features, inputs, UI kits, tools, and reusable asset packages) must contain a `plugin.cfg` manifest. When releasing updates:
+All modular repositories (features, inputs, UI kits, spatial UI providers, tools, and reusable asset packages) must contain a `plugin.cfg` manifest. When releasing updates:
 
 1. **Open `plugin.cfg`:** Located at the repository root.
 2. **Update version:** Increment the `version="x.y.z"` field following Semantic Versioning.

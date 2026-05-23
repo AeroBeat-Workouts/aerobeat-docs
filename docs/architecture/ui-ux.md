@@ -1,122 +1,113 @@
 # UI Architecture (Atomic Design)
 
-We utilize a **Multi-Kit Ecosystem** to support White Labeling and distinct platform requirements. We separate **Logic** (ViewModel), **Visuals** (View), and **Layout** (Shell).
+We utilize a **multi-kit ecosystem** so UI logic, presentation, and spatial interaction packaging can evolve independently. The audited repo split is now explicit: **UI contracts**, **visual kits**, and **spatial interaction providers** do not all live in the same repo.
 
-### 1. UI Core (`aerobeat-ui-core`)
+## 1. UI Core (`aerobeat-ui-core`)
 
-* **Role:** The Logic Layer (ViewModel). Contains abstract GDScript classes.
-* **Content:** `AeroButtonBase`, `AeroSliderBase`. No `.tscn` files.
-* **Goal:** Ensures bug fixes in logic propagate to all visual kits.
+- **Role:** the shared UI contract and base-logic layer.
+- **Content:** abstract GDScript classes, menu/view interfaces, reusable base behaviors, and UI-facing globals.
+- **Does not own:** concrete spatial pointer extraction, provider-specific mouse/touch/XR glue, or skin-specific visuals.
 
-### 2. UI Kits (`aerobeat-ui-kit-*`)
+## 2. Spatial UI Core (`aerobeat-spatial-ui-core`)
 
-* **Role:** The Visual Layer (View). Contains pure, stateless visual components.
-* **Variants:** `aerobeat-ui-kit-community`, `aerobeat-ui-kit-linkinpark`.
-* **Structure:**
-    * **Atoms:** Scenes inheriting Core logic (e.g., `AeroButton.tscn` extends `AeroButtonBase`).
-    * **Molecules:** Functional groups (e.g., `SongCard`).
-    * **Organisms:** Complex sections (e.g., `SongList`).
+- **Role:** the shared runtime bridge for spatial UI interaction.
+- **Content:** packaged resolver-facing bridge code, shared world-space/pointer interaction contracts, and reusable spatial UI runtime pieces.
+- **Goal:** let consumer shells resolve a packaged spatial interaction implementation without baking provider-specific behavior directly into `aerobeat-ui-core` or a proof-host app.
 
-### 3. UI Shells (`aerobeat-ui-shell-*`)
+## 3. Spatial UI Providers (`aerobeat-spatial-ui-*`)
 
-* **Role:** The Assembler. Defines "Layouts" and "Pages."
-* **Variants:** `aerobeat-ui-shell-mobile-community`, `aerobeat-ui-shell-arcade-linkinpark`.
-* **License:** **GPLv3** (Contains Application Logic).
-* **Responsibility:**
-    1.  **Import:** Consumes a specific `aerobeat-ui-kit-*` via the **UI Sync Protocol**.
-    2.  **Layout:** Arranges Organisms into usable Screens (`MainMenu`, `GameplayHUD`).
-    3.  **Wiring:** Connects component signals to App Logic (`aerobeat-assembly-*`).
+- **Role:** concrete packaged implementations for spatial interaction sources.
+- **Current audited example:** `aerobeat-spatial-ui-mouse`.
+- **Responsibility:** translate a concrete source into the spatial UI core contract.
 
-### The UI Sync Protocol (Tooling)
+Current policy:
 
-Since Godot lacks a native package manager for assets, we enforce consistency via custom tooling.
+- `aerobeat-spatial-ui-mouse` is the concrete desktop pointer lane we can describe today.
+- future touch and XR variants should land as their **own provider packages**, not as hidden branches inside the mouse repo and not as undocumented shell glue.
 
-1.  **The Script:** `./sync_ui_kit` (Python/Bash).
-    * Located in the root of every UI Shell repo.
-    * **Action:** Pulls the specific version of the target `aerobeat-ui-kit-*` defined in `.kit_version`.
-    * **Validation:** Runs the `test_components` command to ensure the imported atoms are compatible with the current project settings.
-2.  **The Workflow:**
-    * Developers **NEVER** modify `addons/aerobeat-ui-kit-*` inside a Shell repo.
-    * Updates are made in the Kit repo, tagged, and then pulled into Shells via the sync script.
+## 4. UI Kits (`aerobeat-ui-kit-*`)
 
-### UI Dependency Rules
+- **Role:** the visual component layer.
+- **Current documented package:** `aerobeat-ui-kit-community`.
+- **Content:** stateless widgets, scenes, and presentation assets that consume UI contracts.
+- **Does not own:** input extraction or provider/runtime bridge logic.
 
-To ensure UI repositories remain lightweight and fast to test, we enforce the following dependency limits:
+Typical structure:
+
+- **Atoms:** scenes inheriting core logic (for example a button scene extending a base button class)
+- **Molecules:** functional groups such as cards or controls
+- **Organisms:** larger composed interface sections
+
+## 5. UI Shells (`aerobeat-ui-shell-*`)
+
+- **Role:** the assembler/layout layer.
+- **Variants:** `aerobeat-ui-shell-mobile-community`, `aerobeat-ui-shell-desktop-community`, `aerobeat-ui-shell-xr-community`.
+- **License:** **GPLv3** because shells include application logic.
+- **Responsibility:**
+  1. compose the chosen UI kit
+  2. arrange components into screens and layouts
+  3. wire resolved interaction surfaces into app logic
+
+## Packaged resolver flow
+
+The audited package split implies this runtime flow:
+
+1. the consumer shell installs packaged dependencies through GodotEnv
+2. `aerobeat-ui-core` supplies the UI-facing contract surface
+3. `aerobeat-spatial-ui-core` provides the resolver/bridge layer for spatial interaction
+4. a concrete provider package such as `aerobeat-spatial-ui-mouse` plugs into that bridge
+5. `aerobeat-ui-kit-community` renders the widgets that receive the interaction output
+6. the shell wires those widgets into the assembly/runtime
+
+This is the durable architecture boundary to document. It is more precise than implying a monolithic “spatial UI repo” or a proof-host-only implementation.
+
+## Ownership summary
+
+| Concern | Owning repo family |
+| :--- | :--- |
+| normalized gameplay/provider contracts | `aerobeat-input-core` |
+| shared menu/UI contracts and base logic | `aerobeat-ui-core` |
+| spatial UI bridge/resolver contracts | `aerobeat-spatial-ui-core` |
+| concrete packaged mouse spatial provider | `aerobeat-spatial-ui-mouse` |
+| community visual widgets and scenes | `aerobeat-ui-kit-community` |
+
+## UI dependency rules
+
+To keep UI repositories lightweight and testable, keep these boundaries explicit:
 
 | Dependency Type | Repository | Status | Logic |
 | :--- | :--- | :--- | :--- |
-| **UI Core** | `aerobeat-ui-core` | **Required** | Needed for `AeroMenuProvider` and other UI-facing interfaces. |
+| **UI Core** | `aerobeat-ui-core` | **Required** | Shared UI contracts and base behavior. |
+| **Spatial UI Core** | `aerobeat-spatial-ui-core` | **Allowed when spatial interaction is needed** | Shared bridge/resolver layer for world-space or pointer-style UI. |
+| **Spatial UI Provider** | `aerobeat-spatial-ui-*` | **Optional** | Only install the concrete provider lane the shell/runtime actually needs. |
 | **Asset Core** | `aerobeat-asset-core` | **Allowed** | Shared UI-facing asset definitions when a shell or kit needs them. |
-| **Component Kit** | `aerobeat-ui-kit-*` | **Required** | Source of all buttons, sliders, and standard widgets. |
-| **Shared Assets** | `aerobeat-asset-common` | **Allowed** | Fonts, Logos, and Global Icons only. |
-| **Vendor Tools** | `aerobeat-vendor-*` | **Dev-Only** | Tween libs or UI helpers. In Prod, these are Peer Dependencies provided by Assembly. |
-| **Game Content** | `aerobeat-asset-*` | **FORBIDDEN** | UI must never depend on specific Level/Env packs. Use Mock Data for testing. |
+| **Component Kit** | `aerobeat-ui-kit-*` | **Required** | Source of buttons, cards, sliders, and standard widgets. |
+| **Shared Assets** | `aerobeat-asset-common` | **Allowed** | Fonts, logos, and global icons only. |
+| **Vendor Tools** | `aerobeat-vendor-*` | **Dev-only** | Helpers or tooling, not the owner of AeroBeat UI contracts. |
+| **Game Content** | `aerobeat-asset-*` | **Forbidden** | UI must not depend on specific level or environment packs. |
 
-### Theming & Reskinning Strategy
+## Theming and reskinning strategy
 
-To support "White Label" partners (e.g., a specific Artist edition or Arcade cabinet), we separate **Structure** from **Style** using the Multi-Kit architecture.
+To support white-label partners and distinct platform shells, AeroBeat separates **structure** from **style**.
 
-1.  **Multi-Kit Architecture:** We do not force a single visual style.
-    *   **Community Kit:** Standard flat design.
-    *   **Partner Kits:** Bespoke designs (e.g., 3D Vinyl Records for buttons) that inherit the same `AeroButtonBase` logic.
-2.  **Shared Logic:** All interaction logic lives in `aerobeat-ui-core`. This ensures that fixing a "double-click bug" in the Core fixes it for every partner kit instantly.
-3.  **Shell Swapping:** We create dedicated Shells (e.g., `aerobeat-ui-shell-arcade-linkinpark`) that consume the specific Partner Kit.
+1. **Multiple kits are allowed.** AeroBeat does not force one global visual identity.
+2. **Shared interaction contracts stay shared.** Fixes in `aerobeat-ui-core` or `aerobeat-spatial-ui-core` should benefit every consuming kit or shell.
+3. **Shells choose the package set they need.** A desktop shell may consume the mouse spatial provider; a future touch or XR shell should consume its own provider lane instead of inheriting hidden desktop assumptions.
 
-### UI Licensing & Assets
+## UI licensing and assets
 
-*   **UI Core & Kits:** Licensed under **MPL 2.0** (Libraries).
-*   **UI Shells:** Licensed under **GPLv3** (Application Logic).
-*   **Assets:** Visuals used by the UI (Icons, Fonts) can be stored inside the UI repo if they are specific to that UI, or pulled from `aerobeat-asset-common` if shared.
+- **UI core, spatial UI core, spatial UI providers, and UI kits:** licensed as reusable library/package lanes under **MPL 2.0**.
+- **UI shells:** licensed under **GPLv3** because they include application logic.
+- **Assets:** visuals used by UI can live inside the owning UI repo when they are kit-specific, or come from shared asset lanes when intentionally shared.
 
+## The UI tier strategy
 
-### The UI Tier Strategy (MVVM)
+AeroBeat still does not assume one universal default shell. The assembly defines the product/runtime composition, and the UI tier provides the package set that fits the target platform.
 
-We do not have a "Default UI." The Assembly defines **UI Contracts** (`AeroMenuProvider`), and the UI Tier implements them.
+- **Desktop community shell:** may consume the mouse spatial provider for pointer-first menus.
+- **Mobile shell:** should use an explicit touch-oriented provider lane when that package exists.
+- **XR shell:** should use an explicit XR-oriented provider lane when that package exists.
 
-* **`aerobeat-ui-shell-mobile-community`**: 2D Touch-based interface (Scrolls, Taps).
-* **`aerobeat-ui-shell-pc-community`**: Mouse/Keyboard interface (Hover states, Keybinds).
-* **`aerobeat-ui-shell-vr-community`**: Spatial interface (Laser pointers, World-Space Canvas).
+## Scope note
 
-## 🛡️ Risk Mitigation Features
-
-To address specific risks identified in our strategic plan, the UI must support the following specialized interfaces.
-
-### 1. The Locker Room (Runtime Gizmos)
-
-*   **Risk:** **Avatar Clipping.** Since UGC Avatars vary wildly in shape (e.g., a Skeleton vs. a Sumo Wrestler), standard attachment points for cosmetics (like Hats or Glasses) may clip or float.
-*   **Solution:** The "Locker Room" UI must provide a **Runtime Gizmo** overlay.
-    *   **Functionality:** When equipping an accessory, the user can enter "Adjust Mode" to translate, rotate, and scale the item relative to the socket.
-    *   **Storage:** These offsets are saved in the User Profile against the specific `(AvatarID, CosmeticID)` pair.
-
-### 2. Streamer Mode
-
-*   **Risk:** **Copyright Strikes (DMCA).** Streamers broadcasting gameplay may accidentally play copyrighted UGC music, risking their channels.
-*   **Solution:** A global **"Streamer Mode"** toggle in the Settings menu.
-    *   **UI Behavior:**
-        *   **Audio:** Mutes all UGC audio tracks, replacing them with safe, licensed "Streamer Friendly" silence.
-        *   **Visuals:** Hides potentially offensive UGC album art or usernames, replacing them with generic placeholders.
-    *   **Implementation:** The UI Shell must bind this toggle to the **`aerobeat-tool-settings`** service, which the Audio Engine listens to.
-
-## 9. Meta-Game UI Flows
-
-To ensure a seamless experience between the "Game Loop" (Workout) and the "Meta Loop" (Progression), we define specific interaction patterns for the Profile and Locker Room.
-
-### A. The Profile Hub (Overlay Pattern)
-
-The Profile is not a separate "Scene" but a **Modal Overlay** accessible from anywhere in the Main Menu.
-
-*   **Trigger:** Clicking the "Profile Badge" (Top-Right HUD).
-*   **State:** Pauses the underlying menu interaction but keeps the background visible (dimmed).
-*   **Components:**
-    *   `ProfileBadge` (Atom): Displays mini-avatar and level.
-    *   `ProfileHub` (Organism): The modal window containing stats and settings.
-
-### B. The Locker Room (Scene Transition)
-Unlike the Profile, the Locker Room requires a full scene transition to load the high-fidelity 3D environment for the Avatar.
-
-*   **Trigger:** "Edit Avatar" button in Profile Hub or Main Menu.
-*   **Transition:** Fade to Black -> Load `LockerRoom.tscn`.
-*   **Interaction Model:**
-    *   **Preview First:** Clicking an item equips it *visually* but not *logically*.
-    *   **Hold-to-Buy:** Purchasing requires a 1.0s hold interaction to prevent accidental WP spending.
-    *   **Gizmo Mode:** A dedicated sub-state for adjusting accessory offsets.
+The existence of spatial UI packages does **not** change the official v1 gameplay statement: camera remains the only official v1 gameplay input. Non-camera spatial packages are valuable for UI navigation, prototyping, and future platform lanes, but the docs should not overclaim gameplay parity for them.
