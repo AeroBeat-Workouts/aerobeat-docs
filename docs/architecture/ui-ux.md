@@ -10,15 +10,15 @@ We utilize a **multi-kit ecosystem** so UI logic, presentation, and spatial inte
 
 ## 2. Spatial UI Core (`aerobeat-spatial-ui-core`)
 
-- **Role:** the shared runtime bridge for spatial UI interaction.
-- **Content:** packaged resolver-facing bridge code, shared world-space/pointer interaction contracts, and reusable spatial UI runtime pieces.
-- **Goal:** let consumer shells resolve a packaged spatial interaction implementation without baking provider-specific behavior directly into `aerobeat-ui-core` or a proof-host app.
+- **Role:** the shared helper layer for spatial UI interaction.
+- **Content:** reusable helper-layer code under `src/helpers/...`, including spatial surface descriptors, rect-target resolution helpers, projection helpers, and hover/capture policy scaffolding.
+- **Goal:** let concrete spatial provider packages share helper infrastructure without turning this repo into a second contract owner or native 2D bridge owner.
 
 ## 3. Spatial UI Providers (`aerobeat-spatial-ui-*`)
 
 - **Role:** concrete packaged implementations for spatial interaction sources.
 - **Current audited example:** `aerobeat-spatial-ui-mouse`.
-- **Responsibility:** translate a concrete source into the spatial UI core contract.
+- **Responsibility:** translate a concrete source into the existing `aerobeat-input-core` UI interaction contract while reusing helper-layer pieces from `aerobeat-spatial-ui-core` when useful.
 
 Current policy:
 
@@ -53,9 +53,9 @@ Typical structure:
 The audited package split implies this runtime flow:
 
 1. the consumer shell installs packaged dependencies through GodotEnv
-2. `aerobeat-ui-core` supplies the UI-facing contract surface
-3. `aerobeat-spatial-ui-core` provides the resolver/bridge layer for spatial interaction
-4. a concrete provider package such as `aerobeat-spatial-ui-mouse` plugs into that bridge
+2. `aerobeat-input-core` supplies the canonical UI interaction contract and native 2D bridge lane
+3. `aerobeat-spatial-ui-core` contributes the shared helper-layer pieces a provider can reuse
+4. a concrete provider package such as `aerobeat-spatial-ui-mouse` plugs those helpers into real mouse-backed spatial behavior
 5. `aerobeat-ui-kit-community` renders the widgets that receive the interaction output
 6. the shell wires those widgets into the assembly/runtime
 
@@ -65,9 +65,9 @@ This is the durable architecture boundary to document. It is more precise than i
 
 | Concern | Owning repo family |
 | :--- | :--- |
-| normalized gameplay/provider contracts | `aerobeat-input-core` |
+| normalized gameplay/provider contracts plus canonical UI interaction contract / native 2D bridge | `aerobeat-input-core` |
 | shared menu/UI contracts and base logic | `aerobeat-ui-core` |
-| spatial UI bridge/resolver contracts | `aerobeat-spatial-ui-core` |
+| shared spatial helper-layer code | `aerobeat-spatial-ui-core` |
 | concrete packaged mouse spatial provider | `aerobeat-spatial-ui-mouse` |
 | community visual widgets and scenes | `aerobeat-ui-kit-community` |
 
@@ -78,7 +78,7 @@ To keep UI repositories lightweight and testable, keep these boundaries explicit
 | Dependency Type | Repository | Status | Logic |
 | :--- | :--- | :--- | :--- |
 | **UI Core** | `aerobeat-ui-core` | **Required** | Shared UI contracts and base behavior. |
-| **Spatial UI Core** | `aerobeat-spatial-ui-core` | **Allowed when spatial interaction is needed** | Shared bridge/resolver layer for world-space or pointer-style UI. |
+| **Spatial UI Core** | `aerobeat-spatial-ui-core` | **Allowed when spatial interaction is needed** | Shared helper layer for world-space or pointer-style UI providers. |
 | **Spatial UI Provider** | `aerobeat-spatial-ui-*` | **Optional** | Only install the concrete provider lane the shell/runtime actually needs. |
 | **Asset Core** | `aerobeat-asset-core` | **Allowed** | Shared UI-facing asset definitions when a shell or kit needs them. |
 | **Component Kit** | `aerobeat-ui-kit-*` | **Required** | Source of buttons, cards, sliders, and standard widgets. |
@@ -91,7 +91,7 @@ To keep UI repositories lightweight and testable, keep these boundaries explicit
 To support white-label partners and distinct platform shells, AeroBeat separates **structure** from **style**.
 
 1. **Multiple kits are allowed.** AeroBeat does not force one global visual identity.
-2. **Shared interaction contracts stay shared.** Fixes in `aerobeat-ui-core` or `aerobeat-spatial-ui-core` should benefit every consuming kit or shell.
+2. **Shared interaction contracts stay shared.** Fixes in `aerobeat-ui-core`, `aerobeat-input-core`, or the helper layer in `aerobeat-spatial-ui-core` should benefit every consuming kit or shell.
 3. **Shells choose the package set they need.** A desktop shell may consume the mouse spatial provider; a future touch or XR shell should consume its own provider lane instead of inheriting hidden desktop assumptions.
 
 ## UI licensing and assets

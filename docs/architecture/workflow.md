@@ -25,17 +25,18 @@ AeroBeat uses **GodotEnv** as the dependency composition contract.
 * **Tool repos** depend on [`aerobeat-tool-core`](https://github.com/AeroBeat-Workouts/aerobeat-tool-core) and consume content and asset contracts as needed. Concrete authoring products should use the `aerobeat-tool-*` naming family and expose core content operations through a headless/CLI surface even when they also ship an interactive editor.
 * **Environment repos** use the `aerobeat-environment-*` family for reusable internal environment packages and runtime loading helpers. `aerobeat-environment-core` is a concrete internal environment package baseline built on [`aerobeat-asset-core`](https://github.com/AeroBeat-Workouts/aerobeat-asset-core), while specialized runtime helpers such as `aerobeat-environment-loader` and `aerobeat-environment-gaussian-splat` should keep their adjacent dependencies explicit instead of implying a new universal core lane.
 * **UI kits and shells** depend on [`aerobeat-ui-core`](https://github.com/AeroBeat-Workouts/aerobeat-ui-core) plus any concrete UI kits/assets they need.
-* **Spatial UI repos** depend on the smallest honest package chain: `aerobeat-ui-core` for UI contracts, `aerobeat-spatial-ui-core` for the shared bridge layer, and only the concrete `aerobeat-spatial-ui-*` provider packages actually needed by the consumer.
+* **Spatial UI repos** depend on the smallest honest package chain: `aerobeat-input-core` for the canonical UI interaction contract / native 2D bridge path, `aerobeat-spatial-ui-core` for shared helper-layer code, and only the concrete `aerobeat-spatial-ui-*` provider packages actually needed by the consumer.
 * **Asset repos** depend on [`aerobeat-asset-core`](https://github.com/AeroBeat-Workouts/aerobeat-asset-core).
 
 ### Packaged spatial UI resolver flow
 
 The spatial UI lane should be installed and resolved as packages, not improvised inside one proof host:
 
-1. consumer shell or assembly installs `aerobeat-ui-core`, any needed UI kit, `aerobeat-spatial-ui-core`, and an optional concrete `aerobeat-spatial-ui-*` provider through GodotEnv
-2. `aerobeat-spatial-ui-core` resolves the packaged provider lane at runtime
-3. the shell wires the resolved interaction output into its menus/widgets
-4. future touch or XR support should arrive as their own provider packages, not as hidden branches inside the mouse lane
+1. consumer shell or assembly installs `aerobeat-input-core`, any needed UI kit/contracts, `aerobeat-spatial-ui-core`, and an optional concrete `aerobeat-spatial-ui-*` provider through GodotEnv
+2. `aerobeat-spatial-ui-core` contributes the packaged helper layer the provider reuses
+3. the concrete provider publishes into the canonical `aerobeat-input-core` UI interaction contract / native bridge path
+4. the shell wires the resolved interaction output into its menus/widgets
+5. future touch or XR support should arrive as their own provider packages, not as hidden branches inside the mouse lane
 
 This keeps provider ownership explicit and keeps future extraction work auditable.
 

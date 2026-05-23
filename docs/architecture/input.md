@@ -36,9 +36,9 @@ That model remains useful, but only `mediapipe_camera`-style camera paths should
 
 The audited spatial UI work clarified that gameplay input ownership and spatial UI ownership are related but distinct:
 
-- **`aerobeat-input-core`** owns normalized provider contracts and shared input-facing vocabulary.
-- **`aerobeat-spatial-ui-core`** owns reusable spatial UI bridge/runtime contracts for pointer-style interaction.
-- **`aerobeat-spatial-ui-mouse`** is the concrete packaged mouse lane that feeds desktop pointer data into that spatial UI bridge.
+- **`aerobeat-input-core`** owns normalized provider contracts and shared input-facing vocabulary, including the canonical UI interaction contract and native 2D bridge path.
+- **`aerobeat-spatial-ui-core`** is a reusable helper layer for pointer-style spatial UI providers. It contributes shared surface, projection, target-resolution, and hover/capture helpers, but it does not own the contract.
+- **`aerobeat-spatial-ui-mouse`** is the concrete packaged mouse lane that uses those helpers to deliver desktop pointer behavior.
 - **`aerobeat-ui-core`** owns menu/UI contracts that consume those interactions, not the extraction logic itself.
 
 This matters because not every non-camera signal should be modeled as a gameplay provider first. Some signals are better treated as **UI-provider lanes** until AeroBeat intentionally promotes them into gameplay-facing contracts.

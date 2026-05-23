@@ -167,25 +167,35 @@ aerobeat-environment-gaussian-splat/
 
 ```text
 aerobeat-spatial-ui-core/
-├── interfaces/         # Spatial interaction and bridge/resolver contracts
-├── runtime/            # Shared world-space or pointer interaction runtime pieces
-├── globals/            # Shared spatial UI constants/signals
-└── utils/              # Small spatial UI helpers
+├── src/
+│   └── helpers/
+│       ├── aero_spatial_ui_core_manifest.gd
+│       ├── policies/
+│       │   └── aero_spatial_hover_capture_policy.gd
+│       ├── providers/
+│       │   ├── aero_spatial_projection_helper.gd
+│       │   ├── aero_spatial_rect_target_resolver.gd
+│       │   └── aero_spatial_target_resolver_base.gd
+│       └── surfaces/
+│           ├── aero_spatial_surface_descriptor.gd
+│           └── aero_spatial_target_resolution_result.gd
 ```
 
-`aerobeat-spatial-ui-core` is the shared bridge layer for packaged spatial interaction. It is not the owner of concrete mouse, touch, or XR extraction.
+`aerobeat-spatial-ui-core` is a shared helper layer for spatial/world UI adapters. It is not the owner of the canonical UI interaction contract, the native 2D bridge, or concrete mouse, touch, or XR extraction.
 
 ### Spatial UI provider (`aerobeat-spatial-ui-mouse`)
 
 ```text
 aerobeat-spatial-ui-mouse/
-├── providers/          # Concrete mouse-backed spatial interaction implementation
-├── adapters/           # Translation into spatial-ui-core contracts
-├── tests/
-└── plugin.cfg
+├── src/
+│   └── providers/
+│       └── mouse/
+│           ├── aero_spatial_ui_mouse_provider.gd
+│           ├── aero_spatial_ui_mouse_provider_config.gd
+│           └── aero_spatial_ui_mouse_runtime_boundary.gd
 ```
 
-`aerobeat-spatial-ui-mouse` is the first concrete packaged provider lane. Future touch and XR packages should follow the same pattern in their own repos rather than being folded into this one.
+`aerobeat-spatial-ui-mouse` is the first concrete packaged mouse provider lane. Future touch and XR packages should follow the same pattern in their own repos rather than being folded into this one.
 
 ## I. Concrete implementation repo examples
 
