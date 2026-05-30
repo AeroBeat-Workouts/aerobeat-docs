@@ -116,9 +116,9 @@ aerobeat-environment-core/
 ```text
 aerobeat-environment-loader/
 ├── src/
-│   ├── AeroToolManager.gd                 # Runtime environment load/swap entrypoint
-│   ├── AeroWorkoutYamlEnvironmentBridge.gd
-│   └── AeroSimpleYamlParser.gd
+│   ├── autoload/      # Repo-specific environment loader singleton/autoload entrypoint
+│   ├── bridges/       # Workout/package environment bridge helpers
+│   └── parsers/       # Lightweight manifest/YAML parsing helpers
 ├── .testbed/
 │   ├── addons.jsonc
 │   ├── assets/
@@ -132,19 +132,16 @@ aerobeat-environment-loader/
 └── README.md
 ```
 
-`aerobeat-environment-loader` is the generic environment-fulfillment wrapper for official package-facing environment kinds such as image, video, GLB, and controlled splat requests. It should keep adjacent dependencies explicit rather than inheriting a fake universal asset/environment bundle.
+`aerobeat-environment-loader` is the generic environment-fulfillment wrapper for the official package-facing environment types `image_background`, `video_background`, `glb_environment`, and `splat`. It should keep adjacent dependencies explicit rather than inheriting a fake universal asset/environment bundle.
 
 ### Specialized splat runtime repo (`aerobeat-environment-gaussian-splat`)
 
 ```text
 aerobeat-environment-gaussian-splat/
 ├── src/
-│   ├── AeroGaussianSplatManager.gd
-│   ├── AeroGaussianSplatBackgroundLoader.gd
-│   ├── AeroGaussianSplatBackgroundReadWorker.gd
-│   └── AeroToolManager.gd
-├── addons/
-│   └── aerobeat-environment-gaussian-splat-fulfillment/
+│   ├── runtime/       # Splat runtime + background load/read helpers
+│   └── adapters/      # Loader-facing fulfillment adapters when the repo exposes them
+├── addons/            # Optional installable addon payload, if the repo ships one
 ├── scripts/
 │   └── restore-testbed-addons.sh
 ├── .testbed/
@@ -159,7 +156,7 @@ aerobeat-environment-gaussian-splat/
 └── README.md
 ```
 
-`aerobeat-environment-gaussian-splat` is the specialized Gaussian-splat fulfillment/runtime wrapper. Downstream repos should consume it for splat-specific support rather than talking to third-party decoders directly.
+`aerobeat-environment-gaussian-splat` is the specialized runtime wrapper for the official `splat` environment type. That type is now package-facing, but it remains the controlled advanced lane rather than the broad default creator path. Downstream repos should consume this package for splat-specific support rather than talking to third-party decoders directly.
 
 ## H. Spatial UI family reference
 
