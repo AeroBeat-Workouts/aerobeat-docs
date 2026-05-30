@@ -6171,7 +6171,8 @@
 <p><strong>Role:</strong> AeroBeat-facing client API manager singleton imported into Godot consumers.</p>
 <p><strong>Owns:</strong></p>
 <ul>
-<li><code>AeroToolManager</code>-style singleton/autoload entrypoint</li>
+<li>repo-specific singleton/autoload entrypoint (for example <code>AeroApiManager.gd</code> in <code>aerobeat-tool-api</code>)</li>
+<li>explicit post-clone rename away from template placeholder names such as <code>AeroToolManager</code></li>
 <li>guest/session handling for AeroBeat APIs</li>
 <li>athlete identity/access status exposed in AeroBeat terms</li>
 <li>request orchestration to AeroBeat-owned endpoints</li>
@@ -6202,6 +6203,7 @@
 <li>provider object ID ↔ AeroBeat mapping helpers where required</li>
 <li>provider-specific error normalization for the manager layer</li>
 <li>mod.io-specific DTOs kept out of product repos</li>
+<li>vendor-local facade/workbench helpers named after the actual provider (for example <code>ModioVendorFacade.gd</code>), not as generic public manager identities</li>
 </ul>
 <p><strong>Must not own:</strong></p>
 <ul>
@@ -6287,6 +6289,7 @@ never:
 <p>The backend API and hybrid UGC docs already say the game client should integrate through AeroBeat API surfaces. Making <code>aerobeat-tool-api</code> the singleton manager keeps that direction coherent while tightening the newer identity/access/entitlement framing.</p>
 <h3 id="it-matches-godotenv-package-consumption">It matches GodotEnv package consumption<a class="headerlink" href="#it-matches-godotenv-package-consumption" title="Permanent link">&para;</a></h3>
 <p><code>aerobeat-tool-api</code> is already set up as a repo-root-consumed package with a hidden <code>.testbed/</code> workbench for development. That is the right shape for a reusable autoload/service package that multiple assemblies can install without importing gameplay baggage.</p>
+<p><code>aerobeat-vendor-modio</code> should follow the same hidden <code>.testbed/</code> workbench pattern for provider-local smoke tests and fixtures, but its public teaching surface should stay vendor-local: think <code>ModioVendorFacade</code> and provider adapters behind it, not a second generic product-wide manager.</p>
 <h3 id="it-preserves-vendor-replaceability">It preserves vendor replaceability<a class="headerlink" href="#it-preserves-vendor-replaceability" title="Permanent link">&para;</a></h3>
 <p>If <code>aerobeat-tool-api</code> depends on a provider adapter instead of inlining mod.io concerns everywhere, AeroBeat can later:</p>
 <ul>
@@ -6334,12 +6337,13 @@ never:
 <li><code>services/downloads/</code></li>
 <li><code>interfaces/provider_adapter.gd</code></li>
 <li><code>providers/</code> composition glue that wires the active adapter</li>
-<li><code>autoload/</code> or <code>src/AeroToolManager.gd</code> singleton entrypoint</li>
+<li><code>autoload/</code> or <code>src/AeroApiManager.gd</code> singleton entrypoint</li>
+<li>rename template placeholder manager names during repo creation instead of shipping <code>AeroToolManager</code> verbatim</li>
 </ul>
 <p>A healthy shape is:</p>
 <div class="highlight"><pre><span></span><code>aerobeat-tool-api/
 ├── src/
-│   ├── AeroToolManager.gd
+│   ├── AeroApiManager.gd
 │   ├── interfaces/
 │   │   └── ugc_provider_adapter.gd
 │   ├── services/
@@ -6399,7 +6403,7 @@ never:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 7, 2026 13:45:29 UTC">May 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 30, 2026 17:10:26 UTC">May 30, 2026</span>
   </span>
 
     
