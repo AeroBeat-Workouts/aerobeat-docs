@@ -1,7 +1,9 @@
 ## Base template for a Tool Manager.
 ##
-## This class serves as the main entry point for the tool service.
-## It is intended to be used as an Autoload (Singleton) or a static helper.
+## This class is a clone-time placeholder only.
+## Rename the file/class/autoload to the repo-specific manager name
+## before treating a template clone as real runtime surface area.
+## Examples: AeroApiManager, AeroSettingsManager.
 class_name AeroToolManager
 extends Node
 
@@ -30,8 +32,8 @@ func _initialize() -> void:
 	if _is_initialized:
 		return
 	
-	# TODO: Add initialization logic here
+	# TODO: Add initialization logic here after renaming this placeholder manager.
 	_is_initialized = true
 	initialized.emit()
-	print("AeroToolManager initialized.")
+	print("AeroToolManager placeholder initialized. Rename this manager for the cloned repo.")
 #endregion

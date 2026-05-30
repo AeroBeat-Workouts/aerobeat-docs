@@ -73,7 +73,8 @@ A separate workflow/domain repo becomes justified only if AeroBeat later has mul
 
 **Owns:**
 
-- `AeroToolManager`-style singleton/autoload entrypoint
+- repo-specific singleton/autoload entrypoint (for example `AeroApiManager.gd` in `aerobeat-tool-api`)
+- explicit post-clone rename away from template placeholder names such as `AeroToolManager`
 - guest/session handling for AeroBeat APIs
 - athlete identity/access status exposed in AeroBeat terms
 - request orchestration to AeroBeat-owned endpoints
@@ -106,6 +107,7 @@ A separate workflow/domain repo becomes justified only if AeroBeat later has mul
 - provider object ID ↔ AeroBeat mapping helpers where required
 - provider-specific error normalization for the manager layer
 - mod.io-specific DTOs kept out of product repos
+- vendor-local facade/workbench helpers named after the actual provider (for example `ModioVendorFacade.gd`), not as generic public manager identities
 
 **Must not own:**
 
@@ -208,6 +210,8 @@ The backend API and hybrid UGC docs already say the game client should integrate
 
 `aerobeat-tool-api` is already set up as a repo-root-consumed package with a hidden `.testbed/` workbench for development. That is the right shape for a reusable autoload/service package that multiple assemblies can install without importing gameplay baggage.
 
+`aerobeat-vendor-modio` should follow the same hidden `.testbed/` workbench pattern for provider-local smoke tests and fixtures, but its public teaching surface should stay vendor-local: think `ModioVendorFacade` and provider adapters behind it, not a second generic product-wide manager.
+
 ### It preserves vendor replaceability
 
 If `aerobeat-tool-api` depends on a provider adapter instead of inlining mod.io concerns everywhere, AeroBeat can later:
@@ -272,14 +276,15 @@ The manager should expose a small AeroBeat-facing service surface, for example:
 - `services/downloads/`
 - `interfaces/provider_adapter.gd`
 - `providers/` composition glue that wires the active adapter
-- `autoload/` or `src/AeroToolManager.gd` singleton entrypoint
+- `autoload/` or `src/AeroApiManager.gd` singleton entrypoint
+- rename template placeholder manager names during repo creation instead of shipping `AeroToolManager` verbatim
 
 A healthy shape is:
 
 ```text
 aerobeat-tool-api/
 ├── src/
-│   ├── AeroToolManager.gd
+│   ├── AeroApiManager.gd
 │   ├── interfaces/
 │   │   └── ugc_provider_adapter.gd
 │   ├── services/
