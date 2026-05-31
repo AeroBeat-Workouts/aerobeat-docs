@@ -96,10 +96,14 @@ The assembly manifest is the product's source of truth for runtime addon composi
 
 `aerobeat-docs` itself is not a runtime addon consumer, so it does not need an `addons.jsonc` for this migration.
 
-However, the docs repo owns the template source of truth and therefore must emit the correct manifest placement for every generated repo type:
+The canonical runnable template code now lives in the standalone `aerobeat-template-*` GitHub repositories, not inside `aerobeat-docs`.
 
-- package template output -> `.testbed/addons.jsonc`
-- assembly template output -> `addons.jsonc` at repo root
+The docs repo's responsibility is to link to those template repos and document the expected manifest placement for each generated repo type:
+
+- package template repos -> `.testbed/addons.jsonc`
+- assembly template repos -> `addons.jsonc` at repo root
+
+The docs must also warn that clone-time placeholder files/classes/autoloads need to be renamed immediately so stale identifiers such as `AeroToolManager` do not survive into real runtime repos.
 
 ---
 

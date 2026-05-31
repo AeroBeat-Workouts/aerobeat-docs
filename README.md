@@ -77,5 +77,8 @@ The live site is available at: https://aerobeat-workouts.github.io/aerobeat-docs
 
 ## Repository Templates
 
-This repository serves as the **Source of Truth** for our GitHub Template Repositories.
-If you are looking to create a new repository for the AeroBeat ecosystem (Assembly, Feature, Input, etc.), please refer to the Templates Documentation.
+This repository no longer ships runnable template payloads.
+
+If you are creating a new AeroBeat repository (Assembly, Feature, Input, Tool, UI Shell, asset package, and so on), start from the canonical `aerobeat-template-*` GitHub repositories documented in `templates/README.md` and use the docs repo only as the guidance/index surface.
+
+First step after cloning any template: rename placeholder files, classes, autoloads, and stale identifiers before treating the clone as real runtime code. Known cleanup example: `AeroToolManager` must not survive as the final shipped manager identity in a real tool repo.

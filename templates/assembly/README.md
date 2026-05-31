@@ -1,47 +1,21 @@
-# AeroBeat Assembly Template
+# Assembly Template
 
-This is the official template for creating an **Assembly** repository within the AeroBeat ecosystem.
+This folder is now documentation-only. The canonical assembly template lives here:
 
-An **Assembly** is the "Game Client." It is the top-level Godot project that ties together the exact core repos, input drivers, UI shells, features, tools, and asset packages it needs into a playable executable.
+- <https://github.com/AeroBeat-Workouts/aerobeat-template-assembly>
 
-## 📋 Repository Details
+## What to do
 
-*   **Type:** Assembly (Game Client)
-*   **License:** **GNU GPLv3** (Strict Copyleft)
-*   **Dependencies:**
-    *   One or more of the six core repos, only as needed by the assembly (`aerobeat-input-core`, `aerobeat-feature-core`, `aerobeat-content-core`, `aerobeat-asset-core`, `aerobeat-ui-core`, `aerobeat-tool-core`)
-    *   `aerobeat-tool-*` (Services / As needed)
-    *   `aerobeat-input-*` (As needed)
-    *   `aerobeat-ui-shell-*` (As needed)
-    *   `aerobeat-ui-kit-*` (As needed / Transitive)
-    *   `aerobeat-feature-*` (As needed)
-    *   `aerobeat-asset-*` (Internal Assets / As needed)
+1. Open the canonical GitHub template repo above.
+2. Use GitHub's **Use this template** flow (or clone the repo directly if you are doing template maintenance in the owning repo).
+3. Immediately rename placeholder files, classes, autoloads, and stale identifiers before treating the clone as real runtime code.
+4. Keep future runnable code changes in the owning template repo, not in `aerobeat-docs`.
 
-## 🚀 Getting Started
+## License lane
 
-1.  **Clone your new repo:**
-    ```bash
-    git clone https://github.com/YourOrg/aerobeat-assembly-custom.git
-    ```
-2.  **Run Setup:**
-    Initialize the environment and download dependencies.
-    ```bash
-    python setup_dev.py
-    ```
-3.  **Open in Godot:**
-    Import the `project.godot` file into **Godot 4.6.2 stable standard**.
+- **Expected license:** GPLv3
 
-## 🧪 Testing & CI/CD
+## Notes
 
-This template comes pre-configured with **GUT (Godot Unit Test)** workflows.
-
-*   **Local Testing:** Run tests via the "GUT" panel in the Godot Editor.
-*   **CI/CD:** A GitHub Action (`.github/workflows/gut_ci.yml`) runs automatically on every push to `main`.
-*   **Requirement:** 100% Code Coverage is enforced.
-
-## 📂 Structure
-
-*   `addons/` - Exact runtime dependencies managed by `setup_dev.py` or a manifest-driven flow.
-*   `src/` - Application-specific logic (Main Loop, Scene Switching).
-*   `tests/` - Unit tests mirroring the `src/` structure.
-*   `assets/` - Local assets (Splash screens, icons).
+- Assembly/game repository starting point.
+- If you find stale placeholder names after clone, remove them first. The known example is `AeroToolManager`, which must never survive as the final shipped manager identity in a real tool repo.

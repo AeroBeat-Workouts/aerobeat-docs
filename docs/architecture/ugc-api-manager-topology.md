@@ -74,7 +74,7 @@ A separate workflow/domain repo becomes justified only if AeroBeat later has mul
 **Owns:**
 
 - repo-specific singleton/autoload entrypoint (for example `AeroApiManager.gd` in `aerobeat-tool-api`)
-- explicit post-clone rename away from template placeholder names such as `AeroToolManager`
+- explicit post-clone rename away from template placeholder names such as `AeroToolManager`, using the canonical `aerobeat-template-tool` GitHub repo as the clone source rather than any docs-hosted payload
 - guest/session handling for AeroBeat APIs
 - athlete identity/access status exposed in AeroBeat terms
 - request orchestration to AeroBeat-owned endpoints
@@ -277,7 +277,7 @@ The manager should expose a small AeroBeat-facing service surface, for example:
 - `interfaces/provider_adapter.gd`
 - `providers/` composition glue that wires the active adapter
 - `autoload/` or `src/AeroApiManager.gd` singleton entrypoint
-- rename template placeholder manager names during repo creation instead of shipping `AeroToolManager` verbatim
+- rename template placeholder manager names during repo creation instead of shipping `AeroToolManager` verbatim; the docs should link to the canonical template repo and never embed the placeholder runtime payload themselves
 
 A healthy shape is:
 

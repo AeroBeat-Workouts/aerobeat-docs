@@ -1,6 +1,0 @@
-config_version=5
-
-[application]
-
-config/name="AeroBeat Skins Testbed"
-config/features=PackedStringArray("4.6", "Forward Plus")

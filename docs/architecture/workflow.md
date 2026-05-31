@@ -2,7 +2,11 @@
 
 ## Repository templates
 
-To ensure license compliance and correct file structure, always start new repositories using the templates found in `aerobeat-docs/templates/`.
+To ensure license compliance and correct file structure, always start new repositories from the canonical `aerobeat-template-*` GitHub template repositories documented in `templates/README.md`.
+
+`aerobeat-docs/templates/` is now a docs-only link directory. It should explain which template to use and what cleanup is mandatory after clone, but it must not ship runnable template payloads.
+
+Immediately after cloning any template, rename placeholder files, classes, autoloads, and stale identifiers before treating the clone as real runtime code. In the tool lane, that specifically includes removing placeholder names such as `AeroToolManager`.
 
 Examples:
 

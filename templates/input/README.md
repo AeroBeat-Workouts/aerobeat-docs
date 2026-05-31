@@ -1,40 +1,21 @@
-# AeroBeat Input Driver Template
+# Input Template
 
-This is the official template for creating an **Input Driver** repository within the AeroBeat ecosystem.
+This folder is now documentation-only. The canonical input template lives here:
 
-Input Drivers bridge hardware (Webcams, VR Controllers, Smart Watches) to the AeroBeat input contracts.
+- <https://github.com/AeroBeat-Workouts/aerobeat-template-input>
 
-## 📋 Repository Details
+## What to do
 
-*   **Type:** Input Driver
-*   **License:** **Mozilla Public License 2.0 (MPL 2.0)**
-*   **Dependencies:**
-    *   `aerobeat-input-core` (Required)
-    *   `aerobeat-vendor-*` (Allowed)
+1. Open the canonical GitHub template repo above.
+2. Use GitHub's **Use this template** flow (or clone the repo directly if you are doing template maintenance in the owning repo).
+3. Immediately rename placeholder files, classes, autoloads, and stale identifiers before treating the clone as real runtime code.
+4. Keep future runnable code changes in the owning template repo, not in `aerobeat-docs`.
 
-## 🚀 Getting Started
+## License lane
 
-1.  **Clone your new repo:**
-    ```bash
-    git clone https://github.com/YourOrg/aerobeat-input-custom.git
-    ```
-2.  **Run Setup:**
-    Initialize the testbed environment.
-    ```bash
-    python setup_dev.py
-    ```
-3.  **Open in Godot:**
-    Import the `project.godot` file located inside the `.testbed/` folder into **Godot 4.6.2 stable standard**.
+- **Expected license:** MPL 2.0
 
-## 🧪 Testing
+## Notes
 
-This template comes pre-configured with **GUT (Godot Unit Test)** workflows.
-
-*   **Local Testing:** Run tests via the "GUT" panel in the Godot Editor (inside the Testbed).
-*   **Requirement:** 100% Code Coverage is enforced.
-
-## 📂 Structure
-
-*   `src/` - The driver logic (GDScript).
-*   `.testbed/tests/` - Repo-local unit tests run by the testbed.
-*   `.testbed/` - A local-only Godot project used to run/debug the driver.
+- Input-driver package starting point.
+- If you find stale placeholder names after clone, remove them first. The known example is `AeroToolManager`, which must never survive as the final shipped manager identity in a real tool repo.

@@ -1,27 +1,21 @@
-# AeroBeat UI Shell
+# UI Shell Template
 
-This is an **Interaction Shell** for the AeroBeat platform.
+This folder is now documentation-only. The canonical ui shell template lives here:
 
-*   **License:** GPLv3
-*   **Role:** Defines the layout and flow of the application (Mobile, VR, Arcade).
-*   **Dependencies:** `aerobeat-ui-core` (Required logic), `aerobeat-ui-kit-*` (Required visuals), with `aerobeat-asset-core` and `aerobeat-tool-core` only when the shell consumes those contracts.
+- <https://github.com/AeroBeat-Workouts/aerobeat-template-ui-shell>
 
-## Setup
+## What to do
 
-1.  **Initialize the local testbed:**
-    Clones the required UI-layer contracts for the shell to compile.
-    ```bash
-    python setup_dev.py
-    ```
+1. Open the canonical GitHub template repo above.
+2. Use GitHub's **Use this template** flow (or clone the repo directly if you are doing template maintenance in the owning repo).
+3. Immediately rename placeholder files, classes, autoloads, and stale identifiers before treating the clone as real runtime code.
+4. Keep future runnable code changes in the owning template repo, not in `aerobeat-docs`.
 
-2.  **Sync UI Kit:**
-    Pulls the specific version of the UI Kit defined in this shell's configuration.
-    ```bash
-    python sync_ui_kit.py
-    ```
+## License lane
 
-## 📂 Structure
+- **Expected license:** GPLv3
 
-*   `.testbed/tests/` - Repo-local unit tests run by the hidden testbed.
-*   `.testbed/scenes/` - Optional manual/workbench scenes when the shell needs them.
-*   `.testbed/` - The local-only Godot workbench used to run/debug the shell.
+## Notes
+
+- Shell/application package starting point.
+- If you find stale placeholder names after clone, remove them first. The known example is `AeroToolManager`, which must never survive as the final shipped manager identity in a real tool repo.

@@ -1,21 +1,21 @@
-# AeroBeat UI Kit
+# UI Kit Template
 
-This is a **Visual Component Library** for the AeroBeat platform.
+This folder is now documentation-only. The canonical ui kit template lives here:
 
-*   **License:** MPL 2.0
-*   **Role:** Provides themed Atoms (ex: Buttons) and Molecules (ex: Cards).
-*   **Dependencies:** `aerobeat-ui-core` (Logic).
+- <https://github.com/AeroBeat-Workouts/aerobeat-template-ui-kit>
 
-## Setup
+## What to do
 
-Run the setup script to clone the required logic layer (`aerobeat-ui-core`) into your addons folder.
+1. Open the canonical GitHub template repo above.
+2. Use GitHub's **Use this template** flow (or clone the repo directly if you are doing template maintenance in the owning repo).
+3. Immediately rename placeholder files, classes, autoloads, and stale identifiers before treating the clone as real runtime code.
+4. Keep future runnable code changes in the owning template repo, not in `aerobeat-docs`.
 
-```bash
-python setup_dev.py
-```
+## License lane
 
-## 📂 Structure
+- **Expected license:** MPL 2.0
 
-*   `.testbed/tests/` - Repo-local unit tests run by the hidden testbed.
-*   `.testbed/scenes/` - Optional manual/workbench scenes when the UI kit needs them.
-*   `.testbed/` - The local-only Godot workbench used to run/debug the kit.
+## Notes
+
+- Reusable UI kit package starting point.
+- If you find stale placeholder names after clone, remove them first. The known example is `AeroToolManager`, which must never survive as the final shipped manager identity in a real tool repo.

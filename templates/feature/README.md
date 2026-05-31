@@ -1,44 +1,21 @@
-# AeroBeat Feature Template
+# Feature Template
 
-This is the official template for creating a **Feature** repository within the AeroBeat ecosystem.
+This folder is now documentation-only. The canonical feature template lives here:
 
-A **Feature** contains the pure gameplay logic for a specific mode (e.g., Boxing, Flow, Step). It is designed to be modular and plugged into an **Assembly**.
+- <https://github.com/AeroBeat-Workouts/aerobeat-template-feature>
 
-## 📋 Repository Details
+## What to do
 
-*   **Type:** Feature (Gameplay Logic)
-*   **License:** **GNU GPLv3** (Strict Copyleft)
-*   **Dependencies:**
-    *   `aerobeat-feature-core` (Required)
-    *   `aerobeat-content-core` (Required)
-    *   `aerobeat-vendor-*` (Allowed)
+1. Open the canonical GitHub template repo above.
+2. Use GitHub's **Use this template** flow (or clone the repo directly if you are doing template maintenance in the owning repo).
+3. Immediately rename placeholder files, classes, autoloads, and stale identifiers before treating the clone as real runtime code.
+4. Keep future runnable code changes in the owning template repo, not in `aerobeat-docs`.
 
-## 🚀 Getting Started
+## License lane
 
-1.  **Clone your new repo:**
-    ```bash
-    git clone https://github.com/YourOrg/aerobeat-feature-custom.git
-    ```
-2.  **Run Setup:**
-    Initialize the testbed environment.
-    ```bash
-    python setup_dev.py
-    ```
-3.  **Open in Godot:**
-    Import the `project.godot` file located inside the `.testbed/` folder into **Godot 4.6.2 stable standard**.
+- **Expected license:** GPLv3
 
-> **Note:** Features are libraries, not standalone games. We use a "Testbed" project (a minimal Godot project in a hidden folder) to run and debug the feature in isolation.
+## Notes
 
-## 🧪 Testing & CI/CD
-
-This template comes pre-configured with **GUT (Godot Unit Test)** workflows.
-
-*   **Local Testing:** Run tests via the "GUT" panel in the Godot Editor (inside the Testbed).
-*   **CI/CD:** A GitHub Action (`.github/workflows/gut_ci.yml`) runs automatically on every push to `main`.
-*   **Requirement:** 100% Code Coverage is enforced.
-
-## 📂 Structure
-
-*   `src/` - The actual feature logic (GDScript). This is what gets distributed.
-*   `.testbed/tests/` - Repo-local unit tests run by the testbed.
-*   `.testbed/` - A local-only Godot project used to run/debug the feature.
+- Gameplay feature package starting point.
+- If you find stale placeholder names after clone, remove them first. The known example is `AeroToolManager`, which must never survive as the final shipped manager identity in a real tool repo.
