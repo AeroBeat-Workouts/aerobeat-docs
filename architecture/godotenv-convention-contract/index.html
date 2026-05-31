@@ -6144,11 +6144,13 @@
 <p>The assembly manifest is the product's source of truth for runtime addon composition.</p>
 <h2 id="15-docs-and-template-repos">1.5 Docs and template repos<a class="headerlink" href="#15-docs-and-template-repos" title="Permanent link">&para;</a></h2>
 <p><code>aerobeat-docs</code> itself is not a runtime addon consumer, so it does not need an <code>addons.jsonc</code> for this migration.</p>
-<p>However, the docs repo owns the template source of truth and therefore must emit the correct manifest placement for every generated repo type:</p>
+<p>The canonical runnable template code now lives in the standalone <code>aerobeat-template-*</code> GitHub repositories, not inside <code>aerobeat-docs</code>.</p>
+<p>The docs repo's responsibility is to link to those template repos and document the expected manifest placement for each generated repo type:</p>
 <ul>
-<li>package template output -&gt; <code>.testbed/addons.jsonc</code></li>
-<li>assembly template output -&gt; <code>addons.jsonc</code> at repo root</li>
+<li>package template repos -&gt; <code>.testbed/addons.jsonc</code></li>
+<li>assembly template repos -&gt; <code>addons.jsonc</code> at repo root</li>
 </ul>
+<p>The docs must also warn that clone-time placeholder files/classes/autoloads need to be renamed immediately so stale identifiers such as <code>AeroToolManager</code> do not survive into real runtime repos.</p>
 <hr />
 <h2 id="2-naming-and-manifest-shape-rules">2. Naming and manifest-shape rules<a class="headerlink" href="#2-naming-and-manifest-shape-rules" title="Permanent link">&para;</a></h2>
 <h2 id="21-canonical-manifest-filename">2.1 Canonical manifest filename<a class="headerlink" href="#21-canonical-manifest-filename" title="Permanent link">&para;</a></h2>
@@ -6606,7 +6608,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 20, 2026 20:21:21 UTC">April 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 31, 2026 00:28:29 UTC">May 31, 2026</span>
   </span>
 
     
