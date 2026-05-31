@@ -142,8 +142,6 @@ aerobeat-environment-gaussian-splat/
 │   ├── runtime/       # Splat runtime + background load/read helpers
 │   └── adapters/      # Loader-facing fulfillment adapters when the repo exposes them
 ├── addons/            # Optional installable addon payload, if the repo ships one
-├── scripts/
-│   └── restore-testbed-addons.sh
 ├── .testbed/
 │   ├── addons.jsonc
 │   ├── assets/
