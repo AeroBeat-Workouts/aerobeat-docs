@@ -9,5 +9,7 @@ setId: ab-set-midnight-sprint-finish-round
 setName: Midnight Sprint Finish Round
 songId: ab-song-midnight-sprint
 chartId: ab-chart-midnight-sprint-boxing-hard
+preferredEnvironmentId: ab-environment-sunrise-studio
+fallbackEnvironmentId: ab-environment-sunrise-studio
 environmentId: ab-environment-sunrise-studio
 coachingOverlayId: ab-overlay-blaze-midnight-sprint-cue

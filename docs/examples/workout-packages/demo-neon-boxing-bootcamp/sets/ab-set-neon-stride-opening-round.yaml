@@ -9,5 +9,7 @@ setId: ab-set-neon-stride-opening-round
 setName: Neon Stride Opening Round
 songId: ab-song-neon-stride
 chartId: ab-chart-neon-stride-boxing-medium
+preferredEnvironmentId: ab-environment-neon-rooftop
+fallbackEnvironmentId: ab-environment-neon-rooftop
 environmentId: ab-environment-neon-rooftop
 coachingOverlayId: ab-overlay-aria-neon-stride-cue
