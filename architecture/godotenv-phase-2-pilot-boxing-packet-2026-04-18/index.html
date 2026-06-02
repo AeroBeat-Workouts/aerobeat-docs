@@ -5539,10 +5539,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#gut" class="md-nav__link">
+  <a href="#aerobeat-vendor-godot-unit-test" class="md-nav__link">
     <span class="md-ellipsis">
       
-        gut
+        aerobeat-vendor-godot-unit-test
       
     </span>
   </a>
@@ -6009,7 +6009,7 @@
 <ul>
 <li>creates <code>.testbed/addons/</code></li>
 <li>clones <code>aerobeat-core</code> via <strong>HTTPS</strong> into <code>.testbed/addons/aerobeat-core</code></li>
-<li>clones <code>gut</code> via <strong>HTTPS</strong> into <code>.testbed/addons/gut</code></li>
+<li>installs <code>aerobeat-vendor-godot-unit-test</code> into <code>.testbed/addons/aerobeat-vendor-godot-unit-test</code> via the local sibling symlink manifest</li>
 <li>creates runtime symlinks for <code>src -&gt; .testbed/src</code> and <code>test -&gt; .testbed/test</code></li>
 </ul>
 <p>That old test symlink behavior is now superseded by Derrick's updated package-layout decision: package repos should move repo-local unit tests under <code>.testbed/tests/</code> and stop treating a root <code>test/</code> directory as canonical.</p>
@@ -6045,13 +6045,13 @@
 <p>Current issues:</p>
 <ul>
 <li><code>config/features=PackedStringArray("4.2", "Forward Plus")</code></li>
-<li>GUT is enabled from <code>res://addons/gut/plugin.cfg</code>, which is correct for the future manifest-driven testbed once dependencies are restored</li>
+<li>GUT is enabled from <code>res://addons/aerobeat-vendor-godot-unit-test/plugin.cfg</code>, which is correct for the future manifest-driven testbed once dependencies are restored</li>
 </ul>
 <p>Required change:</p>
 <ul>
 <li>update the feature marker to <code>4.6</code></li>
 <li>keep the project rooted in <code>.testbed/</code></li>
-<li>keep GUT plugin enablement pointing at <code>res://addons/gut/plugin.cfg</code></li>
+<li>keep GUT plugin enablement pointing at <code>res://addons/aerobeat-vendor-godot-unit-test/plugin.cfg</code></li>
 </ul>
 <h4 id="githubworkflowsgut_ciyml"><code>.github/workflows/gut_ci.yml</code><a class="headerlink" href="#githubworkflowsgut_ciyml" title="Permanent link">&para;</a></h4>
 <p>Current issues:</p>
@@ -6091,10 +6091,10 @@
       &quot;subfolder&quot;: &quot;/&quot;
     },
     // GUT drives the repo-local test suite inside the hidden testbed/workbench.
-    &quot;gut&quot;: {
-      &quot;url&quot;: &quot;git@github.com:bitwes/Gut.git&quot;,
-      &quot;checkout&quot;: &quot;main&quot;,
-      &quot;subfolder&quot;: &quot;/addons/gut&quot;
+    &quot;aerobeat-vendor-godot-unit-test&quot;: {
+      &quot;url&quot;: &quot;../../aerobeat-vendor-godot-unit-test&quot;,
+      &quot;subfolder&quot;: &quot;/&quot;,
+      &quot;source&quot;: &quot;symlink&quot;
     }
   }
 }
@@ -6112,14 +6112,14 @@
 <li><code>aerobeat-ui-kit-community</code></li>
 </ul>
 <p>So the pilot packet should stay minimal and not pull in UI dependencies unless implementation work later proves they are actually needed.</p>
-<h4 id="gut"><code>gut</code><a class="headerlink" href="#gut" title="Permanent link">&para;</a></h4>
+<h4 id="aerobeat-vendor-godot-unit-test"><code>aerobeat-vendor-godot-unit-test</code><a class="headerlink" href="#aerobeat-vendor-godot-unit-test" title="Permanent link">&para;</a></h4>
 <p>GUT is still the test runner for the package workbench. Phase 1 precedent uses:</p>
 <ul>
-<li>SSH remote</li>
-<li><code>checkout: "main"</code></li>
-<li><code>subfolder: "/addons/gut"</code></li>
+<li>local sibling symlink URL (<code>../../aerobeat-vendor-godot-unit-test</code>)</li>
+<li><code>subfolder: "/"</code></li>
+<li><code>source: "symlink"</code></li>
 </ul>
-<p>The Boxing pilot should match that exact pattern so CI and local validation behave the same way as the already-migrated foundation chain.</p>
+<p>The Boxing pilot should match that exact local sibling manifest pattern so CI and local validation behave the same way as the already-migrated AeroBeat repos.</p>
 <hr />
 <h2 id="exact-repo-changes-for-the-implementation-bead">Exact repo changes for the implementation bead<a class="headerlink" href="#exact-repo-changes-for-the-implementation-bead" title="Permanent link">&para;</a></h2>
 <h2 id="files-to-add">Files to add<a class="headerlink" href="#files-to-add" title="Permanent link">&para;</a></h2>
@@ -6169,7 +6169,7 @@ godotenv<span class="w"> </span>addons<span class="w"> </span>install
 <ul>
 <li>document the canonical GUT run:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>godot<span class="w"> </span>--headless<span class="w"> </span>--path<span class="w"> </span>.testbed<span class="w"> </span>--script<span class="w"> </span>addons/gut/gut_cmdln.gd<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>godot<span class="w"> </span>--headless<span class="w"> </span>--path<span class="w"> </span>.testbed<span class="w"> </span>--script<span class="w"> </span>addons/aerobeat-vendor-godot-unit-test/gut_cmdln.gd<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-gdir<span class="o">=</span>res://tests<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-ginclude_subdirs<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-gexit
@@ -6251,7 +6251,7 @@ godotenv<span class="w"> </span>addons<span class="w"> </span>install
 <p>Expected result:</p>
 <ul>
 <li><code>.testbed/addons/aerobeat-core/</code> restored from tag <code>v0.1.0</code></li>
-<li><code>.testbed/addons/gut/</code> restored from <code>main</code></li>
+<li><code>.testbed/addons/aerobeat-vendor-godot-unit-test/</code> restored from <code>main</code></li>
 <li><code>.testbed/.addons/</code> cache populated</li>
 </ul>
 <h2 id="local-import-smoke-check">Local import smoke check<a class="headerlink" href="#local-import-smoke-check" title="Permanent link">&para;</a></h2>
@@ -6261,7 +6261,7 @@ godotenv<span class="w"> </span>addons<span class="w"> </span>install
 <p>Expected result:</p>
 <ul>
 <li>testbed imports cleanly using the restored addons</li>
-<li>GUT plugin path resolves from <code>.testbed/addons/gut/plugin.cfg</code></li>
+<li>GUT plugin path resolves from <code>.testbed/addons/aerobeat-vendor-godot-unit-test/plugin.cfg</code></li>
 </ul>
 <h2 id="local-editor-workflow">Local editor workflow<a class="headerlink" href="#local-editor-workflow" title="Permanent link">&para;</a></h2>
 <p>From repo root:</p>
@@ -6270,7 +6270,7 @@ godotenv<span class="w"> </span>addons<span class="w"> </span>install
 <p>This is the direct environment developers should use for future boxing bugfinding and package-local debugging.</p>
 <h2 id="local-test-run">Local test run<a class="headerlink" href="#local-test-run" title="Permanent link">&para;</a></h2>
 <p>From repo root:</p>
-<div class="highlight"><pre><span></span><code>godot<span class="w"> </span>--headless<span class="w"> </span>--path<span class="w"> </span>.testbed<span class="w"> </span>--script<span class="w"> </span>addons/gut/gut_cmdln.gd<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>godot<span class="w"> </span>--headless<span class="w"> </span>--path<span class="w"> </span>.testbed<span class="w"> </span>--script<span class="w"> </span>addons/aerobeat-vendor-godot-unit-test/gut_cmdln.gd<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-gdir<span class="o">=</span>res://tests<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-ginclude_subdirs<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-gexit
@@ -6344,7 +6344,7 @@ godotenv<span class="w"> </span>addons<span class="w"> </span>install
 <p>Dependency expectations for the first pilot cut:</p>
 <ul>
 <li><code>aerobeat-core</code> -&gt; <code>git@github.com:AeroBeat-Workouts/aerobeat-core.git</code> @ <code>v0.1.0</code>, <code>subfolder: "/"</code></li>
-<li><code>gut</code> -&gt; <code>git@github.com:bitwes/Gut.git</code> @ <code>main</code>, <code>subfolder: "/addons/gut"</code></li>
+<li><code>aerobeat-vendor-godot-unit-test</code> -&gt; <code>../../aerobeat-vendor-godot-unit-test</code>, <code>subfolder: "/"</code>, <code>source: "symlink"</code></li>
 </ul>
 <p>Validation should run from <code>.testbed/</code> directly and become the normal direct-development/debugging surface for future boxing work, with GUT targeting <code>res://tests</code>.</p>
 
@@ -6367,7 +6367,7 @@ godotenv<span class="w"> </span>addons<span class="w"> </span>install
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 2, 2026 17:28:50 UTC">May 2, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 2, 2026 13:53:20 UTC">June 2, 2026</span>
   </span>
 
     
