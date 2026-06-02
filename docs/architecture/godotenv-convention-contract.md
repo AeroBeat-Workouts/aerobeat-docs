@@ -607,9 +607,9 @@ Stored at `.testbed/addons.jsonc`.
       "checkout": "v0.1.0",
       "subfolder": "/"
     },
-    "gut": {
-      "url": "git@github.com:bitwes/Gut.git",
-      "checkout": "main",
+    "aerobeat-vendor-godot-unit-test": {
+      "url": "../../aerobeat-vendor-godot-unit-test",
+      "source": "symlink",
       "subfolder": "/"
     }
   }

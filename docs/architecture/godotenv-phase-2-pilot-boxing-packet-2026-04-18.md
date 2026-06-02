@@ -79,7 +79,7 @@ Current behavior:
 
 - creates `.testbed/addons/`
 - clones `aerobeat-core` via **HTTPS** into `.testbed/addons/aerobeat-core`
-- clones `gut` via **HTTPS** into `.testbed/addons/gut`
+- installs `aerobeat-vendor-godot-unit-test` into `.testbed/addons/aerobeat-vendor-godot-unit-test` via the local sibling symlink manifest
 - creates runtime symlinks for `src -> .testbed/src` and `test -> .testbed/test`
 
 That old test symlink behavior is now superseded by Derrick's updated package-layout decision: package repos should move repo-local unit tests under `.testbed/tests/` and stop treating a root `test/` directory as canonical.
@@ -122,13 +122,13 @@ Required replacement pattern:
 Current issues:
 
 - `config/features=PackedStringArray("4.2", "Forward Plus")`
-- GUT is enabled from `res://addons/gut/plugin.cfg`, which is correct for the future manifest-driven testbed once dependencies are restored
+- GUT is enabled from `res://addons/aerobeat-vendor-godot-unit-test/plugin.cfg`, which is correct for the future manifest-driven testbed once dependencies are restored
 
 Required change:
 
 - update the feature marker to `4.6`
 - keep the project rooted in `.testbed/`
-- keep GUT plugin enablement pointing at `res://addons/gut/plugin.cfg`
+- keep GUT plugin enablement pointing at `res://addons/aerobeat-vendor-godot-unit-test/plugin.cfg`
 
 #### `.github/workflows/gut_ci.yml`
 
@@ -173,10 +173,10 @@ Required initial contents:
       "subfolder": "/"
     },
     // GUT drives the repo-local test suite inside the hidden testbed/workbench.
-    "gut": {
-      "url": "git@github.com:bitwes/Gut.git",
-      "checkout": "main",
-      "subfolder": "/addons/gut"
+    "aerobeat-vendor-godot-unit-test": {
+      "url": "../../aerobeat-vendor-godot-unit-test",
+      "subfolder": "/",
+      "source": "symlink"
     }
   }
 }
@@ -198,15 +198,15 @@ There is no evidence in the current repo that Boxing should also consume:
 
 So the pilot packet should stay minimal and not pull in UI dependencies unless implementation work later proves they are actually needed.
 
-#### `gut`
+#### `aerobeat-vendor-godot-unit-test`
 
 GUT is still the test runner for the package workbench. Phase 1 precedent uses:
 
-- SSH remote
-- `checkout: "main"`
-- `subfolder: "/addons/gut"`
+- local sibling symlink URL (`../../aerobeat-vendor-godot-unit-test`)
+- `subfolder: "/"`
+- `source: "symlink"`
 
-The Boxing pilot should match that exact pattern so CI and local validation behave the same way as the already-migrated foundation chain.
+The Boxing pilot should match that exact local sibling manifest pattern so CI and local validation behave the same way as the already-migrated AeroBeat repos.
 
 ---
 
@@ -276,7 +276,7 @@ godot --headless --path .testbed --import
 - document the canonical GUT run:
 
 ```bash
-godot --headless --path .testbed --script addons/gut/gut_cmdln.gd \
+godot --headless --path .testbed --script addons/aerobeat-vendor-godot-unit-test/gut_cmdln.gd \
   -gdir=res://tests \
   -ginclude_subdirs \
   -gexit
@@ -382,7 +382,7 @@ godotenv addons install
 Expected result:
 
 - `.testbed/addons/aerobeat-core/` restored from tag `v0.1.0`
-- `.testbed/addons/gut/` restored from `main`
+- `.testbed/addons/aerobeat-vendor-godot-unit-test/` restored from `main`
 - `.testbed/.addons/` cache populated
 
 ## Local import smoke check
@@ -396,7 +396,7 @@ godot --headless --path .testbed --import
 Expected result:
 
 - testbed imports cleanly using the restored addons
-- GUT plugin path resolves from `.testbed/addons/gut/plugin.cfg`
+- GUT plugin path resolves from `.testbed/addons/aerobeat-vendor-godot-unit-test/plugin.cfg`
 
 ## Local editor workflow
 
@@ -413,7 +413,7 @@ This is the direct environment developers should use for future boxing bugfindin
 From repo root:
 
 ```bash
-godot --headless --path .testbed --script addons/gut/gut_cmdln.gd \
+godot --headless --path .testbed --script addons/aerobeat-vendor-godot-unit-test/gut_cmdln.gd \
   -gdir=res://tests \
   -ginclude_subdirs \
   -gexit
@@ -505,6 +505,6 @@ The Boxing pilot is ready for implementation once the coder follows this exact s
 Dependency expectations for the first pilot cut:
 
 - `aerobeat-core` -> `git@github.com:AeroBeat-Workouts/aerobeat-core.git` @ `v0.1.0`, `subfolder: "/"`
-- `gut` -> `git@github.com:bitwes/Gut.git` @ `main`, `subfolder: "/addons/gut"`
+- `aerobeat-vendor-godot-unit-test` -> `../../aerobeat-vendor-godot-unit-test`, `subfolder: "/"`, `source: "symlink"`
 
 Validation should run from `.testbed/` directly and become the normal direct-development/debugging surface for future boxing work, with GUT targeting `res://tests`.

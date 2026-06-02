@@ -48,7 +48,7 @@ Most package repos still use a small Python bootstrap script that:
 
 - creates `.testbed/addons/`,
 - clones `aerobeat-core` and sometimes `aerobeat-ui-core`,
-- clones `gut`,
+- clones `aerobeat-vendor-godot-unit-test`,
 - symlinks `src/`, `test/`, or `assets/` into `.testbed/`. [E-03][E-04]
 
 This is consistent across features, inputs, tools, UI kit repos, UI shell repos, asset-style repos, and nearly all template repos. [E-03][E-04][E-08]
@@ -136,7 +136,7 @@ The standard feature-package repos in this older migration slice all currently f
 
 - `setup_dev.py`,
 - `.testbed/`,
-- clone `aerobeat-core` and `gut`,
+- clone `aerobeat-core` and `aerobeat-vendor-godot-unit-test`,
 - symlink `src/` and `test/` into `.testbed/`. [E-03]
 
 Impact:
@@ -154,7 +154,7 @@ Impact:
 
 - `setup_dev.py`,
 - `.testbed/`,
-- clone `aerobeat-core` and `gut`,
+- clone `aerobeat-core` and `aerobeat-vendor-godot-unit-test`,
 - symlink runtime/test content into `.testbed/`. [E-03]
 
 Impact:
@@ -194,7 +194,7 @@ Impact:
 
 - `setup_dev.py`,
 - `.testbed/`,
-- clone `aerobeat-core` and `gut`,
+- clone `aerobeat-core` and `aerobeat-vendor-godot-unit-test`,
 - symlink `src/` and `test/` into `.testbed/`. [E-04]
 
 Impact:
@@ -210,7 +210,7 @@ Current state:
 
 - `setup_dev.py`,
 - `.testbed/`,
-- clones `aerobeat-core`, `aerobeat-ui-core`, and `gut`,
+- clones `aerobeat-core`, `aerobeat-ui-core`, and `aerobeat-vendor-godot-unit-test`,
 - symlinks `src/` and `test/`. [E-04]
 
 Impact:
@@ -583,7 +583,7 @@ Even if code repos migrate successfully, stale docs or templates will reintroduc
 | --- | --- | --- |
 | `E-01` | Repo-family audit counts and repo inventory from shell scan | `projects/aerobeat/*` |
 | `E-02` | Assembly submodule workflow, local file URLs, and `project.godot` patching | `aerobeat-assembly-community/setup_dev.py`, `aerobeat-assembly-community/.gitmodules` |
-| `E-03` | Standard feature/input package bootstrap pattern (`core` + `gut` + symlinked `.testbed`) | `aerobeat-feature-boxing/setup_dev.py` |
+| `E-03` | Standard feature/input package bootstrap pattern (`core` + `aerobeat-vendor-godot-unit-test` + symlinked `.testbed`) | `aerobeat-feature-boxing/setup_dev.py` |
 | `E-04` | Standard tool/UI/package/template bootstrap variants | `aerobeat-ui-kit-community/setup_dev.py`, `aerobeat-ui-shell-desktop-community/setup_dev.py`, `aerobeat-tool-api/setup_dev.py`, `aerobeat-template-feature/setup_dev.py`, `aerobeat-template-assembly/setup_dev.py` |
 | `E-05` | UI shell `.kit_version` and `sync_ui_kit.py` flow | `aerobeat-ui-shell-desktop-community/.kit_version`, `aerobeat-ui-shell-desktop-community/sync_ui_kit.py`, `aerobeat-docs/templates/ui-shell/sync_ui_kit.py` |
 | `E-06` | Docs page describing submodules / `setup_dev` / `.testbed` as primary workflow | `aerobeat-docs/docs/architecture/workflow.md` |
