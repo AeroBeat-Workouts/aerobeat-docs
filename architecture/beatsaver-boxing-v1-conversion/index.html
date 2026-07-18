@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/architecture/workout-creation-tools-implementation-order/">
+        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/architecture/beatsaver-boxing-v1-conversion/">
       
       
-        <link rel="prev" href="../workout-creation-tools-import-format-matrix/">
+        <link rel="prev" href="../backend_api/">
       
       
-        <link rel="next" href="../topology/">
+        <link rel="next" href="../cloud_baker/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Workout Creation Tools Implementation Order - AeroBeat Documentation</title>
+        <title>BeatSaver to Boxing v1 Conversion - AeroBeat Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#workout-creation-tools-implementation-order" class="md-skip">
+        <a href="#beatsaver-to-aerobeat-boxing-v1-conversion" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Workout Creation Tools Implementation Order
+              BeatSaver to Boxing v1 Conversion
             
           </span>
         </div>
@@ -2713,10 +2713,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../beatsaver-boxing-v1-conversion/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BeatSaver to Boxing v1 Conversion
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2732,6 +2759,803 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-is-the-canonical-home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this is the canonical home
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#canonical-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical philosophy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Canonical philosophy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversion-goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversion goal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#product-posture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product posture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-choice-now-locked" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture choice now locked
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture choice now locked">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locked-v1-architecture-direct-beatsaver-grid-derived-boxing-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked v1 architecture: direct BeatSaver-grid-derived Boxing conversion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source grid
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#locked-object-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked object coverage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Locked object coverage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explicitly-covered-in-boxing-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicitly covered in Boxing v1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#locked-conversion-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked conversion rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-single-note-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Single-note rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dot-note-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Dot-note rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-guard-rule-for-center-pairs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Guard rule for center pairs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-non-guard-dual-note-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Non-guard dual-note rule
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Non-guard dual-note rule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-is-locked" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this is locked
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-obstacle-wall-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Obstacle / wall rule
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Obstacle / wall rule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allowed-synthesized-boxing-avoidance-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Allowed synthesized Boxing avoidance outputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forbidden-synthesized-boxing-avoidance-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Forbidden synthesized Boxing avoidance outputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collider-side-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Collider side sets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#counting-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Counting rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locked-interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked interpretation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-bomb-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Bomb rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-burst-slider-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Burst-slider rule
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Burst-slider rule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locked-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locked-first-pass-minimum-interval-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked first-pass minimum interval table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-arc-slider-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Arc / slider rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intentionally-ignored-or-dropped-source-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intentionally ignored or dropped source semantics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternatives-considered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternatives considered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-beatsaver-extra-music-analysis-heuristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. BeatSaver + extra music-analysis heuristics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. BeatSaver + extra music-analysis heuristics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Idea
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-not-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why not v1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-gesture-classification-first-boxing-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Gesture-classification-first Boxing architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Gesture-classification-first Boxing architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#idea_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Idea
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-not-the-canonical-v1-center" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why not the canonical v1 center
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-explicit-dual-strike-authored-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Explicit dual-strike authored actions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Explicit dual-strike authored actions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#idea_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Idea
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-deferred" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why deferred
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-highest-row-wins-dual-note-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Highest-row-wins dual-note priority
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Highest-row-wins dual-note priority">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#idea_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Idea
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-not-chosen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why not chosen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-boxing-arc-slider-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Boxing arc / slider conversion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Boxing arc / slider conversion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#idea_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Idea
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-deferred_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why deferred
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-bomb-authored-boxing-gameplay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Bomb-authored Boxing gameplay
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Bomb-authored Boxing gameplay">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#idea_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Idea
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-rejected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why rejected
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provenance-and-artifact-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provenance and artifact policy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Provenance and artifact policy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#canonical-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-artifact-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended artifact contents
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#closed-edge-case-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Closed edge-case decisions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-same-color-simultaneous-note-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Same-color simultaneous note groups
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-explicit-note-angle-offset-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Explicit note angle-offset semantics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-burst-slider-source-fields-versus-interval-based-boxing-bursts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Burst-slider source fields versus interval-based Boxing bursts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-same-beat-hybrid-group-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Same-beat hybrid group priority
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Same-beat hybrid group priority">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-family-normalize-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1: family-normalize first
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-cross-family-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2: cross-family priority
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-final-boxing-authored-chart-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Final Boxing authored chart encoding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-posture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation posture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationship-to-other-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship to other docs
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3301,37 +4125,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Workout Creation Tools Implementation Order
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../workout-creation-tools-implementation-order/" class="md-nav__link">
         
   
   
@@ -3347,762 +4144,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#purpose" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Purpose
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ordering-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ordering rules
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommended-milestone-sequence" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recommended milestone sequence
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#milestone-1-repo-skeleton-and-shared-workflow-foundations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Milestone 1 — Repo skeleton and shared workflow foundations
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Milestone 1 — Repo skeleton and shared workflow foundations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#goal" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Goal
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#primary-work" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Primary work
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-this-comes-first" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this comes first
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exit-criteria" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit criteria
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#milestone-2-package-shell-package-graph-and-workout-package-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Milestone 2 — Package shell, package graph, and workout package validation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Milestone 2 — Package shell, package graph, and workout package validation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#goal_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Goal
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#primary-work_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Primary work
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-this-comes-second" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this comes second
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dependencies_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exit-criteria_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit criteria
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#milestone-3-domain-local-validate-and-inspect-surfaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Milestone 3 — Domain-local validate and inspect surfaces
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Milestone 3 — Domain-local validate and inspect surfaces">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#goal_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Goal
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#primary-work_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Primary work
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-this-comes-third" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this comes third
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dependencies_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exit-criteria_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit criteria
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#milestone-4-explicit-repair-and-migration-flows" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Milestone 4 — Explicit repair and migration flows
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Milestone 4 — Explicit repair and migration flows">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#goal_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Goal
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#primary-work_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Primary work
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-this-comes-here" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this comes here
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dependencies_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exit-criteria_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit criteria
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#milestone-5-slot-aware-media-import-and-canonicalization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Milestone 5 — Slot-aware media import and canonicalization
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Milestone 5 — Slot-aware media import and canonicalization">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#goal_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Goal
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#primary-work_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Primary work
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-this-comes-before-gui-scenes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this comes before GUI scenes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dependencies_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exit-criteria_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit criteria
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#milestone-6-packagingbuild-workflows-and-ci-ready-headless-product" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Milestone 6 — Packaging/build workflows and CI-ready headless product
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Milestone 6 — Packaging/build workflows and CI-ready headless product">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#goal_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Goal
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#primary-work_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Primary work
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-this-milestone-matters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this milestone matters
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dependencies_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exit-criteria_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit criteria
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#milestone-7-penpot-informed-package-home-and-simple-form-scenes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Milestone 7 — Penpot-informed package-home and simple form scenes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Milestone 7 — Penpot-informed package-home and simple form scenes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#goal_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Goal
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#primary-work_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Primary work
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-the-gui-starts-here" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why the GUI starts here
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dependencies_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exit-criteria_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit criteria
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#milestone-8-chart-editor-scene-and-chart-specific-high-complexity-workflows" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Milestone 8 — Chart editor scene and chart-specific high-complexity workflows
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Milestone 8 — Chart editor scene and chart-specific high-complexity workflows">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#goal_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Goal
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#primary-work_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Primary work
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-this-is-later" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this is later
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dependencies_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exit-criteria_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit criteria
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#milestone-9-embedded-assembly-integration-via-godotenv" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Milestone 9 — Embedded assembly integration via GodotEnv
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Milestone 9 — Embedded assembly integration via GodotEnv">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#goal_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Goal
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#primary-work_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Primary work
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-this-is-last" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this is last
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dependencies_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exit-criteria_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit criteria
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dependency-summary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependency summary
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-should-not-gate-early-progress" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What should not gate early progress
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#practical-rationale" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Practical rationale
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#non-goals-of-this-implementation-order-doc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Non-goals of this implementation-order doc
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#canonical-summary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Canonical summary
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -6201,10 +6242,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#purpose" class="md-nav__link">
+  <a href="#why-this-is-the-canonical-home" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Purpose
+        Why this is the canonical home
       
     </span>
   </a>
@@ -6212,10 +6253,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ordering-rules" class="md-nav__link">
+  <a href="#scope" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ordering rules
+        Scope
       
     </span>
   </a>
@@ -6223,33 +6264,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#recommended-milestone-sequence" class="md-nav__link">
+  <a href="#canonical-philosophy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recommended milestone sequence
+        Canonical philosophy
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#milestone-1-repo-skeleton-and-shared-workflow-foundations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Milestone 1 — Repo skeleton and shared workflow foundations
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Milestone 1 — Repo skeleton and shared workflow foundations">
+    <nav class="md-nav" aria-label="Canonical philosophy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#goal" class="md-nav__link">
+  <a href="#source-truth" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Goal
+        Source truth
       
     </span>
   </a>
@@ -6257,10 +6287,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#primary-work" class="md-nav__link">
+  <a href="#conversion-goal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Primary work
+        Conversion goal
       
     </span>
   </a>
@@ -6268,32 +6298,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#why-this-comes-first" class="md-nav__link">
+  <a href="#product-posture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why this comes first
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exit-criteria" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit criteria
+        Product posture
       
     </span>
   </a>
@@ -6306,22 +6314,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#milestone-2-package-shell-package-graph-and-workout-package-validation" class="md-nav__link">
+  <a href="#architecture-choice-now-locked" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Milestone 2 — Package shell, package graph, and workout package validation
+        Architecture choice now locked
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Milestone 2 — Package shell, package graph, and workout package validation">
+    <nav class="md-nav" aria-label="Architecture choice now locked">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#goal_1" class="md-nav__link">
+  <a href="#locked-v1-architecture-direct-beatsaver-grid-derived-boxing-conversion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Goal
+        Locked v1 architecture: direct BeatSaver-grid-derived Boxing conversion
       
     </span>
   </a>
@@ -6329,43 +6337,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#primary-work_1" class="md-nav__link">
+  <a href="#source-grid" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Primary work
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-this-comes-second" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this comes second
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dependencies_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exit-criteria_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit criteria
+        Source grid
       
     </span>
   </a>
@@ -6378,66 +6353,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#milestone-3-domain-local-validate-and-inspect-surfaces" class="md-nav__link">
+  <a href="#locked-object-coverage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Milestone 3 — Domain-local validate and inspect surfaces
+        Locked object coverage
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Milestone 3 — Domain-local validate and inspect surfaces">
+    <nav class="md-nav" aria-label="Locked object coverage">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#goal_2" class="md-nav__link">
+  <a href="#explicitly-covered-in-boxing-v1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Goal
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#primary-work_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Primary work
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-this-comes-third" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this comes third
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dependencies_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exit-criteria_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit criteria
+        Explicitly covered in Boxing v1
       
     </span>
   </a>
@@ -6450,22 +6381,66 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#milestone-4-explicit-repair-and-migration-flows" class="md-nav__link">
+  <a href="#locked-conversion-rules" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Milestone 4 — Explicit repair and migration flows
+        Locked conversion rules
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Milestone 4 — Explicit repair and migration flows">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-single-note-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Single-note rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dot-note-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Dot-note rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-guard-rule-for-center-pairs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Guard rule for center pairs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-non-guard-dual-note-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Non-guard dual-note rule
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Non-guard dual-note rule">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#goal_3" class="md-nav__link">
+  <a href="#state" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Goal
+        State
       
     </span>
   </a>
@@ -6473,10 +6448,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#primary-work_3" class="md-nav__link">
+  <a href="#rule" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Primary work
+        Rule
       
     </span>
   </a>
@@ -6484,32 +6459,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#why-this-comes-here" class="md-nav__link">
+  <a href="#why-this-is-locked" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why this comes here
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dependencies_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exit-criteria_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit criteria
+        Why this is locked
       
     </span>
   </a>
@@ -6522,22 +6475,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#milestone-5-slot-aware-media-import-and-canonicalization" class="md-nav__link">
+  <a href="#5-obstacle-wall-rule" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Milestone 5 — Slot-aware media import and canonicalization
+        5. Obstacle / wall rule
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Milestone 5 — Slot-aware media import and canonicalization">
+    <nav class="md-nav" aria-label="5. Obstacle / wall rule">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#goal_4" class="md-nav__link">
+  <a href="#allowed-synthesized-boxing-avoidance-outputs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Goal
+        Allowed synthesized Boxing avoidance outputs
       
     </span>
   </a>
@@ -6545,10 +6498,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#primary-work_4" class="md-nav__link">
+  <a href="#forbidden-synthesized-boxing-avoidance-outputs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Primary work
+        Forbidden synthesized Boxing avoidance outputs
       
     </span>
   </a>
@@ -6556,10 +6509,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#why-this-comes-before-gui-scenes" class="md-nav__link">
+  <a href="#collider-side-sets" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why this comes before GUI scenes
+        Collider side sets
       
     </span>
   </a>
@@ -6567,10 +6520,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dependencies_4" class="md-nav__link">
+  <a href="#counting-rule" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Dependencies
+        Counting rule
       
     </span>
   </a>
@@ -6578,10 +6531,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#exit-criteria_4" class="md-nav__link">
+  <a href="#locked-interpretation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exit criteria
+        Locked interpretation
       
     </span>
   </a>
@@ -6594,22 +6547,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#milestone-6-packagingbuild-workflows-and-ci-ready-headless-product" class="md-nav__link">
+  <a href="#6-bomb-rule" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Milestone 6 — Packaging/build workflows and CI-ready headless product
+        6. Bomb rule
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Milestone 6 — Packaging/build workflows and CI-ready headless product">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-burst-slider-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Burst-slider rule
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Burst-slider rule">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#goal_5" class="md-nav__link">
+  <a href="#locked-behavior" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Goal
+        Locked behavior
       
     </span>
   </a>
@@ -6617,43 +6581,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#primary-work_5" class="md-nav__link">
+  <a href="#locked-first-pass-minimum-interval-table" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Primary work
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-this-milestone-matters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this milestone matters
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dependencies_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exit-criteria_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit criteria
+        Locked first-pass minimum interval table
       
     </span>
   </a>
@@ -6666,22 +6597,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#milestone-7-penpot-informed-package-home-and-simple-form-scenes" class="md-nav__link">
+  <a href="#8-arc-slider-rule" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Milestone 7 — Penpot-informed package-home and simple form scenes
+        8. Arc / slider rule
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Milestone 7 — Penpot-informed package-home and simple form scenes">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intentionally-ignored-or-dropped-source-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intentionally ignored or dropped source semantics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternatives-considered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternatives considered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-beatsaver-extra-music-analysis-heuristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. BeatSaver + extra music-analysis heuristics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. BeatSaver + extra music-analysis heuristics">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#goal_6" class="md-nav__link">
+  <a href="#idea" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Goal
+        Idea
       
     </span>
   </a>
@@ -6689,43 +6653,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#primary-work_6" class="md-nav__link">
+  <a href="#why-not-v1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Primary work
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-the-gui-starts-here" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why the GUI starts here
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dependencies_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exit-criteria_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit criteria
+        Why not v1
       
     </span>
   </a>
@@ -6738,22 +6669,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#milestone-8-chart-editor-scene-and-chart-specific-high-complexity-workflows" class="md-nav__link">
+  <a href="#2-gesture-classification-first-boxing-architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Milestone 8 — Chart editor scene and chart-specific high-complexity workflows
+        2. Gesture-classification-first Boxing architecture
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Milestone 8 — Chart editor scene and chart-specific high-complexity workflows">
+    <nav class="md-nav" aria-label="2. Gesture-classification-first Boxing architecture">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#goal_7" class="md-nav__link">
+  <a href="#idea_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Goal
+        Idea
       
     </span>
   </a>
@@ -6761,43 +6692,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#primary-work_7" class="md-nav__link">
+  <a href="#why-not-the-canonical-v1-center" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Primary work
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-this-is-later" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this is later
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dependencies_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exit-criteria_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit criteria
+        Why not the canonical v1 center
       
     </span>
   </a>
@@ -6810,22 +6708,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#milestone-9-embedded-assembly-integration-via-godotenv" class="md-nav__link">
+  <a href="#3-explicit-dual-strike-authored-actions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Milestone 9 — Embedded assembly integration via GodotEnv
+        3. Explicit dual-strike authored actions
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Milestone 9 — Embedded assembly integration via GodotEnv">
+    <nav class="md-nav" aria-label="3. Explicit dual-strike authored actions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#goal_8" class="md-nav__link">
+  <a href="#idea_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Goal
+        Idea
       
     </span>
   </a>
@@ -6833,43 +6731,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#primary-work_8" class="md-nav__link">
+  <a href="#why-deferred" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Primary work
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-this-is-last" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this is last
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dependencies_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exit-criteria_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit criteria
+        Why deferred
       
     </span>
   </a>
@@ -6882,10 +6747,166 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dependency-summary" class="md-nav__link">
+  <a href="#4-highest-row-wins-dual-note-priority" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Dependency summary
+        4. Highest-row-wins dual-note priority
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Highest-row-wins dual-note priority">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#idea_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Idea
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-not-chosen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why not chosen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-boxing-arc-slider-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Boxing arc / slider conversion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Boxing arc / slider conversion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#idea_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Idea
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-deferred_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why deferred
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-bomb-authored-boxing-gameplay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Bomb-authored Boxing gameplay
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Bomb-authored Boxing gameplay">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#idea_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Idea
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-rejected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why rejected
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provenance-and-artifact-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provenance and artifact policy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Provenance and artifact policy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#canonical-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-artifact-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended artifact contents
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#closed-edge-case-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Closed edge-case decisions
       
     </span>
   </a>
@@ -6893,10 +6914,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-should-not-gate-early-progress" class="md-nav__link">
+  <a href="#1-same-color-simultaneous-note-groups" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What should not gate early progress
+        1. Same-color simultaneous note groups
       
     </span>
   </a>
@@ -6904,10 +6925,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practical-rationale" class="md-nav__link">
+  <a href="#2-explicit-note-angle-offset-semantics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practical rationale
+        2. Explicit note angle-offset semantics
       
     </span>
   </a>
@@ -6915,10 +6936,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#non-goals-of-this-implementation-order-doc" class="md-nav__link">
+  <a href="#3-burst-slider-source-fields-versus-interval-based-boxing-bursts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Non-goals of this implementation-order doc
+        3. Burst-slider source fields versus interval-based Boxing bursts
       
     </span>
   </a>
@@ -6926,10 +6947,71 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#canonical-summary" class="md-nav__link">
+  <a href="#4-same-beat-hybrid-group-priority" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Canonical summary
+        4. Same-beat hybrid group priority
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Same-beat hybrid group priority">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-family-normalize-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1: family-normalize first
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-cross-family-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2: cross-family priority
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-final-boxing-authored-chart-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Final Boxing authored chart encoding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-posture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation posture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationship-to-other-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship to other docs
       
     </span>
   </a>
@@ -6956,355 +7038,340 @@
   
 
 
-<h1 id="workout-creation-tools-implementation-order">Workout Creation Tools Implementation Order<a class="headerlink" href="#workout-creation-tools-implementation-order" title="Permanent link">&para;</a></h1>
-<p>This document defines the current canonical <strong>implementation order</strong> for the AeroBeat workout creation tools repo.</p>
-<p>It builds on the already-locked decisions in:</p>
+<h1 id="beatsaver-to-aerobeat-boxing-v1-conversion">BeatSaver to AeroBeat Boxing v1 Conversion<a class="headerlink" href="#beatsaver-to-aerobeat-boxing-v1-conversion" title="Permanent link">&para;</a></h1>
+<p>This document is the canonical AeroBeat docs home for the <strong>Boxing v1 BeatSaver conversion spec</strong>.</p>
+<p>Use this page when you need the current truth for:</p>
 <ul>
-<li><code>docs/architecture/workout-creation-tools-architecture.md</code></li>
-<li><code>docs/architecture/workout-creation-tools-import-format-matrix.md</code></li>
-<li><code>docs/architecture/workout-creation-tools-cli-surface.md</code></li>
-<li><code>docs/architecture/content-repo-shapes.md</code></li>
-<li><code>docs/architecture/content-lane-implementation-phases.md</code></li>
-<li><code>docs/architecture/workout-package-storage-and-discovery.md</code></li>
+<li>what BeatSaver / Beat Saber Standard-map objects AeroBeat Boxing v1 converts</li>
+<li>which conversion rules are already locked</li>
+<li>which BeatSaver objects are intentionally ignored or dropped in Boxing v1</li>
+<li>which alternate architectures were considered and why they were rejected or deferred</li>
+<li>which formerly bounded edge cases are now explicitly closed in the Boxing v1 spec</li>
 </ul>
-<p>The goal is to give the repo a safe staged path from nothing to a usable workout-package authoring product without front-loading Penpot-driven GUI work or the heavyweight chart editor.</p>
-<h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
-<p>This is a milestone-ordering document, not a sprint plan.</p>
-<p>It exists to answer:</p>
+<p>This page is intentionally a <strong>conversion architecture and rules</strong> document, not a general Boxing gameplay page and not a choreography how-to.</p>
+<h2 id="why-this-is-the-canonical-home">Why this is the canonical home<a class="headerlink" href="#why-this-is-the-canonical-home" title="Permanent link">&para;</a></h2>
+<p>The Boxing gameplay pages describe the player-facing feature and current authored chart intent. They are not the most truthful place for a BeatSaver-specific import/conversion contract that spans:</p>
 <ul>
-<li>what should be implemented first</li>
-<li>what each stage depends on</li>
-<li>why that order is safe</li>
-<li>which slices can start before GUI design is finalized</li>
-<li>where the chart editor belongs relative to the rest of the product</li>
+<li>external source semantics</li>
+<li>conversion heuristics</li>
+<li>dropped-object policy</li>
+<li>provenance and artifact policy</li>
+<li>the final locked treatment of previously unresolved source edge cases</li>
 </ul>
-<p>It does <strong>not</strong> reopen the already-locked architecture, CLI split, package storage rules, accepted-import-format matrix, or optimization deferrals.</p>
-<h2 id="ordering-rules">Ordering rules<a class="headerlink" href="#ordering-rules" title="Permanent link">&para;</a></h2>
-<p>The implementation order should preserve the following rules throughout the repo build-out:</p>
+<p>Those concerns belong in Architecture because they define a tooling and content-conversion seam between BeatSaver source data and AeroBeat-authored Boxing charts.</p>
+<h2 id="scope">Scope<a class="headerlink" href="#scope" title="Permanent link">&para;</a></h2>
+<p>This document covers <strong>AeroBeat Boxing v1 conversion from BeatSaver / Beat Saber Standard-map source data</strong>.</p>
+<p>It does not define:</p>
+<ul>
+<li>the general AeroBeat Boxing player fantasy</li>
+<li>Flow conversion in full detail</li>
+<li>broader runtime implementation details outside the conversion contract</li>
+</ul>
+<h2 id="canonical-philosophy">Canonical philosophy<a class="headerlink" href="#canonical-philosophy" title="Permanent link">&para;</a></h2>
+<h3 id="source-truth">Source truth<a class="headerlink" href="#source-truth" title="Permanent link">&para;</a></h3>
+<p>For BeatSaver-derived Boxing content, the <strong>raw BeatSaver source remains canonical source truth</strong>.</p>
+<p>That means:</p>
+<ul>
+<li>the original BeatSaver map package remains the authoritative record of what was imported</li>
+<li>AeroBeat Boxing charts are a <strong>derived authored runtime form</strong>, not the primary archival source</li>
+<li>source-specific provenance, debug traces, warnings, and mapping diagnostics belong in package artifacts, not in the clean runtime chart payload</li>
+</ul>
+<h3 id="conversion-goal">Conversion goal<a class="headerlink" href="#conversion-goal" title="Permanent link">&para;</a></h3>
+<p>Boxing v1 aims for a <strong>deterministic, BeatSaver-only conversion system</strong>.</p>
+<p>The current product direction is:</p>
+<ul>
+<li>use BeatSaver-authored chart data as the only required gameplay source</li>
+<li>avoid extra music-analysis heuristics for v1</li>
+<li>prefer rules that are codable, inspectable, and replayable</li>
+<li>accept some honest lossiness rather than pretending unsupported semantics were preserved perfectly</li>
+</ul>
+<h3 id="product-posture">Product posture<a class="headerlink" href="#product-posture" title="Permanent link">&para;</a></h3>
+<p>Boxing v1 should be treated as a <strong>camera-first AeroBeat gameplay translation</strong> of BeatSaver input, not as an attempt to preserve VR-native semantics one-to-one.</p>
+<h2 id="architecture-choice-now-locked">Architecture choice now locked<a class="headerlink" href="#architecture-choice-now-locked" title="Permanent link">&para;</a></h2>
+<h3 id="locked-v1-architecture-direct-beatsaver-grid-derived-boxing-conversion">Locked v1 architecture: direct BeatSaver-grid-derived Boxing conversion<a class="headerlink" href="#locked-v1-architecture-direct-beatsaver-grid-derived-boxing-conversion" title="Permanent link">&para;</a></h3>
+<p>The current canonical direction is a <strong>BeatSaver-only Boxing conversion</strong> based on the authored BeatSaver 4x3 note grid and obstacle geometry.</p>
+<p>The converter should derive Boxing gameplay from source chart structure, not from:</p>
+<ul>
+<li>extra phrase-energy analysis</li>
+<li>music-structure inference</li>
+<li>generated choreography unrelated to the BeatSaver chart</li>
+<li>hidden runtime-only gesture-classifier guesses that have no durable conversion trace</li>
+</ul>
+<h3 id="source-grid">Source grid<a class="headerlink" href="#source-grid" title="Permanent link">&para;</a></h3>
+<p>BeatSaver note and obstacle reasoning in this spec uses the standard 4x3 cell model:</p>
+<div class="highlight"><pre><span></span><code>[0][1][2][3]
+[4][5][6][7]
+[8][9][10][11]
+</code></pre></div>
+<p>Rows are interpreted as:</p>
+<ul>
+<li>top row: <code>0..3</code></li>
+<li>middle row: <code>4..7</code></li>
+<li>bottom row: <code>8..11</code></li>
+</ul>
+<h2 id="locked-object-coverage">Locked object coverage<a class="headerlink" href="#locked-object-coverage" title="Permanent link">&para;</a></h2>
+<p>The recent Boxing v1 source-coverage audit confirmed that the major Standard-map gameplay object families are all accounted for at the policy level.</p>
+<h3 id="explicitly-covered-in-boxing-v1">Explicitly covered in Boxing v1<a class="headerlink" href="#explicitly-covered-in-boxing-v1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>normal colored notes</li>
+<li>directionless / dot notes</li>
+<li>simultaneous center dual-note guard pairs</li>
+<li>non-guard simultaneous dual-note groups</li>
+<li>obstacles / walls</li>
+<li>bombs</li>
+<li>burst sliders</li>
+<li>arcs / sliders</li>
+</ul>
+<p>Coverage does <strong>not</strong> mean every object is emitted as a Boxing-authored beat. Some are deliberately converted, and some are deliberately ignored.</p>
+<h2 id="locked-conversion-rules">Locked conversion rules<a class="headerlink" href="#locked-conversion-rules" title="Permanent link">&para;</a></h2>
+<h2 id="1-single-note-rule">1. Single-note rule<a class="headerlink" href="#1-single-note-rule" title="Permanent link">&para;</a></h2>
+<p>Single BeatSaver notes convert by <strong>row family</strong>, with handedness coming from note color / hand lane.</p>
+<ul>
+<li>top row (<code>0..3</code>) -&gt; handed <code>uppercut</code></li>
+<li>middle row (<code>4..7</code>) -&gt; handed <code>straight</code></li>
+<li>bottom row (<code>8..11</code>) -&gt; handed <code>hook</code></li>
+</ul>
+<p>This is the core deterministic Boxing v1 note rule.</p>
+<h2 id="2-dot-note-rule">2. Dot-note rule<a class="headerlink" href="#2-dot-note-rule" title="Permanent link">&para;</a></h2>
+<p>Directionless / dot notes do <strong>not</strong> receive special Boxing semantics in v1.</p>
+<p>They convert exactly like normal notes:</p>
+<ul>
+<li>top row dot -&gt; handed <code>uppercut</code></li>
+<li>middle row dot -&gt; handed <code>straight</code></li>
+<li>bottom row dot -&gt; handed <code>hook</code></li>
+</ul>
+<p>BeatSaver cut-direction data is not needed for Boxing punch-family choice in this v1 rule set.</p>
+<h2 id="3-guard-rule-for-center-pairs">3. Guard rule for center pairs<a class="headerlink" href="#3-guard-rule-for-center-pairs" title="Permanent link">&para;</a></h2>
+<p>The following simultaneous center-pair note groups resolve directly to <code>guard</code>:</p>
+<ul>
+<li><code>{1, 2}</code></li>
+<li><code>{5, 6}</code></li>
+<li><code>{9, 10}</code></li>
+</ul>
+<p>AeroBeat Boxing v1 currently treats <code>guard</code> as a simple true/false authored gesture, not as separate high/mid/low guard variants.</p>
+<h2 id="4-non-guard-dual-note-rule">4. Non-guard dual-note rule<a class="headerlink" href="#4-non-guard-dual-note-rule" title="Permanent link">&para;</a></h2>
+<p>All non-guard simultaneous dual-note groups use <strong>alternating-drop tracking</strong>.</p>
+<h3 id="state">State<a class="headerlink" href="#state" title="Permanent link">&para;</a></h3>
+<p>Maintain:</p>
+<ul>
+<li><code>next_dual_keep_hand</code></li>
+</ul>
+<p>Initialize:</p>
+<ul>
+<li><code>next_dual_keep_hand = right</code></li>
+</ul>
+<h3 id="rule">Rule<a class="headerlink" href="#rule" title="Permanent link">&para;</a></h3>
+<p>When a non-guard dual-note group appears:</p>
 <ol>
-<li><strong>Package contracts stay upstream.</strong> The workout creation tools repo consumes durable content/package contracts rather than redefining them locally.</li>
-<li><strong>Headless foundations come before GUI scenes.</strong> Validation, package graph loading, import normalization, repair, migration, and packaging should exist as reusable services before scene work depends on them.</li>
-<li><strong>Package-wide orchestration comes early.</strong> <code>workout</code>-level package validation and package-home workflows should be real before domain scenes or import helpers try to act authoritative.</li>
-<li><strong>Simple form workflows come before specialized timeline editing.</strong> The chart editor is the heavyweight slice and should follow the lower-risk package, record, and media-foundation milestones.</li>
-<li><strong>Penpot is a dependency for polished GUI implementation, not for starting the repo.</strong> Early repo work should progress through shared services, CLI surfaces, package-shell scaffolding, and import/validation foundations before detailed scene implementation begins.</li>
-<li><strong>Deferred optimization work stays deferred.</strong> KTX2, Draco, and broader runtime-asset optimization are not milestone gates for this first implementation order.</li>
+<li>keep only the note owned by <code>next_dual_keep_hand</code></li>
+<li>drop the other simultaneous note</li>
+<li>map the retained note by the locked single-note row-family rule</li>
+<li>emit the retained handed strike</li>
+<li>flip <code>next_dual_keep_hand</code></li>
 </ol>
-<h2 id="recommended-milestone-sequence">Recommended milestone sequence<a class="headerlink" href="#recommended-milestone-sequence" title="Permanent link">&para;</a></h2>
-<h2 id="milestone-1-repo-skeleton-and-shared-workflow-foundations">Milestone 1 — Repo skeleton and shared workflow foundations<a class="headerlink" href="#milestone-1-repo-skeleton-and-shared-workflow-foundations" title="Permanent link">&para;</a></h2>
-<h3 id="goal">Goal<a class="headerlink" href="#goal" title="Permanent link">&para;</a></h3>
-<p>Stand up the workout creation tools repo with the internal seams needed by both CLI and future GUI surfaces.</p>
-<h3 id="primary-work">Primary work<a class="headerlink" href="#primary-work" title="Permanent link">&para;</a></h3>
+<p>Center guard pairs do <strong>not</strong> consume or flip this tracker.</p>
+<h3 id="why-this-is-locked">Why this is locked<a class="headerlink" href="#why-this-is-locked" title="Permanent link">&para;</a></h3>
+<p>This rule was chosen because it:</p>
 <ul>
-<li>create the concrete workout creation tools repo and baseline project structure</li>
-<li>wire dependencies on <code>aerobeat-content-core</code> and <code>aerobeat-tool-core</code></li>
-<li>create the shared internal service areas already implied by the CLI surface spec:</li>
-<li>package graph / record loading</li>
-<li>validation</li>
-<li>fix / repair</li>
-<li>migration</li>
-<li>import / normalization</li>
-<li>packaging</li>
-<li>I/O and canonical filename helpers</li>
-<li>establish terminal and JSON result DTO mapping for future CLI commands</li>
-<li>make <code>ffmpeg</code> integration a first-class dependency of the import/normalization layer</li>
+<li>resolves same-row and mixed-row non-guard duals with one consistent policy</li>
+<li>preserves a simple single-strike Boxing vocabulary</li>
+<li>avoids inventing speculative dual-punch action families for v1</li>
+<li>stays deterministic and easy to trace in artifacts</li>
 </ul>
-<h3 id="why-this-comes-first">Why this comes first<a class="headerlink" href="#why-this-comes-first" title="Permanent link">&para;</a></h3>
-<p>Everything else depends on this layer. It is the cleanest way to keep the repo aligned with the locked rule that CLI and GUI flows should reuse the same workflow services.</p>
-<h3 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h3>
+<h2 id="5-obstacle-wall-rule">5. Obstacle / wall rule<a class="headerlink" href="#5-obstacle-wall-rule" title="Permanent link">&para;</a></h2>
+<p>Obstacle conversion is intentionally narrow in Boxing v1.</p>
+<h3 id="allowed-synthesized-boxing-avoidance-outputs">Allowed synthesized Boxing avoidance outputs<a class="headerlink" href="#allowed-synthesized-boxing-avoidance-outputs" title="Permanent link">&para;</a></h3>
 <ul>
-<li>the already-locked architecture and CLI surface decisions</li>
-<li>stable content/package contracts from the content lane</li>
+<li><code>squat</code></li>
+<li><code>weave_left</code></li>
+<li><code>weave_right</code></li>
 </ul>
-<h3 id="exit-criteria">Exit criteria<a class="headerlink" href="#exit-criteria" title="Permanent link">&para;</a></h3>
+<h3 id="forbidden-synthesized-boxing-avoidance-outputs">Forbidden synthesized Boxing avoidance outputs<a class="headerlink" href="#forbidden-synthesized-boxing-avoidance-outputs" title="Permanent link">&para;</a></h3>
 <ul>
-<li>the repo can load package content through shared services</li>
-<li>the repo has stable internal seams for validation/import/fix/packaging work</li>
-<li>the repo is not forced to invent GUI-only logic later</li>
+<li>no <code>side_step_*</code></li>
+<li>no <code>knee_*</code></li>
+<li>no leg lifts</li>
+<li>no knee strikes</li>
+<li>no run-in-place inventions</li>
 </ul>
-<h2 id="milestone-2-package-shell-package-graph-and-workout-package-validation">Milestone 2 — Package shell, package graph, and <code>workout</code> package validation<a class="headerlink" href="#milestone-2-package-shell-package-graph-and-workout-package-validation" title="Permanent link">&para;</a></h2>
-<h3 id="goal_1">Goal<a class="headerlink" href="#goal_1" title="Permanent link">&para;</a></h3>
-<p>Make the package root real early by shipping the package-home orchestration behavior before domain-specific convenience work grows around it.</p>
-<h3 id="primary-work_1">Primary work<a class="headerlink" href="#primary-work_1" title="Permanent link">&para;</a></h3>
+<h3 id="collider-side-sets">Collider side sets<a class="headerlink" href="#collider-side-sets" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>left_side_colliders = {0, 1, 4, 5, 8, 9}
+right_side_colliders = {2, 3, 6, 7, 10, 11}
+</code></pre></div>
+<h3 id="counting-rule">Counting rule<a class="headerlink" href="#counting-rule" title="Permanent link">&para;</a></h3>
+<p>For each normalized obstacle window:</p>
 <ul>
-<li>implement package-shell bootstrap behavior such as <code>workout import package-shell</code> or equivalent package initialization flow</li>
-<li>implement package graph loading rooted at <code>workout.yaml</code></li>
-<li>ship <code>aerobeat-workout validate</code> as the first durable public command</li>
-<li>validate package topology, ordered <code>setId</code> wiring, domain record discovery, required folders, and package-local reference integrity</li>
-<li>implement <code>aerobeat-workout inspect</code> so package health and topology are visible early</li>
+<li>count occupied obstacle cells in <code>left_side_colliders</code></li>
+<li>count occupied obstacle cells in <code>right_side_colliders</code></li>
+<li>if multiple source obstacles overlap, compose them into one effective window before counting</li>
 </ul>
-<h3 id="why-this-comes-second">Why this comes second<a class="headerlink" href="#why-this-comes-second" title="Permanent link">&para;</a></h3>
-<p>The workout tool is the package-wide orchestrator in the locked architecture. Shipping this early establishes the real authority boundary before the team spends time on domain-local helpers.</p>
-<p>It also gives future authors and CI a truthful package-level entrypoint before any GUI exists.</p>
-<h3 id="dependencies_1">Dependencies<a class="headerlink" href="#dependencies_1" title="Permanent link">&para;</a></h3>
+<p>Resolution:</p>
 <ul>
-<li>milestone 1 shared package graph and validation foundations</li>
-<li>package storage/discovery rules</li>
+<li>if <code>left_count &gt; right_count</code> -&gt; <code>weave_right</code></li>
+<li>if <code>right_count &gt; left_count</code> -&gt; <code>weave_left</code></li>
+<li>if <code>left_count == right_count</code> -&gt; <code>squat</code></li>
 </ul>
-<h3 id="exit-criteria_1">Exit criteria<a class="headerlink" href="#exit-criteria_1" title="Permanent link">&para;</a></h3>
+<h3 id="locked-interpretation">Locked interpretation<a class="headerlink" href="#locked-interpretation" title="Permanent link">&para;</a></h3>
+<p>Balanced or non-dominant lateral pressure intentionally resolves to <code>squat</code> in Boxing v1.</p>
+<h2 id="6-bomb-rule">6. Bomb rule<a class="headerlink" href="#6-bomb-rule" title="Permanent link">&para;</a></h2>
+<p>Bombs do <strong>not</strong> create Boxing-authored beats by themselves in v1.</p>
+<p>Current locked rule:</p>
 <ul>
-<li>a package can be bootstrapped and inspected headlessly</li>
-<li>package-wide validation exists and fails clearly on broken structure/reference issues</li>
-<li>package-home orchestration is established as the top-level workflow</li>
+<li>bomb-only content -&gt; no Boxing-authored beat</li>
 </ul>
-<h2 id="milestone-3-domain-local-validate-and-inspect-surfaces">Milestone 3 — Domain-local validate and inspect surfaces<a class="headerlink" href="#milestone-3-domain-local-validate-and-inspect-surfaces" title="Permanent link">&para;</a></h2>
-<h3 id="goal_2">Goal<a class="headerlink" href="#goal_2" title="Permanent link">&para;</a></h3>
-<p>Add the low-risk domain tools that make authoring and debugging practical without pretending to replace package-wide validation.</p>
-<h3 id="primary-work_2">Primary work<a class="headerlink" href="#primary-work_2" title="Permanent link">&para;</a></h3>
+<p>Bombs are therefore modifier-only source signals in Boxing v1, not independent authored gameplay events.</p>
+<h2 id="7-burst-slider-rule">7. Burst-slider rule<a class="headerlink" href="#7-burst-slider-rule" title="Permanent link">&para;</a></h2>
+<p>Burst sliders are converted in Boxing v1.</p>
+<h3 id="locked-behavior">Locked behavior<a class="headerlink" href="#locked-behavior" title="Permanent link">&para;</a></h3>
+<p>A BeatSaver burst slider expands into an <strong>alternating-hand combo</strong>.</p>
+<p>Rules:</p>
 <ul>
-<li>ship domain-local <code>validate</code> and <code>inspect</code> commands for:</li>
-<li><code>song</code></li>
-<li><code>chart</code></li>
-<li><code>set</code></li>
-<li><code>coach-config</code></li>
-<li><code>environment</code></li>
-<li>enforce the locked validation boundary that domain validation is domain-local, not full-package authority</li>
-<li>return human-readable and structured JSON diagnostics consistently across the tool set</li>
-<li>ensure direct file-existence and record-shape checks are reliable per domain</li>
+<li>the burst head instant is the first emitted punch</li>
+<li>the starting hand comes from the burst-head hand / color lane</li>
+<li>emitted punches alternate left/right over the burst window</li>
+<li>emitted punch density is limited by per-difficulty minimum interval settings</li>
+<li>for each emitted punch timestamp, sample the burst path at that exact moment</li>
+<li>map the sampled point's row band using the standard row-family rule:</li>
+<li>top -&gt; <code>uppercut</code></li>
+<li>middle -&gt; <code>straight</code></li>
+<li>bottom -&gt; <code>hook</code></li>
 </ul>
-<h3 id="why-this-comes-third">Why this comes third<a class="headerlink" href="#why-this-comes-third" title="Permanent link">&para;</a></h3>
-<p>Once package-wide validation exists, domain tools become safe productivity multipliers. They help authors iterate quickly without weakening the package-root authority model.</p>
-<p>This milestone is still headless-first, low-risk, and useful even while GUI planning and Penpot work are incomplete.</p>
-<h3 id="dependencies_2">Dependencies<a class="headerlink" href="#dependencies_2" title="Permanent link">&para;</a></h3>
+<h3 id="locked-first-pass-minimum-interval-table">Locked first-pass minimum interval table<a class="headerlink" href="#locked-first-pass-minimum-interval-table" title="Permanent link">&para;</a></h3>
 <ul>
-<li>milestone 2 package graph behavior</li>
-<li>shared validation/result plumbing from milestone 1</li>
+<li>Easy: <code>1500ms</code></li>
+<li>Normal: <code>1250ms</code></li>
+<li>Hard: <code>1000ms</code></li>
+<li>Expert: <code>750ms</code></li>
+<li>ExpertPlus: <code>500ms</code></li>
 </ul>
-<h3 id="exit-criteria_2">Exit criteria<a class="headerlink" href="#exit-criteria_2" title="Permanent link">&para;</a></h3>
+<p>These are explicit first-pass tuning knobs, not permanent claims about ideal human punch cadence.</p>
+<h2 id="8-arc-slider-rule">8. Arc / slider rule<a class="headerlink" href="#8-arc-slider-rule" title="Permanent link">&para;</a></h2>
+<p>BeatSaver arcs / sliders produce <strong>no Boxing-authored beat</strong> in v1.</p>
+<p>They are intentionally treated as guidance-only source objects for the Boxing lane.</p>
+<p>This is a deliberate scope choice, not an accidental omission.</p>
+<h2 id="intentionally-ignored-or-dropped-source-semantics">Intentionally ignored or dropped source semantics<a class="headerlink" href="#intentionally-ignored-or-dropped-source-semantics" title="Permanent link">&para;</a></h2>
+<p>The following source semantics are intentionally not preserved as direct Boxing-authored beats in v1:</p>
 <ul>
-<li>each YAML domain has a usable headless validation/inspection path</li>
-<li>the separate-tool public surface is real and testable</li>
-<li>package-wide versus domain-local validation boundaries are clear in behavior, not just docs</li>
+<li>bomb-only gameplay moments</li>
+<li>arc / slider authored guidance as Boxing beats</li>
+<li>BeatSaver cut-direction semantics as a direct Boxing punch-family input</li>
+<li>side-step-style avoidance output families</li>
+<li>lower-body speculative gesture families such as <code>knee_*</code>, leg lifts, and knee strikes</li>
+<li>VR-native portal-style source interpretations that do not map honestly to camera-first Boxing</li>
 </ul>
-<h2 id="milestone-4-explicit-repair-and-migration-flows">Milestone 4 — Explicit repair and migration flows<a class="headerlink" href="#milestone-4-explicit-repair-and-migration-flows" title="Permanent link">&para;</a></h2>
-<h3 id="goal_3">Goal<a class="headerlink" href="#goal_3" title="Permanent link">&para;</a></h3>
-<p>Make invalid or out-of-date packages recoverable through intentional workflows rather than hidden mutation.</p>
-<h3 id="primary-work_3">Primary work<a class="headerlink" href="#primary-work_3" title="Permanent link">&para;</a></h3>
+<h2 id="alternatives-considered">Alternatives considered<a class="headerlink" href="#alternatives-considered" title="Permanent link">&para;</a></h2>
+<h2 id="1-beatsaver-extra-music-analysis-heuristics">1. BeatSaver + extra music-analysis heuristics<a class="headerlink" href="#1-beatsaver-extra-music-analysis-heuristics" title="Permanent link">&para;</a></h2>
+<h3 id="idea">Idea<a class="headerlink" href="#idea" title="Permanent link">&para;</a></h3>
+<p>Use BeatSaver charts plus additional music-analysis signals such as phrase energy or other non-chart heuristics.</p>
+<h3 id="why-not-v1">Why not v1<a class="headerlink" href="#why-not-v1" title="Permanent link">&para;</a></h3>
+<p>This was rejected for v1 because it weakens traceability and makes the conversion less inspectable. The current direction prefers a chart-derived Boxing system first.</p>
+<h2 id="2-gesture-classification-first-boxing-architecture">2. Gesture-classification-first Boxing architecture<a class="headerlink" href="#2-gesture-classification-first-boxing-architecture" title="Permanent link">&para;</a></h2>
+<h3 id="idea_1">Idea<a class="headerlink" href="#idea_1" title="Permanent link">&para;</a></h3>
+<p>Infer Boxing moves from richer pose/velocity/gesture classification rather than from the BeatSaver chart grid as the primary authored truth.</p>
+<h3 id="why-not-the-canonical-v1-center">Why not the canonical v1 center<a class="headerlink" href="#why-not-the-canonical-v1-center" title="Permanent link">&para;</a></h3>
+<p>This remains interesting for runtime experimentation, but it was not chosen as the canonical conversion architecture because it increases ambiguity and weakens converter determinism.</p>
+<h2 id="3-explicit-dual-strike-authored-actions">3. Explicit dual-strike authored actions<a class="headerlink" href="#3-explicit-dual-strike-authored-actions" title="Permanent link">&para;</a></h2>
+<h3 id="idea_2">Idea<a class="headerlink" href="#idea_2" title="Permanent link">&para;</a></h3>
+<p>Preserve non-guard simultaneous dual notes by creating explicit dual-punch Boxing actions such as double hooks or double uppercuts.</p>
+<h3 id="why-deferred">Why deferred<a class="headerlink" href="#why-deferred" title="Permanent link">&para;</a></h3>
+<p>This was deferred because it expands the authored vocabulary and runtime validation burden, and its physical Boxing plausibility is not yet proven.</p>
+<h2 id="4-highest-row-wins-dual-note-priority">4. Highest-row-wins dual-note priority<a class="headerlink" href="#4-highest-row-wins-dual-note-priority" title="Permanent link">&para;</a></h2>
+<h3 id="idea_3">Idea<a class="headerlink" href="#idea_3" title="Permanent link">&para;</a></h3>
+<p>Resolve mixed-row dual notes by a fixed priority such as top row over middle row over bottom row.</p>
+<h3 id="why-not-chosen">Why not chosen<a class="headerlink" href="#why-not-chosen" title="Permanent link">&para;</a></h3>
+<p>This was a strong fallback candidate, but alternating-drop tracking was chosen because it handles same-row and mixed-row duals with one unified rule while preserving handed single-strike output.</p>
+<h2 id="5-boxing-arc-slider-conversion">5. Boxing arc / slider conversion<a class="headerlink" href="#5-boxing-arc-slider-conversion" title="Permanent link">&para;</a></h2>
+<h3 id="idea_4">Idea<a class="headerlink" href="#idea_4" title="Permanent link">&para;</a></h3>
+<p>Translate arcs / sliders into Boxing follow-through actions or calmer extended strike patterns.</p>
+<h3 id="why-deferred_1">Why deferred<a class="headerlink" href="#why-deferred_1" title="Permanent link">&para;</a></h3>
+<p>This was rejected for Boxing v1 because the source semantics map much more naturally to Flow than to Boxing. Forcing them into Boxing would add scope with weak truth value.</p>
+<h2 id="6-bomb-authored-boxing-gameplay">6. Bomb-authored Boxing gameplay<a class="headerlink" href="#6-bomb-authored-boxing-gameplay" title="Permanent link">&para;</a></h2>
+<h3 id="idea_5">Idea<a class="headerlink" href="#idea_5" title="Permanent link">&para;</a></h3>
+<p>Treat bombs as direct Boxing-authored events.</p>
+<h3 id="why-rejected">Why rejected<a class="headerlink" href="#why-rejected" title="Permanent link">&para;</a></h3>
+<p>This was rejected for v1 because bombs are weaker, modifier-like source cues and do not cleanly imply a distinct Boxing action family on their own.</p>
+<h2 id="provenance-and-artifact-policy">Provenance and artifact policy<a class="headerlink" href="#provenance-and-artifact-policy" title="Permanent link">&para;</a></h2>
+<p>BeatSaver-derived Boxing packages should preserve source and conversion introspection material under artifacts rather than inside the authored runtime chart.</p>
+<h3 id="canonical-policy">Canonical policy<a class="headerlink" href="#canonical-policy" title="Permanent link">&para;</a></h3>
 <ul>
-<li>implement <code>fix</code> flows beginning with package-wide <code>aerobeat-workout fix</code></li>
-<li>add targeted <code>fix-*</code> flows only where specific repair classes justify them</li>
-<li>implement migration flows for package and domain records where schema/layout upgrades are approved</li>
-<li>ensure validation hard-errors on fixable problems and points users toward explicit repair</li>
-<li>shape outputs so future GUI confirmation dialogs can delegate to the same repair/migration services</li>
+<li>raw BeatSaver source stays canonical</li>
+<li>AeroBeat Boxing chart stays clean and runtime-focused</li>
+<li>conversion traces, warnings, dropped-event notes, and mapping diagnostics belong in artifacts</li>
 </ul>
-<h3 id="why-this-comes-here">Why this comes here<a class="headerlink" href="#why-this-comes-here" title="Permanent link">&para;</a></h3>
-<p>Repair and migration need the package graph and validators to be trustworthy first. They should also land before rich import and scene work, because import and GUI editing become much safer when the repo already knows how to handle stale or structurally invalid content honestly.</p>
-<h3 id="dependencies_3">Dependencies<a class="headerlink" href="#dependencies_3" title="Permanent link">&para;</a></h3>
+<h3 id="recommended-artifact-contents">Recommended artifact contents<a class="headerlink" href="#recommended-artifact-contents" title="Permanent link">&para;</a></h3>
+<p>Typical package-local artifact material may include:</p>
 <ul>
-<li>milestone 2 package-wide validation</li>
-<li>milestone 3 domain-local diagnostics</li>
+<li>original BeatSaver ZIP</li>
+<li>source manifest snapshot</li>
+<li>extracted <code>Info.dat</code> / beatmap snapshots as needed</li>
+<li>conversion report</li>
+<li>event-by-event conversion trace or log</li>
+<li>warnings for dropped or ambiguous source semantics</li>
 </ul>
-<h3 id="exit-criteria_3">Exit criteria<a class="headerlink" href="#exit-criteria_3" title="Permanent link">&para;</a></h3>
-<ul>
-<li>the repo can explicitly repair known safe structural/content issues</li>
-<li>out-of-date packages have a migration path</li>
-<li>GUI work later can call real repair/migration services instead of inventing ad hoc mutation logic</li>
-</ul>
-<h2 id="milestone-5-slot-aware-media-import-and-canonicalization">Milestone 5 — Slot-aware media import and canonicalization<a class="headerlink" href="#milestone-5-slot-aware-media-import-and-canonicalization" title="Permanent link">&para;</a></h2>
-<h3 id="goal_4">Goal<a class="headerlink" href="#goal_4" title="Permanent link">&para;</a></h3>
-<p>Ship the practical authoring workflows that turn creator-side media into valid package-local assets and updated YAML references.</p>
-<h3 id="primary-work_4">Primary work<a class="headerlink" href="#primary-work_4" title="Permanent link">&para;</a></h3>
-<ul>
-<li>implement slot-aware import flows aligned with the import matrix:</li>
-<li>song audio</li>
-<li>coaching overlay audio</li>
-<li>coaching warm-up video</li>
-<li>coaching cool-down video</li>
-<li>environment background image</li>
-<li>environment background video</li>
-<li>environment GLB</li>
-<li>package/workout art image where applicable</li>
-<li>normalize accepted source formats into canonical stored package formats</li>
-<li>copy into canonical package folders</li>
-<li>apply normalized uid-suffixed filenames</li>
-<li>update YAML references</li>
-<li>delete superseded slotted package assets when replacing existing media</li>
-<li>support the bounded image crop/resize flow before canonical <code>.png</code> storage where needed</li>
-</ul>
-<h3 id="why-this-comes-before-gui-scenes">Why this comes before GUI scenes<a class="headerlink" href="#why-this-comes-before-gui-scenes" title="Permanent link">&para;</a></h3>
-<p>Import is one of the highest-value product workflows and does not require scene design to start. It is also a major shared-service dependency for both CLI and GUI.</p>
-<p>Landing import foundations before scene implementation keeps the future GUI thinner and prevents scene work from owning bespoke file normalization behavior.</p>
-<h3 id="dependencies_4">Dependencies<a class="headerlink" href="#dependencies_4" title="Permanent link">&para;</a></h3>
-<ul>
-<li>milestone 1 import/normalization service seams</li>
-<li>milestone 4 repair/migration behavior for honest handling of stale content</li>
-<li>the locked import-format matrix</li>
-</ul>
-<h3 id="exit-criteria_4">Exit criteria<a class="headerlink" href="#exit-criteria_4" title="Permanent link">&para;</a></h3>
-<ul>
-<li>authors can headlessly import the major package media slots into canonical package form</li>
-<li>replacement flows remove old slotted assets correctly</li>
-<li>future GUI media pickers can delegate to stable import services</li>
-</ul>
-<h2 id="milestone-6-packagingbuild-workflows-and-ci-ready-headless-product">Milestone 6 — Packaging/build workflows and CI-ready headless product<a class="headerlink" href="#milestone-6-packagingbuild-workflows-and-ci-ready-headless-product" title="Permanent link">&para;</a></h2>
-<h3 id="goal_5">Goal<a class="headerlink" href="#goal_5" title="Permanent link">&para;</a></h3>
-<p>Reach the first complete non-GUI product slice: a repo that can bootstrap, inspect, validate, fix, migrate, import, and package a workout.</p>
-<h3 id="primary-work_5">Primary work<a class="headerlink" href="#primary-work_5" title="Permanent link">&para;</a></h3>
-<ul>
-<li>implement <code>aerobeat-workout package</code></li>
-<li>ensure packaged output is built only from validated canonical package content</li>
-<li>add CI-friendly automation coverage for the main headless workflows</li>
-<li>add practical fixtures/examples proving end-to-end package authoring and packaging</li>
-<li>tighten exit codes and structured output for scripting/editor integration</li>
-</ul>
-<h3 id="why-this-milestone-matters">Why this milestone matters<a class="headerlink" href="#why-this-milestone-matters" title="Permanent link">&para;</a></h3>
-<p>This is the first point where the repo is a coherent authoring product even with no Godot scene implementation. It de-risks the rest of the roadmap by proving the package and workflow foundations are sound.</p>
-<h3 id="dependencies_5">Dependencies<a class="headerlink" href="#dependencies_5" title="Permanent link">&para;</a></h3>
-<ul>
-<li>milestones 2 through 5</li>
-</ul>
-<h3 id="exit-criteria_5">Exit criteria<a class="headerlink" href="#exit-criteria_5" title="Permanent link">&para;</a></h3>
-<ul>
-<li>the repo can complete the baseline headless workflow categories documented in the CLI surface spec</li>
-<li>package assembly is real and automatable</li>
-<li>the non-GUI product is already useful to creators and CI</li>
-</ul>
-<h2 id="milestone-7-penpot-informed-package-home-and-simple-form-scenes">Milestone 7 — Penpot-informed package-home and simple form scenes<a class="headerlink" href="#milestone-7-penpot-informed-package-home-and-simple-form-scenes" title="Permanent link">&para;</a></h2>
-<h3 id="goal_6">Goal<a class="headerlink" href="#goal_6" title="Permanent link">&para;</a></h3>
-<p>Begin GUI implementation only after the headless core exists and Penpot has supplied the first-pass screen/design direction.</p>
-<h3 id="primary-work_6">Primary work<a class="headerlink" href="#primary-work_6" title="Permanent link">&para;</a></h3>
-<ul>
-<li>finalize Penpot designs for the package-home flow and the simpler YAML scenes</li>
-<li>implement the <code>workout.yaml</code> package-home scene first</li>
-<li>wire package-home actions to the already-shipped shared services for:</li>
-<li>package validation</li>
-<li>inspect/health display</li>
-<li>fix/repair confirmation flow</li>
-<li>migration</li>
-<li>packaging</li>
-<li>navigation into domain editors</li>
-<li>implement the simpler form-oriented scenes next:</li>
-<li><code>song</code></li>
-<li><code>set</code></li>
-<li><code>coach-config</code></li>
-<li><code>environment</code></li>
-<li>keep these scenes focused on form editing, validation messaging, media-slot flows, preview where appropriate, and relationship navigation</li>
-</ul>
-<h3 id="why-the-gui-starts-here">Why the GUI starts here<a class="headerlink" href="#why-the-gui-starts-here" title="Permanent link">&para;</a></h3>
-<p>By this point the underlying repo already knows how to validate, repair, import, and package content. That means GUI work can concentrate on user experience rather than inventing core behavior.</p>
-<p>This is also the right point to depend on Penpot, because the remaining work is now truly scene and interaction design rather than foundational product logic.</p>
-<h3 id="dependencies_6">Dependencies<a class="headerlink" href="#dependencies_6" title="Permanent link">&para;</a></h3>
-<ul>
-<li>milestone 6 headless-complete foundation</li>
-<li>Penpot designs for package-home and simple forms</li>
-</ul>
-<h3 id="exit-criteria_6">Exit criteria<a class="headerlink" href="#exit-criteria_6" title="Permanent link">&para;</a></h3>
-<ul>
-<li>package-home GUI exists on top of real package services</li>
-<li>the simple non-chart YAML scenes can edit and validate against shared logic</li>
-<li>GUI repair uses explicit confirmation and delegates to package-wide fix flows</li>
-</ul>
-<h2 id="milestone-8-chart-editor-scene-and-chart-specific-high-complexity-workflows">Milestone 8 — Chart editor scene and chart-specific high-complexity workflows<a class="headerlink" href="#milestone-8-chart-editor-scene-and-chart-specific-high-complexity-workflows" title="Permanent link">&para;</a></h2>
-<h3 id="goal_7">Goal<a class="headerlink" href="#goal_7" title="Permanent link">&para;</a></h3>
-<p>Build the heavyweight specialized chart-authoring slice after the repo already supports the rest of the package lifecycle.</p>
-<h3 id="primary-work_7">Primary work<a class="headerlink" href="#primary-work_7" title="Permanent link">&para;</a></h3>
-<ul>
-<li>implement the dedicated chart editor scene</li>
-<li>support chosen-audio chart creation flow</li>
-<li>add waveform/timeline scrubbing and beat placement</li>
-<li>add preview/playback behavior</li>
-<li>add chart-local validation and repair handoff using shared services</li>
-<li>begin chart-specific import/conversion flows as needed by the locked CLI surface</li>
-<li>leave future quick-test launch from selected timeline points as a chart-scene extension once the base editor is stable</li>
-</ul>
-<h3 id="why-this-is-later">Why this is later<a class="headerlink" href="#why-this-is-later" title="Permanent link">&para;</a></h3>
-<p>The chart editor is the most specialized and interaction-heavy part of the product. Front-loading it would delay the broader package-authoring value while core package/import/validation architecture is still settling.</p>
-<p>Putting it after the simpler scenes preserves the locked product truth: workout creation is a full-package product, and chart editing is one heavyweight slice inside it, not the only thing that matters.</p>
-<h3 id="dependencies_7">Dependencies<a class="headerlink" href="#dependencies_7" title="Permanent link">&para;</a></h3>
-<ul>
-<li>milestone 5 media import foundations</li>
-<li>milestone 7 GUI framework and shared scene/service patterns</li>
-<li>package-home and supporting record editors already working</li>
-</ul>
-<h3 id="exit-criteria_7">Exit criteria<a class="headerlink" href="#exit-criteria_7" title="Permanent link">&para;</a></h3>
-<ul>
-<li>creators can author and edit charts inside the dedicated chart scene</li>
-<li>the chart editor reuses the repo's shared validation/import/repair foundations instead of bypassing them</li>
-<li>chart work no longer blocks the rest of the tool repo from being useful</li>
-</ul>
-<h2 id="milestone-9-embedded-assembly-integration-via-godotenv">Milestone 9 — Embedded assembly integration via GodotEnv<a class="headerlink" href="#milestone-9-embedded-assembly-integration-via-godotenv" title="Permanent link">&para;</a></h2>
-<h3 id="goal_8">Goal<a class="headerlink" href="#goal_8" title="Permanent link">&para;</a></h3>
-<p>Expose the workout creation tools inside <code>aerobeat-assembly-community</code> as an embedded mode after the standalone product path is already solid.</p>
-<h3 id="primary-work_8">Primary work<a class="headerlink" href="#primary-work_8" title="Permanent link">&para;</a></h3>
-<ul>
-<li>integrate the tool repo into the assembly through GodotEnv</li>
-<li>support entry into the tool mode from the main shell</li>
-<li>support clean navigation back to the main shell</li>
-<li>validate that embedded use still calls the same shared tool services and scenes</li>
-<li>keep ownership, testing, and release boundaries with the separate tool repo intact</li>
-</ul>
-<h3 id="why-this-is-last">Why this is last<a class="headerlink" href="#why-this-is-last" title="Permanent link">&para;</a></h3>
-<p>Embedded access is valuable, but it is a distribution/UX integration layer, not the repo's architectural foundation. The tool should already be coherent before it is embedded elsewhere.</p>
-<h3 id="dependencies_8">Dependencies<a class="headerlink" href="#dependencies_8" title="Permanent link">&para;</a></h3>
-<ul>
-<li>milestone 7 basic GUI product</li>
-<li>milestone 8 chart editor for near-complete in-tool authoring coverage</li>
-<li>stable GodotEnv integration path</li>
-</ul>
-<h3 id="exit-criteria_8">Exit criteria<a class="headerlink" href="#exit-criteria_8" title="Permanent link">&para;</a></h3>
-<ul>
-<li>the tool can run as an embedded mode without becoming owned by the assembly repo</li>
-<li>navigation into and out of the tool mode is real</li>
-<li>standalone and embedded usage share the same implementation foundations</li>
-</ul>
-<h2 id="dependency-summary">Dependency summary<a class="headerlink" href="#dependency-summary" title="Permanent link">&para;</a></h2>
-<p>The safe dependency chain is:</p>
+<h2 id="closed-edge-case-decisions">Closed edge-case decisions<a class="headerlink" href="#closed-edge-case-decisions" title="Permanent link">&para;</a></h2>
+<p>The Boxing v1 source-coverage audit originally left a bounded set of edge cases open. Those decisions are now explicitly closed in the canonical spec.</p>
+<h2 id="1-same-color-simultaneous-note-groups">1. Same-color simultaneous note groups<a class="headerlink" href="#1-same-color-simultaneous-note-groups" title="Permanent link">&para;</a></h2>
+<p>When multiple simultaneous notes belong to the same hand/color lane:</p>
 <ol>
-<li>shared services and repo skeleton</li>
-<li>package graph and package-wide <code>workout</code> orchestration</li>
-<li>domain-local validate/inspect</li>
-<li>explicit repair and migration</li>
-<li>slot-aware media import/canonicalization</li>
-<li>packaging/build and CI-ready headless completeness</li>
-<li>Penpot-informed package-home and simple form scenes</li>
-<li>chart editor scene</li>
-<li>embedded assembly integration</li>
+<li>collapse the same-hand simultaneous cluster first</li>
+<li>count the cluster's occupied notes by row family (<code>top</code>, <code>middle</code>, <code>bottom</code>)</li>
+<li>choose the dominant row across that cluster</li>
+<li>on row-count ties, the <strong>highest row wins</strong></li>
+<li>retain one representative note for that hand using that chosen row family</li>
+<li>discard the other same-hand simultaneous notes</li>
 </ol>
-<p>The key ordering truth is that <strong>the repo should become a useful headless workout-package authoring product before Godot scene implementation begins</strong>.</p>
-<h2 id="what-should-not-gate-early-progress">What should not gate early progress<a class="headerlink" href="#what-should-not-gate-early-progress" title="Permanent link">&para;</a></h2>
-<p>The following should <strong>not</strong> block milestones 1 through 6:</p>
+<p>If both hands still remain after that collapse, apply the normal non-guard dual-note alternating-drop rule between the retained left-hand and right-hand representatives.</p>
+<h2 id="2-explicit-note-angle-offset-semantics">2. Explicit note angle-offset semantics<a class="headerlink" href="#2-explicit-note-angle-offset-semantics" title="Permanent link">&para;</a></h2>
+<p>Beat Saber note angle offsets are <strong>ignored for Boxing gameplay conversion</strong> in v1.</p>
+<p>They should be preserved only in conversion trace/log artifacts so future analysis or reconversion can still inspect the original source nuance.</p>
+<h2 id="3-burst-slider-source-fields-versus-interval-based-boxing-bursts">3. Burst-slider source fields versus interval-based Boxing bursts<a class="headerlink" href="#3-burst-slider-source-fields-versus-interval-based-boxing-bursts" title="Permanent link">&para;</a></h2>
+<p>Beat Saber burst-slider source fields such as:</p>
 <ul>
-<li>final Penpot GUI screens</li>
-<li>chart editor scene design details</li>
-<li>assembly embedding work</li>
-<li>KTX2 texture pipelines</li>
-<li>Draco-compressed GLB</li>
-<li>broader media-production/editor ambitions outside bounded package authoring</li>
+<li><code>sliceCount</code> / <code>sc</code></li>
+<li><code>squish</code> / <code>s</code></li>
 </ul>
-<p>Those are either later-slice dependencies or explicitly deferred scope.</p>
-<h2 id="practical-rationale">Practical rationale<a class="headerlink" href="#practical-rationale" title="Permanent link">&para;</a></h2>
-<p>This order is recommended because it creates value early while keeping architecture honest:</p>
+<p>are <strong>ignored for Boxing gameplay conversion</strong> in v1.</p>
+<p>They should be preserved only in conversion trace/log artifacts. Emitted Boxing punches still follow the locked AeroBeat interval-based burst rule.</p>
+<h2 id="4-same-beat-hybrid-group-priority">4. Same-beat hybrid group priority<a class="headerlink" href="#4-same-beat-hybrid-group-priority" title="Permanent link">&para;</a></h2>
+<p>Resolve mixed-family same-beat collisions in two phases.</p>
+<h3 id="phase-1-family-normalize-first">Phase 1: family-normalize first<a class="headerlink" href="#phase-1-family-normalize-first" title="Permanent link">&para;</a></h3>
 <ul>
-<li>it proves the package-root and CLI authority boundaries first</li>
-<li>it gives CI and automation a real product surface early</li>
-<li>it makes GUI work thinner by pushing scene implementation onto already-real services</li>
-<li>it keeps import/validation/package rules centralized instead of scattering them across scenes</li>
-<li>it delays the highest-complexity chart UX until the rest of the package product is already stable</li>
-<li>it preserves the separate-repo, shared-service, embedded-later direction already locked elsewhere</li>
+<li>resolve guard pairs within the note family</li>
+<li>collapse same-hand simultaneous note clusters within the note family</li>
+<li>preserve bursts as bursts</li>
+<li>treat bombs as artifact-only for Boxing-authored output</li>
+<li>treat arcs/sliders as artifact-only for Boxing-authored output</li>
 </ul>
-<h2 id="non-goals-of-this-implementation-order-doc">Non-goals of this implementation-order doc<a class="headerlink" href="#non-goals-of-this-implementation-order-doc" title="Permanent link">&para;</a></h2>
-<p>This document does <strong>not</strong> define:</p>
-<ul>
-<li>detailed sprint planning</li>
-<li>exact staffing or ownership per milestone</li>
-<li>exact command syntax beyond what the CLI surface spec already covers</li>
-<li>exact Penpot screen layouts</li>
-<li>optimization roadmap work beyond noting that it remains deferred</li>
-<li>a requirement to finish the chart editor before the repo becomes useful</li>
-</ul>
-<h2 id="canonical-summary">Canonical summary<a class="headerlink" href="#canonical-summary" title="Permanent link">&para;</a></h2>
-<p>If the team needs a short version, the canonical implementation order is:</p>
+<h3 id="phase-2-cross-family-priority">Phase 2: cross-family priority<a class="headerlink" href="#phase-2-cross-family-priority" title="Permanent link">&para;</a></h3>
+<p>If multiple Boxing-authored candidates still remain at the same beat time after family normalization, use this priority order:</p>
 <ol>
-<li><strong>shared repo foundations</strong></li>
-<li><strong>package-root workout validation/inspect/bootstrap</strong></li>
-<li><strong>domain-local validate/inspect tools</strong></li>
-<li><strong>explicit fix and migration flows</strong></li>
-<li><strong>slot-aware media import and canonicalization</strong></li>
-<li><strong>package/build workflows for a headless-complete product</strong></li>
-<li><strong>Penpot-informed package-home and simple form scenes</strong></li>
-<li><strong>dedicated chart editor scene</strong></li>
-<li><strong>embedded assembly integration via GodotEnv</strong></li>
+<li><code>burst</code></li>
+<li><code>guard</code></li>
+<li><code>single-punch note result</code></li>
+<li>ignored/artifact-only objects never win authored Boxing output</li>
 </ol>
-<p>That is the safest staged path that matches the current locked architecture and keeps the chart editor in its proper place as a later heavyweight slice rather than the repo's starting point.</p>
+<p>Notes that collide with an ongoing burst or a burst starting at that same time lose to the burst.</p>
+<h2 id="5-final-boxing-authored-chart-encoding">5. Final Boxing authored chart encoding<a class="headerlink" href="#5-final-boxing-authored-chart-encoding" title="Permanent link">&para;</a></h2>
+<p>The final Boxing chart is a <strong>semantic authored Boxing chart</strong>.</p>
+<p>That means:</p>
+<ul>
+<li>bursts are expanded during conversion into normal Boxing beats</li>
+<li>there is no special Boxing hold concept for this source seam</li>
+<li>repeated guard prompting is expressed as multiple <code>guard</code> events over time</li>
+<li>raw BeatSaver source plus conversion traces remain the introspection and reconversion truth</li>
+<li>BeatSaver-specific source-only metadata does not live in the authored Boxing runtime chart</li>
+</ul>
+<h2 id="implementation-posture">Implementation posture<a class="headerlink" href="#implementation-posture" title="Permanent link">&para;</a></h2>
+<p>Treat this document as the canonical Boxing v1 conversion rules source.</p>
+<p>When the conversion is lossy, preserve the relevant source detail in artifacts rather than inventing hidden runtime semantics.</p>
+<h2 id="relationship-to-other-docs">Relationship to other docs<a class="headerlink" href="#relationship-to-other-docs" title="Permanent link">&para;</a></h2>
+<p>Use this page together with:</p>
+<ul>
+<li><code>docs/gdd/gameplay/boxing.md</code> for the gameplay feature framing</li>
+<li><code>docs/guides/choreography/boxing.md</code> for current authoring/choreography guidance</li>
+<li>the active BeatSaver conversion plan in <code>/home/derrick/.openclaw/workspace/projects/aerobeat/.plans/2026-06-23-beatsaver-conversion-architecture-and-flow-first.md</code> for historical decision context</li>
+</ul>
+<p>When these pages disagree about BeatSaver Boxing conversion specifics, this architecture page is the canonical source.</p>
 
 
 
@@ -7325,7 +7392,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 11, 2026 18:35:26 UTC">May 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 18, 2026 04:29:01 UTC">July 18, 2026</span>
   </span>
 
     
