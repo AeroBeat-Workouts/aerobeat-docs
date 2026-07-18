@@ -22,6 +22,14 @@ Boxing is one of the two official AeroBeat v1 gameplay features.
 - authored portal placement where it improves choreography readability
 - readable Track View and Portal View presentation options
 
+## BeatSaver conversion reference
+
+For the canonical BeatSaver-to-Boxing v1 conversion rules, ignored objects, and unresolved source edge cases, see:
+
+- [BeatSaver to AeroBeat Boxing v1 Conversion](../../architecture/beatsaver-boxing-v1-conversion.md)
+
+This gameplay page stays focused on the feature itself; the conversion contract lives in Architecture.
+
 ## Wording guardrails
 
 When describing Boxing, prefer language that supports the current product thesis:

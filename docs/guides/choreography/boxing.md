@@ -26,6 +26,14 @@ For current chart truth:
 - use `guard` for guard holds/prompts
 - treat `orthodox` / `southpaw` as authored stance semantics, not tracked input events
 
+## BeatSaver conversion reference
+
+If you need the canonical import/conversion rules for deriving Boxing charts from BeatSaver source data, use:
+
+- [BeatSaver to AeroBeat Boxing v1 Conversion](../../architecture/beatsaver-boxing-v1-conversion.md)
+
+This choreography page stays focused on authoring guidance rather than source-conversion policy.
+
 ## Scope note
 
 Portal-aware presentation remains valid in the docs, but it should not be read as a promise that VR or non-camera Boxing is official v1 scope.
