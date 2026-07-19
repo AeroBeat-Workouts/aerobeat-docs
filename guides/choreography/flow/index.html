@@ -1039,10 +1039,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chart-shape" class="md-nav__link">
+  <a href="#current-direction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Chart shape
+        Current direction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chart-shape-note-for-this-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chart-shape note for this pass
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beatsaver-conversion-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BeatSaver conversion reference
       
     </span>
   </a>
@@ -2804,6 +2826,34 @@
     
   
     BeatSaver to Boxing v1 Conversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/beatsaver-flow-v1-conversion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BeatSaver to Flow v1 Conversion
   
 
     
@@ -5509,10 +5559,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chart-shape" class="md-nav__link">
+  <a href="#current-direction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Chart shape
+        Current direction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chart-shape-note-for-this-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chart-shape note for this pass
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beatsaver-conversion-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BeatSaver conversion reference
       
     </span>
   </a>
@@ -5551,32 +5623,48 @@
 
 
 <h1 id="creating-flow-choreography">Creating Flow Choreography<a class="headerlink" href="#creating-flow-choreography" title="Permanent link">&para;</a></h1>
-<p>Flow is a retained AeroBeat gameplay feature and should be authored conservatively for the current camera-first product slice.</p>
+<p>Flow is a retained AeroBeat gameplay feature, but the old portal-driven authored chart model is no longer the current truth for the camera-first product slice.</p>
 <h2 id="authoring-priorities">Authoring priorities<a class="headerlink" href="#authoring-priorities" title="Permanent link">&para;</a></h2>
 <ul>
-<li>preserve readable continuous motion</li>
-<li>keep body-movement prompts safe and well telegraphed</li>
+<li>preserve readable continuous motion on camera</li>
+<li>keep movement safe and well telegraphed</li>
 <li>optimize for the PC-first community release path</li>
-<li>treat broader platform/rendering flexibility as future-friendly, not equal-status v1 scope</li>
+<li>stay honest about the direct calibrated 4x3 gameplay direction instead of re-teaching the older normalized Flow vocabulary</li>
 </ul>
-<h2 id="chart-shape">Chart shape<a class="headerlink" href="#chart-shape" title="Permanent link">&para;</a></h2>
-<p>Flow charts use a flat <code>beats:</code> list under <code>feature: flow</code>.</p>
-<p>Each beat may include:</p>
+<h2 id="current-direction">Current direction<a class="headerlink" href="#current-direction" title="Permanent link">&para;</a></h2>
+<p>Flow is now aimed at a <strong>direct calibrated 4x3 camera-space model</strong>.</p>
+<p>That means current docs should think in terms of:</p>
+<ul>
+<li>a fixed athlete-relative 4x3 grid locked from calibration</li>
+<li>left/right wrist entry into exact target cells</li>
+<li>arrow-note direction judged from recent wrist motion, not from old authored <code>portal</code> / <code>placement</code> semantics</li>
+<li>bombs as wrist-space avoid objects</li>
+<li>obstacles as nose-space occupancy bans</li>
+<li>arcs/sliders as guidance-only visuals in v1</li>
+</ul>
+<h2 id="chart-shape-note-for-this-pass">Chart-shape note for this pass<a class="headerlink" href="#chart-shape-note-for-this-pass" title="Permanent link">&para;</a></h2>
+<p>The old docs taught Flow as a flat <code>beats:</code> list with <code>portal</code>, <code>placement</code>, and follow-through <code>direction</code> as the canonical authored model. That is now stale and should not be treated as the current contract.</p>
+<p>The only Flow object shape already frozen tightly enough to teach here is the first-pass <code>burst</code> beat object:</p>
 <ul>
 <li>required <code>start</code></li>
-<li>optional inclusive <code>end</code></li>
-<li>required <code>type</code></li>
-<li>optional <code>portal</code></li>
-<li>optional <code>placement</code></li>
-<li>optional <code>direction</code></li>
+<li>required <code>end</code></li>
+<li>required <code>type: burst</code></li>
+<li>required <code>hand</code> (<code>left</code> / <code>right</code>)</li>
+<li>required head <code>placement</code></li>
+<li>required head <code>direction</code></li>
+<li>required <code>tailPlacement</code></li>
+<li>required <code>checkpointCount</code></li>
+<li>optional <code>spacingBias</code></li>
 </ul>
-<p>When both are present, keep their semantics separate:</p>
+<p>For ordinary Flow notes/objects, the durable YAML encoding is still being rewritten around the direct 4x3 model. Until that lands, do <strong>not</strong> author new canonical examples around old <code>portal</code>, <code>swing_*</code>, <code>trail_*</code>, <code>warn_*</code>, or <code>reward_*</code> chart vocabulary.</p>
+<h2 id="beatsaver-conversion-reference">BeatSaver conversion reference<a class="headerlink" href="#beatsaver-conversion-reference" title="Permanent link">&para;</a></h2>
+<p>If you need the canonical import/conversion rules for deriving Flow charts from BeatSaver source data, use:</p>
 <ul>
-<li><code>placement</code> = where the beat passes</li>
-<li><code>direction</code> = follow-through guidance for max-score correctness</li>
+<li><a href="../../../architecture/beatsaver-flow-v1-conversion/">BeatSaver to AeroBeat Flow v1 Conversion</a></li>
 </ul>
+<p>This choreography page stays focused on authoring guidance rather than source-conversion policy.</p>
 <h2 id="scope-note">Scope note<a class="headerlink" href="#scope-note" title="Permanent link">&para;</a></h2>
-<p>Flow's future adaptability across renderers and platforms is still useful, but the official product docs should stay grounded in camera-based gameplay first.</p>
+<p>Flow still needs future-friendly rendering flexibility, but the official docs should stay grounded in camera gameplay first and should not preserve superseded portal-era contract language as fallback guidance.</p>
 
 
 
@@ -5597,7 +5685,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 4, 2026 16:47:02 UTC">May 4, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 19, 2026 03:29:33 UTC">July 19, 2026</span>
   </span>
 
     

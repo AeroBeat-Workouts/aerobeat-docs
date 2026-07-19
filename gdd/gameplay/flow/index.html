@@ -1615,6 +1615,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#beatsaver-conversion-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BeatSaver conversion reference
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2804,6 +2815,34 @@
     
   
     BeatSaver to Boxing v1 Conversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/beatsaver-flow-v1-conversion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BeatSaver to Flow v1 Conversion
   
 
     
@@ -5530,6 +5569,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#beatsaver-conversion-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BeatSaver conversion reference
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5554,24 +5604,33 @@
 <p>Flow is the second official AeroBeat v1 gameplay feature.</p>
 <h2 id="core-loop">Core loop<a class="headerlink" href="#core-loop" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Flow charts author a flat <code>beats:</code> list under <code>feature: flow</code>.</li>
-<li>The athlete swings through beats using the authored <code>type</code>, <code>placement</code>, and optional <code>direction</code> guidance. <code>placement</code> means where the beat passes; <code>direction</code> means follow-through guidance for max-score correctness.</li>
-<li>Successful hits maintain combo and support a smooth full-body workout rhythm.</li>
-<li>The feature emphasizes shoulder mobility, core rotation, and movement continuity.</li>
+<li>Flow gameplay uses a calibrated athlete-relative 4x3 play grid.</li>
+<li>The athlete enters target cells with the correct wrist in time with the music.</li>
+<li>Arrow-note correctness comes from recent wrist motion direction; dot-note correctness comes from timed cell entry without an added direction requirement.</li>
+<li>Successful reads maintain combo and support a smooth full-body workout rhythm.</li>
 </ol>
 <h2 id="scope-notes-for-this-slice">Scope notes for this slice<a class="headerlink" href="#scope-notes-for-this-slice" title="Permanent link">&para;</a></h2>
 <ul>
 <li>official gameplay input is <strong>camera only</strong></li>
 <li>Flow remains an active retained feature</li>
+<li>the old portal/placement authored model is not current product truth</li>
 <li>broader device/input permutations can stay future-facing, not official v1 parity claims</li>
 </ul>
 <h2 id="mechanics-emphasis">Mechanics emphasis<a class="headerlink" href="#mechanics-emphasis" title="Permanent link">&para;</a></h2>
 <ul>
-<li>continuous arm arcs and follow-through</li>
-<li>body-movement prompts such as squats and leans</li>
-<li>authored placement/direction cues when they improve readability, without blurring pass-through location vs follow-through guidance</li>
-<li>presentations that remain understandable on the PC-first camera product path</li>
+<li>direct 4x3 cell-entry gameplay</li>
+<li>rolling wrist-motion direction checks for arrow notes</li>
+<li>bombs as wrist-space hazards to avoid</li>
+<li>obstacles as nose-space occupancy bans</li>
+<li>arcs/sliders as guidance-only visuals in v1</li>
+<li>movement that remains understandable on the PC-first camera product path</li>
 </ul>
+<h2 id="beatsaver-conversion-reference">BeatSaver conversion reference<a class="headerlink" href="#beatsaver-conversion-reference" title="Permanent link">&para;</a></h2>
+<p>For the canonical BeatSaver-to-Flow v1 conversion rules, object treatment, frozen burst schema, and still-open implementation seams, see:</p>
+<ul>
+<li><a href="../../../architecture/beatsaver-flow-v1-conversion/">BeatSaver to AeroBeat Flow v1 Conversion</a></li>
+</ul>
+<p>This gameplay page stays focused on the feature itself; the conversion contract lives in Architecture.</p>
 
 
 
@@ -5592,7 +5651,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 4, 2026 16:47:02 UTC">May 4, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 19, 2026 03:29:33 UTC">July 19, 2026</span>
   </span>
 
     

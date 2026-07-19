@@ -2835,6 +2835,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../architecture/beatsaver-flow-v1-conversion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BeatSaver to Flow v1 Conversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../architecture/cloud_baker/" class="md-nav__link">
         
   
@@ -5578,23 +5606,31 @@
 <ul>
 <li>keep movement readable on camera</li>
 <li>favor safe, repeatable workout motion</li>
-<li>use portal placement when it improves choreography, not just because the system allows it</li>
 <li>optimize first for the PC community release path</li>
+<li>align example/chart vocabulary with the locked BeatSaver Boxing v1 conversion contract</li>
 </ul>
 <h2 id="chart-shape">Chart shape<a class="headerlink" href="#chart-shape" title="Permanent link">&para;</a></h2>
 <p>A Boxing chart is a reusable <strong>Chart</strong> record. The song owns audio/timing, the chart owns one concrete playable difficulty, and a package-local <strong>Set</strong> links the chart to the selected song, environment, and optional coaching overlay.</p>
-<p>Each boxing beat uses:</p>
+<p>For the current first-pass canonical Boxing vocabulary, use flat <code>beats:</code> entries built from:</p>
 <ul>
 <li>required <code>start</code></li>
 <li>optional inclusive <code>end</code></li>
 <li>required concrete <code>type</code></li>
-<li>optional integer <code>portal</code></li>
 </ul>
-<p>For current chart truth:</p>
+<p>Current contract-aligned Boxing beat families are:</p>
 <ul>
-<li>use <code>punch_left</code> / <code>punch_right</code> for straight punches, not <code>jab</code> / <code>cross</code></li>
-<li>use <code>guard</code> for guard holds/prompts</li>
-<li>treat <code>orthodox</code> / <code>southpaw</code> as authored stance semantics, not tracked input events</li>
+<li><code>straight_left</code> / <code>straight_right</code></li>
+<li><code>hook_left</code> / <code>hook_right</code></li>
+<li><code>uppercut_left</code> / <code>uppercut_right</code></li>
+<li><code>guard</code></li>
+<li><code>squat</code></li>
+<li><code>weave_left</code> / <code>weave_right</code></li>
+</ul>
+<p>For this docs pass:</p>
+<ul>
+<li>do <strong>not</strong> treat <code>portal</code> as part of the current Boxing chart contract</li>
+<li>do <strong>not</strong> teach <code>punch_left</code> / <code>punch_right</code>, <code>knee_*</code>, <code>leg_lift_*</code>, <code>sidestep_*</code>, or <code>run_in_place</code> as current canonical Boxing chart vocabulary</li>
+<li>keep the Boxing chart semantic and runtime-focused rather than source-shaped</li>
 </ul>
 <h2 id="beatsaver-conversion-reference">BeatSaver conversion reference<a class="headerlink" href="#beatsaver-conversion-reference" title="Permanent link">&para;</a></h2>
 <p>If you need the canonical import/conversion rules for deriving Boxing charts from BeatSaver source data, use:</p>
@@ -5603,7 +5639,7 @@
 </ul>
 <p>This choreography page stays focused on authoring guidance rather than source-conversion policy.</p>
 <h2 id="scope-note">Scope note<a class="headerlink" href="#scope-note" title="Permanent link">&para;</a></h2>
-<p>Portal-aware presentation remains valid in the docs, but it should not be read as a promise that VR or non-camera Boxing is official v1 scope.</p>
+<p>Portal-aware or VR-oriented presentation ideas can still exist as future runtime concerns, but they should not be taught as part of the current Boxing chart contract.</p>
 
 
 
@@ -5624,7 +5660,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 18, 2026 04:29:01 UTC">July 18, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 19, 2026 03:29:33 UTC">July 19, 2026</span>
   </span>
 
     

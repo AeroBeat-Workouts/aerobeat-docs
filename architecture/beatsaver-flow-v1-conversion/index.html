@@ -8,31 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/api/inputs/keyboard/">
+        <link rel="canonical" href="https://aerobeat-workouts.github.io/aerobeat-docs/architecture/beatsaver-flow-v1-conversion/">
       
       
-        <link rel="prev" href="../joycon-hid/">
+        <link rel="prev" href="../beatsaver-boxing-v1-conversion/">
       
       
-        <link rel="next" href="../gamepad/">
+        <link rel="next" href="../cloud_baker/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Keyboard Input - AeroBeat Documentation</title>
+        <title>BeatSaver to Flow v1 Conversion - AeroBeat Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,7 +51,7 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#keyboard-input" class="md-skip">
+        <a href="#beatsaver-to-aerobeat-flow-v1-conversion" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="AeroBeat Documentation" class="md-header__button md-logo" aria-label="AeroBeat Documentation" data-md-component="logo">
+    <a href="../.." title="AeroBeat Documentation" class="md-header__button md-logo" aria-label="AeroBeat Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Keyboard Input
+              BeatSaver to Flow v1 Conversion
             
           </span>
         </div>
@@ -200,7 +200,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="AeroBeat Documentation" class="md-nav__button md-logo" aria-label="AeroBeat Documentation" data-md-component="logo">
+    <a href="../.." title="AeroBeat Documentation" class="md-nav__button md-logo" aria-label="AeroBeat Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -230,7 +230,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -304,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/" class="md-nav__link">
+      <a href="../../licensing/" class="md-nav__link">
         
   
   
@@ -332,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/engineers/" class="md-nav__link">
+      <a href="../../licensing/engineers/" class="md-nav__link">
         
   
   
@@ -360,7 +360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/creative/" class="md-nav__link">
+      <a href="../../licensing/creative/" class="md-nav__link">
         
   
   
@@ -388,7 +388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/commercial/" class="md-nav__link">
+      <a href="../../licensing/commercial/" class="md-nav__link">
         
   
   
@@ -416,7 +416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/hardware/" class="md-nav__link">
+      <a href="../../licensing/hardware/" class="md-nav__link">
         
   
   
@@ -444,7 +444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/attribution/" class="md-nav__link">
+      <a href="../../licensing/attribution/" class="md-nav__link">
         
   
   
@@ -472,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/CLA/" class="md-nav__link">
+      <a href="../../licensing/CLA/" class="md-nav__link">
         
   
   
@@ -500,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../licensing/CONTRIBUTING/" class="md-nav__link">
+      <a href="../../licensing/CONTRIBUTING/" class="md-nav__link">
         
   
   
@@ -528,7 +528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../CODE_OF_CONDUCT/" class="md-nav__link">
+      <a href="../../CODE_OF_CONDUCT/" class="md-nav__link">
         
   
   
@@ -556,7 +556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../legal/refund_policy/" class="md-nav__link">
+      <a href="../../legal/refund_policy/" class="md-nav__link">
         
   
   
@@ -591,7 +591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../releases/changelog/" class="md-nav__link">
+      <a href="../../releases/changelog/" class="md-nav__link">
         
   
   
@@ -665,7 +665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/contributing_workflow/" class="md-nav__link">
+      <a href="../../guides/contributing_workflow/" class="md-nav__link">
         
   
   
@@ -693,7 +693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/feature_development/" class="md-nav__link">
+      <a href="../../guides/feature_development/" class="md-nav__link">
         
   
   
@@ -721,7 +721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/calibration/" class="md-nav__link">
+      <a href="../../guides/calibration/" class="md-nav__link">
         
   
   
@@ -749,7 +749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/accessibility/" class="md-nav__link">
+      <a href="../../guides/accessibility/" class="md-nav__link">
         
   
   
@@ -777,7 +777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/modding_quickstart/" class="md-nav__link">
+      <a href="../../guides/modding_quickstart/" class="md-nav__link">
         
   
   
@@ -805,7 +805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/demo_workout_package/" class="md-nav__link">
+      <a href="../../guides/demo_workout_package/" class="md-nav__link">
         
   
   
@@ -833,7 +833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/workout-submission-checklist/" class="md-nav__link">
+      <a href="../../guides/workout-submission-checklist/" class="md-nav__link">
         
   
   
@@ -908,7 +908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/choreography/overview/" class="md-nav__link">
+      <a href="../../guides/choreography/overview/" class="md-nav__link">
         
   
   
@@ -936,7 +936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/choreography/boxing/" class="md-nav__link">
+      <a href="../../guides/choreography/boxing/" class="md-nav__link">
         
   
   
@@ -964,7 +964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/choreography/flow/" class="md-nav__link">
+      <a href="../../guides/choreography/flow/" class="md-nav__link">
         
   
   
@@ -1000,7 +1000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/environment_creation/" class="md-nav__link">
+      <a href="../../guides/environment_creation/" class="md-nav__link">
         
   
   
@@ -1028,7 +1028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/skins/" class="md-nav__link">
+      <a href="../../guides/skins/" class="md-nav__link">
         
   
   
@@ -1056,7 +1056,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/avatar_creation/" class="md-nav__link">
+      <a href="../../guides/avatar_creation/" class="md-nav__link">
         
   
   
@@ -1084,7 +1084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/cosmetics/" class="md-nav__link">
+      <a href="../../guides/cosmetics/" class="md-nav__link">
         
   
   
@@ -1112,7 +1112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/coaching/" class="md-nav__link">
+      <a href="../../guides/coaching/" class="md-nav__link">
         
   
   
@@ -1194,7 +1194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/concept/" class="md-nav__link">
+      <a href="../../gdd/concept/" class="md-nav__link">
         
   
   
@@ -1269,7 +1269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/art/overview/" class="md-nav__link">
+      <a href="../../gdd/art/overview/" class="md-nav__link">
         
   
   
@@ -1352,7 +1352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/economy/currency/" class="md-nav__link">
+      <a href="../../gdd/economy/currency/" class="md-nav__link">
         
   
   
@@ -1380,7 +1380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/economy/supporter_perks/" class="md-nav__link">
+      <a href="../../gdd/economy/supporter_perks/" class="md-nav__link">
         
   
   
@@ -1416,7 +1416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/glossary/terms/" class="md-nav__link">
+      <a href="../../gdd/glossary/terms/" class="md-nav__link">
         
   
   
@@ -1491,7 +1491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/gameplay/boxing/" class="md-nav__link">
+      <a href="../../gdd/gameplay/boxing/" class="md-nav__link">
         
   
   
@@ -1519,7 +1519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/gameplay/flow/" class="md-nav__link">
+      <a href="../../gdd/gameplay/flow/" class="md-nav__link">
         
   
   
@@ -1547,7 +1547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/gameplay/view-modes/" class="md-nav__link">
+      <a href="../../gdd/gameplay/view-modes/" class="md-nav__link">
         
   
   
@@ -1630,7 +1630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/gamification/overview/" class="md-nav__link">
+      <a href="../../gdd/gamification/overview/" class="md-nav__link">
         
   
   
@@ -1658,7 +1658,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/gamification/quests/" class="md-nav__link">
+      <a href="../../gdd/gamification/quests/" class="md-nav__link">
         
   
   
@@ -1741,7 +1741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/input-system/agnostic-input/" class="md-nav__link">
+      <a href="../../gdd/input-system/agnostic-input/" class="md-nav__link">
         
   
   
@@ -1824,7 +1824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/meta/profile/" class="md-nav__link">
+      <a href="../../gdd/meta/profile/" class="md-nav__link">
         
   
   
@@ -1852,7 +1852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/meta/preferences/" class="md-nav__link">
+      <a href="../../gdd/meta/preferences/" class="md-nav__link">
         
   
   
@@ -1880,7 +1880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/meta/locker_room/" class="md-nav__link">
+      <a href="../../gdd/meta/locker_room/" class="md-nav__link">
         
   
   
@@ -1963,7 +1963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/modifiers/accessibility/" class="md-nav__link">
+      <a href="../../gdd/modifiers/accessibility/" class="md-nav__link">
         
   
   
@@ -1991,7 +1991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/modifiers/difficulty/" class="md-nav__link">
+      <a href="../../gdd/modifiers/difficulty/" class="md-nav__link">
         
   
   
@@ -2074,7 +2074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/releases/community/" class="md-nav__link">
+      <a href="../../gdd/releases/community/" class="md-nav__link">
         
   
   
@@ -2102,7 +2102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/releases/digital-stores-and-arcades/" class="md-nav__link">
+      <a href="../../gdd/releases/digital-stores-and-arcades/" class="md-nav__link">
         
   
   
@@ -2185,7 +2185,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/roadmap/future-roadmap/" class="md-nav__link">
+      <a href="../../gdd/roadmap/future-roadmap/" class="md-nav__link">
         
   
   
@@ -2268,7 +2268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/social/crews/" class="md-nav__link">
+      <a href="../../gdd/social/crews/" class="md-nav__link">
         
   
   
@@ -2351,7 +2351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/user-content/overview/" class="md-nav__link">
+      <a href="../../gdd/user-content/overview/" class="md-nav__link">
         
   
   
@@ -2379,7 +2379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/user-content/community-creations/" class="md-nav__link">
+      <a href="../../gdd/user-content/community-creations/" class="md-nav__link">
         
   
   
@@ -2407,7 +2407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../gdd/user-content/policing-content/" class="md-nav__link">
+      <a href="../../gdd/user-content/policing-content/" class="md-nav__link">
         
   
   
@@ -2496,18 +2496,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -2528,7 +2530,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2546,7 +2548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -2574,7 +2576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/audio/" class="md-nav__link">
+      <a href="../audio/" class="md-nav__link">
         
   
   
@@ -2602,7 +2604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/account-identity-and-entitlements/" class="md-nav__link">
+      <a href="../account-identity-and-entitlements/" class="md-nav__link">
         
   
   
@@ -2630,7 +2632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/account-retention-phasing/" class="md-nav__link">
+      <a href="../account-retention-phasing/" class="md-nav__link">
         
   
   
@@ -2658,7 +2660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/v1-account-retention-behavior/" class="md-nav__link">
+      <a href="../v1-account-retention-behavior/" class="md-nav__link">
         
   
   
@@ -2686,7 +2688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/backend_api/" class="md-nav__link">
+      <a href="../backend_api/" class="md-nav__link">
         
   
   
@@ -2714,7 +2716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/beatsaver-boxing-v1-conversion/" class="md-nav__link">
+      <a href="../beatsaver-boxing-v1-conversion/" class="md-nav__link">
         
   
   
@@ -2739,10 +2741,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../architecture/beatsaver-flow-v1-conversion/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BeatSaver to Flow v1 Conversion
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2758,6 +2787,525 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-is-the-canonical-home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this is the canonical home
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#canonical-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical philosophy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Canonical philosophy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversion-goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversion goal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#product-posture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product posture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-choice-now-locked" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture choice now locked
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture choice now locked">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locked-v1-architecture-direct-calibrated-4x3-flow-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked v1 architecture: direct calibrated 4x3 Flow conversion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source grid
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#locked-calibration-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked calibration model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Locked calibration model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calibration-pose-and-anchors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration pose and anchors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grid-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grid geometry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime-landmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime landmarks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#locked-object-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked object coverage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Locked object coverage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explicitly-covered-in-flow-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicitly covered in Flow v1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#locked-conversion-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked conversion rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-normal-note-target-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Normal note target rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dot-note-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Dot-note rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-arrow-direction-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Arrow-direction rule
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Arrow-direction rule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locked-motion-direction-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked motion-direction model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-timing-window-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Timing-window rule
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Timing-window rule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locked-timing-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked timing architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locked-first-pass-timing-defaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked first-pass timing defaults
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-bomb-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Bomb rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-obstacle-wall-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Obstacle / wall rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-arc-slider-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Arc / slider rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-burst-slider-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Burst-slider rule
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Burst-slider rule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locked-behavior-intent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked behavior intent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frozen-authored-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frozen authored schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locked-field-mapping-from-beatsaver-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked field mapping from BeatSaver source
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authored-chart-posture-in-this-slice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authored chart posture in this slice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authored chart posture in this slice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-already-frozen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is already frozen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-not-yet-frozen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is not yet frozen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provenance-and-artifact-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provenance and artifact policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-seams-intentionally-still-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important seams intentionally still open
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-final-ordinary-flow-yaml-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Final ordinary Flow YAML contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-exact-row-boundary-tuning-and-recenter-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Exact row-boundary tuning and recenter behavior
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-motion-direction-tuning-knobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Motion-direction tuning knobs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-burst-checkpoint-math-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Burst checkpoint math details
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-source-format-normalization-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Source-format normalization details
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-links
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2770,7 +3318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/cloud_baker/" class="md-nav__link">
+      <a href="../cloud_baker/" class="md-nav__link">
         
   
   
@@ -2798,7 +3346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/coding-style/" class="md-nav__link">
+      <a href="../coding-style/" class="md-nav__link">
         
   
   
@@ -2826,7 +3374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/content-model/" class="md-nav__link">
+      <a href="../content-model/" class="md-nav__link">
         
   
   
@@ -2854,7 +3402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/content-repo-shapes/" class="md-nav__link">
+      <a href="../content-repo-shapes/" class="md-nav__link">
         
   
   
@@ -2882,7 +3430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/modio-tag-mapping/" class="md-nav__link">
+      <a href="../modio-tag-mapping/" class="md-nav__link">
         
   
   
@@ -2910,7 +3458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/input/" class="md-nav__link">
+      <a href="../input/" class="md-nav__link">
         
   
   
@@ -2938,7 +3486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/multiplayer/" class="md-nav__link">
+      <a href="../multiplayer/" class="md-nav__link">
         
   
   
@@ -2966,7 +3514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/performance/" class="md-nav__link">
+      <a href="../performance/" class="md-nav__link">
         
   
   
@@ -2994,7 +3542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/premium-workout-governance/" class="md-nav__link">
+      <a href="../premium-workout-governance/" class="md-nav__link">
         
   
   
@@ -3022,7 +3570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/v1-ugc-submission-and-review-policy/" class="md-nav__link">
+      <a href="../v1-ugc-submission-and-review-policy/" class="md-nav__link">
         
   
   
@@ -3050,7 +3598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/repo-structure-reference/" class="md-nav__link">
+      <a href="../repo-structure-reference/" class="md-nav__link">
         
   
   
@@ -3078,7 +3626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/repository-map/" class="md-nav__link">
+      <a href="../repository-map/" class="md-nav__link">
         
   
   
@@ -3106,7 +3654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/security/" class="md-nav__link">
+      <a href="../security/" class="md-nav__link">
         
   
   
@@ -3134,7 +3682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/state-management/" class="md-nav__link">
+      <a href="../state-management/" class="md-nav__link">
         
   
   
@@ -3162,7 +3710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/telemetry/" class="md-nav__link">
+      <a href="../telemetry/" class="md-nav__link">
         
   
   
@@ -3190,7 +3738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/testing/" class="md-nav__link">
+      <a href="../testing/" class="md-nav__link">
         
   
   
@@ -3218,7 +3766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/tool/" class="md-nav__link">
+      <a href="../tool/" class="md-nav__link">
         
   
   
@@ -3246,7 +3794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/workout-creation-tools-architecture/" class="md-nav__link">
+      <a href="../workout-creation-tools-architecture/" class="md-nav__link">
         
   
   
@@ -3274,7 +3822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/workout-creation-tools-cli-surface/" class="md-nav__link">
+      <a href="../workout-creation-tools-cli-surface/" class="md-nav__link">
         
   
   
@@ -3302,7 +3850,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/workout-creation-tools-import-format-matrix/" class="md-nav__link">
+      <a href="../workout-creation-tools-import-format-matrix/" class="md-nav__link">
         
   
   
@@ -3330,7 +3878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/workout-creation-tools-implementation-order/" class="md-nav__link">
+      <a href="../workout-creation-tools-implementation-order/" class="md-nav__link">
         
   
   
@@ -3358,7 +3906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/topology/" class="md-nav__link">
+      <a href="../topology/" class="md-nav__link">
         
   
   
@@ -3386,7 +3934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/ugc_modding/" class="md-nav__link">
+      <a href="../ugc_modding/" class="md-nav__link">
         
   
   
@@ -3414,7 +3962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/ugc-distribution-executive-summary/" class="md-nav__link">
+      <a href="../ugc-distribution-executive-summary/" class="md-nav__link">
         
   
   
@@ -3442,7 +3990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/ugc-distribution-strategy/" class="md-nav__link">
+      <a href="../ugc-distribution-strategy/" class="md-nav__link">
         
   
   
@@ -3470,7 +4018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/ugc-hybrid-integration-architecture/" class="md-nav__link">
+      <a href="../ugc-hybrid-integration-architecture/" class="md-nav__link">
         
   
   
@@ -3498,7 +4046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/ugc-api-manager-topology/" class="md-nav__link">
+      <a href="../ugc-api-manager-topology/" class="md-nav__link">
         
   
   
@@ -3526,7 +4074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/ui-ux/" class="md-nav__link">
+      <a href="../ui-ux/" class="md-nav__link">
         
   
   
@@ -3554,7 +4102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/workflow/" class="md-nav__link">
+      <a href="../workflow/" class="md-nav__link">
         
   
   
@@ -3582,7 +4130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/workout-package-storage-and-discovery/" class="md-nav__link">
+      <a href="../workout-package-storage-and-discovery/" class="md-nav__link">
         
   
   
@@ -3615,20 +4163,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
         
           
           <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
@@ -3649,7 +4195,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3714,7 +4260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../assembly/" class="md-nav__link">
+      <a href="../../api/assembly/" class="md-nav__link">
         
   
   
@@ -3742,7 +4288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../assembly/community/" class="md-nav__link">
+      <a href="../../api/assembly/community/" class="md-nav__link">
         
   
   
@@ -3872,7 +4418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../assets/prototypes/" class="md-nav__link">
+      <a href="../../api/assets/prototypes/" class="md-nav__link">
         
   
   
@@ -3963,7 +4509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../core/" class="md-nav__link">
+      <a href="../../api/core/" class="md-nav__link">
         
   
   
@@ -4093,7 +4639,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../features/boxing/" class="md-nav__link">
+      <a href="../../api/features/boxing/" class="md-nav__link">
         
   
   
@@ -4176,7 +4722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../features/flow/" class="md-nav__link">
+      <a href="../../api/features/flow/" class="md-nav__link">
         
   
   
@@ -4217,20 +4763,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_5" >
         
           
           <label class="md-nav__link" for="__nav_6_2_5" id="__nav_6_2_5_label" tabindex="0">
@@ -4251,7 +4795,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_2_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4316,7 +4860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mediapipe_python/" class="md-nav__link">
+      <a href="../../api/inputs/mediapipe_python/" class="md-nav__link">
         
   
   
@@ -4399,7 +4943,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mediapipe_native/" class="md-nav__link">
+      <a href="../../api/inputs/mediapipe_native/" class="md-nav__link">
         
   
   
@@ -4482,7 +5026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../joycon-hid/" class="md-nav__link">
+      <a href="../../api/inputs/joycon-hid/" class="md-nav__link">
         
   
   
@@ -4515,20 +5059,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_5_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_5_4" >
         
           
           <label class="md-nav__link" for="__nav_6_2_5_4" id="__nav_6_2_5_4_label" tabindex="0">
@@ -4549,7 +5091,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_2_5_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_2_5_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_2_5_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4564,19 +5106,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../api/inputs/keyboard/" class="md-nav__link">
         
   
   
@@ -4592,7 +5125,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -4660,7 +5192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gamepad/" class="md-nav__link">
+      <a href="../../api/inputs/gamepad/" class="md-nav__link">
         
   
   
@@ -4743,7 +5275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mouse/" class="md-nav__link">
+      <a href="../../api/inputs/mouse/" class="md-nav__link">
         
   
   
@@ -4826,7 +5358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../touch/" class="md-nav__link">
+      <a href="../../api/inputs/touch/" class="md-nav__link">
         
   
   
@@ -4909,7 +5441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../xr/" class="md-nav__link">
+      <a href="../../api/inputs/xr/" class="md-nav__link">
         
   
   
@@ -5000,7 +5532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/" class="md-nav__link">
+      <a href="../../api/tools/" class="md-nav__link">
         
   
   
@@ -5028,7 +5560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/api/" class="md-nav__link">
+      <a href="../../api/tools/api/" class="md-nav__link">
         
   
   
@@ -5056,7 +5588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tools/settings/" class="md-nav__link">
+      <a href="../../api/tools/settings/" class="md-nav__link">
         
   
   
@@ -5139,7 +5671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ui/core/" class="md-nav__link">
+      <a href="../../api/ui/core/" class="md-nav__link">
         
   
   
@@ -5214,7 +5746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ui/kit-community/" class="md-nav__link">
+      <a href="../../api/ui/kit-community/" class="md-nav__link">
         
   
   
@@ -5289,7 +5821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ui/shell-desktop-community/" class="md-nav__link">
+      <a href="../../api/ui/shell-desktop-community/" class="md-nav__link">
         
   
   
@@ -5317,7 +5849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ui/shell-mobile-community/" class="md-nav__link">
+      <a href="../../api/ui/shell-mobile-community/" class="md-nav__link">
         
   
   
@@ -5345,7 +5877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ui/shell-web-community/" class="md-nav__link">
+      <a href="../../api/ui/shell-web-community/" class="md-nav__link">
         
   
   
@@ -5373,7 +5905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ui/shell-xr-community/" class="md-nav__link">
+      <a href="../../api/ui/shell-xr-community/" class="md-nav__link">
         
   
   
@@ -5453,6 +5985,513 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-is-the-canonical-home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this is the canonical home
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#canonical-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical philosophy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Canonical philosophy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversion-goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversion goal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#product-posture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product posture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-choice-now-locked" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture choice now locked
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture choice now locked">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locked-v1-architecture-direct-calibrated-4x3-flow-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked v1 architecture: direct calibrated 4x3 Flow conversion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source grid
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#locked-calibration-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked calibration model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Locked calibration model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calibration-pose-and-anchors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration pose and anchors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grid-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grid geometry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime-landmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime landmarks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#locked-object-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked object coverage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Locked object coverage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explicitly-covered-in-flow-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicitly covered in Flow v1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#locked-conversion-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked conversion rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-normal-note-target-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Normal note target rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dot-note-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Dot-note rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-arrow-direction-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Arrow-direction rule
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Arrow-direction rule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locked-motion-direction-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked motion-direction model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-timing-window-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Timing-window rule
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Timing-window rule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locked-timing-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked timing architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locked-first-pass-timing-defaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked first-pass timing defaults
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-bomb-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Bomb rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-obstacle-wall-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Obstacle / wall rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-arc-slider-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Arc / slider rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-burst-slider-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Burst-slider rule
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Burst-slider rule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locked-behavior-intent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked behavior intent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frozen-authored-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frozen authored schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locked-field-mapping-from-beatsaver-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locked field mapping from BeatSaver source
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authored-chart-posture-in-this-slice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authored chart posture in this slice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authored chart posture in this slice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-already-frozen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is already frozen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-not-yet-frozen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is not yet frozen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provenance-and-artifact-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provenance and artifact policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-seams-intentionally-still-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important seams intentionally still open
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-final-ordinary-flow-yaml-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Final ordinary Flow YAML contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-exact-row-boundary-tuning-and-recenter-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Exact row-boundary tuning and recenter behavior
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-motion-direction-tuning-knobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Motion-direction tuning knobs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-burst-checkpoint-math-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Burst checkpoint math details
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-source-format-normalization-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Source-format normalization details
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-links
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5471,10 +6510,302 @@
   
 
 
-<h1 id="keyboard-input">Keyboard Input<a class="headerlink" href="#keyboard-input" title="Permanent link">&para;</a></h1>
-<p>🚧 <strong>Work In Progress</strong></p>
-<p>This module remains <strong>future support only</strong>. It is preserved for debugging/tooling exploration and should not be read as official v1 gameplay support.</p>
-<p>View the source code on GitHub: <a href="https://github.com/AeroBeat-Workouts/aerobeat-input-keyboard">https://github.com/AeroBeat-Workouts/aerobeat-input-keyboard</a></p>
+<h1 id="beatsaver-to-aerobeat-flow-v1-conversion">BeatSaver to AeroBeat Flow v1 Conversion<a class="headerlink" href="#beatsaver-to-aerobeat-flow-v1-conversion" title="Permanent link">&para;</a></h1>
+<p>This document is the canonical AeroBeat docs home for the <strong>Flow v1 BeatSaver conversion spec</strong>.</p>
+<p>Use this page when you need the current truth for:</p>
+<ul>
+<li>what BeatSaver / Beat Saber Standard-map objects AeroBeat Flow v1 converts</li>
+<li>which direct calibrated 4x3 gameplay rules are already locked</li>
+<li>which source objects are scored, guidance-only, or hazard-only in Flow v1</li>
+<li>the frozen first-pass Flow burst object schema</li>
+<li>which important implementation seams are still intentionally open</li>
+</ul>
+<p>This page is intentionally a <strong>conversion architecture and rules</strong> document, not a general Flow gameplay page and not a choreography how-to.</p>
+<h2 id="why-this-is-the-canonical-home">Why this is the canonical home<a class="headerlink" href="#why-this-is-the-canonical-home" title="Permanent link">&para;</a></h2>
+<p>The Flow gameplay pages describe the player-facing feature and current product intent. They are not the most truthful place for a BeatSaver-specific import/conversion contract that spans:</p>
+<ul>
+<li>external source semantics</li>
+<li>calibration-locked gameplay geometry</li>
+<li>source-object handling policy</li>
+<li>timing-window policy</li>
+<li>authored-chart schema seams</li>
+<li>provenance and converter artifact policy</li>
+</ul>
+<p>Those concerns belong in Architecture because they define the tooling and content-conversion seam between BeatSaver source data and AeroBeat-authored Flow charts.</p>
+<h2 id="scope">Scope<a class="headerlink" href="#scope" title="Permanent link">&para;</a></h2>
+<p>This document covers <strong>AeroBeat Flow v1 conversion from BeatSaver / Beat Saber Standard-map source data</strong>.</p>
+<p>It does not define:</p>
+<ul>
+<li>the general AeroBeat Flow player fantasy</li>
+<li>Boxing conversion in full detail</li>
+<li>every future Flow runtime implementation choice outside the locked conversion contract</li>
+</ul>
+<h2 id="canonical-philosophy">Canonical philosophy<a class="headerlink" href="#canonical-philosophy" title="Permanent link">&para;</a></h2>
+<h3 id="source-truth">Source truth<a class="headerlink" href="#source-truth" title="Permanent link">&para;</a></h3>
+<p>For BeatSaver-derived Flow content, the <strong>raw BeatSaver source remains canonical source truth</strong>.</p>
+<p>That means:</p>
+<ul>
+<li>the original BeatSaver map package remains the authoritative record of what was imported</li>
+<li>AeroBeat Flow charts are a <strong>derived authored runtime form</strong>, not the primary archival source</li>
+<li>source-specific provenance, debug traces, warnings, and mapping diagnostics belong in package artifacts, not in the clean runtime chart payload</li>
+</ul>
+<h3 id="conversion-goal">Conversion goal<a class="headerlink" href="#conversion-goal" title="Permanent link">&para;</a></h3>
+<p>Flow v1 aims for a <strong>deterministic, BeatSaver-first conversion system</strong> grounded in direct camera-space gameplay rather than a larger semantic translation layer.</p>
+<p>The current product direction is:</p>
+<ul>
+<li>preserve BeatSaver spatial/timing truth as directly as practical</li>
+<li>convert notes one-to-one into a calibrated athlete-relative 4x3 play grid</li>
+<li>keep scoring rules explicit, inspectable, and tunable</li>
+<li>accept honest simplifications rather than pretending unsupported semantics were preserved perfectly</li>
+</ul>
+<h3 id="product-posture">Product posture<a class="headerlink" href="#product-posture" title="Permanent link">&para;</a></h3>
+<p>Flow v1 should be treated as a <strong>camera-first AeroBeat gameplay translation</strong> of BeatSaver input, not as a one-to-one preservation of VR saber semantics.</p>
+<h2 id="architecture-choice-now-locked">Architecture choice now locked<a class="headerlink" href="#architecture-choice-now-locked" title="Permanent link">&para;</a></h2>
+<h3 id="locked-v1-architecture-direct-calibrated-4x3-flow-conversion">Locked v1 architecture: direct calibrated 4x3 Flow conversion<a class="headerlink" href="#locked-v1-architecture-direct-calibrated-4x3-flow-conversion" title="Permanent link">&para;</a></h3>
+<p>The current canonical direction is a <strong>direct calibrated 4x3 Flow model</strong>.</p>
+<p>BeatSaver notes map into a fixed athlete-relative 4x3 gameplay board captured during calibration, not into the older AeroBeat portal-era authored placement/direction abstraction.</p>
+<p>The converter should derive Flow gameplay from source chart structure, not from:</p>
+<ul>
+<li>portal-based authored placement vocabularies</li>
+<li>large gesture-taxonomy reinterpretation passes</li>
+<li>hidden runtime-only semantic remapping with no durable conversion trace</li>
+<li>extra music-analysis heuristics unrelated to the BeatSaver chart</li>
+</ul>
+<h3 id="source-grid">Source grid<a class="headerlink" href="#source-grid" title="Permanent link">&para;</a></h3>
+<p>BeatSaver note and obstacle reasoning in this spec uses the standard 4x3 cell model:</p>
+<div class="highlight"><pre><span></span><code>[0][1][2][3]
+[4][5][6][7]
+[8][9][10][11]
+</code></pre></div>
+<p>Rows are interpreted as:</p>
+<ul>
+<li>top row: <code>0..3</code></li>
+<li>middle row: <code>4..7</code></li>
+<li>bottom row: <code>8..11</code></li>
+</ul>
+<p>For Flow v1, those source cells map directly into the athlete's calibrated gameplay grid rather than being collapsed into an 8-way-plus-center authored placement system first.</p>
+<h2 id="locked-calibration-model">Locked calibration model<a class="headerlink" href="#locked-calibration-model" title="Permanent link">&para;</a></h2>
+<h3 id="calibration-pose-and-anchors">Calibration pose and anchors<a class="headerlink" href="#calibration-pose-and-anchors" title="Permanent link">&para;</a></h3>
+<p>Flow v1 uses a <strong>calibration-locked athlete-relative grid</strong>.</p>
+<p>Locked first-pass calibration rules:</p>
+<ul>
+<li>the athlete calibrates in a simple <strong>T-pose</strong></li>
+<li>horizontal grid width is derived directly from the calibrated wrist-to-wrist span</li>
+<li>grid anchor <code>x</code> is the calibrated <code>nose</code> landmark <code>x</code></li>
+<li>grid anchor <code>y</code> is derived from the calibrated average of the two shoulder <code>y</code> landmark positions</li>
+<li>the grid is then <strong>locked in place for gameplay</strong> rather than following the athlete dynamically</li>
+</ul>
+<h3 id="grid-geometry">Grid geometry<a class="headerlink" href="#grid-geometry" title="Permanent link">&para;</a></h3>
+<p>Locked first-pass geometry rules:</p>
+<ul>
+<li>the 4 columns are split evenly across the calibrated wrist-to-wrist width</li>
+<li>each cell width is <code>wrist_span / 4</code></li>
+<li>the 3 rows use the same dimension so cells stay square in first pass</li>
+<li>shoulder level is the center-row height reference in camera space</li>
+<li>the bottom row sits below shoulder level</li>
+<li>the top row sits above shoulder level</li>
+</ul>
+<h3 id="runtime-landmarks">Runtime landmarks<a class="headerlink" href="#runtime-landmarks" title="Permanent link">&para;</a></h3>
+<p>Flow gameplay evaluates these landmarks against the locked grid:</p>
+<ul>
+<li><code>wrist_left</code></li>
+<li><code>wrist_right</code></li>
+<li><code>nose</code></li>
+</ul>
+<h2 id="locked-object-coverage">Locked object coverage<a class="headerlink" href="#locked-object-coverage" title="Permanent link">&para;</a></h2>
+<p>The recent Flow architecture refresh closes the policy treatment for the major Standard-map object families.</p>
+<h3 id="explicitly-covered-in-flow-v1">Explicitly covered in Flow v1<a class="headerlink" href="#explicitly-covered-in-flow-v1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>normal colored notes</li>
+<li>directionless / dot notes</li>
+<li>bombs</li>
+<li>obstacles / walls</li>
+<li>arcs / sliders</li>
+<li>burst sliders</li>
+</ul>
+<p>Coverage does <strong>not</strong> mean every object becomes a scored authored Flow beat. Some become scored note targets, some remain guidance-only, and some remain hazard-only.</p>
+<h2 id="locked-conversion-rules">Locked conversion rules<a class="headerlink" href="#locked-conversion-rules" title="Permanent link">&para;</a></h2>
+<h2 id="1-normal-note-target-rule">1. Normal note target rule<a class="headerlink" href="#1-normal-note-target-rule" title="Permanent link">&para;</a></h2>
+<p>Each normal BeatSaver note targets <strong>one exact 4x3 cell</strong>.</p>
+<ul>
+<li>left-color notes use <code>wrist_left</code></li>
+<li>right-color notes use <code>wrist_right</code></li>
+<li>the correct wrist must <strong>enter</strong> the target cell during the valid timing window</li>
+<li>simply already being parked in the target cell before the valid window does <strong>not</strong> satisfy the note</li>
+</ul>
+<p>This entry-event rule is the core direct-grid Flow v1 hit rule.</p>
+<h2 id="2-dot-note-rule">2. Dot-note rule<a class="headerlink" href="#2-dot-note-rule" title="Permanent link">&para;</a></h2>
+<p>Dot notes still require a correct-wrist <strong>entry event</strong> into the target cell during the valid timing window.</p>
+<p>They do <strong>not</strong> add a directional validation requirement.</p>
+<h2 id="3-arrow-direction-rule">3. Arrow-direction rule<a class="headerlink" href="#3-arrow-direction-rule" title="Permanent link">&para;</a></h2>
+<p>Arrow notes require both:</p>
+<ul>
+<li>correct-wrist entry into the target cell during the valid timing window, and</li>
+<li>a direction match between the required BeatSaver arrow direction and the athlete's recent wrist motion</li>
+</ul>
+<h3 id="locked-motion-direction-model">Locked motion-direction model<a class="headerlink" href="#locked-motion-direction-model" title="Permanent link">&para;</a></h3>
+<p>Flow v1 direction validation uses a <strong>rolling shoulder-relative wrist-motion system</strong>.</p>
+<p>Locked first-pass rules:</p>
+<ul>
+<li>maintain a short rolling wrist-position history for each hand</li>
+<li>compute a smoothed recent motion vector over a tunable recent time window rather than from a single-frame delta</li>
+<li>interpret that motion vector in <strong>8-way shoulder-relative directional space</strong></li>
+<li>left-wrist direction uses the <strong>left shoulder</strong> as its anchor frame</li>
+<li>right-wrist direction uses the <strong>right shoulder</strong> as its anchor frame</li>
+<li>if recent motion magnitude is below a tunable minimum threshold, direction is treated as ambiguous/invalid rather than allowing tiny jitter to count as a real swing</li>
+</ul>
+<p>This closes the previously open diagonal-approach problem by not depending on a brittle one-cell predecessor rule.</p>
+<h2 id="4-timing-window-rule">4. Timing-window rule<a class="headerlink" href="#4-timing-window-rule" title="Permanent link">&para;</a></h2>
+<p>BeatSaver source timing remains the note timing truth, but AeroBeat owns the gameplay forgiveness window around that truth.</p>
+<h3 id="locked-timing-architecture">Locked timing architecture<a class="headerlink" href="#locked-timing-architecture" title="Permanent link">&para;</a></h3>
+<ul>
+<li>timing evaluation attaches to the wrist <strong>entry event</strong> into the target cell</li>
+<li>early and late windows are symmetric in first pass</li>
+<li>camera-delay compensation stays in a <strong>separate calibration layer</strong> and is not folded into chart conversion semantics</li>
+<li>base timing windows vary by difficulty</li>
+<li>an athlete-facing modifier may widen or tighten those windows without changing the converted chart structure</li>
+</ul>
+<h3 id="locked-first-pass-timing-defaults">Locked first-pass timing defaults<a class="headerlink" href="#locked-first-pass-timing-defaults" title="Permanent link">&para;</a></h3>
+<p>Base timing window by difficulty:</p>
+<ul>
+<li><code>Easy = ±220ms</code></li>
+<li><code>Normal = ±180ms</code></li>
+<li><code>Hard = ±145ms</code></li>
+<li><code>Expert = ±115ms</code></li>
+<li><code>ExpertPlus = ±90ms</code></li>
+</ul>
+<p>Athlete-facing timing preference modifier:</p>
+<ul>
+<li><code>Very Lenient = +40ms</code></li>
+<li><code>Lenient = +20ms</code></li>
+<li><code>Standard = 0ms</code></li>
+<li><code>Strict = -20ms</code></li>
+<li><code>Very Strict = -40ms</code></li>
+</ul>
+<p>The important architectural lock is the layering:</p>
+<ul>
+<li>BeatSaver timing truth</li>
+<li>AeroBeat-owned difficulty timing window</li>
+<li>optional athlete preference modifier</li>
+<li>separate camera-delay calibration</li>
+</ul>
+<h2 id="5-bomb-rule">5. Bomb rule<a class="headerlink" href="#5-bomb-rule" title="Permanent link">&para;</a></h2>
+<p>Bombs are <strong>fail-on-contact only</strong> in Flow v1.</p>
+<p>Locked first-pass bomb rules:</p>
+<ul>
+<li>bombs are direct 4x3 <strong>wrist-space exclusion objects</strong></li>
+<li>a live bomb occupies its authored source cell/time window in the calibrated grid</li>
+<li>the relevant wrist must avoid contacting that live bomb cell during the active window</li>
+<li>bombs do <strong>not</strong> synthesize separate authored avoidance beats or reroute/pathfinding hints in v1</li>
+</ul>
+<h2 id="6-obstacle-wall-rule">6. Obstacle / wall rule<a class="headerlink" href="#6-obstacle-wall-rule" title="Permanent link">&para;</a></h2>
+<p>Obstacles are <strong>nose-space occupancy bans only</strong> in Flow v1.</p>
+<p>Locked first-pass obstacle rules:</p>
+<ul>
+<li>wrist/hand positions do <strong>not</strong> fail a Flow obstacle by themselves</li>
+<li>the athlete avoids the obstacle by keeping the <code>nose</code> landmark out of the blocked obstacle cells/window while it is active</li>
+<li>this intentionally mirrors Beat Saber head-collider semantics rather than inventing a separate full-body movement-beat vocabulary</li>
+</ul>
+<h2 id="7-arc-slider-rule">7. Arc / slider rule<a class="headerlink" href="#7-arc-slider-rule" title="Permanent link">&para;</a></h2>
+<p>Arcs/sliders are <strong>guidance-only</strong> objects in Flow v1.</p>
+<p>Locked first-pass arc/slider rules:</p>
+<ul>
+<li>preserve them as visuals because they help sight-reading and wrist-position anticipation</li>
+<li>do <strong>not</strong> score them as strict continuous path-follow requirements</li>
+<li>do <strong>not</strong> fail the athlete for not tracing the exact arc path</li>
+</ul>
+<p>This preserves useful mapper guidance without overclaiming brittle path-validation semantics.</p>
+<h2 id="8-burst-slider-rule">8. Burst-slider rule<a class="headerlink" href="#8-burst-slider-rule" title="Permanent link">&para;</a></h2>
+<p>Burst sliders survive in Flow v1 as a <strong>higher-level Flow burst object</strong> rather than being flattened away.</p>
+<h3 id="locked-behavior-intent">Locked behavior intent<a class="headerlink" href="#locked-behavior-intent" title="Permanent link">&para;</a></h3>
+<ul>
+<li>bursts remain burst-shaped gameplay, not ordinary single-note replacements</li>
+<li>the burst preserves source timing span, hand ownership, and head/tail cell identity</li>
+<li><code>checkpointCount</code> gives the repeated checkpoint density across the burst window</li>
+<li><code>spacingBias</code> optionally preserves source compression/shaping intent when the converter wants it</li>
+<li>the runtime derives internal checkpoints across <code>start..end</code> using the <code>placement -&gt; tailPlacement</code> path</li>
+</ul>
+<h3 id="frozen-authored-schema">Frozen authored schema<a class="headerlink" href="#frozen-authored-schema" title="Permanent link">&para;</a></h3>
+<p>The frozen first-pass AeroBeat Flow burst object stays inside the existing flat <code>beats:</code> list.</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;number&gt;</span>
+<span class="w">  </span><span class="nt">end</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;number&gt;</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">burst</span>
+<span class="w">  </span><span class="nt">hand</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">left | right</span>
+<span class="w">  </span><span class="nt">placement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;int&gt;</span>
+<span class="w">  </span><span class="nt">direction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;int&gt;</span>
+<span class="w">  </span><span class="nt">tailPlacement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;int&gt;</span>
+<span class="w">  </span><span class="nt">checkpointCount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;int&gt;</span>
+<span class="w">  </span><span class="nt">spacingBias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;number&gt;</span><span class="w">   </span><span class="c1"># optional</span>
+</code></pre></div>
+<h3 id="locked-field-mapping-from-beatsaver-source">Locked field mapping from BeatSaver source<a class="headerlink" href="#locked-field-mapping-from-beatsaver-source" title="Permanent link">&para;</a></h3>
+<ul>
+<li>head time -&gt; <code>start</code></li>
+<li>tail time -&gt; <code>end</code></li>
+<li>head cell -&gt; <code>placement</code></li>
+<li>tail cell -&gt; <code>tailPlacement</code></li>
+<li>head cut direction -&gt; <code>direction</code></li>
+<li>color / hand lane -&gt; <code>hand</code></li>
+<li><code>sliceCount</code> / <code>sc</code> -&gt; <code>checkpointCount</code></li>
+<li><code>squish</code> / <code>s</code> -&gt; optional <code>spacingBias</code></li>
+</ul>
+<p>Raw source-specific field names stay out of the authored AeroBeat chart and remain converter/trace concerns only.</p>
+<h2 id="authored-chart-posture-in-this-slice">Authored chart posture in this slice<a class="headerlink" href="#authored-chart-posture-in-this-slice" title="Permanent link">&para;</a></h2>
+<h3 id="what-is-already-frozen">What is already frozen<a class="headerlink" href="#what-is-already-frozen" title="Permanent link">&para;</a></h3>
+<p>The only Flow object shape currently frozen tightly enough to teach as durable authored schema is the first-pass <code>burst</code> object above.</p>
+<h3 id="what-is-not-yet-frozen">What is not yet frozen<a class="headerlink" href="#what-is-not-yet-frozen" title="Permanent link">&para;</a></h3>
+<p>The final general-purpose AeroBeat YAML encoding for ordinary Flow notes, bombs, obstacles, and guidance objects is <strong>not yet fully rewritten and locked</strong> around the direct 4x3 model.</p>
+<p>That means:</p>
+<ul>
+<li>the direct gameplay contract in this document is canonical</li>
+<li>the old <code>portal</code> / <code>placement</code> / follow-through <code>direction</code> authored model is <strong>not</strong> canonical current truth</li>
+<li>docs and examples should not reintroduce old <code>portal</code>, <code>swing_*</code>, <code>trail_*</code>, <code>warn_*</code>, or <code>reward_*</code> vocabulary as fallback guidance</li>
+</ul>
+<h2 id="provenance-and-artifact-policy">Provenance and artifact policy<a class="headerlink" href="#provenance-and-artifact-policy" title="Permanent link">&para;</a></h2>
+<p>BeatSaver-derived Flow packages should preserve source and conversion introspection material under artifacts rather than inside the clean authored runtime chart.</p>
+<p>Typical artifact material may include:</p>
+<ul>
+<li>original BeatSaver ZIP</li>
+<li>normalized source summary</li>
+<li>conversion warnings</li>
+<li>converter trace / diagnostics</li>
+<li>unsupported-object notes</li>
+</ul>
+<p>This keeps the runtime chart AeroBeat-native while preserving reconversion/debug truth.</p>
+<h2 id="important-seams-intentionally-still-open">Important seams intentionally still open<a class="headerlink" href="#important-seams-intentionally-still-open" title="Permanent link">&para;</a></h2>
+<p>These seams remain open on purpose and should not be papered over as if they are already settled:</p>
+<h2 id="1-final-ordinary-flow-yaml-contract">1. Final ordinary Flow YAML contract<a class="headerlink" href="#1-final-ordinary-flow-yaml-contract" title="Permanent link">&para;</a></h2>
+<p>The direct 4x3 gameplay rules are locked, but the final durable authored YAML shape for ordinary non-burst Flow objects is still being rewritten.</p>
+<h2 id="2-exact-row-boundary-tuning-and-recenter-behavior">2. Exact row-boundary tuning and recenter behavior<a class="headerlink" href="#2-exact-row-boundary-tuning-and-recenter-behavior" title="Permanent link">&para;</a></h2>
+<p>The anchor model is locked, but the following still need implementation tuning:</p>
+<ul>
+<li>exact row boundaries around the shoulder-height center reference</li>
+<li>whether light recenter/recalibration behavior is needed between songs or after tracking drift</li>
+</ul>
+<h2 id="3-motion-direction-tuning-knobs">3. Motion-direction tuning knobs<a class="headerlink" href="#3-motion-direction-tuning-knobs" title="Permanent link">&para;</a></h2>
+<p>The direction-validation architecture is locked, but first-pass tuning remains implementation-owned, especially for:</p>
+<ul>
+<li>recent motion direction window length</li>
+<li>minimum motion magnitude threshold</li>
+<li>smoothing behavior and debug visualization</li>
+</ul>
+<h2 id="4-burst-checkpoint-math-details">4. Burst checkpoint math details<a class="headerlink" href="#4-burst-checkpoint-math-details" title="Permanent link">&para;</a></h2>
+<p>The burst schema is frozen, but these details remain intentionally open for implementation iteration:</p>
+<ul>
+<li>exact checkpoint spacing math for <code>checkpointCount</code></li>
+<li>the precise practical effect/formula for <code>spacingBias</code></li>
+<li>any needed normalization differences between BeatSaver v3 burst sliders and v4 chains</li>
+</ul>
+<h2 id="5-source-format-normalization-details">5. Source-format normalization details<a class="headerlink" href="#5-source-format-normalization-details" title="Permanent link">&para;</a></h2>
+<p>The Flow-side policy is locked, but the exact converter normalization seam across supported BeatSaver / Beat Saber source versions still belongs to implementation work rather than this architecture page.</p>
+<h2 id="cross-links">Cross-links<a class="headerlink" href="#cross-links" title="Permanent link">&para;</a></h2>
+<p>For adjacent current-truth pages, use:</p>
+<ul>
+<li><a href="../../gdd/gameplay/flow/">Gameplay Core: Flow</a></li>
+<li><a href="../../guides/choreography/flow/">Creating Flow Choreography</a></li>
+<li><a href="../content-model/">Content Model</a></li>
+<li><a href="../beatsaver-boxing-v1-conversion/">BeatSaver to AeroBeat Boxing v1 Conversion</a></li>
+</ul>
+<p>When these pages disagree about BeatSaver Flow conversion specifics, this architecture page is the canonical source.</p>
 
 
 
@@ -5495,7 +6826,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 1, 2026 14:08:15 UTC">May 1, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 19, 2026 03:29:33 UTC">July 19, 2026</span>
   </span>
 
     
@@ -5551,10 +6882,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
