@@ -1,6 +1,8 @@
 # Workout Creation Tools Import Format Matrix
 
-This document defines the current canonical **accepted source/import formats** versus **stored canonical package formats** for the AeroBeat workout creation tools.
+This document defines the current canonical **accepted source/import formats** versus **stored canonical package formats** for the AeroBeat workout creation tools in the **manual-authored workout-package lane**.
+
+> **Scope note:** this matrix is for richer authored packages. It should not be read as proof that imported-player song packages must carry coaching media or package-owned environments by default.
 
 It exists to make the import boundary actionable for future CLI and GUI tooling.
 

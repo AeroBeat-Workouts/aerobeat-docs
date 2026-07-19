@@ -6,25 +6,33 @@ Boxing is a core retained AeroBeat gameplay feature and should be authored for t
 
 - keep movement readable on camera
 - favor safe, repeatable workout motion
-- use portal placement when it improves choreography, not just because the system allows it
 - optimize first for the PC community release path
+- align example/chart vocabulary with the locked BeatSaver Boxing v1 conversion contract
 
 ## Chart shape
 
 A Boxing chart is a reusable **Chart** record. The song owns audio/timing, the chart owns one concrete playable difficulty, and a package-local **Set** links the chart to the selected song, environment, and optional coaching overlay.
 
-Each boxing beat uses:
+For the current first-pass canonical Boxing vocabulary, use flat `beats:` entries built from:
 
 - required `start`
 - optional inclusive `end`
 - required concrete `type`
-- optional integer `portal`
 
-For current chart truth:
+Current contract-aligned Boxing beat families are:
 
-- use `punch_left` / `punch_right` for straight punches, not `jab` / `cross`
-- use `guard` for guard holds/prompts
-- treat `orthodox` / `southpaw` as authored stance semantics, not tracked input events
+- `straight_left` / `straight_right`
+- `hook_left` / `hook_right`
+- `uppercut_left` / `uppercut_right`
+- `guard`
+- `squat`
+- `weave_left` / `weave_right`
+
+For this docs pass:
+
+- do **not** treat `portal` as part of the current Boxing chart contract
+- do **not** teach `punch_left` / `punch_right`, `knee_*`, `leg_lift_*`, `sidestep_*`, or `run_in_place` as current canonical Boxing chart vocabulary
+- keep the Boxing chart semantic and runtime-focused rather than source-shaped
 
 ## BeatSaver conversion reference
 
@@ -36,4 +44,4 @@ This choreography page stays focused on authoring guidance rather than source-co
 
 ## Scope note
 
-Portal-aware presentation remains valid in the docs, but it should not be read as a promise that VR or non-camera Boxing is official v1 scope.
+Portal-aware or VR-oriented presentation ideas can still exist as future runtime concerns, but they should not be taught as part of the current Boxing chart contract.

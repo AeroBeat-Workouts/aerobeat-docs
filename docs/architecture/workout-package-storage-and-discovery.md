@@ -1,6 +1,8 @@
 # Workout Package Storage and Discovery
 
-This document defines the current canonical direction for how AeroBeat workout packages are authored, stored on disk, discovered at runtime, and indexed for browsing.
+This document defines the current canonical direction for the **manual-authored workout-package lane**: how those richer AeroBeat workout packages are authored, stored on disk, discovered at runtime, and indexed for browsing.
+
+> **Scope note:** do **not** treat this page as the default contract for the BeatSaver-powered imported-player direction. That imported-player path is being simplified toward leaner song-package records with coaching removed by default and environment choice handled outside the package.
 
 ## Locked direction for this slice
 

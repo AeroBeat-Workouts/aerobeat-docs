@@ -1,6 +1,8 @@
 # Workout Creation Tools CLI Surface
 
-This document defines the current canonical CLI surface for the AeroBeat workout creation tools repo.
+This document defines the current canonical CLI surface for the AeroBeat **manual-authored workout-package** creation tools repo.
+
+> **Scope note:** these commands describe the authored-package lane. They are not the default imported-player contract, so coaching- and environment-heavy workflow surfaces here should be read as authored-package tooling rather than universal AeroBeat content requirements.
 
 It extends the locked product and repo direction already captured in:
 

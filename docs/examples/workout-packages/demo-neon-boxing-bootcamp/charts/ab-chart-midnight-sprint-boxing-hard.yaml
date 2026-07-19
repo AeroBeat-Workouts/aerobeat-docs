@@ -5,7 +5,7 @@ recordVersion: 1
 createdByTool: aerobeat-tool-content-authoring
 createdByToolVersion: 0.1.0
 createdAt: 2026-04-25T22:00:00Z
-updatedAt: 2026-04-29T09:40:00Z
+updatedAt: 2026-07-18T22:45:00Z
 
 # Chart identity is what the set selects directly.
 chartId: ab-chart-midnight-sprint-boxing-hard
@@ -18,38 +18,31 @@ feature: boxing
 difficulty: hard
 
 # Short sample beat list for readability.
-# Straight punches use input-truth labels (`punch_left` / `punch_right`).
-# `southpaw` below is an authored stance cue, not a tracked input event.
+# This example stays inside the locked Boxing v1 semantic vocabulary.
 beats:
   - start: 6.0
-    type: punch_left
+    type: straight_left
   - start: 8.0
-    type: punch_right
+    type: straight_right
   - start: 10.0
     end: 11.0
     type: squat
   - start: 14.0
     type: hook_left
-    portal: 10
   - start: 16.0
     type: hook_right
-    portal: 2
   - start: 18.0
-    type: leg_lift_left
-    portal: 10
-  - start: 20.0
-    type: leg_lift_right
-    portal: 2
-  - start: 22.0
-    end: 25.0
-    type: southpaw
-  - start: 26.0
-    type: sidestep_left
-    portal: 9
-  - start: 28.0
-    type: sidestep_right
-    portal: 3
-  - start: 30.0
     type: uppercut_left
-  - start: 32.0
+  - start: 20.0
     type: uppercut_right
+  - start: 22.0
+    end: 24.0
+    type: guard
+  - start: 26.0
+    type: weave_left
+  - start: 28.0
+    type: weave_right
+  - start: 30.0
+    type: straight_left
+  - start: 32.0
+    type: hook_right

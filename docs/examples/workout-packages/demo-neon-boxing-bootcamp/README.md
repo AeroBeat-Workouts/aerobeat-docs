@@ -1,8 +1,8 @@
 # Demo Package: Neon Boxing Bootcamp
 
-`demo-neon-boxing-bootcamp` is the canonical docs example for the current AeroBeat workout-package contract.
+`demo-neon-boxing-bootcamp` is the canonical docs example for the **manual-authored workout-package lane**, not the automatic default for BeatSaver-powered imported-player content.
 
-It is intentionally aligned to the narrowed product slice:
+It is intentionally aligned to the narrowed product slice for that authored package lane:
 
 - official gameplay features in the example are **Boxing** and **Flow**
 - package-local **environments** remain in scope
@@ -42,7 +42,7 @@ demo-neon-boxing-bootcamp/
 
 ## Scenario modeled by this package
 
-This package imagines a short three-set workout:
+This package imagines a short three-set **manually authored** workout:
 
 1. **Neon Stride Opening Round** — medium Boxing opener
 2. **Neon Stride Flow Round** — medium Flow follow-up reusing the same song
@@ -67,11 +67,11 @@ It uses one shared coach config, two environments, one warmup video, one cooldow
 
 ## Boxing / Flow contract notes
 
-- Boxing straight punches use `punch_left` / `punch_right` in the example charts.
-- `guard` is the canonical guard wording.
-- `orthodox` / `southpaw` remain authored chart semantics and should not be read as tracked input events.
-- Flow keeps `placement` and `direction` separate: `placement` is where the beat passes, while `direction` guides follow-through.
+- Boxing chart examples now use `straight_left` / `straight_right` rather than the older `punch_left` / `punch_right` wording.
+- `guard`, `squat`, and `weave_*` remain part of the current Boxing v1 semantic chart vocabulary.
+- The old portal-based Boxing chart language has been removed from the example package.
+- The Flow chart file remains in the package, but the older portal/placement/trail-style example content was intentionally removed. The current Flow direction is direct calibrated 4x3 gameplay, and the final general-purpose YAML note/object encoding is still being rewritten.
 
 ## Validation note
 
-Use [`aerobeat-tool-content-authoring`](https://github.com/AeroBeat-Workouts/aerobeat-tool-content-authoring) to validate this package. This repo is the fixture and explanation layer.
+Use [`aerobeat-tool-content-authoring`](https://github.com/AeroBeat-Workouts/aerobeat-tool-content-authoring) to validate this package **when working on the authored workout-package lane**. This repo is the fixture and explanation layer, not the default imported-player package example.

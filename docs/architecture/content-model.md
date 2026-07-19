@@ -76,8 +76,8 @@ That keeps the workout package focused on workout content while leaving room for
 
 AeroBeat still uses a shared chart envelope with feature-specific payload meaning. For the active gameplay docs slice, the important authored features are Boxing and Flow.
 
-- Boxing uses a flat `beats` list with `start`, optional `end`, required `type`, and optional `portal`; straight punches should use `punch_left` / `punch_right`, `guard` is canonical wording, and `orthodox` / `southpaw` remain authored stance semantics rather than tracked input events
-- Flow uses the same base shape with Flow-specific `placement` and optional `direction`, where `placement` is the pass-through location and `direction` is follow-through guidance
-- Legacy `events` / `interactionFamily` chart-envelope wording is not part of the canonical v1 authored contract in this docs slice
+- Boxing uses a flat `beats` list with `start`, optional `end`, and required `type`. Current canonical Boxing examples should align with the semantic v1 vocabulary: handed `straight_*`, `hook_*`, and `uppercut_*` strikes plus `guard`, `squat`, and `weave_*` movement beats. Portal-based Boxing chart language is no longer current contract truth.
+- Flow is moving to a direct calibrated 4x3 gameplay model built around wrist target cells, direction checks derived from motion, bomb hazards, nose-space obstacles, guidance arcs, and higher-level burst objects. The older `portal` / `placement` / follow-through `direction` authored model should not be presented as the current contract.
+- Legacy `events` / `interactionFamily` chart-envelope wording is not part of the canonical v1 authored contract in this docs slice.
 
 Dance and Step are no longer active gameplay features in this docs set.

@@ -1,6 +1,8 @@
 # Workout Creation Tools Architecture
 
-This document defines the current canonical architecture for AeroBeat workout creation tooling.
+This document defines the current canonical architecture for AeroBeat **manual-authored workout-package** creation tooling.
+
+> **Scope note:** this tool family describes the richer authored-package lane. It should not be read as the default contract for the BeatSaver-powered imported-player path, which is being simplified away from package-required coaching and package-owned environment choice.
 
 It builds on the already-locked package/content/tool lane decisions:
 

@@ -108,6 +108,7 @@ nav:
       - V1 Account and Retention Behavior: architecture/v1-account-retention-behavior.md
       - Backend API: architecture/backend_api.md
       - BeatSaver to Boxing v1 Conversion: architecture/beatsaver-boxing-v1-conversion.md
+      - BeatSaver to Flow v1 Conversion: architecture/beatsaver-flow-v1-conversion.md
       - Cloud Baker: architecture/cloud_baker.md
       - Coding Style: architecture/coding-style.md
       - Content Model: architecture/content-model.md

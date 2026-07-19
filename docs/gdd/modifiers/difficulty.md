@@ -2,8 +2,8 @@
 
 These modifiers tune the challenge of the active gameplay features in this docs slice: **Boxing** and **Flow**.
 
-- **One Portal:** condenses portal-capable choreography to a single forward-facing presentation.
-- **3 Portals:** condenses portal-capable choreography to three forward-facing positions.
+- **Wide Timing Window:** widens the hit window beyond the base difficulty timing.
+- **Tight Timing Window:** narrows the hit window below the base difficulty timing.
 - **Ghost Targets:** targets disappear as they approach the athlete.
 - **Speed Up:** targets and obstacles travel faster.
 - **Slow Down:** targets and obstacles travel slower.
