@@ -1,8 +1,8 @@
 # AeroBeat Beatmap Payload Stale-Field Audit
 
 **Date:** 2026-07-19
-**Status:** In Progress
-**Last Updated:** 2026-07-20 00:19 EDT
+**Status:** Complete
+**Last Updated:** 2026-07-20 01:05 EDT
 **Blocked Reason:** None
 **Agent:** `pico`
 
@@ -52,7 +52,7 @@ This coordination plan lives in `aerobeat-docs` per Derrick’s preference so it
 **Files Created/Deleted/Modified:**
 - `/home/derrick/.openclaw/workspace/projects/aerobeat/aerobeat-docs/.plans/2026-07-19-beatmap-payload-stale-field-audit.md`
 
-**Status:** ✅ Complete
+**Status:** Complete
 
 **Results:** Completed the field-by-field audit against the current `aerobeat-content-core` chart contract, tests, fixtures, and the BeatSaver-aligned architecture plan.
 
@@ -123,7 +123,7 @@ Recommended next cleanup seam:
 - `/home/derrick/.openclaw/workspace/projects/aerobeat/aerobeat-content-core/fixtures/invalid_boxing_end_field/workouts/demo-workout.json`
 - `/home/derrick/.openclaw/workspace/projects/aerobeat/aerobeat-docs/.plans/2026-07-19-beatmap-payload-stale-field-audit.md`
 
-**Status:** ✅ Complete
+**Status:** Complete
 
 **Results:** Tightened the live chart contract so `end` is no longer generically tolerated on any beat. In `aerobeat-content-core/data_types/chart.gd`, the base validator still type-checks `end` when present but now short-circuits after `chart_beat_invalid_end` so malformed numeric failures do not cascade into feature-specific stale-field noise. Boxing validation now emits a dedicated `invalid_boxing_end` error whenever any Boxing beat declares `end`, with the message making the new contract explicit: only Flow `burst` beats may carry an `end` beat value. Flow `burst` still requires `end` unchanged, so the only allowed positive use of `end` remains the frozen BeatSaver-aligned burst object from `REF-01`.
 
@@ -135,7 +135,7 @@ Validation: `godot --headless --path .testbed --script res://../tests/run_contra
 
 ## Final Results
 
-**Status:** ⚠️ Partial
+**Status:** Complete
 
 **What We Built:** Completed the stale-field audit and the approved coder cleanup seam that hardens `end` to Flow `burst` only in the live `aerobeat-content-core` chart contract.
 
