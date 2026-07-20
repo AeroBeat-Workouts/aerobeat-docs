@@ -5242,10 +5242,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#locked-direction-for-this-slice" class="md-nav__link">
+  <a href="#why-this-page-was-retired" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Locked direction for this slice
+        Why this page was retired
       
     </span>
   </a>
@@ -5253,10 +5253,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#durable-package-hierarchy" class="md-nav__link">
+  <a href="#what-this-page-still-preserves" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Durable package hierarchy
+        What this page still preserves
       
     </span>
   </a>
@@ -5264,60 +5264,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#authority-split" class="md-nav__link">
+  <a href="#historical-package-layout-that-was-once-proposed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Authority split
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Authority split">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-package-yaml-authored-truth" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Package YAML = authored truth
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-workoutsdb-discovery-index" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. workouts.db = discovery index
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-leaderboard-cachedb-disposable-local-cache" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. leaderboard-cache.db = disposable local cache
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#canonical-on-disk-layout" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Canonical on-disk layout
+        Historical package layout that was once proposed
       
     </span>
   </a>
@@ -5325,10 +5275,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#layout-rules" class="md-nav__link">
+  <a href="#current-replacement-direction-at-a-glance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Layout rules
+        Current replacement direction at a glance
       
     </span>
   </a>
@@ -5336,54 +5286,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#set-composition-rule" class="md-nav__link">
+  <a href="#if-you-touch-adjacent-docs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Set composition rule
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#environment-direction" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Environment direction
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#coaching-direction" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Coaching direction
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#validation-expectations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Validation expectations
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#product-note-on-customization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Product note on customization
+        If you touch adjacent docs
       
     </span>
   </a>
@@ -5411,122 +5317,79 @@
 
 
 <h1 id="workout-package-storage-and-discovery">Workout Package Storage and Discovery<a class="headerlink" href="#workout-package-storage-and-discovery" title="Permanent link">&para;</a></h1>
-<p>This document defines the current canonical direction for the <strong>manual-authored workout-package lane</strong>: how those richer AeroBeat workout packages are authored, stored on disk, discovered at runtime, and indexed for browsing.</p>
-<blockquote>
-<p><strong>Scope note:</strong> do <strong>not</strong> treat this page as the default contract for the BeatSaver-powered imported-player direction. That imported-player path is being simplified toward leaner song-package records with coaching removed by default and environment choice handled outside the package.</p>
-</blockquote>
-<h2 id="locked-direction-for-this-slice">Locked direction for this slice<a class="headerlink" href="#locked-direction-for-this-slice" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Historical / retired architecture note</p>
+<p>This page is preserved only as a record of an <strong>older manual-authored workout-package lane</strong>.
+It is <strong>not</strong> current AeroBeat package, discovery, or runtime truth.</p>
+<p>For current truth, use these pages instead:</p>
 <ul>
-<li>workout packages are <strong>self-contained</strong></li>
-<li>YAML is the <strong>durable authored format</strong></li>
-<li>discoverability lives in <strong><code>workouts.db</code></strong>, not in package YAML</li>
-<li>the package contains the data required to validate and play the workout</li>
-<li>each package has one <code>coaches/</code> folder containing exactly one <code>coach-config.yaml</code></li>
-<li>coaching is optional all-or-nothing</li>
-<li>alternate versions are created by duplication/forking, not inheritance layering</li>
-<li><code>sets/</code> is the package's single source of truth for workout composition</li>
-<li><code>workout.yaml</code> owns package metadata plus ordered <code>setId</code> values</li>
-<li><code>sets/*.yaml</code> link songs, charts, environments, and coaching overlay ids together using ids, not paths</li>
-<li>environments remain part of the package concept</li>
-<li>package-local gameplay assets are <strong>not</strong> part of the official v1 package concept for this docs slice</li>
+<li><a href="../overview/">Architecture Overview</a></li>
+<li><a href="../content-model/">Content Model</a></li>
+<li><a href="../content-repo-shapes/">Content Repo Shapes (Current Contract Notes)</a></li>
+<li><a href="../ugc-distribution-strategy/">UGC Distribution Strategy</a></li>
+<li><a href="../beatsaver-boxing-v1-conversion/">BeatSaver to Boxing v1 Conversion</a></li>
+<li><a href="../beatsaver-flow-v1-conversion/">BeatSaver to Flow v1 Conversion</a></li>
 </ul>
-<h2 id="durable-package-hierarchy">Durable package hierarchy<a class="headerlink" href="#durable-package-hierarchy" title="Permanent link">&para;</a></h2>
+</div>
+<h2 id="why-this-page-was-retired">Why this page was retired<a class="headerlink" href="#why-this-page-was-retired" title="Permanent link">&para;</a></h2>
+<p>This document originally described a richer <strong>manual-authored workout-package</strong> lane built around:</p>
 <ul>
-<li><strong>Song</strong> — reusable audio and timing identity</li>
-<li><strong>Chart</strong> — one exact playable difficulty slice</li>
-<li><strong>Set</strong> — package-local composition record linking exact ids</li>
-<li><strong>Workout</strong> — the workout/package root that orders authored sets</li>
-<li><strong>Coach Config</strong> — the workout-level coaching/media registry</li>
-<li><strong>Environment</strong> — a reusable environment record authorable inside the package</li>
+<li><code>workout.yaml</code> as the package root</li>
+<li><code>workouts.db</code> as a local discovery index</li>
+<li>package-local coaching configuration</li>
+<li>package-owned environments</li>
+<li>workout-ordered <code>setId</code> composition</li>
 </ul>
-<h2 id="authority-split">Authority split<a class="headerlink" href="#authority-split" title="Permanent link">&para;</a></h2>
-<h3 id="1-package-yaml-authored-truth">1. Package YAML = authored truth<a class="headerlink" href="#1-package-yaml-authored-truth" title="Permanent link">&para;</a></h3>
-<p>Package YAML owns:</p>
+<p>That lane is no longer AeroBeat's current canonical direction.</p>
+<p>Derrick's locked direction for current repo truth is now:</p>
 <ul>
-<li>songs, charts, sets, workout metadata</li>
-<li>optional package-local coaching configuration</li>
-<li>package-local environments</li>
-<li>schema/package/tool provenance metadata</li>
+<li>imported/default content is centered on <strong><code>song-package.yaml</code></strong></li>
+<li>one song package can contain multiple exact chart/difficulty slices under one song root</li>
+<li>future multi-song grouping should be described as <strong>playlists</strong>, not workouts</li>
+<li>coaching is <strong>outside</strong> the default imported song-package contract</li>
+<li>environments are handled <strong>outside</strong> the default imported song-package contract</li>
+<li>retired workout-era package semantics should not be taught as live architecture guidance</li>
 </ul>
-<p>Package YAML does <strong>not</strong> own:</p>
+<h2 id="what-this-page-still-preserves">What this page still preserves<a class="headerlink" href="#what-this-page-still-preserves" title="Permanent link">&para;</a></h2>
+<p>This page now exists only to explain the shape of the <strong>retired</strong> lane so older notes, file names, and planning packets remain intelligible during archaeology.</p>
+<p>Historically, that lane assumed:</p>
 <ul>
-<li>browse/search indexing</li>
-<li>athlete/device calibration overrides</li>
-<li>authoritative leaderboard history</li>
-<li>player-wide social/profile state</li>
-<li>package-local gameplay asset customization contracts for this v1 slice</li>
+<li>self-contained package folders</li>
+<li>durable authored YAML</li>
+<li><code>workout.yaml</code> as the root record</li>
+<li><code>sets/</code> as workout composition inputs</li>
+<li>optional package-local coaching media/config</li>
+<li>package-local environment records</li>
+<li>a derived <code>workouts.db</code> for browsing/indexing</li>
 </ul>
-<h3 id="2-workoutsdb-discovery-index">2. <code>workouts.db</code> = discovery index<a class="headerlink" href="#2-workoutsdb-discovery-index" title="Permanent link">&para;</a></h3>
-<p><code>workouts.db</code> powers local browsing, filtering, moderation surfaces, and install-state lookups. It is derived data, not authored truth.</p>
-<h3 id="3-leaderboard-cachedb-disposable-local-cache">3. <code>leaderboard-cache.db</code> = disposable local cache<a class="headerlink" href="#3-leaderboard-cachedb-disposable-local-cache" title="Permanent link">&para;</a></h3>
-<p>The leaderboard cache remains non-authoritative, disposable, and excluded from submission payloads.</p>
-<h2 id="canonical-on-disk-layout">Canonical on-disk layout<a class="headerlink" href="#canonical-on-disk-layout" title="Permanent link">&para;</a></h2>
+<p>Those details are historical only. They should <strong>not</strong> be used for new implementation, validation, tooling, or docs truth.</p>
+<h2 id="historical-package-layout-that-was-once-proposed">Historical package layout that was once proposed<a class="headerlink" href="#historical-package-layout-that-was-once-proposed" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>aerobeat-workouts/
 ├── workouts.db
 └── workouts/
     └── &lt;workout-id&gt;/
         ├── workout.yaml
         ├── songs/
-        │   └── &lt;song-id&gt;.yaml
         ├── charts/
-        │   └── &lt;chart-id&gt;.yaml
         ├── sets/
-        │   └── &lt;set-id&gt;.yaml
         ├── coaches/
-        │   └── coach-config.yaml
         ├── environments/
-        │   └── &lt;environment-id&gt;.yaml
         ├── media/
-        │   ├── audio/
-        │   ├── art/
-        │   ├── coaching/
-        │   └── environments/
         └── cache/
             └── leaderboard-cache.db
 </code></pre></div>
-<h2 id="layout-rules">Layout rules<a class="headerlink" href="#layout-rules" title="Permanent link">&para;</a></h2>
-<ol>
-<li>The package root contains exactly one <code>workout.yaml</code>.</li>
-<li><code>songs/</code>, <code>charts/</code>, <code>sets/</code>, <code>coaches/</code>, and <code>environments/</code> are the authored content folders taught in this slice.</li>
-<li><code>coaches/</code> contains exactly one YAML file for the workout-level coach config domain.</li>
-<li>Media/resource references should resolve inside the package folder.</li>
-<li><code>cache/</code> contains only disposable derived data.</li>
-</ol>
-<h2 id="set-composition-rule">Set composition rule<a class="headerlink" href="#set-composition-rule" title="Permanent link">&para;</a></h2>
-<p>A <code>Set</code> links:</p>
+<p>Again: this layout is a <strong>retired reference</strong>, not a current contract.</p>
+<h2 id="current-replacement-direction-at-a-glance">Current replacement direction at a glance<a class="headerlink" href="#current-replacement-direction-at-a-glance" title="Permanent link">&para;</a></h2>
+<p>For the current imported-player/default lane:</p>
 <ul>
-<li>one <code>songId</code></li>
-<li>one <code>chartId</code></li>
-<li>one <code>environmentId</code></li>
-<li>optional <code>coachingOverlayId</code></li>
+<li>the canonical imported package root is <strong><code>song-package.yaml</code></strong></li>
+<li>chart difficulty vocabulary follows BeatSaver-style labels such as <code>Easy</code>, <code>Normal</code>, <code>Hard</code>, <code>Expert</code>, and <code>ExpertPlus</code></li>
+<li>packages focus on songs, charts, and sets</li>
+<li>coaching and environment ownership are not part of the default song-package contract</li>
+<li>discovery/distribution should be discussed in terms of AeroBeat-controlled validation/trust plus the current UGC/distribution docs, not the retired <code>workouts.db</code> lane</li>
 </ul>
-<p>The older <code>assetSelections</code> package pattern is intentionally removed from the official workout-package contract in this docs pass.</p>
-<h2 id="environment-direction">Environment direction<a class="headerlink" href="#environment-direction" title="Permanent link">&para;</a></h2>
-<p>Environment records remain part of the package concept because they meaningfully shape the workout experience without reopening the older package-asset sprawl.</p>
-<p>The locked Environment v1 <code>type</code> enum remains:</p>
-<ul>
-<li><code>image_background</code></li>
-<li><code>video_background</code></li>
-<li><code>glb_environment</code></li>
-<li><code>splat</code></li>
-</ul>
-<p>Baseline <code>godot_scene</code> should still be treated as an advanced future controlled-pipeline path, not a default loose-package handoff. <code>splat</code> is now an official package-facing environment type, but it remains a controlled advanced path: AeroBeat should prefer <code>.compressed.ply</code> as the official recommended package payload, while <code>.ply</code>, <code>.splat</code>, and <code>.sog</code> remain compatibility-supported through GDGS. The exported workout still copies the chosen splat payload into <code>media/environments/</code> so the package stays self-contained, and the currently validated runtime path is desktop / Forward Plus / compute-bound rather than a broad cross-device guarantee.</p>
-<h2 id="coaching-direction">Coaching direction<a class="headerlink" href="#coaching-direction" title="Permanent link">&para;</a></h2>
-<p>Coaching stays inside the package's single <code>coaches/coach-config.yaml</code> domain.</p>
-<ul>
-<li>disabled coaching may be represented by <code>enabled: false</code></li>
-<li>enabled coaching owns the roster, warmup video, cooldown video, and overlay audio registry</li>
-<li>sets reference enabled overlay clips through <code>coachingOverlayId</code></li>
-</ul>
-<h2 id="validation-expectations">Validation expectations<a class="headerlink" href="#validation-expectations" title="Permanent link">&para;</a></h2>
-<p>Tooling for this slice should validate:</p>
-<ul>
-<li>the authored YAML records under <code>workout.yaml</code>, <code>songs/</code>, <code>charts/</code>, <code>sets/</code>, <code>coaches/</code>, and <code>environments/</code></li>
-<li>the checked-in SQL schema files under <code>sql/</code></li>
-<li>package-local id integrity across workout/set/song/chart/environment/coaching references</li>
-</ul>
-<h2 id="product-note-on-customization">Product note on customization<a class="headerlink" href="#product-note-on-customization" title="Permanent link">&para;</a></h2>
-<p>Removing package-local gameplay assets from the workout-package contract does <strong>not</strong> mean AeroBeat is abandoning customization. It means customization should move toward a more controlled product path such as profile-driven avatar and cosmetics unlocks tied to workout progression.</p>
+<h2 id="if-you-touch-adjacent-docs">If you touch adjacent docs<a class="headerlink" href="#if-you-touch-adjacent-docs" title="Permanent link">&para;</a></h2>
+<p>When older docs still reference this page, treat that as a sign the surrounding text may also be historical or needs de-scoping. Prefer linking readers to the current song-package / playlist / imported-player pages listed above.</p>
 
 
 
@@ -5547,7 +5410,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 19, 2026 03:29:33 UTC">July 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 20, 2026 04:57:09 UTC">July 20, 2026</span>
   </span>
 
     
