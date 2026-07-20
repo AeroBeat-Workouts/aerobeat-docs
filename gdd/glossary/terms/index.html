@@ -784,63 +784,7 @@
   <span class="md-ellipsis">
     
   
-    Modding Quickstart
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/demo_workout_package/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Demo Workout Package
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/workout-submission-checklist/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Workout Submission Checklist
+    Creator Quickstart
   
 
     
@@ -869,10 +813,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
         
           
-          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
             
   
   
@@ -890,8 +834,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_8">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1000,34 +944,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/environment_creation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Environment Creation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../guides/skins/" class="md-nav__link">
         
   
@@ -1092,34 +1008,6 @@
     
   
     Cosmetics Creation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/coaching/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Coaching Guide
   
 
     
@@ -3004,62 +2892,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/premium-workout-governance/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Premium Workout Governance
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../architecture/v1-ugc-submission-and-review-policy/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    V1 UGC Submission and Review Policy
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../architecture/repo-structure-reference/" class="md-nav__link">
         
   
@@ -3572,34 +3404,6 @@
     
   
     Workflow & Assets
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../architecture/workout-package-storage-and-discovery/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Workout Package Storage & Discovery
   
 
     
@@ -4329,7 +4133,7 @@
   <span class="md-ellipsis">
     
   
-    MediaPipe Python Input
+    Camera Input (PC)
   
 
     
@@ -5476,32 +5280,24 @@
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;"><strong>Song Package</strong></td>
+<td style="text-align: left;">A self-contained imported song-root folder containing package metadata plus the song/charts/sets needed for local playback. It may contain multiple exact playable difficulties or feature slices for the same imported source song.</td>
+</tr>
+<tr>
 <td style="text-align: left;"><strong>Song</strong></td>
 <td style="text-align: left;">The reusable audio and timing source for gameplay content.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Chart</strong></td>
-<td style="text-align: left;">One concrete playable authored chart representing a single difficulty and compatibility slice.</td>
+<td style="text-align: left;">One concrete playable authored or converted chart representing a single feature+difficulty slice.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Set</strong></td>
-<td style="text-align: left;">The package-local composition record that links one Song, one Chart, one Environment, and optional coaching overlay choices.</td>
+<td style="text-align: left;">The exact playable record that links one Song and one Chart.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Workout</strong></td>
-<td style="text-align: left;">An ordered training program that assembles exact set selections into a session.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Workout Package</strong></td>
-<td style="text-align: left;">A self-contained on-disk folder containing <code>workout.yaml</code>, typed content folders, package-local media/resources, and optional disposable local caches.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Coach Config</strong></td>
-<td style="text-align: left;">The single workout-level coaching YAML domain inside a package.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Environment</strong></td>
-<td style="text-align: left;">The package-local authored environment record selected by a workout set.</td>
+<td style="text-align: left;"><strong>Playlist</strong></td>
+<td style="text-align: left;">A future multi-song grouping above song packages.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Input Provider</strong></td>
@@ -5509,7 +5305,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Input Profile</strong></td>
-<td style="text-align: left;">A concrete runtime or device compatibility target, such as <code>mediapipe_camera</code> or <code>keyboard_debug</code>.</td>
+<td style="text-align: left;">A concrete runtime or device compatibility target, such as <code>mediapipe_camera</code> or another future provider profile.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Track View</strong></td>
@@ -5517,7 +5313,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Portal View</strong></td>
-<td style="text-align: left;">3D visualization where targets travel toward the athlete from portal-driven spatial presentation.</td>
+<td style="text-align: left;">A presentation/view term only. It is not current authored chart-contract truth.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Avatar</strong></td>
@@ -5528,12 +5324,8 @@
 <td style="text-align: left;">An account-level accessory or presentation unlock for an avatar or profile identity.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>workouts.db</strong></td>
-<td style="text-align: left;">The local SQLite discovery/index database for installed workouts.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Leaderboard Cache</strong></td>
-<td style="text-align: left;">The local disposable per-workout SQLite cache used for leaderboard browsing.</td>
+<td style="text-align: left;"><strong>leaderboard-cache.db</strong></td>
+<td style="text-align: left;">The local disposable per-song-package SQLite cache used for leaderboard browsing where applicable.</td>
 </tr>
 </tbody>
 </table>
@@ -5557,7 +5349,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 1, 2026 13:58:33 UTC">May 1, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 20, 2026 03:04:05 UTC">July 20, 2026</span>
   </span>
 
     
