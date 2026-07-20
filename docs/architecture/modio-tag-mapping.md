@@ -1,8 +1,25 @@
 # AeroBeat mod.io Tag Mapping
 
-This document defines how AeroBeat package and discovery metadata should map into the proposed **launch-time mod.io tag categories**.
+This document defines how AeroBeat discovery metadata should map into the proposed **launch-time mod.io tag categories** for the current **song-package** direction.
 
-The goal is to keep mod.io tags useful for athlete-facing discovery without turning them into a duplicate of every authored YAML field or every local discovery column. AeroBeat keeps the richer package contract, validation pipeline, and trust boundary first-party; mod.io only gets the lean public taxonomy plus one hidden operational control bucket.
+The goal is to keep mod.io tags useful for athlete-facing discovery without turning them into a duplicate of every authored field or every local index column. AeroBeat keeps the richer package contract, validation pipeline, and trust boundary first-party; mod.io only gets a lean public taxonomy plus one hidden operational control bucket.
+
+## Current contract reminder
+
+Before applying any tag mapping, keep the current content contract straight:
+
+- the canonical imported package root is **`song-package.yaml`**, not `workout.yaml`
+- one song package may contain **multiple chart/set difficulty slices** under one song root
+- future multi-song grouping should use **playlist** language, not workout-package language
+- coaching and environments are **outside the default imported song-package contract**
+- authored chart difficulty labels now use BeatSaver-style vocabulary:
+  - `Easy`
+  - `Normal`
+  - `Hard`
+  - `Expert`
+  - `ExpertPlus`
+
+If another doc or older tool draft still says `easy|medium|hard|pro` or treats `workout.yaml` as the package root, that older wording is historical and not current truth.
 
 ## Launch tag categories
 
@@ -19,9 +36,9 @@ The first three are public browse filters. `trust_state` is an admin-hidden/admi
 
 | mod.io category | Select mode | Visibility / control | AeroBeat source | Mapping rule |
 | --- | --- | --- | --- | --- |
-| `feature` | single-select | public / normal editable and usable | Authored chart `feature`; derived discovery rows in `workout_features` | Assign the package's primary advertised gameplay feature. |
-| `difficulty` | single-select | public / normal editable and usable | Authored chart `difficulty`; derived discovery rows in `workout_difficulties` | Assign one package-level difficulty tag representing the intended overall challenge. |
-| `genre` | multi-select | public / normal editable and usable | Authored song `metadata.genres`; derived discovery rows in `workout_genres` | Copy the controlled genre union for songs referenced by the package. |
+| `feature` | single-select | public / normal editable and usable | Authored chart `feature`; derived discovery summary | Assign the package's primary advertised gameplay feature. |
+| `difficulty` | single-select | public / normal editable and usable | Authored chart `difficulty`; derived discovery summary | Assign one package-level difficulty tag representing the intended overall challenge. |
+| `genre` | multi-select | public / normal editable and usable | Authored song `metadata.genres`; derived discovery summary | Copy the controlled genre union for songs referenced by the package. |
 | `trust_state` | single-select | admin-hidden / admin-only editable and usable | AeroBeat first-party review, moderation, approval, and quarantine state | Mirror one operational trust state for provider-side workflow; not creator-authored package metadata. |
 
 ## Public discovery categories
@@ -30,7 +47,7 @@ The first three are public browse filters. `trust_state` is an admin-hidden/admi
 
 **Source metadata**
 - Authored `feature` on referenced chart records.
-- Derived discovery summary in `workout_features(feature)`.
+- Derived discovery summary for the package catalog row.
 
 **Launch values**
 - `boxing`
@@ -38,24 +55,21 @@ The first three are public browse filters. `trust_state` is an admin-hidden/admi
 
 **Mapping rule**
 - A package gets **one** public feature tag.
-- If all sets/charts point at the same feature, copy that feature.
+- If all referenced charts point at the same feature, copy that feature.
 - If the package mixes features, assign the package's **primary advertised feature** instead of spraying multiple public feature tags.
-
-**Why this belongs in mod.io**
-- It is the clearest top-level discovery filter.
-- It already exists as a normalized browse dimension in AeroBeat's local discovery schema.
 
 ### `difficulty`
 
 **Source metadata**
 - Authored `difficulty` on referenced chart records.
-- Derived discovery summary in `workout_difficulties(difficulty)`.
+- Derived discovery summary for the package catalog row.
 
 **Current authored/discovery vocabulary**
-- `easy`
-- `medium`
-- `hard`
-- `pro`
+- `Easy`
+- `Normal`
+- `Hard`
+- `Expert`
+- `ExpertPlus`
 
 **Mapping rule**
 - A package gets **one** public difficulty tag.
@@ -66,15 +80,16 @@ The first three are public browse filters. `trust_state` is an admin-hidden/admi
 - Difficulty is one of the most practical athlete-facing browse filters.
 - It is already modeled as a discovery-layer summary field, not just buried in authored YAML.
 
-**Current open normalization note**
-- Other planning language has occasionally used `normal` where the current docs/schema/examples use `medium`.
-- Until that is deliberately changed, uploader/tagging work should treat **`easy|medium|hard|pro`** as the current contract-aligned source vocabulary.
+**Normalization note**
+- Older docs and fixtures used the superseded vocabulary `easy|medium|hard|pro`.
+- That is no longer the contract-aligned source vocabulary.
+- New uploader/tagging work should treat **`Easy|Normal|Hard|Expert|ExpertPlus`** as the authoritative authored source vocabulary.
 
 ### `genre`
 
 **Source metadata**
 - Authored song `metadata.genres` on referenced song records.
-- Derived discovery summary in `workout_genres(genre)`.
+- Derived discovery summary for the package catalog row.
 
 **Current controlled vocabulary**
 - `pop`
@@ -106,10 +121,6 @@ The first three are public browse filters. `trust_state` is an admin-hidden/admi
 - Do **not** invent storefront-only genre names.
 - Do **not** promote freeform descriptive mood words into this category.
 
-**Why this belongs in mod.io**
-- Music style is a strong discovery vector for a rhythm workout product.
-- The docs already define a controlled genre enum, which keeps the public vocabulary stable.
-
 ## Admin-hidden operational category
 
 ### `trust_state`
@@ -131,36 +142,32 @@ The first three are public browse filters. `trust_state` is an admin-hidden/admi
 - Creators should not set it in package metadata.
 - Provider-side tooling may mirror AeroBeat's internal state here to support moderation dashboards, review queues, or catalog sync workflows.
 
-**Why it exists**
-- AeroBeat keeps runtime trust and approval authority first-party even when mod.io is the outer distribution shell.
-- A hidden/admin-only bucket is useful for operational mirroring without turning trust/moderation state into public taxonomy.
-
 ## Metadata that should stay out of mod.io tags
 
 These fields can still matter to AeroBeat, but they should remain in authored YAML, local discovery indexes, or first-party backend metadata instead of becoming launch-time mod.io tags.
 
 ### Keep as structured internal or local discovery metadata
 
-- `duration_ms` on workouts and songs
+- `duration_ms` on packages and songs
   - Important for browsing, but better handled as numeric sort/range/filter data than storefront tags like `10-min` or `45-min`.
-- coaching metadata from `coaches/coach-config.yaml` and `workout_coaches`
-  - Coaching presence matters, but named-coach browse taxonomy is premature for launch.
-- environment ids/themes from `environments/*.yaml` and `set.environmentId`
-  - Environment identity is currently implementation-shaped package metadata, not yet a locked public storefront taxonomy.
-- local freeform/index helper fields such as `workout_tags`
+- coaching metadata
+  - Coaching is not part of the default imported song-package contract.
+- environment ids/themes
+  - Environment choice is outside the default imported song-package contract.
+- local freeform/index helper fields such as temporary browse notes
   - These can support local discovery experiments without automatically becoming mod.io-visible categories.
 
 ### Keep as authored/package truth only
 
-- ids and wiring fields: `workoutId`, `songId`, `chartId`, `setId`, `environmentId`, `coachConfigId`, `coachingOverlayId`
-- schema/provenance/versioning fields: `schemaId`, `schemaVersion`, `recordVersion`, `packageVersion`, `createdByTool`, `createdByToolVersion`, timestamps
+- ids and wiring fields such as `songPackageId`, `songId`, `chartId`, `setId`
+- schema/provenance/versioning fields such as `schemaId`, `schemaVersion`, `recordVersion`, `packageVersion`, `createdByTool`, `createdByToolVersion`, and timestamps
 - media paths and package layout details
 - exact credits and publisher fields unless AeroBeat later adds first-class creator/artist browse surfaces
-- low-level chart move taxonomy such as `jab`, `cross`, `portal`, `placement`, and `direction`
+- low-level chart move taxonomy such as `placement`, `direction`, or BeatSaver-derived conversion details
 
 ### Keep as first-party operational metadata
 
-- local install/index/cache state: `workout_yaml_path`, `package_root_path`, `installed_at`, `indexed_at`, `updated_at`, `is_installed`, `is_valid`, `validation_error`
+- local install/index/cache state such as package-root paths, install timestamps, index timestamps, validity, or validation errors
 - remote catalog presentation helpers such as `preview_image_strategy` and `preview_image_url`
 - licensing/compliance flags such as `explicit`, `streamingSafe`, `aiAssisted`, or copyright-risk workflow labels
 - editorial or moderation workflow labels beyond the one mirrored `trust_state` bucket
@@ -178,13 +185,13 @@ When uploader or sync tooling prepares a mod.io package/tag payload, it should f
 ## Open questions that still need human lock-in
 
 1. **Mixed-feature packages:** should launch tooling always force one primary `feature` tag, or should mixed-feature packages eventually get a dedicated representation?
-2. **Difficulty wording:** should the public difficulty copy stay `easy|medium|hard|pro`, or should AeroBeat intentionally rename `medium` to `normal` later and migrate the mapping?
+2. **Difficulty storefront wording:** should public mod.io copy mirror the authored vocabulary exactly, or should AeroBeat present alternate athlete-facing copy while keeping authored/internal vocabulary stable?
 3. **Coaching promotion threshold:** should a future release add a public `coaching` category such as `coached` / `uncoached`, or should coaching remain first-party metadata only?
-4. **Environment discoverability:** does AeroBeat eventually want a stable athlete-facing atmosphere taxonomy, or should environment data remain internal/package-local?
+4. **Environment discoverability:** does AeroBeat eventually want a stable athlete-facing atmosphere taxonomy, or should environment data remain outside the imported song-package lane?
 5. **Trust-state mirroring depth:** which first-party moderation/approval states actually need provider-side mirrored tags versus staying entirely in AeroBeat-owned systems?
 
 ## Related docs
 
-- [Workout Package Storage & Discovery](workout-package-storage-and-discovery.md)
+- [UGC Distribution Strategy](workout-package-storage-and-discovery.md)
 - [UGC Distribution Strategy](ugc-distribution-strategy.md)
 - [Content Model](content-model.md)
