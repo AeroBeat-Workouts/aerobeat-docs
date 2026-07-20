@@ -1,59 +1,43 @@
 # Community Creations
 
-AeroBeat still aims to support community-created workout content, but the current docs slice is now explicit about the locked **v1 publishing rules**.
+AeroBeat still aims to support community-facing content, but the current docs slice is explicit about the default **imported-player publishing model**.
 
 ## Durable content hierarchy
 
-- **Song** → reusable audio and timing source
-- **Chart** → one concrete playable difficulty / compatibility slice
-- **Set** → package-local composition record that links one Song, one Chart, one Environment, and optional coaching overlay choices
-- **Workout** → ordered training session that assembles exact set selections
+- **Song Package** → one imported source song/root that may contain multiple playable slices
+- **Song** → reusable audio and timing source inside that package
+- **Chart** → one concrete playable feature+difficulty slice
+- **Set** → exact playable record linking one Song and one Chart
+- **Playlist** → future multi-song grouping above song packages
 
 ## Community content types kept in this slice
 
+- **Song packages**
 - **Songs**
 - **Charts / Sets** for Boxing and Flow
-- **Workouts**
-- **Environments**
-- **Coaching** inside the package's single `coaches/coach-config.yaml`
+- **Playlists** as the future multi-song grouping concept
+- **Environments** as a sibling system outside default song packages
+- **Customization** as profile/account-level avatar + cosmetics work rather than package-local swaps
 
-## Free vs premium community workouts
+## Default imported-player rules
 
-AeroBeat is a **free-to-play** product with two public workout lanes:
+The following rules are the current default direction:
 
-- **free workouts**
-- **premium workouts**
+- one song package may contain **multiple charts/difficulties** for the same imported song root
+- each chart is still **one exact playable slice**
+- multi-song grouping should use **playlists**, not workout-package bundles
+- coaching is **not** part of the default imported-player package contract
+- environment choice is **outside** the default imported-player package contract
+- **all public-facing product truth** should stay aligned to the BeatSaver conversion direction
 
-mod.io remains the current outer community/distribution layer, but it is not the canonical source of AeroBeat identity, runtime trust, or long-term entitlement vocabulary.
+## Building a playable song package
 
-For the compact launch policy, see [V1 UGC Submission and Review Policy](../../architecture/v1-ugc-submission-and-review-policy.md).
-
-## V1 publishing rules
-
-The following rules are locked for public workout publishing in v1:
-
-- every package is **one difficulty only**
-- alternate difficulties are separate workout packages
-- coaching is **optional**, but if enabled it is **all-or-nothing**
-- every set must have an environment layer
-- a simple **static 2D background image** is an acceptable minimum environment
-- every package must include a **thumbnail / cover-art asset**
-- **all public UGC** must pass review before release
-
-Premium workouts also follow the locked pricing rule:
-
-- **$1 per 10 minutes, rounded up to the nearest whole dollar**
-- counted runtime includes workout sets plus coaching media when coaching is enabled
-
-## Building a workout
-
-Creators assemble workouts by choosing:
+Creators/tools/importers assemble playable content by choosing:
 
 - gameplay feature: Boxing or Flow
-- chart difficulty intent
-- exact songs, charts, and sets
-- one environment per set
-- optional coaching overlays through the package's single coach config
+- exact chart difficulty
+- exact song + chart pairing through a set
+- optional future playlist sequencing above many song packages
 
 ## Athlete overrides
 
@@ -61,16 +45,13 @@ Athletes may still want profile-level preferences such as:
 
 - avatar identity
 - preferred environment style
-- coaching on/off
 - accessibility and comfort settings
 
 Those account-level choices are different from the old package-local gameplay asset swap model.
 
 ## What changed
 
-Older docs taught package-local gameplay assets as a first-class workout authoring concept. That is being removed from the official v1 package story.
-
-Older framing also risked implying that community distribution alone described the business/access model. That is no longer sufficient: workout publishing and discovery now live inside a broader free-to-play product with both free and premium access paths.
+Older docs taught workout packages, package-local coaching, and package-local environments much more aggressively as current truth. That is no longer the default imported-player story.
 
 Future customization direction should instead point toward:
 

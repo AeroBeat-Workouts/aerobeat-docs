@@ -1,45 +1,42 @@
-# Modding Quickstart Guide
+# Creator Quickstart Guide
 
-Welcome to the AeroBeat creator community.
+Welcome to the AeroBeat creator/importer community.
 
 ## Before you start
 
-Read the [Demo Workout Package Guide](demo_workout_package.md) first. It walks through the current package contract built around:
+Read the current canonical conversion and content-contract docs first:
 
-- `workout.yaml`
-- `songs/`
-- `charts/`
-- `sets/`
-- `coaches/coach-config.yaml`
-- `environments/`
-- example SQL schemas
+- [BeatSaver to AeroBeat Flow v1 Conversion](../architecture/beatsaver-flow-v1-conversion.md)
+- [BeatSaver to AeroBeat Boxing v1 Conversion](../architecture/beatsaver-boxing-v1-conversion.md)
+- [Content Model](../architecture/content-model.md)
+- [User Content Overview](../gdd/user-content/overview.md)
 
-Then read the [Workout Submission Checklist](workout-submission-checklist.md) before preparing anything for public release.
+Those pages describe the active direction:
+
+- imported **song packages**
+- multiple charts/difficulties under one song root
+- **playlists** for future multi-song grouping
+- environments outside song packages by default
+- no default coaching/portal baggage in the imported-player contract
 
 ## Creator lanes in this slice
 
-- musicians create songs
-- choreographers create Boxing and Flow charts
-- workout authors compose sets and workouts
-- coaches create optional coaching content
-- environment authors create atmosphere for workouts
+- importers/converters turn source maps into AeroBeat song packages
+- choreographers refine Boxing and Flow chart behavior where needed
+- tool authors improve conversion, validation, inspection, and packaging workflows
+- environment authors work in sibling environment systems rather than inside every imported song package by default
 
-## V1 submission checklist
+## Current sanity checklist
 
-Before public submission in v1, make sure that:
+Before presenting a docs change or implementation as current truth, make sure that:
 
-- the package represents **one difficulty only**
-- every set has an environment
-- the package includes a **thumbnail / cover-art asset**
-- coaching is either fully disabled or fully complete
-- the package is ready for **public review before release**
-
-If the workout is premium, also make sure that:
-
-- runtime is declared truthfully
-- coaching runtime is included when coaching is enabled
-- the listed price matches **$1 per 10 minutes, rounded up to the nearest whole dollar**
+- the package is described as a **song package**, not a one-difficulty workout package
+- multiple charts/difficulties are allowed under one imported song root
+- multi-song grouping uses **playlist** language
+- environment choice is not taught as package-owned default truth
+- coaching is not taught as required default imported-package truth
+- the docs stay aligned with the canonical BeatSaver conversion pages
 
 ## Customization note
 
-Older docs talked more heavily about package-local gameplay skins/assets. That is no longer the main package story in this slice. Future customization is more likely to live in controlled avatar/cosmetics systems tied to progression.
+Older docs talked much more heavily about package-local gameplay skins/assets. That is no longer the main content story in this slice. Future customization is more likely to live in controlled avatar/cosmetics systems tied to progression.

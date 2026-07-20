@@ -1,21 +1,29 @@
 # User Content Overview
 
-AeroBeat separates workout logic from authored content so community contributions can stay inspectable and tool-friendly.
+AeroBeat separates gameplay logic from authored/imported content so community contributions and imported catalog material can stay inspectable and tool-friendly.
 
-## What workout packages currently own
+## What the default imported path currently owns
 
+- song packages
 - songs
 - charts
 - sets
-- workouts
-- coaching
-- environments
+- future playlists above song packages
 
-## What they no longer teach
+## What the default imported path does not assume
 
-This docs pass removes the older package-local gameplay asset/skin model from the official workout-package concept.
+This docs pass removes the older workout-package-heavy model from default current truth.
 
-That means workout packages should no longer be described as bundles of swappable gloves, targets, obstacles, and trails.
+That means imported content should no longer be described as normally carrying:
+
+- one-difficulty workout-package boundaries
+- package-local coaching by default
+- package-local environment ownership by default
+- package-local gameplay asset swap bundles
+
+## Environment direction
+
+Environment choice still matters, but for the default imported-player path it is treated as player/system state outside the song package.
 
 ## Customization direction going forward
 
@@ -25,4 +33,4 @@ Customization still matters, but the more likely product path is:
 - cosmetics
 - progression and unlocks via workout points
 
-That direction is more controlled and store-friendly than the older freeform workout-package asset model.
+That direction is more controlled and store-friendly than the older freeform package-local asset model.

@@ -6,15 +6,16 @@ Older docs described AeroBeat as broadly gameplay-agnostic, hardware-agnostic, a
 
 ## High concept
 
-> **Accessible free-to-play rhythm workouts through a standard camera, with community-first content on PC.**
+> **Accessible free-to-play rhythm workouts through a standard camera, with BeatSaver-powered song play on PC.**
 
 AeroBeat still keeps a modular architecture, but the v1 product promise is now specific:
 
-1. **Business model:** free-to-play app with **free workouts** and **premium workouts**
+1. **Business model:** free-to-play app with a free core experience
 2. **Input:** official gameplay support is camera tracking
 3. **Gameplay:** official v1 features are Boxing and Flow
-4. **Content:** community-authored songs, charts, sets, workouts, coaching, and environments
-5. **Progression:** AeroBeat-owned profile, workout points, and controlled avatar/cosmetics customization
+4. **Content:** imported **song packages** with multiple converted charts/difficulties under one song root
+5. **Grouping:** future multi-song sessions should be described as **playlists**
+6. **Progression:** AeroBeat-owned profile, workout points, and controlled avatar/cosmetics customization
 
 ## Product pillars for this slice
 
@@ -22,7 +23,7 @@ AeroBeat still keeps a modular architecture, but the v1 product promise is now s
 
 AeroBeat is not just a free download. It is a free-to-play product that needs a clear long-term answer for athlete identity, progression, and workout access.
 
-That means the architecture cannot quietly collapse into vendor-owned identity just because mod.io is the current community/distribution layer. AeroBeat needs an AeroBeat-owned account architecture as a first-class design concern, even if the full end-user account product is phased.
+That means the architecture cannot quietly collapse into vendor-owned identity just because third-party catalog/community services exist. AeroBeat still needs an AeroBeat-owned account architecture as a first-class design concern, even if the full end-user account product is phased.
 
 ### Accessibility first through camera play
 
@@ -42,41 +43,44 @@ The release priority is:
 
 That order should shape planning language throughout the docs. Mobile and VR remain meaningful future targets, but they are not current parity promises.
 
-### Free + premium workout catalog
+### Song packages first, playlists later
 
-The content model now needs to support both:
+The default content model should support:
 
-- **free workouts** that keep the product approachable and discoverable
-- **premium workouts** that follow platform-compliant purchase rules
+- one imported **song package** per source song/root
+- multiple exact charts/difficulties under that same package
+- future **playlists** for grouping many song packages together
 
-mod.io remains the current premium UGC/community/distribution layer, but official purchases should still flow through legitimate platform/store paths. AeroBeat should describe the resulting access in AeroBeat product terms rather than letting provider-specific purchase mechanics become the public product vocabulary.
+The default imported-player path should not drag along manual-authored workout-package baggage such as required package-local coaching or required package-owned environments.
 
 ### Modular architecture, scoped promises
 
-AeroBeat still benefits from modular content, input, and feature boundaries. The key change is marketing and product truthfulness: future-compatible architecture does **not** mean every feature, device, or platform is official v1 scope.
+AeroBeat still benefits from modular content, input, and feature boundaries. The key change is product truthfulness: future-compatible architecture does **not** mean every feature, device, or platform is official v1 scope.
 
 ## Explicitly out of current gameplay scope
 
 - Dance as a gameplay feature
 - Step as a gameplay feature
 - official non-camera gameplay input support
-- package-local gameplay asset swapping as a core workout-package concept
+- portal-era authored chart semantics as default truth
+- package-local gameplay asset swapping as a core content concept
+- manual-authored one-difficulty workout packages as the default imported-player story
 
 ## Still valid but future-facing
 
 - JoyCon, gamepad, keyboard, touch, mouse, and XR input providers
 - VR-focused presentation and shells
 - broader platform packaging after the PC-first community release
+- optional future curated/manual-authored content flows beyond imported song packages
 
 ## Content direction
 
-Workout packages should focus on the durable authored content that matters most for this slice:
+Default imported content should focus on the durable records that matter most for this slice:
 
+- song packages
 - songs
 - charts
 - sets
-- workouts
-- coaching
-- environments
+- playlists
 
-Older package-asset customization examples are being retired. Future customization docs should point toward **controlled avatar and cosmetics unlocks via workout points** rather than teaching freeform package-local gameplay asset swaps as the main product path.
+Older package-heavy coaching/environment examples are being retired from the default truth surfaces. Future customization docs should point toward **controlled avatar and cosmetics unlocks via workout points** rather than teaching freeform package-local gameplay asset swaps as the main product path.

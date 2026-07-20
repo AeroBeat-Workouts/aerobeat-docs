@@ -4,18 +4,15 @@ Use this glossary to keep the docs set aligned with the current AeroBeat scope.
 
 | Term | Definition |
 | :--- | :--- |
+| **Song Package** | A self-contained imported song-root folder containing package metadata plus the song/charts/sets needed for local playback. It may contain multiple exact playable difficulties or feature slices for the same imported source song. |
 | **Song** | The reusable audio and timing source for gameplay content. |
-| **Chart** | One concrete playable authored chart representing a single difficulty and compatibility slice. |
-| **Set** | The package-local composition record that links one Song, one Chart, one Environment, and optional coaching overlay choices. |
-| **Workout** | An ordered training program that assembles exact set selections into a session. |
-| **Workout Package** | A self-contained on-disk folder containing `workout.yaml`, typed content folders, package-local media/resources, and optional disposable local caches. |
-| **Coach Config** | The single workout-level coaching YAML domain inside a package. |
-| **Environment** | The package-local authored environment record selected by a workout set. |
+| **Chart** | One concrete playable authored or converted chart representing a single feature+difficulty slice. |
+| **Set** | The exact playable record that links one Song and one Chart. |
+| **Playlist** | A future multi-song grouping above song packages. |
 | **Input Provider** | The runtime abstraction that bridges hardware input systems to gameplay logic. |
-| **Input Profile** | A concrete runtime or device compatibility target, such as `mediapipe_camera` or `keyboard_debug`. |
+| **Input Profile** | A concrete runtime or device compatibility target, such as `mediapipe_camera` or another future provider profile. |
 | **Track View** | The broader family of linear 2D runtime presentation modes. |
-| **Portal View** | 3D visualization where targets travel toward the athlete from portal-driven spatial presentation. |
+| **Portal View** | A presentation/view term only. It is not current authored chart-contract truth. |
 | **Avatar** | A 3D character model representing the player or coach. |
 | **Cosmetic** | An account-level accessory or presentation unlock for an avatar or profile identity. |
-| **workouts.db** | The local SQLite discovery/index database for installed workouts. |
-| **Leaderboard Cache** | The local disposable per-workout SQLite cache used for leaderboard browsing. |
+| **leaderboard-cache.db** | The local disposable per-song-package SQLite cache used for leaderboard browsing where applicable. |

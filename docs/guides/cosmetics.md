@@ -1,79 +1,101 @@
-# Creating Custom Cosmetics
+# Cosmetics
 
-In AeroBeat, **"Cosmetics"** are accessories that players can equip on their Avatars to express their style. This includes Hats, Glasses, Backpacks, and other wearables.
+This page is intentionally narrow.
 
-## 🛠️ The Cosmetics SDK
+AeroBeat cosmetics are currently documented as a **controlled customization lane**, not as a public mod-pack system.
 
-*   **SDK:** `aerobeat-cosmetics-*` (Template: `cosmetics`)
-*   **Tools:** Blender, Godot 4.x.
-*   **Output:** An `AeroCosmeticAttachment` resource packed into a `.pck`.
+## Current truth
 
-## 🧢 Technical Constraints
+Use cosmetics wording that stays inside these boundaries:
 
-To ensure accessories fit correctly and perform well:
+- cosmetics are presentation-only
+- cosmetics do not alter gameplay rules or judged motion
+- cosmetics are separate from workout-package authoring
+- cosmetics are separate from any old manifest-era mod-pack story
 
-### 1. Geometry
+For adjacent current-truth context, see:
 
-*   **Polycount:** < 5k triangles per item.
-*   **Origin Point:** The mesh origin `(0,0,0)` is the **Attachment Point**.
-    *   *Example:* For a Hat, the origin should be at the center of the bottom rim (where it touches the head).
-*   **Scale:** 1 Unit = 1 Meter.
+- [Account, Identity, and Entitlements](../architecture/account-identity-and-entitlements.md)
+- [UGC & Modding Architecture](../architecture/ugc_modding.md)
+- [Content Model](../architecture/content-model.md)
+- [Avatar Creation](avatar_creation.md)
 
-### 2. Materials
+## What counts as a cosmetic
 
-*   **Shaders:** Standard PBR (`StandardMaterial3D`).
-*   **Textures:** Max 1024x1024.
-*   **Draw Calls:** Try to use a single material per item.
+Typical examples:
 
-## 🦴 The Socket System
+- hats
+- glasses
+- masks
+- backpacks
+- small wearable accessories
+- other non-gameplay avatar presentation items
 
-Cosmetics attach to specific bones on the standard **Humanoid Skeleton**. When you define a cosmetic, you must choose which "Socket" it belongs to.
+## Non-negotiable rule
 
-| Socket Name | Bone Target | Usage |
-| :--- | :--- | :--- |
-| **Head** | `Head` | Hats, Helmets, Masks. |
-| **Face** | `Head` (with offset) | Glasses, Visors. |
-| **Spine** | `Spine` / `Chest` | Backpacks, Wings, Capes. |
-| **Waist** | `Hips` | Belts, Tails. |
-| **LeftHand** | `LeftHand` | Watches, Bracelets. |
-| **RightHand** | `RightHand` | Watches, Bracelets. |
+**Cosmetics stay cosmetic.**
 
-> **Note:** The engine handles the parenting logic. You just need to specify the target bone name.
+A cosmetic should never:
 
-## 🚀 Workflow
+- change hit logic
+- change chart semantics
+- change input validation
+- change authored workout compatibility
+- require arbitrary runtime scripting or code injection
+- hide or block critical workout readability
 
-### Phase 1: Modeling
+## Product-direction wording
 
-1.  **Reference:** Import a standard dummy head into Blender to check scale.
-2.  **Model:** Create your accessory.
-3.  **Pivot:** Move the mesh so the attachment point is at `(0,0,0)`.
-4.  **Export:** Export as `.glb` (GLTF Binary).
+If another page mentions cosmetics, describe them as one or more of:
 
-### Phase 2: Import to SDK
+- profile-driven customization
+- curated or official unlocks
+- progression or entitlement-linked presentation items
+- controlled avatar-expression features
 
-1.  Open the `aerobeat-cosmetics-*` project.
-2.  Drag your `.glb` into the `assets/accessories/` folder.
-3.  Double-click to verify materials.
+Do **not** describe them as:
 
-### Phase 3: Configuration
+- freeform public manifest-based cosmetic packs
+- equal-status public mod SDK surfaces
+- package-local gameplay asset swaps as the main creator workflow
 
-1.  **Create Resource:** Right-click -> New -> `AeroCosmeticAttachment`.
-2.  **Assign Mesh:** Drag your imported `.glb` into the `mesh_visual` slot.
-3.  **Select Socket:** Type the bone name (e.g., `Head`) in the `socket_bone` property.
-4.  **Offsets:** Use `position_offset` and `rotation_offset` to fine-tune the fit without re-exporting the mesh.
-5.  **Economy:** Set the `unlock_cost` (WP) for the item.
-    *   *0 WP:* Free / Default item.
-    *   *Premium:* Check `is_premium` if this item cannot be bought with standard WP (e.g. Event Reward).
+## Prototype-safe authoring guidance
 
-### Phase 4: Validation & Upload
+Even before the final public contract exists, these constraints are still sensible:
 
-1.  Create `AeroModManifest` (Type: `COSMETIC`).
-2.  Open **AeroBeat Uploader**.
-3.  **Validate:** Checks for polycounts and valid bone names.
-4.  **Upload:** Publish to the server.
+### Geometry
 
-## 🎨 Best Practices
+- keep meshes lightweight
+- keep silhouettes readable
+- use stable pivots/origins for attachment
+- author at sane real-world scale
 
-*   **Universal Fit:** Avatars have different head shapes. Design hats that are slightly loose or have adjustable straps (visually) to minimize clipping.
-*   **Hair Interaction:** Large hats often clip with hair.
-    *   *Advanced:* You can set the `hides_hair` property to `true` in the resource. This tells the Avatar system to disable the hair mesh when this hat is equipped.
+### Materials
+
+- prefer simple performant materials
+- keep texture sizes modest
+- minimize material count and draw-call overhead
+
+### Attachment behavior
+
+- target stable avatar attachment points
+- expect per-avatar fit adjustments
+- avoid designs that depend on custom gameplay logic
+
+## What this page intentionally does not define
+
+This page is **not** the place for final public-contract details such as:
+
+- exact package shape
+- exact resource class names
+- exact socket or bone naming
+- uploader/validator UI requirements
+- store/economy metadata schema
+
+Those should only be documented when the owning runtime and package contracts are current enough to be trustworthy.
+
+## Bottom line
+
+Cosmetics are a controlled presentation system.
+
+They are **not** the public workout-package contract, and they are **not** evidence that AeroBeat currently ships a broad public mod-loader.

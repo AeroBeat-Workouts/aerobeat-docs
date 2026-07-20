@@ -1,86 +1,154 @@
 # Performance Architecture
 
-Rhythm games require consistent frame timing. A dropped frame means a missed beat, which breaks the player's flow and ruins the experience.
+AeroBeat's current performance story should match the actual product slice:
 
-This document outlines the strategies AeroBeat uses to ensure a locked **60 FPS (Mobile)**, **90 FPS (VR)**, and **120+ FPS (PC)**.
+- **camera-first gameplay**
+- **BeatSaver-powered Boxing + Flow**
+- **PC-first community release**
+- later mobile follow-on, with VR no longer treated as the default design center
 
-## 1. The "Zero Stutter" Mandate
+This page is intentionally about the **current direction**, not the older broad "mobile + VR + rich UGC everywhere" architecture story.
 
-We prioritize **Frame Pacing** over **Graphical Fidelity**.
+## Current performance priorities
 
-*   **Rule:** No resource loading, shader compilation, or heavy garbage collection is allowed during the `Gameplay` state.
-*   **Enforcement:** The `AeroPerformanceMonitor` tracks frame times. If a spike > 16ms occurs during gameplay, it is logged as a "Performance Strike" against the active UGC.
+### 1. Stable gameplay timing beats flashy rendering
 
-## 2. Shader Pre-Warming
+The most important performance rule is still simple:
 
-Godot 4.x (Vulkan) compiles shaders asynchronously, but pipeline creation can still cause hitches on the main thread the first time a material appears on screen.
+- gameplay timing must stay stable
+- camera input, note timing, and obstacle evaluation must not hitch under normal play
+- expensive work belongs **before gameplay** or **after gameplay**, not inside the active song loop
 
-### The Strategy
+For the current BeatSaver-powered direction, a dropped frame is not just a visual blemish. It can corrupt:
 
-We use a **Pre-Warm Phase** during the "Loading..." screen.
+- direct 4x3 Flow cell-entry timing
+- Boxing hit timing
+- wrist-motion direction checks
+- obstacle/bomb avoidance windows
 
-1.  **Scan:** The `ModLoader` identifies all unique `Materials` and `Meshes` required by the selected Song, Environment, Skins, and Avatars.
-2.  **Instantiate:** The `AeroShaderCache` singleton spawns a hidden `SubViewport`.
-3.  **Render:** It instances every unique mesh+material combination into this viewport.
-4.  **Wait:** The game waits for 3 frames (to ensure the GPU pipeline is fully built).
-5.  **Cleanup:** The instances are removed, but the driver cache remains hot.
-6.  **Start:** The song begins.
+## 2. Keep the active song loop lightweight
 
-> **Note:** This applies to **Particles** as well. All particle systems must emit at least one particle during pre-warm.
+During active play, AeroBeat should avoid doing new heavyweight work such as:
 
-## 3. Draw Call Budgets
+- downloading content
+- unpacking large archives
+- media transcoding
+- first-time package conversion
+- broad package rescans
+- synchronous scene/material churn that can be staged earlier
 
-To support mobile VR (Quest) and Phones, we enforce strict draw call limits.
+### Practical implication for the current product slice
 
-| Platform | Target Draw Calls | Max Polycount (Scene) |
-| :--- | :--- | :--- |
-| **Mobile / Quest** | < 150 | 100k |
-| **PC / Console** | < 1000 | 500k |
+BeatSaver acquisition and conversion should be treated as **pre-play preparation work**, not something we casually push into the live song path.
 
-### Mitigation Strategies
+That means the runtime should prefer this order:
 
-1.  **GPU Instancing:** The Core Engine automatically uses `MultiMeshInstance3D` for all gameplay targets (Notes, Obstacles).
-2.  **Texture Atlasing:** The **Cloud Baker** attempts to merge textures for static environment geometry.
-3.  **Avatar Limits:** Avatars are limited to **3 Materials** max.
+1. acquire/import the source package
+2. normalize or convert what needs converting
+3. prepare the local playable artifact
+4. only then enter gameplay
 
-## 4. Level of Detail (LOD)
+This matches the newer imported-player architecture better than the older always-online or cloud-heavy assumptions.
 
-We rely on Godot's automatic LOD system, but we enforce generation at the Cloud Baker level.
+## 3. Optimize for camera gameplay first
 
-### Cloud Baker Pipeline
+The active runtime is not a generic renderer-first rhythm shell anymore. It is a **camera gameplay system**.
 
-When a creator uploads a high-poly mesh (e.g., a 20k poly statue):
+That means the hottest path is dominated by:
 
-1.  The Baker generates **LOD1** (50%) and **LOD2** (20%) meshes using the mesh optimizer.
-2.  These are packed into the `.pck`.
+- camera frame ingestion
+- landmark/pose extraction
+- direct gameplay-state derivation from those landmarks
+- chart timing / hit-window evaluation
+- lightweight note and obstacle presentation
 
-### Runtime Selection
+### Consequence
 
-*   **PC:** Uses `LOD0` (Original) by default.
-*   **Mobile:** Forces `LOD Bias` to prefer `LOD1` immediately, saving vertex processing power.
+Performance work should prioritize reducing cost in the camera-input path before spending major effort on richer scene complexity.
 
-## 5. Memory Management (VRAM)
+Examples:
 
-Rhythm games often load hundreds of songs. We cannot keep everything in memory.
+- keep pose-processing work predictable per frame
+- avoid unnecessary landmark/history bookkeeping
+- keep Flow 4x3 hit detection and Boxing checks simple and deterministic
+- prefer cheaper debug visualizations that can be disabled cleanly
 
-### The "Jukebox" Lifecycle
+## 4. Presentation should fit the PC-first + webcam-first slice
 
-1.  **Menu:** Only the "Preview Audio" (30s clip) and "Thumbnail" (512px) are loaded.
-2.  **Selection:** When a song is picked, the full `.ogg` and Environment `.pck` are loaded.
-3.  **Gameplay:** All assets are pinned in VRAM.
-4.  **End Screen:** Assets remain loaded (for "Replay").
-5.  **Exit to Menu:** **Aggressive Unload.** All gameplay resources are freed. `GC.collect()` is forced.
+The current docs no longer assume that AeroBeat's main value comes from heavy VR-style presentation.
 
-### Texture Compression
+For the active slice, performance guidance should bias toward:
 
-*   **Mobile:** All textures are converted to **ASTC 6x6** by the Cloud Baker.
-*   **PC:** Textures use **S3TC (BC7)**.
-*   **UI:** Uses **WebP** (Lossless) to save disk space while keeping sharpness.
+- clean 2D backgrounds first
+- lightweight video backgrounds second
+- heavier 3D/advanced environment lanes only when they stay honest about device scope
 
-## 6. Object Pooling
+This matches the newer package/customization cleanup:
 
-We do not `instantiate()` notes during gameplay.
+- imported-player song packages should not be treated like freeform environment-asset bundles
+- environment choice is no longer the center of the BeatSaver-powered path
+- advanced environment types may still exist, but they are not the baseline assumption performance planning should optimize around
 
-*   **Pools:** `AeroTargetPool`, `AeroObstaclePool`, `AeroEffectPool`.
-*   **Size:** Pools are initialized during the Loading Screen based on the song's note count (plus a 20% buffer).
-*   **Behavior:** When a note is hit, it is `reparented` or `hidden`, not `queue_free()`'d.
+## 5. Package/media preparation should stay conservative
+
+The current imported-player direction is deliberately simpler:
+
+- preserve source provenance under `.artifacts/`
+- use normalized runtime media for actual playback
+- keep the playable package self-contained
+
+From a performance perspective, that means:
+
+- prefer one runtime-canonical audio format for playback
+- avoid repeated on-the-fly media interpretation when a normalized asset can be prepared once
+- treat provenance storage as a tooling/debug concern, not a hot runtime path
+
+## 6. Avoid broad public-customization assumptions in the renderer
+
+Older architecture drift sometimes assumed a much larger package-local customization surface.
+
+That is not the current center of gravity.
+
+Performance planning should therefore **not** assume that every gameplay session must support a huge mix of arbitrary runtime-swapped package assets. The current direction is narrower and easier to optimize:
+
+- official/manual-authored workout packages have a controlled package contract
+- BeatSaver-derived play should center on converted song/chart playback
+- cosmetics/customization should not quietly reopen an unbounded gameplay render surface in these docs
+
+## 7. Quality targets should be phrased honestly
+
+The old page taught fixed targets like "90 FPS VR" as if VR were still the main design anchor.
+
+Current truthful guidance is simpler:
+
+- **PC-first:** prioritize smooth camera gameplay on ordinary desktop hardware
+- **mobile later:** keep future mobile cost in mind, but do not distort the current architecture around hypothetical parity
+- **VR later if it returns:** treat VR as a future-expansion concern, not the present performance contract
+
+If concrete frame budgets are needed later, they should be set from measured implementation reality rather than inherited from the older cross-platform pitch.
+
+## 8. What to measure first
+
+For the current product slice, the most useful performance instrumentation should answer:
+
+- how expensive is camera/pose processing per frame?
+- how stable is the gameplay loop during dense BeatSaver charts?
+- do imported/converted assets cause first-play hitches?
+- do backgrounds or advanced environments materially harm gameplay stability?
+- do debug overlays materially distort camera-gameplay performance?
+
+Those questions are more important right now than legacy platform-wide render-budget tables.
+
+## Current recommendation
+
+AeroBeat should treat performance architecture as a **camera-gameplay stability problem first** and a **presentation-scale problem second**.
+
+That means:
+
+- prepare content before play
+- keep the live song loop small and predictable
+- optimize the direct 4x3 Flow + Boxing camera path first
+- prefer lightweight background defaults
+- keep advanced environment/customization lanes honest and controlled
+
+That is the performance posture that best matches the current BeatSaver-powered product direction.

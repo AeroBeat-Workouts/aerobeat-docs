@@ -1,90 +1,72 @@
-# Creating Custom Skins
+# Skins in the Current Docs Slice
 
-In AeroBeat, **"Skins"** allow athletes to personalize their gameplay equipment. This guide covers creating custom **Boxing Gloves**, **Flow Bats**, **Targets**, and **Obstacles**.
+AeroBeat still has a **skin lane**, but it should no longer be read as a public v1 creator pillar or as the old package-local gameplay-swap story.
 
-## 🛠️ The Skins SDK
+## Current truth
 
-*   **SDK:** `aerobeat-skins-*` (Template: `skins`)
-*   **Tools:** Godot 4.x Editor.
-*   **Output:** An `AeroSkin` resource packed into a `.pck`.
+- **Official v1 gameplay:** camera-driven Boxing and Flow on PC first
+- **Current customization emphasis:** controlled **avatar / cosmetics / profile** progression, not community gameplay-skin swapping
+- **Skin repo role:** internal or controlled product presentation work in the **asset lane**
+- **Canonical template:** `aerobeat-template-skin`
 
-## 🥊 Boxing Gloves
+If you are looking for the main community creation path today, start with workout packages, choreography, coaching, and environments instead.
 
-Gloves are the athlete's primary connection to the game. They must look good from the "First Person" perspective.
+## What this page means now
 
-### Technical Constraints
+Use the skin lane when AeroBeat itself needs to author or validate:
 
-*   **Polycount:** < 10k triangles per glove.
-*   **Orientation:** Fingers point **Negative Z**. Palm faces **Negative Y** (Down).
-*   **Materials:** Standard PBR. Avoid transparent materials for performance.
+- internal glove/hand presentation variants for Boxing
+- internal target/obstacle presentation variants for Boxing or Flow
+- trail/accent presentation for retained gameplay features
+- controlled product-facing visual variants that belong to the asset lane
 
-### The Left/Right Rule
+Do **not** use this page to imply that AeroBeat v1 ships a broad public marketplace for swapping gameplay equipment skins.
 
-AeroBeat relies on color coding for gameplay.
+## Canonical starting point
 
-*   **Left Hand:** Must be predominantly **Dark / Black**.
-*   **Right Hand:** Must be predominantly **Light / White**.
-*   *Why?* Players instinctively match the glove color to the target color. If you make a "Red vs Blue" set, players might get confused hitting Black/White targets.
+The runnable template story now lives in:
 
-## ⚔️ Flow Bats
+- `aerobeat-template-skin`
+- `aerobeat-docs/templates/skins/README.md` for the docs-side handoff note
 
-Bats are the primary tool for **Flow Mode**. They are used for wide, sweeping strikes that engage the core and shoulders.
+That template already captures the current repo truth:
 
-### Technical Constraints
-*   **Polycount:** < 10k triangles per bat.
-*   **Orientation:** Handle grip is centered at `(0,0,0)`. The blade extends along **Negative Z** (Forward).
-*   **Length:** The visual mesh should be approximately **0.8m to 1.0m** long.
+- skins are **internal/system-facing packages** by default
+- shared contracts belong in `aerobeat-asset-core`
+- concrete feature dependencies should stay explicit and selective
+- the old universal mod/SDK story should not be revived accidentally
 
-### The Left/Right Rule
-Just like gloves, bats must follow the strict color coding:
-*   **Left Bat:** Predominantly **Dark / Black**.
-*   **Right Bat:** Predominantly **Light / White**.
+## Scope guardrails
 
-## 🎯 Targets
+### What belongs in skin work
 
-Targets are the objects flying at the player.
+- visual meshes/materials for retained feature presentation
+- asset-lane resources consumed by a concrete feature or assembly
+- validation against the current Boxing/Flow runtime surfaces when needed
 
-### Types
+### What does not belong here
 
-1.  **Directional Target:** Has a clear "Front" face. Used for punches.
-2.  **Omni Target:** Symmetrical. Used for "Any Direction" hits.
-3.  **Obstacle:** Walls or shapes to dodge.
+- community-authored workout package content
+- coach content
+- avatar/cosmetic progression design as a substitute for gameplay skins
+- claims that skins are an equal-status public modding lane in the current v1 product slice
+- old `AeroModManifest` / public uploader instructions from the superseded UGC-first docs story
 
-### Technical Constraints
+## Practical workflow
 
-*   **Polycount:** < 2k triangles per target. (There can be 50+ on screen).
-*   **Hitbox:** You are creating the *Visual Mesh*. The game engine handles the physics collision. Your mesh should fit roughly within a **0.5m x 0.5m x 0.5m** cube.
-*   **Center Point:** The mesh must be centered at `(0,0,0)`.
+1. Open `aerobeat-template-skin`.
+2. Restore the `.testbed/` GodotEnv dependencies documented there.
+3. Validate the presentation assets against the concrete feature surface that actually consumes them.
+4. Keep the package boundary and dependency list narrow.
+5. If the work is really avatar/cosmetic/environment content instead, route it to the correct lane instead of forcing it into `skins`.
 
-## 🚀 Workflow
+## Creator routing note
 
-### Phase 1: Modeling & Texturing
+If you are a community creator trying to decide where to contribute today:
 
-1.  Create your assets in Blender/Maya.
-2.  Export as `.glb` (GLTF Binary).
-3.  **Textures:** Embed them or keep them in a relative folder.
+- build **workouts/charts/sets/coaching/environments** for the active content lane
+- treat **skins** as a controlled/internal asset path unless a future docs update explicitly broadens that scope
 
-### Phase 2: Import to SDK
+## Summary
 
-1.  Open the `aerobeat-skins-*` project.
-2.  Drag your `.glb` files into the FileSystem.
-3.  Double-click to open and verify materials.
-
-### Phase 3: Configuration
-
-1.  **Create Resource:** Right-click -> New -> `AeroGlove` or `AeroTargetSkin`.
-2.  **Assign Mesh:** Drag your imported mesh into the `mesh_visual` slot.
-3.  **Offset:** Adjust position/rotation offset if the mesh doesn't align with the default hand bones.
-
-### Phase 4: Validation & Upload
-
-1.  Create `AeroModManifest` (Type: `SKIN`).
-2.  Open **AeroBeat Uploader**.
-3.  **Validate:** Checks for polycounts and material errors or accidentally added scripts.
-4.  **Upload:** Publish to the server.
-
-## 🎨 Best Practices
-
-*   **Readability:** Targets move fast. Ensure the "Directional Arrow" or indicator on the target is high contrast.
-*   **Silhouette:** Unique shapes are great, but don't make them so complex that the hit direction is ambiguous.
-*   **Glove Comfort:** Remember the player sees the *back* of the glove 90% of the time. Put your best details there.
+Skins are still real, but in the current docs slice they are **not** the headline community customization system. Read them as a **narrow asset-lane package for controlled product presentation**, aligned to the retained Boxing + Flow v1 scope.

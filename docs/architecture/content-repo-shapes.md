@@ -5,7 +5,7 @@ This document turns the approved Content-lane architecture into concrete **day-o
 1. [`aerobeat-content-core`](https://github.com/AeroBeat-Workouts/aerobeat-content-core) as the canonical owner of durable authored-content contracts
 2. `aerobeat-tool-content-authoring` as the first concrete Tool-lane product that authors, validates, migrates, packages, and inspects that content
 
-The goal is not to over-design a future platform. The goal is to make repo creation safe by defining what belongs in each repo on day one, what explicitly stays out, and how CLI/headless and optional editor UX share one service layer.
+The goal is not to over-design a future platform or quietly revive old broad-scope product assumptions. The goal is to make repo creation safe by defining what belongs in each repo on day one, what explicitly stays out, and how CLI/headless and optional editor UX share one service layer while staying aligned to the current PC-first camera gameplay slice.
 
 ## Architecture position
 
@@ -14,9 +14,18 @@ These repo shapes assume the six-core model already documented elsewhere:
 - `aerobeat-content-core` owns the durable content language: `Song`, `Set`, `Chart`, `Workout`, shared chart-envelope contracts, ids, manifests, schema/version rules, shared validators, registry/query interfaces, and workout resolution contracts.
 - `aerobeat-tool-core` owns shared tool-side operational models, progress/result DTOs, and other tool-common contracts.
 - `aerobeat-tool-content-authoring` is a concrete Tool-lane product built on top of `aerobeat-content-core` and `aerobeat-tool-core`.
-- `aerobeat-feature-core` and concrete `aerobeat-feature-*` repos consume content contracts and own runtime interpretation, scoring, spawning, and presentation systems such as 2D lanes and 3D portals.
+- `aerobeat-feature-core` and concrete `aerobeat-feature-*` repos consume content contracts and own runtime interpretation, scoring, spawning, and retained feature presentation behavior for the current Boxing + Flow slice.
 
 If a repo shape below conflicts with that ownership model, the ownership model wins.
+
+## Scope guardrails for this page
+
+This page is about **repo ownership**, not a promise that every documented content/input/platform possibility is equal-status v1 product scope. Keep these guardrails in mind:
+
+- current official gameplay focus is **camera-driven Boxing + Flow on PC first**
+- content contracts should stay durable and future-friendly without overclaiming equal-status support for future inputs or future platforms
+- controlled avatar/cosmetics progression is the current customization emphasis; this page should not be read as reviving the older public gameplay-skin-swap story
+- examples can remain future-compatible, but the wording should stay truthful about today's narrower product slice
 
 ## Day-one recommendation: `aerobeat-content-core`
 
@@ -171,7 +180,7 @@ The exact filenames can evolve, but the **shape categories should not**: contrac
 - import adapters for third-party file formats
 - feature scoring rules
 - mode-specific semantic validation that belongs in feature repos
-- 2D lane renderers, 3D portal systems, spawn systems, or any other content-consuming runtime visuals
+- retained feature presentation systems, spawn systems, or any other content-consuming runtime visuals
 - Godot scenes whose main job is authoring UI or runtime presentation
 
 ### Day-one non-goals for `aerobeat-content-core`
@@ -360,7 +369,7 @@ Editor code should orchestrate services and present results. It should not becom
 
 - canonical definitions of `Song`, `Set`, `Chart`, or `Workout`
 - the shared chart envelope contract
-- feature runtime visuals such as 2D lanes or 3D portals
+- feature runtime visuals for Boxing, Flow, or later retained runtime consumers
 - gameplay scoring/runtime execution logic
 - backend moderation queue state unless that work is explicitly split into another tool repo or shared tool-core model
 
@@ -411,7 +420,7 @@ If a new file is being proposed, the routing rule should be:
 
 - Put it in `aerobeat-content-core` when it defines the durable meaning of content shared across runtime and tools.
 - Put it in `aerobeat-tool-content-authoring` when it defines a workflow that creates, edits, validates, migrates, packages, imports, or inspects that content.
-- Put it in `aerobeat-feature-*` when it is a runtime consumer or visualizer of content, including 2D lanes, 3D portals, spawn systems, scoring flow, or view realization.
+- Put it in `aerobeat-feature-*` when it is a runtime consumer or visualizer of content, including spawn systems, scoring flow, Boxing/Flow presentation, or view realization.
 
 That split is what keeps the first repos from collapsing back into a blob.
 

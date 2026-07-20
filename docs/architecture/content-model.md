@@ -1,83 +1,79 @@
-# Content Model: Songs, Charts, Sets, and Workouts
+# Content Model: Song Packages, Songs, Charts, Sets, and Playlists
 
-AeroBeat content is authored as a layered model rather than a single flat chart blob.
+AeroBeat content is authored and imported as a layered model rather than a single flat chart blob.
 
-## Durable package hierarchy
+## Durable default hierarchy
 
+- **Song Package**
 - **Song**
 - **Chart**
 - **Set**
-- **Workout**
+- **Playlist** (future multi-song grouping)
 
-Optional package-local domains kept in this slice:
-
-- **Coach Config**
-- **Environment**
-
-Older docs also modeled package-local gameplay asset records. That is no longer part of the official workout-package concept for this v1 documentation pass.
+Default imported-player truth does **not** require package-local coaching or package-local environments.
 
 ## Current schema direction
 
 - use consistent `*Id` + `*Name` fields where applicable
 - all primary ids are UIDs
 - authored YAML records carry shared schema/provenance fields
-- `Chart` is the durable term for one concrete playable difficulty slice
-- `Set` is the durable composition linker for exact song/chart/environment/coaching selections
-- `Workout` resolves to an ordered list of `setId` values
-- `Song` records do not link to charts, sets, or workouts
-- `Chart` records do not link to songs or sets
+- `Song Package` is the durable term for one imported source song/root
+- `Chart` is the durable term for one concrete playable feature+difficulty slice
+- `Set` is the durable linker for one exact song+chart playable selection
+- `Playlist` is the durable multi-song grouping concept above song packages
+- `Song` records do not link to playlists directly
 - athlete/device calibration data does not belong in durable content
 
-## Why AeroBeat needs `Set`
+## Why AeroBeat still needs `Set`
 
-`Set` is the durable linker between exact playable authored content and an ordered workout program.
+`Set` remains the durable playable linker between exact song content and exact chart content.
 
-A set owns the exact composition for one playable slice:
+A set owns the exact playable slice:
 
 - `songId`
 - `chartId`
-- `environmentId`
-- optional `coachingOverlayId`
 
-That keeps workout composition explicit without inlining everything into `workout.yaml`.
+That keeps selection explicit without stuffing feature/difficulty semantics into the song record itself.
 
-## Environment
+## Environment direction
 
-An `Environment` is a reusable package-local presentation record selected by a set.
+Environment choice is now treated as player/system state outside the default imported song package.
 
-Environment v1 keeps the authored record intentionally small:
+That means current imported content docs should **not** teach:
 
-- `environmentId`
-- `environmentName`
-- `type`
-- `resourcePath`
+- package-owned environment folders as the default path
+- per-set environment requirements for ordinary imported song packages
+- environment selection as the center of the BeatSaver-powered import contract
 
-Locked `type` values:
+AeroBeat may still support built-in, downloaded, or custom environment packages elsewhere in the product, but those are a sibling system rather than default song-package truth.
 
-- `image_background`
-- `video_background`
-- `glb_environment`
-- `splat`
+## Coaching direction
 
-`image_background`, `video_background`, and `glb_environment` remain the broad creator-friendly lanes. `splat` is now an official package type too, but it should be treated as a controlled advanced environment path: AeroBeat should prefer `.compressed.ply` as the official recommended splat payload, while `.ply`, `.splat`, and `.sog` remain compatibility-supported through GDGS. Exported workouts still stay self-contained, while the current validated runtime path is desktop-oriented and depends on Forward Plus plus compute-capable GPU support.
+Coaching is not part of the default imported-player contract.
+
+That means current imported content docs should **not** teach:
+
+- package-local `coaches/coach-config.yaml` as a normal expectation
+- warm-up / cool-down / overlay voice assets as default imported content baggage
+- all-or-nothing coaching as the baseline imported-player rule
+
+If coaching returns later, it should be documented as an optional extension rather than a structural requirement of every imported package.
+
+## Shared chart envelope
+
+AeroBeat still uses shared chart concepts with feature-specific payload meaning. For the active gameplay docs slice, the important authored/imported features are Boxing and Flow.
+
+- Boxing conversion rules are defined in [BeatSaver to AeroBeat Boxing v1 Conversion](beatsaver-boxing-v1-conversion.md).
+- Flow conversion rules are defined in [BeatSaver to AeroBeat Flow v1 Conversion](beatsaver-flow-v1-conversion.md).
+- Portal-era chart language is not current contract truth for either feature.
 
 ## Customization direction after asset-package removal
 
-The removal of package-local gameplay asset records from this slice is a product-scope decision, not a statement that visuals never matter. The new customization direction should point toward:
+The removal of package-local gameplay asset records from the default content story is a product-scope decision, not a statement that visuals never matter. The current customization direction should point toward:
 
 - player profile identity
 - avatars
 - cosmetics
 - controlled unlocks via workout points
 
-That keeps the workout package focused on workout content while leaving room for broader account-level customization later.
-
-## Shared chart envelope
-
-AeroBeat still uses a shared chart envelope with feature-specific payload meaning. For the active gameplay docs slice, the important authored features are Boxing and Flow.
-
-- Boxing uses a flat `beats` list with `start`, optional `end`, and required `type`. Current canonical Boxing examples should align with the semantic v1 vocabulary: handed `straight_*`, `hook_*`, and `uppercut_*` strikes plus `guard`, `squat`, and `weave_*` movement beats. Portal-based Boxing chart language is no longer current contract truth.
-- Flow is moving to a direct calibrated 4x3 gameplay model built around wrist target cells, direction checks derived from motion, bomb hazards, nose-space obstacles, guidance arcs, and higher-level burst objects. The older `portal` / `placement` / follow-through `direction` authored model should not be presented as the current contract.
-- Legacy `events` / `interactionFamily` chart-envelope wording is not part of the canonical v1 authored contract in this docs slice.
-
-Dance and Step are no longer active gameplay features in this docs set.
+That keeps the default song-package contract focused on imported playable content while leaving room for broader account-level customization later.

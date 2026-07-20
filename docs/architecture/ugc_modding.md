@@ -1,103 +1,79 @@
 # UGC & Modding Architecture
 
-AeroBeat is designed to be extensible by the community. While our internal development uses Git Submodules (`aerobeat-asset-*`), our athletes consume content via **Godot Resource Packs (`.pck`)**.
+This page exists mostly to prevent stale mod-loader or workout-package assumptions from re-entering the docs.
 
-This document outlines the architecture for the **Modding SDK** and the **Runtime Loading Protocol**.
+## Current truth
 
-## 🏗️ The Gap: Git vs. PCK
+For the current docs slice, AeroBeat's default creator-facing/imported content contract is:
 
-*   **Internal Devs:** Clone repos, edit in Godot Editor, commit to Git.
-*   **Community Creators:** Download a specialized SDK, validate assets locally, and **publish through an AeroBeat-authorized upload flow that currently uses mod.io as the outer community/distribution shell**.
-*   **Athletes:** Browse the **In-Game Content Browser**, download AeroBeat-approved content, and play. (Power users can still manually drop `.pck` files into `user://mods/`, but that remains distinct from the trusted online-distributed path.)
+- **BeatSaver-powered song packages** for imported playable content
+- **playlists** for future multi-song grouping above those song packages
 
-## 🛠️ Creator Tooling Strategy
+Use these as the canonical sources of truth:
 
-We utilize a **Hybrid Tooling Strategy** to match the technical comfort of different creator personas.
+- [BeatSaver to AeroBeat Flow v1 Conversion](beatsaver-flow-v1-conversion.md)
+- [BeatSaver to AeroBeat Boxing v1 Conversion](beatsaver-boxing-v1-conversion.md)
+- [Content Model](content-model.md)
+- [User Content Overview](../gdd/user-content/overview.md)
+- [Community Creations](../gdd/user-content/community-creations.md)
 
-### 1. Native SDKs (Godot Editor)
-For **3D Artists** who need full control over materials, import settings, and baking.
-*   **SDKs:** `skins`, `avatars`, `cosmetics`, `environments`.
-*   **Workflow:** Download Godot -> Open SDK -> Import Assets -> Submit through the AeroBeat-authorized publishing flow.
+## What is not current truth
 
-### 2. Standalone Apps (Web / Desktop)
-For **Musicians, Coaches, and Choreographers** who need a streamlined, focused interface without the complexity of a game engine. These are Godot projects exported as standalone applications.
+Do **not** describe AeroBeat's public creator story as any of the following unless a future architecture decision explicitly restores them:
 
-*   **Musician Portal (Web):**
-    *   **Features:** Audio upload, Cloud conversion (WAV -> OGG), BPM detection.
-    *   **Preview:** Visualizer that plays the song against a selected "Test Chart" from the server.
-*   **Choreography Studio (Desktop/Web):** Specialized timeline editor for mapping.
-*   **Coaching Studio (Web):** Wizard for syncing voice-overs and video.
+- public `.pck` mod packs as the main creator workflow
+- `AeroModManifest` or `manifest.tres` as the public package contract
+- startup scanning of `res://mods/*` as the canonical discovery model
+- arbitrary runtime code or gameplay-asset swap packs as equal-status public UGC
+- manual-authored one-difficulty workout packages as the default imported-player contract
+- package-required coaching or package-owned environment selection as the default imported-player story
 
-### 3. Shared Core
-All tools (Native and Web) should share the same `aerobeat-tool-core` validation contracts and any matching `aerobeat-content-core` data rules. This keeps a song validated in the Web Portal aligned with what the Game Client consumes.
+Those were older ideas or narrower side lanes. They are not the present-tense docs contract.
 
-## 🛡️ Security: The Double Verification Strategy
+## Current creator lanes
 
-To prevent malicious code execution (RCE) and ensure performance, every asset undergoes two layers of validation.
+### Default lane: imported song packages
 
-### 1. Client-Side (SDK)
+The active lane currently centers on imported content packages such as:
 
-*   **Role:** Immediate feedback for the creator.
-*   **Checks:**
-    *   **Performance:** Poly-count limits, Texture resolution caps (e.g., Max 2048x2048).
-    *   **Completeness:** Ensures all dependencies (textures) are included in the pack.
-    *   **Format:** Validates that audio is `.ogg` (not `.wav` for streaming) or `.mp3`.
-    *   **Video:** Validates that videos are `.webm` (VP8/VP9) for cross-platform compatibility.
+- one source song root
+- multiple converted Boxing and/or Flow charts
+- multiple exact playable difficulty slices under that same song package
+- source provenance and normalized local playback artifacts
 
-### 2. Server-Side (The Gatekeeper)
+### Future grouping lane: playlists
 
-*   **Role:** Security and Integrity.
-*   **Process:** When a creator submission is linked into the AeroBeat ingest path, the server spins up a headless validator.
-*   **Checks:**
-    *   **Script Scanning:** Greps all text resources (`.tres`, `.tscn`) for `[sub_resource type="GDScript"]` or `script/source`.
-    *   **Extension Whitelist:** Rejects any file ending in `.gd`, `.gdc`, `.dll`, `.so`, `.dylib`.
-    *   **Core Overwrites:** Verifies the pack does not attempt to mount files into `res://addons/` or `res://src/`.
+If AeroBeat groups many songs into one athlete-facing sequence, that grouping should be described as a **playlist**.
 
-## 📜 The Manifest Protocol
+Do not collapse playlist language back into the older workout-package noun as default truth.
 
-To make UGC discoverable at runtime without hardcoding paths, every Mod must contain a standardized **Entry Point**.
+### Separate lane: customization
 
-### 1. The File Structure
-A valid mod is a `.pck` or `.zip` file that, when mounted, adheres to this structure:
+Avatar and cosmetics work may exist as product customization, but that is **not** the same thing as the song-package import/play contract.
 
-```text
-my_cool_skin.pck (Mounts to res://mods/my_cool_skin/)
-├── manifest.tres      <-- The Entry Point (AeroModManifest)
-├── assets/            <-- Raw files (Textures, Audio, GLB)
-│   ├── glove_albedo.png
-│   └── glove_mesh.glb
-└── resources/         <-- Godot Resources
-    └── GloveSkin.tres <-- The actual game-ready resource
-```
+If you mention customization in docs, frame it as:
 
-### 2. The Manifest Resource (`AeroModManifest`)
+- controlled/profile-driven customization
+- curated or product-owned unlocks
+- a future-expanding system with its own contract
 
-The game scans `res://mods/*/manifest.tres` on startup.
+not as proof that AeroBeat currently ships a broad public mod-loader.
 
-```gdscript
-class_name AeroModManifest
-extends Resource
+## Internal packages are not public UGC packages
 
-enum ModType { SKIN, SONG, ENVIRONMENT, GAMEPLAY_TWEAK, COACHING, WORKOUT, AVATAR, COSMETIC }
+AeroBeat's internal repo/dependency architecture is a different layer:
 
-@export var id: String = "my_cool_skin" # Unique ID
-@export var display_name: String = "Cyberpunk Gloves"
-@export var author: String = "CommunityUser"
-@export var version: String = "1.0.0"
-@export var type: ModType = ModType.SKIN
-@export var target_feature: String = "boxing" # e.g., "boxing", "flow"
+- **GodotEnv/addon packages** explain repo composition and engine/runtime dependencies
+- **song packages** explain imported gameplay content
+- **playlists** explain future multi-song athlete grouping
 
-# The actual content to load
-@export var content_resource: Resource 
-```
+Do not merge those layers into one vague "package" or "mod" story.
 
-## 🔄 The Runtime Loading Flow
+## Bottom line
 
-1.  **Download:** Athlete selects content in the Browser. The game downloads the `.pck` to `user://mods/cache/`.
-2.  **Discovery:** On startup (or after download), the `ModLoader` scans `user://mods/` and mounts valid packs using `ProjectSettings.load_resource_pack()`.
-3.  **Registration:** The loader reads the `manifest.tres` from the mounted path and registers it in the `ContentRegistry`.
-4.  **Offline Support:** Since files are saved locally, downloaded content remains available without an internet connection.
+If another page needs a short rule, use this one:
 
-
-
-
+- **Imported song packages are the current default content path.**
+- **Playlists are the future multi-song grouping noun.**
+- **Customization is separate from song-package authoring.**
+- **Do not reintroduce manifest-era public mod-loader truth by accident.**
