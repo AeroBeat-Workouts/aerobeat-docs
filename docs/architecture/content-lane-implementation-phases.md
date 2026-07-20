@@ -7,7 +7,7 @@
 
     - [Architecture Overview](overview.md)
     - [Content Repo Shapes](content-repo-shapes.md)
-    - [Workout Package Storage and Discovery](workout-package-storage-and-discovery.md)
+    - [Content Repo Shapes](content-repo-shapes.md)
     - [BeatSaver Flow v1 Conversion](beatsaver-flow-v1-conversion.md)
     - [BeatSaver Boxing v1 Conversion](beatsaver-boxing-v1-conversion.md)
 

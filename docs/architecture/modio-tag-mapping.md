@@ -192,6 +192,7 @@ When uploader or sync tooling prepares a mod.io package/tag payload, it should f
 
 ## Related docs
 
-- [UGC Distribution Strategy](workout-package-storage-and-discovery.md)
 - [UGC Distribution Strategy](ugc-distribution-strategy.md)
+- [Content Repo Shapes](content-repo-shapes.md)
+- [Workout Package Storage and Discovery (Historical)](workout-package-storage-and-discovery.md)
 - [Content Model](content-model.md)
