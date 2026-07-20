@@ -25,7 +25,7 @@
     
     
       
-        <title>Workout Creation Tools Architecture - AeroBeat Documentation</title>
+        <title>Workout Creation Tools Architecture (Historical) - AeroBeat Documentation</title>
       
     
     
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Workout Creation Tools Architecture
+              Workout Creation Tools Architecture (Historical)
             
           </span>
         </div>
@@ -2751,7 +2751,7 @@
   <span class="md-ellipsis">
     
   
-    Content Repo Shapes
+    Content Repo Shapes (Current Contract Notes)
   
 
     
@@ -3096,7 +3096,7 @@
   <span class="md-ellipsis">
     
   
-    Workout Creation Tools Architecture
+    Workout Creation Tools Architecture (Historical)
   
 
     
@@ -3114,7 +3114,7 @@
   <span class="md-ellipsis">
     
   
-    Workout Creation Tools Architecture
+    Workout Creation Tools Architecture (Historical)
   
 
     
@@ -3140,10 +3140,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#purpose" class="md-nav__link">
+  <a href="#status-historical-de-scoped" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Purpose
+        Status: historical / de-scoped
       
     </span>
   </a>
@@ -3151,171 +3151,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#locked-architectural-position" class="md-nav__link">
+  <a href="#current-truth" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Locked architectural position
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Locked architectural position">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#productrepo-boundary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Product/repo boundary
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tool-lane-dependency-boundary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tool-lane dependency boundary
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cli-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CLI architecture
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="CLI architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#separate-cli-tools-early" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Separate CLI tools early
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#validation-boundary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Validation boundary
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#required-cli-workflow-categories" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Required CLI workflow categories
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cli-repair-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CLI repair policy
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gui-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GUI architecture
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="GUI architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#one-scene-per-yaml-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        One scene per YAML file
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#package-home-ux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Package-home UX
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#chart-editor-as-the-heavyweight-specialized-scene" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Chart editor as the heavyweight specialized scene
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bounded-gui-scope" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bounded GUI scope
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#shared-service-rule" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Shared service rule
+        Current truth
       
     </span>
   </a>
@@ -3323,226 +3162,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#media-import-and-normalization-architecture" class="md-nav__link">
+  <a href="#why-this-page-was-de-scoped" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Media import and normalization architecture
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Media import and normalization architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ffmpeg-is-a-dependency" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        FFmpeg is a dependency
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#import-flow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Import flow
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accepted-formats-vs-stored-canonical-formats" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Accepted formats vs stored canonical formats
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#currently-locked-stored-canonical-formats" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Currently locked stored canonical formats
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#explicit-optimization-deferrals" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Explicit optimization deferrals
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#image-import-nuance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Image import nuance
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#environment-media-note" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Environment media note
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#repair-upgrade-flows" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Repair / upgrade flows
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Repair / upgrade flows">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gui-repair-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GUI repair policy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cli-repair-policy_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CLI repair policy
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#editor-ownership-boundaries-by-domain" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Editor ownership boundaries by domain
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Editor ownership boundaries by domain">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#workout-scene" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Workout scene
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#song-scene" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Song scene
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#chart-scene" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Chart scene
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#set-scene" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Set scene
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#coach-config-scene" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Coach-config scene
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#environment-scene" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Environment scene
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#embedded-assembly-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Embedded assembly mode
+        Why this page was de-scoped
       
     </span>
   </a>
@@ -3550,10 +3173,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#non-goals" class="md-nav__link">
+  <a href="#how-to-read-older-tool-references" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Non-goals
+        How to read older tool references
       
     </span>
   </a>
@@ -3561,10 +3184,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#recommended-implementation-posture" class="md-nav__link">
+  <a href="#current-implementation-direction-instead" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recommended implementation posture
+        Current implementation direction instead
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-current-truth-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related current-truth docs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historical-retention-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Historical retention note
       
     </span>
   </a>
@@ -3594,7 +3239,7 @@
   <span class="md-ellipsis">
     
   
-    Workout Creation Tools CLI Surface
+    Workout Creation Tools CLI Surface (Historical)
   
 
     
@@ -3622,7 +3267,7 @@
   <span class="md-ellipsis">
     
   
-    Workout Creation Tools Import Format Matrix
+    Workout Creation Tools Import Format Matrix (Historical)
   
 
     
@@ -3650,7 +3295,7 @@
   <span class="md-ellipsis">
     
   
-    Workout Creation Tools Implementation Order
+    Workout Creation Tools Implementation Order (Historical)
   
 
     
@@ -5729,10 +5374,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#purpose" class="md-nav__link">
+  <a href="#status-historical-de-scoped" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Purpose
+        Status: historical / de-scoped
       
     </span>
   </a>
@@ -5740,171 +5385,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#locked-architectural-position" class="md-nav__link">
+  <a href="#current-truth" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Locked architectural position
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Locked architectural position">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#productrepo-boundary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Product/repo boundary
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tool-lane-dependency-boundary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tool-lane dependency boundary
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cli-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CLI architecture
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="CLI architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#separate-cli-tools-early" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Separate CLI tools early
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#validation-boundary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Validation boundary
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#required-cli-workflow-categories" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Required CLI workflow categories
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cli-repair-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CLI repair policy
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gui-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GUI architecture
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="GUI architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#one-scene-per-yaml-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        One scene per YAML file
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#package-home-ux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Package-home UX
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#chart-editor-as-the-heavyweight-specialized-scene" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Chart editor as the heavyweight specialized scene
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bounded-gui-scope" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bounded GUI scope
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#shared-service-rule" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Shared service rule
+        Current truth
       
     </span>
   </a>
@@ -5912,226 +5396,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#media-import-and-normalization-architecture" class="md-nav__link">
+  <a href="#why-this-page-was-de-scoped" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Media import and normalization architecture
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Media import and normalization architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ffmpeg-is-a-dependency" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        FFmpeg is a dependency
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#import-flow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Import flow
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accepted-formats-vs-stored-canonical-formats" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Accepted formats vs stored canonical formats
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#currently-locked-stored-canonical-formats" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Currently locked stored canonical formats
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#explicit-optimization-deferrals" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Explicit optimization deferrals
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#image-import-nuance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Image import nuance
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#environment-media-note" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Environment media note
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#repair-upgrade-flows" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Repair / upgrade flows
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Repair / upgrade flows">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gui-repair-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GUI repair policy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cli-repair-policy_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CLI repair policy
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#editor-ownership-boundaries-by-domain" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Editor ownership boundaries by domain
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Editor ownership boundaries by domain">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#workout-scene" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Workout scene
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#song-scene" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Song scene
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#chart-scene" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Chart scene
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#set-scene" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Set scene
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#coach-config-scene" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Coach-config scene
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#environment-scene" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Environment scene
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#embedded-assembly-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Embedded assembly mode
+        Why this page was de-scoped
       
     </span>
   </a>
@@ -6139,10 +5407,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#non-goals" class="md-nav__link">
+  <a href="#how-to-read-older-tool-references" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Non-goals
+        How to read older tool references
       
     </span>
   </a>
@@ -6150,10 +5418,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#recommended-implementation-posture" class="md-nav__link">
+  <a href="#current-implementation-direction-instead" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recommended implementation posture
+        Current implementation direction instead
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-current-truth-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related current-truth docs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historical-retention-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Historical retention note
       
     </span>
   </a>
@@ -6181,311 +5471,62 @@
 
 
 <h1 id="workout-creation-tools-architecture">Workout Creation Tools Architecture<a class="headerlink" href="#workout-creation-tools-architecture" title="Permanent link">&para;</a></h1>
-<p>This document defines the current canonical architecture for AeroBeat <strong>manual-authored workout-package</strong> creation tooling.</p>
-<blockquote>
-<p><strong>Scope note:</strong> this tool family describes the richer authored-package lane. It should not be read as the default contract for the BeatSaver-powered imported-player path, which is being simplified away from package-required coaching and package-owned environment choice.</p>
-</blockquote>
-<p>It builds on the already-locked package/content/tool lane decisions:</p>
+<h2 id="status-historical-de-scoped">Status: historical / de-scoped<a class="headerlink" href="#status-historical-de-scoped" title="Permanent link">&para;</a></h2>
+<p>This page is preserved only as a record of an <strong>earlier manual-authored workout-package tool concept</strong>.</p>
+<p>It is <strong>not</strong> the current default AeroBeat content-authoring contract.</p>
+<h2 id="current-truth">Current truth<a class="headerlink" href="#current-truth" title="Permanent link">&para;</a></h2>
+<p>The current contract after the content rewrite is:</p>
 <ul>
-<li>authored workout truth lives in package YAML</li>
-<li><code>aerobeat-content-core</code> owns durable content contracts</li>
-<li><code>aerobeat-tool-core</code> plus concrete <code>aerobeat-tool-*</code> repos own authoring, validation, migration, packaging, and import workflows</li>
-<li>the first workout-creation product should cover the full package, while staying far away from becoming a general-purpose audio/video editor</li>
+<li>the canonical imported package root is <strong><code>song-package.yaml</code></strong></li>
+<li>imported content defaults to <strong>song packages</strong>, not workout packages</li>
+<li>one song package may contain multiple chart/set difficulty slices under a single song root</li>
+<li>future multi-song grouping should use <strong>playlist</strong> language rather than workout-package grouping</li>
+<li>coaching is outside the default imported song-package contract</li>
+<li>environments are outside the default imported song-package contract</li>
+<li>BeatSaver-style difficulty labels are canonical:</li>
+<li><code>Easy</code></li>
+<li><code>Normal</code></li>
+<li><code>Hard</code></li>
+<li><code>Expert</code></li>
+<li><code>ExpertPlus</code></li>
 </ul>
-<h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
-<p>The workout creation tools product exists to let creators author, inspect, validate, repair, migrate, import, and package a complete AeroBeat workout package.</p>
-<p>That product includes both:</p>
+<h2 id="why-this-page-was-de-scoped">Why this page was de-scoped<a class="headerlink" href="#why-this-page-was-de-scoped" title="Permanent link">&para;</a></h2>
+<p>Earlier drafts here described a product whose package-home truth centered on:</p>
 <ul>
-<li><strong>headless CLI workflows</strong> for validation, migration, packaging, CI, and automation</li>
-<li><strong>interactive GUI workflows</strong> for package editing, chart authoring, and guided media import</li>
+<li><code>workout.yaml</code></li>
+<li>workout-level orchestration</li>
+<li>package-default coaching flows</li>
+<li>package-owned environment linkage</li>
+<li>domain seams named around <code>workout</code></li>
 </ul>
-<p>The product goal is <strong>full package coverage</strong>, not full media-production tooling.</p>
-<h2 id="locked-architectural-position">Locked architectural position<a class="headerlink" href="#locked-architectural-position" title="Permanent link">&para;</a></h2>
-<h3 id="productrepo-boundary">Product/repo boundary<a class="headerlink" href="#productrepo-boundary" title="Permanent link">&para;</a></h3>
-<p>The workout creation tools live in their own concrete tool repo.</p>
+<p>That no longer matches the landed contract. Leaving those assumptions described as canonical architecture was teaching the wrong repo truth.</p>
+<h2 id="how-to-read-older-tool-references">How to read older tool references<a class="headerlink" href="#how-to-read-older-tool-references" title="Permanent link">&para;</a></h2>
+<p>If an older tool doc or sketch still talks about:</p>
 <ul>
-<li>canonical repo family: <code>aerobeat-tool-*</code></li>
-<li>this workout-creation product is separate from <code>aerobeat-assembly-community</code></li>
-<li><code>aerobeat-assembly-community</code> may embed the tool as a user-facing mode through <strong>GodotEnv</strong></li>
-<li>embedded mode is a desired UX/distribution path, but ownership remains with the separate tool repo</li>
+<li>opening on the <code>workout.yaml</code> scene</li>
+<li><code>aerobeat-workout</code> as the default canonical package-root CLI</li>
+<li>package-required coaching or environments</li>
+<li>one-difficulty workout packages as the main content shape</li>
 </ul>
-<p>This preserves tool release cadence, testing boundaries, and ownership clarity.</p>
-<h3 id="tool-lane-dependency-boundary">Tool-lane dependency boundary<a class="headerlink" href="#tool-lane-dependency-boundary" title="Permanent link">&para;</a></h3>
-<p>The workout creation tools should:</p>
+<p>read that material as <strong>historical planning residue</strong>, not as implementation guidance for the current contract.</p>
+<h2 id="current-implementation-direction-instead">Current implementation direction instead<a class="headerlink" href="#current-implementation-direction-instead" title="Permanent link">&para;</a></h2>
+<p>For current work, prefer tool flows that align with the landed repos:</p>
 <ul>
-<li>consume durable package/content contracts from <code>aerobeat-content-core</code></li>
-<li>consume tool-common workflow/result contracts from <code>aerobeat-tool-core</code></li>
-<li>expose creator-facing CLI and GUI entrypoints on top of shared workflow services</li>
+<li>author and validate <strong><code>song-package.yaml</code></strong></li>
+<li>use song-package terminology in public/runtime/tool surfaces</li>
+<li>keep imported-package validation centered on songs, charts, and sets</li>
+<li>treat coaching and environments as separate or future extension lanes rather than default imported-package structure</li>
+<li>keep playlist terminology for future multi-song grouping</li>
 </ul>
-<p>They should <strong>not</strong> redefine package schema locally, and they should <strong>not</strong> move package ownership into an assembly repo.</p>
-<h2 id="cli-architecture">CLI architecture<a class="headerlink" href="#cli-architecture" title="Permanent link">&para;</a></h2>
-<h3 id="separate-cli-tools-early">Separate CLI tools early<a class="headerlink" href="#separate-cli-tools-early" title="Permanent link">&para;</a></h3>
-<p>The current locked direction is to use <strong>separate CLI tools early</strong>, one per YAML domain or workflow unit, rather than one large shared binary with deep subcommand trees.</p>
-<p>Reasons:</p>
+<h2 id="related-current-truth-docs">Related current-truth docs<a class="headerlink" href="#related-current-truth-docs" title="Permanent link">&para;</a></h2>
 <ul>
-<li>cleaner separation of concerns while the product is still evolving quickly</li>
-<li>easier targeted testing and debugging</li>
-<li>fewer hidden couplings between unrelated workflow surfaces</li>
-<li>a simpler path to domain-specific <code>validate</code>, <code>inspect</code>, and <code>fix</code> behavior</li>
+<li><a href="../overview/">Overview</a></li>
+<li><a href="../content-model/">Content Model</a></li>
+<li><a href="../ugc_modding/">UGC Modding</a></li>
+<li><a href="../content-repo-shapes/">Content Repo Shapes</a></li>
 </ul>
-<p>The package domains/workflow units currently in scope are:</p>
-<ul>
-<li><code>workout</code></li>
-<li><code>song</code></li>
-<li><code>chart</code></li>
-<li><code>set</code></li>
-<li><code>coach-config</code></li>
-<li><code>environment</code></li>
-</ul>
-<p>The exact executable names can evolve, but the <strong>domain split</strong> should remain explicit.</p>
-<h3 id="validation-boundary">Validation boundary<a class="headerlink" href="#validation-boundary" title="Permanent link">&para;</a></h3>
-<p>Validation of one YAML file must <strong>not</strong> imply full-package validation.</p>
-<p>The locked rule is:</p>
-<ul>
-<li>each domain tool validates its own authored record shape, local field rules, and directly referenced file existence as appropriate</li>
-<li><strong>package-wide workout validation</strong> is orchestrated from the <code>workout</code> validation flow</li>
-<li>full workout validation is responsible for walking the package graph and invoking the relevant lower-level validators for referenced songs, charts, sets, coach config, environments, and package media/layout rules</li>
-</ul>
-<p>That means <code>chart validate</code> is not secretly equivalent to <code>workout validate</code>, and <code>song validate</code> does not imply package integrity.</p>
-<h3 id="required-cli-workflow-categories">Required CLI workflow categories<a class="headerlink" href="#required-cli-workflow-categories" title="Permanent link">&para;</a></h3>
-<p>The minimum durable workflow categories remain:</p>
-<ul>
-<li><code>validate</code></li>
-<li><code>inspect</code></li>
-<li><code>migrate</code></li>
-<li><code>package</code></li>
-<li><code>import</code></li>
-<li><code>fix</code></li>
-</ul>
-<p>Some of those may be domain-specific and some may be package-level orchestration surfaces, but the product should preserve headless capability for all of them.</p>
-<h3 id="cli-repair-policy">CLI repair policy<a class="headerlink" href="#cli-repair-policy" title="Permanent link">&para;</a></h3>
-<p>CLI validation should <strong>hard-error</strong> when the package or record is invalid, including when the issue is potentially fixable.</p>
-<p>The CLI should then direct the user toward:</p>
-<ul>
-<li>a broad <code>--fix</code> path for safe structural/content repair</li>
-<li>more targeted <code>--fix-*</code> commands where useful for specific repair classes</li>
-</ul>
-<p>Examples of issues that should fail validation and recommend repair instead of silently mutating during read/validate:</p>
-<ul>
-<li>invalid enums</li>
-<li>malformed beat payloads</li>
-<li>duplicate ids</li>
-<li>illegal package layout</li>
-<li>fixable out-of-date schema/content structure</li>
-</ul>
-<p>The important boundary is that validation reports problems; repair is an explicit follow-up action.</p>
-<h2 id="gui-architecture">GUI architecture<a class="headerlink" href="#gui-architecture" title="Permanent link">&para;</a></h2>
-<h3 id="one-scene-per-yaml-file">One scene per YAML file<a class="headerlink" href="#one-scene-per-yaml-file" title="Permanent link">&para;</a></h3>
-<p>The canonical first-pass GUI structure is <strong>one Godot scene per YAML file/domain</strong>:</p>
-<ul>
-<li><code>workout</code></li>
-<li><code>song</code></li>
-<li><code>chart</code></li>
-<li><code>set</code></li>
-<li><code>coach-config</code></li>
-<li><code>environment</code></li>
-</ul>
-<p>This is a workflow-ownership decision, not a promise that every scene has equal complexity.</p>
-<h3 id="package-home-ux">Package-home UX<a class="headerlink" href="#package-home-ux" title="Permanent link">&para;</a></h3>
-<p>Opening a package should land on the <strong><code>workout.yaml</code> scene</strong>.</p>
-<p>That scene is the package-home / overview surface. It should:</p>
-<ul>
-<li>present package-level metadata and health</li>
-<li>surface package-wide validation/repair/import/package actions</li>
-<li>show navigation outward to the other package editors</li>
-<li>act as the main entrypoint for full-package operations</li>
-</ul>
-<p>This matches the package contract where <code>workout.yaml</code> is the package root and orders the authored sets.</p>
-<h3 id="chart-editor-as-the-heavyweight-specialized-scene">Chart editor as the heavyweight specialized scene<a class="headerlink" href="#chart-editor-as-the-heavyweight-specialized-scene" title="Permanent link">&para;</a></h3>
-<p>The <code>chart</code> scene is the specialized high-complexity editor in the product.</p>
-<p>It owns:</p>
-<ul>
-<li>audio-backed timeline/waveform scrubbing</li>
-<li>visual beat placement</li>
-<li>preview/playback</li>
-<li>chart creation against a chosen audio source</li>
-<li>future quick test entry from a selected timeline point after the normal set-start calibration path</li>
-</ul>
-<p>By contrast, the other YAML scenes should mostly be <strong>simpler form editors</strong> with validation, media slotting, preview where useful, and links into related records.</p>
-<h3 id="bounded-gui-scope">Bounded GUI scope<a class="headerlink" href="#bounded-gui-scope" title="Permanent link">&para;</a></h3>
-<p>The GUI should support package creation and editing without turning into a full DAW, NLE, or 3D DCC.</p>
-<p>Explicitly in scope:</p>
-<ul>
-<li>forms for package metadata and referenced records</li>
-<li>drag-and-drop / file-selection import flows</li>
-<li>validation errors with non-technical user-facing messaging</li>
-<li>chart editing with timeline/beat tooling</li>
-<li>image preview/cropping for environment/editor media flows</li>
-<li>desirable media preview for video where practical</li>
-<li>future GLB preview plus scale/rotation/orientation controls in the environment editor</li>
-</ul>
-<p>Explicitly not in scope for this product slice:</p>
-<ul>
-<li>full audio editing/mixing</li>
-<li>full video editing</li>
-<li>broad media-production pipelines unrelated to package authoring</li>
-<li>runtime-asset optimization missions such as KTX2/Draco conversion as baseline authoring requirements</li>
-</ul>
-<h2 id="shared-service-rule">Shared service rule<a class="headerlink" href="#shared-service-rule" title="Permanent link">&para;</a></h2>
-<p>CLI and GUI surfaces should call the same underlying workflow services where possible.</p>
-<p>That includes services for:</p>
-<ul>
-<li>validation</li>
-<li>repair/fix</li>
-<li>migration</li>
-<li>package assembly</li>
-<li>media import/normalization</li>
-<li>file replacement</li>
-<li>relationship/index refresh where needed</li>
-</ul>
-<p>The GUI should not grow a second repair engine, and the CLI should not own private validation logic that the GUI cannot reuse.</p>
-<h2 id="media-import-and-normalization-architecture">Media import and normalization architecture<a class="headerlink" href="#media-import-and-normalization-architecture" title="Permanent link">&para;</a></h2>
-<h3 id="ffmpeg-is-a-dependency">FFmpeg is a dependency<a class="headerlink" href="#ffmpeg-is-a-dependency" title="Permanent link">&para;</a></h3>
-<p><code>ffmpeg</code> is a required dependency of the workout creation tools for media import/normalization workflows.</p>
-<p>This is the canonical current direction for converting accepted source media into the stored canonical package formats.</p>
-<h3 id="import-flow">Import flow<a class="headerlink" href="#import-flow" title="Permanent link">&para;</a></h3>
-<p>When a user imports or replaces package media, the workflow should be:</p>
-<ol>
-<li>validate the selected asset for the intended slot/purpose</li>
-<li>convert to canonical stored format when needed</li>
-<li>copy the resulting asset into the canonical package location</li>
-<li>rename it to the normalized schema for that slot/domain, including a uid-suffixed filename</li>
-<li>update the YAML reference(s) to the new canonical stored file</li>
-<li>remove the superseded package asset when the user replaced an existing slotted file</li>
-</ol>
-<p>Example naming direction:</p>
-<ul>
-<li><code>coaching-warm-up-video-49189afea.ogv</code></li>
-<li><code>song-audio-49189afea.ogg</code></li>
-<li><code>environment-background-49189afea.png</code></li>
-</ul>
-<p>The exact naming schema can be refined later, but <strong>normalized uid-suffixed canonical filenames</strong> are locked.</p>
-<h3 id="accepted-formats-vs-stored-canonical-formats">Accepted formats vs stored canonical formats<a class="headerlink" href="#accepted-formats-vs-stored-canonical-formats" title="Permanent link">&para;</a></h3>
-<p>The docs must treat these as <strong>separate concepts</strong>:</p>
-<ul>
-<li><strong>accepted import formats</strong>: the broader set of source file types the tools may ingest</li>
-<li><strong>stored canonical formats</strong>: the narrower set of formats that workout packages actually keep on disk</li>
-</ul>
-<p>Those accepted import formats should be documented separately from this architecture decision doc so the system can evolve import compatibility without muddying package-storage truth.</p>
-<h3 id="currently-locked-stored-canonical-formats">Currently locked stored canonical formats<a class="headerlink" href="#currently-locked-stored-canonical-formats" title="Permanent link">&para;</a></h3>
-<p>The currently locked package-storage formats are:</p>
-<ul>
-<li><strong>song audio:</strong> <code>.ogg</code></li>
-<li><strong>coaching audio:</strong> <code>.ogg</code></li>
-<li><strong>coaching video:</strong> <code>.ogv</code></li>
-<li><strong>environment video:</strong> <code>.ogv</code></li>
-<li><strong>images:</strong> <code>.png</code></li>
-<li><strong>3D environments:</strong> vanilla <code>.glb</code></li>
-</ul>
-<p>These are storage decisions for the current package-authoring slice.</p>
-<h3 id="explicit-optimization-deferrals">Explicit optimization deferrals<a class="headerlink" href="#explicit-optimization-deferrals" title="Permanent link">&para;</a></h3>
-<p>The following are explicitly deferred side-missions, not baseline workout-creation-tool scope:</p>
-<ul>
-<li>KTX2 texture optimization</li>
-<li>Draco-compressed GLB</li>
-<li>broader runtime-asset optimization work beyond the current package canonical-format decisions</li>
-</ul>
-<p>That work may matter later, but it should not be smuggled into the first workout-creation-tool scope.</p>
-<h3 id="image-import-nuance">Image import nuance<a class="headerlink" href="#image-import-nuance" title="Permanent link">&para;</a></h3>
-<p>For near-valid images that need packaging-friendly sizing/cropping, the preferred UX is a simple aspect-ratio marquee/crop flow before canonical conversion/storage, not immediate hard failure for every size mismatch.</p>
-<h3 id="environment-media-note">Environment media note<a class="headerlink" href="#environment-media-note" title="Permanent link">&para;</a></h3>
-<p>Environment videos may be shorter than the set audio and loop during playback. Longer videos are acceptable because playback ends when the set transitions.</p>
-<h2 id="repair-upgrade-flows">Repair / upgrade flows<a class="headerlink" href="#repair-upgrade-flows" title="Permanent link">&para;</a></h2>
-<h3 id="gui-repair-policy">GUI repair policy<a class="headerlink" href="#gui-repair-policy" title="Permanent link">&para;</a></h3>
-<p>When the GUI opens an invalid or out-of-date package, it should:</p>
-<ol>
-<li>clearly warn that repair may materially change the package</li>
-<li>recommend retesting afterward</li>
-<li>require explicit user confirmation before running repair</li>
-<li>delegate to the full package <code>--fix</code> flow rather than performing silent ad hoc edits</li>
-</ol>
-<p>This keeps the repair boundary honest and avoids accidental destructive mutation.</p>
-<h3 id="cli-repair-policy_1">CLI repair policy<a class="headerlink" href="#cli-repair-policy_1" title="Permanent link">&para;</a></h3>
-<p>The CLI should not auto-repair on plain validation.</p>
-<p>Instead:</p>
-<ul>
-<li><code>validate</code> should hard-error on fixable problems</li>
-<li>the error should recommend <code>--fix</code></li>
-<li>targeted <code>--fix-*</code> flows may exist where useful</li>
-<li>package-wide repair orchestration belongs to the package/workout-level repair entrypoint</li>
-</ul>
-<h2 id="editor-ownership-boundaries-by-domain">Editor ownership boundaries by domain<a class="headerlink" href="#editor-ownership-boundaries-by-domain" title="Permanent link">&para;</a></h2>
-<h3 id="workout-scene">Workout scene<a class="headerlink" href="#workout-scene" title="Permanent link">&para;</a></h3>
-<p>Owns:</p>
-<ul>
-<li>package metadata</li>
-<li>ordered set list</li>
-<li>package-wide validation, repair, migration, and packaging entrypoints</li>
-<li>top-level navigation to the package's other domains</li>
-</ul>
-<h3 id="song-scene">Song scene<a class="headerlink" href="#song-scene" title="Permanent link">&para;</a></h3>
-<p>Owns:</p>
-<ul>
-<li>song metadata fields</li>
-<li>canonical song audio slot/import</li>
-<li>validation of song-local record fields and referenced media</li>
-</ul>
-<h3 id="chart-scene">Chart scene<a class="headerlink" href="#chart-scene" title="Permanent link">&para;</a></h3>
-<p>Owns:</p>
-<ul>
-<li>chart timeline editing and beat placement</li>
-<li>playback preview and scrubbing</li>
-<li>future quick-test launch from selected timeline points</li>
-<li>chart-local validation and repair handoff</li>
-</ul>
-<h3 id="set-scene">Set scene<a class="headerlink" href="#set-scene" title="Permanent link">&para;</a></h3>
-<p>Owns:</p>
-<ul>
-<li>exact package-local composition wiring</li>
-<li>linking <code>songId</code>, <code>chartId</code>, <code>environmentId</code>, and optional <code>coachingOverlayId</code></li>
-<li>form-based editing of composition references</li>
-</ul>
-<h3 id="coach-config-scene">Coach-config scene<a class="headerlink" href="#coach-config-scene" title="Permanent link">&para;</a></h3>
-<p>Owns:</p>
-<ul>
-<li>workout-level coaching enable/disable state</li>
-<li>roster, warm-up, cooldown, and overlay registry editing</li>
-<li>form-based media import/selection only</li>
-</ul>
-<h3 id="environment-scene">Environment scene<a class="headerlink" href="#environment-scene" title="Permanent link">&para;</a></h3>
-<p>Owns:</p>
-<ul>
-<li>environment record editing</li>
-<li>image/video/GLB import and preview helpers appropriate to the current scope</li>
-</ul>
-<h2 id="embedded-assembly-mode">Embedded assembly mode<a class="headerlink" href="#embedded-assembly-mode" title="Permanent link">&para;</a></h2>
-<p>The desired user-facing product experience includes an <strong>embedded mode inside the main build</strong>.</p>
-<p>That means:</p>
-<ul>
-<li>the assembly can transition into the workout creation tools scenes</li>
-<li>the creator can navigate back out to the main game/application shell</li>
-<li>the tool still remains owned, versioned, and tested as a separate concrete tool repo imported via GodotEnv</li>
-</ul>
-<p>Embedded availability is a UX/distribution decision, not an ownership merge.</p>
-<h2 id="non-goals">Non-goals<a class="headerlink" href="#non-goals" title="Permanent link">&para;</a></h2>
-<p>The current workout creation tools architecture does <strong>not</strong> promise:</p>
-<ul>
-<li>one universal binary that hides all workflow boundaries</li>
-<li>package-wide validation from every domain validator implicitly</li>
-<li>silent auto-repair on open or on validate</li>
-<li>an integrated full audio editor</li>
-<li>an integrated full video editor</li>
-<li>an integrated full 3D content creation suite</li>
-<li>current-scope KTX2/Draco optimization pipelines</li>
-<li>assembly ownership of the tool product</li>
-</ul>
-<h2 id="recommended-implementation-posture">Recommended implementation posture<a class="headerlink" href="#recommended-implementation-posture" title="Permanent link">&para;</a></h2>
-<p>Implementation should proceed in this order:</p>
-<ol>
-<li>stand up the separate tool repo with shared workflow services plus separate CLI surfaces per domain</li>
-<li>land package-home (<code>workout.yaml</code>) orchestration flows first so package validation/repair/import boundaries stay clean</li>
-<li>ship the lower-risk headless workflow foundations across validation, inspect, fix, migrate, import, and packaging before scene work tries to own that logic</li>
-<li>use Penpot to finalize the first-pass package-home and simpler form scene designs before polished GUI implementation begins</li>
-<li>stand up the simpler form scenes (<code>song</code>, <code>set</code>, <code>coach-config</code>, <code>environment</code>) against the already-shipped shared services</li>
-<li>build the heavyweight chart editor scene with waveform/timeline/preview/test-entry support</li>
-<li>integrate the repo into <code>aerobeat-assembly-community</code> via GodotEnv for embedded access</li>
-</ol>
-<p>That order preserves the full-package product goal while keeping repo/shared-service/headless foundations ahead of GUI work, while still treating Penpot as an important dependency for polished scene implementation.</p>
+<h2 id="historical-retention-note">Historical retention note<a class="headerlink" href="#historical-retention-note" title="Permanent link">&para;</a></h2>
+<p>This page remains in the repo only so old links do not break immediately. It should not be used as a canonical source for new implementation work.</p>
 
 
 
@@ -6506,7 +5547,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 19, 2026 03:29:33 UTC">July 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 20, 2026 04:49:22 UTC">July 20, 2026</span>
   </span>
 
     

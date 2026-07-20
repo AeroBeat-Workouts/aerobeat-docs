@@ -2751,7 +2751,7 @@
   <span class="md-ellipsis">
     
   
-    Content Repo Shapes
+    Content Repo Shapes (Current Contract Notes)
   
 
     
@@ -2830,6 +2830,17 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#current-contract-reminder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current contract reminder
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#launch-tag-categories" class="md-nav__link">
@@ -3317,7 +3328,7 @@
   <span class="md-ellipsis">
     
   
-    Workout Creation Tools Architecture
+    Workout Creation Tools Architecture (Historical)
   
 
     
@@ -3345,7 +3356,7 @@
   <span class="md-ellipsis">
     
   
-    Workout Creation Tools CLI Surface
+    Workout Creation Tools CLI Surface (Historical)
   
 
     
@@ -3373,7 +3384,7 @@
   <span class="md-ellipsis">
     
   
-    Workout Creation Tools Import Format Matrix
+    Workout Creation Tools Import Format Matrix (Historical)
   
 
     
@@ -3401,7 +3412,7 @@
   <span class="md-ellipsis">
     
   
-    Workout Creation Tools Implementation Order
+    Workout Creation Tools Implementation Order (Historical)
   
 
     
@@ -5480,6 +5491,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#current-contract-reminder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current contract reminder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#launch-tag-categories" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5683,8 +5705,23 @@
 
 
 <h1 id="aerobeat-modio-tag-mapping">AeroBeat mod.io Tag Mapping<a class="headerlink" href="#aerobeat-modio-tag-mapping" title="Permanent link">&para;</a></h1>
-<p>This document defines how AeroBeat package and discovery metadata should map into the proposed <strong>launch-time mod.io tag categories</strong>.</p>
-<p>The goal is to keep mod.io tags useful for athlete-facing discovery without turning them into a duplicate of every authored YAML field or every local discovery column. AeroBeat keeps the richer package contract, validation pipeline, and trust boundary first-party; mod.io only gets the lean public taxonomy plus one hidden operational control bucket.</p>
+<p>This document defines how AeroBeat discovery metadata should map into the proposed <strong>launch-time mod.io tag categories</strong> for the current <strong>song-package</strong> direction.</p>
+<p>The goal is to keep mod.io tags useful for athlete-facing discovery without turning them into a duplicate of every authored field or every local index column. AeroBeat keeps the richer package contract, validation pipeline, and trust boundary first-party; mod.io only gets a lean public taxonomy plus one hidden operational control bucket.</p>
+<h2 id="current-contract-reminder">Current contract reminder<a class="headerlink" href="#current-contract-reminder" title="Permanent link">&para;</a></h2>
+<p>Before applying any tag mapping, keep the current content contract straight:</p>
+<ul>
+<li>the canonical imported package root is <strong><code>song-package.yaml</code></strong>, not <code>workout.yaml</code></li>
+<li>one song package may contain <strong>multiple chart/set difficulty slices</strong> under one song root</li>
+<li>future multi-song grouping should use <strong>playlist</strong> language, not workout-package language</li>
+<li>coaching and environments are <strong>outside the default imported song-package contract</strong></li>
+<li>authored chart difficulty labels now use BeatSaver-style vocabulary:</li>
+<li><code>Easy</code></li>
+<li><code>Normal</code></li>
+<li><code>Hard</code></li>
+<li><code>Expert</code></li>
+<li><code>ExpertPlus</code></li>
+</ul>
+<p>If another doc or older tool draft still says <code>easy|medium|hard|pro</code> or treats <code>workout.yaml</code> as the package root, that older wording is historical and not current truth.</p>
 <h2 id="launch-tag-categories">Launch tag categories<a class="headerlink" href="#launch-tag-categories" title="Permanent link">&para;</a></h2>
 <p>AeroBeat should launch with <strong>four</strong> mod.io tag categories:</p>
 <ol>
@@ -5710,21 +5747,21 @@
 <td><code>feature</code></td>
 <td>single-select</td>
 <td>public / normal editable and usable</td>
-<td>Authored chart <code>feature</code>; derived discovery rows in <code>workout_features</code></td>
+<td>Authored chart <code>feature</code>; derived discovery summary</td>
 <td>Assign the package's primary advertised gameplay feature.</td>
 </tr>
 <tr>
 <td><code>difficulty</code></td>
 <td>single-select</td>
 <td>public / normal editable and usable</td>
-<td>Authored chart <code>difficulty</code>; derived discovery rows in <code>workout_difficulties</code></td>
+<td>Authored chart <code>difficulty</code>; derived discovery summary</td>
 <td>Assign one package-level difficulty tag representing the intended overall challenge.</td>
 </tr>
 <tr>
 <td><code>genre</code></td>
 <td>multi-select</td>
 <td>public / normal editable and usable</td>
-<td>Authored song <code>metadata.genres</code>; derived discovery rows in <code>workout_genres</code></td>
+<td>Authored song <code>metadata.genres</code>; derived discovery summary</td>
 <td>Copy the controlled genre union for songs referenced by the package.</td>
 </tr>
 <tr>
@@ -5740,26 +5777,24 @@
 <h3 id="feature"><code>feature</code><a class="headerlink" href="#feature" title="Permanent link">&para;</a></h3>
 <p><strong>Source metadata</strong>
 - Authored <code>feature</code> on referenced chart records.
-- Derived discovery summary in <code>workout_features(feature)</code>.</p>
+- Derived discovery summary for the package catalog row.</p>
 <p><strong>Launch values</strong>
 - <code>boxing</code>
 - <code>flow</code></p>
 <p><strong>Mapping rule</strong>
 - A package gets <strong>one</strong> public feature tag.
-- If all sets/charts point at the same feature, copy that feature.
+- If all referenced charts point at the same feature, copy that feature.
 - If the package mixes features, assign the package's <strong>primary advertised feature</strong> instead of spraying multiple public feature tags.</p>
-<p><strong>Why this belongs in mod.io</strong>
-- It is the clearest top-level discovery filter.
-- It already exists as a normalized browse dimension in AeroBeat's local discovery schema.</p>
 <h3 id="difficulty"><code>difficulty</code><a class="headerlink" href="#difficulty" title="Permanent link">&para;</a></h3>
 <p><strong>Source metadata</strong>
 - Authored <code>difficulty</code> on referenced chart records.
-- Derived discovery summary in <code>workout_difficulties(difficulty)</code>.</p>
+- Derived discovery summary for the package catalog row.</p>
 <p><strong>Current authored/discovery vocabulary</strong>
-- <code>easy</code>
-- <code>medium</code>
-- <code>hard</code>
-- <code>pro</code></p>
+- <code>Easy</code>
+- <code>Normal</code>
+- <code>Hard</code>
+- <code>Expert</code>
+- <code>ExpertPlus</code></p>
 <p><strong>Mapping rule</strong>
 - A package gets <strong>one</strong> public difficulty tag.
 - If all referenced charts share the same difficulty, copy that difficulty.
@@ -5767,13 +5802,14 @@
 <p><strong>Why this belongs in mod.io</strong>
 - Difficulty is one of the most practical athlete-facing browse filters.
 - It is already modeled as a discovery-layer summary field, not just buried in authored YAML.</p>
-<p><strong>Current open normalization note</strong>
-- Other planning language has occasionally used <code>normal</code> where the current docs/schema/examples use <code>medium</code>.
-- Until that is deliberately changed, uploader/tagging work should treat <strong><code>easy|medium|hard|pro</code></strong> as the current contract-aligned source vocabulary.</p>
+<p><strong>Normalization note</strong>
+- Older docs and fixtures used the superseded vocabulary <code>easy|medium|hard|pro</code>.
+- That is no longer the contract-aligned source vocabulary.
+- New uploader/tagging work should treat <strong><code>Easy|Normal|Hard|Expert|ExpertPlus</code></strong> as the authoritative authored source vocabulary.</p>
 <h3 id="genre"><code>genre</code><a class="headerlink" href="#genre" title="Permanent link">&para;</a></h3>
 <p><strong>Source metadata</strong>
 - Authored song <code>metadata.genres</code> on referenced song records.
-- Derived discovery summary in <code>workout_genres(genre)</code>.</p>
+- Derived discovery summary for the package catalog row.</p>
 <p><strong>Current controlled vocabulary</strong>
 - <code>pop</code>
 - <code>rock</code>
@@ -5802,9 +5838,6 @@
 - Copy the union of approved authored song genres for all songs referenced by the package.
 - Do <strong>not</strong> invent storefront-only genre names.
 - Do <strong>not</strong> promote freeform descriptive mood words into this category.</p>
-<p><strong>Why this belongs in mod.io</strong>
-- Music style is a strong discovery vector for a rhythm workout product.
-- The docs already define a controlled genre enum, which keeps the public vocabulary stable.</p>
 <h2 id="admin-hidden-operational-category">Admin-hidden operational category<a class="headerlink" href="#admin-hidden-operational-category" title="Permanent link">&para;</a></h2>
 <h3 id="trust_state"><code>trust_state</code><a class="headerlink" href="#trust_state" title="Permanent link">&para;</a></h3>
 <p><strong>Source metadata</strong>
@@ -5821,33 +5854,30 @@
 - It should be configured as <strong>admin-hidden</strong> and <strong>admin-only editable/usable</strong>.
 - Creators should not set it in package metadata.
 - Provider-side tooling may mirror AeroBeat's internal state here to support moderation dashboards, review queues, or catalog sync workflows.</p>
-<p><strong>Why it exists</strong>
-- AeroBeat keeps runtime trust and approval authority first-party even when mod.io is the outer distribution shell.
-- A hidden/admin-only bucket is useful for operational mirroring without turning trust/moderation state into public taxonomy.</p>
 <h2 id="metadata-that-should-stay-out-of-modio-tags">Metadata that should stay out of mod.io tags<a class="headerlink" href="#metadata-that-should-stay-out-of-modio-tags" title="Permanent link">&para;</a></h2>
 <p>These fields can still matter to AeroBeat, but they should remain in authored YAML, local discovery indexes, or first-party backend metadata instead of becoming launch-time mod.io tags.</p>
 <h3 id="keep-as-structured-internal-or-local-discovery-metadata">Keep as structured internal or local discovery metadata<a class="headerlink" href="#keep-as-structured-internal-or-local-discovery-metadata" title="Permanent link">&para;</a></h3>
 <ul>
-<li><code>duration_ms</code> on workouts and songs</li>
+<li><code>duration_ms</code> on packages and songs</li>
 <li>Important for browsing, but better handled as numeric sort/range/filter data than storefront tags like <code>10-min</code> or <code>45-min</code>.</li>
-<li>coaching metadata from <code>coaches/coach-config.yaml</code> and <code>workout_coaches</code></li>
-<li>Coaching presence matters, but named-coach browse taxonomy is premature for launch.</li>
-<li>environment ids/themes from <code>environments/*.yaml</code> and <code>set.environmentId</code></li>
-<li>Environment identity is currently implementation-shaped package metadata, not yet a locked public storefront taxonomy.</li>
-<li>local freeform/index helper fields such as <code>workout_tags</code></li>
+<li>coaching metadata</li>
+<li>Coaching is not part of the default imported song-package contract.</li>
+<li>environment ids/themes</li>
+<li>Environment choice is outside the default imported song-package contract.</li>
+<li>local freeform/index helper fields such as temporary browse notes</li>
 <li>These can support local discovery experiments without automatically becoming mod.io-visible categories.</li>
 </ul>
 <h3 id="keep-as-authoredpackage-truth-only">Keep as authored/package truth only<a class="headerlink" href="#keep-as-authoredpackage-truth-only" title="Permanent link">&para;</a></h3>
 <ul>
-<li>ids and wiring fields: <code>workoutId</code>, <code>songId</code>, <code>chartId</code>, <code>setId</code>, <code>environmentId</code>, <code>coachConfigId</code>, <code>coachingOverlayId</code></li>
-<li>schema/provenance/versioning fields: <code>schemaId</code>, <code>schemaVersion</code>, <code>recordVersion</code>, <code>packageVersion</code>, <code>createdByTool</code>, <code>createdByToolVersion</code>, timestamps</li>
+<li>ids and wiring fields such as <code>songPackageId</code>, <code>songId</code>, <code>chartId</code>, <code>setId</code></li>
+<li>schema/provenance/versioning fields such as <code>schemaId</code>, <code>schemaVersion</code>, <code>recordVersion</code>, <code>packageVersion</code>, <code>createdByTool</code>, <code>createdByToolVersion</code>, and timestamps</li>
 <li>media paths and package layout details</li>
 <li>exact credits and publisher fields unless AeroBeat later adds first-class creator/artist browse surfaces</li>
-<li>low-level chart move taxonomy such as <code>jab</code>, <code>cross</code>, <code>portal</code>, <code>placement</code>, and <code>direction</code></li>
+<li>low-level chart move taxonomy such as <code>placement</code>, <code>direction</code>, or BeatSaver-derived conversion details</li>
 </ul>
 <h3 id="keep-as-first-party-operational-metadata">Keep as first-party operational metadata<a class="headerlink" href="#keep-as-first-party-operational-metadata" title="Permanent link">&para;</a></h3>
 <ul>
-<li>local install/index/cache state: <code>workout_yaml_path</code>, <code>package_root_path</code>, <code>installed_at</code>, <code>indexed_at</code>, <code>updated_at</code>, <code>is_installed</code>, <code>is_valid</code>, <code>validation_error</code></li>
+<li>local install/index/cache state such as package-root paths, install timestamps, index timestamps, validity, or validation errors</li>
 <li>remote catalog presentation helpers such as <code>preview_image_strategy</code> and <code>preview_image_url</code></li>
 <li>licensing/compliance flags such as <code>explicit</code>, <code>streamingSafe</code>, <code>aiAssisted</code>, or copyright-risk workflow labels</li>
 <li>editorial or moderation workflow labels beyond the one mirrored <code>trust_state</code> bucket</li>
@@ -5864,14 +5894,14 @@
 <h2 id="open-questions-that-still-need-human-lock-in">Open questions that still need human lock-in<a class="headerlink" href="#open-questions-that-still-need-human-lock-in" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Mixed-feature packages:</strong> should launch tooling always force one primary <code>feature</code> tag, or should mixed-feature packages eventually get a dedicated representation?</li>
-<li><strong>Difficulty wording:</strong> should the public difficulty copy stay <code>easy|medium|hard|pro</code>, or should AeroBeat intentionally rename <code>medium</code> to <code>normal</code> later and migrate the mapping?</li>
+<li><strong>Difficulty storefront wording:</strong> should public mod.io copy mirror the authored vocabulary exactly, or should AeroBeat present alternate athlete-facing copy while keeping authored/internal vocabulary stable?</li>
 <li><strong>Coaching promotion threshold:</strong> should a future release add a public <code>coaching</code> category such as <code>coached</code> / <code>uncoached</code>, or should coaching remain first-party metadata only?</li>
-<li><strong>Environment discoverability:</strong> does AeroBeat eventually want a stable athlete-facing atmosphere taxonomy, or should environment data remain internal/package-local?</li>
+<li><strong>Environment discoverability:</strong> does AeroBeat eventually want a stable athlete-facing atmosphere taxonomy, or should environment data remain outside the imported song-package lane?</li>
 <li><strong>Trust-state mirroring depth:</strong> which first-party moderation/approval states actually need provider-side mirrored tags versus staying entirely in AeroBeat-owned systems?</li>
 </ol>
 <h2 id="related-docs">Related docs<a class="headerlink" href="#related-docs" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../workout-package-storage-and-discovery/">Workout Package Storage &amp; Discovery</a></li>
+<li><a href="../workout-package-storage-and-discovery/">UGC Distribution Strategy</a></li>
 <li><a href="../ugc-distribution-strategy/">UGC Distribution Strategy</a></li>
 <li><a href="../content-model/">Content Model</a></li>
 </ul>
@@ -5895,7 +5925,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 5, 2026 18:05:10 UTC">May 5, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 20, 2026 04:49:22 UTC">July 20, 2026</span>
   </span>
 
     
