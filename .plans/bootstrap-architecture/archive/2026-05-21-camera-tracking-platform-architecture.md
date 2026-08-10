@@ -1,7 +1,9 @@
 # AeroBeat Camera Tracking Platform Architecture
 
 **Date:** 2026-05-21  
-**Status:** Draft  
+**Status:** Stale
+**Last Updated:** 2026-07-06 22:14 EDT
+**Blocked Reason:** Stale archive sweep requested by Derrick on 2026-07-06.
 **Agent:** Cookie 🍪
 
 ---
