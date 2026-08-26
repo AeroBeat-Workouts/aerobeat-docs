@@ -64,7 +64,7 @@ Pico's Vialytix precedent established the safe repair: designate one migrator pe
 
 **Status:** Complete
 
-Build `0.0.15` physical Android snapshots confirm Direct full/Fast, main-thread direct adapter, 480x640 camera/input, 30fps video, no resize, and zero dropped frames. The first warm snapshot averaged 122ms CV with 7fps submissions, 9fps pose output, 13ms output age, and 67ms media-pose delta. The later snapshot averaged 136ms CV with 6fps submissions, 8fps pose output, 3ms output age, and 133ms media-pose delta. Pacing keeps the preview fresh and avoids stale queues, but MoveNet inference remains too slow for responsive landmarks. The preserved decision remains follow-up Bead `oc-7j6.6`: compare MediaPipe Pose Landmarker Lite and ONNX Runtime Web with a tiny pose model before custom-model work.
+Build `0.0.15` physical Android snapshots confirm Direct full/Fast, main-thread direct adapter, 480x640 camera/input, 30fps video, no resize, and zero dropped frames. The first warm snapshot averaged 122ms CV with 7fps submissions, 9fps pose output, 13ms output age, and 67ms media-pose delta. The later snapshot averaged 136ms CV with 6fps submissions, 8fps pose output, 3ms output age, and 133ms media-pose delta. Pacing keeps the preview fresh and avoids stale queues, but MoveNet inference remains too slow for responsive landmarks. The preserved decision was migrated from legacy follow-up `oc-7j6.6` to canonical web-CV Bead `aerobeat-web-cv-b12`: compare MediaPipe Pose Landmarker Lite and ONNX Runtime Web with a tiny pose model before custom-model work.
 
 ### 5. Commit, Push, QA, And Audit
 
