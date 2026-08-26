@@ -1,7 +1,7 @@
 # AeroBeat Beads And Web Repo Migration
 
 **Date:** 2026-08-26
-**Status:** In Progress
+**Status:** Complete — pending independent re-audit and Bead closure
 **Agent:** cookie
 **Bead:** `aerobeat-docs-j1eh` (legacy transition source: `oc-4bm`)
 
@@ -44,37 +44,55 @@ Pico's Vialytix precedent established the safe repair: designate one migrator pe
 
 ### 2. Migrate Existing Legitimate Ledgers
 
-**Status:** In Progress
+**Status:** Complete
 
-- Bootstrapped authoritative remote histories.
-- Used the validated v1.2.2-scoped upstream repair binary; schema ceiling remains v53.
-- Migrated/pushed physical and metadata-only remote-backed ledgers individually.
-- Record archived/read-only or otherwise non-pushable exceptions without changing archive state silently.
-- Initialize repositories that have no remote Dolt history using `bd init --skip-agents` and push both Git metadata and Dolt history.
+- Bootstrapped authoritative remote histories and retained all 21 old physical stores as `.beads/embeddeddolt-v26-backup-20260826`.
+- Used the validated v1.2.2-scoped upstream repair binary; schema ceiling remained v53.
+- Migrated and pushed every non-archived remote-backed ledger individually.
+- Reconciled every local issue ID missing from remote authority; all 21 old physical issue-ID sets are now subsets of their active v53 ledgers. Representative recovered dependency counts also match.
+- Initialized repositories with no remote Dolt history using `bd init --skip-agents`, then pushed Git metadata and Dolt history.
+- Verified all 85 active checkouts have matching canonical Git origin / Beads sync remotes and successful `bd info` / `bd ready` reads. They represent 81 canonical active repository identities because four old feature-name folders are compatibility checkouts of GitHub-renamed mode repositories: `feature-boxing` → `mode-boxing`, `feature-core` → `mode-core`, `feature-flow` → `mode-flow`, and `template-feature` → `template-mode`. GitHub API returns the same repository ID for each pair. Their Git origins, tracked config, Dolt remotes, and internal repository IDs now use/share the canonical mode identity; the displaced local stores remain preserved as `.beads/embeddeddolt-renamed-alias-backup-20260826`.
+- Corrected four additional non-alias internal identities (`environment-loader`, `input-camera-tracking`, `tool-gaussian-splat-loader`, and `tool-gltf-loader`) with `bd migrate --update-repo-id`; every active checkout now reports identical actual/expected repository IDs.
+- Left archived `aerobeat-input-gamepad` read-only: its local v53 attempt is preserved as `.beads/embeddeddolt-v53-unpublished-20260826`, archive state was not changed, and its two unrelated pre-existing local commits remain untouched.
+- Legacy `.beads/metadata.json.project_id` values remain duplicated in eight historical scaffold/rename groups across 25 folders. That clone-local field is not the v53 repository identity and was not hand-edited. The authoritative internal IDs are corrected as above: unique per canonical active repository, shared only by the four verified GitHub redirect aliases. The duplicate metadata groups are: one 16-folder tool/vendor scaffold group; `environment-community` / `environment-core` / `template-environment`; `spatial-ui-core` / `spatial-ui-mouse` / `template-input`; `spatial-ui-touch` / `spatial-ui-xr` / `template-spatial-ui`; and the four verified feature-to-mode alias pairs.
 
 ### 3. Publish Browser-Native Repositories
 
-**Status:** In Progress
+**Status:** Complete
 
-- Created 14 public `AeroBeat-Workouts/aerobeat-web-*` repositories with Derrick's explicit approval.
+- Created 14 public `AeroBeat-Workouts/aerobeat-web-*` repositories with Derrick's explicit approval; all use default branch `main` and remain unarchived.
 - Split and pushed existing subtree history from the preserved orchestration Git history.
-- Attach each canonical DSH folder to its own origin/main, verify no source drift, replace empty placeholders with fresh unique schema-current Beads, then push.
+- Attached each canonical DSH folder to its own origin/main with no source drift.
+- Replaced empty placeholders with fresh unique schema-current Beads identities and pushed both Git and Dolt state.
+- Migrated the next CV benchmark from legacy `oc-7j6.6` to canonical `aerobeat-web-cv-b12`.
 
 ### 4. Telemetry Recovery
 
 **Status:** Complete
 
-Build `0.0.15` physical Android snapshots confirm Direct full/Fast, main-thread direct adapter, 480x640 camera/input, 30fps video, no resize, and zero dropped frames. The first warm snapshot averaged 122ms CV with 7fps submissions, 9fps pose output, 13ms output age, and 67ms media-pose delta. The later snapshot averaged 136ms CV with 6fps submissions, 8fps pose output, 3ms output age, and 133ms media-pose delta. Pacing keeps the preview fresh and avoids stale queues, but MoveNet inference remains too slow for responsive landmarks. The preserved decision was migrated from legacy follow-up `oc-7j6.6` to canonical web-CV Bead `aerobeat-web-cv-b12`: compare MediaPipe Pose Landmarker Lite and ONNX Runtime Web with a tiny pose model before custom-model work.
+Build `0.0.15` physical Android snapshots confirm Direct full/Fast, main-thread direct adapter, 480x640 camera/input, 30fps video, no resize, and zero dropped frames. The first warm snapshot averaged 122ms CV with 7fps submissions, 9fps pose output, 13ms output age, and 67ms media-pose delta. The later snapshot summary averaged 136ms CV with 6fps submissions, 8fps pose output, 3ms output age, and 133ms media-pose delta; a later sampling panel in that same raw file reads 100ms, so 133ms is specifically the exported snapshot-summary value rather than a claim that every panel sample was identical. Pacing keeps the preview fresh and avoids stale queues, but MoveNet inference remains too slow for responsive landmarks. The preserved decision was migrated from legacy follow-up `oc-7j6.6` to canonical web-CV Bead `aerobeat-web-cv-b12`: compare MediaPipe Pose Landmarker Lite and ONNX Runtime Web with a tiny pose model before custom-model work.
 
 ### 5. Commit, Push, QA, And Audit
 
-**Status:** Pending
+**Status:** Complete — corrective work committed/pushed; independent re-audit requested
 
-- Commit/push generated tracked Beads configuration in every owning repo without sweeping unrelated dirt or unpublished commits.
-- Verify every active repo with `bd info`, `bd ready`, schema cursor, Git upstream parity, and Dolt push/read-back.
-- Verify all 14 public web repositories and their local origins.
-- Close `aerobeat-docs-j1eh` and legacy transition Bead `oc-4bm` only after independent audit.
+- Committed/pushed generated tracked Beads configuration without sweeping unrelated dirt or unpublished commits.
+- Initial independent QA/audit exposed four GitHub rename redirects that stale local tracking refs had concealed. Corrective commits were first pushed through the redirect names, which proved those names resolve to the same canonical mode repositories; the final repair canonicalized both local checkouts in each pair, corrected the canonical mode internal Beads identities, and retained the normal non-rewritten commit history. Re-audit must use live `git ls-remote` and GitHub repository IDs rather than local tracking refs alone.
+- Key post-split validation passed: assembly, CV, UI, and contracts `npm run check && npm test`.
+- Verified all 14 public web repositories, default `main`, preserved subtree commit history, clean local origins, and fresh Beads.
+- Repo-by-repo machine-readable results live at `/home/derrick/.dsh/backups/aerobeat-beads-20260826T164900Z/final-inventory-v3.tsv` with adjacent SHA-256 sidecar; migration logs and the 86-head manifest remain in the same backup root.
+- Close `aerobeat-docs-j1eh` and legacy transition Bead `oc-4bm` only after independent re-audit.
 
 ## Results
 
-Pending final migration, commit/push, and audit.
+- Backed up and checksum-verified all pre-migration Beads state; 21 physical v26 stores remain locally recoverable.
+- Converged all 85 active local checkouts on Beads 1.2.2 / v53 behavior. Across the 21 physical backups, all 419 original issue IDs and 205 dependency rows survive; 285 local-only issues from 12 repos were merged into authoritative remote histories.
+- Corrected every internal repository ID reported by `bd migrate --update-repo-id`. The 85 active checkouts now represent 81 canonical repository identities because four feature-name folders are verified compatibility checkouts of GitHub-renamed mode repositories. Those aliases share canonical origins, Dolt remotes, Git tips, and internal IDs rather than pretending to be independent repositories.
+- Published all 14 approved browser-native repos publicly with preserved subtree history, fresh unique Beads, default `main`, and live local/remote parity.
+- Preserved `aerobeat-input-gamepad` as the sole archived exception without changing archive state or pushing its two unrelated local commits. Preserved the unrelated gameplay-runner testbed edit.
+- Initial independent QA/audit correctly caught four live branch mismatches hidden by stale local tracking refs. Diagnosis showed the old feature URLs are GitHub redirects to the same mode repositories, not distinct remotes. Normal non-rewritten corrective history now ends at canonical mode-target commits `814d34a`, `97a4205`, `014f1d2`, and `9a14a77`; both local compatibility checkouts in each pair match the live canonical tip.
+- Parent revalidation after correction reports 86 local Git folders, exactly one expected live-tip mismatch (`aerobeat-input-gamepad`), 85/85 active `bd info` and `bd ready` successes, zero actual/expected internal-ID mismatches, and no unplanned dirt beyond this plan plus the protected gameplay-runner edit.
+- Assembly, CV, UI, and contracts passed `npm run check && npm test`; all four remained clean afterward.
+- Telemetry confirms pacing/freshness success but MoveNet latency remains the bottleneck. Canonical next work is `aerobeat-web-cv-b12`.
+
+Independent re-audit is the only remaining gate before closing `aerobeat-docs-j1eh` and legacy transition `oc-4bm`.
