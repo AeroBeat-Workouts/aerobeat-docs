@@ -1,7 +1,7 @@
 # AeroBeat Beads And Web Repo Migration
 
 **Date:** 2026-08-26
-**Status:** Complete — pending independent re-audit and Bead closure
+**Status:** Complete
 **Agent:** cookie
 **Bead:** `aerobeat-docs-j1eh` (legacy transition source: `oc-4bm`)
 
@@ -74,14 +74,14 @@ Build `0.0.15` physical Android snapshots confirm Direct full/Fast, main-thread 
 
 ### 5. Commit, Push, QA, And Audit
 
-**Status:** Complete — corrective work committed/pushed; independent re-audit requested
+**Status:** Complete — independent QA and audit PASS
 
 - Committed/pushed generated tracked Beads configuration without sweeping unrelated dirt or unpublished commits.
 - Initial independent QA/audit exposed four GitHub rename redirects that stale local tracking refs had concealed. Corrective commits were first pushed through the redirect names, which proved those names resolve to the same canonical mode repositories; the final repair canonicalized both local checkouts in each pair, corrected the canonical mode internal Beads identities, and retained the normal non-rewritten commit history. Re-audit must use live `git ls-remote` and GitHub repository IDs rather than local tracking refs alone.
 - Key post-split validation passed: assembly, CV, UI, and contracts `npm run check && npm test`.
 - Verified all 14 public web repositories, default `main`, preserved subtree commit history, clean local origins, and fresh Beads.
 - Repo-by-repo machine-readable results live at `/home/derrick/.dsh/backups/aerobeat-beads-20260826T164900Z/final-inventory-v3.tsv` with adjacent SHA-256 sidecar; migration logs and the 86-head manifest remain in the same backup root.
-- Close `aerobeat-docs-j1eh` and legacy transition Bead `oc-4bm` only after independent re-audit.
+- Independent QA and corrective auditor re-audits passed. Closed canonical `aerobeat-docs-j1eh`, legacy transition `oc-4bm`, completed mobile epic `oc-7j6`, and migrated duplicate follow-up `oc-7j6.6`; canonical next work remains open as `aerobeat-web-cv-b12`.
 
 ## Results
 
@@ -95,4 +95,4 @@ Build `0.0.15` physical Android snapshots confirm Direct full/Fast, main-thread 
 - Assembly, CV, UI, and contracts passed `npm run check && npm test`; all four remained clean afterward.
 - Telemetry confirms pacing/freshness success but MoveNet latency remains the bottleneck. Canonical next work is `aerobeat-web-cv-b12`.
 
-Independent re-audit is the only remaining gate before closing `aerobeat-docs-j1eh` and legacy transition `oc-4bm`.
+Independent QA and corrective auditor re-audits passed. Canonical and legacy migration Beads are closed; `aerobeat-web-cv-b12` is the only intended next technical slice.
