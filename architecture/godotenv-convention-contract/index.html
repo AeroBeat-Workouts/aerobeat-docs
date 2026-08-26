@@ -6030,20 +6030,20 @@
 <p><strong>Rule:</strong> do not invent aliases for first-party AeroBeat addon keys. If a repo ever needs a published addon folder name that differs from the repo name, that exception must be documented explicitly in architecture docs and downstream migration notes before implementation.</p>
 <p>That means this is correct:</p>
 <div class="highlight"><pre><span></span><code>{
-  &quot;addons&quot;: {
-    &quot;aerobeat-input-core&quot;: {
-      &quot;url&quot;: &quot;git@github.com:AeroBeat-Workouts/aerobeat-input-core.git&quot;,
-      &quot;checkout&quot;: &quot;v0.1.0&quot;,
-      &quot;subfolder&quot;: &quot;/&quot;
+  "addons": {
+    "aerobeat-input-core": {
+      "url": "git@github.com:AeroBeat-Workouts/aerobeat-input-core.git",
+      "checkout": "v0.1.0",
+      "subfolder": "/"
     }
   }
 }
 </code></pre></div>
 <p>And this is not:</p>
 <div class="highlight"><pre><span></span><code>{
-  &quot;addons&quot;: {
-    &quot;core&quot;: {
-      &quot;url&quot;: &quot;git@github.com:AeroBeat-Workouts/aerobeat-input-core.git&quot;
+  "addons": {
+    "core": {
+      "url": "git@github.com:AeroBeat-Workouts/aerobeat-input-core.git"
     }
   }
 }
@@ -6394,17 +6394,17 @@
 <h2 id="81-packagefoundationui-shell-testbed-manifest-example">8.1 Package/foundation/UI shell testbed manifest example<a class="headerlink" href="#81-packagefoundationui-shell-testbed-manifest-example" title="Permanent link">&para;</a></h2>
 <p>Stored at <code>.testbed/addons.jsonc</code>.</p>
 <div class="highlight"><pre><span></span><code>{
-  &quot;$schema&quot;: &quot;https://chickensoft.games/schemas/addons.schema.json&quot;,
-  &quot;addons&quot;: {
-    &quot;aerobeat-input-core&quot;: {
-      &quot;url&quot;: &quot;git@github.com:AeroBeat-Workouts/aerobeat-input-core.git&quot;,
-      &quot;checkout&quot;: &quot;v0.1.0&quot;,
-      &quot;subfolder&quot;: &quot;/&quot;
+  "$schema": "https://chickensoft.games/schemas/addons.schema.json",
+  "addons": {
+    "aerobeat-input-core": {
+      "url": "git@github.com:AeroBeat-Workouts/aerobeat-input-core.git",
+      "checkout": "v0.1.0",
+      "subfolder": "/"
     },
-    &quot;aerobeat-vendor-godot-unit-test&quot;: {
-      &quot;url&quot;: &quot;../../aerobeat-vendor-godot-unit-test&quot;,
-      &quot;source&quot;: &quot;symlink&quot;,
-      &quot;subfolder&quot;: &quot;/&quot;
+    "aerobeat-vendor-godot-unit-test": {
+      "url": "../../aerobeat-vendor-godot-unit-test",
+      "source": "symlink",
+      "subfolder": "/"
     }
   }
 }
@@ -6412,17 +6412,17 @@
 <h2 id="82-assembly-manifest-example">8.2 Assembly manifest example<a class="headerlink" href="#82-assembly-manifest-example" title="Permanent link">&para;</a></h2>
 <p>Stored at <code>addons.jsonc</code> in repo root.</p>
 <div class="highlight"><pre><span></span><code>{
-  &quot;$schema&quot;: &quot;https://chickensoft.games/schemas/addons.schema.json&quot;,
-  &quot;addons&quot;: {
-    &quot;aerobeat-input-core&quot;: {
-      &quot;url&quot;: &quot;git@github.com:AeroBeat-Workouts/aerobeat-input-core.git&quot;,
-      &quot;checkout&quot;: &quot;v0.1.0&quot;,
-      &quot;subfolder&quot;: &quot;/&quot;
+  "$schema": "https://chickensoft.games/schemas/addons.schema.json",
+  "addons": {
+    "aerobeat-input-core": {
+      "url": "git@github.com:AeroBeat-Workouts/aerobeat-input-core.git",
+      "checkout": "v0.1.0",
+      "subfolder": "/"
     },
-    &quot;aerobeat-input-mediapipe-python&quot;: {
-      &quot;url&quot;: &quot;git@github.com:AeroBeat-Workouts/aerobeat-input-mediapipe-python.git&quot;,
-      &quot;checkout&quot;: &quot;v0.1.0&quot;,
-      &quot;subfolder&quot;: &quot;/&quot;
+    "aerobeat-input-mediapipe-python": {
+      "url": "git@github.com:AeroBeat-Workouts/aerobeat-input-mediapipe-python.git",
+      "checkout": "v0.1.0",
+      "subfolder": "/"
     }
   }
 }
